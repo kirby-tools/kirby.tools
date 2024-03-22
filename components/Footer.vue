@@ -5,7 +5,7 @@ const links = [
     children: [
       {
         label: "Documentation",
-        to: "/docs/get-started",
+        to: "/docs/live-preview",
       },
       {
         label: "Changelog",
