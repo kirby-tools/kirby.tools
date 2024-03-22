@@ -1,0 +1,88 @@
+title: Live Preview
+description: Real-time preview of unsaved changes right in the Panel.
+navigation: false
+hero:
+  orientation: horizontal
+  title: '<span class="text-primary">Real-Time</span><br> Page Preview in the Panel'
+  description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
+  links:
+    - label: Try the Starterkit
+      to: https://play.kirby.tools
+      size: xl
+      color: black
+      icon: i-ri-arrow-right-line
+      trailing: true
+  video:
+    path: /vid/kirby-live-preview-demo.mp4
+    poster: /vid/kirby-live-preview-demo-poster.jpg
+sections:
+  - title: <span class="text-primary">Top 10 Feature Wish:</span><br> Now a Plugin
+    slot: features
+    class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
+    cards:
+      - title: Real-Time Preview
+        description: See how your page looks before saving your changes and without leaving the Panel.
+        icon: i-ri-notification-badge-line
+        to: /docs/live-preview/configuration
+        class: col-span-6 row-span-2
+      - title: Preview Redirects
+        description: When you click a site link in the preview, the content page will open in the Panel instead of opening the link in a new tab.
+        icon: i-ri-links-line
+        to: /docs/live-preview
+        class: col-span-6 row-span-4
+      - title: Sticky Column
+        description: Edit your content side-by-side with the preview in a sticky column layout.
+        to: /docs/live-preview/configuration
+        icon: i-ri-dashboard-line
+        class: col-span-6 row-span-4
+      - title: Multi-Language Support
+        description: The previewed page will be rendered in the current selected content language.
+        to: /docs/live-preview
+        icon: i-ri-global-line
+        class: col-span-6 row-span-2
+    links:
+      - label: Set up Your Section
+        to: /docs/get-started
+        color: white
+        size: lg
+        trailingIcon: i-ri-arrow-right-line
+  - title: Buy Once, Use Forever
+    slot: pricing
+    description: Add real-time previews to all your Kirby projects.
+    plan:
+      title: All in One
+      description: For individuals and teams.
+      price: 49 €
+      highlight: true
+      button:
+        label: Get better rankings
+        color: primary
+        to: https://byjohann.lemonsqueezy.com/buy/359409ce-840d-48c4-aca3-e7d79a95f6d4
+      features:
+        - For Kirby 4
+        - Unlimited projects
+        - Unlimited minor & patch updates
+  - title: Frequently Asked Questions
+    slot: faq
+    description: If you can't find what you're looking for, contact us and we'll get back to you!
+    items:
+      - label: What do I get with my purchase?
+        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview).
+      - label: How do I receive updates for the plugin?
+        content: You will be notified by email when a new version of the plugin is available. You can then download the latest version from your [order page](https://app.lemonsqueezy.com/my-orders) of our payment provider.
+      - label: Do you offer technical support?
+        content: You can ask questions, report bugs or feature requests on our [GitHub repository](https://github.com/johannschopplich/kirby.tools). If you need personal support or advice, please [contact us](/contact).
+      - label: What is your refund policy?
+        content: "Because the products we offer are digital and non-returnable, your purchase is eligible for a refund only in the following situation: There is a technical problem that we can't fix within 14 days of being notified of the problem. You must provide sufficient information about how the problem occurred. If you have any questions, please [contact us](/contact)."
+cta:
+  title: Not Convinced?
+  description: Give it a try and feel the breeze of a real-time preview in the Panel.
+  align: left
+  links:
+    - label: Hoist the Sails
+      to: https://play.kirby.tools
+      target: _blank
+      icon: i-ri-arrow-right-line
+      size: xl
+      color: black
+      trailing: true
