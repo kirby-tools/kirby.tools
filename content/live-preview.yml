@@ -52,8 +52,8 @@ sections:
     plan:
       title: All in One
       description: For individuals and teams.
-      price: 89 €
-      discount: 69 €
+      price: 99 €
+      discount: 79 €
       highlight: true
       button:
         label: Get Your Preview
