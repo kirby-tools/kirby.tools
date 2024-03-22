@@ -8,8 +8,14 @@ const links = [
         to: "/docs/live-preview",
       },
       {
-        label: "Changelog",
-        to: "/changelog",
+        label: "Kirby Copilot",
+        to: "https://kirbycopilot.com",
+        target: "_blank",
+      },
+      {
+        label: "Kirby SEO Audit",
+        to: "https://kirbyseo.com",
+        target: "_blank",
       },
     ],
   },
