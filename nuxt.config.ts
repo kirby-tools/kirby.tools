@@ -45,7 +45,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { redirect: "/live-preview", prerender: false },
-    "/docs": { redirect: "/docs/get-started", prerender: false },
+    "/docs": { redirect: "/docs/live-preview", prerender: false },
   },
 
   nitro: {

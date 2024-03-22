@@ -7,22 +7,13 @@ Kirby Tools is a collection of plugins for [Kirby CMS](https://getkirby.com) tha
 ## Features
 
 > [!TIP]
-> Head over to the [website](https://kirby.tools) to learn all about what Kirby Tools has to offer.
+> Head over to the [website](https://kirby.tools) to learn all about the plugins and their features.
 
 ---
 
 ## Playground
 
 Experience Kirby Tools firsthand in the [interactive playground](https://play.kirby.tools).
-
-## Get Started
-
-To get started, please refer to the [documentation](https://kirby.tools/docs/get-started) for guidance on installation, configuration, and usage.
-
-Here are some quick links:
-
-- [Installation](https://kirby.tools/docs/get-started)
-- [Section Configuration](https://kirby.tools/docs/get-started/configuration)
 
 ## Support and Questions
 
