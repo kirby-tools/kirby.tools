@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Kirby Tools Documentation
+    url: https://kirby.tools/docs/get-started
+    about: Check the documentation for usage of Kirby Tools
+  - name: 💬 Discussions
+    url: https://github.com/johannschopplich/kirby.tools/discussions
+    about: Use discussions if you have another issue, an idea for improvement or for asking questions.
