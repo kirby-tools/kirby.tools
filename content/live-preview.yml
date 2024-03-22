@@ -32,7 +32,7 @@ sections:
         class: col-span-6 row-span-4
       - title: Sticky Column
         description: Edit your content side-by-side with the preview in a sticky column layout.
-        to: /docs/live-preview/configuration
+        to: /docs/live-preview#step-3-enjoy-real-time-previews
         icon: i-ri-dashboard-line
         class: col-span-6 row-span-4
       - title: Multi-Language Support
@@ -52,10 +52,11 @@ sections:
     plan:
       title: All in One
       description: For individuals and teams.
-      price: 49 €
+      price: 89 €
+      discount: 69 €
       highlight: true
       button:
-        label: Get better rankings
+        label: Get Your Preview
         color: primary
         to: https://byjohann.lemonsqueezy.com/buy/359409ce-840d-48c4-aca3-e7d79a95f6d4
       features:
