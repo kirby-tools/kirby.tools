@@ -63,7 +63,7 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
         icon="i-ri-arrow-right-line"
         trailing
         color="black"
-        to="#pricing"
+        to="/live-preview#pricing"
         class="hidden lg:flex"
       />
     </template>
