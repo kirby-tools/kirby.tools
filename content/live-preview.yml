@@ -20,13 +20,13 @@ sections:
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     cards:
-      - title: Real-Time Preview
-        description: See how your page looks before saving your changes and without leaving the Panel.
-        icon: i-ri-notification-badge-line
+      - title: Detect Preview Mode
+        description: You can conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
+        icon: i-ri-drag-drop-line
         to: /docs/live-preview/configuration
         class: col-span-6 row-span-2
-      - title: Preview Redirects
-        description: When you click any site link in the preview, the content page will open in the Panel instead of opening the link in a new tab.
+      - title: Panel Redirects
+        description: Try navigating through the preview – if you click on a site link, such as in the header, the corresponding Panel page will open instead of the link in the preview.
         icon: i-ri-links-line
         to: /docs/live-preview
         class: col-span-6 row-span-4
@@ -35,10 +35,10 @@ sections:
         to: /docs/live-preview#step-3-enjoy-real-time-previews
         icon: i-ri-dashboard-line
         class: col-span-6 row-span-4
-      - title: Multi-Language Support
-        description: The previewed page will be rendered in the current selected content language.
-        to: /docs/live-preview
-        icon: i-ri-global-line
+      - title: Real-Time Preview
+        description: See how your page looks before saving your changes and without leaving the Panel.
+        to: /docs/live-preview/configuration
+        icon: i-ri-notification-badge-line
         class: col-span-6 row-span-2
     links:
       - label: Set up Your Section
