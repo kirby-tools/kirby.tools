@@ -4,6 +4,15 @@ import type { HeaderLink } from "#ui-pro/types";
 
 const links: HeaderLink[] = [
   {
+    label: "Documentation",
+    to: "/docs/live-preview",
+  },
+  {
+    label: "Playground",
+    to: "https://play.kirby.tools",
+    target: "_blank",
+  },
+  {
     label: "Products",
     children: [
       {
@@ -24,15 +33,6 @@ const links: HeaderLink[] = [
         target: "_blank",
       },
     ],
-  },
-  {
-    label: "Documentation",
-    to: "/docs/live-preview",
-  },
-  {
-    label: "Playground",
-    to: "https://play.kirby.tools",
-    target: "_blank",
   },
 ];
 
