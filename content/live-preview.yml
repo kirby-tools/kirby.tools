@@ -23,7 +23,7 @@ sections:
       - title: Detect Preview Mode
         description: You can conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
         icon: i-ri-drag-drop-line
-        to: /docs/live-preview/configuration
+        to: /docs/live-preview/preview-mode
         class: col-span-6 row-span-2
       - title: Panel Redirects
         description: Try navigating through the preview – if you click on a site link, such as in the header, the corresponding Panel page will open instead of the link in the preview.
