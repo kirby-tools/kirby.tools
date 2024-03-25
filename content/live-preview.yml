@@ -16,7 +16,7 @@ hero:
     path: /vid/kirby-live-preview-demo.mp4
     poster: /vid/kirby-live-preview-demo-poster.jpg
 sections:
-  - title: <span class="text-primary">Top 10 Feature Wish:</span><br> Now a Plugin
+  - title: <span class="text-primary">Top 10 Feature Request:</span><br> Now a Plugin
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     cards:
