@@ -77,7 +77,7 @@ const links = [
           <div class="prose prose-primary dark:prose-invert prose-sm">
             Kirby Tools is not affiliated with the developers of Kirby CMS.
             Having said that, we love Kirby. This plugin wouldn't exist without
-            it. 💚
+            it. 🧡
           </div>
         </template>
       </UFooterColumns>
