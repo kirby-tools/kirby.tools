@@ -67,14 +67,14 @@ sections:
     slot: faq
     description: If you can't find what you're looking for, contact us and we'll get back to you!
     items:
+      - label: How does the licensing work?
+        content: The license allows you to use the plugin on as many sites as you want, as long as you are the owner of all the sites.
       - label: What do I get with my purchase?
-        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview).
+        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview). We are currently working on Composer support.
       - label: How do I receive updates for the plugin?
         content: You will be notified by email when a new version of the plugin is available. You can then download the latest version from your [order page](https://app.lemonsqueezy.com/my-orders) of our payment provider.
       - label: Do you offer technical support?
         content: You can ask questions, report bugs or feature requests on our [GitHub repository](https://github.com/johannschopplich/kirby.tools). If you need personal support or advice, please [contact us](/contact).
-      - label: Can I use this plugin on multiple sites?
-        content: The license allows you to use the plugin on as many sites as you want, as long as you are the owner of all the sites.
       - label: What is your refund policy?
         content: "Because the products we offer are digital and non-returnable, your purchase is eligible for a refund only in the following situation: There is a technical problem that we can't fix within 14 days of being notified of the problem. You must provide sufficient information about how the problem occurred. If you have any questions, please [contact us](/contact)."
 cta:
