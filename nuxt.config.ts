@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   },
 
   ui: {
-    icons: ["heroicons", "ri"],
+    icons: ["heroicons", "ri", "logos"],
   },
 
   hooks: {

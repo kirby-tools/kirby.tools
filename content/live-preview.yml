@@ -3,6 +3,10 @@ description: Real-time preview of unsaved changes right in the Panel.
 navigation: false
 hero:
   orientation: horizontal
+  headline:
+    label: Composer support landed!
+    to: /docs/live-preview
+    icon: i-logos-composer
   title: '<span class="text-primary">Real-Time</span><br> Page Preview in the Panel'
   description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
   links:
