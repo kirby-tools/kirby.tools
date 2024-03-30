@@ -73,7 +73,7 @@ sections:
       - label: How does the licensing work?
         content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. Please refer to the [license agreement](/license) for more details.
       - label: What do I get with my purchase?
-        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview). We are currently working on Composer support.
+        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview). This also includes [Composer support](/docs/live-preview#composer).
       - label: How do I receive updates for the plugin?
         content: You will be notified by email when a new version of the plugin is available. You can then download the latest version from your [order page](https://app.lemonsqueezy.com/my-orders) of our payment provider.
       - label: Do you offer technical support?
