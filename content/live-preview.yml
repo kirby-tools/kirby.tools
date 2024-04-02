@@ -7,7 +7,7 @@ hero:
     label: Composer support landed!
     to: /docs/live-preview
     icon: i-logos-composer
-  title: '<span class="text-primary">Real-Time</span><br> Page Preview in the Panel'
+  title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
   description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
   links:
     - label: Try the Starterkit
