@@ -1,6 +1,6 @@
 export default defineAppConfig({
   ui: {
-    primary: "tumbleweed",
+    primary: "rhino",
     gray: "zinc",
     variables: {
       light: {

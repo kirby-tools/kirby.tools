@@ -93,7 +93,7 @@ useSeoMeta({
 
       <template #pricing>
         <div
-          class="bg-primary-500 flex flex-col gap-16 rounded-xl px-4 py-6 shadow sm:gap-y-24 sm:p-16 md:grid md:grid-cols-2 md:items-end"
+          class="bg-primary-700 flex flex-col gap-16 rounded-xl px-4 py-6 shadow sm:gap-y-24 sm:p-16 md:grid md:grid-cols-2 md:items-end"
         >
           <div>
             <IllustrationPartnershapes8 class="mx-auto w-3/4 md:w-4/5" />
@@ -125,9 +125,9 @@ useSeoMeta({
         align="right"
         card
         :ui="{
-          wrapper: 'bg-primary-500 dark:bg-primary-500 ring-0',
-          title: 'text-5xl !text-tumbleweed-100 sm:text-7xl',
-          description: '!text-tumbleweed-100',
+          wrapper: 'bg-primary-700 dark:bg-primary-700 ring-0',
+          title: 'text-5xl !text-rhino-100 sm:text-7xl',
+          description: '!text-rhino-100',
         }"
       >
         <template #title>
