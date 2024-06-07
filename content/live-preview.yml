@@ -90,5 +90,5 @@ cta:
       target: _blank
       icon: i-ri-arrow-right-line
       size: xl
-      color: black
+      color: primary
       trailing: true
