@@ -90,7 +90,8 @@ const links = [
           to="https://byjohann.link"
           target="_blank"
           class="text-gray-900 dark:text-white"
-          >Johann Schopplich</NuxtLink
+        >
+          Johann Schopplich </NuxtLink
         >. All rights reserved.
       </p>
     </template>

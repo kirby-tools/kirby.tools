@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData("live-preview", () =>
-  queryContent("/live-preview").findOne(),
+const { data: page } = await useAsyncData("content-translator", () =>
+  queryContent("/content-translator").findOne(),
 );
 
 if (!page.value) {
@@ -16,18 +16,18 @@ useSeoMeta({
   ogTitle: `${page.value.title} – Kirby Tools`,
   description: page.value.description,
   ogDescription: page.value.description,
-  ogImage: "https://kirby.tools/social-card-live-preview.png",
-  twitterImage: "https://kirby.tools/social-card-live-preview.png",
+  ogImage: "https://kirby.tools/social-card-content-translator.png",
+  twitterImage: "https://kirby.tools/social-card-content-translator.png",
 });
 </script>
 
 <template>
   <LandingPage :page="page">
     <template #image-pricing>
-      <IllustrationPartnershapes8 class="mx-auto w-3/4 md:w-4/5" />
+      <IllustrationPartnershapes22 class="mx-auto w-3/4" />
     </template>
     <template #image-cta>
-      <IllustrationPartnershapes20 class="mx-auto w-3/4" />
+      <IllustrationPartnershapes7 class="mx-auto w-1/2" />
     </template>
   </LandingPage>
 </template>
