@@ -10,10 +10,10 @@ hero:
   title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
   description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
   links:
-    - label: Try the Starterkit
+    - label: Try the Demo
       to: https://play.kirby.tools
       size: xl
-      color: black
+      color: primary
       icon: i-ri-arrow-right-line
       trailing: true
   video:
@@ -88,7 +88,7 @@ cta:
     - label: Hoist the Sails
       to: https://play.kirby.tools
       target: _blank
-      icon: i-ri-arrow-right-line
       size: xl
       color: primary
+      icon: i-ri-arrow-right-line
       trailing: true

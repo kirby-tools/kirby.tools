@@ -1,5 +1,3 @@
-[![Kirby Tools Preview](./public/social-card.png)](https://kirby.tools)
-
 # Kirby Tools
 
 Kirby Tools is a collection of plugins for [Kirby CMS](https://getkirby.com) that primarily focus on enhancing the content editing experience in the Panel.
