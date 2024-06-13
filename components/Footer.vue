@@ -4,8 +4,12 @@ const links = [
     label: "Resources",
     children: [
       {
-        label: "Documentation",
+        label: "Live Preview Docs",
         to: "/docs/live-preview",
+      },
+      {
+        label: "Content Translator Docs",
+        to: "/docs/content-translator",
       },
       {
         label: "Kirby Copilot",
@@ -45,12 +49,12 @@ const links = [
       },
       {
         label: "GitHub Discussions",
-        to: "https://github.com/johannschopplich/kirby.tools/discussions",
+        to: "https://github.com/kirby-tools/community/discussions",
         target: "_blank",
       },
       {
         label: "GitHub Issues",
-        to: "https://github.com/johannschopplich/kirby.tools/issues",
+        to: "https://github.com/kirby-tools/community/issues",
         target: "_blank",
       },
     ],
@@ -101,7 +105,7 @@ const links = [
       <UButton
         aria-label="Kirby Tools on GitHub"
         icon="i-ri-github-fill"
-        to="https://github.com/johannschopplich/kirby.tools"
+        to="https://github.com/kirby-tools/community"
         target="_blank"
         v-bind="$ui.button.secondary as any"
       />
