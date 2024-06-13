@@ -1,0 +1,33 @@
+title: Kirby Tools
+description: A collection of Kirby plugins that empoweres editors and developers alike.
+products:
+  - orientation: vertical
+    headline:
+      label: 20% early bird discount
+      to: /content-translator#pricing
+      icon: i-ri-discount-percent-fill
+    title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
+    description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
+    links:
+      - label: Read More
+        to: /content-translator
+        size: xl
+        color: primary
+        icon: i-ri-arrow-right-line
+        trailing: true
+    video:
+      path: /vid/kirby-content-translator-demo.mp4
+      poster: /vid/kirby-content-translator-demo-poster.jpg
+  - orientation: vertical
+    title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
+    description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
+    links:
+      - label: Read More
+        to: /live-preview
+        size: xl
+        color: primary
+        icon: i-ri-arrow-right-line
+        trailing: true
+    video:
+      path: /vid/kirby-live-preview-demo.mp4
+      poster: /vid/kirby-live-preview-demo-poster.jpg
