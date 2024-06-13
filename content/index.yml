@@ -1,5 +1,6 @@
 title: Kirby Tools
 description: A collection of Kirby plugins that empoweres editors and developers alike.
+navigation: false
 products:
   - orientation: vertical
     headline:

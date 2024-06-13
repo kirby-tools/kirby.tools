@@ -1,5 +1,6 @@
 title: Live Preview
 description: Real-time preview of unsaved changes right in the Panel.
+navigation.icon: i-ri-slideshow-view
 hero:
   orientation: horizontal
   headline:
