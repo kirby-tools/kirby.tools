@@ -55,7 +55,8 @@ function handleVideoClick(event: MouseEvent) {
   <div
     class="group relative cursor-pointer rounded-xl shadow ring-1 ring-gray-200 dark:ring-gray-800"
     :class="[
-      !isPlaying && 'hover:ring-primary-500 dark:hover:ring-primary-400',
+      !isPlaying &&
+        'hover:ring-neon-carrot-500 dark:hover:ring-neon-carrot-400',
     ]"
   >
     <video
@@ -74,7 +75,7 @@ function handleVideoClick(event: MouseEvent) {
     >
       <UIcon
         name="i-ri-play-circle-fill"
-        class="group-hover:text-primary-600 h-[4rem] w-[4rem] text-gray-900 md:h-[6rem] md:w-[6rem]"
+        class="h-[4rem] w-[4rem] text-gray-900 group-hover:text-neon-carrot-600 md:h-[6rem] md:w-[6rem]"
       />
     </div>
   </div>
