@@ -19,13 +19,13 @@ products:
       path: /vid/kirby-content-translator-demo.mp4
       poster: /vid/kirby-content-translator-demo-poster.jpg
   - orientation: vertical
-    title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
+    title: '<span class="text-neon-carrot-500">Real-Time</span><br> Page Preview in Your Panel'
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     links:
       - label: Read More
         to: /live-preview
         size: xl
-        color: primary
+        color: neon-carrot
         icon: i-ri-arrow-right-line
         trailing: true
     video:
