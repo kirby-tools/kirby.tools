@@ -10,7 +10,7 @@ products:
     title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
     description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
     links:
-      - label: Try for Free
+      - label: Explore the Plugin
         to: /content-translator
         size: xl
         color: primary
@@ -23,7 +23,7 @@ products:
     title: '<span class="text-neon-carrot-500">Real-Time</span><br> Page Preview in Your Panel'
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     links:
-      - label: Preview in Action
+      - label: Discover the Plugin
         to: /live-preview
         size: xl
         color: neon-carrot
