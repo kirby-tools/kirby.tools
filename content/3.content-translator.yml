@@ -1,5 +1,6 @@
 title: Content Translator
 description: Translate any page in the Panel or programmatically with DeepL.
+navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
   headline:
