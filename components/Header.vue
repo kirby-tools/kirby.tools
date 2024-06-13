@@ -88,6 +88,7 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
         target="_blank"
       /> -->
       <UButton
+        v-if="route.path !== '/'"
         label="Buy"
         icon="i-ri-shopping-bag-3-fill"
         trailing
