@@ -20,7 +20,7 @@ hero:
     path: /vid/kirby-content-translator-demo.mp4
     poster: /vid/kirby-content-translator-demo-poster.jpg
 sections:
-  - title: Translate All Children From the<br> <span class="text-primary">Command Line</span>
+  - title: Translate All Page Children<br> From the <span class="text-primary">Command Line</span>
     slot: video
     video:
       path: /vid/kirby-content-translator-cli-command.mp4
@@ -86,12 +86,12 @@ sections:
         content: We offer a 30-day money back guarantee for the plugin. If you are not satisfied with your purchase, you can [request a full refund](/contact) within 30 days of purchase. (Although we would appreciate feedback on how we can improve the plugin.)
 cta:
   title: Still scrolling?
-  description: Test the plugin locally and see how it can improve your workflow. Pay when you youre ready to go live.
+  description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
   align: left
   links:
     - label: Install the Plugin
       to: /docs/content-translator
       size: xl
-      color: primary
+      color: neon-carrot
       icon: i-ri-arrow-right-line
       trailing: true
