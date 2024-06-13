@@ -1,6 +1,5 @@
 title: Live Preview
 description: Real-time preview of unsaved changes right in the Panel.
-navigation: false
 hero:
   orientation: horizontal
   headline:

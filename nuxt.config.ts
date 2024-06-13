@@ -44,14 +44,13 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/": { redirect: "/live-preview", prerender: false },
     "/docs": { redirect: "/docs/live-preview", prerender: false },
   },
 
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/live-preview", "/api/search.json"],
+      routes: ["/", "/live-preview", "/content-translator", "/api/search.json"],
     },
   },
 });
