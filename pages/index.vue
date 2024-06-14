@@ -32,7 +32,7 @@ defineOgImageComponent("Default", {
       :key="index"
       :orientation="product.orientation"
       :links="product.links"
-      :class="[index > 0 && '!pt-0']"
+      :class="[index > 0 && '!pt-16']"
     >
       <template #headline>
         <UBadge
