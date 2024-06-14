@@ -61,6 +61,7 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
         container: SECTION_SLOT_WIDTHS[section.slot],
       }"
       v-bind="section"
+      class="!pt-16"
     >
       <template v-if="section.title" #title>
         <span v-html="section.title" />

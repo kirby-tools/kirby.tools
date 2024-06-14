@@ -29,9 +29,9 @@ sections:
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     cards:
-      - title: One-Click Translation
-        description: Translate the current page with one click in the Panel.
-        icon: i-ri-cursor-line
+      - title: All Fields
+        description: Supports blocks, layout, list, object, structure, text, textarea, and writer fields.
+        icon: i-ri-dashboard-horizontal-line
         to: /docs/content-translator
         class: col-span-6 row-span-2
       - title: Programmatic PHP API
@@ -39,15 +39,16 @@ sections:
         icon: i-ri-terminal-box-line
         to: /docs/content-translator/php-api
         class: col-span-6 row-span-4
-      - title: All Fields
-        description: Supports blocks, layout, list, object, structure, text, textarea, and writer fields. Nested fields in complex content structures will be translated recursively.
+      - title: One-Click Translation
+        description: >
+          Why spend hours manually translating content field by field when you can automate the process with Kirby Content Translator? With a single click in the Kirby panel, you can copy the content from the primary language to the currently active language. Then, you can translate the imported content (which is still in the primary language) into the currently active language with DeepL.
+        icon: i-ri-cursor-line
         to: /docs/content-translator/configuration#fieldtypes
-        icon: i-ri-dashboard-horizontal-line
         class: col-span-6 row-span-4
       - title: Recursive Translation
         description: Nested structures in object fields or blocks? No problem, the plugin translates everything.
-        to: /docs/content-translator/configuration
         icon: i-ri-infinity-line
+        to: /docs/content-translator/configuration
         class: col-span-6 row-span-2
     links:
       - label: Set up Your Translator
