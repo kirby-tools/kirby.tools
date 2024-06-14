@@ -60,7 +60,6 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
       :ui="{
         container: SECTION_SLOT_WIDTHS[section.slot],
       }"
-      class="!pt-16"
       v-bind="section"
     >
       <template v-if="section.title" #title>
