@@ -72,10 +72,8 @@ sections:
     items:
       - label: How does the licensing work?
         content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
-      - label: What do I get with my purchase?
-        content: After your purchase, you will receive an email with a download link to a ZIP file containing the plugin. To install the plugin into your Kirby project, follow the instructions in the [documentation](/docs/live-preview). This also includes [Composer support](/docs/live-preview#composer).
       - label: How do I receive updates for the plugin?
-        content: You will be notified by email when a new version of the plugin is available. You can then download the latest version from your [order page](https://app.lemonsqueezy.com/my-orders) of our payment provider.
+        content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-content-translator/releases) on GitHub.
       - label: Do you offer technical support?
         content: You can ask questions, report bugs or feature requests on our [GitHub repository](https://github.com/kirby-tools/community). If you need personal support or advice, please [contact us](/contact).
       - label: What is your refund policy?
