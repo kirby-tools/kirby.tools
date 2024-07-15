@@ -4,9 +4,9 @@ navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
   headline:
-    label: 20% early bird discount
-    to: /content-translator#pricing
-    icon: i-ri-discount-percent-fill
+    label: Translate All Files in One Click
+    to: /docs/content-translator/php-api#janitor-panel-button
+    icon: i-ri-cursor-fill
   title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
   description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
   links:
@@ -63,7 +63,7 @@ sections:
       title: All in One
       description: For individuals and teams.
       price: $99
-      discount: $79.2
+      # discount: $79.2
       highlight: true
       button:
         label: Get Your Translator
