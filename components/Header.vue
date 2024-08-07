@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NavItem } from "@nuxt/content/dist/runtime/types";
+import type { NavItem } from "@nuxt/content";
 import type { HeaderLink } from "#ui-pro/types";
 
 const route = useRoute();
@@ -44,12 +44,17 @@ const links = computed<HeaderLink[]>(() => [
       {
         label: "Live Preview",
         to: "/docs/live-preview",
-        description: "Integrate the Panel section",
+        description: "Content changes live in the Panel",
       },
       {
         label: "Content Translator",
         to: "/docs/content-translator",
         description: "Translate your content in the Panel or with the PHP API",
+      },
+      {
+        label: "Kirby Headless",
+        to: "/docs/headless",
+        description: "Kirby, but headless only",
       },
     ],
   },
@@ -65,6 +70,8 @@ const links = computed<HeaderLink[]>(() => [
 ]);
 
 const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
+// TODO: Remove when fixed upstream
+const _mapContentNavigation = mapContentNavigation;
 </script>
 
 <template>
@@ -108,7 +115,7 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
 
     <template #panel>
       <UNavigationTree
-        :links="mapContentNavigation(navigation)"
+        :links="_mapContentNavigation(navigation)"
         :multiple="false"
         default-open
       />
