@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  compatibilityDate: "2024-04-03",
   extends: ["@nuxt/ui-pro"],
 
   modules: [
@@ -27,10 +28,6 @@ export default defineNuxtConfig({
   image: {
     quality: 80,
     format: ["webp"],
-  },
-
-  ui: {
-    icons: ["heroicons", "ri", "logos"],
   },
 
   hooks: {
