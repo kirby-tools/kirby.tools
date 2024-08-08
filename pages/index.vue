@@ -69,7 +69,7 @@ defineOgImageComponent("Default", {
       </template>
 
       <template #default>
-        <div :class="[index % 2 === 1 && 'order-[-1]']">
+        <div :class="[index % 2 === 1 && 'lg:order-[-1]']">
           <ElementVideo v-if="product.video" v-bind="product.video" />
           <div v-else-if="product.image" class="rounded-xl shadow">
             <img
