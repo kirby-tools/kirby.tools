@@ -3,6 +3,7 @@ import type { NavItem } from "@nuxt/content";
 import type { HeaderLink } from "#ui-pro/types";
 
 const route = useRoute();
+const commercialPlugins = ["live-preview", "content-translator"];
 const isLivePreview = computed(() => route.path.includes("/live-preview"));
 
 const links = computed<HeaderLink[]>(() => [
@@ -92,7 +93,10 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
         target="_blank"
       /> -->
       <UButton
-        v-if="route.path !== '/'"
+        v-if="
+          route.path !== '/' &&
+          commercialPlugins.some((plugin) => route.path.includes(`/${plugin}`))
+        "
         label="Buy"
         icon="i-ri-shopping-bag-3-fill"
         trailing
