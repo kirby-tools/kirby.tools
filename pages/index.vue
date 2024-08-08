@@ -69,7 +69,26 @@ defineOgImageComponent("Default", {
       </template>
 
       <template #default>
-        <ElementVideo v-bind="product.video" />
+        <div :class="[index % 2 === 1 && 'order-[-1]']">
+          <ElementVideo v-if="product.video" v-bind="product.video" />
+          <div v-else-if="product.image" class="rounded-xl shadow">
+            <img
+              :src="product.image.src"
+              :alt="product.image.alt"
+              class="rounded-xl"
+            />
+          </div>
+          <NuxtLink
+            v-else-if="product.icon"
+            :to="product.icon.to"
+            class="group hidden items-center justify-center lg:flex"
+          >
+            <UIcon
+              :name="product.icon.name"
+              class="group-hover:text-primary dark:group-hover:text-primary h-24 w-24 text-gray-500 dark:text-gray-400"
+            />
+          </NuxtLink>
+        </div>
       </template>
     </ULandingHero>
   </div>

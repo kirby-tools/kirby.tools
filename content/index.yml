@@ -2,7 +2,7 @@ title: Kirby Tools
 description: A collection of Kirby plugins that empoweres editors and developers alike.
 navigation: false
 products:
-  - orientation: vertical
+  - orientation: horizontal
     headline:
       label: Translate All Files in One Click
       to: /docs/content-translator/php-api#janitor-panel-button
@@ -19,7 +19,7 @@ products:
     video:
       path: /vid/kirby-content-translator-demo.mp4
       poster: /vid/kirby-content-translator-demo-poster.jpg
-  - orientation: vertical
+  - orientation: horizontal
     title: '<span class="text-neon-carrot-500">Real-Time</span><br> Page Preview in Your Panel'
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     links:
@@ -32,3 +32,16 @@ products:
     video:
       path: /vid/kirby-live-preview-demo.mp4
       poster: /vid/kirby-live-preview-demo-poster.jpg
+  - orientation: horizontal
+    title: Kirby, but headless-first
+    description: Add headless functionality to your existing Kirby site, or use this plugin to build a headless-first CMS from scratch.
+    links:
+      - label: Read the Docs
+        to: /docs/headless
+        size: xl
+        color: white
+        icon: i-ri-arrow-right-line
+        trailing: true
+    icon:
+      name: i-ri-braces-fill
+      to: /docs/headless
