@@ -17,23 +17,27 @@ const links = computed<HeaderLink[]>(() => [
       {
         label: "Live Preview",
         to: "/live-preview",
+        icon: "i-ri-presentation-fill",
         description: "Real-time page preview",
       },
       {
         label: "Content Translator",
         to: "/content-translator",
-        description: "DeepL-powered translations",
+        icon: "i-ri-translate",
+        description: "Content translation in the Panel or server-side",
       },
       {
         label: "Kirby Copilot",
         to: "https://kirbycopilot.com",
+        icon: "i-ri-sparkling-fill",
         description: "AI-powered content generation",
         target: "_blank",
       },
       {
         label: "Kirby SEO Audit",
-        description: "State-of-the-art SEO analysis",
         to: "https://kirbyseo.com",
+        icon: "i-ri-seo-fill",
+        description: "State-of-the-art SEO analysis",
         target: "_blank",
       },
     ],
@@ -44,17 +48,17 @@ const links = computed<HeaderLink[]>(() => [
       {
         label: "Live Preview",
         to: "/docs/live-preview",
-        description: "Content changes live in the Panel",
+        icon: "i-ri-presentation-fill",
       },
       {
         label: "Content Translator",
         to: "/docs/content-translator",
-        description: "Translate your content in the Panel or with the PHP API",
+        icon: "i-ri-translate",
       },
       {
-        label: "Kirby Headless",
+        label: "Headless",
         to: "/docs/headless",
-        description: "Kirby, but headless only",
+        icon: "i-ri-braces-fill",
       },
     ],
   },
@@ -70,8 +74,6 @@ const links = computed<HeaderLink[]>(() => [
 ]);
 
 const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
-// TODO: Remove when fixed upstream
-const _mapContentNavigation = mapContentNavigation;
 </script>
 
 <template>
@@ -115,7 +117,7 @@ const _mapContentNavigation = mapContentNavigation;
 
     <template #panel>
       <UNavigationTree
-        :links="_mapContentNavigation(navigation)"
+        :links="mapContentNavigation(navigation)"
         :multiple="false"
         default-open
       />
