@@ -4,11 +4,6 @@ import type { HeaderLink } from "#ui-pro/types";
 
 const route = useRoute();
 const isLivePreview = computed(() => route.path.includes("/live-preview"));
-const indexPath = computed(() => {
-  const product = route.path.split("/").slice(2, 3).join("/");
-  if (product) return `/${product}`;
-  return "/";
-});
 
 const links = computed<HeaderLink[]>(() => [
   {
@@ -80,7 +75,7 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
   <UHeader :links="links">
     <template #left>
       <NuxtLink
-        :to="indexPath"
+        to="/"
         class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white"
       >
         <Logo class="text-primary h-6 w-auto" />
