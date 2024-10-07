@@ -41,7 +41,7 @@ sections:
         class: col-span-6 row-span-4
       - title: One-Click Translation
         description: >
-          Why spend hours manually translating content field by field when you can automate the process with Kirby Content Translator? With a single click in the Kirby panel, you can copy the content from the primary language to the currently active language. Then, you can translate the imported content (which is still in the primary language) into the currently active language with DeepL.
+          With a single click in the Kirby Panel, you can copy the content from the primary language to the currently active language. Then, you can translate the imported content into the currently active language with DeepL.
         icon: i-ri-cursor-line
         to: /docs/content-translator/configuration#fieldtypes
         class: col-span-6 row-span-4
