@@ -11,16 +11,16 @@ const links = computed<HeaderLink[]>(() => [
     label: "Products",
     children: [
       {
-        label: "Live Preview",
-        to: "/live-preview",
-        icon: "i-ri-presentation-fill",
-        description: "Real-time page preview",
-      },
-      {
         label: "Content Translator",
         to: "/content-translator",
         icon: "i-ri-translate",
         description: "Content translation in the Panel or server-side",
+      },
+      {
+        label: "Live Preview",
+        to: "/live-preview",
+        icon: "i-ri-presentation-fill",
+        description: "Real-time page preview",
       },
       {
         label: "Kirby Copilot",
@@ -42,14 +42,14 @@ const links = computed<HeaderLink[]>(() => [
     label: "Documentation",
     children: [
       {
-        label: "Live Preview",
-        to: "/docs/live-preview",
-        icon: "i-ri-presentation-fill",
-      },
-      {
         label: "Content Translator",
         to: "/docs/content-translator",
         icon: "i-ri-translate",
+      },
+      {
+        label: "Live Preview",
+        to: "/docs/live-preview",
+        icon: "i-ri-presentation-fill",
       },
       {
         label: "Headless",
