@@ -10,7 +10,7 @@ hero:
   title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
   description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
   links:
-    - label: Try the Plugin
+    - label: Start Translating Today
       to: /docs/content-translator
       size: xl
       color: primary
