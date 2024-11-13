@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ParsedContent } from "@nuxt/content";
+import { withQuery } from "ufo";
 
 defineProps<{
   page: ParsedContent | null;
@@ -9,6 +10,10 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
   video: "max-w-4xl",
   pricing: "max-w-5xl",
 };
+
+const appConfig = useAppConfig();
+
+const licenseHolder = ref("");
 </script>
 
 <template>
@@ -87,17 +92,66 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
 
       <template #pricing>
         <div
-          class="bg-primary-700 flex flex-col gap-16 rounded-xl px-4 py-6 shadow sm:gap-y-24 sm:p-16 md:grid md:grid-cols-2 md:items-end"
+          class="bg-primary-700 flex flex-col gap-16 rounded-xl px-4 py-6 shadow sm:gap-y-24 sm:p-16 md:grid md:grid-cols-[2fr,1fr] md:items-end lg:grid-cols-2"
         >
           <div>
             <slot name="image-pricing" />
           </div>
+
           <UPricingCard
             v-bind="section.plan"
+            :button="{
+              ...section.plan.button,
+              to: withQuery(section.plan.button.to, {
+                'checkout[custom][licenseHolder]': licenseHolder || undefined,
+              }),
+            }"
             :ui="{
               highlight: 'ring-1 ring-primary-600 dark:ring-primary-200',
             }"
-          />
+          >
+            <template #features>
+              <ul
+                v-if="section.plan.features?.length"
+                class="mb-6 space-y-3 text-sm"
+              >
+                <li
+                  v-for="(offer, offerIndex) of section.plan.features"
+                  :key="offerIndex"
+                  class="flex min-w-0 items-center gap-x-3"
+                >
+                  <UIcon
+                    :name="appConfig.ui.icons.check"
+                    class="text-primary h-5 w-5 flex-shrink-0"
+                  />
+
+                  <span class="truncate text-gray-600 dark:text-gray-400">{{
+                    offer
+                  }}</span>
+                </li>
+              </ul>
+
+              <UDivider label="Licensee" class="mb-6" />
+
+              <UInput
+                v-model="licenseHolder"
+                color="gray"
+                placeholder="License holder"
+                class="mb-2"
+              />
+              <div class="text-sm text-gray-500 dark:text-gray-400">
+                Who will own this license (e.g. your full name, organization, or
+                client)? Will be you if left empty. All licenses are managed in
+                <a
+                  href="https://hub.kirby.tools"
+                  class="hover:text-primary-500 decoration-primary-500 font-medium underline"
+                  target="_blank"
+                >
+                  hub.kirby.tools</a
+                >.
+              </div>
+            </template>
+          </UPricingCard>
         </div>
       </template>
 
