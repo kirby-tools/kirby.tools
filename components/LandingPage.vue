@@ -8,7 +8,7 @@ defineProps<{
 
 const SECTION_SLOT_WIDTHS: Record<string, string> = {
   video: "max-w-4xl",
-  pricing: "max-w-5xl",
+  pricing: "max-w-6xl",
 };
 
 const appConfig = useAppConfig();
