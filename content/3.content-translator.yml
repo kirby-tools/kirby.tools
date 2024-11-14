@@ -30,7 +30,7 @@ sections:
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     cards:
       - title: All Fields
-        description: Supports blocks, layout, list, object, structure, text, textarea, and writer fields.
+        description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
         icon: i-ri-dashboard-horizontal-line
         to: /docs/content-translator
         class: col-span-6 row-span-2
