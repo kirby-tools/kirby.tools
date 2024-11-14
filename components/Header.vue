@@ -2,9 +2,22 @@
 import type { HeaderLink } from "#ui-pro/types";
 import type { NavItem } from "@nuxt/content";
 
+const TOOLS_PLUGINS = [
+  {
+    label: "Content Translator",
+    path: "content-translator",
+  },
+  {
+    label: "Live Preview",
+    path: "live-preview",
+  },
+];
+
 const route = useRoute();
-const commercialPlugins = ["live-preview", "content-translator"];
 const isLivePreview = computed(() => route.path.includes("/live-preview"));
+const currentPlugin = computed(() =>
+  TOOLS_PLUGINS.find((plugin) => route.path.includes(`/${plugin.path}`)),
+);
 
 const links = computed<HeaderLink[]>(() => [
   {
@@ -40,23 +53,33 @@ const links = computed<HeaderLink[]>(() => [
   },
   {
     label: "Documentation",
-    children: [
-      {
-        label: "Content Translator",
-        to: "/docs/content-translator",
-        icon: "i-ri-translate",
-      },
-      {
-        label: "Live Preview",
-        to: "/docs/live-preview",
-        icon: "i-ri-presentation-fill",
-      },
-      {
-        label: "Headless",
-        to: "/docs/headless",
-        icon: "i-ri-braces-fill",
-      },
-    ],
+    active: route.path.includes("/docs"),
+    ...(currentPlugin.value
+      ? {
+          to: `/docs/${currentPlugin.value.path}`,
+        }
+      : {
+          children: [
+            {
+              label: "Content Translator",
+              to: "/docs/content-translator",
+              icon: "i-ri-translate",
+              description: "Documentation for the Panel section and PHP API",
+            },
+            {
+              label: "Live Preview",
+              to: "/docs/live-preview",
+              icon: "i-ri-presentation-fill",
+              description: "Documentation for the Panel section",
+            },
+            {
+              label: "Headless",
+              to: "/docs/headless",
+              icon: "i-ri-braces-fill",
+              description: "Documentation for classes and methods",
+            },
+          ],
+        }),
   },
   ...(isLivePreview.value
     ? [
@@ -82,26 +105,19 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
         <Logo class="text-primary h-6 w-auto" />
         Kirby Tools
       </NuxtLink>
+      <UBadge v-if="currentPlugin" class="ml-1" color="primary" variant="soft">
+        {{ currentPlugin.label }}
+      </UBadge>
     </template>
 
     <template #right>
-      <!-- <UButton
-        v-if="isLivePreview"
-        label="Try it"
-        color="gray"
-        to="https://play.kirby.tools"
-        target="_blank"
-      /> -->
       <UButton
-        v-if="
-          route.path !== '/' &&
-          commercialPlugins.some((plugin) => route.path.includes(`/${plugin}`))
-        "
+        v-if="route.path !== '/' && currentPlugin"
         label="Buy"
         icon="i-ri-shopping-bag-3-fill"
         trailing
         color="primary"
-        :to="`${isLivePreview ? '/live-preview' : '/content-translator'}#pricing`"
+        :to="`/${currentPlugin.path}#pricing`"
         class="hidden lg:flex"
       />
       <UButton
