@@ -8,7 +8,6 @@ defineProps<{
 
 const SECTION_SLOT_WIDTHS: Record<string, string> = {
   video: "max-w-4xl",
-  pricing: "max-w-6xl",
 };
 
 const appConfig = useAppConfig();
@@ -63,7 +62,7 @@ const licenseHolder = ref("");
       :id="section.slot"
       :key="index"
       :ui="{
-        container: SECTION_SLOT_WIDTHS[section.slot],
+        container: SECTION_SLOT_WIDTHS[section.slot] || 'max-w-6xl',
       }"
       v-bind="section"
       class="!pt-16"
@@ -167,7 +166,12 @@ const licenseHolder = ref("");
       </template>
     </ULandingSection>
 
-    <ULandingSection class="!pt-0">
+    <ULandingSection
+      class="!pt-0"
+      :ui="{
+        container: 'max-w-6xl',
+      }"
+    >
       <ULandingCTA
         v-bind="page.cta"
         align="right"
