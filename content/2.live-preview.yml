@@ -25,7 +25,7 @@ sections:
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     cards:
       - title: Detect Preview Mode
-        description: You can conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
+        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
         icon: i-ri-drag-drop-line
         to: /docs/live-preview/preview-mode
         class: col-span-6 row-span-2
@@ -36,13 +36,13 @@ sections:
         class: col-span-6 row-span-4
       - title: Sticky Column
         description: Edit your content side-by-side with the preview in a sticky column layout.
-        to: /docs/live-preview#step-3-enjoy-real-time-previews
         icon: i-ri-dashboard-line
+        to: /docs/live-preview#step-3-enjoy-real-time-previews
         class: col-span-6 row-span-4
       - title: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
-        to: /docs/live-preview/configuration
         icon: i-ri-notification-badge-line
+        to: /docs/live-preview/configuration
         class: col-span-6 row-span-2
     links:
       - label: Set up Your Section

@@ -13,6 +13,12 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
 const appConfig = useAppConfig();
 
 const licenseHolder = ref("");
+
+function getUrlWithLicensee(url: string) {
+  return withQuery(url, {
+    "checkout[custom][licenseHolder]": licenseHolder.value || undefined,
+  });
+}
 </script>
 
 <template>
@@ -101,9 +107,7 @@ const licenseHolder = ref("");
             v-bind="section.plan"
             :button="{
               ...section.plan.button,
-              to: withQuery(section.plan.button.to, {
-                'checkout[custom][licenseHolder]': licenseHolder || undefined,
-              }),
+              to: getUrlWithLicensee(section.plan.button.to),
             }"
             :ui="{
               highlight: 'ring-1 ring-primary-600 dark:ring-primary-200',
