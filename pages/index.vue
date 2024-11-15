@@ -74,7 +74,7 @@ defineOgImageComponent("Default", {
         <span v-html="page.hero.description" />
 
         <div
-          class="relative flex h-[30rem] w-full flex-col items-center justify-center overflow-hidden"
+          class="relative my-8 flex h-[26rem] w-full flex-col items-center justify-center overflow-hidden"
         >
           <span class="pointer-events-none text-center leading-none">
             <UIcon
@@ -87,10 +87,10 @@ defineOgImageComponent("Default", {
           <ElementOrbit
             :as="NuxtLink"
             to="#products"
-            class="size-12 items-center justify-center border-none bg-transparent"
+            class="!size-12 items-center justify-center border-none bg-transparent"
             :duration="20"
             :delay="10"
-            :radius="80"
+            :radius="90"
             path
             direction="counterClockwise"
           >
@@ -101,8 +101,8 @@ defineOgImageComponent("Default", {
           <ElementOrbit
             :as="NuxtLink"
             to="#seo-audit"
-            class="size-12 items-center justify-center border-none bg-transparent"
-            :radius="190"
+            class="!size-12 items-center justify-center border-none bg-transparent"
+            :radius="180"
             :duration="20"
             path
           >
@@ -111,8 +111,8 @@ defineOgImageComponent("Default", {
           <ElementOrbit
             :as="NuxtLink"
             to="#copilot"
-            class="size-12 items-center justify-center border-none bg-transparent"
-            :radius="190"
+            class="!size-12 items-center justify-center border-none bg-transparent"
+            :radius="180"
             :duration="20"
             :delay="200"
             direction="counterClockwise"
