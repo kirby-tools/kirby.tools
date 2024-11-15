@@ -28,68 +28,112 @@ defineOgImageComponent("Default", {
 <template>
   <div v-if="page">
     <ULandingHero
-      v-for="(product, index) of page.products"
-      :key="index"
-      :orientation="product.orientation"
-      :links="product.links"
-      :class="[index > 0 && '!pt-16']"
+      :title="page.hero.title"
+      :description="page.hero.description"
+      :links="page.hero.links"
     >
+      <div
+        class="landing-grid absolute inset-0 z-[-1] [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+      />
+
       <template #headline>
         <UBadge
-          v-if="product.headline"
+          v-if="page.hero.headline"
           variant="subtle"
-          size="md"
-          class="hover:bg-primary-100 dark:bg-primary-950/100 dark:hover:bg-primary-900 relative rounded-full font-medium shadow-none"
+          size="lg"
+          class="relative rounded-full font-semibold"
         >
           <NuxtLink
-            :to="product.headline.to"
+            :to="page.hero.headline.to"
+            target="_blank"
             class="focus:outline-none"
             tabindex="-1"
           >
             <span class="absolute inset-0" aria-hidden="true" />
           </NuxtLink>
-
-          <span class="flex items-center gap-1">
-            <UIcon
-              v-if="product.headline.icon"
-              :name="product.headline.icon"
-              class="pointer-events-none h-4 w-4"
-            />
-            {{ product.headline.label }}
-          </span>
+          {{ page.hero.headline.label }}
+          <UIcon
+            v-if="page.hero.headline.icon"
+            :name="page.hero.headline.icon"
+            class="pointer-events-none ml-1 h-4 w-4"
+          />
         </UBadge>
       </template>
 
       <template #title>
-        <span v-html="product.title" />
+        <span v-html="page.hero.title" />
+      </template>
+    </ULandingHero>
+
+    <div id="products" />
+
+    <ULandingSection
+      v-for="(section, index) in page.sections"
+      :key="index"
+      :title="section.title"
+      :description="section.description"
+      :align="section.align"
+      :features="section.features"
+      :links="section.links"
+    >
+      <template #title>
+        <span v-html="section.title" />
       </template>
 
       <template #description>
-        <span v-html="product.description" />
+        <span v-html="section.description" />
       </template>
 
       <template #default>
-        <div :class="[index % 2 === 1 && 'lg:order-[-1]']">
-          <ElementVideo v-if="product.video" v-bind="product.video" />
-          <div v-else-if="product.image" class="rounded-xl shadow">
-            <img
-              :src="product.image.src"
-              :alt="product.image.alt"
-              class="rounded-xl"
+        <ElementVideo v-if="section.video" v-bind="section.video" />
+      </template>
+    </ULandingSection>
+
+    <ULandingSection v-if="page.outro">
+      <ULandingCTA
+        v-bind="page.outro"
+        class="bg-gray-100/50 dark:bg-gray-800/50"
+      >
+        <template #title>
+          <span v-html="page.outro.title" />
+        </template>
+
+        <template #default>
+          <div class="align-start flex h-full justify-center">
+            <UIcon
+              v-if="page.outro.icon"
+              :name="page.outro.icon.name4"
+              class="h-48 w-48 text-gray-300 dark:text-gray-600"
             />
           </div>
-          <NuxtLink
-            v-else-if="product.icon"
-            :to="product.icon.to"
-            class="group hidden items-center justify-center lg:flex"
-          >
-            <UIcon
-              :name="product.icon.name"
-              class="group-hover:text-primary dark:group-hover:text-primary h-24 w-24 text-gray-500 dark:text-gray-400"
-            />
-          </NuxtLink>
-        </div>
-      </template>
-    </ULandingHero>
+        </template>
+      </ULandingCTA>
+    </ULandingSection>
   </div>
 </template>
+
+<style scoped>
+.landing-grid {
+  background-size: 100px 100px;
+  background-image: linear-gradient(
+      to right,
+      rgb(var(--color-gray-200)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(var(--color-gray-200)) 1px, transparent 1px);
+}
+.dark {
+  .landing-grid {
+    background-image: linear-gradient(
+        to right,
+        rgb(var(--color-gray-800)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(var(--color-gray-800)) 1px,
+        transparent 1px
+      );
+  }
+}
+</style>
