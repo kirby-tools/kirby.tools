@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtLink } from "#components";
+
 const { data: page } = await useAsyncData("index", () =>
   queryContent("/").findOne(),
 );
@@ -31,6 +33,10 @@ defineOgImageComponent("Default", {
       :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
+      :ui="{
+        wrapper: '!py-24',
+        container: 'max-w-4xl',
+      }"
     >
       <div
         class="landing-grid absolute inset-0 z-[-1] [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
@@ -63,12 +69,65 @@ defineOgImageComponent("Default", {
       <template #title>
         <span v-html="page.hero.title" />
       </template>
+
+      <template #description>
+        <span v-html="page.hero.description" />
+
+        <div
+          class="relative flex h-[30rem] w-full flex-col items-center justify-center overflow-hidden"
+        >
+          <span class="pointer-events-none text-center leading-none">
+            <UIcon
+              name="i-logos-kirby-icon"
+              class="h-[6rem] w-[6rem] dark:invert"
+            />
+          </span>
+
+          <!-- Inner Circles -->
+          <ElementOrbit
+            :as="NuxtLink"
+            to="#products"
+            class="size-10 items-center justify-center border-none bg-transparent"
+            :duration="20"
+            :delay="10"
+            :radius="80"
+            path
+            direction="counterClockwise"
+          >
+            <Logo class="text-primary h-full w-auto" />
+          </ElementOrbit>
+
+          <!-- Outer Circles (reverse) -->
+          <ElementOrbit
+            :as="NuxtLink"
+            to="#seo-audit"
+            class="size-10 items-center justify-center border-none bg-transparent"
+            :radius="190"
+            :duration="20"
+            path
+          >
+            <LogosKirbySeo class="h-full w-auto text-[#75c932]" />
+          </ElementOrbit>
+          <ElementOrbit
+            :as="NuxtLink"
+            to="#copilot"
+            class="size-10 items-center justify-center border-none bg-transparent"
+            :radius="190"
+            :duration="20"
+            :delay="200"
+            direction="counterClockwise"
+          >
+            <LogosKirbyCopilot class="h-full w-auto text-[#c66bdf]" />
+          </ElementOrbit>
+        </div>
+      </template>
     </ULandingHero>
 
     <div id="products" />
 
     <ULandingSection
       v-for="(section, index) in page.sections"
+      :id="section.id"
       :key="index"
       :title="section.title"
       :description="section.description"
