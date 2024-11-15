@@ -87,37 +87,37 @@ defineOgImageComponent("Default", {
           <ElementOrbit
             :as="NuxtLink"
             to="#products"
-            class="size-10 items-center justify-center border-none bg-transparent"
+            class="size-12 items-center justify-center border-none bg-transparent"
             :duration="20"
             :delay="10"
             :radius="80"
             path
             direction="counterClockwise"
           >
-            <Logo class="text-primary h-full w-auto" />
+            <Logo class="text-primary h-10 w-auto" />
           </ElementOrbit>
 
           <!-- Outer Circles (reverse) -->
           <ElementOrbit
             :as="NuxtLink"
             to="#seo-audit"
-            class="size-10 items-center justify-center border-none bg-transparent"
+            class="size-12 items-center justify-center border-none bg-transparent"
             :radius="190"
             :duration="20"
             path
           >
-            <LogosKirbySeo class="h-full w-auto text-[#75c932]" />
+            <LogosKirbySeo class="h-10 w-auto text-[#75c932]" />
           </ElementOrbit>
           <ElementOrbit
             :as="NuxtLink"
             to="#copilot"
-            class="size-10 items-center justify-center border-none bg-transparent"
+            class="size-12 items-center justify-center border-none bg-transparent"
             :radius="190"
             :duration="20"
             :delay="200"
             direction="counterClockwise"
           >
-            <LogosKirbyCopilot class="h-full w-auto text-[#c66bdf]" />
+            <LogosKirbyCopilot class="h-10 w-auto text-[#c66bdf]" />
           </ElementOrbit>
         </div>
       </template>
