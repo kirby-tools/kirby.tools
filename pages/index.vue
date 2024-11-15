@@ -102,7 +102,7 @@ defineOgImageComponent("Default", {
           <div class="align-start flex h-full justify-center">
             <UIcon
               v-if="page.outro.icon"
-              :name="page.outro.icon.name4"
+              :name="page.outro.icon.name"
               class="h-48 w-48 text-gray-300 dark:text-gray-600"
             />
           </div>
