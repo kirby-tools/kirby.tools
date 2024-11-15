@@ -2,10 +2,10 @@ title: Kirby Tools
 description: A collection of Kirby plugins that empoweres editors and developers alike.
 navigation: false
 hero:
-  title: '<span class="text-rhino-500">Pro</span> Plugins for Kirby'
-  description: A collection of Kirby plugins that empoweres editors and developers alike.
+  title: 'The Kirby<br> <span class="text-rhino-500">Plugin System</span>'
+  description: Kirby Tools offers a collection of <s>planets</s> plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
   links:
-    - label: Find your plugin
+    - label: Meet the Planets
       to: /#products
       size: xl
       color: black
@@ -13,6 +13,7 @@ hero:
       trailing: true
 sections:
   - title: Kirby Content Translator
+    id: content-translator
     description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
     align: left
     video:
@@ -27,11 +28,8 @@ sections:
         icon: i-ri-terminal-box-line
       - name: One-Click Translation
         description: >
-          With a single click in the Kirby Panel, you can copy the content from the primary language to the currently active language. Then, you can translate the imported content into the currently active language with DeepL.
+          Copy the content from the primary language to the currently active language and translate to the currently active language with DeepL.
         icon: i-ri-cursor-line
-      - name: Recursive Translation
-        description: Nested structures in object fields or blocks? No problem, the plugin translates everything.
-        icon: i-ri-infinity-line
     links:
       - label: Start Translating Today
         to: /docs/content-translator
@@ -45,6 +43,7 @@ sections:
         variant: link
         leadingIcon: i-ri-star-fill
   - title: Kirby Live Preview
+    id: live-preview
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     align: right
     video:
@@ -57,9 +56,6 @@ sections:
       - name: Panel Redirects
         description: Try navigating through the preview – if you click on a site link, such as in the header, the corresponding Panel page will open instead of the link in the preview.
         icon: i-ri-links-line
-      - name: Sticky Column
-        description: Edit your content side-by-side with the preview in a sticky column layout.
-        icon: i-ri-dashboard-line
       - name: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
@@ -67,7 +63,7 @@ sections:
       - label: Start Previewing Now
         to: /docs/live-preview
         size: xl
-        color: neon-carrot
+        color: primary
         icon: i-ri-arrow-right-line
         trailing: true
       - label: Feature Overview
@@ -76,6 +72,7 @@ sections:
         variant: link
         leadingIcon: i-ri-star-fill
   - title: Kirby Copilot
+    id: copilot
     description: Let AI generate blocks and text from your prompts right in the Kirby Panel.
     align: left
     video:
@@ -99,9 +96,9 @@ sections:
         to: https://kirbycopilot.com
         size: xl
         color: neon-carrot
-        icon: i-ri-arrow-right-line
-        trailing: true
+        icon: i-ri-external-link-line
   - title: Kirby SEO Audit
+    id: seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
     align: right
     video:
@@ -126,8 +123,7 @@ sections:
         to: https://kirbyseo.com
         size: xl
         color: neon-carrot
-        icon: i-ri-arrow-right-line
-        trailing: true
+        icon: i-ri-external-link-line
 outro:
   title: Kirby Headless
   description: "Kirby, but headless-first: Add headless functionality to your existing Kirby site, or use this plugin to build a headless-first CMS from scratch."
