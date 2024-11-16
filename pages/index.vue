@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
-import { breakpointsTailwind } from "@vueuse/core";
 
 const { data: page } = await useAsyncData("index", () =>
   queryContent("/").findOne(),
@@ -80,7 +79,7 @@ defineOgImageComponent("Default", {
           <span class="pointer-events-none text-center leading-none">
             <UIcon
               name="i-logos-kirby-icon"
-              class="h-[6rem] w-[6rem] dark:invert"
+              class="size-20 md:size-24 dark:invert"
             />
           </span>
 
@@ -95,7 +94,7 @@ defineOgImageComponent("Default", {
             :radius="90"
             has-path
           >
-            <Logo class="text-primary h-10 w-auto" />
+            <Logo class="text-primary h-8 w-auto md:h-10" />
           </ElementOrbit>
 
           <!-- Outer Circles (mobile) -->
@@ -103,24 +102,23 @@ defineOgImageComponent("Default", {
             :as="NuxtLink"
             to="#seo-audit"
             class="!size-12 items-center justify-center border-none bg-transparent md:hidden"
-            :radius="160"
+            :radius="140"
             :duration="20"
             has-path
             path-class="md:hidden"
           >
-            <LogosKirbySeo class="h-10 w-auto text-[#75c932]" />
+            <LogosKirbySeo class="h-8 w-auto text-[#75c932]" />
           </ElementOrbit>
           <ElementOrbit
             :as="NuxtLink"
             to="#copilot"
             class="!size-12 items-center justify-center border-none bg-transparent md:hidden"
             direction="counterClockwise"
-            :radius="160"
+            :radius="140"
             :duration="20"
             :delay="200"
-            path-class="md:hidden"
           >
-            <LogosKirbyCopilot class="h-10 w-auto text-[#c66bdf]" />
+            <LogosKirbyCopilot class="h-8 w-auto text-[#c66bdf]" />
           </ElementOrbit>
 
           <!-- Outer Circles -->
@@ -143,7 +141,6 @@ defineOgImageComponent("Default", {
             :radius="180"
             :duration="20"
             :delay="200"
-            path-class="hidden md:block"
           >
             <LogosKirbyCopilot class="h-10 w-auto text-[#c66bdf]" />
           </ElementOrbit>
