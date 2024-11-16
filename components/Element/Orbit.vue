@@ -12,7 +12,8 @@ const props = withDefaults(
     duration?: number;
     delay?: number;
     radius?: number;
-    path?: boolean;
+    hasPath?: boolean;
+    pathClass?: string;
   }>(),
   {
     as: "div",
@@ -20,7 +21,6 @@ const props = withDefaults(
     duration: 20,
     delay: 10,
     radius: 50,
-    path: false,
   },
 );
 
@@ -34,7 +34,11 @@ const negativeDelay = computed(() => -props.delay);
 </script>
 
 <template>
-  <svg v-if="path" class="pointer-events-none absolute inset-0 size-full">
+  <svg
+    v-if="hasPath"
+    class="pointer-events-none absolute inset-0 size-full"
+    :class="pathClass"
+  >
     <circle
       class="stroke-foreground/20 stroke-1"
       cx="50%"
