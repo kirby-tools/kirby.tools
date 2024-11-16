@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components";
+import { breakpointsTailwind } from "@vueuse/core";
 
 const { data: page } = await useAsyncData("index", () =>
   queryContent("/").findOne(),
@@ -74,7 +75,7 @@ defineOgImageComponent("Default", {
         <span v-html="page.hero.description" />
 
         <div
-          class="relative my-8 flex h-[26rem] w-full flex-col items-center justify-center overflow-hidden"
+          class="relative mt-8 flex h-[24rem] w-full flex-col items-center justify-center overflow-hidden md:h-[26rem]"
         >
           <span class="pointer-events-none text-center leading-none">
             <UIcon
@@ -88,34 +89,61 @@ defineOgImageComponent("Default", {
             :as="NuxtLink"
             to="#products"
             class="!size-12 items-center justify-center border-none bg-transparent"
+            direction="counterClockwise"
             :duration="20"
             :delay="10"
             :radius="90"
-            path
-            direction="counterClockwise"
+            has-path
           >
             <Logo class="text-primary h-10 w-auto" />
           </ElementOrbit>
 
-          <!-- Outer Circles (reverse) -->
+          <!-- Outer Circles (mobile) -->
           <ElementOrbit
             :as="NuxtLink"
             to="#seo-audit"
-            class="!size-12 items-center justify-center border-none bg-transparent"
-            :radius="180"
+            class="!size-12 items-center justify-center border-none bg-transparent md:hidden"
+            :radius="160"
             :duration="20"
-            path
+            has-path
+            path-class="md:hidden"
           >
             <LogosKirbySeo class="h-10 w-auto text-[#75c932]" />
           </ElementOrbit>
           <ElementOrbit
             :as="NuxtLink"
             to="#copilot"
-            class="!size-12 items-center justify-center border-none bg-transparent"
+            class="!size-12 items-center justify-center border-none bg-transparent md:hidden"
+            direction="counterClockwise"
+            :radius="160"
+            :duration="20"
+            :delay="200"
+            path-class="md:hidden"
+          >
+            <LogosKirbyCopilot class="h-10 w-auto text-[#c66bdf]" />
+          </ElementOrbit>
+
+          <!-- Outer Circles -->
+          <ElementOrbit
+            :as="NuxtLink"
+            to="#seo-audit"
+            class="hidden !size-12 items-center justify-center border-none bg-transparent md:block"
+            :radius="180"
+            :duration="20"
+            has-path
+            path-class="hidden md:block"
+          >
+            <LogosKirbySeo class="h-10 w-auto text-[#75c932]" />
+          </ElementOrbit>
+          <ElementOrbit
+            :as="NuxtLink"
+            to="#copilot"
+            class="hidden !size-12 items-center justify-center border-none bg-transparent md:block"
+            direction="counterClockwise"
             :radius="180"
             :duration="20"
             :delay="200"
-            direction="counterClockwise"
+            path-class="hidden md:block"
           >
             <LogosKirbyCopilot class="h-10 w-auto text-[#c66bdf]" />
           </ElementOrbit>
