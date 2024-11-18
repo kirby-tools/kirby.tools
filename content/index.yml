@@ -32,16 +32,11 @@ sections:
         icon: i-ri-cursor-line
     links:
       - label: Start Translating Today
-        to: /docs/content-translator
+        to: /content-translator
         size: xl
         color: primary
         icon: i-ri-arrow-right-line
         trailing: true
-      - label: Feature Overview
-        to: /content-translator#video
-        color: white
-        variant: link
-        leadingIcon: i-ri-star-fill
   - title: Kirby Live Preview
     id: live-preview
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
@@ -61,16 +56,11 @@ sections:
         icon: i-ri-notification-badge-line
     links:
       - label: Start Previewing Now
-        to: /docs/live-preview
+        to: /live-preview
         size: xl
         color: primary
         icon: i-ri-arrow-right-line
         trailing: true
-      - label: Feature Overview
-        to: /live-preview#features
-        color: white
-        variant: link
-        leadingIcon: i-ri-star-fill
   - title: Kirby Copilot
     id: copilot
     description: Let AI generate blocks and text from your prompts right in the Kirby Panel.
