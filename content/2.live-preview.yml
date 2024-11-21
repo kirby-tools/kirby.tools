@@ -72,6 +72,8 @@ sections:
     items:
       - label: How does the licensing work?
         content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
+      - label: What does “Unlimited minor & patch updates” include?
+        content: We add new features and improvements to Kirby Live Preview as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major version is released, you will be able to upgrade to that version at a generous discount. A typical major version is intended to be released alongside a new major Kirby version.
       - label: How do I receive updates for the plugin?
         content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-live-preview/releases) on GitHub.
       - label: Do you offer technical support?
