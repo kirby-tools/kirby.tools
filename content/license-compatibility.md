@@ -34,7 +34,7 @@ Licenses you purchase are valid for the current major plugin version and all pas
 
 Licenses contain a version number that determines which plugin versions you can register with them. The license version is tied to the plugin versions you can register with it. The license version is raised at a specific point in time, and all licenses purchased after that point will be of the new version.
 
-For example, the license key `KT1-ABC-123` has license version 1. It is compatible with Kirby Copilot v1, but not with Kirby Copilot v2. The license key `KT2-DEF-456` has license version 2. It is compatible with Kirby Copilot v1 and v2.
+For example, the license key `KT1-ABC-123` has license version `1`. It is compatible with Kirby Copilot v1, but not with Kirby Copilot v2. The license key `KT2-DEF-456` has license version `2`. It is compatible with Kirby Copilot v1 and v2.
 
 The following table shows the license compatibility for each plugin and license version:
 
@@ -51,7 +51,7 @@ The current license version is `1`.
 
 ### Future License Versions
 
-From **January 2025**, all new license purchases will be of license version 2. This means that all new licenses will be compatible with Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3.
+From **January 2025**, all new license purchases will be of license version `2`. This means that all new licenses will be compatible with Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3.
 
 ## Plugin Compatibility
 
