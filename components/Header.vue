@@ -75,7 +75,7 @@ const links = computed<HeaderLink[]>(() => [
             {
               label: "Headless",
               to: "/docs/headless",
-              icon: "i-ri-braces-fill",
+              icon: "i-ri-code-block",
               description: "Documentation for classes and methods",
             },
           ],

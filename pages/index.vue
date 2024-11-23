@@ -46,23 +46,26 @@ defineOgImageComponent("Default", {
         <UBadge
           v-if="page.hero.headline"
           variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
+          size="md"
+          class="hover:bg-primary-100 dark:bg-primary-950/100 dark:hover:bg-primary-900 relative rounded-full font-medium shadow-none"
         >
           <NuxtLink
             :to="page.hero.headline.to"
-            target="_blank"
             class="focus:outline-none"
             tabindex="-1"
           >
             <span class="absolute inset-0" aria-hidden="true" />
           </NuxtLink>
-          {{ page.hero.headline.label }}
-          <UIcon
-            v-if="page.hero.headline.icon"
-            :name="page.hero.headline.icon"
-            class="pointer-events-none ml-1 h-4 w-4"
-          />
+
+          <span class="flex items-center gap-1">
+            <UIcon
+              v-if="page.hero.headline.icon"
+              :name="page.hero.headline.icon"
+              class="pointer-events-none h-4 w-4"
+              :class="page.hero.headline.iconClass"
+            />
+            {{ page.hero.headline.label }}
+          </span>
         </UBadge>
       </template>
 

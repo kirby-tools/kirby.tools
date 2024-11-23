@@ -7,12 +7,8 @@ const links = [
     label: "Resources",
     children: [
       {
-        label: "Live Preview Docs",
-        to: "/docs/live-preview",
-      },
-      {
-        label: "Content Translator Docs",
-        to: "/docs/content-translator",
+        label: "License & Plugin Compatibility",
+        to: "/license-compatibility",
       },
       {
         label: "Kirby Copilot",
@@ -97,8 +93,7 @@ const links = [
           to="https://byjohann.link"
           target="_blank"
           class="text-gray-900 dark:text-white"
-        >
-          Johann Schopplich </NuxtLink
+          >Johann Schopplich</NuxtLink
         >. All rights reserved.
       </p>
     </template>
