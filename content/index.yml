@@ -3,7 +3,7 @@ description: A collection of Kirby plugins that empoweres editors and developers
 navigation: false
 hero:
   headline:
-    # label: 75% Off Kirby 5 Upgrades
+    # label: 50% Off Kirby 5 Upgrades
     label: Kirby 5 Support & Discounts
     to: /license-compatibility
     # icon: i-ri-discount-percent-fill

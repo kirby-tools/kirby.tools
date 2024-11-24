@@ -21,7 +21,7 @@ As of late 2024, all Kirby Tools plugins are compatible for Kirby 4.
 Originally, the upgrade to Kirby 5 was supposed to be a free upgrade. In fact, the plugins are compatible up to Kirby 5.0.0-alpha.3. However, during the alpha phase, Kirby introduced breaking changes that will require substantial rework of all plugins. Therefore, the upgrade to Kirby 5 will be a paid upgrade.
 
 ::callout{icon="i-ri-discount-percent-fill"}
-All customers who have purchased a license for Kirby 4 will receive a **75% discount** on the upgrade to Kirby 5. Go to the [Kirby Tools Hub](https://hub.kirby.tools) to generate your discount code.
+All customers who have purchased a license for Kirby 4 will receive a **50% discount** on the upgrade to Kirby 5. Go to the [Kirby Tools Hub](https://hub.kirby.tools) to generate your discount code.
 ::
 
 We will start working on the plugin updates for Kirby 5 as soon as the new Kirby version reaches release candidate status (it may still introduce breaking changes during the beta phase). The updates will be released as soon as possible after the final release of Kirby 5.
