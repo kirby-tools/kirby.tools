@@ -29,7 +29,7 @@ Originally, the upgrade to Kirby 5 was supposed to be a free upgrade. In fact, t
 
 ::card{icon="i-ri-discount-percent-fill" to="https://hub.kirby.tools"}
 
-Go to[Kirby Tools Hub](https://hub.kirby.tools) to generate your **50% discount code** for the upgrade to Kirby 5.
+Go to [Kirby Tools Hub](https://hub.kirby.tools) to generate your **50% discount code** for the upgrade to Kirby 5.
 
 ::
 
