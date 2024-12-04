@@ -1,8 +1,4 @@
 <script setup lang="ts">
-defineOptions({
-  inheritAttrs: false,
-});
-
 defineProps<{
   path: string;
   poster: string;
@@ -11,7 +7,7 @@ defineProps<{
 const prefersReducedMotion = import.meta.client
   ? matchMedia("(prefers-reduced-motion: reduce)").matches
   : false;
-const isTouchDevice = import.meta.client
+const hasTouchCapability = import.meta.client
   ? matchMedia("(hover: none)").matches
   : false;
 const video = ref<HTMLVideoElement | undefined>();
@@ -25,7 +21,7 @@ useIntersectionObserver(
       isIntersecting &&
       hasAutoplay.value &&
       !prefersReducedMotion &&
-      !isTouchDevice
+      !hasTouchCapability
     ) {
       video.value?.play();
       isPlaying.value = true;
@@ -75,7 +71,7 @@ function handleVideoClick(event: MouseEvent) {
     >
       <UIcon
         name="i-ri-play-circle-fill"
-        class="h-[4rem] w-[4rem] text-gray-900 group-hover:text-neon-carrot-600 md:h-[6rem] md:w-[6rem]"
+        class="size-[min(16vw,6rem)] text-gray-900 group-hover:text-neon-carrot-600"
       />
     </div>
   </div>
