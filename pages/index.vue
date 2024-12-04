@@ -70,7 +70,13 @@ defineOgImageComponent("Default", {
       </template>
 
       <template #title>
-        <span v-html="page.hero.title" />
+        <span class=""
+          >The Kirby<br />
+          <span
+            class="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-rhino-700 to-rhino-500/40 bg-clip-text text-center text-transparent dark:from-rhino-500 dark:to-rhino-700/40"
+            >Plugin System</span
+          ></span
+        >
       </template>
 
       <template #description>
