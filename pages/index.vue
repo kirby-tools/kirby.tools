@@ -161,10 +161,19 @@ defineOgImageComponent("Default", {
       :description="section.description"
       :align="section.align"
       :features="section.features"
-      :links="section.links"
+      :ui="{
+        wrapper: 'rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50',
+        container: '[&>:first-child]:relative',
+        title: 'hover:underline',
+        description: 'text-base/6 text-gray-500 dark:text-gray-400',
+      }"
     >
       <template #title>
-        <span v-html="section.title" />
+        <NuxtLink v-if="section.links?.[0]?.to" :to="section.links[0].to">
+          <span class="absolute inset-0 z-10" />
+          <span v-html="section.title" />
+        </NuxtLink>
+        <span v-else v-html="section.title" />
       </template>
 
       <template #description>
