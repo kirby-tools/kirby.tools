@@ -182,8 +182,8 @@ function getUrlWithLicensee(url: string) {
         card
         :ui="{
           wrapper: 'bg-primary-700 dark:bg-primary-700 ring-0',
-          title: 'text-5xl !text-rhino-100 sm:text-7xl',
-          description: '!text-rhino-100',
+          title: 'text-5xl !text-white sm:text-7xl',
+          description: '!text-white',
         }"
       >
         <template #title>
