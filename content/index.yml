@@ -55,9 +55,6 @@ sections:
       - name: Detect Preview Mode
         description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
         icon: i-ri-drag-drop-line
-      - name: Panel Redirects
-        description: Try navigating through the preview – if you click on a site link, such as in the header, the corresponding Panel page will open instead of the link in the preview.
-        icon: i-ri-links-line
       - name: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
@@ -76,9 +73,6 @@ sections:
       path: /vid/kirby-copilot-pdf-files.mp4
       poster: /vid/kirby-copilot-pdf-files-poster-start.jpg
     features:
-      - name: User & System Prompt
-        description: Instruct the AI with a user prompt and shape the response format with the system prompt.
-        icon: i-ri-edit-box-line
       - name: Multi-Model
         description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
         icon: i-ri-openai-line
@@ -112,9 +106,6 @@ sections:
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
         to: /playground
         icon: i-ri-file-lock-line
-      - name: Translations
-        description: The report is generated in English, German, or Dutch, depending on the Panel language. Do you need another language? Let us know!
-        icon: i-ri-earth-line
     links:
       - label: Improve Your Rankings
         to: https://kirbyseo.com
