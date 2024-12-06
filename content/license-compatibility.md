@@ -10,7 +10,8 @@ Kirby 5 is just around the corner (expected early 2025). You are probably wonder
 **tl;dr**:
 
 - **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
-- **Upgrade Discount**: All customers who have purchased a license for Kirby 4 will receive a **50% discount** on the upgrade to Kirby 5. Your discount code will be available on the [Kirby Tools Hub](https://hub.kirby.tools) in early 2025.
+- **Free Upgrade**: Customers who purchased a license after September 1st, 2024 will receive a **free upgrade** to Kirby 5.
+- **Upgrade Discount**: All other customers will receive a **50% discount** on the upgrade to Kirby 5. Your discount code will be available on the [Kirby Tools Hub](https://hub.kirby.tools) in early 2025.
 
 ::
 
@@ -26,10 +27,16 @@ As of late 2024, all Kirby Tools plugins are compatible for Kirby 4.
 
 ### Upgrade to Kirby 5
 
-Originally, the upgrade to Kirby 5 was supposed to be a free upgrade. In fact, the plugins are compatible up to Kirby `5.0.0-alpha.3`. However, during the alpha phase, Kirby introduced breaking changes that will require substantial rework of all plugins. Therefore, the upgrade to Kirby 5 will be a paid upgrade. We are sorry for the inconvenience this may cause.
+Originally, the upgrade to Kirby 5 was supposed to be a free upgrade. In fact, the plugins are compatible up to Kirby `5.0.0-alpha.3`. However, during the alpha phase, Kirby introduced breaking changes that will require substantial rework of all plugins. Therefore, the upgrade to Kirby 5 will be a paid upgrade for most customers. We are sorry for the inconvenience this may cause.
+
+#### Free Upgrade for Recent Customers
+
+If you purchased a Kirby Tools plugin license after September 1, 2024, you will receive a **free upgrade** to Kirby 5 when it becomes available. Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which will give you a 100% discount.
+
+#### Upgrade Discount
 
 ::card{icon="i-ri-discount-percent-fill" to="https://hub.kirby.tools"}
-Go to [Kirby Tools Hub](https://hub.kirby.tools) to generate your **50% discount code** for the upgrade to Kirby 5.
+All other customers can go to [Kirby Tools Hub](https://hub.kirby.tools) to generate their **50% discount code** for the upgrade to Kirby 5.
 ::
 
 We will start working on the plugin updates for Kirby 5 as soon as the new Kirby version reaches release candidate status (it may still introduce breaking changes during the beta phase). The updates will be released as soon as possible after the final release of Kirby 5.
