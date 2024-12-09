@@ -9,7 +9,7 @@ hero:
     # icon: i-ri-discount-percent-fill
     icon: i-logos-kirby-icon
     iconClass: dark:invert
-  title: 'The Kirby<br> <span class="whitespace-pre-wrap bg-gradient-to-b from-rhino-700 to-rhino-500/40 bg-clip-text text-transparent dark:from-rhino-500 dark:to-rhino-700/40">Plugin System</span>'
+  title: 'The Kirby<br> <span class="whitespace-pre-wrap bg-gradient-to-b from-rhino-500/50 to-rhino-700 bg-clip-text text-transparent dark:from-rhino-400 dark:to-rhino-600/50">Plugin System</span>'
   description: Kirby Tools offers a collection of <s>planets</s> plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
   links:
     - label: Meet the Planets
