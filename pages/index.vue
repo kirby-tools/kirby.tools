@@ -164,7 +164,7 @@ defineOgImageComponent("Default", {
       :ui="{
         wrapper: 'py-16 sm:py-22',
         container:
-          'rounded-lg py-8 sm:py-10 [&>:first-child]:relative hover:bg-gray-100 dark:hover:bg-gray-800/50',
+          'rounded-lg py-8 sm:py-10 transition-[background-color] [&>:first-child]:relative hover:bg-gray-100 dark:hover:bg-gray-800/50',
         title: 'hover:underline',
         description: 'text-base/6 text-gray-500 dark:text-gray-400',
       }"
