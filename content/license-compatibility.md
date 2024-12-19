@@ -55,10 +55,10 @@ The following table shows the license compatibility for each plugin and license 
 
 | Plugin                   | License Key v1 (until 2024-11-30) | License Key v2 (from 2024-12-01) |
 | ------------------------ | --------------------------------- | -------------------------------- |
+| Kirby Content Translator | `^2`                              | `^2 \|\| ^3`                     |
 | Kirby Copilot            | `^1`                              | `^1 \|\| ^2`                     |
 | Kirby SEO Audit          | `^1`                              | `^1 \|\| ^2`                     |
 | Kirby Live Preview       | `^1`                              | `^1 \|\| ^2`                     |
-| Kirby Content Translator | `^2`                              | `^2 \|\| ^3`                     |
 
 ### Current License Key Version
 
@@ -72,13 +72,11 @@ From **1. December 2024**, all new license purchases will be of license key vers
 
 The license key version will be roughly in sync with major Kirby releases. Since potentially breaking changes with each major Kirby release require updates to the plugins, the license key version and plugin versions will be updated accordingly.
 
-| Kirby Version | License Key Version | Plugin Version                                                                                            |
-| ------------- | ------------------- | --------------------------------------------------------------------------------------------------------- |
-| 4.0           | 1                   | Kirby&nbsp;Copilot&nbsp;v1, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v1, Kirby&nbsp;Content&nbsp;Translator&nbsp;v2 |
-| 5.0           | 2                   | Kirby&nbsp;Copilot&nbsp;v2, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v2, Kirby&nbsp;Content&nbsp;Translator&nbsp;v3 |
+| Kirby Version | License Key Version | Plugin Version                                                                                                                                  |
+| ------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4.0           | 1                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v2, Kirby&nbsp;Copilot&nbsp;v1, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v1, Kirby&nbsp;Live&nbsp;Preview&nbsp;v1 |
+| 5.0           | 2                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v3, Kirby&nbsp;Copilot&nbsp;v2, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v2, Kirby&nbsp;Live&nbsp;Preview&nbsp;v2 |
 
-### Kirby Live Preview
-
-Since Kirby 5 introduces a live preview as a core feature, the Kirby Live Preview plugin will probably be discontinued. The plugin will still be available for download, but it will not receive any updates or support.
-
-Do you require support for Kirby 5? Please let us know by [contacting us](/contact) and we will update the plugin accordingly.
+::callout{icon="i-ri-information-line"}
+Since Kirby 5 introduces a live preview as a core feature, the Kirby Live Preview plugin will probably be discontinued. However, we will still upgrade it to support Kirby 5.
+::
