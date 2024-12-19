@@ -170,7 +170,7 @@ defineOgImageComponent("Default", {
       }"
     >
       <template #title>
-        <NuxtLink v-if="section.links?.[0]?.to" :to="section.links[0].to">
+        <NuxtLink v-if="section.to" :to="section.to">
           <span class="absolute inset-0 z-10" />
           <span v-html="section.title" />
         </NuxtLink>
