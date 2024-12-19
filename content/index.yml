@@ -21,6 +21,7 @@ hero:
 sections:
   - title: Kirby Content Translator
     id: content-translator
+    to: /content-translator
     description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
     align: left
     video:
@@ -37,15 +38,9 @@ sections:
         description: >
           Copy the content from the primary language to the currently active language and translate to the currently active language with DeepL.
         icon: i-ri-cursor-line
-    links:
-      - label: Start Translating Today
-        to: /content-translator
-        size: xl
-        color: primary
-        icon: i-ri-arrow-right-line
-        trailing: true
   - title: Kirby Live Preview
     id: live-preview
+    to: /live-preview
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     align: right
     video:
@@ -58,38 +53,27 @@ sections:
       - name: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
-    links:
-      - label: Start Previewing Now
-        to: /live-preview
-        size: xl
-        color: primary
-        icon: i-ri-arrow-right-line
-        trailing: true
   - title: Kirby Copilot
     id: copilot
-    description: Let AI generate blocks and text from your prompts right in the Kirby Panel.
+    to: https://kirbycopilot.com
+    description: Kirby Copilot is your everyday AI companion for the Kirby Panel.
     align: left
     video:
-      path: /vid/kirby-copilot-pdf-files.mp4
-      poster: /vid/kirby-copilot-pdf-files-poster-start.jpg
+      path: /vid/kirby-copilot-writer-prompt-dialog.mp4
+      poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
     features:
       - name: Multi-Model
         description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
         icon: i-ri-openai-line
-      - name: Process Images & PDFs
-        description: Add images and let GPT vision extract key information from them, or extract text from PDF files for your prompt.
+      - name: Images, PDFs, and Fields as Context
+        description: Use images, PDFs, and fields of the current Kirby model as context for the AI model to generate better suggestions.
         icon: i-ri-chat-new-line
       - name: Blocks, Writer & Text Fields
-        description: Yes, you can generate whole blocks. Tell the AI to segment the generated text into headings and paragraphs.
+        description: Generate entire block layouts or add the Copilot button in writer/textarea fields to work with selected text.
         icon: i-ri-dashboard-line
-    links:
-      - label: Get Started with Copilot
-        to: https://kirbycopilot.com
-        size: xl
-        color: neon-carrot
-        icon: i-ri-external-link-line
   - title: Kirby SEO Audit
     id: seo-audit
+    to: https://kirbyseo.com
     description: Analyze your pages, improve your content, and boost your rankings.
     align: right
     video:
@@ -106,12 +90,6 @@ sections:
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
         to: /playground
         icon: i-ri-file-lock-line
-    links:
-      - label: Improve Your Rankings
-        to: https://kirbyseo.com
-        size: xl
-        color: neon-carrot
-        icon: i-ri-external-link-line
 outro:
   title: Kirby Headless
   description: "Kirby, but headless-first: Add headless functionality to your existing Kirby site, or use this plugin to build a headless-first CMS from scratch."
