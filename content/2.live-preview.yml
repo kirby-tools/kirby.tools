@@ -4,9 +4,10 @@ navigation.icon: i-ri-presentation-fill
 hero:
   orientation: horizontal
   headline:
-    label: Composer support landed!
-    to: /docs/live-preview
-    icon: i-logos-composer
+    label: "New: Kirby 5 Support"
+    to: /docs/live-preview/changelog#whats-new
+    icon: i-logos-kirby-icon
+    iconClass: dark:invert
   title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
   description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
   links:
@@ -54,7 +55,7 @@ sections:
     slot: pricing
     description: Add real-time previews to all your Kirby projects.
     plan:
-      title: All in One
+      title: Live Preview v2
       description: For individuals and teams.
       price: $99
       highlight: true
@@ -63,7 +64,7 @@ sections:
         color: primary
         to: https://byjohann.lemonsqueezy.com/buy/359409ce-840d-48c4-aca3-e7d79a95f6d4
       features:
-        - For Kirby 4
+        - For Kirby 4 & Kirby 5
         - Unlimited sites
         - Unlimited minor & patch updates
   - title: Frequently Asked Questions
