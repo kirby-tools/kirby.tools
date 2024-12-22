@@ -23,7 +23,13 @@ A typical major plugin version is released along with a new major Kirby version.
 
 ### Status Quo
 
-As of late 2024, all Kirby Tools plugins are compatible for Kirby 4.
+All Kirby Tools plugins are compatible for Kirby 4.
+
+In addition, the following plugins have already been updated to support Kirby 5, while remaining backwards compatible with Kirby 4:
+
+- Kirby Copilot v2
+- Kirby SEO Audit v2
+- Kirby Live Preview v2
 
 ### Upgrade to Kirby 5
 
@@ -35,11 +41,7 @@ If you purchased a Kirby Tools plugin license after September 1, 2024, you will 
 
 #### Upgrade Discount
 
-::card{icon="i-ri-discount-percent-fill" to="https://hub.kirby.tools"}
 All other customers can go to [Kirby Tools Hub](https://hub.kirby.tools) to generate their **50% discount code** for the upgrade to Kirby 5.
-::
-
-We will start working on the plugin updates for Kirby 5 as soon as the new Kirby version reaches release candidate status (it may still introduce breaking changes during the beta phase). The updates will be released as soon as possible after the final release of Kirby 5.
 
 ## License Compatibility
 

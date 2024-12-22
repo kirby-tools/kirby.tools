@@ -38,26 +38,11 @@ sections:
         description: >
           Copy the content from the primary language to the currently active language and translate to the currently active language with DeepL.
         icon: i-ri-cursor-line
-  - title: Kirby Live Preview
-    id: live-preview
-    to: /live-preview
-    description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
-    align: right
-    video:
-      path: /vid/kirby-live-preview-demo.mp4
-      poster: /vid/kirby-live-preview-demo-poster.jpg
-    features:
-      - name: Detect Preview Mode
-        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
-        icon: i-ri-drag-drop-line
-      - name: Real-Time Preview
-        description: See how your page looks before saving your changes and without leaving the Panel.
-        icon: i-ri-notification-badge-line
   - title: Kirby Copilot
     id: copilot
     to: https://kirbycopilot.com
     description: Kirby Copilot is your everyday AI companion for the Kirby Panel.
-    align: left
+    align: right
     video:
       path: /vid/kirby-copilot-writer-prompt-dialog.mp4
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
@@ -90,6 +75,21 @@ sections:
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
         to: /playground
         icon: i-ri-file-lock-line
+  - title: Kirby Live Preview
+    id: live-preview
+    to: /live-preview
+    description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
+    align: left
+    video:
+      path: /vid/kirby-live-preview-demo.mp4
+      poster: /vid/kirby-live-preview-demo-poster.jpg
+    features:
+      - name: Detect Preview Mode
+        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
+        icon: i-ri-drag-drop-line
+      - name: Real-Time Preview
+        description: See how your page looks before saving your changes and without leaving the Panel.
+        icon: i-ri-notification-badge-line
 outro:
   title: Kirby Headless
   description: "Kirby, but headless-first: Add headless functionality to your existing Kirby site, or use this plugin to build a headless-first CMS from scratch."
