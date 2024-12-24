@@ -60,7 +60,7 @@ sections:
     id: seo-audit
     to: https://kirbyseo.com
     description: Analyze your pages, improve your content, and boost your rankings.
-    align: right
+    align: left
     video:
       path: /vid/kirby-seo-audit-demo.mp4
       poster: /vid/kirby-seo-audit-demo-poster-start.jpg
@@ -79,7 +79,7 @@ sections:
     id: live-preview
     to: /live-preview
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
-    align: left
+    align: right
     video:
       path: /vid/kirby-live-preview-demo.mp4
       poster: /vid/kirby-live-preview-demo-poster.jpg
