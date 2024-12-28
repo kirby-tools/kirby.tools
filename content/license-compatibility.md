@@ -10,8 +10,8 @@ Kirby 5 is just around the corner (expected early 2025). You are probably wonder
 **tl;dr**:
 
 - **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
-- **Free Upgrade**: Customers who purchased a license after September 1st, 2024 will receive a **free upgrade** to Kirby 5.
-- **Upgrade Discount**: All other customers will receive a **50% discount** on the upgrade to Kirby 5. Your discount code will be available on the [Kirby Tools Hub](https://hub.kirby.tools) in early 2025.
+- **Free Upgrade**: Customers who purchased a license after September 1st, 2024 will receive a **free upgrade** to Kirby 5 compatible versions (except Content Translator v3).
+- **Upgrade Discount**: All customers will receive a **50% discount** on the upgrade to Kirby Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1st, 2024.
 
 ::
 
@@ -23,25 +23,23 @@ A typical major plugin version is released along with a new major Kirby version.
 
 ### Status Quo
 
-All Kirby Tools plugins are compatible for Kirby 4.
+All Kirby Tools plugins are compatible with Kirby 4 and recently have been updated to support Kirby 5.
 
-In addition, the following plugins have already been updated to support Kirby 5, while remaining backwards compatible with Kirby 4:
+### Upgrade to Kirby 5 Compatible Versions
 
-- Kirby Copilot v2
-- Kirby SEO Audit v2
-- Kirby Live Preview v2
-
-### Upgrade to Kirby 5
-
-Originally, the upgrade to Kirby 5 was supposed to be a free upgrade. In fact, the plugins are compatible up to Kirby `5.0.0-alpha.3`. However, during the alpha phase, Kirby introduced breaking changes that will require substantial rework of all plugins. Therefore, the upgrade to Kirby 5 will be a paid upgrade for most customers. We are sorry for the inconvenience this may cause.
+The upgrade is available for all plugins and you can upgrade each plugin individually.
 
 #### Free Upgrade for Recent Customers
 
-If you purchased a Kirby Tools plugin license after September 1, 2024, you will receive a **free upgrade** to Kirby 5 when it becomes available. Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which will give you a 100% discount.
+If you purchased a Kirby Tools plugin license after September 1, 2024, you will receive a **free upgrade** to Kirby 5 compatible versions when they become available (except Content Translator v3). Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which will give you a 100% discount.
+
+::callout{icon="i-ri-information-line" to="/content-translator"}
+Kirby Content Translator v3 is a major update that not only brings compatibility with Kirby 5, but also introduces new features. Therefore, a free upgrade is not available. However, you can upgrade to Content Translator v3 at a 50% discount.
+::
 
 #### Upgrade Discount
 
-All other customers can go to [Kirby Tools Hub](https://hub.kirby.tools) to generate their **50% discount code** for the upgrade to Kirby 5.
+All customers can get a **50% discount** on the upgrade to Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1st, 2024. Generate your discount code on the [Kirby Tools Hub](https://hub.kirby.tools).
 
 ## License Compatibility
 
@@ -78,7 +76,3 @@ The license key version will be roughly in sync with major Kirby releases. Since
 | ------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 4.0           | 1                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v2, Kirby&nbsp;Copilot&nbsp;v1, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v1, Kirby&nbsp;Live&nbsp;Preview&nbsp;v1 |
 | 5.0           | 2                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v3, Kirby&nbsp;Copilot&nbsp;v2, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v2, Kirby&nbsp;Live&nbsp;Preview&nbsp;v2 |
-
-::callout{icon="i-ri-information-line"}
-Since Kirby 5 introduces a live preview as a core feature, the Kirby Live Preview plugin will probably be discontinued. However, we will still upgrade it to support Kirby 5.
-::
