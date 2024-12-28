@@ -105,7 +105,15 @@ const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
         <Logo class="text-primary h-6 w-auto" />
         Kirby Tools
       </NuxtLink>
-      <UBadge v-if="currentPlugin" class="ml-1" color="primary" variant="soft">
+      <UBadge
+        v-if="currentPlugin"
+        class="ml-1"
+        color="primary"
+        variant="soft"
+        :ui="{
+          base: 'hidden sm:inline-flex',
+        }"
+      >
         {{ currentPlugin.label }}
       </UBadge>
     </template>
