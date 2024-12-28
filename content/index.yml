@@ -36,7 +36,7 @@ sections:
         icon: i-ri-terminal-box-line
       - name: One-Click Translation
         description: >
-          Copy the content from the primary language to the currently active language and translate to the currently active language with DeepL.
+          Choose between a section and view buttons in the Panel header to translate content with a single click.
         icon: i-ri-cursor-line
   - title: Kirby Copilot
     id: copilot

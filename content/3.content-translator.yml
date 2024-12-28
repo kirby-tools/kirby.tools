@@ -4,8 +4,8 @@ navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
   headline:
-    label: "New: Bulk Translation in the Panel"
-    to: /docs/content-translator/configuration#bulk
+    label: "New: Panel View Buttons"
+    to: /docs/content-translator#view-button
     icon: i-ri-global-fill
   title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
   description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
@@ -20,6 +20,11 @@ hero:
     path: /vid/kirby-content-translator-demo.mp4
     poster: /vid/kirby-content-translator-demo-poster.jpg
 sections:
+  - title: 'Panel View Buttons<br> For <span class="text-primary">Kirby 4</span> & <span class="text-primary">5</span>'
+    slot: video
+    video:
+      path: /vid/kirby-content-translator-view-buttons.mp4
+      poster: /vid/kirby-content-translator-view-buttons-poster-start.jpg
   - title: Translate All Page Children<br> From the <span class="text-primary">Command Line</span>
     slot: video
     video:
@@ -41,7 +46,7 @@ sections:
         class: col-span-6 row-span-4
       - title: One-Click Translation
         description: >
-          With a single click in the Kirby Panel, you can copy the content from the primary language to the currently active language. Then, you can translate the imported content into the currently active language with DeepL.
+          With a single click in the Kirby Panel, you can copy the content from the primary language to the currently active language. Then, translate the imported content into the currently active language with DeepL.
         icon: i-ri-cursor-line
         to: /docs/content-translator/configuration#fieldtypes
         class: col-span-6 row-span-4
@@ -60,17 +65,16 @@ sections:
     slot: pricing
     description: Your virtual translator is just a click away.
     plan:
-      title: All in One
+      title: Content Translator v3
       description: For individuals and teams.
       price: $99
-      # discount: $79.2
       highlight: true
       button:
         label: Get Your Translator
         color: primary
         to: https://byjohann.lemonsqueezy.com/buy/acdf557a-4d40-47a4-81d1-a9c305ca7edb
       features:
-        - For Kirby 4 & 5 (to be released)
+        - For Kirby 4 & Kirby 5
         - Unlimited sites
         - Unlimited minor & patch updates
   - title: Frequently Asked Questions
@@ -81,8 +85,6 @@ sections:
         content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
       - label: What does “Unlimited minor & patch updates” include?
         content: We add new features and improvements to Kirby Content Translator as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major version is released, you will be able to upgrade to that version at a generous discount. A typical major version is intended to be released alongside a new major Kirby version.
-      - label: Which Kirby versions are supported?
-        content: Kirby Content Translator is compatible with Kirby 4 as of late 2024. Once Kirby 5 is released, the plugin will be updated to support it. The license you purchase is already valid for Kirby 5.
       - label: How do I receive updates for the plugin?
         content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-content-translator/releases) on GitHub.
       - label: Do you offer technical support?
@@ -94,7 +96,7 @@ cta:
   description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
   align: left
   links:
-    - label: Install the Plugin
+    - label: Install & Try for Free
       to: /docs/content-translator
       size: xl
       color: neon-carrot
