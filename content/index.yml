@@ -25,8 +25,8 @@ sections:
     description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
     align: left
     video:
-      path: /vid/kirby-content-translator-demo.mp4
-      poster: /vid/kirby-content-translator-demo-poster.jpg
+      path: /vid/kirby-content-translator-view-buttons.mp4
+      poster: /vid/kirby-content-translator-view-buttons-poster.jpg
     features:
       - name: All Fields
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
