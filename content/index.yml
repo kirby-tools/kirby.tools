@@ -91,15 +91,15 @@ sections:
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
 outro:
-  title: Kirby Headless
-  description: "Kirby, but headless-first: Add headless functionality to your existing Kirby site, or use this plugin to build a headless-first CMS from scratch."
+  title: Custom Plugin Development
+  description: "Need something specific? We build custom Kirby plugins tailored to your needs, ensuring seamless integration with your existing workflow."
   align: left
   links:
-    - label: Read the Docs
-      to: /docs/headless
+    - label: Get in Touch
+      to: mailto:hello@kirby.tools
       size: xl
       color: black
       icon: i-ri-arrow-right-line
       trailing: true
   icon:
-    name: i-ri-code-block
+    name: i-ri-code-s-slash-line
