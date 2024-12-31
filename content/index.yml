@@ -22,7 +22,7 @@ sections:
   - title: Kirby Content Translator
     id: content-translator
     to: /content-translator
-    description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
+    description: Translate your content with DeepL, in the Panel or via CLI commands. One page at the time or all at once.
     align: left
     video:
       path: /vid/kirby-content-translator-view-buttons.mp4
