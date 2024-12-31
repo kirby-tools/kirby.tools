@@ -7,7 +7,7 @@ hero:
     label: "New: Panel View Buttons"
     to: /docs/content-translator#view-button
     icon: i-ri-global-fill
-  title: 'The <span class="text-primary">Holistic</span><br> Content Translation Workflow'
+  title: 'The <span class="text-primary">Holistic</span><br> Translation Workflow'
   description: Translate content with nested data structures in the Panel or programmatically with DeepL. One page at the time or all at once.
   links:
     - label: Start Translating Today
