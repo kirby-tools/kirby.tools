@@ -36,7 +36,7 @@ sections:
         icon: i-ri-terminal-box-line
       - name: One-Click Translation
         description: >
-          Choose between a section and view buttons in the Panel header to translate content with a single click.
+          Choose between a section and a view button in the Panel header to translate content with a single click.
         icon: i-ri-cursor-line
   - title: Kirby Copilot
     id: copilot
