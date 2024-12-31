@@ -145,14 +145,7 @@ function getUrlWithLicensee(url: string) {
               />
               <div class="text-sm text-gray-500 dark:text-gray-400">
                 Who will own this license (e.g. your full name, organization, or
-                client)? Will be you by default. All licenses are managed on
-                <a
-                  href="https://hub.kirby.tools"
-                  class="hover:text-primary-500 decoration-primary-500 font-medium underline"
-                  target="_blank"
-                >
-                  hub.kirby.tools</a
-                >.
+                client)? Will be you by default.
               </div>
             </template>
           </UPricingCard>
