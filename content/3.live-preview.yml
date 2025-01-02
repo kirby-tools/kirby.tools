@@ -56,7 +56,7 @@ sections:
     description: Add real-time previews to all your Kirby projects.
     plan:
       title: Live Preview v2
-      description: For individuals and teams.
+      description: For solo-developers and agencies
       price: $99
       highlight: true
       button:
