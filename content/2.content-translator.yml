@@ -66,7 +66,7 @@ sections:
     description: Your virtual translator is just a click away.
     plan:
       title: Content Translator v3
-      description: For individuals and teams.
+      description: For solo-developers and agencies
       price: $99
       highlight: true
       button:
