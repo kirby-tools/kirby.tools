@@ -62,11 +62,7 @@ The following table shows the license compatibility for each plugin and license 
 
 ### Current License Key Version
 
-The current license key version is `1`.
-
-### Future License Key Versions
-
-From **1. December 2024**, all new license purchases will be of license key version `2`. This means that all new licenses will be compatible with Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3 when they are released.
+The current license key version is `2` (as of 1. December 2024). This means that all new licenses are be compatible with Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3.
 
 ## Plugin Compatibility
 
