@@ -58,6 +58,7 @@ sections:
       title: Live Preview v2
       description: For solo-developers and agencies
       price: $99
+      discount: $79
       highlight: true
       button:
         label: Get Your Preview
