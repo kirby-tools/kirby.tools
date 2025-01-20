@@ -5,11 +5,11 @@ defineProps<{
 </script>
 
 <template>
-  <div class="inline-block rounded-md bg-[#F0F0F0]">
+  <div class="inline-block rounded-lg bg-[#F0F0F0]">
     <NuxtImg
       :src="src"
       alt="Kirby Tools section preview"
-      class="!my-0 w-[22rem] rounded-md"
+      class="!my-0 w-full max-w-[30rem] rounded-lg"
     />
   </div>
 </template>
