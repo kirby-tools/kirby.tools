@@ -81,8 +81,8 @@ sections:
     description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
     align: right
     video:
-      path: /vid/kirby-live-preview-demo.mp4
-      poster: /vid/kirby-live-preview-demo-poster.jpg
+      path: /vid/kirby-live-preview-responsive-demo.mp4
+      poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
     features:
       - name: Detect Preview Mode
         description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.

@@ -4,12 +4,11 @@ navigation.icon: i-ri-presentation-fill
 hero:
   orientation: horizontal
   headline:
-    label: "New: Kirby 5 Support"
+    label: "New: Device Screen Sizes"
     to: /docs/live-preview/changelog#whats-new
-    icon: i-logos-kirby-icon
-    iconClass: dark:invert
-  title: '<span class="text-primary">Real-Time</span><br> Page Preview in Your Panel'
-  description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
+    icon: i-ri-device-line
+  title: '<span class="text-primary">Real-Time</span><br> Preview for Unsaved Changes'
+  description: The Live Preview Panel section shows what your page will look like with unsaved changes in real time. Simulate different screen sizes and devices to see how your content will look on mobile, tablet, and desktop.
   links:
     - label: Try the Demo
       to: https://play.kirby.tools
@@ -18,9 +17,14 @@ hero:
       icon: i-ri-arrow-right-line
       trailing: true
   video:
-    path: /vid/kirby-live-preview-demo.mp4
-    poster: /vid/kirby-live-preview-demo-poster.jpg
+    path: /vid/kirby-live-preview-responsive-demo.mp4
+    poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
 sections:
+  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in <span class="text-primary">New Tab</span>
+    slot: video
+    video:
+      path: /vid/kirby-live-preview-devices.mp4
+      poster: /vid/kirby-live-preview-devices-poster.jpg
   - title: <span class="text-primary">Top 10 Feature Request:</span><br> Now a Plugin
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
@@ -35,13 +39,13 @@ sections:
         icon: i-ri-links-line
         to: /docs/live-preview
         class: col-span-6 row-span-4
-      - title: Sticky Column
-        description: Edit your content side-by-side with the preview in a sticky column layout.
-        icon: i-ri-dashboard-line
-        to: /docs/live-preview#step-3-enjoy-real-time-previews
+      - title: Simulate Device Screen Sizes
+        description: Choose from a variety of device screen sizes to see how your content will look on mobile (390w), tablet (768w), and desktop (1440w).
+        icon: i-ri-device-line
+        to: /docs/live-preview#step-2-blueprint-setup
         class: col-span-6 row-span-4
       - title: Real-Time Preview
-        description: See how your page looks before saving your changes and without leaving the Panel.
+        description: Experience how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
         to: /docs/live-preview/configuration
         class: col-span-6 row-span-2
