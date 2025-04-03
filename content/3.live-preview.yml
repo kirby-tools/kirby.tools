@@ -24,7 +24,7 @@ sections:
     slot: video
     video:
       path: /vid/kirby-live-preview-devices.mp4
-      poster: /vid/kirby-live-preview-devices-poster.jpg
+      poster: /vid/kirby-live-preview-devices-poster-start.jpg
   - title: <span class="text-primary">Top 10 Feature Request:</span><br> Now a Plugin
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
