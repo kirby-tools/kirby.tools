@@ -84,6 +84,9 @@ sections:
       path: /vid/kirby-live-preview-devices.mp4
       poster: /vid/kirby-live-preview-devices-poster.jpg
     features:
+      - name: Device Screen Sizes
+        description: Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
+        icon: i-ri-device-line
       - name: Detect Preview Mode
         description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
         icon: i-ri-drag-drop-line
