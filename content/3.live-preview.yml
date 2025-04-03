@@ -8,7 +8,7 @@ hero:
     to: /docs/live-preview/changelog#whats-new
     icon: i-ri-device-line
   title: '<span class="text-primary">Real-Time</span><br> Preview for Unsaved Changes'
-  description: The Live Preview Panel section shows what your page will look like with unsaved changes in real time. Simulate different screen sizes and devices to see how your content will look on mobile, tablet, and desktop.
+  description: The Live Preview Panel section shows what your page will look like with unsaved changes in real time. Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
   links:
     - label: Try the Demo
       to: https://play.kirby.tools
@@ -20,7 +20,7 @@ hero:
     path: /vid/kirby-live-preview-responsive-demo.mp4
     poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
 sections:
-  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in <span class="text-primary">New Tab</span>
+  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in a <span class="text-primary">New Tab</span>
     slot: video
     video:
       path: /vid/kirby-live-preview-devices.mp4
