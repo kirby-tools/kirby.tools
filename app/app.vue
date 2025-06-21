@@ -34,13 +34,6 @@ if (import.meta.server) {
         href: joinURL(siteConfig.url, route.path),
       },
     ],
-    script: [
-      {
-        src: "https://plausible.io/js/script.js",
-        defer: true,
-        "data-domain": "kirby.tools",
-      },
-    ],
   });
 }
 

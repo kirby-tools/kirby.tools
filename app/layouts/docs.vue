@@ -31,18 +31,7 @@ const { data: navigation } = await useAsyncData(
           <template #left>
             <UPageAside>
               <template #top>
-                <UContentSearchButton
-                  label="Search…"
-                  variant="outline"
-                  class="w-full"
-                >
-                  <template #trailing>
-                    <div class="ms-auto flex items-center gap-0.5">
-                      <UKbd value="meta" />
-                      <UKbd value="k" />
-                    </div>
-                  </template>
-                </UContentSearchButton>
+                <UContentSearchButton :collapsed="false" variant="outline" />
               </template>
 
               <UContentNavigation :navigation="navigation" highlight />

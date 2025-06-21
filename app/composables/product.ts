@@ -1,8 +1,6 @@
 import { PRODUCT_ITEMS } from "#shared/constants";
 
-export const useProduct = createSharedComposable(_useProduct);
-
-function _useProduct() {
+export function useProduct() {
   const route = useRoute();
 
   const currentProductId = computed(
