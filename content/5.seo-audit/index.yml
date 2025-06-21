@@ -5,7 +5,7 @@ hero:
   orientation: horizontal
   headline:
     label: "New: Kirby 5 Support"
-    to: /changelog#whats-new
+    to: /seo-audit/changelog#whats-new
     icon:
       name: i-logos-kirby-icon
       class: dark:invert
