@@ -1,0 +1,50 @@
+title: Live Preview
+description: Real-time preview of unsaved changes right in the Panel.
+navigation.icon: i-ri-picture-in-picture-line
+hero:
+  orientation: horizontal
+  headline:
+    label: "New: Device Screen Sizes"
+    to: /docs/live-preview/changelog#whats-new
+    icon: i-ri-device-line
+  title: '<span class="text-primary">Real-Time</span><br> Preview'
+  description: Display your page with unsaved changes in real time. Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
+  links:
+    - label: Try the Demo
+      trailingIcon: i-ri-arrow-right-line
+      to: https://play.kirby.tools
+      size: xl
+  video:
+    src: /vid/kirby-live-preview-responsive-demo.mp4
+    poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
+sections:
+  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in a <span class="text-primary">New Tab</span>
+    slot: video
+    video:
+      src: /vid/kirby-live-preview-devices.mp4
+      poster: /vid/kirby-live-preview-devices-poster-start.jpg
+  - title: <span class="text-primary">Feature-Complete</span><br> Page Previews
+    slot: features
+    features:
+      - title: Detect Preview Mode
+        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
+        icon: i-ri-drag-drop-line
+        to: /docs/live-preview/preview-mode
+      - title: Panel Redirects
+        description: When clicking inside the preview, the corresponding Panel page will open instead of the link in the preview.
+        icon: i-ri-links-line
+        to: /docs/live-preview
+      - title: Simulate Device Screen Sizes
+        description: Choose from a variety of device screen sizes to see how your content will look on mobile (390w), tablet (768w), and desktop (1440w).
+        icon: i-ri-device-line
+        to: /docs/live-preview#step-2-blueprint-setup
+cta:
+  title: Not Convinced?
+  description: Give it a try and feel the breeze of a real-time preview in the Panel. All eyes on your content!
+  orientation: horizontal
+  links:
+    - label: Hoist the Sails
+      trailingIcon: i-ri-arrow-right-line
+      to: https://play.kirby.tools
+      size: xl
+      target: _blank

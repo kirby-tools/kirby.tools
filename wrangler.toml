@@ -1,0 +1,17 @@
+name = "kirby-tools"
+main = "./.output/server/index.mjs"
+compatibility_date = "2025-06-01"
+compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
+
+# routes = [
+#   { pattern = "kirby.tools", custom_domain = true }
+# ]
+
+d1_databases = [
+  { binding = "DB", database_name = "kirby-tools", database_id = "d5f82623-d41a-4d60-b48b-4d2e09029ffb" }
+]
+
+[assets]
+directory = "./.output/public"
+not_found_handling = "single-page-application"
+binding = "ASSETS"

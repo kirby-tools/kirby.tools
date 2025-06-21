@@ -1,28 +1,41 @@
 export default defineNuxtConfig({
-  extends: ["@nuxt/ui-pro"],
-
   modules: [
-    "@nuxt/content",
     "@nuxt/image",
-    "@nuxt/ui",
+    "@nuxt/ui-pro",
+    "@nuxt/content",
     "@vueuse/nuxt",
     "nuxt-og-image",
   ],
 
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "2025-06-01",
 
-  site: {
-    url: "https://kirby.tools",
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  css: ["~/assets/css/main.css"],
+
+  icon: {
+    customCollections: [
+      {
+        prefix: "tools",
+        dir: "./app/assets/icons",
+      },
+    ],
   },
 
   content: {
-    highlight: {
-      theme: {
-        light: "github-light",
-        default: "github-light",
-        dark: "github-dark",
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: "github-light",
+            light: "github-light",
+            dark: "github-dark",
+          },
+          langs: ["json", "bash", "yaml", "php"],
+        },
       },
-      langs: ["json", "bash", "yaml", "php"],
     },
   },
 
@@ -31,24 +44,20 @@ export default defineNuxtConfig({
     format: ["webp"],
   },
 
-  hooks: {
-    // Define `@nuxt/ui` components as global to use them in `.md`
-    "components:extend": (components) => {
-      const globals = components.filter((c) =>
-        ["UBadge"].includes(c.pascalName),
-      );
-      for (const c of globals) c.global = true;
-    },
+  site: {
+    url: "https://kirby.tools",
   },
 
   routeRules: {
-    "/docs": { redirect: "/docs/live-preview", prerender: false },
+    "/docs": { redirect: "/" },
+    "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
+    "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
   },
 
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/live-preview", "/content-translator", "/api/search.json"],
+      routes: ["/", "/live-preview", "/content-translator"],
     },
   },
 });

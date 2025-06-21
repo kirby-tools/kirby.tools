@@ -1,0 +1,55 @@
+title: Content Translator
+description: Translate your content with DeepL, in the Panel or via CLI commands.
+navigation.icon: i-ri-translate
+hero:
+  orientation: horizontal
+  headline:
+    label: "New: Panel View Button"
+    to: /docs/content-translator#view-button
+    icon: i-ri-global-fill
+  title: 'The <span class="text-primary">Holistic</span><br> Translation Workflow'
+  description: Translate your content with DeepL, in the Panel or via CLI commands. One page at the time or all at once.
+  links:
+    - label: Start Translating Now
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/content-translator
+      size: xl
+  video:
+    src: /vid/kirby-content-translator-demo.mp4
+    poster: /vid/kirby-content-translator-demo-poster.jpg
+sections:
+  - title: 'Panel View Button<br> For <span class="text-primary">Kirby 4</span> & <span class="text-primary">5</span>'
+    slot: video
+    video:
+      src: /vid/kirby-content-translator-view-buttons.mp4
+      poster: /vid/kirby-content-translator-view-buttons-poster-start.jpg
+  - title: The <span class="text-primary">Translation Cherry</span><br> on Your Content Cake
+    slot: features
+    features:
+      - title: All Fields
+        description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields. Nested structures are recursively translated.
+        icon: i-ri-dashboard-horizontal-line
+        to: /docs/content-translator
+      - title: Programmatic PHP API
+        description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
+        icon: i-ri-terminal-box-line
+        to: /docs/content-translator/php-api
+      - title: One-Click Translation
+        description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
+        icon: i-ri-cursor-line
+        to: /docs/content-translator/configuration#fieldtypes
+  - title: Translate All Page Children<br> From the <span class="text-primary">Command Line</span>
+    slot: video
+    video:
+      src: /vid/kirby-content-translator-cli-command.mp4
+      poster: /vid/kirby-content-translator-cli-command-poster-start.jpg
+cta:
+  title: Still scrolling?
+  description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
+  orientation: horizontal
+  links:
+    - label: Install & Try for Free
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/content-translator
+      variant: subtle
+      size: xl
