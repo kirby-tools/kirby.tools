@@ -5,15 +5,19 @@
 ## Our Plugins
 
 ### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
+
 Your everyday AI companion for the Kirby Panel. Generate content, blocks, and text using AI right in your Panel with support for OpenAI, Anthropic Claude, and Mistral models.
 
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
+
 Translate your content with DeepL, in the Panel or via CLI commands. Supports all field types with one-click translation and batch processing capabilities.
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
+
 State-of-the-art SEO analysis for Kirby CMS. Perform 30+ SEO checks directly in the Panel to improve your content and boost your rankings.
 
 ### 🪩 [Kirby Live Preview](https://kirby.tools/live-preview)
+
 Real-time page preview in the Kirby Panel. See your unsaved changes instantly and simulate different device screen sizes.
 
 ---
