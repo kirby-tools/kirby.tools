@@ -1,0 +1,71 @@
+title: Kirby Copilot – AI-Powered Content Generation for Kirby CMS
+description: Let AI generate blocks and text from your prompts right in the Kirby Panel.
+navigation.icon: i-ri-sparkling-fill
+hero:
+  headline:
+    label: "New: Copilot v2 with Toolbar Buttons"
+    to: /docs/copilot/usage/toolbar-buttons
+    icon: i-ri-ai-generate
+    color: neutral
+    variant: solid
+  title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
+  description: Kirby Copilot is your everyday AI companion for the Kirby Panel.<br class="hidden lg:block"> It helps you to create content faster and more efficiently.
+  links:
+    - label: Experience AI in the Panel
+      trailingIcon: i-ri-arrow-right-line
+      to: /copilot/playground
+      size: xl
+sections:
+  - title: Toolbar Buttons for<br> <span class="text-primary">Writer & Textarea Fields</span>
+    slot: video
+    video:
+      src: /vid/kirby-copilot-writer-prompt-dialog.mp4
+      poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
+  - title: Generate Blocks<br> <span class="text-primary">Directly in the Panel</span>
+    slot: video
+    video:
+      src: /vid/kirby-copilot-image-context.mp4
+      poster: /vid/kirby-copilot-image-context-poster-start.jpg
+  - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
+    slot: features
+    features:
+      - title: User & System Prompt
+        description: Instruct the AI with a user prompt. Response formatting is handled by the default system prompt.
+        icon: i-ri-edit-box-line
+        to: /docs/copilot/configuration/system-prompt
+      - title: Fields as Context
+        description: Context is key for a meaningful AI response. Include content from other fields to provide more information.
+        orientation: horizontal
+        icon: i-ri-braces-line
+        to: /docs/copilot/usage/placeholders
+        image:
+          src: /img/seo-placeholders
+          width: 444
+          height: 160
+        class: lg:col-span-2
+      - title: Multi-Model
+        description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
+        icon: i-ri-openai-line
+        to: /docs/copilot/configuration/global#provider
+      - title: Process Images & PDFs
+        description: Add images and let GPT vision extract key information from them, or extract text from PDF files for your prompt.
+        to: /docs/copilot/usage/files
+        icon: i-ri-chat-new-line
+      - title: Blocks, Writer & Text Fields
+        description: Generate blocks, text, and even writer fields directly in the Panel with the new toolbar buttons.
+        icon: i-ri-dashboard-line
+        to: /copilot/playground
+  - title: Summarize PDF Files<br> <span class="text-primary">Directly in the Panel</span>
+    slot: video
+    video:
+      src: /vid/kirby-copilot-pdf-files.mp4
+      poster: /vid/kirby-copilot-pdf-files-poster-start.jpg
+cta:
+  title: Don't Take<br class="md:hidden"> Our Word for It
+  description: Install the plugin and experience AI in the Panel yourself.
+  links:
+    - label: Install for Free
+      to: /docs/copilot/getting-started/installation
+      icon: i-ri-download-line
+      size: xl
+      color: primary

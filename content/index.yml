@@ -3,29 +3,27 @@ description: A collection of Kirby plugins that empoweres editors and developers
 navigation: false
 hero:
   headline:
-    # label: 50% Off Kirby 5 Upgrades
     label: Kirby 5 Support & Discounts
     to: /license-compatibility
-    # icon: i-ri-discount-percent-fill
-    icon: i-logos-kirby-icon
-    iconClass: dark:invert
-  title: 'The Kirby<br> <span class="whitespace-pre-wrap bg-gradient-to-b from-rhino-500/50 to-rhino-700 bg-clip-text text-transparent dark:from-rhino-400 dark:to-rhino-600/50">Plugin System</span>'
-  description: Kirby Tools offers a collection of <s>planets</s> plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
+    icon:
+      name: i-logos-kirby-icon
+      class: dark:invert
+  title: 'The Kirby<br> <span class="text-primary">Plugin System</span>'
+  description: Kirby Tools offers a collection of plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
   links:
-    - label: Meet the Planets
+    - label: Meet the Plugins
+      trailingIcon: i-ri-arrow-down-circle-fill
       to: /#products
+      color: neutral
+      variant: ghost
       size: xl
-      color: black
-      icon: i-ri-arrow-down-circle-fill
-      trailing: true
 sections:
   - title: Kirby Content Translator
     id: content-translator
     to: /content-translator
     description: Translate your content with DeepL, in the Panel or via CLI commands. One page at the time or all at once.
-    align: left
     video:
-      path: /vid/kirby-content-translator-view-buttons.mp4
+      src: /vid/kirby-content-translator-view-buttons.mp4
       poster: /vid/kirby-content-translator-view-buttons-poster.jpg
     features:
       - name: All Fields
@@ -40,11 +38,11 @@ sections:
         icon: i-ri-cursor-line
   - title: Kirby Copilot
     id: copilot
-    to: https://kirbycopilot.com
+    to: /copilot
     description: Kirby Copilot is your everyday AI companion for the Kirby Panel.
-    align: right
+    reverse: true
     video:
-      path: /vid/kirby-copilot-writer-prompt-dialog.mp4
+      src: /vid/kirby-copilot-writer-prompt-dialog.mp4
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
     features:
       - name: Multi-Model
@@ -58,11 +56,10 @@ sections:
         icon: i-ri-dashboard-line
   - title: Kirby SEO Audit
     id: seo-audit
-    to: https://kirbyseo.com
+    to: /seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
-    align: left
     video:
-      path: /vid/kirby-seo-audit-demo.mp4
+      src: /vid/kirby-seo-audit-demo.mp4
       poster: /vid/kirby-seo-audit-demo-poster-start.jpg
     features:
       - name: The Power of Yoast SEO
@@ -73,15 +70,14 @@ sections:
         icon: i-ri-checkbox-circle-line
       - name: Privacy First
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
-        to: /playground
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
     id: live-preview
     to: /live-preview
-    description: The Live Preview Panel section shows how your page will look with unsaved changes. It's the plugin content editors and clients have been waiting for.
-    align: right
+    description: Display your page with unsaved changes in real time. It's the plugin content editors and clients have been waiting for.
+    reverse: true
     video:
-      path: /vid/kirby-live-preview-devices.mp4
+      src: /vid/kirby-live-preview-devices.mp4
       poster: /vid/kirby-live-preview-devices-poster.jpg
     features:
       - name: Device Screen Sizes
@@ -93,16 +89,13 @@ sections:
       - name: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
-outro:
+cta:
   title: Custom Plugin Development
   description: "Need something specific? We build custom Kirby plugins tailored to your needs, ensuring seamless integration with your existing workflow."
-  align: left
   links:
     - label: Get in Touch
+      trailingIcon: i-ri-arrow-right-line
       to: mailto:hello@kirby.tools
-      size: xl
-      color: black
-      icon: i-ri-arrow-right-line
-      trailing: true
+      variant: subtle
   icon:
     name: i-ri-code-s-slash-line
