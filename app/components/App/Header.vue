@@ -106,7 +106,6 @@ const { data: version } = await useAsyncData(
       <UButton
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
-        color="neutral"
         to="https://hub.kirby.tools"
         target="_blank"
         class="hidden lg:inline-flex"
@@ -137,7 +136,6 @@ const { data: version } = await useAsyncData(
       <UButton
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
-        color="neutral"
         to="https://hub.kirby.tools"
         target="_blank"
         block

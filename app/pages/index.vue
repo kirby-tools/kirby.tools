@@ -29,6 +29,7 @@ onMounted(() => {
 });
 
 useSeoMeta({
+  titleTemplate: "",
   title: page.value.seo?.title || page.value.title,
   ogTitle: page.value.seo?.title || page.value.title,
   description: page.value.seo?.description || page.value.description,
@@ -39,7 +40,7 @@ useSeoMeta({
 <template>
   <div v-if="page" class="relative">
     <AppHeaderBackground
-      class="pointer-events-none absolute -top-px w-full shrink-0 text-(--ui-primary) transition-opacity"
+      class="pointer-events-none absolute top-[-1px] w-full shrink-0 text-(--ui-primary) transition-opacity"
       :class="[
         isLoading ? 'animate-pulse' : isEntering ? '' : 'opacity-0',
         hasEntered ? 'duration-[400ms]' : 'duration-1000',
