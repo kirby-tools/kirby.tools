@@ -77,9 +77,6 @@ export default defineNuxtConfig({
               "/seo-audit",
             ],
           }
-        : {
-            crawlLinks: false,
-            routes: [],
-          },
+        : undefined,
   },
 });

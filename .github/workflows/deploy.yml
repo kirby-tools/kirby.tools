@@ -13,15 +13,12 @@ jobs:
         site:
           - name: kirby-tools
             domain: kirby.tools
-            app_name: kirby-tools
             config: wrangler.toml
           - name: kirbycopilot
             domain: kirbycopilot.com
-            app_name: kirbycopilot
             config: wrangler.copilot.toml
           - name: kirbyseo
             domain: kirbyseo.com
-            app_name: kirbyseo
             config: wrangler.seo.toml
     steps:
       - uses: actions/checkout@v4
