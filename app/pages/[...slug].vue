@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { withoutTrailingSlash } from "ufo";
+
 const route = useRoute();
 const { currentProduct } = useProduct();
 
-const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection("pages").path(route.path).first(),
+const { data: page } = await useAsyncData(
+  withoutTrailingSlash(route.path),
+  () => queryCollection("pages").path(withoutTrailingSlash(route.path)).first(),
 );
 
 if (!page.value) {

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { withoutTrailingSlash } from "ufo";
+
 definePageMeta({
   layout: "docs",
 });
@@ -6,8 +8,9 @@ definePageMeta({
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
 
-const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection("docs").path(route.path).first(),
+const { data: page } = await useAsyncData(
+  withoutTrailingSlash(route.path),
+  () => queryCollection("docs").path(withoutTrailingSlash(route.path)).first(),
 );
 
 if (!page.value) {
@@ -18,13 +21,20 @@ if (!page.value) {
   });
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings("docs", route.path, {
-    fields: ["description"],
-  }).andWhere((query) =>
-    query.where("path", "LIKE", `%${currentProductId.value}/%`),
-  );
-});
+const { data: surround } = await useAsyncData(
+  `${withoutTrailingSlash(route.path)}-surround`,
+  () => {
+    return queryCollectionItemSurroundings(
+      "docs",
+      withoutTrailingSlash(route.path),
+      {
+        fields: ["description"],
+      },
+    ).andWhere((query) =>
+      query.where("path", "LIKE", `%${currentProductId.value}/%`),
+    );
+  },
+);
 
 useSeoMeta({
   title: page.value.title,
