@@ -58,7 +58,7 @@ const { data: version } = await useAsyncData(
   <UHeader>
     <template #left>
       <NuxtLink to="/" class="flex items-center gap-2">
-        <UIcon name="i-tools-logo" class="size-6 text-(--ui-primary)" />
+        <UIcon name="i-tools-favicon" class="size-6 text-(--ui-primary)" />
         <span class="text-lg font-bold text-(--ui-text)">Kirby Tools</span>
       </NuxtLink>
 
