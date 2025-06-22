@@ -21,11 +21,15 @@ sections:
     video:
       src: /vid/kirby-copilot-writer-prompt-dialog.mp4
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
+      title: Copilot Writer Toolbar Demo
+      ariaLabel: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
   - title: Generate Blocks<br> <span class="text-primary">Directly in the Panel</span>
     slot: video
     video:
       src: /vid/kirby-copilot-image-context.mp4
       poster: /vid/kirby-copilot-image-context-poster-start.jpg
+      title: Copilot Block Generation Demo
+      ariaLabel: Demonstration of generating blocks directly in Kirby Panel using AI context
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
@@ -62,6 +66,8 @@ sections:
     video:
       src: /vid/kirby-copilot-pdf-files.mp4
       poster: /vid/kirby-copilot-pdf-files-poster-start.jpg
+      title: Copilot PDF Processing Demo
+      ariaLabel: Demonstration of summarizing and processing PDF files directly in Kirby Panel using Copilot
 cta:
   title: Don't Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and experience AI in the Panel yourself.

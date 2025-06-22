@@ -50,6 +50,14 @@ const createBadgeSchema = () =>
     class: z.string().optional(),
   });
 
+const createVideoSchema = () =>
+  z.object({
+    src: z.string().nonempty(),
+    poster: z.string().nonempty(),
+    title: z.string().optional(),
+    ariaLabel: z.string().optional(),
+  });
+
 export default defineContentConfig({
   collections: {
     index: defineCollection({
@@ -66,10 +74,7 @@ export default defineContentConfig({
             to: z.string().nonempty(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
-            video: z.object({
-              src: z.string().nonempty(),
-              poster: z.string().nonempty(),
-            }),
+            video: createVideoSchema(),
             features: z.array(
               z.object({
                 name: z.string().nonempty(),
@@ -110,10 +115,7 @@ export default defineContentConfig({
           orientation: orientationEnum.optional(),
           headline: createBadgeSchema(),
           links: z.array(createLinkSchema()),
-          video: z.object({
-            src: z.string().nonempty(),
-            poster: z.string().nonempty(),
-          }),
+          video: createVideoSchema(),
         }),
         sections: z.array(
           createBaseSchema().extend({
@@ -136,10 +138,7 @@ export default defineContentConfig({
               }),
             ),
             links: z.array(createLinkSchema()),
-            video: z.object({
-              src: z.string().nonempty(),
-              poster: z.string().nonempty(),
-            }),
+            video: createVideoSchema(),
           }),
         ),
         cta: createBaseSchema().extend({
