@@ -56,8 +56,15 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      crawlLinks: true,
-      routes: ["/", "/live-preview", "/content-translator"],
+      crawlLinks: false,
+      routes: [
+        // TODO: Let kirbycopilot.com and kirbyseo.com hit
+        // "/",
+        "/content-translator",
+        "/live-preview",
+        "/copilot",
+        "/seo-audit",
+      ],
     },
   },
 });
