@@ -8,18 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        site:
-          - name: kirby-tools
-            domain: kirby.tools
-            config: wrangler.toml
-          - name: kirbycopilot
-            domain: kirbycopilot.com
-            config: wrangler.copilot.toml
-          - name: kirbyseo
-            domain: kirbyseo.com
-            config: wrangler.seo.toml
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,14 +22,13 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Build for ${{ matrix.site.name }}
+      - name: Build
         run: pnpm run build
         env:
           NITRO_PRESET: cloudflare_module
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-          NUXT_SITE_DOMAIN: ${{ matrix.site.domain }}
 
-      - name: Deploy ${{ matrix.site.name }} to Cloudflare
-        run: npx wrangler deploy --config ${{ matrix.site.config }}
+      - name: Deploy to Cloudflare
+        run: npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
