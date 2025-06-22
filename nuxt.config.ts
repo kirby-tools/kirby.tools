@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     prerender:
       siteDomain === "kirby.tools"
         ? {
-            crawlLinks: false,
+            crawlLinks: true,
             routes: [
               "/",
               "/content-translator",
