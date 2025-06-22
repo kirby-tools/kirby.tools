@@ -24,14 +24,11 @@ const DOMAIN_REDIRECTS = {
 export default defineNuxtRouteMiddleware((to) => {
   if (!import.meta.server || import.meta.prerender) return;
 
-  const event = useRequestEvent();
-  if (!event) return;
-
-  const hostname = getRequestHost(event, { xForwardedHost: true });
+  const { siteDomain } = useRuntimeConfig().public;
   const { path: pathname, hash } = to;
 
   // Handle new pricing page redirects
-  if (hostname === "kirby.tools" && hash === "#pricing") {
+  if (siteDomain === "kirby.tools" && hash === "#pricing") {
     if (pathname === "/live-preview") {
       return navigateTo("/live-preview/buy", { redirectCode: 301 });
     }
@@ -42,11 +39,11 @@ export default defineNuxtRouteMiddleware((to) => {
   }
 
   // Skip redirect if already on kirby.tools
-  if (hostname === "kirby.tools") return;
+  if (siteDomain === "kirby.tools") return;
 
   // Check if hostname needs redirect
   const redirectConfig =
-    DOMAIN_REDIRECTS[hostname as keyof typeof DOMAIN_REDIRECTS];
+    DOMAIN_REDIRECTS[siteDomain as keyof typeof DOMAIN_REDIRECTS];
   if (!redirectConfig) return;
 
   // Check for specific path mapping first
