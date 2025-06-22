@@ -48,6 +48,9 @@ const { data: version } = await useAsyncData(
       .where("path", "LIKE", `%${currentProductId.value}/%`)
       .order("date", "DESC")
       .first(),
+  {
+    immediate: !!currentProductId.value,
+  },
 );
 </script>
 
