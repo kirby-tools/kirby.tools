@@ -24,7 +24,8 @@ const DOMAIN_REDIRECTS = {
 export default defineNuxtRouteMiddleware((to) => {
   if (!import.meta.server) return;
 
-  const { hostname } = useRequestURL();
+  // https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-worker
+  const hostname = useRequestHeader("CF-Worker")!;
   const { path: pathname, hash } = to;
 
   // Handle new pricing page redirects
