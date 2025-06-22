@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   src: string;
+  alt?: string;
 }>();
 </script>
 
@@ -9,7 +10,7 @@ defineProps<{
     <NuxtImg
       :src="src"
       sizes="100vw lg:768px"
-      alt="Kirby Tools section preview"
+      :alt="alt || 'Kirby Tools section preview'"
       class="!my-0 w-[22rem] rounded-md"
     />
   </div>

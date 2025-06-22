@@ -6,6 +6,8 @@ defineProps<{
   poster?: string;
   width?: string | number;
   height?: string | number;
+  title?: string;
+  ariaLabel?: string;
 }>();
 
 const isPlaying = ref(false);
@@ -18,6 +20,8 @@ const isPlaying = ref(false);
       :poster="poster"
       :width="width"
       :height="height"
+      :title="title || 'Video content'"
+      :aria-label="ariaLabel || title || 'Video player with controls'"
       muted
       controls
       class="rounded-xl"

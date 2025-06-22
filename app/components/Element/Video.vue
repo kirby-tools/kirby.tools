@@ -2,6 +2,8 @@
 defineProps<{
   src: string;
   poster: string;
+  title?: string;
+  ariaLabel?: string;
 }>();
 
 const prefersReducedMotion = import.meta.client
@@ -34,15 +36,20 @@ useIntersectionObserver(
   { threshold: 1 },
 );
 
-function handleVideoClick(event: MouseEvent) {
-  const player = event.target as HTMLVideoElement;
-
+function togglePlay() {
   if (isPlaying.value) {
-    player.pause();
+    video.value?.pause();
     isPlaying.value = false;
   } else {
-    player.play();
+    video.value?.play();
     isPlaying.value = true;
+  }
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  if (event.code === "Space" || event.code === "Enter") {
+    event.preventDefault();
+    togglePlay();
   }
 }
 </script>
@@ -56,10 +63,14 @@ function handleVideoClick(event: MouseEvent) {
       ref="video"
       :src="src"
       :poster="poster"
+      :title="title || 'Video content'"
+      :aria-label="ariaLabel || title || 'Interactive video player'"
       muted
       class="rounded-xl"
+      tabindex="0"
       @ended="isPlaying = false"
-      @click="handleVideoClick"
+      @click="togglePlay"
+      @keydown="handleKeydown"
     />
 
     <div
@@ -72,6 +83,11 @@ function handleVideoClick(event: MouseEvent) {
           class="size-14 text-(--ui-secondary) group-hover:text-(--ui-color-secondary-600) lg:size-22 dark:group-hover:text-(--ui-color-secondary-500)"
         />
       </div>
+    </div>
+
+    <!-- Screen reader status announcements -->
+    <div aria-live="polite" class="sr-only">
+      {{ isPlaying ? "Video playing" : "Video paused" }}
     </div>
   </div>
 </template>

@@ -25,6 +25,8 @@ sections:
     video:
       src: /vid/kirby-content-translator-view-buttons.mp4
       poster: /vid/kirby-content-translator-view-buttons-poster.jpg
+      title: Content Translator View Buttons Demo
+      ariaLabel: Demonstration of using the Content Translator view buttons in Kirby Panel
     features:
       - name: All Fields
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
@@ -44,6 +46,8 @@ sections:
     video:
       src: /vid/kirby-copilot-writer-prompt-dialog.mp4
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
+      title: Kirby Copilot Writer Prompt Dialog Demo
+      ariaLabel: Demonstration of the AI-powered writer prompt dialog in Kirby Copilot
     features:
       - name: Multi-Model
         description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
@@ -61,6 +65,8 @@ sections:
     video:
       src: /vid/kirby-seo-audit-demo.mp4
       poster: /vid/kirby-seo-audit-demo-poster-start.jpg
+      title: Kirby SEO Audit Demo
+      ariaLabel: Demonstration of SEO analysis and recommendations in Kirby SEO Audit plugin
     features:
       - name: The Power of Yoast SEO
         description: The SEO checks are based on Yoast SEO, which is helpful when migrating from WordPress to Kirby.
@@ -79,6 +85,8 @@ sections:
     video:
       src: /vid/kirby-live-preview-devices.mp4
       poster: /vid/kirby-live-preview-devices-poster.jpg
+      title: Kirby Live Preview Device Simulation Demo
+      ariaLabel: Demonstration of live preview with different device screen sizes in Kirby Panel
     features:
       - name: Device Screen Sizes
         description: Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
