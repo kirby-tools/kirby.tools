@@ -22,6 +22,7 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
+  ogImage: "/social-card-seo-audit.png",
 });
 </script>
 
