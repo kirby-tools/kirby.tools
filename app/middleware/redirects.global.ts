@@ -1,3 +1,5 @@
+import { joinURL } from "ufo";
+
 const DOMAIN_REDIRECTS = {
   "kirbycopilot.com": {
     basePath: "/copilot",
@@ -53,12 +55,12 @@ export default defineNuxtRouteMiddleware((to) => {
   } else if (pathname.startsWith("/docs/")) {
     // Extract the docs path after `/docs/`
     const docsPath = pathname.substring(5);
-    redirectPath = `/docs${redirectConfig.basePath}${docsPath}`;
+    redirectPath = joinURL("/docs", redirectConfig.basePath, docsPath);
   } else {
-    redirectPath = `${redirectConfig.basePath}${pathname}`;
+    redirectPath = joinURL(redirectConfig.basePath, pathname);
   }
 
-  return navigateTo(`https://kirby.tools${redirectPath}`, {
+  return navigateTo(joinURL("https://kirby.tools", redirectPath), {
     redirectCode: 301,
     external: true,
   });
