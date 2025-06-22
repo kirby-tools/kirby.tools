@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 import { PRODUCT_ITEMS } from "#shared/constants";
+import { withoutTrailingSlash } from "ufo";
 
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
@@ -11,7 +12,7 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
         {
           label: "Features",
           to: currentProduct.value.to,
-          active: route.path === currentProduct.value.to,
+          active: withoutTrailingSlash(route.path) === currentProduct.value.to,
         },
         {
           label: "Documentation",
