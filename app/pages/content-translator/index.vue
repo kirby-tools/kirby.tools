@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ["pricing-redirect"],
+});
+
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () =>
