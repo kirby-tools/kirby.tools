@@ -41,6 +41,9 @@ export default defineNuxtRouteMiddleware((to) => {
     }
   }
 
+  // Skip redirect if already on kirby.tools
+  if (hostname === "kirby.tools") return;
+
   // Check if hostname needs redirect
   const redirectConfig =
     DOMAIN_REDIRECTS[hostname as keyof typeof DOMAIN_REDIRECTS];
