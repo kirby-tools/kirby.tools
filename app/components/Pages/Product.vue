@@ -75,50 +75,71 @@ onMounted(() => {
 
     <slot name="sections-cta" />
 
-    <UPageSection
-      v-for="(section, index) of page.sections"
-      :id="section.slot"
-      :key="index"
-      :links="section.links"
-      :orientation="section.orientation"
-      :reverse="section.reverse"
-      :ui="{
-        container:
-          SECTION_SLOT_WIDTHS[section.slot!] ?? 'max-w-(--ui-container)',
-      }"
-    >
-      <template v-if="section.title" #title>
-        <span v-html="section.title" />
-      </template>
-
-      <template v-if="section.description" #description>
-        <span v-html="section.description" />
-      </template>
-
-      <UPageGrid v-if="section.slot === 'features'">
-        <UPageCard
-          v-for="(item, itemIndex) in section.features"
-          :key="itemIndex"
-          v-bind="item"
-          variant="soft"
-          :orientation="item.orientation"
-        >
-          <UColorModeImage
-            v-if="item.image"
-            :light="`${item.image.src}-light.svg`"
-            :dark="`${item.image.src}-dark.svg`"
-            :width="item.image.width"
-            :height="item.image.height"
-            :alt="section.title"
-            class="w-full object-cover"
-          />
-        </UPageCard>
-      </UPageGrid>
-      <ElementVideo
-        v-else-if="section.slot === 'video'"
-        v-bind="section.video"
+    <template v-for="(section, index) of page.sections" :key="index">
+      <USeparator
+        v-if="section.slot === 'features'"
+        :ui="{ border: 'border-(--ui-primary)/25' }"
       />
-    </UPageSection>
+
+      <UPageSection
+        :id="section.slot"
+        :links="section.links"
+        :orientation="section.orientation"
+        :reverse="section.reverse"
+        :class="[section.slot === 'features' && 'relative overflow-hidden']"
+        :ui="{
+          container:
+            SECTION_SLOT_WIDTHS[section.slot!] ?? 'max-w-(--ui-container)',
+        }"
+      >
+        <div
+          v-if="section.slot === 'features'"
+          class="absolute top-10 -left-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-10 blur-[200px]"
+        />
+        <div
+          v-if="section.slot === 'features'"
+          class="absolute -right-10 -bottom-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-10 blur-[200px]"
+        />
+
+        <template v-if="section.title" #title>
+          <span v-html="section.title" />
+        </template>
+
+        <template v-if="section.description" #description>
+          <span v-html="section.description" />
+        </template>
+
+        <UPageGrid v-if="section.slot === 'features'">
+          <UPageCard
+            v-for="(item, itemIndex) in section.features"
+            :key="itemIndex"
+            v-bind="item"
+            variant="soft"
+            :orientation="item.orientation"
+          >
+            <UColorModeImage
+              v-if="item.image"
+              :light="item.image.src"
+              :dark="item.image.src"
+              :width="item.image.width"
+              :height="item.image.height"
+              :alt="item.image.alt || undefined"
+              class="w-full object-contain"
+              :class="item.image.class"
+            />
+          </UPageCard>
+        </UPageGrid>
+        <ElementVideo
+          v-else-if="section.slot === 'video'"
+          v-bind="section.video"
+        />
+      </UPageSection>
+
+      <USeparator
+        v-if="section.slot === 'features'"
+        :ui="{ border: 'border-(--ui-primary)/25' }"
+      />
+    </template>
 
     <UPageCTA v-bind="page.cta" variant="subtle" class="rounded-none">
       <template v-if="page.cta.title" #title>

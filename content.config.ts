@@ -129,6 +129,8 @@ export default defineContentConfig({
                     src: z.string().nonempty(),
                     width: z.string().nonempty(),
                     height: z.string().nonempty(),
+                    alt: z.string().optional(),
+                    class: z.string().optional(),
                   })
                   .optional(),
               }),

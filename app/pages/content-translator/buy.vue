@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
+const { currentProduct } = useProduct();
 
 const { data: page } = await useAsyncData(route.path, () =>
   queryCollection("buy").path(route.path).first(),
@@ -21,6 +22,14 @@ useSeoMeta({
   ogTitle: `${title} – Kirby Tools`,
   description,
   ogDescription: description,
+});
+
+defineOgImageComponent("Default", {
+  headline: currentProduct.value?.label
+    ? `Kirby ${currentProduct.value.label}`
+    : "Kirby Tools",
+  title,
+  description,
 });
 </script>
 

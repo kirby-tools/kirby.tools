@@ -33,16 +33,18 @@ sections:
         description: Instruct the AI with a user prompt. Response formatting is handled by the default system prompt.
         icon: i-ri-edit-box-line
         to: /docs/copilot/configuration/system-prompt
+        orientation: horizontal
+        image:
+          src: /img/copilot-predefined-user-prompt.png
+          width: 1074
+          height: 594
+          alt: Kirby Copilot section preview
+          class: rounded-md bg-[#F0F0F0] px-3 py-2 border border-(--ui-border)
+        class: lg:col-span-2
       - title: Fields as Context
         description: Context is key for a meaningful AI response. Include content from other fields to provide more information.
-        orientation: horizontal
         icon: i-ri-braces-line
         to: /docs/copilot/usage/placeholders
-        image:
-          src: /img/seo-placeholders
-          width: 444
-          height: 160
-        class: lg:col-span-2
       - title: Multi-Model
         description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
         icon: i-ri-openai-line
