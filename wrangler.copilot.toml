@@ -1,10 +1,10 @@
-name = "kirby-tools"
+name = "kirbycopilot"
 main = "./.output/server/index.mjs"
 compatibility_date = "2025-06-01"
 compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
 
 routes = [
-  { pattern = "kirby.tools", custom_domain = true }
+  { pattern = "kirbycopilot.com", custom_domain = true }
 ]
 
 d1_databases = [

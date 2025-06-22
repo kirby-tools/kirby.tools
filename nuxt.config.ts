@@ -1,3 +1,7 @@
+import process from "node:process";
+
+const siteDomain = process.env.NUXT_SITE_DOMAIN || "kirby.tools";
+
 export default defineNuxtConfig({
   modules: [
     "@nuxt/image",
@@ -14,6 +18,12 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/main.css"],
+
+  runtimeConfig: {
+    public: {
+      siteDomain,
+    },
+  },
 
   icon: {
     customCollections: [
@@ -45,7 +55,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://kirby.tools",
+    url: `https://${siteDomain}`,
   },
 
   routeRules: {
@@ -55,16 +65,21 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    prerender: {
-      crawlLinks: false,
-      routes: [
-        // TODO: Let kirbycopilot.com and kirbyseo.com hit
-        // "/",
-        "/content-translator",
-        "/live-preview",
-        "/copilot",
-        "/seo-audit",
-      ],
-    },
+    prerender:
+      siteDomain === "kirby.tools"
+        ? {
+            crawlLinks: false,
+            routes: [
+              "/",
+              "/content-translator",
+              "/live-preview",
+              "/copilot",
+              "/seo-audit",
+            ],
+          }
+        : {
+            crawlLinks: false,
+            routes: [],
+          },
   },
 });
