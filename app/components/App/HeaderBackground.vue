@@ -1,10 +1,5 @@
 <template>
-  <svg
-    viewBox="0 0 1440 181"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="pointer-events-none"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 181" fill="none">
     <mask id="computed" fill="white">
       <path d="M0 0H1440V181H0V0Z" />
     </mask>
