@@ -22,7 +22,7 @@ const DOMAIN_REDIRECTS = {
 } as const;
 
 export default defineNuxtRouteMiddleware((to) => {
-  if (!import.meta.server) return;
+  if (!import.meta.server || import.meta.prerender) return;
 
   const event = useRequestEvent();
   if (!event) return;
