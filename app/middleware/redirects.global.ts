@@ -24,7 +24,14 @@ const DOMAIN_REDIRECTS = {
 export default defineNuxtRouteMiddleware((to) => {
   if (!import.meta.server) return;
 
-  const hostname = useRequestHeader("Host") || "";
+  const event = useRequestEvent()!;
+  const hostname = getRequestHost(event);
+  // eslint-disable-next-line no-console
+  console.log(hostname);
+  // eslint-disable-next-line no-console
+  console.log(to);
+  // eslint-disable-next-line no-console
+  console.log(Object.fromEntries(event.headers.entries()));
   const { path: pathname, hash } = to;
 
   // Handle new pricing page redirects
