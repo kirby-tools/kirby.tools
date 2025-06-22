@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { currentProduct } = useProduct();
+
 const title = "Playground";
 const description = "Try Kirby Copilot in the interactive Panel playground.";
 
@@ -10,6 +12,9 @@ useSeoMeta({
 });
 
 defineOgImageComponent("Default", {
+  headline: currentProduct.value?.label
+    ? `Kirby ${currentProduct.value.label}`
+    : "Kirby Tools",
   title,
   description,
 });

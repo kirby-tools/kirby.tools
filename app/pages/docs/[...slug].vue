@@ -34,6 +34,9 @@ useSeoMeta({
 });
 
 defineOgImageComponent("Default", {
+  headline: currentProduct.value?.label
+    ? `Kirby ${currentProduct.value.label}`
+    : "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
 });

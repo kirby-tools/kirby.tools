@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-const { currentProductId } = useProduct();
+const { currentProductId, currentProduct } = useProduct();
 
 const { data: page } = await useAsyncData(route.path, () =>
   queryCollection("changelog").path(route.path).first(),
@@ -37,6 +37,9 @@ useSeoMeta({
 });
 
 defineOgImageComponent("Default", {
+  headline: currentProduct.value?.label
+    ? `Kirby ${currentProduct.value.label}`
+    : "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
 });

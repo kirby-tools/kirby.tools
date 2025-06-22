@@ -5,7 +5,7 @@ const siteConfig = useSiteConfig();
 const route = useRoute();
 const colorMode = useColorMode();
 const color = computed(() =>
-  colorMode.value === "dark" ? "#171717" : "white",
+  colorMode.value === "dark" ? "#0c0a09" : "white",
 );
 const { currentProduct } = useProduct();
 
@@ -28,7 +28,12 @@ if (import.meta.server) {
     },
     link: [
       { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
-      { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
+      {
+        rel: "icon",
+        href: "/favicon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+      },
       {
         rel: "canonical",
         href: joinURL(siteConfig.url, route.path),
