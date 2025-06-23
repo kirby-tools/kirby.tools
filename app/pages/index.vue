@@ -35,6 +35,12 @@ useSeoMeta({
   description: page.value.seo?.description || page.value.description,
   ogDescription: page.value.seo?.description || page.value.description,
 });
+
+defineOgImageComponent("Default", {
+  headline: "Kirby Tools",
+  title: page.value.title,
+  description: page.value.description,
+});
 </script>
 
 <template>
