@@ -25,7 +25,7 @@ const ar = computed(() => Math.floor(Math.random() * 10) + 1);
     class="absolute top-0 left-[var(--x)] [aspect-ratio:1/var(--aspect-ratio)] [width:var(--width)] [background:var(--background)]"
     :initial="{
       x: '-50%',
-      y: '100cqmax',
+      y: '50cqmax',
     }"
     :animate="{
       x: '-50%',
