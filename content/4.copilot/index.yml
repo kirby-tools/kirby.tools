@@ -1,6 +1,6 @@
 title: Kirby Copilot – AI-Powered Content Generation for Kirby CMS
 description: Let AI generate blocks and text from your prompts right in the Kirby Panel.
-navigation.icon: i-ri-sparkling-fill
+navigation.icon: i-ri-sparkling-line
 hero:
   headline:
     label: "New: Copilot v2 with Toolbar Buttons"
