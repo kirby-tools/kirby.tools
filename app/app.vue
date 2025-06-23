@@ -12,7 +12,9 @@ const { currentProduct } = useProduct();
 
 const { data: navigation } = await useAsyncData("navigation", async () => {
   const result = await Promise.all([
-    queryCollectionNavigation("pages"),
+    queryCollectionNavigation("pages").then(
+      (data) => data.find((item) => item.path === "/docs")?.children ?? [],
+    ),
     queryCollectionNavigation("docs"),
   ]);
   return result.flat();
