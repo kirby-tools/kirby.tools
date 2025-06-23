@@ -23,18 +23,12 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
           label: "Buy",
           to: `${currentProduct.value.to}/buy`,
         },
-        ...(currentProduct.value.hasPlayground
+        ...(currentProduct.value.playground
           ? [
               {
                 label: "Playground",
-                to:
-                  currentProduct.value.to === "/live-preview"
-                    ? "https://play.kirby.tools"
-                    : `${currentProduct.value.to}/playground`,
-                target:
-                  currentProduct.value.to === "/live-preview"
-                    ? "_blank"
-                    : undefined,
+                to: currentProduct.value.playground,
+                target: "_blank",
               },
             ]
           : []),
