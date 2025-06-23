@@ -10,17 +10,25 @@ useSeoMeta({
   description: "Sorry, this page could not be found.",
 });
 
-const { data: navigation } = await useAsyncData(
-  "navigation",
-  () => queryCollectionNavigation("docs"),
-  {
-    transform: (data) =>
-      data.find((item) => item.path === "/docs")?.children || [],
-  },
-);
+const { data: navigation } = await useAsyncData("navigation", async () => {
+  const result = await Promise.all([
+    queryCollectionNavigation("pages").then(
+      (data) => data.find((item) => item.path === "/docs")?.children ?? [],
+    ),
+    queryCollectionNavigation("docs"),
+  ]);
+  return result.flat();
+});
+
 const { data: files } = useLazyAsyncData(
   "search",
-  () => queryCollectionSearchSections("docs"),
+  async () => {
+    const result = await Promise.all([
+      queryCollectionSearchSections("pages"),
+      queryCollectionSearchSections("docs"),
+    ]);
+    return result.flat();
+  },
   {
     server: false,
   },
@@ -44,7 +52,6 @@ const { data: files } = useLazyAsyncData(
     <ClientOnly>
       <LazyUContentSearch
         :files="files"
-        shortcut="meta_k"
         :navigation="navigation"
         :fuse="{ resultLimit: 42 }"
       />
