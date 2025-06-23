@@ -23,14 +23,14 @@ export const PRODUCT_ITEMS: ProductItem[] = [
   {
     label: "Copilot",
     to: "/copilot",
-    icon: "i-ri-sparkling-fill",
+    icon: "i-ri-sparkling-line",
     description: "AI-powered content generation",
     playground: "https://try.kirbycopilot.com",
   },
   {
     label: "SEO Audit",
     to: "/seo-audit",
-    icon: "i-ri-seo-fill",
+    icon: "i-ri-seo-line",
     description: "State-of-the-art SEO analysis",
     playground: "https://try.kirbyseo.com",
   },

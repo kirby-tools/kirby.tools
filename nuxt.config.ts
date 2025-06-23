@@ -50,9 +50,15 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { prerender: true },
+    "/copilot/playground": {
+      redirect: { to: "https://try.kirbycopilot.com", statusCode: 302 },
+    },
+    "/seo-audit/playground": {
+      redirect: { to: "https://try.kirbyseo.com", statusCode: 302 },
+    },
     "/docs": { redirect: "/" },
-    "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
+    "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
     "/docs/headless": { prerender: true },
   },
 
