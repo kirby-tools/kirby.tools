@@ -97,6 +97,7 @@ const { data: version } = await useAsyncData(
         v-if="!currentProduct"
         :collapsed="false"
         :kbds="[]"
+        variant="ghost"
         class="max-lg:hidden"
       />
       <UButton
