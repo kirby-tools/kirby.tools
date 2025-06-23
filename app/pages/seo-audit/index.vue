@@ -33,7 +33,11 @@ useSeoMeta({
 <template>
   <PagesProduct :page="page!">
     <template #sections-cta>
-      <UContainer>
+      <UPageSection
+        :ui="{
+          container: 'pt-0 sm:pt-0 lg:pt-0',
+        }"
+      >
         <UPageCTA
           variant="subtle"
           orientation="horizontal"
@@ -43,12 +47,12 @@ useSeoMeta({
           }"
         >
           <template #title>
-            <span class="text-(--ui-color-lima)">Never Slip</span> on SEO Again
+            <span class="text-(--ui-seoAudit)">Never Slip</span> on SEO Again
           </template>
 
           <IllustrationLuckyUnlucky12 class="mx-auto w-2/3" />
         </UPageCTA>
-      </UContainer>
+      </UPageSection>
     </template>
 
     <template #cta-image>
