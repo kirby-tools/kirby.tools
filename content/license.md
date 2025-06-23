@@ -4,7 +4,8 @@ navigation.icon: i-ri-shake-hands-line
 ---
 
 Published: 2024-03-03
-bLast updated: 2025-06-21
+
+Last updated: 2025-06-21
 
 ## About this License Agreement
 

@@ -49,9 +49,9 @@ useSeoMeta({
 
     <ElementWarpBackground :beam-duration="6">
       <UPageHero
-        class="bg-radial from-(--ui-bg) from-30%"
         :description="page.description"
         :links="page.hero.links"
+        class="bg-radial from-(--ui-bg) from-30%"
         :ui="{
           container: 'py-24 sm:py-24 lg:py-24',
         }"
