@@ -49,21 +49,16 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    "/": { prerender: true },
     "/docs": { redirect: "/" },
     "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
+    "/docs/headless": { prerender: true },
   },
 
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: [
-        "/",
-        "/content-translator",
-        "/live-preview",
-        "/copilot",
-        "/seo-audit",
-      ],
     },
   },
 });
