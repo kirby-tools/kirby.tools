@@ -57,6 +57,10 @@ export default defineNuxtConfig({
       redirect: { to: "https://try.kirbyseo.com", statusCode: 302 },
     },
     "/docs": { redirect: "/" },
+    "/docs/content-translator/changelog": {
+      redirect: "/content-translator/changelog",
+    },
+    "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
     "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
     "/docs/headless": { prerender: true },

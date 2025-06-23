@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: All of the changes to the Kirby Copilot plugin.
+description: All of the changes to the Kirby Content Translator plugin.
 navigation.icon: i-ri-code-s-slash-line
 ---
 

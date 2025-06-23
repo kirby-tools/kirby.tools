@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: All of the changes to the Kirby SEO Audit plugin are listed here.
+description: All of the changes to the Kirby SEO Audit plugin.
 navigation.icon: i-ri-code-s-slash-line
 ---
 
