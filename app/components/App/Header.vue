@@ -99,20 +99,26 @@ const { data: version } = await useAsyncData(
     </template>
 
     <template #right>
+      <UContentSearchButton
+        v-if="!currentProduct"
+        :collapsed="false"
+        :kbds="[]"
+        class="max-lg:hidden"
+      />
       <UButton
         v-if="currentProduct && version"
         :label="version.title"
         color="neutral"
         variant="ghost"
         :to="`${currentProduct.to}/changelog`"
-        class="hidden lg:inline-flex"
+        class="max-lg:hidden"
       />
       <UButton
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
         to="https://hub.kirby.tools"
         target="_blank"
-        class="hidden lg:inline-flex"
+        class="max-lg:hidden"
       />
     </template>
 
@@ -127,6 +133,12 @@ const { data: version } = await useAsyncData(
 
       <USeparator class="my-6" />
 
+      <UContentSearchButton
+        v-if="!currentProduct"
+        :collapsed="false"
+        :kbds="[]"
+        class="mb-3 w-full"
+      />
       <UButton
         v-if="route.path !== '/' && currentProduct"
         label="Buy"

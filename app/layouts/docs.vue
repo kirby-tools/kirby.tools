@@ -2,7 +2,7 @@
 const { currentProductId } = useProduct();
 
 const { data: navigation } = await useAsyncData(
-  () => `navigation-${currentProductId.value}`,
+  () => `${currentProductId.value}-navigation`,
   async () => {
     const navigation = await queryCollectionNavigation("docs");
     const docsItems = navigation?.[0]?.children;

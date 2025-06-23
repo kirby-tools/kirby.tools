@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { PRODUCT_ITEMS } from "#shared/constants";
 import { joinURL } from "ufo";
 
 const siteConfig = useSiteConfig();
@@ -9,13 +10,23 @@ const color = computed(() =>
 );
 const { currentProduct } = useProduct();
 
-const { data: navigation } = await useAsyncData("navigation", () =>
-  queryCollectionNavigation("docs"),
-);
+const { data: navigation } = await useAsyncData("navigation", async () => {
+  const result = await Promise.all([
+    queryCollectionNavigation("pages"),
+    queryCollectionNavigation("docs"),
+  ]);
+  return result.flat();
+});
 
 const { data: files } = useLazyAsyncData(
   "search",
-  () => queryCollectionSearchSections("docs"),
+  async () => {
+    const result = await Promise.all([
+      queryCollectionSearchSections("pages"),
+      queryCollectionSearchSections("docs"),
+    ]);
+    return result.flat();
+  },
   {
     server: false,
   },
@@ -59,8 +70,8 @@ useSeoMeta({
     <ClientOnly>
       <LazyUContentSearch
         :files="files"
-        shortcut="meta_k"
         :navigation="navigation"
+        :link="PRODUCT_ITEMS"
         :fuse="{ resultLimit: 42 }"
       />
     </ClientOnly>

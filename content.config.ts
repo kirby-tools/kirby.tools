@@ -97,7 +97,7 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**",
-        exclude: ["index.yml"],
+        exclude: ["index.yml", "**/changelog/**"],
       },
       schema: createBaseSchema(),
     }),
