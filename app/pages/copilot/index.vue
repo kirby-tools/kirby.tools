@@ -32,6 +32,10 @@ useSeoMeta({
 
 <template>
   <PagesProduct :page="page!">
+    <template #hero-title>
+      <span class="font-display" v-html="page!.hero.title" />
+    </template>
+
     <template #hero>
       <div
         class="absolute inset-0 z-[-1] flex items-start justify-center overflow-hidden"

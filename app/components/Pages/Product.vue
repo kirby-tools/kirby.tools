@@ -61,7 +61,9 @@ onMounted(() => {
       </template>
 
       <template v-if="page.hero.title" #title>
-        <span v-html="page.hero.title" />
+        <slot name="hero-title">
+          <span v-html="page.hero.title" />
+        </slot>
       </template>
 
       <template v-if="page.hero.description" #description>

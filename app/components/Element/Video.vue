@@ -77,7 +77,7 @@ function handleKeydown(event: KeyboardEvent) {
       v-show="!isPlaying"
       class="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-gradient-to-b from-gray-950/50 to-20%"
     >
-      <div class="inline-flex rounded-full bg-(--ui-bg)/75 shadow-md">
+      <div class="inline-flex rounded-full bg-white/75 shadow-md">
         <UIcon
           name="i-ri-play-circle-fill"
           class="size-14 text-(--ui-secondary) group-hover:text-(--ui-color-secondary-600) lg:size-22 dark:group-hover:text-(--ui-color-secondary-500)"

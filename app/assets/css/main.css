@@ -5,7 +5,7 @@
 
 @theme static {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif, serif", ui-serif, serif;
+  --font-display: "Instrument Serif", ui-serif, serif;
 
   --color-danube: oklch(66.267% 0.09419 250.8);
   --color-danube-50: oklch(96.509% 0.00966 252.81);
