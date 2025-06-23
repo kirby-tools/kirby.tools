@@ -18,11 +18,6 @@ hero:
     src: /vid/kirby-live-preview-responsive-demo.mp4
     poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
 sections:
-  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in a <span class="text-primary">New Tab</span>
-    slot: video
-    video:
-      src: /vid/kirby-live-preview-devices.mp4
-      poster: /vid/kirby-live-preview-devices-poster-start.jpg
   - title: <span class="text-primary">Feature-Complete</span><br> Page Previews
     slot: features
     features:
@@ -38,6 +33,11 @@ sections:
         description: Choose from a variety of device screen sizes to see how your content will look on mobile (390w), tablet (768w), and desktop (1440w).
         icon: i-ri-device-line
         to: /docs/live-preview#step-2-blueprint-setup
+  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in a <span class="text-primary">New Tab</span>
+    slot: video
+    video:
+      src: /vid/kirby-live-preview-devices.mp4
+      poster: /vid/kirby-live-preview-devices-poster-start.jpg
 cta:
   title: Not Convinced?
   description: Give it a try and feel the breeze of a real-time preview in the Panel. All eyes on your content!
