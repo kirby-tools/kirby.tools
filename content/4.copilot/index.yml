@@ -11,9 +11,9 @@ hero:
   title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
   description: Kirby Copilot is your everyday AI companion for the Kirby Panel.<br class="hidden lg:block"> It helps you to create content faster and more efficiently.
   links:
-    - label: Experience AI in the Panel
+    - label: Try Copilot Yourself
       trailingIcon: i-ri-arrow-right-line
-      to: /copilot/playground
+      to: /docs/copilot/getting-started/installation
       size: xl
 sections:
   - title: Toolbar Buttons for<br> <span class="text-primary">Writer & Textarea Fields</span>
@@ -53,7 +53,8 @@ sections:
       - title: Blocks, Writer & Text Fields
         description: Generate blocks, text, and even writer fields directly in the Panel with the new toolbar buttons.
         icon: i-ri-dashboard-line
-        to: /copilot/playground
+        to: https://try.kirbycopilot.com
+        target: _blank
   - title: Generate Blocks<br> <span class="text-primary">Directly in the Panel</span>
     slot: video
     video:
