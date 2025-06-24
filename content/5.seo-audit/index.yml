@@ -14,7 +14,8 @@ hero:
   links:
     - label: Generate Your SEO Report
       trailingIcon: i-ri-arrow-right-line
-      to: /seo-audit/playground
+      to: https://try.kirbyseo.com
+      target: _blank
       size: xl
   video:
     src: /vid/kirby-seo-audit-demo.mp4
@@ -38,12 +39,14 @@ sections:
         to: /docs/seo-audit/get-started/configuration#assessments
       - title: Privacy First
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
-        to: /seo-audit/playground
+        to: https://try.kirbyseo.com
+        target: _blank
         icon: i-ri-file-lock-line
       - title: Translations
         description: The report is generated in English, German, or Dutch, depending on the Panel language. Do you need another language? Let us know!
         icon: i-ri-earth-line
-        to: /seo-audit/playground
+        to: https://try.kirbyseo.com
+        target: _blank
         class: lg:col-span-2
 cta:
   title: Watch Your Rankings Grow
@@ -52,6 +55,6 @@ cta:
   links:
     - label: Analyze Your Page
       trailingIcon: i-ri-arrow-right-line
-      to: /seo-audit/playground
+      to: /docs/seo-audit/get-started
       variant: subtle
       size: xl
