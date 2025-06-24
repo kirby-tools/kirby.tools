@@ -17,6 +17,37 @@ hero:
       color: neutral
       variant: ghost
       size: xl
+testimonials:
+  title: Trusted by Companies Worldwide
+  items:
+    - brand: KATAPULT Magazin
+      logo: /img/testimonials/katapult-magazin.svg
+      website: https://katapult-magazin.de
+      usage: Kirby Punctuation Section
+    - brand: Burrito Company
+      logo: /img/testimonials/burrito-company.svg
+      website: https://www.burrito-company.de
+      usage: Kirby Live Preview
+    - brand: Verlage gegen Rechts
+      logo: /img/testimonials/verlage-gegen-rechts.svg
+      website: https://verlagegegenrechts.de
+      usage: Kirby Punctuation Section
+    - brand: University of South-Eastern Norway
+      logo: /img/testimonials/university-of-south-eastern-norway.svg
+      website: https://www.usn.no/english/
+      usage: Kirby Content Translator
+    - brand: KEGGENHOFF | PARTNER
+      logo: /img/testimonials/keggenhoff-partner.svg
+      website: https://keggenhoff.de
+      usage: Kirby Content Translator
+    - brand: Friedrich-Ebert-Stiftung e.V.
+      logo: /img/testimonials/friedrich-ebert-stiftung-ev.svg
+      website: https://www.fes.de
+      usage: Kirby Content Translator
+    - brand: Dead Stock
+      logo: /img/testimonials/deadstock.svg
+      website: https://deadstock.de
+      usage: Kirby Content Translator
 sections:
   - title: Kirby Content Translator
     id: content-translator
