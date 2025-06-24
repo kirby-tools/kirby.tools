@@ -1,10 +1,12 @@
+import { withoutTrailingSlash } from "ufo";
+
 export default defineNuxtRouteMiddleware((to) => {
-  if (to.hash === "#pricing") {
-    if (to.path === "/live-preview") {
+  if (import.meta.client && to.hash === "#pricing") {
+    if (withoutTrailingSlash(to.path) === "/live-preview") {
       return navigateTo("/live-preview/buy", { redirectCode: 301 });
     }
 
-    if (to.path === "/content-translator") {
+    if (withoutTrailingSlash(to.path) === "/content-translator") {
       return navigateTo("/content-translator/buy", { redirectCode: 301 });
     }
   }
