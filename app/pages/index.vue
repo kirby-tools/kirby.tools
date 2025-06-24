@@ -98,6 +98,28 @@ defineOgImageComponent("Default", {
     <div id="products" />
 
     <UPageSection
+      :title="page.testimonials.title"
+      :description="page.testimonials.description"
+    >
+      <UContainer>
+        <UPageMarquee pause-on-hover>
+          <UTooltip
+            v-for="(testimonial, index) in page.testimonials.items"
+            :key="index"
+            :text="testimonial.brand"
+            :delay-duration="100"
+          >
+            <img
+              :src="testimonial.logo"
+              :alt="`Logo for ${testimonial.brand}`"
+              class="h-10 w-auto shrink-0"
+            />
+          </UTooltip>
+        </UPageMarquee>
+      </UContainer>
+    </UPageSection>
+
+    <UPageSection
       v-for="(section, index) in page.sections"
       :id="section.id"
       :key="index"

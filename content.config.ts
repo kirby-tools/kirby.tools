@@ -68,6 +68,16 @@ export default defineContentConfig({
           headline: createBadgeSchema(),
           links: z.array(createLinkSchema()),
         }),
+        testimonials: createBaseSchema().extend({
+          items: z.array(
+            z.object({
+              brand: z.string().nonempty(),
+              logo: z.string().nonempty(),
+              website: z.string().optional(),
+              usage: z.string().optional(),
+            }),
+          ),
+        }),
         sections: z.array(
           createBaseSchema().extend({
             id: z.string().nonempty(),
