@@ -109,7 +109,15 @@ defineOgImageComponent("Default", {
             :text="testimonial.brand"
             :delay-duration="100"
           >
+            <UColorModeImage
+              v-if="isObject(testimonial.logo)"
+              :light="testimonial.logo.light"
+              :dark="testimonial.logo.dark"
+              :alt="`Logo for ${testimonial.brand}`"
+              class="h-10 w-auto shrink-0"
+            />
             <img
+              v-else
               :src="testimonial.logo"
               :alt="`Logo for ${testimonial.brand}`"
               class="h-10 w-auto shrink-0"
