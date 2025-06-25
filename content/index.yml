@@ -21,31 +21,49 @@ testimonials:
   title: Trusted by Companies Worldwide
   items:
     - brand: KATAPULT Magazin
-      logo: /img/testimonials/katapult-magazin.svg
+      logo:
+        light: /img/brands/katapult-magazin-light.svg
+        dark: /img/brands/katapult-magazin-dark.svg
       website: https://katapult-magazin.de
       usage: Kirby Punctuation Section
     - brand: Burrito Company
-      logo: /img/testimonials/burrito-company.svg
+      logo:
+        light: /img/brands/burrito-company-light.svg
+        dark: /img/brands/burrito-company-dark.svg
       website: https://www.burrito-company.de
       usage: Kirby Live Preview
-    - brand: Verlage gegen Rechts
-      logo: /img/testimonials/verlage-gegen-rechts.svg
-      website: https://verlagegegenrechts.de
-      usage: Kirby Punctuation Section
+    - brand: BÜNDNIS 90/DIE GRÜNEN Kreisverband Pankow
+      logo:
+        light: /img/brands/buendnis-90-die-gruenen-kreisverband-pankow-light.png
+        dark: /img/brands/buendnis-90-die-gruenen-kreisverband-pankow-dark.png
+      website: https://gruene-pankow.de
+      usage: Kirby Content Translator
     - brand: University of South-Eastern Norway
-      logo: /img/testimonials/university-of-south-eastern-norway.svg
+      logo:
+        light: /img/brands/university-of-south-eastern-norway-light.svg
+        dark: /img/brands/university-of-south-eastern-norway-dark.svg
       website: https://www.usn.no/english/
       usage: Kirby Content Translator
     - brand: KEGGENHOFF | PARTNER
-      logo: /img/testimonials/keggenhoff-partner.svg
+      logo:
+        light: /img/brands/keggenhoff-partner-light.svg
+        dark: /img/brands/keggenhoff-partner-dark.svg
       website: https://keggenhoff.de
       usage: Kirby Content Translator
     - brand: Friedrich-Ebert-Stiftung e.V.
-      logo: /img/testimonials/friedrich-ebert-stiftung-ev.svg
+      logo: /img/brands/friedrich-ebert-stiftung-ev.svg
       website: https://www.fes.de
       usage: Kirby Content Translator
+    - brand: Verlage gegen Rechts
+      logo:
+        light: /img/brands/verlage-gegen-rechts-light.svg
+        dark: /img/brands/verlage-gegen-rechts-dark.svg
+      website: https://verlagegegenrechts.de
+      usage: Kirby Punctuation Section
     - brand: Dead Stock
-      logo: /img/testimonials/deadstock.svg
+      logo:
+        light: /img/brands/deadstock-light.svg
+        dark: /img/brands/deadstock-dark.svg
       website: https://deadstock.de
       usage: Kirby Content Translator
 sections:

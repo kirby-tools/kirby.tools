@@ -72,7 +72,13 @@ export default defineContentConfig({
           items: z.array(
             z.object({
               brand: z.string().nonempty(),
-              logo: z.string().nonempty(),
+              logo: z.union([
+                z.string().nonempty(),
+                z.object({
+                  light: z.string().nonempty(),
+                  dark: z.string().nonempty(),
+                }),
+              ]),
               website: z.string().optional(),
               usage: z.string().optional(),
             }),
