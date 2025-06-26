@@ -60,7 +60,8 @@ if (import.meta.server) {
 
 useSeoMeta({
   themeColor: color,
-  titleTemplate: `%s – ${currentProduct.value?.label ? `Kirby ${currentProduct.value.label}` : "Kirby Tools"}`,
+  titleTemplate: () =>
+    `%s – ${currentProduct.value?.label ? `Kirby ${currentProduct.value.label}` : "Kirby Tools"}`,
   ogSiteName: "Kirby Tools",
   twitterCard: "summary_large_image",
 });
