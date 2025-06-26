@@ -6,7 +6,7 @@ export default defineAppConfig({
       neutral: "stone",
       // Custom colors for products
       copilot: "orchid",
-      seoAudit: "lima",
+      seo: "lima",
     },
     icons: {
       caution: "i-ri-alert-line",

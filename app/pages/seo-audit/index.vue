@@ -47,7 +47,7 @@ useSeoMeta({
           }"
         >
           <template #title>
-            <span class="text-(--ui-seoAudit)">Never Slip</span> on SEO Again
+            <span class="text-(--ui-seo)">Never Slip</span> on SEO Again
           </template>
 
           <IllustrationLuckyUnlucky12 class="mx-auto w-2/3" />

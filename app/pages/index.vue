@@ -100,6 +100,7 @@ defineOgImageComponent("Default", {
     <UPageSection
       :title="page.testimonials.title"
       :description="page.testimonials.description"
+      class="overflow-hidden"
     >
       <UContainer>
         <UPageMarquee pause-on-hover>
