@@ -9,6 +9,7 @@ const color = computed(() =>
   colorMode.value === "dark" ? "#0c0a09" : "white",
 );
 const { currentProduct } = useProduct();
+const { getThemeColorFromPath, createFaviconDataUri } = useDynamicTheme();
 
 const { data: navigation } = await useAsyncData("navigation", async () => {
   const result = await Promise.all([
@@ -35,6 +36,8 @@ const { data: files } = useLazyAsyncData(
 );
 
 if (import.meta.server) {
+  const themeColor = getThemeColorFromPath(route.path);
+
   useHead({
     htmlAttrs: {
       lang: "en",
@@ -43,7 +46,7 @@ if (import.meta.server) {
       { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
       {
         rel: "icon",
-        href: "/favicon.svg",
+        href: createFaviconDataUri(themeColor),
         sizes: "any",
         type: "image/svg+xml",
       },
