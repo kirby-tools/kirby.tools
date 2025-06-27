@@ -4,6 +4,7 @@ interface ProductItem {
   icon: string;
   description: string;
   playground?: string;
+  paid?: boolean;
 }
 
 export const PRODUCT_ITEMS: ProductItem[] = [
@@ -11,7 +12,8 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     label: "Content Translator",
     to: "/content-translator",
     icon: "i-ri-translate",
-    description: "Content translation in the Panel or server-side",
+    description: "Content translation in the Panel or via CLI",
+    paid: true,
   },
   {
     label: "Live Preview",
@@ -19,6 +21,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     icon: "i-ri-picture-in-picture-line",
     description: "Real-time page preview",
     playground: "https://play.kirby.tools",
+    paid: true,
   },
   {
     label: "Copilot",
@@ -26,6 +29,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     icon: "i-ri-sparkling-line",
     description: "AI-powered content generation",
     playground: "https://try.kirbycopilot.com",
+    paid: true,
   },
   {
     label: "SEO Audit",
@@ -33,5 +37,12 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     icon: "i-ri-seo-line",
     description: "State-of-the-art SEO analysis",
     playground: "https://try.kirbyseo.com",
+    paid: true,
+  },
+  {
+    label: "Minimap",
+    to: "/minimap",
+    icon: "i-ri-timeline-view",
+    description: "Sidebar content navigation",
   },
 ];

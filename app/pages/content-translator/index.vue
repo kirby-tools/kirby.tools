@@ -37,7 +37,7 @@ useSeoMeta({
 <template>
   <PagesProduct :page="page!">
     <template #cta-image>
-      <IllustrationPartnershapes7 class="mx-auto w-1/2" />
+      <IllustrationPartnershapes7 class="w-1/3 max-lg:mt-4 lg:mx-auto" />
     </template>
   </PagesProduct>
 </template>

@@ -50,13 +50,15 @@ useSeoMeta({
             <span class="text-(--ui-seo)">Never Slip</span> on SEO Again
           </template>
 
-          <IllustrationLuckyUnlucky12 class="mx-auto w-2/3" />
+          <IllustrationLuckyUnlucky12 class="mx-auto w-1/2 lg:w-2/3" />
         </UPageCTA>
       </UPageSection>
     </template>
 
     <template #cta-image>
-      <IllustrationLuckyUnlucky6 class="mx-auto w-1/3" />
+      <IllustrationLuckyUnlucky6
+        class="w-1/4 max-lg:mt-4 lg:mx-auto lg:w-1/3"
+      />
     </template>
   </PagesProduct>
 </template>

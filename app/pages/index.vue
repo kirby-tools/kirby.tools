@@ -144,6 +144,28 @@ defineOgImageComponent("Default", {
         title: 'hover:underline',
       }"
     >
+      <template #headline>
+        <UBadge
+          v-if="section.headline"
+          :as="NuxtLink"
+          :label="section.headline.label"
+          :icon="
+            isObject(section.headline.icon)
+              ? section.headline.icon.name
+              : section.headline.icon
+          "
+          :to="section.headline.to"
+          :color="section.headline.color"
+          :variant="section.headline.variant ?? 'subtle'"
+          class="rounded-full"
+          :ui="{
+            leadingIcon: isObject(section.headline.icon)
+              ? section.headline.icon.class
+              : undefined,
+          }"
+        />
+      </template>
+
       <template #title>
         <NuxtLink v-if="section.to" :to="section.to">
           <span class="absolute inset-0 z-10" />

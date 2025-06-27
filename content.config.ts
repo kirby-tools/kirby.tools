@@ -88,6 +88,7 @@ export default defineContentConfig({
           createBaseSchema().extend({
             id: z.string().nonempty(),
             to: z.string().nonempty(),
+            headline: createBadgeSchema(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
             video: createVideoSchema(),
@@ -128,8 +129,8 @@ export default defineContentConfig({
       schema: createBaseSchema().extend({
         orientation: orientationEnum.optional(),
         hero: createBaseSchema().extend({
-          orientation: orientationEnum.optional(),
           headline: createBadgeSchema(),
+          orientation: orientationEnum.optional(),
           links: z.array(createLinkSchema()),
           video: createVideoSchema(),
         }),
