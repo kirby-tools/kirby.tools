@@ -19,10 +19,14 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
           to: `/docs${currentProduct.value.to}`,
           active: route.path.startsWith(`/docs${currentProduct.value.to}`),
         },
-        {
-          label: "Buy",
-          to: `${currentProduct.value.to}/buy`,
-        },
+        ...(currentProduct.value.paid
+          ? [
+              {
+                label: "Buy",
+                to: `${currentProduct.value.to}/buy`,
+              },
+            ]
+          : []),
         ...(currentProduct.value.playground
           ? [
               {

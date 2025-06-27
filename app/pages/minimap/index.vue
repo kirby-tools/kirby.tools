@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
 
-definePageMeta({
-  middleware: ["pricing-redirect"],
-});
-
 const route = useRoute();
 
 const { data: page } = await useAsyncData(
@@ -30,15 +26,14 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-  ogImage: "/social-card-live-preview.png",
 });
 </script>
 
 <template>
   <PagesProduct :page="page!">
     <template #cta-image>
-      <IllustrationPartnershapes20
-        class="w-1/3 max-lg:mt-4 lg:mx-auto lg:w-1/2"
+      <IllustrationPartnershapes9
+        class="w-1/4 max-lg:mt-4 lg:mx-auto lg:w-2/5"
       />
     </template>
   </PagesProduct>

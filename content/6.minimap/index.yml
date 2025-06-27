@@ -1,0 +1,45 @@
+title: Kirby Minimap – Sidebar Content Navigation for the Kirby Panel
+description: A structured list of all fields and blocks of the current Panel tab.
+navigation.icon: i-ri-timeline-view
+hero:
+  orientation: horizontal
+  headline:
+    label: Free Plugin
+    icon: i-ri-gift-line
+  title: '<span class="text-primary">Sidebar Content</span><br> Navigation'
+  description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
+  links:
+    - label: Install in Your Project
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/minimap
+      size: xl
+  video:
+    src: /vid/kirby-minimap-screencast.mp4
+    poster: /vid/kirby-minimap-screencast-poster.jpg
+    title: Minimap Overview Demo
+    ariaLabel: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
+sections:
+  - title: Minimap <span class="text-primary">Features</span>
+    slot: features
+    features:
+      - title: Field Navigation
+        description: Click on any field or block to scroll to that position in the content editor.
+        icon: i-ri-cursor-line
+        to: /docs/minimap
+      - title: Block Preview
+        description: For block fields, the minimap shows each block with its type icon and content preview.
+        icon: i-ri-layout-grid-line
+        to: /docs/minimap
+      - title: Automatic Highlighting
+        description: The minimap automatically highlights your current position as you scroll through the Panel view.
+        icon: i-ri-focus-3-line
+        to: /docs/minimap
+cta:
+  title: You Don’t Have to Pay a Cent.
+  description: Install the Minimap plugin for free to enhance your Kirby Panel experience.
+  orientation: horizontal
+  links:
+    - label: Get Started
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/minimap
+      size: xl

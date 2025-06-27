@@ -81,7 +81,7 @@ const columns: FooterColumn[] = [
         <UFooterColumns :columns="columns">
           <template #right>
             <h3 class="text-sm font-semibold">About</h3>
-            <p class="mt-6 text-sm">
+            <p class="mt-6 text-sm leading-relaxed">
               Kirby Tools is not affiliated with the developers of Kirby CMS.
               Having said that, we love Kirby. Our plugins wouldn't exist
               without it. 🧡

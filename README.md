@@ -10,7 +10,7 @@ Your everyday AI companion for the Kirby Panel. Generate content, blocks, and te
 
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
 
-Translate your content with DeepL, in the Panel or via CLI commands. Supports all field types with one-click translation and batch processing capabilities.
+Content translation with DeepL – in the Panel or via CLI commands. Supports all field types with one-click translation and batch processing capabilities.
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 

@@ -1,5 +1,5 @@
 title: Content Translator – The Holistic Translation Workflow
-description: Translate your content with DeepL, in the Panel or via CLI commands.
+description: Content translation with DeepL – in the Panel or via CLI commands.
 navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
@@ -8,7 +8,7 @@ hero:
     to: /docs/content-translator#view-button
     icon: i-ri-global-fill
   title: 'The <span class="text-primary">Holistic</span><br> Translation Workflow'
-  description: Translate your content with DeepL, in the Panel or via CLI commands. One page at the time or all at once.
+  description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
   links:
     - label: Start Translating Now
       trailingIcon: i-ri-arrow-right-line

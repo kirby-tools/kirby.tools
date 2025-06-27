@@ -70,7 +70,7 @@ sections:
   - title: Kirby Content Translator
     id: content-translator
     to: /content-translator
-    description: Translate your content with DeepL, in the Panel or via CLI commands. One page at the time or all at once.
+    description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
     video:
       src: /vid/kirby-content-translator-view-buttons.mp4
       poster: /vid/kirby-content-translator-view-buttons-poster.jpg
@@ -146,9 +146,32 @@ sections:
       - name: Real-Time Preview
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
+  - title: Kirby Minimap
+    id: minimap
+    to: /minimap
+    headline:
+      label: Free Plugin
+      icon: i-ri-gift-line
+      variant: soft
+    description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
+    video:
+      src: /vid/kirby-minimap-screencast.mp4
+      poster: /vid/kirby-minimap-screencast-poster.jpg
+      title: Minimap Overview Demo
+      ariaLabel: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
+    features:
+      - name: Field Navigation
+        description: Click on any field or block to scroll to that position in the content editor.
+        icon: i-ri-cursor-line
+      - name: Block Preview
+        description: For block fields, the minimap shows each block with its type icon and content preview.
+        icon: i-ri-layout-grid-line
+      - name: Automatic Highlighting
+        description: The minimap automatically highlights your current position as you scroll through the Panel view.
+        icon: i-ri-focus-3-line
 cta:
   title: Custom Plugin Development
-  description: "Need something specific? We build custom Kirby plugins tailored to your needs, ensuring seamless integration with your existing workflow."
+  description: Need something specific? We are experienced with Kirby plugins, especially Panel plugins. We can tailor new plugins to your needs. Just drop us a line!
   links:
     - label: Get in Touch
       trailingIcon: i-ri-arrow-right-line

@@ -64,8 +64,8 @@ defineOgImageComponent("Default", {
       <UContentSurround :surround="surround" />
     </UPageBody>
 
-    <template v-if="page.body?.toc?.links?.length" #right>
-      <UContentToc :links="page.body.toc.links" />
+    <template #right>
+      <UContentToc :links="page.body?.toc?.links" />
     </template>
   </UPage>
 </template>
