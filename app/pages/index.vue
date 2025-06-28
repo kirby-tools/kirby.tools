@@ -74,7 +74,7 @@ defineOgImageComponent("Default", {
             "
             :to="page.hero.headline.to"
             :color="page.hero.headline.color"
-            :variant="page.hero.headline.variant ?? 'subtle'"
+            :variant="page.hero.headline.variant || 'subtle'"
             class="rounded-full"
             :ui="{
               leadingIcon: isObject(page.hero.headline.icon)
@@ -128,58 +128,73 @@ defineOgImageComponent("Default", {
       </UContainer>
     </UPageSection>
 
-    <UPageSection
-      v-for="(section, index) in page.sections"
-      :id="section.id"
-      :key="index"
-      :title="section.title"
-      :description="section.description"
-      :features="section.features"
-      orientation="horizontal"
-      :reverse="section.reverse"
-      :ui="{
-        root: 'py-16 sm:py-24 lg:py-24',
-        container:
-          'rounded-lg py-8 transition-[background-color] hover:bg-(--ui-bg-elevated) sm:py-8 lg:py-8 dark:hover:bg-(--ui-bg-elevated)/50 [&>:first-child]:relative',
-        title: 'hover:underline',
-      }"
-    >
-      <template #headline>
-        <UBadge
-          v-if="section.headline"
-          :as="NuxtLink"
-          :label="section.headline.label"
-          :icon="
-            isObject(section.headline.icon)
-              ? section.headline.icon.name
-              : section.headline.icon
-          "
-          :to="section.headline.to"
-          :color="section.headline.color"
-          :variant="section.headline.variant ?? 'subtle'"
-          class="rounded-full"
-          :ui="{
-            leadingIcon: isObject(section.headline.icon)
-              ? section.headline.icon.class
-              : undefined,
-          }"
-        />
-      </template>
+    <template v-for="type in ['commercial', 'free']" :key="type">
+      <UPageSection
+        v-if="type === 'free'"
+        icon="i-ri-gift-line"
+        title="Free Plugins"
+        description="Not all of our plugins are commercial. Some of them are free to use and can be used without any restrictions."
+        :ui="{
+          container: 'pb-0 sm:pb-0 lg:pb-0',
+          description: 'max-w-2xl mx-auto',
+        }"
+      />
 
-      <template #title>
-        <NuxtLink v-if="section.to" :to="section.to">
-          <span class="absolute inset-0 z-10" />
-          <span v-html="section.title" />
-        </NuxtLink>
-        <span v-else v-html="section.title" />
-      </template>
+      <UPageSection
+        v-for="(product, index) in page.products.filter(
+          (product) => product.type === type,
+        )"
+        :id="product.id"
+        :key="index"
+        :title="product.title"
+        :description="product.description"
+        :features="product.features"
+        orientation="horizontal"
+        :reverse="product.reverse"
+        :ui="{
+          root: 'py-16 sm:py-24 lg:py-24',
+          container:
+            'rounded-lg py-8 transition-[background-color] hover:bg-(--ui-bg-elevated) sm:py-8 lg:py-8 dark:hover:bg-(--ui-bg-elevated)/50 [&>:first-child]:relative',
+          title: 'hover:underline',
+        }"
+      >
+        <template #headline>
+          <UBadge
+            v-if="product.headline"
+            :as="NuxtLink"
+            :label="product.headline.label"
+            :icon="
+              isObject(product.headline.icon)
+                ? product.headline.icon.name
+                : product.headline.icon
+            "
+            :to="product.headline.to"
+            :color="product.headline.color"
+            :variant="product.headline.variant || 'subtle'"
+            class="rounded-full"
+            :ui="{
+              leadingIcon: isObject(product.headline.icon)
+                ? product.headline.icon.class
+                : undefined,
+            }"
+          />
+        </template>
 
-      <template #description>
-        <span v-html="section.description" />
-      </template>
+        <template #title>
+          <NuxtLink v-if="product.to" :to="product.to">
+            <span class="absolute inset-0 z-10" />
+            <span v-html="product.title" />
+          </NuxtLink>
+          <span v-else v-html="product.title" />
+        </template>
 
-      <ElementVideo v-if="section.video" v-bind="section.video" />
-    </UPageSection>
+        <template #description>
+          <span v-html="product.description" />
+        </template>
+
+        <ElementVideo v-if="product.video" v-bind="product.video" />
+      </UPageSection>
+    </template>
 
     <UPageCTA v-bind="page.cta" variant="subtle" class="rounded-none">
       <template v-if="page.cta.title" #title>

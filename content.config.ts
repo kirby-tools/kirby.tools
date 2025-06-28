@@ -84,8 +84,9 @@ export default defineContentConfig({
             }),
           ),
         }),
-        sections: z.array(
+        products: z.array(
           createBaseSchema().extend({
+            type: z.enum(["commercial", "free"]),
             id: z.string().nonempty(),
             to: z.string().nonempty(),
             headline: createBadgeSchema(),
