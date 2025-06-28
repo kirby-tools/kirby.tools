@@ -66,8 +66,9 @@ testimonials:
         dark: /img/brands/deadstock-dark.svg
       website: https://deadstock.de
       usage: Kirby Content Translator
-sections:
+products:
   - title: Kirby Content Translator
+    type: commercial
     id: content-translator
     to: /content-translator
     description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
@@ -88,6 +89,7 @@ sections:
           Choose between a section and a view button in the Panel header to translate content with a single click.
         icon: i-ri-cursor-line
   - title: Kirby Copilot
+    type: commercial
     id: copilot
     to: /copilot
     description: Kirby Copilot is your everyday AI companion for the Kirby Panel.
@@ -108,6 +110,7 @@ sections:
         description: Generate entire block layouts or add the Copilot button in writer/textarea fields to work with selected text.
         icon: i-ri-dashboard-line
   - title: Kirby SEO Audit
+    type: commercial
     id: seo-audit
     to: /seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
@@ -127,6 +130,7 @@ sections:
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
+    type: commercial
     id: live-preview
     to: /live-preview
     description: Display your page with unsaved changes in real time. It's the plugin content editors and clients have been waiting for.
@@ -147,12 +151,12 @@ sections:
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
   - title: Kirby Minimap
+    type: free
     id: minimap
     to: /minimap
     headline:
-      label: Free Plugin
-      icon: i-ri-gift-line
-      variant: soft
+      label: New Plugin
+      icon: i-ri-verified-badge-fill
     description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
     video:
       src: /vid/kirby-minimap-screencast.mp4
@@ -174,7 +178,7 @@ cta:
   description: Need something specific? We are experienced with Kirby plugins, especially Panel plugins. We can tailor new plugins to your needs. Just drop us a line!
   links:
     - label: Get in Touch
-      trailingIcon: i-ri-arrow-right-line
+      icon: i-ri-mail-open-line
       to: mailto:hello@kirby.tools
       variant: subtle
   icon:
