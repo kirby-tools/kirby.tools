@@ -5,7 +5,7 @@ export default defineNuxtPlugin({
     const route = useRoute();
     const router = useRouter();
 
-    if (import.meta.server) updateThemeColor(route);
+    updateThemeColor(route);
     router.afterEach(updateThemeColor);
   },
 });
