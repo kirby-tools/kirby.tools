@@ -16,7 +16,7 @@ hero:
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
-  - title: Generate Blocks<br> <span class="text-primary">Tailored to Your Project</span>
+  - title: Generate Content<br> <span class="text-primary">Based on Your Blocks</span>
     slot: video
     video:
       src: /vid/kirby-copilot-generate-layouts.mp4
