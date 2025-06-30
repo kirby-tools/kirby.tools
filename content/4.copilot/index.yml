@@ -4,7 +4,7 @@ navigation.icon: i-ri-sparkling-line
 hero:
   headline:
     label: "New: Custom Blocks & Layouts Generation"
-    to: /docs/copilot/usage/blocks-and-layout
+    to: /docs/copilot/usage/blocks-and-layouts
     icon: i-ri-ai-generate
     color: neutral
     variant: solid
