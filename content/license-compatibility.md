@@ -6,7 +6,7 @@ navigation.icon: i-ri-discount-percent-line
 
 Kirby 5 has been released! You are probably wondering how the new Kirby version will affect your Kirby Tools plugins and when they will be compatible with Kirby 5. Wonder no more! This page explains how the license and plugin compatibility with Kirby versions works.
 
-::callout{icon="i-ri-information-line"}
+::info
 **tl;dr**:
 
 - **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
@@ -33,7 +33,7 @@ The upgrade is available for all plugins and you can upgrade each plugin individ
 
 If you purchased a Kirby Tools plugin license after September 1, 2024, you will receive a **free upgrade** to Kirby 5 compatible versions when they become available (except Content Translator v3). Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which will give you a 100% discount.
 
-::callout{icon="i-ri-information-line" to="/content-translator"}
+::callout{icon="i-ri-information-line" color="info" to="/content-translator"}
 Kirby Content Translator v3 is a major update that not only brings compatibility with Kirby 5, but also introduces new features. Therefore, a free upgrade is not available. However, you can upgrade to Content Translator v3 at a 50% discount.
 ::
 

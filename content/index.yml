@@ -100,15 +100,18 @@ products:
       title: Kirby Copilot Writer Prompt Dialog Demo
       ariaLabel: Demonstration of the AI-powered writer prompt dialog in Kirby Copilot
     features:
+      - name: Blocks & Layout Generation
+        description: Generate entire block layouts based on your project's block definitions. It just works™.
+        icon: i-ri-dashboard-line
+      - name: Writer & Text-Like Fields
+        description: Use the Copilot button in writer/textarea fields. Works well with selected text.
+        icon: i-ri-input-cursor-move
       - name: Multi-Model
-        description: In addition to OpenAI GPT models, you can also use Anthropic Claude and Mistral AI models!
+        description: Supports all the major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
         icon: i-ri-openai-line
       - name: Images, PDFs, and Fields as Context
-        description: Use images, PDFs, and fields of the current Kirby model as context for the AI model to generate better suggestions.
+        description: Use images, PDFs, and other fields as context for the AI model to generate better suggestions.
         icon: i-ri-chat-new-line
-      - name: Blocks, Writer & Text Fields
-        description: Generate entire block layouts or add the Copilot button in writer/textarea fields to work with selected text.
-        icon: i-ri-dashboard-line
   - title: Kirby SEO Audit
     type: commercial
     id: seo-audit

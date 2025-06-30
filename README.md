@@ -6,7 +6,7 @@
 
 ### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
 
-Your everyday AI companion for the Kirby Panel. Generate content, blocks, and text using AI right in your Panel with support for OpenAI, Anthropic Claude, and Mistral models.
+Your everyday AI companion for the Kirby Panel. Generate blocks and layouts based on your project's blocks definitions right in the Panel. It supports models from OpenAI, Google, Anthropic, and Mistral AI.
 
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
 
