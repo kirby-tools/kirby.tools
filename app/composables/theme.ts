@@ -34,7 +34,6 @@ export function useDynamicTheme() {
 
   function updateThemeColor(to: RouteLocationNormalized) {
     const primaryColor = getThemeColorFromPath(to.path);
-    if (currentThemeColor.value === primaryColor) return;
 
     currentThemeColor.value = primaryColor;
     appConfig.ui.colors.primary = primaryColor;
