@@ -63,10 +63,10 @@ defineOgImageComponent("Default", {
           class="grid gap-4 py-8 md:grid-cols-3"
         >
           <div>
-            <h2 class="text-highlighted text-base font-semibold text-pretty">
+            <h2 class="text-highlighted text-xl font-semibold text-pretty">
               {{ version.title }}
             </h2>
-            <p class="text-muted mt-1 text-[15px] text-pretty">
+            <p class="text-muted mt-1 text-base text-pretty">
               {{ format(new Date(version.date)) }}
             </p>
           </div>
