@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex h-full w-full flex-col bg-[#F0F0F0]">
+  <div class="flex h-full w-full flex-col bg-stone-50">
     <div class="absolute top-0 bottom-0 left-26 w-[2px] bg-stone-200" />
     <div class="absolute top-0 right-26 bottom-0 w-[2px] bg-stone-200" />
     <div class="absolute inset-x-0 top-12 h-[2px] bg-stone-200" />
