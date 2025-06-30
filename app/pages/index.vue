@@ -95,7 +95,6 @@ defineOgImageComponent("Default", {
     </ElementWarpBackground>
 
     <USeparator />
-    <div id="products" />
 
     <UPageSection
       :title="page.testimonials.title"
@@ -127,6 +126,8 @@ defineOgImageComponent("Default", {
         </UPageMarquee>
       </UContainer>
     </UPageSection>
+
+    <div id="products" />
 
     <template v-for="type in ['commercial', 'free']" :key="type">
       <UPageSection
