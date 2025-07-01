@@ -92,7 +92,7 @@ products:
     type: commercial
     id: copilot
     to: /copilot
-    description: Kirby Copilot is your everyday AI companion for the Kirby Panel.
+    description: The first structure-aware AI assistant for Kirby. It adapts to your project's fields and unique blocks.
     reverse: true
     video:
       src: /vid/kirby-copilot-writer-prompt-dialog.mp4
@@ -100,16 +100,16 @@ products:
       title: Kirby Copilot Writer Prompt Dialog Demo
       ariaLabel: Demonstration of the AI-powered writer prompt dialog in Kirby Copilot
     features:
-      - name: Blocks & Layout Generation
-        description: Generate entire block layouts based on your project's block definitions. It just works™.
+      - name: Structure-Aware Generation
+        description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
         icon: i-ri-dashboard-line
-      - name: Writer & Text-Like Fields
-        description: Use the Copilot button in writer/textarea fields. Works well with selected text.
+      - name: In-Context Editing
+        description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
         icon: i-ri-input-cursor-move
-      - name: Multi-Model
-        description: Supports all the major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
+      - name: Multi-Model Support
+        description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
         icon: i-ri-openai-line
-      - name: Images, PDFs, and Fields as Context
+      - name: Rich Context
         description: Use images, PDFs, and other fields as context for the AI model to generate better suggestions.
         icon: i-ri-chat-new-line
   - title: Kirby SEO Audit
