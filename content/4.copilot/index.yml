@@ -1,15 +1,15 @@
 title: Kirby Copilot – AI-Powered Content Generation for Kirby CMS
-description: Let AI generate blocks, layouts or any other text right in the Kirby Panel.
+description: Let AI generate structured content and entire page layouts right in the Kirby Panel.
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: "New: Custom Blocks & Layouts Generation"
+    label: "New: Page Builder Mode"
     to: /docs/copilot/usage/blocks-and-layouts
     icon: i-ri-ai-generate
     color: neutral
     variant: solid
-  title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
-  description: Kirby Copilot is your everyday AI companion for the Kirby Panel.<br class="hidden lg:block"> It adapts to your fields and blocks setup.
+  title: '<span class="primary-500">AI-Powered</span><br> Page Builder'
+  description: Kirby Copilot is the first structure-aware AI assistant for Kirby.<br class="hidden lg:block"> It adapts to your project's fields and unique blocks.
   links:
     - label: Try Copilot Yourself
       trailingIcon: i-ri-arrow-right-line
@@ -26,26 +26,26 @@ sections:
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
-      - title: Blocks & Layout Generation
-        description: Generate entire block layouts based on your project's block definitions. It just works™.
+      - title: Structure-Aware Generation
+        description: Generate entire layouts from a single prompt, based on your project's unique block definitions. It just works™.
         icon: i-ri-dashboard-line
         to: https://try.kirbycopilot.com
         target: _blank
-      - title: Writer & Text-Like Fields
-        description: Use the Copilot button in writer/textarea fields. Works well with selected text.
+      - title: In-Context Editing
+        description: Use the Copilot button in writer/textarea fields to refine text with AI assistance. Works perfectly with selected text.
         icon: i-ri-input-cursor-move
         to: https://try.kirbycopilot.com
         target: _blank
-      - title: User & System Prompt
-        description: Instruct the AI with a user prompt. Response formatting is handled by the default system prompt.
+      - title: Customizable Prompts
+        description: Tailor AI instructions with user and system prompts to ensure brand voice and consistent output.
         icon: i-ri-edit-box-line
         to: /docs/copilot/configuration/system-prompt
-      - title: Fields as Context
-        description: Context is key for a meaningful AI response. Include content from other fields to provide more information.
+      - title: Rich Context
+        description: Go beyond text. Use other fields, images, and even PDF documents as context for more accurate and relevant AI responses.
         icon: i-ri-braces-line
         to: /docs/copilot/usage/placeholders
-      - title: Multi-Model
-        description: Supports all the major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
+      - title: Multi-Model Support
+        description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
         icon: i-ri-openai-line
         to: /docs/copilot/configuration/global#provider
       - title: Process Images & PDFs
