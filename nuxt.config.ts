@@ -64,9 +64,6 @@ export default defineNuxtConfig({
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
     "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
     "/docs/headless": { prerender: true },
-    // TODO: Find a better way to handle old `#pricing` links
-    "/live-preview": { prerender: false },
-    "/content-translator": { prerender: false },
   },
 
   nitro: {
