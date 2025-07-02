@@ -1,13 +1,13 @@
 import { withoutTrailingSlash } from "ufo";
 
 export default defineNuxtRouteMiddleware((to) => {
-  if (to.hash === "#pricing") {
+  if (import.meta.client && to.hash === "#pricing") {
     if (withoutTrailingSlash(to.path) === "/live-preview") {
-      return navigateTo("/live-preview/buy/");
+      window.location.href = "/live-preview/buy/";
     }
 
     if (withoutTrailingSlash(to.path) === "/content-translator") {
-      return navigateTo("/content-translator/buy/");
+      window.location.href = "/content-translator/buy/";
     }
   }
 });
