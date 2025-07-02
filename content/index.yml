@@ -95,20 +95,20 @@ products:
     description: The first structure-aware AI assistant for Kirby. It adapts to your project's fields and unique blocks.
     reverse: true
     video:
-      src: /vid/kirby-copilot-writer-prompt-dialog.mp4
-      poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
-      title: Kirby Copilot Writer Prompt Dialog Demo
-      ariaLabel: Demonstration of the AI-powered writer prompt dialog in Kirby Copilot
+      src: /vid/kirby-copilot-multi-fields-generation.mp4
+      poster: /vid/kirby-copilot-multi-fields-generation-poster-start.jpg
+      title: Kirby Copilot Multi-Field Generation Demo
+      ariaLabel: Demonstration of generating many fields at once in the Kirby Panel
     features:
+      - name: Multi-Field Generation
+        description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
+        icon: i-ri-list-check-2
       - name: Structure-Aware Generation
         description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
         icon: i-ri-dashboard-line
       - name: In-Context Editing
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
         icon: i-ri-input-cursor-move
-      - name: Multi-Model Support
-        description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
-        icon: i-ri-openai-line
       - name: Rich Context
         description: Use images, PDFs, and other fields as context for the AI model to generate better suggestions.
         icon: i-ri-chat-new-line
