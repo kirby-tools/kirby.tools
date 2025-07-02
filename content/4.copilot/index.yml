@@ -3,12 +3,12 @@ description: Let AI generate structured content and entire page layouts right in
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: "New: Page Builder Mode"
-    to: /docs/copilot/usage/blocks-and-layouts
+    label: "New: Multi-Field Generation"
+    to: /docs/copilot/usage/view-button
     icon: i-ri-ai-generate
     color: neutral
     variant: solid
-  title: '<span class="primary-500">AI-Powered</span><br> Page Builder'
+  title: '<span class="primary-500">AI-Powered</span><br> Page Building'
   description: Kirby Copilot is the first structure-aware AI assistant for Kirby.<br class="hidden lg:block"> It adapts to your project's fields and unique blocks.
   links:
     - label: Try Copilot Yourself
@@ -16,26 +16,28 @@ hero:
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
-  - title: Generate Content<br> <span class="text-primary">Based on Your Blocks</span>
+  - title: Select <span class="text-primary">Multiple Fields</span><br> For Content Generation
     slot: video
     video:
-      src: /vid/kirby-copilot-generate-layouts.mp4
-      poster: /vid/kirby-copilot-generate-layouts-poster-start.jpg
-      title: Copilot Block Generation Demo
-      ariaLabel: Demonstration of generating blocks directly in Kirby Panel using AI
+      src: /vid/kirby-copilot-multi-fields-generation.mp4
+      poster: /vid/kirby-copilot-multi-fields-generation-poster-start.jpg
+      title: Copilot Multi-Field Generation Demo
+      ariaLabel: Demonstration of generating many fields at once in the Kirby Panel
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
+      - title: Multi-Field Generation
+        description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
+        icon: i-ri-list-check-2
+        to: /docs/copilot/usage/view-button
       - title: Structure-Aware Generation
-        description: Generate entire layouts from a single prompt, based on your project's unique block definitions. It just works™.
+        description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
         icon: i-ri-dashboard-line
-        to: https://try.kirbycopilot.com
-        target: _blank
+        to: /docs/copilot/usage/blocks-and-layouts
       - title: In-Context Editing
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance. Works perfectly with selected text.
         icon: i-ri-input-cursor-move
-        to: https://try.kirbycopilot.com
-        target: _blank
+        to: /docs/copilot/usage/toolbar-buttons
       - title: Customizable Prompts
         description: Tailor AI instructions with user and system prompts to ensure brand voice and consistent output.
         icon: i-ri-edit-box-line
@@ -48,10 +50,13 @@ sections:
         description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
         icon: i-ri-openai-line
         to: /docs/copilot/configuration/global#provider
-      - title: Process Images & PDFs
-        description: Add images to the prompt for better context. Or extract text from PDF files attached to the prompt.
-        to: /docs/copilot/usage/files
-        icon: i-ri-chat-new-line
+  - title: Generate Content<br> <span class="text-primary">Based on Your Blocks</span>
+    slot: video
+    video:
+      src: /vid/kirby-copilot-generate-layouts.mp4
+      poster: /vid/kirby-copilot-generate-layouts-poster-start.jpg
+      title: Copilot Block Generation Demo
+      ariaLabel: Demonstration of generating blocks directly in the Kirby Panel
   - title: Toolbar Buttons for<br> <span class="text-primary">Writer & Textarea Fields</span>
     slot: video
     video:
@@ -59,13 +64,6 @@ sections:
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
       title: Copilot Writer Toolbar Demo
       ariaLabel: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
-  - title: Summarize PDF Files<br> <span class="text-primary">Directly in the Panel</span>
-    slot: video
-    video:
-      src: /vid/kirby-copilot-pdf-files.mp4
-      poster: /vid/kirby-copilot-pdf-files-poster-start.jpg
-      title: Copilot PDF Processing Demo
-      ariaLabel: Demonstration of summarizing and processing PDF files directly in Kirby Panel using Copilot
 cta:
   title: Don't Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and try Copilot in the Panel yourself.
