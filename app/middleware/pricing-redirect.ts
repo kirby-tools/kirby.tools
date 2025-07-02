@@ -1,7 +1,7 @@
 import { withoutTrailingSlash } from "ufo";
 
 export default defineNuxtRouteMiddleware((to) => {
-  if (import.meta.client && to.hash === "#pricing") {
+  if (to.hash === "#pricing") {
     if (withoutTrailingSlash(to.path) === "/live-preview") {
       return navigateTo("/live-preview/buy/", { redirectCode: 301 });
     }
