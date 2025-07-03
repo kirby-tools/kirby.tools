@@ -33,7 +33,10 @@ useSeoMeta({
 <template>
   <PagesProduct :page="page!">
     <template #hero-title>
-      <span class="font-display font-normal" v-html="page!.hero.title" />
+      <span
+        class="font-display text-6xl font-normal sm:text-8xl"
+        v-html="page!.hero.title"
+      />
     </template>
 
     <template #hero>
