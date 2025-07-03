@@ -16,19 +16,19 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     paid: true,
   },
   {
-    label: "Live Preview",
-    to: "/live-preview",
-    icon: "i-ri-picture-in-picture-line",
-    description: "Real-time page preview",
-    playground: "https://play.kirby.tools",
-    paid: true,
-  },
-  {
     label: "Copilot",
     to: "/copilot",
     icon: "i-ri-sparkling-line",
     description: "AI-powered content generation",
     playground: "https://try.kirbycopilot.com",
+    paid: true,
+  },
+  {
+    label: "Live Preview",
+    to: "/live-preview",
+    icon: "i-ri-picture-in-picture-line",
+    description: "Real-time page preview",
+    playground: "https://play.kirby.tools",
     paid: true,
   },
   {
