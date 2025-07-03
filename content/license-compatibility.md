@@ -6,7 +6,7 @@ navigation.icon: i-ri-discount-percent-line
 
 Kirby 5 has been released! You are probably wondering how the new Kirby version will affect your Kirby Tools plugins and when they will be compatible with Kirby 5. Wonder no more! This page explains how the license and plugin compatibility with Kirby versions works.
 
-::info
+::note
 **tl;dr**:
 
 - **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
