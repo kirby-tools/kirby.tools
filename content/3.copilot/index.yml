@@ -16,7 +16,7 @@ hero:
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
-  - title: Generate <span class="text-primary">Multiple Fields</span><br> With One Prompt
+  - title: Generate Content For<br> <span class="text-primary">Multiple Fields</span>
     slot: video
     video:
       src: /vid/kirby-copilot-multi-fields-generation.mp4
