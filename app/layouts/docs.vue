@@ -23,7 +23,7 @@ const { data: navigation } = await useAsyncData(
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader :docs-navigation="navigation" />
 
     <UMain>
       <UContainer>
