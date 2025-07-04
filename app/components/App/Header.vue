@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import type { ContentNavigationItem } from "@nuxt/content";
 import type { NavigationMenuItem } from "@nuxt/ui";
 import { PRODUCT_ITEMS } from "#shared/constants";
 import { withoutTrailingSlash } from "ufo";
+
+defineProps<{
+  docsNavigation?: ContentNavigationItem[] | undefined;
+}>();
 
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
@@ -129,6 +134,10 @@ const { data: version } = await useAsyncData(
         orientation="vertical"
         class="-mx-2.5"
       />
+
+      <USeparator class="my-6" />
+
+      <UContentNavigation :navigation="docsNavigation" default-open highlight />
 
       <USeparator class="my-6" />
 
