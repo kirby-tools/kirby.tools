@@ -135,9 +135,15 @@ const { data: version } = await useAsyncData(
         class="-mx-2.5"
       />
 
-      <USeparator class="my-6" />
+      <template v-if="docsNavigation?.length">
+        <USeparator class="my-6" />
 
-      <UContentNavigation :navigation="docsNavigation" default-open highlight />
+        <UContentNavigation
+          :navigation="docsNavigation"
+          default-open
+          highlight
+        />
+      </template>
 
       <USeparator class="my-6" />
 
