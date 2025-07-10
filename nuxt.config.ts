@@ -33,7 +33,8 @@ export default defineNuxtConfig({
             light: "github-light",
             dark: "github-dark",
           },
-          langs: ["json", "bash", "yaml", "php"],
+          /// keep-sorted
+          langs: ["bash", "diff", "json", "php", "yaml"],
         },
       },
     },
