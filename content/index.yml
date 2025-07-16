@@ -44,6 +44,12 @@ testimonials:
         dark: /img/brands/university-of-south-eastern-norway-dark.svg
       website: https://www.usn.no/english/
       usage: Kirby Content Translator
+    - brand: Entenwerder 1
+      logo:
+        light: /img/brands/entenwerder-1-light.svg
+        dark: /img/brands/entenwerder-1-dark.svg
+      website: https://entenwerder.de
+      usage: Kirby Content Translator
     - brand: KEGGENHOFF | PARTNER
       logo:
         light: /img/brands/keggenhoff-partner-light.svg
