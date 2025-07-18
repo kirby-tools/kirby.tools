@@ -37,7 +37,7 @@ sections:
       - title: Programmatic PHP API
         description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
         icon: i-ri-terminal-box-line
-        to: /docs/content-translator/usage/php-api
+        to: /docs/content-translator/advanced/php-api
       - title: One-Click Translation
         description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
         icon: i-ri-cursor-line

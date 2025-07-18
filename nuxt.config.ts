@@ -68,7 +68,7 @@ export default defineNuxtConfig({
       redirect: "/docs/content-translator/configuration/global",
     },
     "/docs/content-translator/php-api": {
-      redirect: "/docs/content-translator/usage/php-api",
+      redirect: "/docs/content-translator/advanced/php-api",
     },
     "/docs/content-translator/hooks": {
       redirect: "/docs/content-translator/advanced/hooks",
