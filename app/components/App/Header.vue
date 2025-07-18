@@ -21,7 +21,7 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
         },
         {
           label: "Documentation",
-          to: `/docs${currentProduct.value.to}`,
+          to: currentProduct.value.docsTo,
           active: route.path.startsWith(`/docs${currentProduct.value.to}`),
         },
         ...(currentProduct.value.paid
