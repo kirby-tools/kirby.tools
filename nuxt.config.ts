@@ -61,6 +61,27 @@ export default defineNuxtConfig({
     "/docs/content-translator/changelog": {
       redirect: "/content-translator/changelog",
     },
+    "/docs/content-translator": {
+      redirect: "/docs/content-translator/getting-started",
+    },
+    "/docs/content-translator/configuration": {
+      redirect: "/docs/content-translator/configuration/global",
+    },
+    "/docs/content-translator/php-api": {
+      redirect: "/docs/content-translator/usage/php-api",
+    },
+    "/docs/content-translator/hooks": {
+      redirect: "/docs/content-translator/advanced/hooks",
+    },
+    "/docs/content-translator/kirbytags": {
+      redirect: "/docs/content-translator/configuration/kirbytags",
+    },
+    "/docs/content-translator/examples": {
+      redirect: "/docs/content-translator/examples/basic-usage",
+    },
+    "/docs/content-translator/migration": {
+      redirect: "/docs/content-translator/getting-started/migration",
+    },
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
     "/docs/seo-audit": { redirect: "/docs/seo-audit/get-started" },
