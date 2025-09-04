@@ -9,7 +9,7 @@ Kirby 5 has been released! You are probably wondering how the new Kirby version 
 ::note
 **tl;dr**:
 
-- **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
+- **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
 - **Free Upgrade**: Customers who purchased a license after September 1st, 2024 will receive a **free upgrade** to Kirby 5 compatible versions (except Content Translator v3).
 - **Upgrade Discount**: All customers will receive a **50% discount** on the upgrade to Kirby Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1st, 2024.
 
@@ -62,7 +62,7 @@ The following table shows the license compatibility for each plugin and license 
 
 ### Current License Key Version
 
-The current license key version is `2` (as of 1. December 2024). This means that all new licenses are be compatible with Kirby Copilot v2, Kirby SEO Audit v2, and Kirby Content Translator v3.
+The current license key version is `2` (as of 1. December 2024). This means that all new licenses are be compatible with Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3.
 
 ## Plugin Compatibility
 
