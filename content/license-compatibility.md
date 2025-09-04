@@ -57,7 +57,7 @@ The following table shows the license compatibility for each plugin and license 
 | ------------------------ | --------------------------------- | -------------------------------- |
 | Kirby Content Translator | `^2`                              | `^2 \|\| ^3`                     |
 | Kirby Copilot            | `^1`                              | `^1 \|\| ^2`                     |
-| Kirby SEO Audit          | `^1`                              | `^1 \|\| ^2`                     |
+| Kirby SEO Audit          | `^1`                              | `^1 \|\| ^2 \|\| ^3`             |
 | Kirby Live Preview       | `^1`                              | `^1 \|\| ^2`                     |
 
 ### Current License Key Version
