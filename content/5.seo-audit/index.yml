@@ -4,13 +4,13 @@ navigation.icon: i-ri-seo-line
 hero:
   orientation: horizontal
   headline:
-    label: "New: Kirby 5 Support"
+    label: "New: Panel View Button"
     to: /seo-audit/changelog#whats-new
     icon:
       name: i-logos-kirby-icon
       class: dark:invert
   title: '<span class="text-primary">SEO Analysis</span><br> With One Click'
-  description: Kirby SEO Audit offers the power of Yoast SEO in a Kirby Panel section. Improve your content and boost your rankings by checking your pages for SEO issues.
+  description: Kirby SEO Audit offers the power of Yoast SEO in the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
   links:
     - label: Generate Your SEO Report
       trailingIcon: i-ri-arrow-right-line
@@ -18,32 +18,32 @@ hero:
       target: _blank
       size: xl
   video:
-    src: /vid/kirby-seo-audit-demo.mp4
-    poster: /vid/kirby-seo-audit-demo-poster-start.jpg
+    src: /vid/kirby-seo-audit-view-button.mp4
+    poster: /vid/kirby-seo-audit-view-button-poster-start.jpg
 sections:
   - title: Your New Favorite <br class="hidden lg:block"> <span class="text-primary">Must-Have Plugin</span>
     slot: features
     class: "dark:bg-gradient-to-b from-gray-900 to-gray-950/50 dark:lg:bg-none dark:lg:bg-gray-950/50"
     features:
-      - title: The Power of Yoast SEO
-        description: The SEO checks are based on Yoast SEO, which is helpful when migrating from WordPress to Kirby.
+      - title: Powered by Yoast SEO v3
+        description: Built on the latest Yoast SEO v3 engine with improved performance, web worker architecture, and enhanced accuracy.
         icon: i-ri-wordpress-fill
         to: /docs/seo-audit/guide/assessments
-      - title: Works With Every Kirby Site
-        description: A Panel section that can be dropped into any Kirby site. No matter which other plugins you use.
+      - title: Panel View Button & Section
+        description: Analyze content with a convenient view button in Kirby 5, or use the traditional Panel section. Works with any Kirby site.
         icon: i-ri-plug-line
-        to: /docs/seo-audit/get-started
-      - title: 30+ SEO Checks
-        description: Choose which checks you want to perform, such as keyword density or meta description length. We are constantly adding new checks.
+        to: /docs/seo-audit/getting-started
+      - title: 28 SEO & Readability Assessments
+        description: Comprehensive analysis including 20 SEO assessments and 8 readability checks, such as keyword density or meta description length.
         icon: i-ri-checkbox-circle-line
-        to: /docs/seo-audit/get-started/configuration#assessments
+        to: /docs/seo-audit/guide/assessments
       - title: Privacy First
-        description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
+        description: No external API calls, no hidden costs. All SEO checks run locally in your browser with web worker support for better performance!
         to: https://try.kirbyseo.com
         target: _blank
         icon: i-ri-file-lock-line
-      - title: Translations
-        description: The report is generated in English, German, or Dutch, depending on the Panel language. Do you need another language? Let us know!
+      - title: Multi-language Support
+        description: Analysis in multiple languages with language-specific assessments and region-aware SEO recommendations.
         icon: i-ri-earth-line
         to: https://try.kirbyseo.com
         target: _blank
@@ -55,6 +55,6 @@ cta:
   links:
     - label: Analyze Your Page
       trailingIcon: i-ri-arrow-right-line
-      to: /docs/seo-audit/get-started
+      to: /docs/seo-audit/getting-started
       variant: subtle
       size: xl
