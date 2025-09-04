@@ -4,17 +4,17 @@
 
 ## Our Plugins
 
-### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
-
-The first structure-aware AI assistant for Kirby. Generate entire page layouts from a single prompt, based on your project's unique blocks and layouts. It supports models from OpenAI, Google, Anthropic, and Mistral AI.
-
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
 
 Content translation with DeepL – in the Panel or via CLI commands. Supports all field types with one-click translation and batch processing capabilities.
 
+### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
+
+The first structure-aware AI assistant for Kirby. Generate entire page layouts from a single prompt, based on your project's unique blocks and layouts. It supports models from OpenAI, Google, Anthropic, and Mistral AI.
+
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
-State-of-the-art SEO analysis for Kirby CMS. Perform 30+ SEO checks directly in the Panel to improve your content and boost your rankings.
+State-of-the-art SEO analysis for Kirby CMS. Perform 28 SEO and readability assessments directly in the Panel to improve your content and boost your rankings.
 
 ### 🪩 [Kirby Live Preview](https://kirby.tools/live-preview)
 

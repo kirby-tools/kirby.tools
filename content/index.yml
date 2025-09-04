@@ -130,19 +130,19 @@ products:
     to: /seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
     video:
-      src: /vid/kirby-seo-audit-demo.mp4
-      poster: /vid/kirby-seo-audit-demo-poster-start.jpg
-      title: Kirby SEO Audit Demo
-      ariaLabel: Demonstration of SEO analysis and recommendations in Kirby SEO Audit plugin
+      src: /vid/kirby-seo-audit-view-button.mp4
+      poster: /vid/kirby-seo-audit-view-button-poster-start.jpg
+      title: Kirby SEO Audit Panel View Button Demo
+      ariaLabel: Demonstration of the SEO Audit plugin, showcasing its features and functionality
     features:
-      - name: The Power of Yoast SEO
-        description: The SEO checks are based on Yoast SEO, which is helpful when migrating from WordPress to Kirby.
+      - name: Powered by Yoast SEO v3
+        description: Built on the latest Yoast SEO v3 engine with improved performance, web worker architecture, and enhanced accuracy.
         icon: i-ri-wordpress-fill
-      - name: 30+ SEO Checks
-        description: Choose which checks you want to perform, such as keyword density or meta description length. We are constantly adding new checks.
+      - name: 28 SEO & Readability Assessments
+        description: Comprehensive analysis including 20 SEO assessments and 8 readability checks, such as keyword density or meta description length.
         icon: i-ri-checkbox-circle-line
       - name: Privacy First
-        description: No external API calls, no hidden costs. The SEO checks are performed client-side in your Kirby Panel!
+        description: No external API calls, no hidden costs. The SEO checks are performed client-side in the Kirby Panel!
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
     type: commercial
