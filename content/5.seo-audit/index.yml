@@ -45,7 +45,10 @@ sections:
         icon: i-ri-earth-line
         to: https://try.kirbyseo.com
         target: _blank
-        class: lg:col-span-2
+      - title: Language-Specific Assessment Features
+        description: 22+ languages supported with tailored assessments including transition words analysis and sentence complexity checks optimized for each language's grammar and structure.
+        icon: i-ri-translate-2
+        to: /docs/seo-audit/guide/assessments#language-specific-features
 cta:
   title: Watch Your Rankings Grow
   description: Give Kirby SEO Audit a try in the interactive Panel playground and see how it can help you improve the quality of your content.
