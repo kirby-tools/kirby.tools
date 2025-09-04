@@ -6,9 +6,7 @@ hero:
   headline:
     label: "New: Panel View Button"
     to: /seo-audit/changelog#whats-new
-    icon:
-      name: i-logos-kirby-icon
-      class: dark:invert
+    icon: i-ri-drag-drop-fill
   title: '<span class="text-primary">SEO Analysis</span><br> With One Click'
   description: Kirby SEO Audit offers the power of Yoast SEO in the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
   links:
