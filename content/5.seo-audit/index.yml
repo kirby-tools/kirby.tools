@@ -46,7 +46,7 @@ sections:
         to: https://try.kirbyseo.com
         target: _blank
       - title: Language-Specific Assessment Features
-        description: 22+ languages supported with tailored assessments including transition words analysis and sentence complexity checks optimized for each language's grammar and structure.
+        description: 22+ languages supported with tailored assessments optimized for each language's grammar and structure.
         icon: i-ri-translate-2
         to: /docs/seo-audit/guide/assessments#language-specific-features
   - title: <span class="text-primary">Section-Based</span><br> SEO Analysis
