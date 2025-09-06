@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -17,24 +17,24 @@
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.2.0",
-    "@iconify-json/logos": "^1.2.5",
+    "@antfu/eslint-config": "^5.2.2",
+    "@iconify-json/logos": "^1.2.9",
     "@iconify-json/ri": "^1.2.5",
-    "@iconify-json/vscode-icons": "^1.2.24",
+    "@iconify-json/vscode-icons": "^1.2.30",
     "@nuxt/content": "^3.6.3",
     "@nuxt/image": "^1.11.0",
-    "@nuxt/ui-pro": "^3.3.0",
-    "@types/node": "^22.17.0",
-    "@vueuse/nuxt": "^13.6.0",
+    "@nuxt/ui-pro": "^3.3.3",
+    "@types/node": "^24.3.1",
+    "@vueuse/nuxt": "^13.9.0",
     "better-sqlite3": "^12.2.0",
-    "eslint": "^9.32.0",
-    "motion-v": "^1.7.0",
-    "nuxt": "^4.0.3",
+    "eslint": "^9.35.0",
+    "motion-v": "^1.7.1",
+    "nuxt": "^4.1.1",
     "nuxt-og-image": "^5.1.9",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
-    "vue-tsc": "^3.0.5"
+    "vue-tsc": "^3.0.6"
   }
 }
