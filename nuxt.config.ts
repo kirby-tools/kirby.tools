@@ -81,7 +81,8 @@ export default defineNuxtConfig({
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
     "/docs/seo-audit": { redirect: "/docs/seo-audit/getting-started" },
-    "/docs/headless": { prerender: true },
+    "/docs/headless": { redirect: "/docs/headless/getting-started" },
+    "/docs/headless/getting-started": { prerender: true },
   },
 
   nitro: {
