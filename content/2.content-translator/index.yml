@@ -41,7 +41,7 @@ sections:
       - title: One-Click Translation
         description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
         icon: i-ri-cursor-line
-        to: /docs/content-translator/configuration/section#fieldtypes
+        to: /docs/content-translator/configuration/local#fieldtypes
   - title: Translate All Page Children<br> From the <span class="text-primary">Command Line</span>
     slot: video
     video:
