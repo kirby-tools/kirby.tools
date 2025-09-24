@@ -15,8 +15,8 @@ hero:
       to: /docs/content-translator
       size: xl
   video:
-    src: /vid/kirby-content-translator-demo.mp4
-    poster: /vid/kirby-content-translator-demo-poster.jpg
+    src: /vid/kirby-content-translator-batch-translation.mp4
+    poster: /vid/kirby-content-translator-batch-translation-poster.jpg
     title: Content Translator Overview Demo
     ariaLabel: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
 sections:
