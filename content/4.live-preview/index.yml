@@ -26,7 +26,7 @@ sections:
         icon: i-ri-drag-drop-line
         to: /docs/live-preview/preview-mode
       - title: Panel Redirects
-        description: When clicking inside the preview, the corresponding Panel page will open instead of the link in the preview.
+        description: Clicking inside the preview opens the corresponding Panel page instead of following the link.
         icon: i-ri-links-line
         to: /docs/live-preview
       - title: Simulate Device Screen Sizes

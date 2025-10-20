@@ -8,7 +8,7 @@ hero:
     to: /docs/content-translator#view-button
     icon: i-ri-global-fill
   title: 'The <span class="text-primary">Holistic</span><br> Translation Workflow'
-  description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
+  description: Content translation with DeepL – in the Panel or via CLI commands. One page at a time or all at once.
   links:
     - label: Start Translating Now
       trailingIcon: i-ri-arrow-right-line
@@ -35,7 +35,7 @@ sections:
         icon: i-ri-dashboard-horizontal-line
         to: /docs/content-translator
       - title: Programmatic PHP API
-        description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
+        description: Integrate content translation into Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
         icon: i-ri-terminal-box-line
         to: /docs/content-translator/advanced/php-api
       - title: One-Click Translation

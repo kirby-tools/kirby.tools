@@ -8,7 +8,7 @@ hero:
     to: /seo-audit/changelog#whats-new
     icon: i-ri-drag-drop-fill
   title: '<span class="text-primary">SEO Analysis</span><br> With One Click'
-  description: Kirby SEO Audit offers the power of Yoast SEO in the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
+  description: Kirby SEO Audit brings the power of Yoast SEO to the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
   links:
     - label: Generate Your SEO Report
       trailingIcon: i-ri-arrow-right-line
@@ -36,7 +36,7 @@ sections:
         icon: i-ri-checkbox-circle-line
         to: /docs/seo-audit/guide/assessments
       - title: Privacy First
-        description: No external API calls, no hidden costs. All SEO checks run locally in your browser with web worker support for better performance!
+        description: No external API calls, no hidden costs. All SEO checks run locally in your browser with web worker support for better performance.
         to: https://try.kirbyseo.com
         target: _blank
         icon: i-ri-file-lock-line
