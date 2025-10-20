@@ -4,20 +4,20 @@ description: About license and plugin compatibility with Kirby versions.
 navigation.icon: i-ri-discount-percent-line
 ---
 
-Kirby 5 has been released! You are probably wondering how the new Kirby version will affect your Kirby Tools plugins and when they will be compatible with Kirby 5. Wonder no more! This page explains how the license and plugin compatibility with Kirby versions works.
+Kirby 5 has been released! You are probably wondering how the new Kirby version affects your Kirby Tools plugins and when they will be compatible with Kirby 5. Wonder no more! This page explains how license and plugin compatibility with Kirby versions works.
 
 ::note
 **tl;dr**:
 
-- **License Key Version**: All new licenses purchased after 1. December 2024 will be valid for Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3. (The license key version will be raised, see below for details.)
-- **Free Upgrade**: Customers who purchased a license after September 1st, 2024 will receive a **free upgrade** to Kirby 5 compatible versions (except Content Translator v3).
-- **Upgrade Discount**: All customers will receive a **50% discount** on the upgrade to Kirby Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1st, 2024.
+- **License Key Version**: All new licenses purchased after December 1, 2024 are valid for Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3. (The license key version will be raised; see below for details.)
+- **Free Upgrade**: Customers who purchased a license after September 1, 2024 receive a **free upgrade** to Kirby 5 compatible versions (except Content Translator v3).
+- **Upgrade Discount**: All customers receive a **50% discount** on the upgrade to Kirby Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1, 2024.
 
 ::
 
 ## Updates & Upgrades
 
-We add new features and improvements to each plugin as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major plugin version is released, you will be able to upgrade to that version at a generous discount.
+We add new features and improvements to each plugin as we get ideas and feedback. You receive these updates for the major version you purchased. When a new major plugin version is released, you can upgrade to that version at a generous discount.
 
 A typical major plugin version is released along with a new major Kirby version. This way, you can upgrade your plugins when you upgrade your Kirby installation.
 
@@ -31,7 +31,7 @@ The upgrade is available for all plugins and you can upgrade each plugin individ
 
 #### Free Upgrade for Recent Customers
 
-If you purchased a Kirby Tools plugin license after September 1, 2024, you will receive a **free upgrade** to Kirby 5 compatible versions when they become available (except Content Translator v3). Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which will give you a 100% discount.
+If you purchased a Kirby Tools plugin license after September 1, 2024, you receive a **free upgrade** to Kirby 5 compatible versions when they become available (except Content Translator v3). Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which gives you a 100% discount.
 
 ::callout{icon="i-ri-information-line" color="info" to="/content-translator"}
 Kirby Content Translator v3 is a major update that not only brings compatibility with Kirby 5, but also introduces new features. Therefore, a free upgrade is not available. However, you can upgrade to Content Translator v3 at a 50% discount.
@@ -43,7 +43,7 @@ All customers can get a **50% discount** on the upgrade to Content Translator v3
 
 ## License Compatibility
 
-Licenses you purchase are valid for the current major plugin version and all past versions of the same plugin. This means that you can register past plugin versions with your license, but you cannot register future versions. (Note that past plugin versions might not be actively maintained or supported.)
+Licenses you purchase are valid for the current major plugin version and all past versions of the same plugin. This means you can register past plugin versions with your license, but not future versions. (Note that past plugin versions might not be actively maintained or supported.)
 
 ### License Key Versioning
 
