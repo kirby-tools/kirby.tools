@@ -9,13 +9,13 @@ Last updated: 2025-06-21
 
 ## About this License Agreement
 
-This License Agreement outlines the terms and conditions for the use of the Kirby Live Preview, Kirby Content Translator, Kirby Copilot and Kirby SEO Audit plugins ("Plugins") sold on Lemon Squeezy by Johann Schopplich ("Licensor"). By purchasing, downloading, installing, or using any of the Plugins, you ("Licensee") agree to comply with this License Agreement.
+This License Agreement outlines the terms and conditions for the use of the Kirby Live Preview, Kirby Content Translator, Kirby Copilot, and Kirby SEO Audit plugins ("Plugins") sold on Lemon Squeezy by Johann Schopplich ("Licensor"). By purchasing, downloading, installing, or using any of the Plugins, you ("Licensee") agree to comply with this License Agreement.
 
 Every effort has been made to accurately represent the Plugins and their potential. Please ensure you have read and understood the Plugins' capabilities and limitations, which are detailed on our website, before making your purchase.
 
 ## Payment Processing
 
-All payments for the Plugins are processed securely through our online reseller, Lemon Squeezy. Lemon Squeezy is the Merchant of Record for all our orders, ensuring that your payment information is handled with the highest level of security and compliance with PCI DSS standards. By purchasing the Plugins, you agree that you will not provide your payment details directly to us but will complete your purchase through the secure Lemon Squeezy platform.
+All payments for the Plugins are processed securely through our online reseller, Lemon Squeezy. Lemon Squeezy is the Merchant of Record for all our orders, ensuring your payment information is handled with the highest level of security and compliance with PCI DSS standards. By purchasing the Plugins, you agree not to provide your payment details directly to us but to complete your purchase through the secure Lemon Squeezy platform.
 
 ## Grant of License
 
