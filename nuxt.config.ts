@@ -34,6 +34,10 @@ export default defineNuxtConfig({
         },
       },
     },
+
+    experimental: {
+      sqliteConnector: "native",
+    },
   },
 
   image: {
