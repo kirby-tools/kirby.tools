@@ -41,7 +41,7 @@ Paul-Gruner-Str. 38
 04107 Leipzig  
 Germany
 
-E-mail address: [mail@johannschopplich.com](mailto:mail@johannschopplich.com)
+E-mail address: [johann@schopplich.com](mailto:johann@schopplich.com)
 
 ## Overview of processing operations
 
