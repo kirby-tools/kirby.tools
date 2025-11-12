@@ -101,7 +101,7 @@ defineOgImageComponent("Default", {
       :description="page.testimonials.description"
       class="overflow-hidden"
     >
-      <UPageMarquee pause-on-hover>
+      <UMarquee pause-on-hover>
         <UTooltip
           v-for="(testimonial, index) in page.testimonials.items"
           :key="index"
@@ -122,7 +122,7 @@ defineOgImageComponent("Default", {
             class="h-10 w-auto shrink-0"
           />
         </UTooltip>
-      </UPageMarquee>
+      </UMarquee>
     </UPageSection>
 
     <div id="products" />

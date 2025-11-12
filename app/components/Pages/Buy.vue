@@ -80,10 +80,15 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
       :description="page.faq.description"
       :ui="{ container: 'max-w-4xl' }"
     >
-      <UPageAccordion
+      <UAccordion
         :items="page.faq.items"
         multiple
         class="mx-auto max-w-4xl"
+        :unmount-on-hide="false"
+        :ui="{
+          trigger: 'text-base',
+          body: 'text-base text-muted',
+        }"
       >
         <template #content="{ item }">
           <MDC
@@ -91,7 +96,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
             class="text-muted prose dark:prose-invert max-w-none pb-3.5 text-base [&_p.my-5]:!my-0"
           />
         </template>
-      </UPageAccordion>
+      </UAccordion>
     </UPageSection>
   </div>
 </template>

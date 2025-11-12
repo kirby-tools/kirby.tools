@@ -1,7 +1,9 @@
 export default defineNuxtConfig({
   modules: [
+    "@nuxtjs/robots",
+    "@nuxtjs/sitemap",
     "@nuxt/image",
-    "@nuxt/ui-pro",
+    "@nuxt/ui",
     "@nuxt/content",
     "@vueuse/nuxt",
     "nuxt-og-image",
@@ -47,6 +49,7 @@ export default defineNuxtConfig({
 
   site: {
     url: "https://kirby.tools",
+    name: "Kirby Tools",
   },
 
   routeRules: {
