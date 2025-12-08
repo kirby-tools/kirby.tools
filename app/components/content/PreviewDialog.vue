@@ -16,7 +16,7 @@ defineProps<{
       :alt="alt || 'Kirby Tools section preview'"
       :width="width"
       :height="height"
-      class="!my-0 w-full max-w-[30rem] rounded-lg"
+      class="my-0! w-full max-w-[30rem] rounded-lg"
     />
   </div>
 </template>

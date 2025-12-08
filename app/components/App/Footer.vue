@@ -92,12 +92,12 @@ const columns: FooterColumn[] = [
     </template>
 
     <template #left>
-      <p class="text-sm text-(--ui-text-muted)">
+      <p class="text-muted text-sm">
         © {{ new Date().getFullYear() }}
         <NuxtLink
           to="https://byjohann.link"
           target="_blank"
-          class="text-(--ui-text-highlighted)"
+          class="text-highlighted"
           >Johann Schopplich</NuxtLink
         >. All rights reserved.
       </p>

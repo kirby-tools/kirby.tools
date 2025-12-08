@@ -30,10 +30,10 @@ onMounted(() => {
 <template>
   <div v-if="page" class="relative">
     <AppHeaderBackground
-      class="pointer-events-none absolute -top-px z-10 w-full shrink-0 text-(--ui-primary) transition-opacity"
+      class="text-primary pointer-events-none absolute -top-px z-10 w-full shrink-0 transition-opacity"
       :class="[
         isLoading ? 'animate-pulse' : isEntering ? '' : 'opacity-0',
-        hasEntered ? 'duration-[400ms]' : 'duration-1000',
+        hasEntered ? 'duration-400' : 'duration-1000',
       ]"
     />
 
@@ -80,7 +80,7 @@ onMounted(() => {
     <template v-for="(section, index) of page.sections" :key="index">
       <USeparator
         v-if="section.slot === 'features'"
-        :ui="{ border: 'border-(--ui-primary)/25' }"
+        :ui="{ border: 'border-primary/25' }"
       />
 
       <UPageSection
@@ -96,11 +96,11 @@ onMounted(() => {
       >
         <div
           v-if="section.slot === 'features'"
-          class="absolute top-10 -left-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-10 blur-[200px]"
+          class="bg-primary absolute top-10 -left-10 z-10 size-[300px] rounded-full opacity-10 blur-[200px]"
         />
         <div
           v-if="section.slot === 'features'"
-          class="absolute -right-10 -bottom-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-10 blur-[200px]"
+          class="bg-primary absolute -right-10 -bottom-10 z-10 size-[300px] rounded-full opacity-10 blur-[200px]"
         />
 
         <template v-if="section.title" #title>
@@ -139,7 +139,7 @@ onMounted(() => {
 
       <USeparator
         v-if="section.slot === 'features'"
-        :ui="{ border: 'border-(--ui-primary)/25' }"
+        :ui="{ border: 'border-primary/25' }"
       />
     </template>
 

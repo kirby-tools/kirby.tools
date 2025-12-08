@@ -44,7 +44,7 @@ const accessibleLabel = computed(() => {
 
     <div
       v-show="!isPlaying"
-      class="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-b from-gray-950/50 to-25%"
+      class="pointer-events-none absolute inset-0 rounded-xl bg-linear-to-b from-gray-950/50 to-25%"
       aria-hidden="true"
     />
   </div>
