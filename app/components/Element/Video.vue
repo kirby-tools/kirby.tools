@@ -56,37 +56,38 @@ function handleKeydown(event: KeyboardEvent) {
 
 <template>
   <div
-    class="group relative cursor-pointer rounded-xl shadow ring ring-(--ui-border)"
-    :class="[!isPlaying && 'hover:shadow-md hover:ring-(--ui-secondary)']"
+    class="group ring-default relative cursor-pointer rounded-xl shadow ring"
+    :class="[!isPlaying && 'hover:ring-secondary hover:shadow-md']"
+    @click="togglePlay"
   >
     <video
       ref="video"
       :src="src"
       :poster="poster"
-      :aria-label="label || undefined"
+      :aria-label="label || 'Demonstration video'"
       muted
-      class="rounded-xl"
+      playsinline
+      class="focus-visible:ring-primary rounded-xl focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
       tabindex="0"
       @ended="isPlaying = false"
-      @click="togglePlay"
       @keydown="handleKeydown"
     />
 
     <div
       v-show="!isPlaying"
-      class="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-gradient-to-b from-gray-950/50 to-20%"
+      class="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-linear-to-b from-gray-950/50 to-20%"
     >
       <div class="inline-flex rounded-full bg-white/75 shadow-md">
         <UIcon
           name="i-ri-play-circle-fill"
-          class="size-14 text-(--ui-secondary) group-hover:text-(--ui-color-secondary-600) lg:size-22 dark:group-hover:text-(--ui-color-secondary-500)"
+          class="text-secondary group-hover:text-secondary-600 dark:group-hover:text-secondary-500 size-14 lg:size-22"
         />
       </div>
     </div>
 
     <!-- Screen reader status announcements -->
     <div aria-live="polite" class="sr-only">
-      {{ isPlaying ? "Video playing" : "Video paused" }}
+      {{ label || "Video" }}: {{ isPlaying ? "playing" : "paused" }}
     </div>
   </div>
 </template>
