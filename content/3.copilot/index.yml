@@ -21,8 +21,7 @@ sections:
     video:
       src: /vid/kirby-copilot-multi-fields-generation.mp4
       poster: /vid/kirby-copilot-multi-fields-generation-poster-start.jpg
-      title: Copilot Multi-Field Generation Demo
-      ariaLabel: Demonstration of generating many fields at once in the Kirby Panel
+      label: Demonstration of generating many fields at once in the Kirby Panel
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
@@ -55,15 +54,13 @@ sections:
     video:
       src: /vid/kirby-copilot-generate-layouts.mp4
       poster: /vid/kirby-copilot-generate-layouts-poster-start.jpg
-      title: Copilot Layout Generation Demo
-      ariaLabel: Demonstration of generating layouts directly in the Kirby Panel
+      label: Demonstration of generating layouts directly in the Kirby Panel
   - title: Toolbar Buttons for<br> <span class="text-primary">Writer & Textarea Fields</span>
     slot: video
     video:
       src: /vid/kirby-copilot-writer-prompt-dialog.mp4
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
-      title: Copilot Writer Toolbar Demo
-      ariaLabel: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
+      label: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
 cta:
   title: Don't Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and try Copilot in the Panel yourself.

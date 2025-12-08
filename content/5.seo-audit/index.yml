@@ -54,8 +54,7 @@ sections:
     video:
       src: /vid/kirby-seo-audit-section.mp4
       poster: /vid/kirby-seo-audit-section-poster-start.jpg
-      title: Kirby SEO Audit Section Demo
-      ariaLabel: Demonstration of the SEO Audit section in the Kirby Panel
+      label: Demonstration of the SEO Audit section in the Kirby Panel
 cta:
   title: Watch Your Rankings Grow
   description: Give Kirby SEO Audit a try in the interactive Panel playground and see how it can help you improve the quality of your content.

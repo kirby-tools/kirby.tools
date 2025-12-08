@@ -54,8 +54,7 @@ const createVideoSchema = () =>
   z.object({
     src: z.string().nonempty(),
     poster: z.string().nonempty(),
-    title: z.string().optional(),
-    ariaLabel: z.string().optional(),
+    label: z.string().optional(),
   });
 
 export default defineContentConfig({

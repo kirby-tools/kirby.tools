@@ -2,8 +2,8 @@
 defineProps<{
   src: string;
   poster: string;
-  title?: string;
-  ariaLabel?: string;
+  /** Accessible label announced by assistive tech */
+  label?: string;
 }>();
 
 const prefersReducedMotion = import.meta.client
@@ -63,8 +63,7 @@ function handleKeydown(event: KeyboardEvent) {
       ref="video"
       :src="src"
       :poster="poster"
-      :title="title || 'Video content'"
-      :aria-label="ariaLabel || title || 'Interactive video player'"
+      :aria-label="label || undefined"
       muted
       class="rounded-xl"
       tabindex="0"

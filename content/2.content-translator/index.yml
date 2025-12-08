@@ -17,16 +17,14 @@ hero:
   video:
     src: /vid/kirby-content-translator-batch-translation.mp4
     poster: /vid/kirby-content-translator-batch-translation-poster.jpg
-    title: Content Translator Overview Demo
-    ariaLabel: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
+    label: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
 sections:
   - title: 'Panel View Button<br> For <span class="text-primary">Kirby 4</span> & <span class="text-primary">5</span>'
     slot: video
     video:
       src: /vid/kirby-content-translator-view-buttons.mp4
       poster: /vid/kirby-content-translator-view-buttons-poster-start.jpg
-      title: Content Translator View Buttons Demo
-      ariaLabel: Demonstration of using view buttons for one-click translation in Kirby Panel
+      label: Demonstration of using view buttons for one-click translation in Kirby Panel
   - title: The <span class="text-primary">Translation Cherry</span><br> on Your Content Cake
     slot: features
     features:
@@ -47,8 +45,7 @@ sections:
     video:
       src: /vid/kirby-content-translator-cli-command.mp4
       poster: /vid/kirby-content-translator-cli-command-poster-start.jpg
-      title: Content Translator CLI Demo
-      ariaLabel: Demonstration of translating page children from command line using CLI commands
+      label: Demonstration of translating page children from command line using CLI commands
 cta:
   title: Still scrolling?
   description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
