@@ -46,10 +46,10 @@ defineOgImageComponent("Default", {
 <template>
   <div v-if="page" class="relative">
     <AppHeaderBackground
-      class="pointer-events-none absolute top-[-1px] w-full shrink-0 text-(--ui-primary) transition-opacity"
+      class="text-primary pointer-events-none absolute top-[-1px] w-full shrink-0 transition-opacity"
       :class="[
         isLoading ? 'animate-pulse' : isEntering ? '' : 'opacity-0',
-        hasEntered ? 'duration-[400ms]' : 'duration-1000',
+        hasEntered ? 'duration-400' : 'duration-1000',
       ]"
     />
 
@@ -57,7 +57,7 @@ defineOgImageComponent("Default", {
       <UPageHero
         :description="page.description"
         :links="page.hero.links"
-        class="bg-radial from-(--ui-bg) from-30%"
+        class="from-default bg-radial from-30%"
         :ui="{
           container: 'py-24 sm:py-24 lg:py-24',
         }"

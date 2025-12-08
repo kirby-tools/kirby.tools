@@ -56,7 +56,7 @@ defineOgImageComponent("Default", {
     <UPageBody>
       <ContentRenderer v-if="page.body" :value="page" class="max-w-prose" />
 
-      <div class="divide-y divide-(--ui-border)">
+      <div class="divide-default divide-y">
         <div
           v-for="version in versions"
           :key="version.title"

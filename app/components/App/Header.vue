@@ -62,8 +62,8 @@ const { data: version } = await useAsyncData(
   <UHeader>
     <template #left>
       <NuxtLink to="/" class="flex items-center gap-2">
-        <UIcon name="i-tools-favicon" class="size-6 text-(--ui-primary)" />
-        <span class="text-lg font-bold text-(--ui-text)">Kirby Tools</span>
+        <UIcon name="i-tools-favicon" class="text-primary size-6" />
+        <span class="text-default text-lg font-bold">Kirby Tools</span>
       </NuxtLink>
 
       <UDropdownMenu
@@ -88,7 +88,7 @@ const { data: version } = await useAsyncData(
           trailing-icon="i-lucide-chevron-down"
           size="sm"
           class="ms-1 truncate rounded-full font-semibold"
-          :class="[open && 'bg-[var(--ui-primary)]/15']"
+          :class="[open && 'bg-(--ui-primary)/15']"
           :ui="{
             trailingIcon: [
               'transition-transform duration-200',

@@ -40,7 +40,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
         <div
           class="absolute top-0 left-6 flex translate-y-[-50%] justify-center lg:left-8 xl:left-10"
         >
-          <div class="inline-flex rounded-full bg-(--ui-bg)">
+          <div class="bg-default inline-flex rounded-full">
             <UButton
               label="50% off for Returning Customers"
               size="xs"
@@ -64,7 +64,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
     <UContainer :class="$slots['image-pricing'] ? 'max-w-6xl' : 'max-w-lg'">
       <div
         v-if="$slots['image-pricing']"
-        class="flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:bg-(--ui-color-primary-500) lg:p-12 dark:lg:bg-(--ui-color-primary-600)"
+        class="lg:bg-primary-500 dark:lg:bg-primary-600 flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:p-12"
       >
         <div class="max-lg:hidden">
           <slot name="image-pricing" />
@@ -93,7 +93,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
         <template #content="{ item }">
           <MDC
             :value="item.content"
-            class="text-muted prose dark:prose-invert max-w-none pb-3.5 text-base [&_p.my-5]:!my-0"
+            class="text-muted prose dark:prose-invert max-w-none pb-3.5 text-base [&_p.my-5]:my-0!"
           />
         </template>
       </UAccordion>
