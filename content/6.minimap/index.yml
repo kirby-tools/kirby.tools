@@ -16,8 +16,7 @@ hero:
   video:
     src: /vid/kirby-minimap-screencast.mp4
     poster: /vid/kirby-minimap-screencast-poster.jpg
-    title: Minimap Overview Demo
-    ariaLabel: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
+    label: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
 sections:
   - title: Minimap <span class="text-primary">Features</span>
     slot: features
