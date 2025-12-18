@@ -32,7 +32,7 @@ sections:
         icon: i-ri-plug-line
         to: /docs/seo-audit/getting-started
       - title: 28 SEO & Readability Assessments
-        description: Comprehensive analysis including 20 SEO assessments and 8 readability checks, such as keyword density or meta description length.
+        description: Comprehensive analysis including 17 SEO assessments, 8 readability assessments, and 3 custom Kirby checks.
         icon: i-ri-checkbox-circle-line
         to: /docs/seo-audit/guide/assessments
       - title: Privacy First
