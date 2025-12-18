@@ -8,6 +8,13 @@ interface ProductItem {
   paid?: boolean;
 }
 
+export const GITHUB_REPOS: Record<string, string> = {
+  "content-translator": "kirby-tools/kirby-content-translator",
+  "copilot": "kirby-tools/kirby-copilot",
+  "seo-audit": "kirby-tools/kirby-seo-audit",
+  "live-preview": "kirby-tools/kirby-live-preview",
+};
+
 export const PRODUCT_ITEMS: ProductItem[] = [
   {
     label: "Content Translator",
