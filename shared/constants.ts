@@ -10,7 +10,7 @@ interface ProductItem {
 
 export const GITHUB_REPOS: Record<string, string> = {
   "content-translator": "kirby-tools/kirby-content-translator",
-  "copilot": "kirby-tools/kirby-copilot",
+  copilot: "kirby-tools/kirby-copilot",
   "seo-audit": "kirby-tools/kirby-seo-audit",
   "live-preview": "kirby-tools/kirby-live-preview",
 };
