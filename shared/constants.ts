@@ -8,11 +8,14 @@ interface ProductItem {
   paid?: boolean;
 }
 
+/// keep-sorted
 export const GITHUB_REPOS: Record<string, string> = {
   "content-translator": "kirby-tools/kirby-content-translator",
-  copilot: "kirby-tools/kirby-copilot",
-  "seo-audit": "kirby-tools/kirby-seo-audit",
   "live-preview": "kirby-tools/kirby-live-preview",
+  "seo-audit": "kirby-tools/kirby-seo-audit",
+  copilot: "kirby-tools/kirby-copilot",
+  headless: "johannschopplich/kirby-headless",
+  minimap: "johannschopplich/kirby-minimap",
 };
 
 export const PRODUCT_ITEMS: ProductItem[] = [
