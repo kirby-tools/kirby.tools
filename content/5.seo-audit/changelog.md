@@ -4,14 +4,24 @@ description: All of the changes to the Kirby SEO Audit plugin.
 navigation.icon: i-ri-code-s-slash-line
 ---
 
-## Where to Find the Latest Version?
+## Get the Latest Version
 
-If you have installed the plugin via Composer, you can update it by running the following command in your terminal:
+### Via Composer (Recommended)
 
-```bash
-composer update
+::code-group
+
+```bash [Install]
+composer require johannschopplich/kirby-seo-audit
 ```
 
-If you have downloaded the plugin as a ZIP file before, download the :latest-version and replace the existing plugin folder in your `site/plugins` directory with the new one.
+```bash [Update]
+composer update johannschopplich/kirby-seo-audit
+```
+
+::
+
+### Via ZIP Download
+
+Download the :latest-version and extract it to your `site/plugins` folder. If updating, replace the existing plugin folder with the new one.
 
 ## What's New?

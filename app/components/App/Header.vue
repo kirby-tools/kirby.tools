@@ -112,6 +112,7 @@ const { data: version } = await useAsyncData(
       <UButton
         v-if="currentProduct && version"
         :label="version.title"
+        icon="i-ri-download-line"
         color="neutral"
         variant="ghost"
         :to="`${currentProduct.to}/changelog`"
