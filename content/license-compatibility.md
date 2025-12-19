@@ -13,13 +13,7 @@ When you purchase a Kirby Tools plugin, you receive a license key that covers sp
 
 You can always use older plugin versions with newer licenses, but not newer plugin versions with older licenses.
 
-::card
----
-title: Manage Your Licenses
-icon: i-ri-key-2-line
-to: https://hub.kirby.tools
-target: _blank
----
+::card{title="Manage Your Licenses" icon="i-ri-key-2-line" to="https://hub.kirby.tools" target="\_blank"}
 View your licenses, check your generation, and get upgrade discounts.
 ::
 
