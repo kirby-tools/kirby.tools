@@ -145,7 +145,7 @@ products:
     type: commercial
     id: live-preview
     to: /live-preview
-    description: Display your page with unsaved changes in real time. It's the plugin content editors and clients have been waiting for.
+    description: Display your page with unsaved changes in real time. It is the plugin content editors and clients have been waiting for.
     reverse: true
     video:
       src: /vid/kirby-live-preview-devices.mp4

@@ -53,7 +53,7 @@ All Kirby Tools plugins support both Kirby 4 and Kirby 5:
 | Kirby Live Preview       | v1              | v2              |
 
 ::callout{icon="i-ri-information-line" color="info"}
-**SEO Audit v3** is a free upgrade – it's primarily a Kirby 5 compatibility update rather than a paid feature release.
+**SEO Audit v3** is a free upgrade – it is primarily a Kirby 5 compatibility update rather than a paid feature release.
 ::
 
 ## Upgrade Discount
@@ -92,7 +92,7 @@ Not necessarily. If you have a Generation 2 license (purchased December 2024+), 
 **License generation** (Gen 1, Gen 2) determines which plugin versions your license covers. **Plugin version** (v1, v2, v3) is the actual version you install.
 ::
 
-::accordion-item{label="Why is SEO Audit v3 free but Content Translator v3 isn't?"}
+::accordion-item{label="Why is SEO Audit v3 free but Content Translator v3 is not?"}
 SEO Audit v3 is primarily a Kirby 5 compatibility update. Content Translator v3 introduces significant new features, which is why upgrade pricing applies (50% off).
 ::
 
@@ -101,7 +101,7 @@ Yes. Licenses are backward compatible – you can always use older versions.
 ::
 
 ::accordion-item{label="Can I use a newer plugin version with an old license?"}
-Only if your license generation covers it. Gen 1 licenses don't cover v2/v3 versions. You'll need to upgrade.
+Only if your license generation covers it. Gen 1 licenses do not cover v2/v3 versions. You will need to upgrade.
 ::
 
 ::
