@@ -62,7 +62,7 @@ sections:
       poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
       label: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
 cta:
-  title: Don't Take<br class="md:hidden"> Our Word for It
+  title: Do Not Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and try Copilot in the Panel yourself.
   links:
     - label: Install for Free
