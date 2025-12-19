@@ -1,74 +1,140 @@
 ---
 title: License & Plugin Compatibility
-description: About license and plugin compatibility with Kirby versions.
+description: Understanding how Kirby Tools licenses work with plugin versions.
 navigation.icon: i-ri-discount-percent-line
 ---
 
-Kirby 5 has been released! You are probably wondering how the new Kirby version affects your Kirby Tools plugins and when they will be compatible with Kirby 5. Wonder no more! This page explains how license and plugin compatibility with Kirby versions works.
+## How Licenses Work
+
+When you purchase a Kirby Tools plugin, you receive a license key that covers specific plugin versions. Your license generation determines which versions you can use:
+
+- **Generation 1** (purchased before December 2024): Covers original plugin versions
+- **Generation 2** (purchased from December 2024): Covers original + Kirby 5 compatible versions
+
+You can always use older plugin versions with newer licenses, but not newer plugin versions with older licenses.
+
+::card
+---
+title: Manage Your Licenses
+icon: i-ri-key-2-line
+to: https://hub.kirby.tools
+target: _blank
+---
+View your licenses, check your generation, and get upgrade discounts.
+::
+
+## Quick Reference
 
 ::note
-**tl;dr**:
 
-- **License Key Version**: All new licenses purchased after December 1, 2024 are valid for Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3. (The license key version will be raised; see below for details.)
-- **Free Upgrade**: Customers who purchased a license after September 1, 2024 receive a **free upgrade** to Kirby 5 compatible versions (except Content Translator v3).
-- **Upgrade Discount**: All customers receive a **50% discount** on the upgrade to Kirby Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1, 2024.
+**Summary:**
+
+- All plugins support both Kirby 4 and Kirby 5
+- **Upgrade discount**: Gen 1 license holders get 50% off when upgrading
+- Manage your licenses at [hub.kirby.tools](https://hub.kirby.tools)
 
 ::
 
-## Updates & Upgrades
+## Updates vs Upgrades
 
-We add new features and improvements to each plugin as we get ideas and feedback. You receive these updates for the major version you purchased. When a new major plugin version is released, you can upgrade to that version at a generous discount.
+### Updates (Free)
 
-A typical major plugin version is released along with a new major Kirby version. This way, you can upgrade your plugins when you upgrade your Kirby installation.
+Bug fixes, security patches, and minor improvements within your licensed versions. These are always free and automatic via Composer.
 
-### Status Quo
+### Upgrades (Paid/Discounted)
 
-All Kirby Tools plugins are compatible with Kirby 4 and recently have been updated to support Kirby 5.
+Moving to a new major plugin version that adds significant features or Kirby compatibility. Upgrades typically coincide with new Kirby releases.
 
-### Upgrade to Kirby 5 Compatible Versions
+**Why the distinction?** Major Kirby releases often require significant plugin rewrites. The upgrade model lets us continue development while offering existing customers generous discounts.
 
-The upgrade is available for all plugins and you can upgrade each plugin individually.
+## Current Status
 
-#### Free Upgrade for Recent Customers
+All Kirby Tools plugins support both Kirby 4 and Kirby 5:
 
-If you purchased a Kirby Tools plugin license after September 1, 2024, you receive a **free upgrade** to Kirby 5 compatible versions when they become available (except Content Translator v3). Visit the [Kirby Tools Hub](https://hub.kirby.tools) to generate your upgrade code, which gives you a 100% discount.
+| Plugin                   | Kirby 4 Version | Kirby 5 Version |
+| ------------------------ | --------------- | --------------- |
+| Kirby Copilot            | v1              | v2              |
+| Kirby SEO Audit          | v1, v2          | v2, v3          |
+| Kirby Content Translator | v2              | v3              |
+| Kirby Live Preview       | v1              | v2              |
 
-::callout{icon="i-ri-information-line" color="info" to="/content-translator"}
-Kirby Content Translator v3 is a major update that not only brings compatibility with Kirby 5, but also introduces new features. Therefore, a free upgrade is not available. However, you can upgrade to Content Translator v3 at a 50% discount.
+::callout{icon="i-ri-information-line" color="info"}
+**SEO Audit v3** is a free upgrade – it's primarily a Kirby 5 compatibility update rather than a paid feature release.
 ::
 
-#### Upgrade Discount
+## Upgrade Discount
 
-All customers can get a **50% discount** on the upgrade to Content Translator v3. For other plugins, this discount applies to customers who purchased before September 1st, 2024. Generate your discount code on the [Kirby Tools Hub](https://hub.kirby.tools).
+Gen 1 license holders receive **50% off** when upgrading to the latest plugin versions. This applies to all plugins.
 
-## License Compatibility
+::steps
 
-Licenses you purchase are valid for the current major plugin version and all past versions of the same plugin. This means you can register past plugin versions with your license, but not future versions. (Note that past plugin versions might not be actively maintained or supported.)
+### Visit the Hub
 
-### License Key Versioning
+Go to [hub.kirby.tools](https://hub.kirby.tools)
 
-Licenses contain a version number that determines which plugin versions you can register with them. The license key version is tied to the plugin versions you can register with it. The license key version is raised at a specific point in time, and all licenses purchased after that point will be of the new version.
+### Sign In
 
-For example, the license key `KT1-ABC-123` has license version `1`. It is compatible with Kirby Copilot v1, but not with Kirby Copilot v2. The license key `KT2-DEF-456` has license version `2`. It is compatible with Kirby Copilot v1 _and_ v2.
+Use the email address from your purchase
 
-The following table shows the license compatibility for each plugin and license version:
+### Generate Code
 
-| Plugin                   | License Key v1 (until 2024-11-30) | License Key v2 (from 2024-12-01) |
-| ------------------------ | --------------------------------- | -------------------------------- |
-| Kirby Content Translator | `^2`                              | `^2 \|\| ^3`                     |
-| Kirby Copilot            | `^1`                              | `^1 \|\| ^2`                     |
-| Kirby SEO Audit          | `^1`                              | `^1 \|\| ^2 \|\| ^3`             |
-| Kirby Live Preview       | `^1`                              | `^1 \|\| ^2`                     |
+Click "Upgrade Discount" on your license card
 
-### Current License Key Version
+### Checkout
 
-The current license key version is `2` (as of 1. December 2024). This means that all new licenses are be compatible with Kirby Copilot v2, Kirby SEO Audit v2 & v3, and Kirby Content Translator v3.
+Your discount code is applied automatically
 
-## Plugin Compatibility
+::
 
-The license key version will be roughly in sync with major Kirby releases. Since potentially breaking changes with each major Kirby release require updates to the plugins, the license key version and plugin versions will be updated accordingly.
+## Frequently Asked Questions
 
-| Kirby Version | License Key Version | Plugin Version                                                                                                                                  |
-| ------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 4.0           | 1                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v2, Kirby&nbsp;Copilot&nbsp;v1, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v1, Kirby&nbsp;Live&nbsp;Preview&nbsp;v1 |
-| 5.0           | 2                   | Kirby&nbsp;Content&nbsp;Translator&nbsp;v3, Kirby&nbsp;Copilot&nbsp;v2, Kirby&nbsp;SEO&nbsp;Audit&nbsp;v2, Kirby&nbsp;Live&nbsp;Preview&nbsp;v2 |
+::accordion
+
+::accordion-item{label="Do I need a new license for Kirby 5?"}
+Not necessarily. If you have a Generation 2 license (purchased December 2024+), it already covers Kirby 5 versions. Check your license at [hub.kirby.tools](https://hub.kirby.tools).
+::
+
+::accordion-item{label="What's the difference between license generation and plugin version?"}
+**License generation** (Gen 1, Gen 2) determines which plugin versions your license covers. **Plugin version** (v1, v2, v3) is the actual version you install.
+::
+
+::accordion-item{label="Why is SEO Audit v3 free but Content Translator v3 isn't?"}
+SEO Audit v3 is primarily a Kirby 5 compatibility update. Content Translator v3 introduces significant new features, which is why upgrade pricing applies (50% off).
+::
+
+::accordion-item{label="Can I use an older plugin version with a new license?"}
+Yes. Licenses are backward compatible – you can always use older versions.
+::
+
+::accordion-item{label="Can I use a newer plugin version with an old license?"}
+Only if your license generation covers it. Gen 1 licenses don't cover v2/v3 versions. You'll need to upgrade.
+::
+
+::
+
+## Technical Reference
+
+This section covers implementation details for developers.
+
+### License Key Format
+
+License keys follow the format: `KT{generation}-{hash}-{hash}`
+
+- `KT1-xxxxx-xxxxx`: Generation 1 (before December 2024)
+- `KT2-xxxxx-xxxxx`: Generation 2 (December 2024 onwards)
+
+### Version Compatibility Matrix
+
+| Plugin                   | Gen 1 Constraint | Gen 2 Constraint     |
+| ------------------------ | ---------------- | -------------------- |
+| Kirby Content Translator | `^2`             | `^2 \|\| ^3`         |
+| Kirby Copilot            | `^1`             | `^1 \|\| ^2`         |
+| Kirby SEO Audit          | `^1`             | `^1 \|\| ^2 \|\| ^3` |
+| Kirby Live Preview       | `^1`             | `^1 \|\| ^2`         |
+
+### Generation Timeline
+
+| Generation | Purchase Date      | Kirby Compatibility |
+| ---------- | ------------------ | ------------------- |
+| Gen 1      | Before Dec 1, 2024 | Kirby 4             |
+| Gen 2      | Dec 1, 2024+       | Kirby 4 & 5         |
