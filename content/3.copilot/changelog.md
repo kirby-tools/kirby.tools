@@ -6,7 +6,7 @@ navigation.icon: i-ri-code-s-slash-line
 
 ## Get the Latest Version
 
-### Via Composer (Recommended)
+### Via Composer :u-badge{label="Recommended" size="sm" class="align-middle ml-2 -translate-y-px rounded-full!" variant="subtle"}
 
 ::code-group
 
