@@ -35,7 +35,7 @@ const downloadUrl = computed(() =>
       class="group-hover:text-primary mr-1 size-[1.25em] align-text-bottom transition-colors"
     />
     <span
-      class="text-primary group-hover:bg-primary-50 dark:group-hover:bg-primary-900 hover:border-primary focus-visible:outline-primary border-b border-transparent"
+      class="text-primary group-hover:bg-primary-50 dark:group-hover:bg-primary-900 hover:border-primary focus-visible:outline-primary border-b border-transparent transition-colors"
       >latest version {{ latestVersion?.title }}</span
     >
   </a>
