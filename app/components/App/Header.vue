@@ -11,6 +11,8 @@ defineProps<{
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
 
+const visibleProducts = PRODUCT_ITEMS.filter((product) => !product.isHidden);
+
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   currentProduct.value
     ? [
@@ -24,7 +26,7 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
           to: currentProduct.value.docsTo,
           active: route.path.startsWith(`/docs${currentProduct.value.to}`),
         },
-        ...(currentProduct.value.paid
+        ...(currentProduct.value.isPaid
           ? [
               {
                 label: "Buy",
@@ -42,7 +44,7 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
             ]
           : []),
       ]
-    : PRODUCT_ITEMS,
+    : visibleProducts,
 );
 
 const { data: version } = await useAsyncData(
@@ -71,7 +73,7 @@ const { data: version } = await useAsyncData(
         v-slot="{ open }"
         :modal="false"
         :items="
-          PRODUCT_ITEMS.map((product) => ({
+          visibleProducts.map((product) => ({
             label: product.label,
             to: product.to,
             ...(product.to === currentProduct?.to && {
