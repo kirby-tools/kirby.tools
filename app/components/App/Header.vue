@@ -73,7 +73,7 @@ const { data: version } = await useAsyncData(
         v-slot="{ open }"
         :modal="false"
         :items="
-          visibleProducts.map((product) => ({
+          PRODUCT_ITEMS.map((product) => ({
             label: product.label,
             to: product.to,
             ...(product.to === currentProduct?.to && {
