@@ -5,7 +5,8 @@ interface ProductItem {
   icon: string;
   description: string;
   playground?: string;
-  paid?: boolean;
+  isPaid?: boolean;
+  isHidden?: boolean;
 }
 
 /// keep-sorted
@@ -20,21 +21,21 @@ export const GITHUB_REPOS: Record<string, string> = {
 
 export const PRODUCT_ITEMS: ProductItem[] = [
   {
-    label: "Content Translator",
-    to: "/content-translator",
-    docsTo: "/docs/content-translator/getting-started",
-    icon: "i-ri-translate",
-    description: "Content translation in the Panel or via CLI",
-    paid: true,
-  },
-  {
     label: "Copilot",
     to: "/copilot",
     docsTo: "/docs/copilot/getting-started",
     icon: "i-ri-sparkling-line",
     description: "AI-powered content generation",
     playground: "https://try.kirbycopilot.com",
-    paid: true,
+    isPaid: true,
+  },
+  {
+    label: "Content Translator",
+    to: "/content-translator",
+    docsTo: "/docs/content-translator/getting-started",
+    icon: "i-ri-translate",
+    description: "Content translation in the Panel or via CLI",
+    isPaid: true,
   },
   {
     label: "SEO Audit",
@@ -43,7 +44,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     icon: "i-ri-seo-line",
     description: "State-of-the-art SEO analysis",
     playground: "https://try.kirbyseo.com",
-    paid: true,
+    isPaid: true,
   },
   {
     label: "Live Preview",
@@ -52,7 +53,8 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     icon: "i-ri-picture-in-picture-line",
     description: "Real-time page preview",
     playground: "https://play.kirby.tools",
-    paid: true,
+    isPaid: true,
+    isHidden: true,
   },
   {
     label: "Minimap",
