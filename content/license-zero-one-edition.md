@@ -1,5 +1,5 @@
 ---
-title: Kirby Tools Plugin License Agreement
+title: Kirby Tools Plugin License Agreement – Zero One Edition
 description: License Agreement for proprietary Kirby Tools plugins distributed as the "Zero One Edition" alongside the "Zero One" Kirby CMS Theme.
 navigation.icon: i-ri-file-paper-line
 ---
