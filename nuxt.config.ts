@@ -54,6 +54,8 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { prerender: true },
+    "/license": { prerender: true },
+    "/license/zero-one-edition": { prerender: true },
     "/copilot/playground": {
       redirect: { to: "https://try.kirbycopilot.com", statusCode: 302 },
     },
