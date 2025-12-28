@@ -3,9 +3,9 @@ description: Let AI generate structured content and entire page layouts right in
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: "New: Multi-Field Generation"
-    to: /docs/copilot/usage/view-button
-    icon: i-ri-ai-generate
+    label: "New in v3: Tab Completions"
+    to: /docs/copilot/usage/toolbar-buttons#auto-completion
+    icon: i-ri-magic-line
     color: neutral
     variant: solid
   title: '<span class="primary-500">AI-Powered</span><br> Page Building'
@@ -25,6 +25,10 @@ sections:
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
+      - title: Tab Completions
+        description: Accept AI suggestions with Tab. Ghost text preview shows completions inline as you type.
+        icon: i-ri-keyboard-line
+        to: /docs/copilot/usage/toolbar-buttons#auto-completion
       - title: Multi-Field Generation
         description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
         icon: i-ri-list-check-2
