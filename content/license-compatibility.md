@@ -47,13 +47,13 @@ All Kirby Tools plugins support both Kirby 4 and Kirby 5:
 
 | Plugin                   | Kirby 4 Version | Kirby 5 Version |
 | ------------------------ | --------------- | --------------- |
-| Kirby Copilot            | v1              | v2              |
+| Kirby Copilot            | v1              | v2, v3          |
 | Kirby SEO Audit          | v1, v2          | v2, v3          |
 | Kirby Content Translator | v2              | v3              |
 | Kirby Live Preview       | v1              | v2              |
 
 ::callout{icon="i-ri-information-line" color="info"}
-**SEO Audit v3** is a free upgrade – it is primarily a Kirby 5 compatibility update rather than a paid feature release.
+**Copilot v3** and **SEO Audit v3** are free upgrades – Gen 2 license holders already have access.
 ::
 
 ## Upgrade Discount
@@ -122,7 +122,7 @@ License keys follow the format: `KT{generation}-{hash}-{hash}`
 | Plugin                   | Gen 1 Constraint | Gen 2 Constraint     |
 | ------------------------ | ---------------- | -------------------- |
 | Kirby Content Translator | `^2`             | `^2 \|\| ^3`         |
-| Kirby Copilot            | `^1`             | `^1 \|\| ^2`         |
+| Kirby Copilot            | `^1`             | `^1 \|\| ^2 \|\| ^3` |
 | Kirby SEO Audit          | `^1`             | `^1 \|\| ^2 \|\| ^3` |
 | Kirby Live Preview       | `^1`             | `^1 \|\| ^2`         |
 
