@@ -36,7 +36,7 @@ sections:
       - title: Structure-Aware Generation
         description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
         icon: i-ri-dashboard-line
-        to: /docs/copilot/usage/blocks-and-layouts
+        to: /docs/copilot/advanced/blocks-and-layouts
       - title: In-Context Editing
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance. Works perfectly with selected text.
         icon: i-ri-input-cursor-move
@@ -48,7 +48,7 @@ sections:
       - title: Rich Context
         description: Go beyond text. Use other fields, images, and even PDF documents as context for more accurate and relevant AI responses.
         icon: i-ri-braces-line
-        to: /docs/copilot/usage/placeholders
+        to: /docs/copilot/prompt-dialog/placeholders
       - title: Multi-Model Support
         description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
         icon: i-ri-openai-line

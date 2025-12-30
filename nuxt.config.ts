@@ -53,16 +53,34 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    // Global
     "/": { prerender: true },
     "/license": { prerender: true },
     "/license/zero-one-edition": { prerender: true },
+    // Playgrounds
     "/copilot/playground": {
       redirect: { to: "https://try.kirbycopilot.com", statusCode: 302 },
     },
     "/seo-audit/playground": {
       redirect: { to: "https://try.kirbyseo.com", statusCode: 302 },
     },
+    // Core
     "/docs": { redirect: "/" },
+    // Copilot
+    "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
+    "/docs/copilot/usage/placeholders": {
+      redirect: "/docs/copilot/prompt-dialog/placeholders",
+    },
+    "/docs/copilot/usage/files": {
+      redirect: "/docs/copilot/prompt-dialog/files",
+    },
+    "/docs/copilot/usage/blocks-and-layouts": {
+      redirect: "/docs/copilot/advanced/blocks-and-layouts",
+    },
+    "/docs/copilot/usage/reference": {
+      redirect: "/docs/copilot/advanced/reference",
+    },
+    // Content Translator
     "/docs/content-translator/changelog": {
       redirect: "/content-translator/changelog",
     },
@@ -87,9 +105,10 @@ export default defineNuxtConfig({
     "/docs/content-translator/migration": {
       redirect: "/docs/content-translator/getting-started/migration",
     },
-    "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
-    "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
+    // SEO Audit
     "/docs/seo-audit": { redirect: "/docs/seo-audit/getting-started" },
+    // Other plugins
+    "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/headless": { redirect: "/docs/headless/getting-started" },
     "/docs/headless/getting-started": { prerender: true },
   },
