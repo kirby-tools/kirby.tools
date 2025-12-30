@@ -3,8 +3,8 @@ description: Let AI generate structured content and entire page layouts right in
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: "New in v3: Tab Completions"
-    to: /docs/copilot/usage/toolbar-buttons#auto-completion
+    label: "New in v3: Inline Suggestions"
+    to: /docs/copilot/usage/inline-suggestions
     icon: i-ri-magic-line
     color: neutral
     variant: solid
@@ -25,10 +25,10 @@ sections:
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: features
     features:
-      - title: Tab Completions
-        description: Accept AI suggestions with Tab. Ghost text preview shows completions inline as you type.
+      - title: Inline Suggestions
+        description: Ghost text appears after a brief pause. Press Tab to accept.
         icon: i-ri-keyboard-line
-        to: /docs/copilot/usage/toolbar-buttons#auto-completion
+        to: /docs/copilot/usage/inline-suggestions
       - title: Multi-Field Generation
         description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
         icon: i-ri-list-check-2
@@ -41,18 +41,14 @@ sections:
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance. Works perfectly with selected text.
         icon: i-ri-input-cursor-move
         to: /docs/copilot/usage/toolbar-buttons
-      - title: Customizable Prompts
-        description: Tailor AI instructions with user and system prompts to ensure brand voice and consistent output.
-        icon: i-ri-edit-box-line
-        to: /docs/copilot/configuration/system-prompt
+      - title: Prompt Templates
+        description: Tailor AI responses with user instructions. Save frequently used prompts as templates for quick access.
+        icon: i-ri-bookmark-line
+        to: /docs/copilot/prompt-dialog/templates
       - title: Rich Context
         description: Go beyond text. Use other fields, images, and even PDF documents as context for more accurate and relevant AI responses.
         icon: i-ri-braces-line
         to: /docs/copilot/prompt-dialog/placeholders
-      - title: Multi-Model Support
-        description: Supports all major AI models – including OpenAI, Google, Anthropic, and Mistral AI.
-        icon: i-ri-openai-line
-        to: /docs/copilot/configuration/global#provider
   - title: Generate Content<br> <span class="text-primary">Based on Your Blocks</span>
     slot: video
     video:
