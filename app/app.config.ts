@@ -51,5 +51,12 @@ export default defineAppConfig({
         base: "active:hover:scale-[97%] transition-all ease-linear duration-100",
       },
     },
+    prose: {
+      card: {
+        slots: {
+          description: "space-y-4! [&_p]:leading-6!",
+        },
+      },
+    },
   },
 });
