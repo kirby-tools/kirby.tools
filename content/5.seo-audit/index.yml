@@ -28,7 +28,7 @@ sections:
         icon: i-ri-wordpress-fill
         to: /docs/seo-audit/guide/assessments
       - title: Panel View Button & Section
-        description: Analyze content with a convenient view button in Kirby 5, or use the traditional Panel section. Works with any Kirby site.
+        description: Analyze content with a convenient view button, or use the dedicated Panel section. Works with any Kirby site.
         icon: i-ri-plug-line
         to: /docs/seo-audit/getting-started
       - title: 28 SEO & Readability Assessments
