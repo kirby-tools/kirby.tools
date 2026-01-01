@@ -58,8 +58,8 @@ sections:
   - title: Toolbar Buttons for<br> <span class="text-primary">Writer & Textarea Fields</span>
     slot: video
     video:
-      src: /vid/kirby-copilot-writer-prompt-dialog.mp4
-      poster: /vid/kirby-copilot-writer-prompt-dialog-poster-start.jpg
+      src: /vid/kirby-copilot-writer-text-editing.mp4
+      poster: /vid/kirby-copilot-writer-text-editing-poster-start.jpg
       label: Demonstration of AI-powered toolbar buttons for writer and textarea fields in Kirby Copilot
 cta:
   title: Do Not Take<br class="md:hidden"> Our Word for It
