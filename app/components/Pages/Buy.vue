@@ -37,7 +37,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
 
         <UButton v-bind="page.plan.button" :to="checkoutUrl" size="lg" block />
 
-        <div
+        <!-- <div
           class="absolute top-0 left-6 flex translate-y-[-50%] justify-center lg:left-8 xl:left-10"
         >
           <div class="bg-default inline-flex rounded-full">
@@ -49,7 +49,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
               class="rounded-full"
             />
           </div>
-        </div>
+        </div> -->
       </template>
     </UPricingPlan>
   </DefinePricingPlanTemplate>

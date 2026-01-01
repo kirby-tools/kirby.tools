@@ -27,7 +27,7 @@ sections:
     features:
       - title: Inline Suggestions
         description: Ghost text appears after a brief pause. Press Tab to accept.
-        icon: i-ri-keyboard-line
+        icon: i-ri-magic-line
         to: /docs/copilot/usage/inline-suggestions
       - title: Multi-Field Generation
         description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
