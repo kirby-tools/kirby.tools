@@ -79,26 +79,6 @@ testimonials:
       website: https://deadstock.de
       usage: Kirby Content Translator
 products:
-  - title: Kirby Content Translator
-    type: commercial
-    id: content-translator
-    to: /content-translator
-    description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
-    video:
-      src: /vid/kirby-content-translator-batch-translation.mp4
-      poster: /vid/kirby-content-translator-batch-translation-poster.jpg
-      label: Demonstration of Content Translator batch translations in the Kirby Panel
-    features:
-      - name: All Fields
-        description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
-        icon: i-ri-dashboard-horizontal-line
-      - name: Programmatic PHP API
-        description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
-        icon: i-ri-terminal-box-line
-      - name: One-Click Translation
-        description: >
-          Choose between a section and a view button in the Panel header to translate content with a single click.
-        icon: i-ri-cursor-line
   - title: Kirby Copilot
     type: commercial
     id: copilot
@@ -119,9 +99,29 @@ products:
       - name: In-Context Editing
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
         icon: i-ri-input-cursor-move
-      - name: Rich Context
-        description: Use images, PDFs, and other fields as context for the AI model to generate better suggestions.
-        icon: i-ri-chat-new-line
+      - name: Inline Suggestions
+        description: Ghost text appears as you type. Press Tab to accept AI suggestions in any writer field.
+        icon: i-ri-keyboard-line
+  - title: Kirby Content Translator
+    type: commercial
+    id: content-translator
+    to: /content-translator
+    description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
+    video:
+      src: /vid/kirby-content-translator-batch-translation.mp4
+      poster: /vid/kirby-content-translator-batch-translation-poster.jpg
+      label: Demonstration of Content Translator batch translations in the Kirby Panel
+    features:
+      - name: All Fields
+        description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
+        icon: i-ri-dashboard-horizontal-line
+      - name: Programmatic PHP API
+        description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
+        icon: i-ri-terminal-box-line
+      - name: One-Click Translation
+        description: >
+          Choose between a section and a view button in the Panel header to translate content with a single click.
+        icon: i-ri-cursor-line
   - title: Kirby SEO Audit
     type: commercial
     id: seo-audit
