@@ -23,8 +23,8 @@ faq:
   items:
     - label: How does the licensing work?
       content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
-    - label: Do I need an OpenAI API key?
-      content: If you want to use GPT models then yes, you need a key for the [OpenAI API](https://platform.openai.com) allowing Kirby Copilot request text completions from it. If you want to use Anthropic Claude or Mistral models instead, you will need an API key for the respective provider.
+    - label: Do I need an AI provider API key?
+      content: Yes, you need an API key from at least one supported provider. Kirby Copilot supports [OpenAI](https://platform.openai.com), [Google Gemini](https://ai.google.dev/gemini-api/docs/models) (free tier available!), [Anthropic Claude](https://console.anthropic.com), and [Mistral](https://console.mistral.ai). We recommend Google Gemini for its free tier and excellent structured content generation.
     - label: Which Kirby versions are supported?
       content: Kirby Copilot is compatible with Kirby 4 and Kirby 5.
     - label: What does “Unlimited minor & patch updates” include?
