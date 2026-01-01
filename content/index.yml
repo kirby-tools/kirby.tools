@@ -3,11 +3,13 @@ description: A collection of Kirby plugins that empoweres editors and developers
 navigation: false
 hero:
   headline:
-    label: Kirby 5 Support & Discounts
-    to: /license-compatibility
-    icon:
-      name: i-logos-kirby-icon
-      class: dark:invert
+    label: "New Year Release: Copilot v3"
+    to: /copilot/changelog
+    icon: i-ri-magic-line
+    color: primary
+    # icon:
+    #   name: i-logos-kirby-icon
+    #   class: dark:invert
   title: 'The Kirby<br> <span class="text-primary">Plugin System</span>'
   description: Kirby Tools offers a collection of plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
   links:
@@ -101,7 +103,7 @@ products:
         icon: i-ri-input-cursor-move
       - name: Inline Suggestions
         description: Ghost text appears as you type. Press Tab to accept AI suggestions in any writer field.
-        icon: i-ri-keyboard-line
+        icon: i-ri-magic-line
   - title: Kirby Content Translator
     type: commercial
     id: content-translator
