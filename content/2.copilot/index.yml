@@ -8,8 +8,8 @@ hero:
     icon: i-ri-magic-line
     color: neutral
     variant: solid
-  title: '<span class="primary-500">AI-Powered</span><br> Page Building'
-  description: Kirby Copilot is the first structure-aware AI assistant for Kirby.<br class="hidden lg:block"> It adapts to your project's fields and unique blocks.
+  title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
+  description: Generate entire layouts from your custom blocks, refine text with inline suggestions,<br class="hidden lg:block"> or let AI complete your thoughts as you type.
   links:
     - label: Try Copilot Yourself
       trailingIcon: i-ri-arrow-right-line

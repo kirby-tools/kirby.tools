@@ -85,7 +85,7 @@ products:
     type: commercial
     id: copilot
     to: /copilot
-    description: The first structure-aware AI assistant for Kirby. It adapts to your project's fields and unique blocks.
+    description: AI-powered content generation and text editing for Kirby CMS. Generate layouts, refine text, or let AI complete your thoughts as you type.
     reverse: true
     video:
       src: /vid/kirby-copilot-multi-fields-generation.mp4
