@@ -12,7 +12,7 @@ hero:
   links:
     - label: Generate Your SEO Report
       trailingIcon: i-ri-arrow-right-line
-      to: https://try.kirbyseo.com
+      to: /docs/seo-audit/getting-started/installation
       target: _blank
       size: xl
   video:
@@ -62,6 +62,6 @@ cta:
   links:
     - label: Analyze Your Page
       trailingIcon: i-ri-arrow-right-line
-      to: /docs/seo-audit/getting-started
+      to: /docs/seo-audit/getting-started/installation
       variant: subtle
       size: xl
