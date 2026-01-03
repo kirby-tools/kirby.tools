@@ -5,14 +5,14 @@ hero:
   orientation: horizontal
   headline:
     label: "New: Panel View Button"
-    to: /docs/content-translator#view-button
+    to: /docs/content-translator/configuration/local#view-button-configuration
     icon: i-ri-global-fill
   title: 'The <span class="text-primary">Holistic</span><br> Translation Workflow'
   description: Content translation with DeepL – in the Panel or via CLI commands. One page at a time or all at once.
   links:
     - label: Start Translating Now
       trailingIcon: i-ri-arrow-right-line
-      to: /docs/content-translator
+      to: /docs/content-translator/getting-started/installation
       size: xl
   video:
     src: /vid/kirby-content-translator-batch-translation.mp4
@@ -53,6 +53,6 @@ cta:
   links:
     - label: Install & Try for Free
       trailingIcon: i-ri-arrow-right-line
-      to: /docs/content-translator
+      to: /docs/content-translator/getting-started/installation
       variant: subtle
       size: xl
