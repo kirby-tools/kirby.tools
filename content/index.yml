@@ -1,5 +1,5 @@
-title: Kirby Tools
-description: A collection of Kirby plugins that empoweres editors and developers alike.
+title: Kirby Tools – Premium Plugins for Kirby CMS
+description: Professional Kirby CMS plugins for AI content generation, translation, and SEO analysis. Built for editors and developers.
 navigation: false
 hero:
   headline:
@@ -10,8 +10,8 @@ hero:
     # icon:
     #   name: i-logos-kirby-icon
     #   class: dark:invert
-  title: 'The Kirby<br> <span class="text-primary">Plugin System</span>'
-  description: Kirby Tools offers a collection of plugins for your Kirby projects.<br class="hidden md:inline"> They empower editors and developers alike.
+  title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
+  description: Professional plugins that enhance the Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
   links:
     - label: Meet the Plugins
       trailingIcon: i-ri-arrow-down-circle-fill

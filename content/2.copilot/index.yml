@@ -1,5 +1,5 @@
-title: Kirby Copilot – AI-Powered Content Generation for Kirby CMS
-description: Let AI generate structured content and entire page layouts right in the Kirby Panel.
+title: Kirby Copilot – AI Content Generation Plugin for Kirby CMS
+description: AI-powered content generation plugin for Kirby CMS. Generate layouts, text, and structured content directly in the Kirby Panel with GPT, Claude, or Gemini.
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
@@ -9,14 +9,14 @@ hero:
     color: neutral
     variant: solid
   title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
-  description: Generate entire layouts from your custom blocks, refine text with inline suggestions,<br class="hidden lg:block"> or let AI complete your thoughts as you type.
+  description: Generate entire layouts from your custom blocks, refine text with<br class="hidden lg:block"> inline suggestions, or let AI complete your thoughts as you type.
   links:
     - label: Try Copilot Yourself
       trailingIcon: i-ri-arrow-right-line
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
-  - title: Generate Content For<br> <span class="text-primary">Multiple Fields</span>
+  - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
     slot: video
     video:
       src: /vid/kirby-copilot-multi-fields-generation.mp4
@@ -49,13 +49,13 @@ sections:
         description: Go beyond text. Use other fields, images, and even PDF documents as context for more accurate and relevant AI responses.
         icon: i-ri-braces-line
         to: /docs/copilot/prompt-dialog/placeholders
-  - title: Refine Text with<br> <span class="text-primary">Templates & Inline Suggestions</span>
+  - title: AI Text Editing with<br> <span class="text-primary">Templates & Suggestions</span>
     slot: video
     video:
       src: /vid/kirby-copilot-writer-features.mp4
       poster: /vid/kirby-copilot-writer-features-poster-start.jpg
       label: Applying prompt templates to fix grammar and make text concise, followed by inline suggestions in a writer field
-  - title: Generate Content<br> <span class="text-primary">Based on Your Blocks</span>
+  - title: Generate Kirby Layouts<br> <span class="text-primary">From Custom Blocks</span>
     slot: video
     video:
       src: /vid/kirby-copilot-generate-layouts.mp4
