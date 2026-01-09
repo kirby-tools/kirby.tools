@@ -1,5 +1,5 @@
-title: Live Preview – Real-Time Content Preview in the Panel
-description: Real-time preview of unsaved changes right in the Panel.
+title: Kirby Live Preview – Real-Time Panel Preview Plugin for Kirby CMS
+description: Live preview plugin for Kirby CMS. See unsaved content changes in real time directly in the Kirby Panel with responsive device simulation.
 navigation.icon: i-ri-picture-in-picture-line
 hero:
   orientation: horizontal
@@ -33,7 +33,7 @@ sections:
         description: Choose from a variety of device screen sizes to see how your content will look on mobile (390w), tablet (768w), and desktop (1440w).
         icon: i-ri-device-line
         to: /docs/live-preview#step-2-blueprint-setup
-  - title: Test <span class="text-primary">Responsiveness</span><br> And Open in a <span class="text-primary">New Tab</span>
+  - title: Responsive Preview<br> with <span class="text-primary">Device Simulation</span>
     slot: video
     video:
       src: /vid/kirby-live-preview-devices.mp4
