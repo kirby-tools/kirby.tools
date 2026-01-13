@@ -11,7 +11,7 @@ hero:
     #   name: i-logos-kirby-icon
     #   class: dark:invert
   title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
-  description: Professional plugins that enhance the Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
+  description: Plugins that empower your Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
   links:
     - label: Meet the Plugins
       trailingIcon: i-ri-arrow-down-circle-fill
