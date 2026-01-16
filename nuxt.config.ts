@@ -52,6 +52,10 @@ export default defineNuxtConfig({
     name: "Kirby Tools",
   },
 
+  sitemap: {
+    zeroRuntime: true,
+  },
+
   routeRules: {
     // Global
     "/": { prerender: true },
