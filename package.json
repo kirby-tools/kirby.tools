@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -17,27 +17,27 @@
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.7.3",
+    "@antfu/eslint-config": "^7.0.1",
     "@iconify-json/logos": "^1.2.10",
-    "@iconify-json/lucide": "^1.2.82",
-    "@iconify-json/ri": "^1.2.6",
-    "@iconify-json/simple-icons": "^1.2.64",
-    "@iconify-json/vscode-icons": "^1.2.37",
-    "@nuxt/content": "^3.10.0",
+    "@iconify-json/lucide": "^1.2.85",
+    "@iconify-json/ri": "^1.2.7",
+    "@iconify-json/simple-icons": "^1.2.66",
+    "@iconify-json/vscode-icons": "^1.2.39",
+    "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.3.0",
     "@nuxtjs/robots": "^5.6.7",
-    "@nuxtjs/sitemap": "^7.5.0",
-    "@types/node": "^24.10.4",
+    "@nuxtjs/sitemap": "^7.5.2",
+    "@types/node": "^24.10.9",
     "@vueuse/nuxt": "^14.1.0",
     "eslint": "^9.39.2",
-    "motion-v": "^1.7.4",
+    "motion-v": "^1.9.0",
     "nuxt": "^4.2.2",
     "nuxt-og-image": "^5.1.13",
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "vue-tsc": "^3.2.1"
+    "vue-tsc": "^3.2.2"
   }
 }
