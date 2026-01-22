@@ -108,7 +108,7 @@ products:
     type: commercial
     id: content-translator
     to: /content-translator
-    description: Content translation with DeepL – in the Panel or via CLI commands. One page at the time or all at once.
+    description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
     video:
       src: /vid/kirby-content-translator-batch-translation.mp4
       poster: /vid/kirby-content-translator-batch-translation-poster.jpg
@@ -117,13 +117,12 @@ products:
       - name: All Fields
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
         icon: i-ri-dashboard-horizontal-line
+      - name: AI-Powered Translation
+        description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.
+        icon: i-ri-sparkling-2-line
       - name: Programmatic PHP API
-        description: Integrate content translation in Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
+        description: Integrate translations in CLI commands and custom workflows. Batch translate pages or automate language setup.
         icon: i-ri-terminal-box-line
-      - name: One-Click Translation
-        description: >
-          Choose between a section and a view button in the Panel header to translate content with a single click.
-        icon: i-ri-cursor-line
   - title: Kirby SEO Audit
     type: commercial
     id: seo-audit

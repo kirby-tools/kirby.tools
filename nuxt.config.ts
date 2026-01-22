@@ -42,6 +42,12 @@ export default defineNuxtConfig({
     },
   },
 
+  mdc: {
+    highlight: {
+      noApiRoute: false,
+    },
+  },
+
   image: {
     quality: 80,
     format: ["webp"],

@@ -8,7 +8,7 @@ hero:
     to: /docs/content-translator/configuration/ai-translation
     icon: i-ri-sparkling-2-line
   title: '<span class="text-primary">DeepL & AI Translations</span><br> for Kirby CMS'
-  description: Translate content with DeepL or AI – in the Panel or via CLI commands. One page at a time or all at once.
+  description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
   links:
     - label: Start Translating Now
       trailingIcon: i-ri-arrow-right-line
@@ -32,10 +32,6 @@ sections:
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields. Nested structures are recursively translated.
         icon: i-ri-dashboard-horizontal-line
         to: /docs/content-translator
-      - title: Programmatic PHP API
-        description: Integrate content translation into Kirby CLI commands and custom workflows. Help your clients set up new languages in no time.
-        icon: i-ri-terminal-box-line
-        to: /docs/content-translator/advanced/php-api
       - title: One-Click Translation
         description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
         icon: i-ri-cursor-line
@@ -44,12 +40,50 @@ sections:
         description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.
         icon: i-ri-sparkling-2-line
         to: /docs/content-translator/configuration/ai-translation
-  - title: Batch Translation<br> via <span class="text-primary">Kirby CLI</span>
-    slot: video
-    video:
-      src: /vid/kirby-content-translator-cli-command.mp4
-      poster: /vid/kirby-content-translator-cli-command-poster-start.jpg
-      label: Demonstration of translating page children from command line using CLI commands
+  - title: Automate with the<br> <span class="text-primary">PHP API</span>
+    id: php-api
+    slot: code
+    orientation: horizontal
+    reverse: true
+    description: Integrate translations into CLI commands, hooks, or custom workflows. Full programmatic control over copying and translating content.
+    features:
+      - title: CLI Commands
+        description: Create Kirby CLI commands to batch translate pages
+        icon: i-ri-terminal-box-line
+      - title: Full Control
+        description: Copy, translate, and sync content programmatically
+        icon: i-ri-settings-3-line
+    links:
+      - label: PHP API Reference
+        to: /docs/content-translator/advanced/php-api
+        trailingIcon: i-ri-arrow-right-line
+        variant: subtle
+    code:
+      files:
+        - filename: site/commands/translate-blog.php
+          language: php
+          content: |
+            use Kirby\CLI\CLI;
+
+            return [
+                'description' => 'Translate all blog posts',
+                'command' => static function (CLI $cli): void {
+                    $kirby = $cli->kirby();
+                    $source = $kirby->defaultLanguage()->code();
+
+                    foreach (page('blog')->children() as $post) {
+                        $post->translator()->copyContent('de', $source);
+                        $post->translator()->translateContent('de', 'de', $source);
+                        $cli->out('✓ ' . $post->title());
+                    }
+
+                    $cli->success('All posts translated!');
+                }
+            ];
+        - filename: Terminal
+          language: bash
+          content: |
+            kirby translate-blog
 cta:
   title: Still scrolling?
   description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
