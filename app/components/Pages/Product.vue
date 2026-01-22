@@ -88,6 +88,9 @@ onMounted(() => {
         :links="section.links"
         :orientation="section.orientation"
         :reverse="section.reverse"
+        :features="
+          section.orientation === 'horizontal' ? section.features : undefined
+        "
         :class="[section.slot === 'features' && 'relative overflow-hidden']"
         :ui="{
           container:
@@ -111,7 +114,14 @@ onMounted(() => {
           <span v-html="section.description" />
         </template>
 
-        <UPageGrid v-if="section.slot === 'features'">
+        <!-- Horizontal sections: media in default slot, features as prop -->
+        <template v-if="section.orientation === 'horizontal'">
+          <ElementVideo v-if="section.video" v-bind="section.video" />
+          <ElementCode v-else-if="section.code" v-bind="section.code" />
+        </template>
+
+        <!-- Vertical features section: render feature cards grid -->
+        <UPageGrid v-else-if="section.slot === 'features' && section.features">
           <UPageCard
             v-for="(item, itemIndex) in section.features"
             :key="itemIndex"
@@ -131,10 +141,28 @@ onMounted(() => {
             />
           </UPageCard>
         </UPageGrid>
+
         <ElementVideo
-          v-else-if="section.slot === 'video'"
+          v-else-if="section.slot === 'video' && section.video"
           v-bind="section.video"
         />
+
+        <ElementCode
+          v-else-if="section.slot === 'code' && section.code"
+          v-bind="section.code"
+        />
+
+        <UPageGrid v-else-if="section.slot === 'cards' && section.cards">
+          <UPageCard
+            v-for="card in section.cards"
+            :key="card.id"
+            :title="card.title"
+            :description="card.description"
+            :icon="card.icon"
+            :to="card.to"
+            :class="card.gradient"
+          />
+        </UPageGrid>
       </UPageSection>
 
       <USeparator

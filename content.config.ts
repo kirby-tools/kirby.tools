@@ -57,6 +57,29 @@ const createVideoSchema = () =>
     label: z.string().optional(),
   });
 
+const createCodeSchema = () =>
+  z.object({
+    files: z.array(
+      z.object({
+        filename: z.string().nonempty(),
+        language: z.string().nonempty(),
+        content: z.string().nonempty(),
+      }),
+    ),
+    defaultFile: z.string().optional(),
+  });
+
+const createCardItemSchema = () =>
+  z.object({
+    id: z.string().nonempty(),
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    icon: z.string().nonempty(),
+    color: z.string().optional(),
+    gradient: z.string().optional(),
+    to: z.string().optional(),
+  });
+
 export default defineContentConfig({
   collections: {
     index: defineCollection({
@@ -141,21 +164,25 @@ export default defineContentConfig({
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
             headline: z.string().optional(),
-            features: z.array(
-              createFeatureItemSchema().extend({
-                image: z
-                  .object({
-                    src: z.string().nonempty(),
-                    width: z.string().nonempty(),
-                    height: z.string().nonempty(),
-                    alt: z.string().optional(),
-                    class: z.string().optional(),
-                  })
-                  .optional(),
-              }),
-            ),
-            links: z.array(createLinkSchema()),
-            video: createVideoSchema(),
+            features: z
+              .array(
+                createFeatureItemSchema().extend({
+                  image: z
+                    .object({
+                      src: z.string().nonempty(),
+                      width: z.string().nonempty(),
+                      height: z.string().nonempty(),
+                      alt: z.string().optional(),
+                      class: z.string().optional(),
+                    })
+                    .optional(),
+                }),
+              )
+              .optional(),
+            links: z.array(createLinkSchema()).optional(),
+            video: createVideoSchema().optional(),
+            code: createCodeSchema().optional(),
+            cards: z.array(createCardItemSchema()).optional(),
           }),
         ),
         cta: createBaseSchema().extend({
