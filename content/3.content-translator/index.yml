@@ -1,14 +1,14 @@
-title: Kirby Content Translator – DeepL Translation Plugin for Kirby CMS
-description: Translate Kirby CMS content with DeepL automatically. One-click translation in the Panel or batch translation via CLI for multilingual websites.
+title: Kirby Content Translator – DeepL & AI Translation Plugin for Kirby CMS
+description: Translate Kirby CMS content with DeepL or AI. One-click translation in the Panel or batch translation via CLI for multilingual websites.
 navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
   headline:
-    label: "New: Panel View Button"
-    to: /docs/content-translator/configuration/local#view-button-configuration
-    icon: i-ri-global-fill
-  title: '<span class="text-primary">DeepL Translation</span><br> Plugin for Kirby CMS'
-  description: Translate content with DeepL – in the Panel or via CLI commands. One page at a time or all at once.
+    label: "New: AI Translation via Copilot"
+    to: /docs/content-translator/configuration/ai-translation
+    icon: i-ri-sparkling-2-line
+  title: '<span class="text-primary">DeepL & AI Translations</span><br> for Kirby CMS'
+  description: Translate content with DeepL or AI – in the Panel or via CLI commands. One page at a time or all at once.
   links:
     - label: Start Translating Now
       trailingIcon: i-ri-arrow-right-line
@@ -40,6 +40,10 @@ sections:
         description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
         icon: i-ri-cursor-line
         to: /docs/content-translator/configuration/local#fieldtypes
+      - title: AI-Powered Translation
+        description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.
+        icon: i-ri-sparkling-2-line
+        to: /docs/content-translator/configuration/ai-translation
   - title: Batch Translation<br> via <span class="text-primary">Kirby CLI</span>
     slot: video
     video:
