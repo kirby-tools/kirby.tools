@@ -107,7 +107,16 @@ export default defineNuxtConfig({
       redirect: "/docs/content-translator/advanced/hooks",
     },
     "/docs/content-translator/kirbytags": {
-      redirect: "/docs/content-translator/configuration/kirbytags",
+      redirect: "/docs/content-translator/advanced/kirbytags",
+    },
+    "/docs/content-translator/configuration/translator-function": {
+      redirect: "/docs/content-translator/providers/custom-translator",
+    },
+    "/docs/content-translator/configuration/deepl": {
+      redirect: "/docs/content-translator/providers/deepl",
+    },
+    "/docs/content-translator/providers": {
+      redirect: "/docs/content-translator/providers/deepl",
     },
     "/docs/content-translator/examples": {
       redirect: "/docs/content-translator/examples/basic-usage",
