@@ -13,7 +13,7 @@ defineProps<{
       :src="src"
       sizes="352px"
       densities="x1 x2"
-      :alt="alt || 'Kirby Tools section preview'"
+      :alt="alt || undefined"
       :width="width"
       :height="height"
       class="my-0! w-[22rem] rounded-md"
