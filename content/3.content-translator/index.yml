@@ -7,6 +7,8 @@ hero:
     label: "New: AI Translation via Copilot"
     to: /docs/content-translator/providers/ai-translation
     icon: i-ri-sparkling-2-line
+    color: neutral
+    variant: solid
   title: '<span class="text-primary">DeepL & AI Translations</span><br> for Kirby CMS'
   description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
   links:
