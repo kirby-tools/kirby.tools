@@ -77,7 +77,7 @@ onMounted(() => {
 
       <slot name="hero" />
 
-      <ElementVideo v-if="page.hero.video" v-bind="page.hero.video" />
+      <MediaVideo v-if="page.hero.video" v-bind="page.hero.video" />
     </UPageHero>
 
     <slot name="sections-cta" />
@@ -131,8 +131,8 @@ onMounted(() => {
 
         <!-- Horizontal sections: media in default slot, features as prop -->
         <template v-if="section.orientation === 'horizontal'">
-          <ElementVideo v-if="section.video" v-bind="section.video" />
-          <ElementCode v-else-if="section.code" v-bind="section.code" />
+          <MediaVideo v-if="section.video" v-bind="section.video" />
+          <MediaCode v-else-if="section.code" v-bind="section.code" />
         </template>
 
         <!-- Vertical features section: render feature cards grid -->
@@ -157,12 +157,12 @@ onMounted(() => {
           </UPageCard>
         </UPageGrid>
 
-        <ElementVideo
+        <MediaVideo
           v-else-if="section.slot === 'video' && section.video"
           v-bind="section.video"
         />
 
-        <ElementCode
+        <MediaCode
           v-else-if="section.slot === 'code' && section.code"
           v-bind="section.code"
         />
