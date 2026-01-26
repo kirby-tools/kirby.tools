@@ -49,7 +49,7 @@ const latestReleaseUrl = computed(() => {
         <AppSkyBg :star-count="30" speed="slow" />
 
         <div
-          class="bg-primary/25 pointer-events-none absolute top-1/2 z-[-1] size-60 -translate-x-30 -translate-y-1/2 transform rounded-full blur-[300px] sm:size-100"
+          class="bg-primary/25 pointer-events-none absolute top-1/2 left-full z-[-1] size-60 -translate-x-30 -translate-y-1/2 transform rounded-full blur-[300px] sm:size-100"
         />
       </template>
 
