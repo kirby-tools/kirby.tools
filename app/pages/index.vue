@@ -165,16 +165,11 @@ defineOgImageComponent("Default", {
         :title="product.title"
         :description="product.description"
         :features="product.features"
+        :links="product.links"
         orientation="horizontal"
         :reverse="product.reverse"
         class="border-default lg:border-t"
         :class="index % 2 === 1 ? 'bg-muted/25' : ''"
-        :ui="{
-          root: 'py-16 sm:py-24 lg:py-24',
-          container:
-            'relative rounded-lg py-8 transition-[background-color] hover:bg-(--ui-bg-elevated) sm:py-8 lg:py-8 dark:hover:bg-(--ui-bg-elevated)/50 [&>:first-child]:relative',
-          title: 'hover:underline',
-        }"
       >
         <template #top>
           <div
@@ -203,14 +198,6 @@ defineOgImageComponent("Default", {
                 : undefined,
             }"
           />
-        </template>
-
-        <template #title>
-          <NuxtLink v-if="product.to" :to="product.to">
-            <span class="absolute inset-0 z-10" />
-            <span v-html="product.title" />
-          </NuxtLink>
-          <span v-else v-html="product.title" />
         </template>
 
         <template #description>

@@ -110,11 +110,11 @@ export default defineContentConfig({
           createBaseSchema().extend({
             type: z.enum(["commercial", "free"]),
             id: z.string().nonempty(),
-            to: z.string().nonempty(),
-            headline: createBadgeSchema(),
+            headline: createBadgeSchema().optional(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
             video: createVideoSchema(),
+            links: z.array(createLinkSchema()),
             features: z.array(
               z.object({
                 name: z.string().nonempty(),
