@@ -59,9 +59,19 @@ defineOgImageComponent("Default", {
         :links="page.hero.links"
         class="from-default bg-radial from-30%"
         :ui="{
-          container: 'py-24 sm:py-24 lg:py-24',
+          container: 'relative py-24 sm:py-24 lg:py-24',
         }"
       >
+        <template #top>
+          <div
+            class="bg-primary absolute left-1/2 z-[-1] size-60 -translate-x-1/2 -translate-y-80 rounded-full opacity-50 blur-[300px] sm:size-80"
+          />
+        </template>
+
+        <div
+          aria-hidden="true"
+          class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+        />
         <template #headline>
           <UBadge
             v-if="page.hero.headline"
@@ -99,8 +109,13 @@ defineOgImageComponent("Default", {
     <UPageSection
       :title="page.testimonials.title"
       :description="page.testimonials.description"
-      class="overflow-hidden"
+      class="relative overflow-hidden"
     >
+      <div
+        aria-hidden="true"
+        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+      />
+
       <UMarquee pause-on-hover>
         <UTooltip
           v-for="(testimonial, index) in page.testimonials.items"
@@ -128,13 +143,15 @@ defineOgImageComponent("Default", {
     <div id="products" />
 
     <template v-for="type in ['commercial', 'free']" :key="type">
+      <USeparator v-if="type === 'commercial'" />
+
       <UPageSection
         v-if="type === 'free'"
         icon="i-ri-gift-line"
         title="Free Plugins"
         description="Not all of our plugins are commercial. Some of them are free to use and can be used without any restrictions."
         :ui="{
-          container: 'pb-0 sm:pb-0 lg:pb-0',
+          container: 'pb-16 sm:pb-16 lg:pb-16',
           description: 'max-w-2xl mx-auto',
         }"
       />
@@ -150,13 +167,22 @@ defineOgImageComponent("Default", {
         :features="product.features"
         orientation="horizontal"
         :reverse="product.reverse"
+        class="border-default lg:border-t"
+        :class="index % 2 === 1 ? 'bg-muted/25' : ''"
         :ui="{
           root: 'py-16 sm:py-24 lg:py-24',
           container:
-            'rounded-lg py-8 transition-[background-color] hover:bg-(--ui-bg-elevated) sm:py-8 lg:py-8 dark:hover:bg-(--ui-bg-elevated)/50 [&>:first-child]:relative',
+            'relative rounded-lg py-8 transition-[background-color] hover:bg-(--ui-bg-elevated) sm:py-8 lg:py-8 dark:hover:bg-(--ui-bg-elevated)/50 [&>:first-child]:relative',
           title: 'hover:underline',
         }"
       >
+        <template #top>
+          <div
+            aria-hidden="true"
+            class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+          />
+        </template>
+
         <template #headline>
           <UBadge
             v-if="product.headline"
