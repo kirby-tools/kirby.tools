@@ -68,10 +68,11 @@ defineOgImageComponent("Default", {
           />
         </template>
 
-        <div
+        <!-- <div
           aria-hidden="true"
           class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
-        />
+        /> -->
+
         <template #headline>
           <UBadge
             v-if="page.hero.headline"
