@@ -42,14 +42,14 @@ const latestReleaseUrl = computed(() => {
         container: 'h-full items-center justify-center',
         title: 'text-left text-4xl',
         description: 'text-left max-w-lg',
-        links: 'justify-start -ms-2.5',
+        links: 'justify-start sm:-ms-2.5',
       }"
     >
       <template #top>
         <AppSkyBg :star-count="30" speed="slow" />
 
         <div
-          class="bg-primary/50 pointer-events-none absolute top-1/2 -right-1/2 z-[-1] size-60 -translate-y-1/2 transform rounded-full blur-[300px] sm:size-100"
+          class="bg-primary/25 pointer-events-none absolute top-1/2 z-[-1] size-60 -translate-x-30 -translate-y-1/2 transform rounded-full blur-[300px] sm:size-100"
         />
       </template>
 
@@ -61,6 +61,7 @@ const latestReleaseUrl = computed(() => {
           variant="subtle"
           size="md"
           :icon="copied ? 'i-ri-check-line' : 'i-ri-file-copy-line'"
+          :ui="{ base: 'max-w-[calc(100vw-3rem)]' }"
           @click="copy(`composer require ${composerPackage}`)"
         />
 
