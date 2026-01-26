@@ -43,7 +43,7 @@ useSeoMeta({
       <div
         class="absolute inset-0 z-[-1] flex items-start justify-center overflow-hidden"
       >
-        <ElementCopilotBackground
+        <BackgroundCopilot
           class="h-full w-full scale-[2] transform lg:scale-[1.2]"
         />
       </div>

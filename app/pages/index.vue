@@ -53,7 +53,7 @@ defineOgImageComponent("Default", {
       ]"
     />
 
-    <ElementWarpBackground :beam-duration="6">
+    <BackgroundWarp :beam-duration="6">
       <UPageHero
         :description="page.description"
         :links="page.hero.links"
@@ -103,7 +103,7 @@ defineOgImageComponent("Default", {
           <span v-html="page.hero.description" />
         </template>
       </UPageHero>
-    </ElementWarpBackground>
+    </BackgroundWarp>
 
     <USeparator />
 
@@ -205,7 +205,7 @@ defineOgImageComponent("Default", {
           <span v-html="product.description" />
         </template>
 
-        <ElementVideo v-if="product.video" v-bind="product.video" />
+        <MediaVideo v-if="product.video" v-bind="product.video" />
       </UPageSection>
     </template>
 

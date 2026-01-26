@@ -2,7 +2,6 @@
 defineProps<{
   src: string;
   poster: string;
-  /** Accessible label announced by assistive tech */
   label?: string;
 }>();
 
