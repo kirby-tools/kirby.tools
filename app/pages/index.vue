@@ -205,7 +205,7 @@ defineOgImageComponent("Default", {
           <span v-html="product.description" />
         </template>
 
-        <MediaVideo v-if="product.video" v-bind="product.video" />
+        <MediaVideo v-if="product.video" v-bind="product.video" glow />
       </UPageSection>
     </template>
 

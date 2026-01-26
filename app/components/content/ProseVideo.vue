@@ -6,7 +6,6 @@ const props = defineProps<{
   poster?: string;
   width?: string | number;
   height?: string | number;
-  /** Accessible label describing the video content */
   label?: string;
 }>();
 
