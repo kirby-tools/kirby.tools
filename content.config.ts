@@ -217,9 +217,7 @@ export default defineContentConfig({
     changelog: defineCollection({
       type: "page",
       source: "**/changelog.md",
-      schema: createBaseSchema().extend({
-        date: z.string().nonempty(),
-      }),
+      schema: createBaseSchema(),
     }),
     versions: defineCollection({
       type: "page",
