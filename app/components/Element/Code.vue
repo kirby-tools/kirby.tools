@@ -31,14 +31,14 @@ const cssMinHeight = computed(() => props.minHeight ?? "auto");
 </script>
 
 <template>
-  <div :class="[minHeight && 'code-with-min-height']">
+  <div :class="[minHeight && 'mdc']">
     <LazyMDC :value="mdcContent" />
   </div>
 </template>
 
 <style scoped>
 @media (min-width: 1024px) {
-  .code-with-min-height :deep(pre) {
+  .mdc :deep(pre) {
     min-height: v-bind(cssMinHeight);
   }
 }
