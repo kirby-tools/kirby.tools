@@ -3,10 +3,11 @@ description: Professional Kirby CMS plugins for AI content generation, translati
 navigation: false
 hero:
   headline:
-    label: "New Year Release: Copilot v3"
-    to: /copilot/changelog
-    icon: i-ri-magic-line
-    color: primary
+    label: "New: AI Content Translations"
+    to: /content-translator/changelog
+    icon: i-ri-openai-fill
+    color: neutral
+    variant: solid
     # icon:
     #   name: i-logos-kirby-icon
     #   class: dark:invert
@@ -166,9 +167,6 @@ products:
     type: free
     id: minimap
     to: /minimap
-    headline:
-      label: New Plugin
-      icon: i-ri-verified-badge-fill
     description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
     video:
       src: /vid/kirby-minimap-screencast.mp4
