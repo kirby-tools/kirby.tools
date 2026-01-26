@@ -66,7 +66,7 @@ const createCodeSchema = () =>
         content: z.string().nonempty(),
       }),
     ),
-    defaultFile: z.string().optional(),
+    minHeight: z.string().optional(),
   });
 
 const createCardItemSchema = () =>

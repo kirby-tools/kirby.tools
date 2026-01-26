@@ -7,18 +7,12 @@ interface CodeFile {
 
 const props = defineProps<{
   files: CodeFile[];
-  defaultFile?: string;
+  minHeight?: string;
 }>();
 
 const mdcContent = computed(() => {
   if (props.files.length === 0) return "";
 
-  if (props.files.length === 1) {
-    const file = props.files[0]!;
-    return `\`\`\`${file.language} [${file.filename}]\n${file.content.trim()}\n\`\`\``;
-  }
-
-  // Multiple files: use code-group for tabs
   const codeBlocks = props.files
     .map(
       (file) =>
@@ -26,10 +20,26 @@ const mdcContent = computed(() => {
     )
     .join("\n\n");
 
+  if (props.files.length === 1) {
+    return codeBlocks;
+  }
+
   return `::code-group\n\n${codeBlocks}\n\n::`;
 });
+
+const cssMinHeight = computed(() => props.minHeight ?? "auto");
 </script>
 
 <template>
-  <LazyMDC :value="mdcContent" />
+  <div :class="[minHeight && 'code-with-min-height']">
+    <LazyMDC :value="mdcContent" />
+  </div>
 </template>
+
+<style scoped>
+@media (min-width: 1024px) {
+  .code-with-min-height :deep(pre) {
+    min-height: v-bind(cssMinHeight);
+  }
+}
+</style>

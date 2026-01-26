@@ -61,6 +61,7 @@ sections:
         trailingIcon: i-ri-arrow-right-line
         variant: subtle
     code:
+      minHeight: 360px
       files:
         - filename: site/commands/translate-blog.php
           language: php
