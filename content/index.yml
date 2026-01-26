@@ -85,13 +85,22 @@ products:
   - title: Kirby Copilot
     type: commercial
     id: copilot
-    to: /copilot
     description: AI-powered content generation and text editing for Kirby CMS. Generate layouts, refine text, or let AI complete your thoughts as you type.
     reverse: true
     video:
       src: /vid/kirby-copilot-multi-fields-generation.mp4
       poster: /vid/kirby-copilot-multi-fields-generation-poster-start.jpg
       label: Demonstration of generating many fields at once in the Kirby Panel
+    links:
+      - label: Learn More
+        to: /copilot
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/copilot/getting-started/installation
+        variant: subtle
     features:
       - name: Multi-Field Generation
         description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
@@ -102,18 +111,24 @@ products:
       - name: In-Context Editing
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
         icon: i-ri-input-cursor-move
-      - name: Inline Suggestions
-        description: Ghost text appears as you type. Press Tab to accept AI suggestions in any writer field.
-        icon: i-ri-magic-line
   - title: Kirby Content Translator
     type: commercial
     id: content-translator
-    to: /content-translator
     description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
     video:
       src: /vid/kirby-content-translator-batch-translation.mp4
       poster: /vid/kirby-content-translator-batch-translation-poster.jpg
       label: Demonstration of Content Translator batch translations in the Kirby Panel
+    links:
+      - label: Learn More
+        to: /content-translator
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/content-translator/getting-started/installation
+        variant: subtle
     features:
       - name: All Fields
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields.
@@ -127,12 +142,22 @@ products:
   - title: Kirby SEO Audit
     type: commercial
     id: seo-audit
-    to: /seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
+    reverse: true
     video:
       src: /vid/kirby-seo-audit-view-button.mp4
       poster: /vid/kirby-seo-audit-view-button-poster-start.jpg
       label: Demonstration of the SEO Audit plugin, showcasing its features and functionality
+    links:
+      - label: Learn More
+        to: /seo-audit
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/seo-audit/getting-started/installation
+        variant: subtle
     features:
       - name: Powered by Yoast SEO v3
         description: Built on the latest Yoast SEO v3 engine with improved performance, web worker architecture, and enhanced accuracy.
@@ -146,13 +171,21 @@ products:
   - title: Kirby Live Preview
     type: commercial
     id: live-preview
-    to: /live-preview
     description: Display your page with unsaved changes in real time. It is the plugin content editors and clients have been waiting for.
-    reverse: true
     video:
       src: /vid/kirby-live-preview-devices.mp4
       poster: /vid/kirby-live-preview-devices-poster.jpg
       label: Demonstration of live preview with different device screen sizes in the Kirby Panel
+    links:
+      - label: Learn More
+        to: /live-preview
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/live-preview
+        variant: subtle
     features:
       - name: Device Screen Sizes
         description: Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
@@ -166,12 +199,21 @@ products:
   - title: Kirby Minimap
     type: free
     id: minimap
-    to: /minimap
     description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
     video:
       src: /vid/kirby-minimap-screencast.mp4
       poster: /vid/kirby-minimap-screencast-poster.jpg
       label: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
+    links:
+      - label: Learn More
+        to: /minimap
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/minimap
+        variant: subtle
     features:
       - name: Field Navigation
         description: Click on any field or block to scroll to that position in the content editor.
