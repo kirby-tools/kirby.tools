@@ -40,7 +40,6 @@ const latestReleaseUrl = computed(() => {
       :ui="{
         root: 'border-b border-default xl:border-b-0 xl:sticky xl:inset-y-0 xl:h-screen overflow-hidden',
         container: 'h-full items-center justify-center',
-        wrapper: 'flex flex-col',
         title: 'text-left text-4xl',
         description: 'text-left max-w-lg',
         links: 'justify-start -ms-2.5',
