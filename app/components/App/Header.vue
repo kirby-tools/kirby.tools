@@ -157,7 +157,17 @@ const { data: version } = await useAsyncData(
         class="mb-3 w-full"
       />
       <UButton
-        v-if="route.path !== '/' && currentProduct"
+        v-if="currentProduct && version"
+        :label="version.title"
+        icon="i-ri-download-line"
+        color="neutral"
+        variant="ghost"
+        :to="`${currentProduct.to}/changelog`"
+        block
+        class="mb-3"
+      />
+      <UButton
+        v-if="currentProduct?.isPaid"
         label="Buy"
         trailing-icon="i-ri-shopping-bag-3-fill"
         color="primary"
