@@ -19,6 +19,14 @@ export const GITHUB_REPOS: Record<string, string> = {
   minimap: "johannschopplich/kirby-minimap",
 };
 
+/// keep-sorted
+export const COMPOSER_PACKAGES: Record<string, string> = {
+  "content-translator": "johannschopplich/kirby-content-translator",
+  "live-preview": "johannschopplich/kirby-live-preview",
+  "seo-audit": "johannschopplich/kirby-seo-audit",
+  copilot: "johannschopplich/kirby-copilot",
+};
+
 export const PRODUCT_ITEMS: ProductItem[] = [
   {
     label: "Copilot",
