@@ -38,6 +38,11 @@ onMounted(() => {
     />
 
     <UPageHero :orientation="page.hero.orientation" :links="page.hero.links">
+      <div
+        aria-hidden="true"
+        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+      />
+
       <template #headline>
         <UBadge
           v-if="page.hero.headline"
@@ -91,12 +96,22 @@ onMounted(() => {
         :features="
           section.orientation === 'horizontal' ? section.features : undefined
         "
-        :class="[section.slot === 'features' && 'relative overflow-hidden']"
+        :class="[
+          section.slot === 'features' && 'relative overflow-hidden',
+          index % 2 === 1 && 'bg-muted/25',
+        ]"
         :ui="{
           container:
             SECTION_SLOT_WIDTHS[section.slot!] ?? 'max-w-(--ui-container)',
         }"
       >
+        <template #top>
+          <div
+            aria-hidden="true"
+            class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+          />
+        </template>
+
         <div
           v-if="section.slot === 'features'"
           class="bg-primary absolute top-10 -left-10 z-10 size-[300px] rounded-full opacity-10 blur-[200px]"
@@ -171,7 +186,12 @@ onMounted(() => {
       />
     </template>
 
-    <UPageCTA v-bind="page.cta" variant="subtle" class="rounded-none">
+    <UPageCTA v-bind="page.cta" variant="subtle" class="relative rounded-none">
+      <div
+        aria-hidden="true"
+        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+      />
+
       <template v-if="page.cta.title" #title>
         <span v-html="page.cta.title" />
       </template>
