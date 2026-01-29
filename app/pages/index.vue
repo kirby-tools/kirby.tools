@@ -169,8 +169,11 @@ defineOgImageComponent("Default", {
         :links="product.links"
         orientation="horizontal"
         :reverse="product.reverse"
-        class="border-default lg:border-t"
-        :class="index % 2 === 1 ? 'bg-muted/25' : ''"
+        class="border-default"
+        :class="[
+          index % 2 === 1 ? 'bg-muted/25' : '',
+          index === 0 && type === 'commercial' ? '' : 'lg:border-t',
+        ]"
       >
         <template #top>
           <div
