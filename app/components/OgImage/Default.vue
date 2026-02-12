@@ -1,25 +1,59 @@
 <script setup lang="ts">
-defineProps<{
-  title: string;
-  description: string;
-  headline?: string;
-}>();
+import type { ThemeColor } from "#shared/constants";
+import { THEME_COLOR_PALETTE } from "#shared/constants";
+
+const props = withDefaults(
+  defineProps<{
+    title: string;
+    description: string;
+    headline?: string;
+    color?: ThemeColor;
+  }>(),
+  {
+    headline: "Kirby Tools",
+    color: "danube",
+  },
+);
+
+const hex = computed(
+  () => THEME_COLOR_PALETTE[props.color] || THEME_COLOR_PALETTE.danube,
+);
 </script>
 
 <template>
-  <div class="flex h-full w-full flex-col bg-white">
-    <div class="absolute top-0 bottom-0 left-26 w-[2px] bg-stone-200" />
-    <div class="absolute top-0 right-26 bottom-0 w-[2px] bg-stone-200" />
-    <div class="absolute inset-x-0 top-12 h-[2px] bg-stone-200" />
-    <div class="absolute inset-x-0 bottom-12 h-[2px] bg-stone-200" />
+  <div
+    class="relative flex h-full w-full flex-col overflow-hidden bg-stone-950"
+  >
+    <!-- Gradient glow: top-left -->
     <div
-      class="mx-26 mt-24 flex h-14 flex-row items-center border-y-2 border-stone-200"
-    >
-      <div
-        class="flex h-full items-center border-r-2 border-stone-200 px-6 text-[#6697CB]"
-      >
+      class="absolute -top-20 -left-20 h-[420px] w-[420px] rounded-full opacity-15"
+      :style="{
+        background: `radial-gradient(circle, ${hex} 0%, transparent 70%)`,
+      }"
+    />
+    <!-- Gradient glow: bottom-right -->
+    <div
+      class="absolute -right-16 -bottom-24 h-[360px] w-[360px] rounded-full opacity-10"
+      :style="{
+        background: `radial-gradient(circle, ${hex} 0%, transparent 70%)`,
+      }"
+    />
+
+    <!-- Frame lines -->
+    <div class="absolute inset-y-0 left-26 w-[1px] bg-stone-800" />
+    <div class="absolute inset-y-0 right-26 w-[1px] bg-stone-800" />
+    <div class="absolute inset-x-0 top-12 h-[1px] bg-stone-800" />
+    <div class="absolute inset-x-0 bottom-12 h-[1px] bg-stone-800" />
+
+    <!-- Top accent bar -->
+    <div class="absolute inset-x-0 top-0 h-1" :style="{ background: hex }" />
+
+    <!-- Header: logo + headline -->
+    <div class="mx-26 mt-18 flex flex-row items-center gap-4 pb-5 pl-8">
+      <div :style="{ color: hex }">
         <svg
-          class="mt-[20px] h-8 w-8"
+          width="32"
+          height="32"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 256 256"
@@ -31,18 +65,31 @@ defineProps<{
         </svg>
       </div>
       <div
-        class="flex h-full items-center border-r-2 border-stone-200 px-6 pt-1 text-xl font-semibold text-[#6697CB] uppercase"
+        class="text-xl font-semibold tracking-wide uppercase"
+        :style="{ color: hex }"
       >
         {{ headline }}
       </div>
     </div>
-    <div class="mx-34 mt-12 flex h-[240px] flex-col justify-center">
-      <h1 class="mb-0 flex gap-1 text-5xl font-semibold">
+
+    <!-- Separator line under header -->
+    <div class="mx-26 h-[1px] bg-stone-800" />
+
+    <!-- Title + description -->
+    <div class="mx-34 mt-10 flex h-[240px] flex-col justify-center">
+      <h1 class="m-0 text-[52px] leading-tight font-semibold text-stone-50">
         {{ title }}
       </h1>
-      <p class="line-clamp-2 text-3xl text-stone-500">
+      <p class="mt-4 line-clamp-2 text-[26px] leading-relaxed text-stone-400">
         {{ description }}
       </p>
+    </div>
+
+    <!-- Bottom domain -->
+    <div
+      class="absolute bottom-16 left-34 text-xl tracking-wide text-stone-500"
+    >
+      kirby.tools
     </div>
   </div>
 </template>
