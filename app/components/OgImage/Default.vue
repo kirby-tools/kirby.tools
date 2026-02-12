@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ThemeColor } from "#shared/constants";
 import { THEME_COLOR_PALETTE } from "#shared/constants";
+import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
