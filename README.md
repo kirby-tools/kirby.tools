@@ -6,11 +6,11 @@
 
 ### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
 
-AI-powered content generation and text editing for Kirby CMS. Generate entire layouts from your custom blocks, refine text with inline suggestions, or let AI complete your thoughts as you type. Supports models from OpenAI, Google, Anthropic, and Mistral AI.
+AI-powered content generation and text editing for Kirby CMS. Generate entire layouts from your custom blocks, refine text with inline suggestions, or let AI complete your thoughts as you type.
 
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
 
-Content translation with DeepL – in the Panel or via CLI commands. Supports all field types with one-click translation and batch processing capabilities.
+Translate Kirby CMS content with DeepL or AI. One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
@@ -18,7 +18,7 @@ State-of-the-art SEO analysis for Kirby CMS. Perform 28 SEO and readability asse
 
 ### 🪩 [Kirby Live Preview](https://kirby.tools/live-preview)
 
-Real-time page preview in the Kirby Panel. See your unsaved changes instantly and simulate different device screen sizes.
+Real-time page preview in the Kirby Panel. Display your page with unsaved changes and simulate different device screen sizes.
 
 ---
 
