@@ -27,12 +27,15 @@ useSeoMeta({
   ogDescription: description,
 });
 
+const { getThemeColorFromPath } = useDynamicTheme();
+
 defineOgImageComponent("Default", {
   headline: currentProduct.value?.label
     ? `Kirby ${currentProduct.value.label}`
     : "Kirby Tools",
   title,
   description,
+  color: getThemeColorFromPath(route.path),
 });
 </script>
 

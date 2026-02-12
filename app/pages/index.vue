@@ -40,6 +40,7 @@ defineOgImageComponent("Default", {
   headline: "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
+  color: "danube",
 });
 </script>
 

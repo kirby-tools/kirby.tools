@@ -1,17 +1,12 @@
+import type { ThemeColor } from "#shared/constants";
 import type { RouteLocationNormalized } from "vue-router";
+import {
+  PRODUCT_THEME_COLOR_MAP,
+  THEME_COLOR_PALETTE,
+} from "#shared/constants";
 
-type ThemeColor = "danube" | "lima" | "orchid";
-
-const PRODUCT_THEME_COLOR_MAP: Record<string, ThemeColor> = {
-  "seo-audit": "lima",
-  copilot: "orchid",
-};
-
-const THEME_COLOR_PALETTE: Record<ThemeColor, string> = {
-  danube: "#6697cb",
-  lima: "#75c932",
-  orchid: "#c66bdf",
-};
+export type { ThemeColor };
+export { THEME_COLOR_PALETTE };
 
 export function useDynamicTheme() {
   const appConfig = useAppConfig();
