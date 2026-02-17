@@ -1,0 +1,128 @@
+{
+  "/img/brands/buendnis-90-die-gruenen-kreisverband-pankow-dark.png": {
+    "width": 64,
+    "height": 35,
+    "offsetX": -3.4,
+    "offsetY": -3.1
+  },
+  "/img/brands/buendnis-90-die-gruenen-kreisverband-pankow-light.png": {
+    "width": 64,
+    "height": 35,
+    "offsetX": -3.4,
+    "offsetY": -3.1
+  },
+  "/img/brands/burrito-company-dark.svg": {
+    "width": 83,
+    "height": 37,
+    "offsetX": 0.1,
+    "offsetY": 0.6
+  },
+  "/img/brands/burrito-company-light.svg": {
+    "width": 83,
+    "height": 37,
+    "offsetX": 0.1,
+    "offsetY": 0.6
+  },
+  "/img/brands/deadstock-dark.svg": {
+    "width": 105,
+    "height": 22,
+    "offsetX": 0.1,
+    "offsetY": 0.1
+  },
+  "/img/brands/deadstock-light.svg": {
+    "width": 105,
+    "height": 22,
+    "offsetX": 0.1,
+    "offsetY": 0.1
+  },
+  "/img/brands/entenwerder-1-dark.svg": {
+    "width": 46,
+    "height": 48,
+    "offsetX": 0.1,
+    "offsetY": -1.5
+  },
+  "/img/brands/entenwerder-1-light.svg": {
+    "width": 46,
+    "height": 48,
+    "offsetX": 0.1,
+    "offsetY": -1.5
+  },
+  "/img/brands/fontwerk-dark.svg": {
+    "width": 62,
+    "height": 33,
+    "offsetX": 3.4,
+    "offsetY": 0
+  },
+  "/img/brands/fontwerk-light.svg": {
+    "width": 62,
+    "height": 33,
+    "offsetX": 3.4,
+    "offsetY": 0
+  },
+  "/img/brands/friedrich-ebert-stiftung-ev.svg": {
+    "width": 45,
+    "height": 30,
+    "offsetX": 0.1,
+    "offsetY": 0
+  },
+  "/img/brands/katapult-magazin-dark.svg": {
+    "width": 119,
+    "height": 19,
+    "offsetX": 0.7,
+    "offsetY": 1.8
+  },
+  "/img/brands/katapult-magazin-light.svg": {
+    "width": 119,
+    "height": 19,
+    "offsetX": 0.7,
+    "offsetY": 1.8
+  },
+  "/img/brands/keggenhoff-partner-dark.svg": {
+    "width": 109,
+    "height": 25,
+    "offsetX": 8.6,
+    "offsetY": 1.3
+  },
+  "/img/brands/keggenhoff-partner-light.svg": {
+    "width": 109,
+    "height": 25,
+    "offsetX": 8.6,
+    "offsetY": 1.3
+  },
+  "/img/brands/kiss-dark.svg": {
+    "width": 72,
+    "height": 26,
+    "offsetX": 1.3,
+    "offsetY": -2.7
+  },
+  "/img/brands/kiss-light.svg": {
+    "width": 72,
+    "height": 26,
+    "offsetX": 1.3,
+    "offsetY": -2.7
+  },
+  "/img/brands/university-of-south-eastern-norway-dark.svg": {
+    "width": 131,
+    "height": 23,
+    "offsetX": 17.4,
+    "offsetY": -0.3
+  },
+  "/img/brands/university-of-south-eastern-norway-light.svg": {
+    "width": 131,
+    "height": 23,
+    "offsetX": 17.4,
+    "offsetY": -0.3
+  },
+  "/img/brands/verlage-gegen-rechts-dark.svg": {
+    "width": 44,
+    "height": 49,
+    "offsetX": 2.2,
+    "offsetY": 0.7
+  },
+  "/img/brands/verlage-gegen-rechts-light.svg": {
+    "width": 44,
+    "height": 49,
+    "offsetX": 2.2,
+    "offsetY": 0.7
+  }
+}
