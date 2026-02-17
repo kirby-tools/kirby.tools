@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { isObject } from "@vue/shared";
+import logoMetrics from "~/data/logo-metrics.json";
 
 const { data: page } = await useAsyncData("index", () =>
   queryCollection("index").first(),
@@ -42,6 +43,29 @@ defineOgImageComponent("Default", {
   description: page.value.description,
   color: "danube",
 });
+
+const maxLogoHeight = Math.max(
+  ...Object.values(logoMetrics).map((metric) => metric.height),
+);
+
+const testimonialItems = computed(() =>
+  page.value!.testimonials.items.map((testimonial) => {
+    const key =
+      typeof testimonial.logo === "string"
+        ? testimonial.logo
+        : testimonial.logo.light;
+    const metrics = logoMetrics[key as keyof typeof logoMetrics];
+
+    return {
+      ...testimonial,
+      logoStyle: {
+        height: metrics
+          ? `${(metrics.height / maxLogoHeight) * 100}%`
+          : undefined,
+      },
+    };
+  }),
+);
 </script>
 
 <template>
@@ -120,24 +144,28 @@ defineOgImageComponent("Default", {
 
       <UMarquee pause-on-hover>
         <UTooltip
-          v-for="(testimonial, index) in page.testimonials.items"
+          v-for="(testimonial, index) in testimonialItems"
           :key="index"
           :text="testimonial.brand"
           :delay-duration="100"
         >
-          <UColorModeImage
-            v-if="isObject(testimonial.logo)"
-            :light="testimonial.logo.light"
-            :dark="testimonial.logo.dark"
-            :alt="`Logo for ${testimonial.brand}`"
-            class="h-10 w-auto shrink-0"
-          />
-          <img
-            v-else
-            :src="testimonial.logo"
-            :alt="`Logo for ${testimonial.brand}`"
-            class="h-10 w-auto shrink-0"
-          />
+          <span class="inline-flex h-18 shrink-0 items-center">
+            <UColorModeImage
+              v-if="isObject(testimonial.logo)"
+              :light="testimonial.logo.light"
+              :dark="testimonial.logo.dark"
+              :alt="`Logo for ${testimonial.brand}`"
+              class="w-auto"
+              :style="testimonial.logoStyle"
+            />
+            <img
+              v-else
+              :src="testimonial.logo"
+              :alt="`Logo for ${testimonial.brand}`"
+              class="w-auto"
+              :style="testimonial.logoStyle"
+            />
+          </span>
         </UTooltip>
       </UMarquee>
     </UPageSection>
