@@ -53,6 +53,12 @@ testimonials:
         dark: /img/brands/entenwerder-1-dark.svg
       website: https://entenwerder.de
       usage: Kirby Content Translator
+    - brand: Fontwerk
+      logo:
+        light: /img/brands/fontwerk-light.svg
+        dark: /img/brands/fontwerk-dark.svg
+      website: https://fontwerk.de
+      usage: Kirby Live Preview
     - brand: KEGGENHOFF | PARTNER
       logo:
         light: /img/brands/keggenhoff-partner-light.svg
