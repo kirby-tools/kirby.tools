@@ -14,7 +14,7 @@
     "format": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --write",
     "format:check": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --check",
     "test:types": "vue-tsc -b --noEmit",
-    "logo-soup:metrics": "node scripts/logo-soup-metrics.ts",
+    "logo-soup:metrics": "npx logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
@@ -33,6 +33,7 @@
     "@vueuse/nuxt": "^14.2.1",
     "ansis": "^4.2.0",
     "eslint": "^10.0.0",
+    "logo-soup": "^0.2.0",
     "motion-v": "^1.10.3",
     "nuxt": "^4.3.1",
     "nuxt-og-image": "^5.1.13",

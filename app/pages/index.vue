@@ -50,11 +50,12 @@ const maxLogoHeight = Math.max(
 
 const testimonialItems = computed(() =>
   page.value!.testimonials.items.map((testimonial) => {
-    const key =
+    const logoPath =
       typeof testimonial.logo === "string"
         ? testimonial.logo
         : testimonial.logo.light;
-    const metrics = logoMetrics[key as keyof typeof logoMetrics];
+    const filename = logoPath.split("/").pop()!;
+    const metrics = logoMetrics[filename as keyof typeof logoMetrics];
 
     return {
       ...testimonial,
