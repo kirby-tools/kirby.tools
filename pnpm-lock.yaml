@@ -53,6 +53,9 @@ importers:
       eslint:
         specifier: ^10.0.0
         version: 10.0.0(jiti@2.6.1)
+      logo-soup:
+        specifier: ^0.2.0
+        version: 0.2.0
       motion-v:
         specifier: ^1.10.3
         version: 1.10.3(@vueuse/core@14.2.1(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
@@ -2952,6 +2955,9 @@ packages:
   citty@0.2.0:
     resolution: {integrity: sha512-8csy5IBFI2ex2hTVpaHN2j+LNE199AgiI7y4dMintrr8i0lQiFn+0AWMZrWdHKIgMOer65f8IThysYhoReqjWA==}
 
+  citty@0.2.1:
+    resolution: {integrity: sha512-kEV95lFBhQgtogAPlQfJJ0WGVSokvLr/UEoFPiKKOXF7pl98HfUVUD0ejsuTCld/9xH9vogSywZ5KqHzXrZpqg==}
+
   clean-git-ref@2.0.1:
     resolution: {integrity: sha512-bLSptAy2P0s6hU4PzuIMKmMJJSE6gLXGH1cntDu7bWJUksvuM+7ReOK61mozULErYvP6a15rnYl0zFDef+pyPw==}
 
@@ -4494,6 +4500,10 @@ packages:
 
   lodash@4.17.23:
     resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+
+  logo-soup@0.2.0:
+    resolution: {integrity: sha512-cXZoesXPmrGtMgimIlyM6nDO0uxTvPPMzvEx0fQdEUtg65NRSXQIj8/8DPJTNdGDEgz0VUO+9JPVYIchMcW94g==}
+    hasBin: true
 
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
@@ -9528,6 +9538,8 @@ snapshots:
 
   citty@0.2.0: {}
 
+  citty@0.2.1: {}
+
   clean-git-ref@2.0.1: {}
 
   clean-regexp@1.0.0:
@@ -11216,6 +11228,12 @@ snapshots:
   lodash.uniq@4.5.0: {}
 
   lodash@4.17.23: {}
+
+  logo-soup@0.2.0:
+    dependencies:
+      citty: 0.2.1
+      consola: 3.4.2
+      sharp: 0.34.5
 
   longest-streak@3.1.0: {}
 
