@@ -54,8 +54,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0(jiti@2.6.1)
       logo-soup:
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.2.1
+        version: 0.2.1
       motion-v:
         specifier: ^1.10.3
         version: 1.10.3(@vueuse/core@14.2.1(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
@@ -4501,8 +4501,8 @@ packages:
   lodash@4.17.23:
     resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
-  logo-soup@0.2.0:
-    resolution: {integrity: sha512-cXZoesXPmrGtMgimIlyM6nDO0uxTvPPMzvEx0fQdEUtg65NRSXQIj8/8DPJTNdGDEgz0VUO+9JPVYIchMcW94g==}
+  logo-soup@0.2.1:
+    resolution: {integrity: sha512-cOSHsO+JDO105zyUCh9Scq6sR3/Ogi4j6lbSnFNBQktdU0j1XoQBihXnhtQ+ZEsrVLUKs51ejotA7Bcz83zV1A==}
     hasBin: true
 
   longest-streak@3.1.0:
@@ -11229,7 +11229,7 @@ snapshots:
 
   lodash@4.17.23: {}
 
-  logo-soup@0.2.0:
+  logo-soup@0.2.1:
     dependencies:
       citty: 0.2.1
       consola: 3.4.2
