@@ -38,11 +38,6 @@ onMounted(() => {
     />
 
     <UPageHero :orientation="page.hero.orientation" :links="page.hero.links">
-      <div
-        aria-hidden="true"
-        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
-      />
-
       <template #headline>
         <UBadge
           v-if="page.hero.headline"
@@ -99,6 +94,7 @@ onMounted(() => {
         :class="[
           section.slot === 'features' && 'relative overflow-hidden',
           index % 2 === 1 && 'bg-muted/25',
+          index === 0 && 'border-default lg:border-t',
         ]"
         :ui="{
           container:
