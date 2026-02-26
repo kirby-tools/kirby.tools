@@ -94,7 +94,9 @@ onMounted(() => {
         :class="[
           section.slot === 'features' && 'relative overflow-hidden',
           index % 2 === 1 && 'bg-muted/25',
-          index === 0 && 'border-default lg:border-t',
+          index === 0 &&
+            !$slots['sections-cta'] &&
+            'border-default lg:border-t',
         ]"
         :ui="{
           container:

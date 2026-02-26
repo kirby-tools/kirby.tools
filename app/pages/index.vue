@@ -181,6 +181,7 @@ const testimonialItems = computed(() =>
         icon="i-ri-gift-line"
         title="Free Plugins"
         description="Not all of our plugins are commercial. Some of them are free to use and can be used without any restrictions."
+        class="border-default lg:border-t"
         :ui="{
           container: 'pb-16 sm:pb-16 lg:pb-16',
           description: 'max-w-2xl mx-auto',
