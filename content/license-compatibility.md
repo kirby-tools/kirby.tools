@@ -1,6 +1,6 @@
 ---
 title: License & Plugin Compatibility
-description: Understanding how Kirby Tools licenses work with plugin versions.
+description: Gen 1 vs. Gen 2 licenses, Kirby 4 & 5 version matrix, upgrade discounts, and how to manage your license keys.
 navigation.icon: i-ri-discount-percent-line
 ---
 
