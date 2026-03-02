@@ -88,7 +88,7 @@ const hex = computed(
 
     <!-- Bottom domain -->
     <div
-      class="absolute bottom-16 left-34 text-xl tracking-wide text-stone-500"
+      class="absolute bottom-16 left-34 text-xl font-semibold tracking-wide text-stone-500"
     >
       kirby.tools
     </div>
