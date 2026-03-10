@@ -17,6 +17,7 @@ const { data: navigation } = await useAsyncData("navigation", async () => {
       (data) => data.find((item) => item.path === "/docs")?.children ?? [],
     ),
     queryCollectionNavigation("docs"),
+    queryCollectionNavigation("posts"),
   ]);
   return result.flat();
 });
@@ -27,6 +28,7 @@ const { data: files } = useLazyAsyncData(
     const result = await Promise.all([
       queryCollectionSearchSections("pages"),
       queryCollectionSearchSections("docs"),
+      queryCollectionSearchSections("posts"),
     ]);
     return result.flat();
   },

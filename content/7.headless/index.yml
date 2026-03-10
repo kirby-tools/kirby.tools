@@ -1,0 +1,144 @@
+title: Kirby Headless – API-First CMS Plugin for Kirby
+description: Turn Kirby into a headless CMS. Bearer token auth, KQL with caching, JSON templates, resolved blocks, and an Express-style API builder.
+navigation.icon: i-ri-code-block
+hero:
+  headline:
+    label: Free & Open Source
+    icon: i-ri-open-source-line
+  title: '<span class="text-primary">Headless CMS</span><br> Toolkit for Kirby'
+  description: Everything you need to use Kirby as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – all with zero-config defaults.
+  links:
+    - label: Get Started
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/headless/getting-started
+      size: xl
+sections:
+  - title: Query Content with<br> <span class="text-primary">KQL</span>
+    id: kql
+    slot: code
+    orientation: horizontal
+    description: Use Kirby's Query Language via a dedicated API endpoint. Built-in response caching and multi-language support included.
+    features:
+      - title: Bearer Token Auth
+        description: Secure your API with modern token-based authentication
+        icon: i-ri-shield-keyhole-line
+      - title: Automatic Caching
+        description: Query responses are cached out of the box
+        icon: i-ri-speed-line
+    links:
+      - label: KQL Reference
+        to: /docs/headless/usage/kql
+        trailingIcon: i-ri-arrow-right-line
+        variant: subtle
+    code:
+      minHeight: 360px
+      files:
+        - filename: KQL Request
+          language: bash
+          content: |
+            curl https://example.com/api/kql \
+              -H "Authorization: Bearer your-token" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "query": "page(\"blog\").children.listed",
+                "select": {
+                  "title": true,
+                  "text": "page.text.toBlocks.toArray",
+                  "url": true
+                }
+              }'
+        - filename: Response
+          language: json
+          content: |
+            {
+              "code": 200,
+              "result": [
+                {
+                  "title": "Hello World",
+                  "text": [...],
+                  "url": "https://example.com/blog/hello-world"
+                }
+              ]
+            }
+  - title: Headless <span class="text-primary">Features</span>
+    id: features
+    slot: features
+    features:
+      - title: Bearer Token Auth
+        description: Modern authentication for API endpoints. Drop-in replacement for basic auth with configurable tokens.
+        icon: i-ri-shield-keyhole-line
+        to: /docs/headless/configuration/authentication
+      - title: KQL Endpoint
+        description: Query content via Kirby Query Language with automatic response caching and multi-language support.
+        icon: i-ri-database-2-line
+        to: /docs/headless/usage/kql
+      - title: JSON Templates
+        description: Return JSON from Kirby templates. Enable global routes to serve all content as structured data.
+        icon: i-ri-braces-line
+        to: /docs/headless/usage/json-templates
+      - title: Resolved Blocks
+        description: Automatically resolve UUIDs in block and layout fields to complete file and page objects.
+        icon: i-ri-puzzle-line
+        to: /docs/headless/usage/field-methods
+      - title: API Builder
+        description: Express-style API builder with middleware support for custom routes and authentication.
+        icon: i-ri-terminal-box-line
+        to: /docs/headless/advanced/api-builder
+      - title: CORS Support
+        description: Delegates to Kirby's native CORS handling for cross-origin requests out of the box.
+        icon: i-ri-global-line
+        to: /docs/headless/configuration/cors
+  - title: Build Custom Routes with the<br> <span class="text-primary">API Builder</span>
+    id: api-builder
+    slot: code
+    orientation: horizontal
+    reverse: true
+    description: Define API routes with an Express-style middleware pattern. Chain authentication, validation, and response logic.
+    features:
+      - title: Middleware Support
+        description: Composable middleware functions for auth, validation, and more
+        icon: i-ri-stack-line
+      - title: Consistent Responses
+        description: Built-in JSON response format for all API routes
+        icon: i-ri-code-s-slash-line
+    links:
+      - label: API Builder Reference
+        to: /docs/headless/advanced/api-builder
+        trailingIcon: i-ri-arrow-right-line
+        variant: subtle
+    code:
+      minHeight: 360px
+      files:
+        - filename: site/config/config.php
+          language: php
+          content: |
+            use JohannSchopplich\Headless\Api\Api;
+            use JohannSchopplich\Headless\Api\Middlewares;
+
+            return [
+                'routes' => [
+                    [
+                        'pattern' => '__api__/login',
+                        'method' => 'POST',
+                        'action' => Api::createHandler(
+                            [Middlewares::hasBearerToken()],
+                            function ($context) {
+                                $body = $context['body'];
+                                $user = kirby()->user($body['email']);
+                                return Api::createResponse(200, [
+                                    'user' => $user->email(),
+                                ]);
+                            }
+                        ),
+                    ],
+                ],
+            ];
+cta:
+  title: Free Forever. Open Source.
+  description: Install the Headless plugin and start building modern frontend applications with Kirby as your content backend.
+  orientation: horizontal
+  links:
+    - label: Read the Documentation
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/headless/getting-started
+      size: xl

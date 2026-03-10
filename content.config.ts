@@ -137,9 +137,23 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**",
-        exclude: ["index.yml", "**/changelog/**"],
+        exclude: ["index.yml", "**/changelog/**", "blog.yml", "blog/**"],
       },
       schema: createBaseSchema(),
+    }),
+    blog: defineCollection({
+      type: "page",
+      source: "blog.yml",
+      schema: createBaseSchema(),
+    }),
+    posts: defineCollection({
+      type: "page",
+      source: "blog/**/*.md",
+      schema: createBaseSchema().extend({
+        image: z.object({ src: z.string().nonempty() }).optional(),
+        date: z.string().nonempty(),
+        badge: z.object({ label: z.string().nonempty() }).optional(),
+      }),
     }),
     docs: defineCollection({
       type: "page",
@@ -155,7 +169,7 @@ export default defineContentConfig({
           headline: createBadgeSchema(),
           orientation: orientationEnum.optional(),
           links: z.array(createLinkSchema()),
-          video: createVideoSchema(),
+          video: createVideoSchema().optional(),
         }),
         sections: z.array(
           createBaseSchema().extend({
@@ -199,6 +213,7 @@ export default defineContentConfig({
         plan: createBaseSchema().extend({
           price: z.string().nonempty(),
           discount: z.string().optional(),
+          paddlePriceId: z.string().nonempty(),
           button: createLinkSchema(),
           features: z.array(z.string().nonempty()),
           highlight: z.boolean().optional(),

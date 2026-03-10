@@ -54,7 +54,7 @@ export default defineAppConfig({
     prose: {
       card: {
         slots: {
-          description: "space-y-4! [&_p]:leading-6! [&_ul_li]:my-0!",
+          description: "space-y-4! [&_p]:leading-relaxed! [&_ul_li]:my-0!",
         },
       },
     },
