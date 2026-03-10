@@ -11,7 +11,13 @@ defineProps<{
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
 
-const visibleProducts = PRODUCT_ITEMS.filter((product) => !product.isHidden);
+const featuredProductIds = new Set(["/copilot", "/content-translator"]);
+const featuredProducts = PRODUCT_ITEMS.filter((product) =>
+  featuredProductIds.has(product.to),
+);
+const moreProducts = PRODUCT_ITEMS.filter(
+  (product) => !featuredProductIds.has(product.to),
+);
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   currentProduct.value
@@ -44,7 +50,19 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
             ]
           : []),
       ]
-    : visibleProducts,
+    : [
+        ...featuredProducts,
+        {
+          label: "More Plugins",
+          icon: "i-ri-folder-5-line",
+          children: moreProducts,
+        },
+        {
+          label: "Blog",
+          icon: "i-ri-article-line",
+          to: "/blog",
+        },
+      ],
 );
 
 const { data: version } = await useAsyncData(

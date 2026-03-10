@@ -6,7 +6,6 @@ interface ProductItem {
   description: string;
   playground?: string;
   isPaid?: boolean;
-  isHidden?: boolean;
 }
 
 /// keep-sorted
@@ -62,7 +61,6 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     description: "Real-time page preview",
     playground: "https://play.kirby.tools",
     isPaid: true,
-    isHidden: true,
   },
   {
     label: "Minimap",
@@ -70,5 +68,12 @@ export const PRODUCT_ITEMS: ProductItem[] = [
     docsTo: "/docs/minimap",
     icon: "i-ri-timeline-view",
     description: "Sidebar content navigation",
+  },
+  {
+    label: "Headless",
+    to: "/headless",
+    docsTo: "/docs/headless/getting-started",
+    icon: "i-ri-code-block",
+    description: "API-first CMS toolkit",
   },
 ];

@@ -4,16 +4,27 @@ import { PRODUCT_ITEMS } from "#shared/constants";
 
 const columns: FooterColumn[] = [
   {
+    label: "Documentation",
+    children: PRODUCT_ITEMS.map((plugin) => ({
+      label: plugin.label,
+      to: `/docs${plugin.to}`,
+    })),
+  },
+  {
     label: "Resources",
     children: [
       {
-        label: "License & Plugin Compatibility",
+        label: "Blog",
+        to: "/blog",
+      },
+      {
+        label: "License & Compatibility",
         to: "/license-compatibility",
       },
-      ...PRODUCT_ITEMS.map((plugin) => ({
-        label: `${plugin.label} Docs`,
-        to: `/docs${plugin.to}`,
-      })),
+      {
+        label: "Contact",
+        to: "/contact",
+      },
     ],
   },
   {
@@ -33,26 +44,11 @@ const columns: FooterColumn[] = [
       },
     ],
   },
-  {
-    label: "Support",
-    children: [
-      {
-        label: "Contact",
-        to: "/contact",
-      },
-      {
-        label: "GitHub Discussions",
-        to: "https://github.com/kirby-tools/community/discussions",
-        target: "_blank",
-      },
-      {
-        label: "GitHub Issues",
-        to: "https://github.com/kirby-tools/community/issues",
-        target: "_blank",
-      },
-    ],
-  },
 ];
+
+const aboutText = `
+We love Kirby – our plugins wouldn't exist without it. Help us improve: share feedback in [Discussions](https://github.com/kirby-tools/community/discussions) or report bugs via [Issues](https://github.com/kirby-tools/community/issues).
+`;
 </script>
 
 <template>
@@ -81,11 +77,10 @@ const columns: FooterColumn[] = [
         <UFooterColumns :columns="columns">
           <template #right>
             <h3 class="text-sm font-semibold">About</h3>
-            <p class="mt-6 text-sm leading-relaxed">
-              Kirby Tools is not affiliated with the developers of Kirby CMS.
-              Having said that, we love Kirby. Our plugins wouldn't exist
-              without it. 🧡
-            </p>
+            <MDC
+              :value="aboutText"
+              class="prose dark:prose-invert max-w-none text-sm [&_p]:leading-relaxed!"
+            />
           </template>
         </UFooterColumns>
       </UContainer>
