@@ -1,11 +1,11 @@
 ---
-title: "Kirby Copilot v3 – Your Quiet Co-Writer"
-description: "A major update with server-side API proxy, inline suggestions, prompt templates, and more. Free upgrade for all users."
+title: Kirby Copilot v3 – Your Quiet Co-Writer
+description: A major update with server-side API proxy, inline suggestions, prompt templates, and more. Free upgrade for all users.
 date: "2026-01-01"
 badge:
-  label: "Release"
+  label: Release
 image:
-  src: "/vid/kirby-copilot-inline-suggestions-poster.jpg"
+  src: /vid/kirby-copilot-inline-suggestions-poster.jpg
 ---
 
 When I first built Kirby Copilot in early 2024, there was essentially one AI provider anyone talked about. OpenAI had the market, and the idea of AI-assisted content editing inside a CMS was still novel. I wanted to be the first to bring it to the Kirby Panel – partly out of curiosity, partly because I wanted to see if it could actually be useful.
