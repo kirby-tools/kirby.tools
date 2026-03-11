@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for $99 – unlimited sites and free updates. AI-powered content generation for the Kirby Panel.
+description: One-time purchase for €99 – unlimited sites and free updates. AI-powered content generation for the Kirby Panel.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -7,7 +7,7 @@ hero:
 plan:
   title: Copilot v3
   description: For solo-developers and agencies
-  price: $99
+  price: €99
   paddlePriceId: pri_01kk9q21gp30vzvj0gdesdpvnd
   highlight: true
   button:
