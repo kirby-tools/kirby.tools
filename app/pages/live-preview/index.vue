@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
 
-definePageMeta({
-  middleware: ["pricing-redirect"],
-});
-
 const route = useRoute();
 
 const { data: page } = await useAsyncData(
