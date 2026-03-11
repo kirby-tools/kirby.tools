@@ -13,6 +13,24 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
+  runtimeConfig: {
+    public: {
+      paddle: {
+        clientToken: "live_92e480cc12385b49df50126b4b9",
+      },
+    },
+  },
+
+  $development: {
+    runtimeConfig: {
+      public: {
+        paddle: {
+          clientToken: "test_16183d48cd7354531054a782859",
+        },
+      },
+    },
+  },
+
   icon: {
     customCollections: [
       {

@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import type { BuyCollectionItem } from "@nuxt/content";
-import { withQuery } from "ufo";
 
 const props = defineProps<{
   page: BuyCollectionItem;
 }>();
 
 const licenseHolder = ref("");
-const checkoutUrl = computed(() =>
-  withQuery(props.page.plan.button.to, {
-    "checkout[custom][licenseHolder]": licenseHolder.value || undefined,
-  }),
-);
+
+function openCheckout() {
+  const { $paddle } = useNuxtApp();
+  if (!$paddle) return;
+
+  $paddle.Checkout.open({
+    items: [{ priceId: props.page.plan.paddlePriceId, quantity: 1 }],
+    customData: {
+      licenseHolder: licenseHolder.value || undefined,
+    },
+  });
+}
 
 const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
   createReusableTemplate();
@@ -35,7 +41,12 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
           />
         </UFormField>
 
-        <UButton v-bind="page.plan.button" :to="checkoutUrl" size="lg" block />
+        <UButton
+          v-bind="page.plan.button"
+          size="lg"
+          block
+          @click.prevent="openCheckout"
+        />
 
         <!-- <div
           class="absolute top-0 left-6 flex translate-y-[-50%] justify-center lg:left-8 xl:left-10"

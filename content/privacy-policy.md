@@ -183,7 +183,7 @@ We offer our services on online platforms operated by other service providers. I
 
 **Further information on processing methods, procedures and services used:**
 
-- **Lemon Squeezy:** E-commerce platform, with features for invoicing, payment processing, economic analysis, customer and business partner management, as well as external communication and external interfaces; **Service provider**: Lemon Squeezy LLC, 222 South Main Street, Suite 500., Salt Lake City, UT 84101, USA; **Legal Basis:** Legitimate Interests (Article 6 (1) (f) GDPR); **Website:** [https://www.lemonsqueezy.com/](https://www.lemonsqueezy.com/); **Privacy Policy:** [https://www.lemonsqueezy.com/privacy](https://www.lemonsqueezy.com/privacy); **Data Processing Agreement:** [https://www.lemonsqueezy.com/dpa](https://www.lemonsqueezy.com/dpa). **Basis for third country transfer:** Standard Contractual Clauses ([https://www.lemonsqueezy.com/dpa](https://www.lemonsqueezy.com/dpa)).
+- **Paddle:** E-commerce platform, with features for invoicing, payment processing, economic analysis, customer and business partner management, as well as external communication and external interfaces; **Service provider**: Paddle.com Market Limited, Judd House, 18-29 Mora Street, London, EC1V 8BT, UK; **Legal Basis:** Legitimate Interests (Article 6 (1) (f) GDPR); **Website:** [https://www.paddle.com/](https://www.paddle.com/); **Privacy Policy:** [https://www.paddle.com/legal/privacy](https://www.paddle.com/legal/privacy); **Data Sharing Addendum:** [https://www.paddle.com/legal/data-sharing-addendum](https://www.paddle.com/legal/data-sharing-addendum).
 
 ## Providers and services used in the course of business
 

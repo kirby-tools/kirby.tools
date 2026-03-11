@@ -8,11 +8,12 @@ plan:
   title: Content Translator v3
   description: For solo-developers and agencies
   price: $99
+  paddlePriceId: pri_01kk9rvb53t950eb361r5ngyjm
   highlight: true
   button:
     label: Get Your Translator
     color: primary
-    to: https://byjohann.lemonsqueezy.com/buy/acdf557a-4d40-47a4-81d1-a9c305ca7edb
+    to: "#"
   features:
     - For Kirby 4 & Kirby 5
     - Unlimited sites
