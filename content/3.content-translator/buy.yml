@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for $99 – unlimited sites and free updates. Translate Kirby content with DeepL or AI.
+description: One-time purchase for €99 – unlimited sites and free updates. Translate Kirby content with DeepL or AI.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -7,7 +7,7 @@ hero:
 plan:
   title: Content Translator v3
   description: For solo-developers and agencies
-  price: $99
+  price: €99
   paddlePriceId: pri_01kk9rvb53t950eb361r5ngyjm
   highlight: true
   button:

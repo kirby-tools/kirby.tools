@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for $79 – unlimited sites and free updates. Real-time content previews directly in the Kirby Panel.
+description: One-time purchase for €79 – unlimited sites and free updates. Real-time content previews directly in the Kirby Panel.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -7,8 +7,8 @@ hero:
 plan:
   title: Live Preview v2
   description: For solo-developers and agencies
-  price: $99
-  discount: $79
+  price: €99
+  discount: €79
   paddlePriceId: pri_01kk9rr4jvg87rny9fgeqrdjtx
   highlight: true
   button:

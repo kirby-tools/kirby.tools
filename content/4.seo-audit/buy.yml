@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for $99 – unlimited sites and free updates. In-Panel SEO analysis powered by Yoast.
+description: One-time purchase for €99 – unlimited sites and free updates. In-Panel SEO analysis powered by Yoast.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -8,7 +8,7 @@ hero:
 plan:
   title: SEO Audit v3
   description: For solo-developers and agencies
-  price: $99
+  price: €99
   paddlePriceId: pri_01kk9rpw3jg2ew8nm0ekhdhrq0
   highlight: true
   button:
