@@ -42,7 +42,7 @@ const latestReleaseUrl = computed(() => {
         container: 'h-full items-center justify-center',
         title: 'text-left text-4xl',
         description: 'text-left max-w-lg',
-        links: 'justify-start sm:-ms-2.5',
+        links: 'justify-start flex-col items-start sm:-ms-2.5',
       }"
     >
       <template #top>
