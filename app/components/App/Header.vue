@@ -11,7 +11,11 @@ defineProps<{
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
 
-const featuredProductIds = new Set(["/copilot", "/content-translator"]);
+const featuredProductIds = new Set([
+  "/copilot",
+  "/content-translator",
+  "/seo-audit",
+]);
 const featuredProducts = PRODUCT_ITEMS.filter((product) =>
   featuredProductIds.has(product.to),
 );
