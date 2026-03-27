@@ -12,12 +12,6 @@ if (!post.value) {
   });
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings("posts", route.path, {
-    fields: ["description"],
-  });
-});
-
 useSeoMeta({
   title: post.value.title,
   ogTitle: `${post.value.title} – Kirby Tools`,
@@ -42,6 +36,15 @@ if (post.value.image?.src) {
   <UContainer v-if="post">
     <UPageHeader :title="post.title" :description="post.description">
       <template #headline>
+        <UButton
+          icon="i-ri-arrow-left-line"
+          label="Back to blog"
+          to="/blog"
+          variant="link"
+          class="p-0"
+          :ui="{ leadingIcon: 'size-4' }"
+        />
+        <span class="text-muted">&middot;</span>
         <UBadge v-if="post.badge" v-bind="post.badge" variant="subtle" />
         <span v-if="post.badge" class="text-muted">&middot;</span>
         <time class="text-muted">{{
@@ -53,25 +56,28 @@ if (post.value.image?.src) {
         }}</time>
       </template>
 
-      <div class="mt-4 flex flex-wrap items-center gap-3">
-        <UButton
+      <div class="mt-6 flex items-center gap-6">
+        <ULink
           to="https://byjohann.link"
-          color="neutral"
-          variant="subtle"
           target="_blank"
-          size="sm"
-          label="Johann Schopplich"
-        />
+          class="group flex items-center gap-3"
+        >
+          <UAvatar
+            src="https://github.com/johannschopplich.png"
+            alt="Johann Schopplich"
+            size="lg"
+          />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-highlighted">Johann Schopplich</span>
+            <span class="text-xs text-muted transition-colors group-hover:text-primary">@johannschopplich</span>
+          </div>
+        </ULink>
       </div>
     </UPageHeader>
 
     <UPage>
       <UPageBody>
         <ContentRenderer v-if="post.body" :value="post" />
-
-        <USeparator v-if="surround?.length" />
-
-        <UContentSurround :surround="surround" />
       </UPageBody>
 
       <template v-if="post?.body?.toc?.links?.length" #right>

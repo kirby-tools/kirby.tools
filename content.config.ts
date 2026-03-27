@@ -144,7 +144,9 @@ export default defineContentConfig({
     blog: defineCollection({
       type: "page",
       source: "blog.yml",
-      schema: createBaseSchema(),
+      schema: createBaseSchema().extend({
+        hero: createBaseSchema(),
+      }),
     }),
     posts: defineCollection({
       type: "page",
