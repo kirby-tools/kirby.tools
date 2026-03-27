@@ -1,2 +1,5 @@
 title: Blog
 description: News, tutorials, and updates from Kirby Tools.
+hero:
+  title: "Kirby Tools [Blog]{.text-primary}"
+  description: News, tutorials, and updates from Kirby Tools.

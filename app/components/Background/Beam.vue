@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { Motion } from "motion-v";
-
 interface Props {
   width: string | number;
   x: string | number;
