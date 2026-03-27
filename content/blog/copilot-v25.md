@@ -28,7 +28,7 @@ v2.4 solves this through JSON schema-based object generation. Copilot now reads 
 
 In practice, this means Copilot can now generate entire page layouts with your project's own block vocabulary. It's not guessing at a generic structure – it's working with the actual building blocks you've defined.
 
-[Read the custom blocks documentation](/docs/copilot/usage/blocks-generation)
+[Read the custom blocks documentation](/docs/copilot/advanced/blocks-and-layouts)
 
 ## What This Means
 
