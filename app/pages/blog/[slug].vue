@@ -68,8 +68,13 @@ if (post.value.image?.src) {
             size="lg"
           />
           <div class="flex flex-col">
-            <span class="text-sm font-medium text-highlighted">Johann Schopplich</span>
-            <span class="text-xs text-muted transition-colors group-hover:text-primary">@johannschopplich</span>
+            <span class="text-highlighted text-sm font-medium"
+              >Johann Schopplich</span
+            >
+            <span
+              class="text-muted group-hover:text-primary text-xs transition-colors"
+              >@johannschopplich</span
+            >
           </div>
         </ULink>
       </div>

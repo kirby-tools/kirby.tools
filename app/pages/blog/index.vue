@@ -31,21 +31,20 @@ function formatDate(date: string) {
 </script>
 
 <template>
-  <main v-if="page" class="relative flex flex-col min-h-[calc(100vh-var(--ui-header-height))]">
+  <main
+    v-if="page"
+    class="relative flex min-h-[calc(100vh-var(--ui-header-height))] flex-col"
+  >
     <UPageHero :ui="{ container: 'relative py-10 sm:py-16 lg:py-24' }">
       <BackgroundSky />
 
       <div
         aria-hidden="true"
-        class="absolute inset-0 z-[-1] mx-4 border-x border-default sm:mx-6 lg:mx-8"
+        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
       />
 
       <template #title>
-        <MDC
-          :value="page.hero.title"
-          unwrap="p"
-          cache-key="blog-hero-title"
-        />
+        <MDC :value="page.hero.title" unwrap="p" cache-key="blog-hero-title" />
       </template>
 
       <template #description>
@@ -53,9 +52,9 @@ function formatDate(date: string) {
       </template>
     </UPageHero>
 
-    <UPageBody class="my-0! py-0! border-y border-default">
+    <UPageBody class="border-default my-0! border-y py-0!">
       <UContainer>
-        <div class="border-x border-default">
+        <div class="border-default border-x">
           <Motion
             v-for="(post, index) in posts"
             :key="post.path"
@@ -67,26 +66,28 @@ function formatDate(date: string) {
               stiffness: 300,
               damping: 30,
             }"
-            class="group border-b border-default last:border-b-0"
+            class="group border-default border-b last:border-b-0"
           >
             <ULink
               :to="post.path"
-              class="flex flex-col gap-4 p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6 hover:bg-muted/30"
+              class="hover:bg-muted/30 flex flex-col gap-4 p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6"
             >
               <div
                 class="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:gap-6"
               >
                 <div class="min-w-0 flex-1">
-                  <div class="mb-1 shrink-0 text-xs font-mono text-muted">
+                  <div class="text-muted mb-1 shrink-0 font-mono text-xs">
                     {{ formatDate(post.date) }}
                   </div>
 
                   <h2
-                    class="truncate font-medium text-highlighted transition-colors duration-200 sm:text-base group-hover:text-primary"
+                    class="text-highlighted group-hover:text-primary truncate font-medium transition-colors duration-200 sm:text-base"
                   >
                     {{ post.title }}
                   </h2>
-                  <p class="mt-1 line-clamp-2 text-sm text-muted sm:line-clamp-1">
+                  <p
+                    class="text-muted mt-1 line-clamp-2 text-sm sm:line-clamp-1"
+                  >
                     {{ post.description }}
                   </p>
                 </div>
@@ -103,7 +104,7 @@ function formatDate(date: string) {
 
                 <UIcon
                   name="i-ri-arrow-right-s-line"
-                  class="size-4 shrink-0 text-muted transition-colors duration-200 group-hover:text-highlighted"
+                  class="text-muted group-hover:text-highlighted size-4 shrink-0 transition-colors duration-200"
                 />
               </div>
             </ULink>
@@ -115,7 +116,7 @@ function formatDate(date: string) {
     <UContainer class="relative min-h-24 grow">
       <div
         aria-hidden="true"
-        class="absolute inset-0 z-[-1] mx-4 border-x border-default sm:mx-6 lg:mx-8"
+        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
       />
     </UContainer>
   </main>
