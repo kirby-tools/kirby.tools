@@ -11,6 +11,8 @@ When you purchase a Kirby Tools plugin, you receive a license key that covers sp
 - **Generation 1** (purchased before December 2024): Covers original plugin versions
 - **Generation 2** (purchased from December 2024): Covers original + Kirby 5 compatible versions
 
+Generations align with major Kirby CMS releases. When Kirby ships a new major version, plugins often require significant rewrites – the generation system funds continued development while giving existing customers upgrade discounts.
+
 You can always use older plugin versions with newer licenses, but not newer plugin versions with older licenses.
 
 ::card{title="Manage Your Licenses" icon="i-ri-key-2-line" to="https://hub.kirby.tools" target="\_blank"}
@@ -53,7 +55,7 @@ All Kirby Tools plugins support both Kirby 4 and Kirby 5:
 | Kirby Live Preview       | v1              | v2              |
 
 ::callout{icon="i-ri-information-line" color="info"}
-**Copilot v3** and **SEO Audit v3** are free upgrades – Gen 2 license holders already have access.
+Gen 2 licenses already include **Copilot v3** and **SEO Audit v3** – no upgrade needed. Gen 1 holders can upgrade at 50% off.
 ::
 
 ## Upgrade Discount
@@ -92,8 +94,8 @@ Not necessarily. If you have a Generation 2 license (purchased December 2024+), 
 **License generation** (Gen 1, Gen 2) determines which plugin versions your license covers. **Plugin version** (v1, v2, v3) is the actual version you install.
 ::
 
-::accordion-item{label="Why is SEO Audit v3 free but Content Translator v3 is not?"}
-SEO Audit v3 is primarily a Kirby 5 compatibility update. Content Translator v3 introduces significant new features, which is why upgrade pricing applies (50% off).
+::accordion-item{label="Are v3 plugin versions included with my license?"}
+If you have a Gen 2 license, yes – Copilot v3, SEO Audit v3, and Content Translator v3 are all included. Gen 1 holders can upgrade to Gen 2 at 50% off to get access to the latest versions.
 ::
 
 ::accordion-item{label="Can I use an older plugin version with a new license?"}
@@ -101,7 +103,7 @@ Yes. Licenses are backward compatible – you can always use older versions.
 ::
 
 ::accordion-item{label="Can I use a newer plugin version with an old license?"}
-Only if your license generation covers it. Gen 1 licenses do not cover v2/v3 versions. You will need to upgrade.
+Only if your license generation covers it. Check the [version compatibility matrix](#version-compatibility-matrix) below for exact constraints per plugin. If your version isn't covered, you can upgrade at 50% off.
 ::
 
 ::
@@ -112,7 +114,7 @@ This section covers implementation details for developers.
 
 ### License Key Format
 
-License keys follow the format: `KT{generation}-{hash}-{hash}`
+License keys follow the format: `KT{generation}-{hash}-{hash}`. The digit after `KT` is your generation number.
 
 - `KT1-xxxxx-xxxxx`: Generation 1 (before December 2024)
 - `KT2-xxxxx-xxxxx`: Generation 2 (December 2024 onwards)
