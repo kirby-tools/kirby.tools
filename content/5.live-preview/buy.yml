@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for €79 – unlimited sites and free updates. Real-time content previews directly in the Kirby Panel.
+description: One-time purchase for €79 – unlimited owned sites and free updates. Real-time content previews directly in the Kirby Panel.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -17,18 +17,18 @@ plan:
     to: "#"
   features:
     - For Kirby 4 & Kirby 5
-    - Unlimited sites
+    - Unlimited owned sites
     - Unlimited minor & patch updates
 faq:
   title: Frequently Asked Questions
   description: If you cannot find what you are looking for, email our team and we will get back to you.
   items:
     - label: How does the licensing work?
-      content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
+      content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If you transfer the full IP rights to your client, the client needs their own license – just like with Kirby itself. Please refer to the [license agreement](/license) for more details.
     - label: Which Kirby versions are supported?
-      content: Kirby Content Translator is compatible with Kirby 4 and Kirby 5.
+      content: Kirby Live Preview is compatible with Kirby 4 and Kirby 5.
     - label: What does “Unlimited minor & patch updates” include?
-      content: We add new features and improvements to Kirby Content Translator as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major version is released, you will be able to upgrade to that version at a generous discount. A typical major version is intended to be released alongside a new major Kirby version.
+      content: We add new features and improvements to Kirby Live Preview as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major version is released, you will be able to upgrade to that version at a generous discount. A typical major version is intended to be released alongside a new major Kirby version.
     - label: How do I receive updates for the plugin?
       content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-live-preview/releases) on GitHub.
     - label: Do you offer technical support?

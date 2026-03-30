@@ -1,5 +1,5 @@
 title: Buy
-description: One-time purchase for €99 – unlimited sites and free updates. In-Panel SEO analysis powered by Yoast.
+description: One-time purchase for €99 – unlimited owned sites and free updates. In-Panel SEO analysis powered by Yoast.
 navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
@@ -18,14 +18,14 @@ plan:
   features:
     - For Kirby 4 & Kirby 5
     - Infinite SEO audits
-    - Unlimited sites
+    - Unlimited owned sites
     - Unlimited minor & patch updates
 faq:
   title: Frequently Asked Questions
   description: If you cannot find what you are looking for, email our team and we will get back to you.
   items:
     - label: How does the licensing work?
-      content: The license allows you to use the plugin on as many Kirby projects as you want, as long as you are the owner of all the sites. This means that you must own the code, which is usually the case when you develop websites for clients. Please refer to the [license agreement](/license) for more details.
+      content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If you transfer the full IP rights to your client, the client needs their own license – just like with Kirby itself. Please refer to the [license agreement](/license) for more details.
     - label: What if the SEO report is incorrect?
       content: We do not guarantee that the SEO checks are 100% accurate. Some assessments are based on the [`yoastseo`](/docs/seo-audit/guide/assessments) JavaScript package. We are not responsible for any incorrect audits provided by it. However, we are constantly adding new assessments, built by us, to improve the accuracy of the SEO checks. Please test the plugin in the [playground](https://try.kirbyseo.com) before purchasing.
     - label: Which Kirby versions are supported?
