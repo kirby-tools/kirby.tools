@@ -89,6 +89,18 @@
     "offsetX": 11.5,
     "offsetY": 1.7
   },
+  "kerber-dark.svg": {
+    "width": 104,
+    "height": 23,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "kerber-light.svg": {
+    "width": 104,
+    "height": 23,
+    "offsetX": 0,
+    "offsetY": 0
+  },
   "kiss-dark.svg": {
     "width": 96,
     "height": 34,
@@ -100,6 +112,18 @@
     "height": 34,
     "offsetX": 1.7,
     "offsetY": -3.6
+  },
+  "opendesk-dark.svg": {
+    "width": 160,
+    "height": 29,
+    "offsetX": 4.8,
+    "offsetY": -1
+  },
+  "opendesk-light.svg": {
+    "width": 160,
+    "height": 29,
+    "offsetX": 4.8,
+    "offsetY": -1
   },
   "university-of-south-eastern-norway-dark.svg": {
     "width": 175,
@@ -124,5 +148,17 @@
     "height": 65,
     "offsetX": 2.9,
     "offsetY": 0.9
+  },
+  "zammad-dark.svg": {
+    "width": 152,
+    "height": 34,
+    "offsetX": -3.6,
+    "offsetY": -0.8
+  },
+  "zammad-light.svg": {
+    "width": 152,
+    "height": 34,
+    "offsetX": -3.6,
+    "offsetY": -0.8
   }
 }
