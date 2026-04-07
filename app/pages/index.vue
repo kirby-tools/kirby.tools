@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { isObject } from "@vue/shared";
-import logoMetrics from "~/data/logo-metrics.json" with { type: "json" };
+import logoMetrics from "~/data/logo-metrics.json";
 
 const { data: page } = await useAsyncData("index", () =>
   queryCollection("index").first(),
