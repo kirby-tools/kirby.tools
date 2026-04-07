@@ -15,7 +15,7 @@
     "format:check": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --check",
     "test:types": "vue-tsc -b --noEmit",
     "logo-soup:metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
-    "prepare": "nuxt prepare"
+    "prepare": "nuxt prepare && pnpm run logo-soup:metrics"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.4.3",
