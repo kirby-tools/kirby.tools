@@ -85,6 +85,10 @@ export default defineNuxtConfig({
     zeroRuntime: true,
   },
 
+  fonts: {
+    families: [{ name: "Inter", weights: [400, 600, 700], global: true }],
+  },
+
   routeRules: {
     // Global
     "/": { prerender: true },
