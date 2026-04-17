@@ -45,7 +45,7 @@ useSeoMeta({
 
 const { getThemeColorFromPath } = useDynamicTheme();
 
-defineOgImageComponent("Default", {
+defineOgImage("Default", {
   headline: currentProduct.value?.label
     ? `Kirby ${currentProduct.value.label}`
     : "Kirby Tools",

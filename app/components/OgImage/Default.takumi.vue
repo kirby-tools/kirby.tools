@@ -5,12 +5,14 @@ import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     headline?: string;
     color?: ThemeColor;
   }>(),
   {
+    title: "Kirby Tools",
+    description: "Premium Plugins for Kirby CMS",
     headline: "Kirby Tools",
     color: "danube",
   },
@@ -81,7 +83,10 @@ const hex = computed(
       <h1 class="m-0 text-[52px] leading-tight font-semibold text-stone-50">
         {{ title }}
       </h1>
-      <p class="mt-4 line-clamp-2 text-[26px] leading-relaxed text-stone-400">
+      <p
+        class="mt-4 text-[26px] leading-relaxed text-stone-400"
+        style="line-clamp: 2; text-overflow: ellipsis; overflow: hidden"
+      >
         {{ description }}
       </p>
     </div>
