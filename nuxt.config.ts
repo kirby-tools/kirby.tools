@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     "nuxt-og-image",
   ],
 
-  compatibilityDate: "2025-06-01",
+  compatibilityDate: "2026-01-01",
 
   css: ["~/assets/css/main.css"],
 
@@ -78,6 +78,10 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
+    zeroRuntime: true,
+  },
+
+  ogImage: {
     zeroRuntime: true,
   },
 
