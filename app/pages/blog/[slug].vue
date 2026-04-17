@@ -17,14 +17,11 @@ useSeoMeta({
   ogTitle: `${post.value.title} – Kirby Tools`,
   description: post.value.description,
   ogDescription: post.value.description,
+  ...(post.value.image?.src ? { ogImage: post.value.image.src } : {}),
 });
 
-if (post.value.image?.src) {
-  defineOgImage({
-    url: post.value.image.src,
-  });
-} else {
-  defineOgImageComponent("Default", {
+if (!post.value.image?.src) {
+  defineOgImage("Default", {
     headline: "Blog",
     title: post.value.title,
     description: post.value.description,
