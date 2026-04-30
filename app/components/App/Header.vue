@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from "@nuxt/content";
 import type { NavigationMenuItem } from "@nuxt/ui";
-import { PRODUCT_ITEMS } from "#shared/constants";
 import { withoutTrailingSlash } from "ufo";
+import { PRODUCT_ITEMS } from "#shared/constants";
 
 defineProps<{
   docsNavigation?: ContentNavigationItem[] | undefined;
