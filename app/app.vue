@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PRODUCT_ITEMS } from "#shared/constants";
 import { joinURL } from "ufo";
+import { PRODUCT_ITEMS } from "#shared/constants";
 
 const siteConfig = useSiteConfig();
 const route = useRoute();

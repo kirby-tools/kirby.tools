@@ -1,5 +1,5 @@
-import type { ThemeColor } from "#shared/constants";
 import type { RouteLocationNormalized } from "vue-router";
+import type { ThemeColor } from "#shared/constants";
 import {
   PRODUCT_THEME_COLOR_MAP,
   THEME_COLOR_PALETTE,
