@@ -66,9 +66,9 @@ A `::card` or `::card-group` earns its place under exactly one condition:
 The axis decides the component.
 
 - `::code-group` – runtime alternatives for the same task. The reader picks one and runs it: `npm` / `yarn` / `pnpm`, equivalent CSS / JS snippets.
-- `::tabs` with `:::tabs-item{label="..."}` – orthogonal axes that aren't substitutes: View Button vs Section, Before v5 vs After v6, Basic vs Multilingual setup.
+- `::tabs` with `:::tabs-item{label="..."}` – orthogonal axes that aren't substitutes: Before v5 vs After v6, Basic vs Multilingual setup, Writer Field vs Textarea Field.
 
-Two stacked `::code-group` blocks sharing the same axis labels signal a `::tabs` shape was needed.
+Two stacked `::code-group` blocks sharing the same axis labels signal a `::tabs` shape was needed. If you can copy one tab's contents into the other by rewriting wrapper keys only, it's not an axis – flatten it.
 
 ## Property References
 
@@ -116,6 +116,11 @@ Use `::steps{level="3"}` only when all three hold:
   - `## Working With Files as Context`
 - Property reference headings use code formatting: `` ### `propertyName` `` – never `### Property Name`.
 - Section feature names use noun phrases: "Prompt Storage", not "Storing Prompts".
+
+## Frontmatter Description
+
+- Summarises, never echoes. If the description and the first body sentence share more than half their content words, rewrite one.
+- Keep backtick-wrapped identifiers only when an editor types them (`@page://`, `@skill://`, slot names, blueprint keys); abstract internal API names (PHP classes, methods, headers, config keys) to plain prose.
 
 ## Avoid
 
