@@ -13,8 +13,8 @@ Docs live under `content/1.docs/<plugin>/` in a Nuxt Content site. Component ref
 
 Use these terms exactly. Drift between synonyms breaks the rules below.
 
-- **Config guide** – `2.configuration/{global,local}.md`. Surface optimised for scanability.
-- **Reference page** – `5.php-classes/...`, `4.value-objects.md`, `5.exceptions.md`, `6.advanced/2.reference.md`. Surface optimised for density and lookup.
+- **Config guide** – `2.configuration/{global,local}.md`. Surface optimized for scanability.
+- **Reference page** – `5.php-classes/...`, `4.value-objects.md`, `5.exceptions.md`, `6.advanced/2.reference.md`. Surface optimized for density and lookup.
 - **Expanded-property layout** – `### \`name\` :u-badge{...}` heading followed by paragraphs, examples, sub-properties.
 - **Field-group layout** – `::field{name="..." type="..."}` row with one tight sentence.
 - **Role-based callout** – `::tip` / `::note` / `::warning`, picked by intent.
