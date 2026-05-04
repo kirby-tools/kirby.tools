@@ -3,6 +3,10 @@
 
 @source "../../../content/**/*";
 
+:root {
+  --ui-radius: 0;
+}
+
 @theme static {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Instrument Serif", ui-serif, serif;
