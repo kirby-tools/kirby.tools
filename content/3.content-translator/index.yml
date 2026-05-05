@@ -57,7 +57,7 @@ sections:
         icon: i-ri-settings-3-line
     links:
       - label: PHP API Reference
-        to: /docs/content-translator/advanced/php-api
+        to: /docs/content-translator/php-classes
         trailingIcon: i-ri-arrow-right-line
         variant: subtle
     code:
@@ -66,17 +66,21 @@ sections:
         - filename: site/commands/translate-blog.php
           language: php
           content: |
+            use JohannSchopplich\ContentTranslator\Translation\Strategies\CopilotAIStrategy;
             use Kirby\CLI\CLI;
 
             return [
-                'description' => 'Translate all blog posts',
+                'description' => 'Translate all blog posts to German via AI',
                 'command' => static function (CLI $cli): void {
                     $kirby = $cli->kirby();
                     $source = $kirby->defaultLanguage()->code();
+                    $strategy = new CopilotAIStrategy();
 
                     foreach (page('blog')->children() as $post) {
-                        $post->translator()->copyContent('de', $source);
-                        $post->translator()->translateContent('de', 'de', $source);
+                        $translator = $post->translator();
+                        $translator->copyContent('de', $source);
+                        $translator->translateContent('de', 'de', $source, $strategy);
+                        $translator->translateTitle('de', 'de', $source);
                         $cli->out('✓ ' . $post->title());
                     }
 

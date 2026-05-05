@@ -137,7 +137,13 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**",
-        exclude: ["index.yml", "**/changelog/**", "blog.yml", "blog/**"],
+        exclude: [
+          "index.yml",
+          "**/changelog/**",
+          "blog.yml",
+          "blog/**",
+          "**/*.todo.md",
+        ],
       },
       schema: createBaseSchema(),
     }),
@@ -150,7 +156,10 @@ export default defineContentConfig({
     }),
     posts: defineCollection({
       type: "page",
-      source: "blog/**/*.md",
+      source: {
+        include: "blog/**/*.md",
+        exclude: ["**/*.todo.md"],
+      },
       schema: createBaseSchema().extend({
         image: z.object({ src: z.string().nonempty() }).optional(),
         date: z.string().nonempty(),
@@ -159,7 +168,10 @@ export default defineContentConfig({
     }),
     docs: defineCollection({
       type: "page",
-      source: "1.docs/**/*",
+      source: {
+        include: "1.docs/**/*",
+        exclude: ["**/*.todo.md"],
+      },
       schema: createBaseSchema(),
     }),
     product: defineCollection({
