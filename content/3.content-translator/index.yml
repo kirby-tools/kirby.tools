@@ -34,9 +34,9 @@ sections:
         description: Supports blocks, layout, list, object, structure, tags, text, textarea, and writer fields. Nested structures are recursively translated.
         icon: i-ri-dashboard-horizontal-line
         to: /docs/content-translator
-      - title: One-Click Translation
-        description: Translate your content into the currently active language with DeepL with a single click in the Kirby Panel.
-        icon: i-ri-cursor-line
+      - title: Blueprint-Aware
+        description: "Reads each blueprint to find translatable fields. `translate: false` is respected at any nesting depth."
+        icon: i-ri-stack-line
         to: /docs/content-translator/configuration/local#fieldtypes
       - title: AI-Powered Translation
         description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.
