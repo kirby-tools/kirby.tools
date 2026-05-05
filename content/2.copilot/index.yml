@@ -3,9 +3,9 @@ description: AI-powered content generation plugin for Kirby CMS. Generate layout
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: "New in v3: Inline Suggestions"
-    to: /docs/copilot/usage/inline-suggestions
-    icon: i-ri-magic-line
+    label: "New: Public PHP API"
+    to: /docs/copilot/php-classes
+    icon: i-ri-terminal-box-line
     color: neutral
     variant: solid
   title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
@@ -61,6 +61,59 @@ sections:
       src: /vid/kirby-copilot-generate-layouts.mp4
       poster: /vid/kirby-copilot-generate-layouts-poster-start.jpg
       label: Demonstration of generating layouts directly in the Kirby Panel
+  - title: Drive Copilot<br> From <span class="text-primary">PHP</span>
+    id: php-api
+    slot: code
+    orientation: horizontal
+    reverse: true
+    description: Call AI providers from CLI commands, hooks, or custom workflows. The same Client that powers the Panel is available to your code.
+    features:
+      - title: Hooks & CLI
+        description: Generate content on save or in batch from the command line
+        icon: i-ri-terminal-box-line
+      - title: Two Output Modes
+        description: Plain text or structured objects validated against a JSON schema
+        icon: i-ri-code-line
+    links:
+      - label: PHP API Reference
+        to: /docs/copilot/php-classes
+        trailingIcon: i-ri-arrow-right-line
+        variant: subtle
+    code:
+      minHeight: 360px
+      files:
+        - filename: site/commands/generate-meta-descriptions.php
+          language: php
+          content: |
+            use JohannSchopplich\Copilot\AI\Client;
+            use Kirby\CLI\CLI;
+
+            return [
+                'description' => 'Generate missing meta descriptions for blog posts',
+                'command' => static function (CLI $cli): void {
+                    $client = Client::instance();
+
+                    foreach (page('blog')->children() as $post) {
+                        if ($post->meta_description()->isNotEmpty()) {
+                            continue;
+                        }
+
+                        $description = $client->generateText([
+                            ['role' => 'system', 'content' => 'Write a 155-character SEO description.'],
+                            ['role' => 'user', 'content' => $post->text()->kirbytext()],
+                        ]);
+
+                        $post->update(['meta_description' => $description]);
+                        $cli->out('✓ ' . $post->title());
+                    }
+
+                    $cli->success('Done');
+                }
+            ];
+        - filename: Terminal
+          language: bash
+          content: |
+            kirby generate-meta-descriptions
 cta:
   title: Do Not Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and try Copilot in the Panel yourself.
