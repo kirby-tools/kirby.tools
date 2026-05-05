@@ -68,7 +68,7 @@ function handleEnded() {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative [--ui-radius:0.25rem]">
     <NuxtImg
       v-if="glow"
       :src="poster"
