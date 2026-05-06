@@ -16,15 +16,9 @@ export function useDynamicTheme() {
   );
 
   function getThemeColorFromPath(path: string): ThemeColor {
-    for (const [productPath, color] of Object.entries(
-      PRODUCT_THEME_COLOR_MAP,
-    )) {
-      if (path.includes(`/${productPath}`)) {
-        return color;
-      }
-    }
-
-    return "danube";
+    const segments = path.split("/").filter(Boolean);
+    const productSlug = segments[0] === "docs" ? segments[1] : segments[0];
+    return PRODUCT_THEME_COLOR_MAP[productSlug ?? ""] ?? "danube";
   }
 
   function updateThemeColor(to: RouteLocationNormalized) {
