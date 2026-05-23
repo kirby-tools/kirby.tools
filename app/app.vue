@@ -71,9 +71,13 @@ useSeoMeta({
 
 <template>
   <UApp>
+    <AppHeader />
+
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
+
+    <AppFooter />
 
     <ClientOnly>
       <LazyUContentSearch
