@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from "@nuxt/content";
 import type { NavigationMenuItem } from "@nuxt/ui";
 import { withoutTrailingSlash } from "ufo";
 import { PRODUCT_ITEMS } from "#shared/constants";
-
-defineProps<{
-  docsNavigation?: ContentNavigationItem[] | undefined;
-}>();
 
 const route = useRoute();
 const { currentProductId, currentProduct } = useProduct();
@@ -69,6 +64,8 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
       ],
 );
 
+const { data: docsNavigation } = await useDocsNavigation();
+
 const { data: version } = await useAsyncData(
   () => `${currentProductId.value}-version`,
   () =>
@@ -78,6 +75,7 @@ const { data: version } = await useAsyncData(
       .first(),
   {
     immediate: !!currentProductId.value,
+    watch: [currentProductId],
   },
 );
 </script>
@@ -151,7 +149,7 @@ const { data: version } = await useAsyncData(
       />
     </template>
 
-    <UNavigationMenu :items="navigationItems" />
+    <UNavigationMenu :items="navigationItems" class="hidden lg:flex" />
 
     <template #body>
       <UNavigationMenu
