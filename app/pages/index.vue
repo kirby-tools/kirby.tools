@@ -138,7 +138,7 @@ const testimonialItems = computed(() =>
       :description="page.testimonials.description"
       class="relative overflow-hidden"
     >
-      <UMarquee pause-on-hover>
+      <UMarquee pause-on-hover class="[--duration:50s]">
         <UTooltip
           v-for="(testimonial, index) in testimonialItems"
           :key="index"
