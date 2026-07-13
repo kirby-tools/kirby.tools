@@ -26,7 +26,7 @@ This is particularly useful for existing sites with years of content. Translatio
 
 Coverage follows the same field rules as Content Translator itself: a field counts once it is translatable and has content in the default language, and it is complete when its translation is not empty. Empty source fields don't create phantom tasks, and fields you exclude in your blueprints don't affect the result. The number stays tied to real work.
 
-It also has a deliberate boundary. Coverage tells you whether content is *present*, not whether a translation is current or well written. It can't tell you that an existing translation drifted out of date after the source text changed – that still takes editorial judgment. What it removes is the mechanical part: finding the empty translations in the first place.
+It also has a deliberate boundary. Coverage tells you whether content is _present_, not whether a translation is current or well written. It can't tell you that an existing translation drifted out of date after the source text changed – that still takes editorial judgment. What it removes is the mechanical part: finding the empty translations in the first place.
 
 ## From Spotting a Gap to Filling It
 
