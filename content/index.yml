@@ -27,6 +27,12 @@ testimonials:
       logo: /img/brands/friedrich-ebert-stiftung-ev.svg
       website: https://www.fes.de
       usage: Kirby Content Translator
+    - brand: documenta
+      logo:
+        light: /img/brands/documenta-light.svg
+        dark: /img/brands/documenta-dark.svg
+      website: https://www.documenta.de
+      usage: Kirby Content Translator
     - brand: openDesk
       logo:
         light: /img/brands/opendesk-light.svg
