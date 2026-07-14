@@ -23,6 +23,18 @@ hero:
 testimonials:
   title: Trusted by Teams Worldwide
   items:
+    - brand: University of South-Eastern Norway
+      logo:
+        light: /img/brands/university-of-south-eastern-norway-light.svg
+        dark: /img/brands/university-of-south-eastern-norway-dark.svg
+      website: https://www.usn.no/english/
+      usage: Kirby Content Translator
+    - brand: Zammad
+      logo:
+        light: /img/brands/zammad-light.svg
+        dark: /img/brands/zammad-dark.svg
+      website: https://zammad.com
+      usage: Kirby Content Translator
     - brand: Friedrich-Ebert-Stiftung e.V.
       logo: /img/brands/friedrich-ebert-stiftung-ev.svg
       website: https://www.fes.de
@@ -45,18 +57,6 @@ testimonials:
         dark: /img/brands/katapult-magazin-dark.svg
       website: https://katapult-magazin.de
       usage: Kirby Punctuation Section
-    - brand: University of South-Eastern Norway
-      logo:
-        light: /img/brands/university-of-south-eastern-norway-light.svg
-        dark: /img/brands/university-of-south-eastern-norway-dark.svg
-      website: https://www.usn.no/english/
-      usage: Kirby Content Translator
-    - brand: Zammad
-      logo:
-        light: /img/brands/zammad-light.svg
-        dark: /img/brands/zammad-dark.svg
-      website: https://zammad.com
-      usage: Kirby Content Translator
     - brand: Kerber Verlag
       logo:
         light: /img/brands/kerber-light.svg
