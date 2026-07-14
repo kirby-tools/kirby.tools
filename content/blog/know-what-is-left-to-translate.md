@@ -2,8 +2,7 @@
 title: Know What's Left to Translate
 description: Translation Coverage shows which languages and pages still need attention across your multilingual Kirby site.
 date: "2026-07-03"
-badge:
-  label: Update
+product: content-translator
 ---
 
 A multilingual site is never really finished. Existing content changes, new pages are added, and translations that were complete last week quietly fall behind.

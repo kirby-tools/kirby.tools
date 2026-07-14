@@ -27,30 +27,48 @@ if (!post.value.image?.src) {
     description: post.value.description,
   });
 }
+
+const productBadge = computed(() => getProductBadge(post.value?.product));
 </script>
 
 <template>
   <UContainer v-if="post">
     <UPageHeader :title="post.title" :description="post.description">
       <template #headline>
-        <UButton
-          icon="i-ri-arrow-left-line"
-          label="Back to blog"
-          to="/blog"
-          variant="link"
-          class="p-0"
-          :ui="{ leadingIcon: 'size-4' }"
-        />
-        <span class="text-muted">&middot;</span>
-        <UBadge v-if="post.badge" v-bind="post.badge" variant="subtle" />
-        <span v-if="post.badge" class="text-muted">&middot;</span>
-        <time class="text-muted">{{
-          new Date(post.date).toLocaleDateString("en", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-        }}</time>
+        <div class="flex flex-wrap items-center gap-2">
+          <UButton
+            icon="i-ri-arrow-left-line"
+            label="Back to blog"
+            to="/blog"
+            variant="link"
+            class="p-0"
+            :ui="{ leadingIcon: 'size-4' }"
+          />
+          <span class="text-muted">&middot;</span>
+
+          <UBadge
+            v-if="productBadge"
+            v-bind="productBadge"
+            variant="subtle"
+            size="sm"
+            class="rounded-full"
+          />
+          <span v-if="productBadge && post.badge" class="text-muted"
+            >&middot;</span
+          >
+          <UBadge v-if="post.badge" v-bind="post.badge" variant="subtle" />
+
+          <span v-if="productBadge || post.badge" class="text-muted"
+            >&middot;</span
+          >
+          <time class="text-muted">{{
+            new Date(post.date).toLocaleDateString("en", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          }}</time>
+        </div>
       </template>
 
       <div class="mt-6 flex items-center gap-6">

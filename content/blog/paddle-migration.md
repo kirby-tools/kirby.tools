@@ -3,7 +3,7 @@ title: Moving to Paddle
 description: Kirby Tools is switching from Lemon Squeezy to Paddle for payment processing. Existing licenses are unaffected.
 date: "2026-03-10"
 badge:
-  label: Update
+  label: News
 ---
 
 When I launched Kirby Tools, Lemon Squeezy was the obvious choice for handling payments. It was built for indie developers, the integration was quick, and as a Merchant of Record it handled all the tax complexity I didn't want to deal with. It worked well for a long time.

@@ -2,6 +2,7 @@
 title: Kirby Copilot v3 – Your Quiet Co-Writer
 description: A major update with server-side API proxy, inline suggestions, prompt templates, and more. Free upgrade for all users.
 date: "2026-01-01"
+product: copilot
 badge:
   label: Release
 image:
