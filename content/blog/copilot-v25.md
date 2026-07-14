@@ -2,6 +2,7 @@
 title: Kirby Copilot v2.5 – Beyond Single Fields
 description: Multi-field generation and custom blocks support turn Copilot into a proper content generation tool for the Kirby Panel.
 date: "2025-09-05"
+product: copilot
 badge:
   label: Release
 ---

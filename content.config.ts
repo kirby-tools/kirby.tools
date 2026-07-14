@@ -163,6 +163,7 @@ export default defineContentConfig({
       schema: createBaseSchema().extend({
         image: z.object({ src: z.string().nonempty() }).optional(),
         date: z.string().nonempty(),
+        product: z.string().nonempty().optional(),
         badge: z.object({ label: z.string().nonempty() }).optional(),
       }),
     }),

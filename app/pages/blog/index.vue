@@ -21,6 +21,13 @@ defineOgImage("Default", {
   description: page.value?.description,
 });
 
+const decoratedPosts = computed(() =>
+  (posts.value ?? []).map((post) => ({
+    ...post,
+    productBadge: getProductBadge(post.product),
+  })),
+);
+
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en", {
     year: "numeric",
@@ -56,7 +63,7 @@ function formatDate(date: string) {
       <UContainer>
         <div class="border-default border-x">
           <Motion
-            v-for="(post, index) in posts"
+            v-for="(post, index) in decoratedPosts"
             :key="post.path"
             :initial="{ opacity: 0, x: -20 }"
             :animate="{ opacity: 1, x: 0 }"
@@ -72,25 +79,28 @@ function formatDate(date: string) {
               :to="post.path"
               class="hover:bg-muted/30 flex flex-col gap-4 p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6"
             >
-              <div
-                class="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:gap-6"
-              >
-                <div class="min-w-0 flex-1">
-                  <div class="text-muted mb-1 shrink-0 font-mono text-xs">
+              <div class="min-w-0 flex-1">
+                <div class="mb-1 flex items-center gap-2">
+                  <span class="text-muted shrink-0 font-mono text-xs">
                     {{ formatDate(post.date) }}
-                  </div>
-
-                  <h2
-                    class="text-highlighted group-hover:text-primary truncate font-medium transition-colors duration-200 sm:text-base"
-                  >
-                    {{ post.title }}
-                  </h2>
-                  <p
-                    class="text-muted mt-1 line-clamp-2 text-sm sm:line-clamp-1"
-                  >
-                    {{ post.description }}
-                  </p>
+                  </span>
+                  <UBadge
+                    v-if="post.productBadge"
+                    v-bind="post.productBadge"
+                    variant="subtle"
+                    size="sm"
+                    class="rounded-full"
+                  />
                 </div>
+
+                <h2
+                  class="text-highlighted group-hover:text-primary truncate font-medium transition-colors duration-200 sm:text-base"
+                >
+                  {{ post.title }}
+                </h2>
+                <p class="text-muted mt-1 line-clamp-2 text-sm sm:line-clamp-1">
+                  {{ post.description }}
+                </p>
               </div>
 
               <div

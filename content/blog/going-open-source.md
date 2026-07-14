@@ -3,7 +3,7 @@ title: Going Open Source with Commercial Plugins
 description: How and why Kirby Tools plugins moved from a private Composer repo to Packagist and open source.
 date: "2024-06-18"
 badge:
-  label: Update
+  label: News
 ---
 
 When I first added Composer support to Kirby Tools in April 2024, the approach was straightforward: a private Satis repository at `repo.kirby.tools` that required authentication for every install. You'd log into the [Hub](https://hub.kirby.tools), grab a license code, configure the repository in your `composer.json`, and authenticate. It worked, but it was cumbersome – especially for teams where multiple developers needed access.
