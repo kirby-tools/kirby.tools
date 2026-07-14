@@ -1,8 +1,10 @@
 export type ThemeColor = "danube" | "lima" | "orchid";
+export type ProductColorSlot = "copilot" | "seo";
 
-export const PRODUCT_THEME_COLOR_MAP: Record<string, ThemeColor> = {
-  "seo-audit": "lima",
-  copilot: "orchid",
+// Product route slug → registered brand color slot (see `app.config.ts` → `ui.colors`)
+export const PRODUCT_COLOR_SLOT: Record<string, ProductColorSlot> = {
+  copilot: "copilot",
+  "seo-audit": "seo",
 };
 
 export const THEME_COLOR_PALETTE: Record<ThemeColor, string> = {

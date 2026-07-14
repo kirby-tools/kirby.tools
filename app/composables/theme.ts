@@ -1,9 +1,6 @@
 import type { RouteLocationNormalized } from "vue-router";
 import type { ThemeColor } from "#shared/constants";
-import {
-  PRODUCT_THEME_COLOR_MAP,
-  THEME_COLOR_PALETTE,
-} from "#shared/constants";
+import { PRODUCT_COLOR_SLOT, THEME_COLOR_PALETTE } from "#shared/constants";
 import faviconSvgRaw from "~/assets/icons/favicon.svg?raw";
 
 export type { ThemeColor };
@@ -19,7 +16,8 @@ export function useDynamicTheme() {
   function getThemeColorFromPath(path: string): ThemeColor {
     const segments = path.split("/").filter(Boolean);
     const productSlug = segments[0] === "docs" ? segments[1] : segments[0];
-    return PRODUCT_THEME_COLOR_MAP[productSlug ?? ""] ?? "danube";
+    const slot = PRODUCT_COLOR_SLOT[productSlug ?? ""];
+    return slot ? (appConfig.ui.colors[slot] as ThemeColor) : "danube";
   }
 
   function updateThemeColor(to: RouteLocationNormalized) {

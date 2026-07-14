@@ -1,16 +1,12 @@
-import { PRODUCT_ITEMS } from "#shared/constants";
+import type { ProductColorSlot } from "#shared/constants";
+import { PRODUCT_COLOR_SLOT, PRODUCT_ITEMS } from "#shared/constants";
 
 export interface ProductBadge {
   label: string;
   icon: string;
   /** Registered UI color slot (see `app.config.ts` → `ui.colors`). */
-  color: "primary" | "copilot" | "seo";
+  color: ProductColorSlot | "primary";
 }
-
-const PRODUCT_COLOR: Record<string, ProductBadge["color"]> = {
-  copilot: "copilot",
-  "seo-audit": "seo",
-};
 
 export function getProductBadge(slug?: string): ProductBadge | undefined {
   if (!slug) return;
@@ -21,6 +17,6 @@ export function getProductBadge(slug?: string): ProductBadge | undefined {
   return {
     label: product.label,
     icon: product.icon,
-    color: PRODUCT_COLOR[slug] ?? "primary",
+    color: PRODUCT_COLOR_SLOT[slug] ?? "primary",
   };
 }
