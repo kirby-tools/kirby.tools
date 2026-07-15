@@ -7,14 +7,13 @@ The pipeline passes small, immutable value objects between layers. You'll encoun
 
 ## `TranslationUnit`
 
-A single piece of text to translate, paired with a dispatch hint and optional field key.
+A single piece of text to translate, with an optional field key.
 
 ```php
 final readonly class TranslationUnit
 {
     public function __construct(
         public string $text,
-        public TranslationMode $mode = TranslationMode::Batch,
         public string|null $fieldKey = null,
     ) {}
 }
@@ -26,35 +25,10 @@ final readonly class TranslationUnit
 The text to translate. Already passed through `content-translator.translate:before` when emitted by `Translator`.
 ::
 
-::field{name="mode" type="TranslationMode"}
-Dispatch hint – `Batch` (default) or `Single`. See below.
-::
-
 ::field{name="fieldKey" type="String | null"}
 The originating field key, or `null` for ad-hoc translations. For nested table cells, the format is `fieldName[row][col]`.
 ::
 
-::
-
-## `TranslationMode`
-
-Dispatch hint for a unit.
-
-```php
-enum TranslationMode: string
-{
-    case Batch = 'batch';
-    case Single = 'single';
-}
-```
-
-| Value    | When emitted                          | What it means                                                |
-| -------- | ------------------------------------- | ------------------------------------------------------------ |
-| `Batch`  | Default for prose, blocks, structures | Strategy may pool with other units in one upstream request   |
-| `Single` | Table cells                           | Strategy should send standalone to preserve per-cell context |
-
-::note
-`CopilotAIStrategy` ignores the mode – LLM batching preserves per-item context naturally. `DeepLStrategy` honors it strictly.
 ::
 
 ## `ExecutionOptions`
