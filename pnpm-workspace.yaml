@@ -9,6 +9,12 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@6.3.1
 
+# TODO: Remove once `@nuxt/icon` restores SSR icon loading – 2.4.x leaves
+# Iconify without a fetch on the server.
+# https://github.com/nuxt/icon/issues/518
+overrides:
+  "@nuxt/icon": 2.3.1
+
 allowBuilds:
   esbuild: true
   sharp: true
