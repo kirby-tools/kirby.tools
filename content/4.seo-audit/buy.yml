@@ -17,6 +17,10 @@ plan:
     to: "#"
   features:
     - For Kirby 4 & Kirby 5
+    # TODO (Kirby 6 launch): once Kirby 6 support ships, change this bullet to
+    # present tense (e.g. "For Kirby 4, 5 & 6") and update the "Which Kirby
+    # versions are supported?" FAQ. See repo.kirby.tools/docs/kirby-6-launch.md
+    - Includes Kirby 6 when released
     - Infinite SEO audits
     - Unlimited owned sites
     - Unlimited minor & patch updates
@@ -29,7 +33,7 @@ faq:
     - label: What if the SEO report is incorrect?
       content: We do not guarantee that the SEO checks are 100% accurate. Some assessments are based on the [`yoastseo`](/docs/seo-audit/guide/assessments) JavaScript package. We are not responsible for any incorrect audits provided by it. However, we are constantly adding new assessments, built by us, to improve the accuracy of the SEO checks. Please test the plugin in the [playground](https://try.kirbyseo.com) before purchasing.
     - label: Which Kirby versions are supported?
-      content: Kirby SEO Audit is compatible with Kirby 4 and Kirby 5.
+      content: Kirby SEO Audit is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
     - label: What does “Unlimited minor & patch updates” include?
       content: We add new features and improvements to Kirby SEO Audit as we get ideas and feedback. You will receive these updates for the major version you have purchased. When a new major version is released, you will be able to upgrade to that version at a generous discount. A typical major version is intended to be released alongside a new major Kirby version.
     - label: How do I receive updates for the plugin?
