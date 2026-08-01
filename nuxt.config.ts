@@ -48,6 +48,19 @@ export default defineNuxtConfig({
   },
 
   icon: {
+    clientBundle: {
+      scan: {
+        // TODO: Drop once the `@nuxt/icon` pin is lifted – 2.4.x scans
+        // `yml`/`yaml` by default. `ts` stays regardless for `app.config.ts`.
+        globInclude: ["**/*.{vue,jsx,tsx,ts,md,mdc,mdx,yml,yaml}"],
+      },
+    },
+    // Skips `logos` and `simple-icons`, whose names are literals the client
+    // bundle already inlines. `vscode-icons` stays – prose code block icons
+    // resolve at runtime, so no scan can find them.
+    serverBundle: {
+      collections: ["ri", "lucide", "vscode-icons"],
+    },
     customCollections: [
       {
         prefix: "tools",
