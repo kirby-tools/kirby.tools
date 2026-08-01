@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ProductCollectionItem } from "@nuxt/content";
-// eslint-disable-next-line vue/prefer-import-from-vue
 import { isObject } from "@vue/shared";
 
 defineProps<{

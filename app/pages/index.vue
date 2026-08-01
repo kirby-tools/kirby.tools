@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// eslint-disable-next-line vue/prefer-import-from-vue
 import { isObject } from "@vue/shared";
 import logoMetrics from "~/data/logo-metrics.json";
 
