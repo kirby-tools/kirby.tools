@@ -1,5 +1,15 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-  - sharp
-  - vue-demi
+minimumReleaseAgeExclude:
+  - "@iconify-json/lucide@1.2.121"
+  - "@iconify-json/vscode-icons@1.2.68"
+  - "@vue/language-core@3.3.9"
+  - vue-tsc@3.3.9
+
+shellEmulator: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver@6.3.1
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  vue-demi: true
