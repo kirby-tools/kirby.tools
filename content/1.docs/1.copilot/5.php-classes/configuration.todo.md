@@ -38,11 +38,11 @@ final readonly class ProviderConfig
 ::field-group
 
 ::field{name="apiKey" type="String | null"}
-Provider API key. Closures are resolved at construction time and receive the Kirby `App` instance.
+Provider API key. `Resolver::forProvider()` resolves a closure on every call and passes the Kirby `App` instance – anything that is not a non-empty string becomes `null`.
 ::
 
 ::field{name="model" type="String | null"}
-Model identifier. `null` falls back to the provider's `DEFAULT_MODEL`.
+Model identifier. `null` falls back to `ProviderName::defaultModel()` for the resolved provider.
 ::
 
 ::field{name="baseUrl" type="String | null"}
@@ -65,7 +65,7 @@ final readonly class Resolver
         public array $providers,
     );
 
-    public static function fromKirbyOptions(): static;
+    public static function fromKirbyOptions(): self;
 
     public function forProvider(ProviderName $name): ProviderConfig;
 }
@@ -76,7 +76,7 @@ final readonly class Resolver
 `forProvider()` resolves the `apiKey` closure (if any) on each call – the closure runs on every `Client` request, which is what powers [dynamic API keys](/docs/copilot/configuration/global#dynamic-api-keys).
 
 ::callout{icon="i-ri-arrow-right-line" color="info" to="/docs/copilot/php-classes/exceptions"}
-`fromKirbyOptions()` throws `InvalidArgumentException` on missing or unknown `provider`; `forProvider()` throws `AuthException` on missing API keys. See **Exceptions** for the full message catalog.
+`fromKirbyOptions()` throws `InvalidArgumentException` on missing or unknown `provider`. A missing key surfaces later – `forProvider()` returns a `ProviderConfig` with `apiKey: null`, and the provider throws `AuthException` on the first request. See **Exceptions** for the full message catalog.
 ::
 
 ## DI for Tests
