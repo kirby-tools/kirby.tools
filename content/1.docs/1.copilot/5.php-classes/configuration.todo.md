@@ -50,7 +50,7 @@ Custom base URL. `null` falls back to the provider's `DEFAULT_BASE_URL`.
 ::
 
 ::field{name="options" type="Array"}
-Passthrough bag – everything in `providers.<name>` that isn't `apiKey`, `model`, or `baseUrl` lands here and is spread into the upstream request payload.
+Passthrough bag – everything in `providers.<name>` that isn't `apiKey`, `model`, `baseUrl`, `completionModel`, or `api` lands here and is spread into the upstream request payload.
 ::
 
 ::
