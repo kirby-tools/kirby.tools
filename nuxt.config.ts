@@ -156,7 +156,7 @@ export default defineNuxtConfig({
       redirect: "/docs/content-translator/configuration/global",
     },
     "/docs/content-translator/php-api": {
-      redirect: "/docs/content-translator/advanced/php-api",
+      redirect: "/docs/content-translator/php-classes",
     },
     "/docs/content-translator/hooks": {
       redirect: "/docs/content-translator/advanced/hooks",
@@ -172,9 +172,6 @@ export default defineNuxtConfig({
     },
     "/docs/content-translator/providers": {
       redirect: "/docs/content-translator/providers/deepl",
-    },
-    "/docs/content-translator/examples": {
-      redirect: "/docs/content-translator/examples/basic-usage",
     },
     "/docs/content-translator/migration": {
       redirect: "/docs/content-translator/getting-started/migration",
