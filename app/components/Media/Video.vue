@@ -36,7 +36,7 @@ async function play() {
     await video.value?.play();
     isPlaying.value = true;
   } catch {
-    // Autoplay blocked by browser, user can still click to play
+    // Autoplay blocked by browser, user can still click to play.
   }
 }
 

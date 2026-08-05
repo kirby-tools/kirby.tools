@@ -47,20 +47,6 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
           block
           @click.prevent="openCheckout"
         />
-
-        <!-- <div
-          class="absolute top-0 left-6 flex translate-y-[-50%] justify-center lg:left-8 xl:left-10"
-        >
-          <div class="bg-default inline-flex rounded-full">
-            <UButton
-              label="50% off for Returning Customers"
-              size="xs"
-              variant="outline"
-              to="https://hub.kirby.tools"
-              class="rounded-full"
-            />
-          </div>
-        </div> -->
       </template>
     </UPricingPlan>
   </DefinePricingPlanTemplate>
