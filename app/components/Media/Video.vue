@@ -75,8 +75,8 @@ function handleEnded() {
       alt=""
       aria-hidden="true"
       loading="lazy"
-      class="pointer-events-none absolute -inset-4 -z-10 size-full rounded-2xl object-cover blur-2xl saturate-150 transition-opacity duration-500 lg:-inset-6"
-      :class="[isPlaying ? 'opacity-50' : 'opacity-25']"
+      class="pointer-events-none absolute -inset-1 -z-10 rounded-2xl object-cover blur-xl saturate-125 transition-opacity duration-500 lg:-inset-2"
+      :class="[isPlaying ? 'opacity-55' : 'opacity-30']"
     />
 
     <div
