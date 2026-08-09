@@ -28,12 +28,9 @@ export function sendMarkdown(event: H3Event, document: MarkdownDocument) {
   const canonicalUrl = joinURL(domain, document.path);
 
   setResponseHeader(event, "Content-Type", "text/markdown; charset=utf-8");
-  setResponseHeader(
-    event,
-    "Link",
-    `<${canonicalUrl}>; rel="canonical", <${canonicalUrl}>; rel="alternate"; type="text/html"`,
-  );
 
+  // These routes prerender to files, so no response header survives to
+  // production. The canonical URL rides in the frontmatter instead.
   const frontmatter = [
     "---",
     `title: ${JSON.stringify(document.title)}`,
