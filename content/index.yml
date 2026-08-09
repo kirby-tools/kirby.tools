@@ -2,15 +2,6 @@ title: Kirby Tools – Premium Plugins for Kirby CMS
 description: Professional Kirby CMS plugins for AI content generation, translation, and SEO analysis. Built for editors and developers.
 navigation: false
 hero:
-  headline:
-    label: "New: AI Content Translations"
-    to: /content-translator/changelog
-    icon: i-ri-openai-fill
-    color: neutral
-    variant: solid
-    # icon:
-    #   name: i-logos-kirby-icon
-    #   class: dark:invert
   title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
   description: Plugins that empower your Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
   links:
