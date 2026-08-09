@@ -1,5 +1,18 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { isProductId, PRODUCTS } from "#shared/constants";
+
+definePageMeta({
+  // Enforces `hasChangelog`: a product without one 404s instead of rendering empty.
+  validate(route) {
+    const { product } = route.params;
+    return (
+      typeof product === "string" &&
+      isProductId(product) &&
+      !!PRODUCTS[product].hasChangelog
+    );
+  },
+});
 
 const route = useRoute();
 const { product } = useProduct();
