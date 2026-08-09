@@ -18,31 +18,8 @@ const searchLinks: ContentSearchLink[] = PRODUCT_LIST.map((listed) => ({
 }));
 const { getThemeColorFromPath, createFaviconDataUri } = useDynamicTheme();
 
-const { data: navigation } = await useAsyncData("navigation", async () => {
-  const result = await Promise.all([
-    queryCollectionNavigation("pages").then(
-      (data) => data.find((item) => item.path === "/docs")?.children ?? [],
-    ),
-    queryCollectionNavigation("docs"),
-    queryCollectionNavigation("posts"),
-  ]);
-  return result.flat();
-});
-
-const { data: files } = useLazyAsyncData(
-  "search",
-  async () => {
-    const result = await Promise.all([
-      queryCollectionSearchSections("pages"),
-      queryCollectionSearchSections("docs"),
-      queryCollectionSearchSections("posts"),
-    ]);
-    return result.flat();
-  },
-  {
-    server: false,
-  },
-);
+const { data: navigation } = await useSiteNavigation();
+const { data: files } = useSiteSearch();
 
 if (import.meta.server) {
   const themeColor = getThemeColorFromPath(route.path);
