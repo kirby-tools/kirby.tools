@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
   const frontmatter = [
     "---",
     `name: ${productSkillName(product.id)}`,
-    `description: ${JSON.stringify(SKILL_DESCRIPTIONS[product.id])}`,
+    `description: ${JSON.stringify(product.skillDescription)}`,
     "---",
   ].join("\n");
 

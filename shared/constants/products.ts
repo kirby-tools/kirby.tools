@@ -30,10 +30,16 @@ export interface Product {
   hasChangelog?: boolean;
   colorSlot?: ProductColorSlot;
   playground?: string;
-  /** Surfaced to agents via `llms.txt`. */
+  /** Retrieval terms, surfaced to agents through `llms.txt`. */
   keywords: readonly string[];
   /** The case this product does not cover. */
   notFor: string;
+  /**
+   * The pointer an agent reads before deciding to load the skill. It states
+   * what the plugin does and names the branches that should trigger a load, so
+   * it carries no sentence the skill body repeats.
+   */
+  skillDescription: string;
 }
 
 // Insertion order is the display order in navigation menus and the footer.
@@ -60,6 +66,8 @@ const PRODUCT_REGISTRY = {
     ],
     notFor:
       "Translating existing content between languages – use Kirby Content Translator for that.",
+    skillDescription:
+      "Configure Kirby Copilot, the AI content generation plugin for the Kirby Panel. Use when wiring up an AI provider, adding generation to a blueprint, generating blocks or layouts, or driving generation from PHP.",
   },
   "content-translator": {
     name: "Kirby Content Translator",
@@ -81,6 +89,8 @@ const PRODUCT_REGISTRY = {
     ],
     notFor:
       "Generating new content from a prompt – use Kirby Copilot for that.",
+    skillDescription:
+      "Configure Kirby Content Translator, which translates Panel content between Kirby's languages. Use when choosing a translation strategy, restricting which fields translate, translating KirbyTags, or scripting bulk translation from the CLI.",
   },
   "seo-audit": {
     name: "Kirby SEO Audit",
@@ -104,6 +114,8 @@ const PRODUCT_REGISTRY = {
     ],
     notFor:
       "Rendering meta tags in the frontend – it audits the output, it does not produce it.",
+    skillDescription:
+      "Configure Kirby SEO Audit, which scores a rendered page against a keyphrase inside the Panel. Use when adding the audit to a blueprint, wiring keyphrase and synonym fields, scoping the analyzed markup, or auditing a decoupled frontend.",
   },
   "live-preview": {
     name: "Kirby Live Preview",
@@ -123,6 +135,8 @@ const PRODUCT_REGISTRY = {
     ],
     notFor:
       "Previewing a decoupled frontend that renders outside Kirby – it previews Kirby-rendered pages.",
+    skillDescription:
+      "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview section to a blueprint, tuning when it refreshes, or fixing a preview that stays blank.",
   },
   minimap: {
     name: "Kirby Minimap",
@@ -139,6 +153,8 @@ const PRODUCT_REGISTRY = {
       "kirby minimap",
     ],
     notFor: "Frontend navigation – it is a Panel-only aid.",
+    skillDescription:
+      "Configure Kirby Minimap, a zero-config sidebar that outlines the fields and blocks of the current Panel view. Use when a field fails to appear in the outline or the plugin needs installing.",
   },
   headless: {
     name: "Kirby Headless",
@@ -160,6 +176,8 @@ const PRODUCT_REGISTRY = {
     ],
     notFor:
       "Building the frontend itself – it exposes the content, you bring the client.",
+    skillDescription:
+      "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when securing the API with a bearer token, setting up CORS, querying through KQL, or serving pages as JSON templates.",
   },
 } satisfies Record<string, Product>;
 
@@ -176,7 +194,6 @@ export function isProductId(value: string | undefined): value is ProductId {
 /** Resolves the product a path belongs to, or `undefined` off a product route. */
 export function resolveProductId(path: string): ProductId | undefined {
   const segments = path.split("/").filter(Boolean);
-  // Documentation pages carry the id one segment deeper than landing pages.
   const candidateId = segments[0] === "docs" ? segments[1] : segments[0];
   return isProductId(candidateId) ? candidateId : undefined;
 }
