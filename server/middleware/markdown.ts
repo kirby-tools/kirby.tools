@@ -2,6 +2,7 @@ import type { H3Event } from "h3";
 import type { ProductId } from "#shared/constants";
 import { queryCollection } from "@nuxt/content/server";
 import { pagePath, resolveAlternate } from "#shared/alternate";
+import { productVersionsPattern } from "#shared/constants";
 
 /**
  * Serves the alternate of a page.
@@ -50,7 +51,7 @@ async function sendChangelog(
   if (!page) return sendMarkdownNotFound(event, path);
 
   const versions = await queryCollection(event, "versions")
-    .where("path", "LIKE", `/${productId}/changelog/%`)
+    .where("path", "LIKE", productVersionsPattern(productId))
     .order("date", "DESC")
     .all();
 

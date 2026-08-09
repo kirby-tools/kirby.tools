@@ -1,7 +1,11 @@
 import { queryCollection } from "@nuxt/content/server";
 import { joinURL } from "ufo";
 import { alternatePath } from "#shared/alternate";
-import { PRODUCT_LIST, resolveProductId } from "#shared/constants";
+import {
+  PRODUCT_LIST,
+  productChangelogPath,
+  resolveProductId,
+} from "#shared/constants";
 
 export default defineEventHandler(async (event) => {
   const { domain } = useRuntimeConfig(event).llms;
@@ -38,7 +42,9 @@ export default defineEventHandler(async (event) => {
     }
 
     if (product.hasChangelog) {
-      lines.push(markdownLink(domain, "Changelog", `/${product.id}/changelog`));
+      lines.push(
+        markdownLink(domain, "Changelog", productChangelogPath(product.id)),
+      );
     }
 
     lines.push("");

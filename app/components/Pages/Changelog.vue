@@ -17,14 +17,7 @@ if (!productId.value || !product.value) {
 
 const { composerPackage, githubRepo } = product.value;
 
-const { data: versions } = await useAsyncData(
-  `${productId.value}-versions`,
-  () =>
-    queryCollection("versions")
-      .where("path", "LIKE", `%${productId.value}/%`)
-      .order("date", "DESC")
-      .all(),
-);
+const { data: versions } = await useProductVersions(productId);
 
 const latestVersion = computed(() => versions.value?.[0]);
 

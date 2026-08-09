@@ -2,7 +2,10 @@ import { readdir } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { alternatePath } from "./shared/alternate";
-import { PRODUCT_LIST } from "./shared/constants/products";
+import {
+  PRODUCT_LIST,
+  productChangelogPath,
+} from "./shared/constants/products";
 
 const SITE_URL = "https://kirby.tools";
 
@@ -186,7 +189,7 @@ export default defineNuxtConfig({
       )
         .map(
           (product) =>
-            `${product.name} ${SITE_URL}${alternatePath(`/${product.id}/changelog`)}`,
+            `${product.name} ${SITE_URL}${alternatePath(productChangelogPath(product.id))}`,
         )
         .join(", ")}.`,
       `Releases for the remaining plugins live on GitHub: ${PRODUCT_LIST.filter(

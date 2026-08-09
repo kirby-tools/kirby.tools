@@ -15,14 +15,7 @@ const githubRepo = computed(() =>
   productId.value ? PRODUCTS[productId.value].githubRepo : undefined,
 );
 
-const { data: latestVersion } = await useAsyncData(
-  `download-latest-${productId.value}`,
-  () =>
-    queryCollection("versions")
-      .where("path", "LIKE", `%${productId.value}/%`)
-      .order("date", "DESC")
-      .first(),
-);
+const { data: latestVersion } = await useLatestProductVersion(productId);
 
 const downloadUrl = computed(() =>
   githubRepo.value && latestVersion.value?.title
