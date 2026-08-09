@@ -25,6 +25,8 @@ useSeoMeta({
   ogDescription: page.value.description,
 });
 
+useMarkdownAlternate();
+
 const { getThemeColorFromPath } = useDynamicTheme();
 
 defineOgImage("Default", {

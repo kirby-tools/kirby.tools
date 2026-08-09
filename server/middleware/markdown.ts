@@ -1,10 +1,10 @@
 import type { H3Event } from "h3";
 import type { ProductId } from "#shared/constants";
 import { queryCollection } from "@nuxt/content/server";
-import { isProductId } from "#shared/constants";
+import { pagePath, resolveAlternate } from "#shared/alternate";
 
 /**
- * Serves the Markdown source of a page under its own URL plus `.md`.
+ * Serves the alternate of a page.
  *
  * Middleware rather than a route handler: Nitro turns `[...slug].md.get.ts`
  * into `/docs/**:slug.md`, a catch-all that would swallow the HTML pages under
@@ -14,26 +14,15 @@ export default defineEventHandler(async (event) => {
   if (event.method !== "GET") return;
 
   const [pathname] = event.path.split("?");
-  if (!pathname?.endsWith(".md")) return;
+  const path = pathname ? pagePath(pathname) : undefined;
+  if (!path) return;
 
-  const path = pathname.slice(0, -".md".length);
-  const segments = path.split("/").filter(Boolean);
+  const alternate = resolveAlternate(path);
+  if (!alternate) return;
 
-  if (segments[0] === "docs" && segments.length > 1) {
-    return sendCollectionPage(event, "docs", path);
-  }
-
-  if (segments[0] === "blog" && segments.length > 1) {
-    return sendCollectionPage(event, "posts", path);
-  }
-
-  if (
-    segments.length === 2 &&
-    segments[1] === "changelog" &&
-    isProductId(segments[0])
-  ) {
-    return sendChangelog(event, segments[0], path);
-  }
+  return alternate.kind === "changelog"
+    ? sendChangelog(event, alternate.productId, path)
+    : sendCollectionPage(event, alternate.collection, path);
 });
 
 async function sendCollectionPage(

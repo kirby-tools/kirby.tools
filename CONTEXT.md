@@ -31,3 +31,7 @@ _Avoid_: Theme color, brand color
 **Skill**:
 A hand-written document that teaches an AI coding agent how to work with one Plugin. Published per Product, named `kirby-<ProductId>`.
 _Avoid_: Agent doc, instructions
+
+**Alternate**:
+The Markdown representation of a page, published beside it and announced by a `rel="alternate"` link. It is regenerated from the stored content rather than copied from it, so it is a second rendering of the page – not the file an author wrote.
+_Avoid_: Twin, source, raw

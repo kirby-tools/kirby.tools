@@ -1,22 +1,23 @@
-import { joinURL, withoutTrailingSlash } from "ufo";
+import { joinURL } from "ufo";
+import { alternatePath } from "#shared/alternate";
 
-/** Path and absolute URL of the current page's Markdown twin. */
+/** Derives the path and absolute URL of the current page's alternate. */
 export function useMarkdownPath() {
   const route = useRoute();
   const siteConfig = useSiteConfig();
 
-  const path = computed(() => `${withoutTrailingSlash(route.path)}.md`);
+  const path = computed(() => alternatePath(route.path));
   const url = computed(() => joinURL(siteConfig.url, path.value));
 
   return { path, url };
 }
 
-/** Announces the Markdown twin to agents and queues it for prerendering. */
+/** Announces the alternate to agents and queues it for prerendering. */
 export function useMarkdownAlternate() {
   const { path, url } = useMarkdownPath();
 
   if (import.meta.server) {
-    // Nothing links to the Markdown twin, so crawling never finds it.
+    // Nothing links to the alternate, so crawling never finds it.
     prerenderRoutes(path.value);
   }
 
