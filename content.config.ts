@@ -108,7 +108,7 @@ export default defineContentConfig({
         }),
         products: z.array(
           createBaseSchema().extend({
-            type: z.enum(["commercial", "free"]),
+            license: z.enum(["commercial", "free"]),
             id: z.string().nonempty(),
             headline: createBadgeSchema().optional(),
             orientation: orientationEnum.optional(),

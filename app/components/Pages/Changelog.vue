@@ -1,34 +1,38 @@
 <script setup lang="ts">
 import type { ChangelogCollectionItem } from "@nuxt/content";
-import { COMPOSER_PACKAGES, GITHUB_REPOS } from "#shared/constants";
-
 defineProps<{
   page: ChangelogCollectionItem;
 }>();
 
 const { copy, copied } = useClipboard();
-const { currentProductId } = useProduct();
+const { productId, product } = useProduct();
 
-const composerPackage = computed(
-  () => COMPOSER_PACKAGES[currentProductId.value!],
-);
-const githubRepo = computed(() => GITHUB_REPOS[currentProductId.value!]);
+if (!productId.value || !product.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found",
+    fatal: true,
+  });
+}
+
+const { composerPackage, githubRepo } = product.value;
 
 const { data: versions } = await useAsyncData(
-  `${currentProductId.value}-versions`,
+  `${productId.value}-versions`,
   () =>
     queryCollection("versions")
-      .where("path", "LIKE", `%${currentProductId.value}/%`)
+      .where("path", "LIKE", `%${productId.value}/%`)
       .order("date", "DESC")
       .all(),
 );
 
 const latestVersion = computed(() => versions.value?.[0]);
 
-const latestReleaseUrl = computed(() => {
-  if (!githubRepo.value || !latestVersion.value) return undefined;
-  return `https://github.com/${githubRepo.value}/releases/tag/${latestVersion.value.title}`;
-});
+const latestReleaseUrl = computed(() =>
+  latestVersion.value
+    ? `https://github.com/${githubRepo}/releases/tag/${latestVersion.value.title}`
+    : undefined,
+);
 </script>
 
 <template>
@@ -55,7 +59,6 @@ const latestReleaseUrl = computed(() => {
 
       <template #links>
         <UButton
-          v-if="composerPackage"
           :label="`composer require ${composerPackage}`"
           color="neutral"
           variant="subtle"

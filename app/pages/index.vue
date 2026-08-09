@@ -162,11 +162,11 @@ const testimonialItems = computed(() =>
 
     <div id="products" />
 
-    <template v-for="type in ['commercial', 'free']" :key="type">
-      <USeparator v-if="type === 'commercial'" />
+    <template v-for="license in ['commercial', 'free']" :key="license">
+      <USeparator v-if="license === 'commercial'" />
 
       <UPageSection
-        v-if="type === 'free'"
+        v-if="license === 'free'"
         icon="i-ri-gift-line"
         title="Free Plugins"
         description="Not all of our plugins are commercial. Some of them are free to use and can be used without any restrictions."
@@ -179,7 +179,7 @@ const testimonialItems = computed(() =>
 
       <UPageSection
         v-for="(product, index) in page.products.filter(
-          (product) => product.type === type,
+          (product) => product.license === license,
         )"
         :id="product.id"
         :key="index"
@@ -192,7 +192,7 @@ const testimonialItems = computed(() =>
         class="border-default"
         :class="[
           index % 2 === 1 ? 'bg-muted/25' : '',
-          index === 0 && type === 'commercial' ? '' : 'lg:border-t',
+          index === 0 && license === 'commercial' ? '' : 'lg:border-t',
         ]"
       >
         <template #top>

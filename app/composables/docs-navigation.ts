@@ -1,13 +1,13 @@
 export function useDocsNavigation() {
-  const { currentProductId } = useProduct();
+  const { productId } = useProduct();
 
   return useAsyncData(
-    () => `${currentProductId.value}-navigation`,
+    () => `${productId.value}-navigation`,
     async () => {
       const navigation = await queryCollectionNavigation("docs");
       const docsItems = navigation?.[0]?.children;
       const productItem = docsItems?.find(
-        (item) => item.path === `/docs/${currentProductId.value}`,
+        (item) => item.path === `/docs/${productId.value}`,
       );
 
       if (productItem?.stem?.endsWith("index")) {
@@ -19,8 +19,8 @@ export function useDocsNavigation() {
       }
     },
     {
-      immediate: !!currentProductId.value,
-      watch: [currentProductId],
+      immediate: !!productId.value,
+      watch: [productId],
     },
   );
 }

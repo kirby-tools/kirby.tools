@@ -20,6 +20,8 @@ useSeoMeta({
   ...(post.value.image?.src ? { ogImage: post.value.image.src } : {}),
 });
 
+useMarkdownAlternate();
+
 if (!post.value.image?.src) {
   defineOgImage("Default", {
     headline: "Blog",
@@ -69,6 +71,10 @@ const productBadge = computed(() => getProductBadge(post.value?.product));
             })
           }}</time>
         </div>
+      </template>
+
+      <template #links>
+        <PageMarkdownActions :product="post.product" />
       </template>
 
       <div class="mt-6 flex items-center gap-6">
