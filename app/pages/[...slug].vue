@@ -2,7 +2,7 @@
 import { withoutTrailingSlash } from "ufo";
 
 const route = useRoute();
-const { currentProduct } = useProduct();
+const { product } = useProduct();
 
 const { data: page } = await useAsyncData(
   withoutTrailingSlash(route.path),
@@ -27,9 +27,7 @@ useSeoMeta({
 const { getThemeColorFromPath } = useDynamicTheme();
 
 defineOgImage("Default", {
-  headline: currentProduct.value?.label
-    ? `Kirby ${currentProduct.value.label}`
-    : "Kirby Tools",
+  headline: product.value?.name ?? "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
   color: getThemeColorFromPath(route.path),

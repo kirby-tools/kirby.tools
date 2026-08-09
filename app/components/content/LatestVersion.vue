@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { GITHUB_REPOS } from "#shared/constants";
+import type { ProductId } from "#shared/constants";
+import { isProductId, PRODUCTS } from "#shared/constants";
 
 const props = defineProps<{
-  product?: string;
+  product?: ProductId;
 }>();
 
-const { currentProductId } = useProduct();
+const { productId: routeProductId } = useProduct();
 
-const productId = computed(() => props.product || currentProductId.value);
+const productId = computed(() =>
+  isProductId(props.product) ? props.product : routeProductId.value,
+);
 const githubRepo = computed(() =>
-  productId.value ? GITHUB_REPOS[productId.value] : undefined,
+  productId.value ? PRODUCTS[productId.value].githubRepo : undefined,
 );
 
 const { data: latestVersion } = await useAsyncData(

@@ -1,3 +1,7 @@
+import { PRODUCT_LIST } from "./shared/constants/products";
+
+const SITE_URL = "https://kirby.tools";
+
 export default defineNuxtConfig({
   modules: [
     "@nuxtjs/robots",
@@ -7,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@vueuse/nuxt",
     "motion-v/nuxt",
+    "nuxt-llms",
     "nuxt-og-image",
   ],
 
@@ -101,8 +106,71 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://kirby.tools",
+    url: SITE_URL,
     name: "Kirby Tools",
+  },
+
+  llms: {
+    domain: SITE_URL,
+    title: "Kirby Tools",
+    description:
+      "Plugins for Kirby CMS: AI content generation, translation, SEO auditing, live preview, Panel navigation, and a headless API toolkit.",
+    // Turns off `@nuxt/content`'s `/raw/**` route in favor of ours.
+    contentRawMarkdown: false,
+    full: {
+      title: "Kirby Tools Full Documentation",
+      description: `Every documentation page for all ${PRODUCT_LIST.length} plugins, concatenated as Markdown.`,
+    },
+    sections: [
+      ...PRODUCT_LIST.map((product) => ({
+        title: product.name,
+        description: [
+          `${product.description}.`,
+          `Composer package \`${product.composerPackage}\`, options under \`${product.configKey}\` in \`config.php\`.`,
+          product.license === "commercial"
+            ? "Commercial plugin – free to run locally, licensed for production."
+            : "Free and open source.",
+          `Not for: ${product.notFor}`,
+        ].join(" "),
+        contentCollection: "docs",
+        contentFilters: [
+          {
+            field: "path",
+            operator: "LIKE" as const,
+            value: `/docs/${product.id}/%`,
+          },
+        ],
+      })),
+      {
+        title: "Blog",
+        description: "Release announcements and background articles.",
+        contentCollection: "posts",
+        contentFilters: [
+          { field: "path", operator: "LIKE" as const, value: "/blog/%" },
+        ],
+      },
+    ],
+    notes: [
+      "Kirby is a PHP flat-file CMS. These plugins install via Composer or as a ZIP into `site/plugins/` and are configured through the `options` array in `site/config/config.php` – there is no npm package and no database.",
+      "Commercial plugins run unlicensed in local development. Production needs a license key, activated in the Panel's system view and stored in `site/config/.kirby-tools-licenses`. Each plugin is licensed separately.",
+      "Append `.md` to any documentation or blog URL to retrieve its Markdown source, for example `https://kirby.tools/docs/copilot/getting-started.md`.",
+      `Changelogs, newest release first: ${PRODUCT_LIST.filter(
+        (product) => product.hasChangelog,
+      )
+        .map(
+          (product) => `${product.name} ${SITE_URL}/${product.id}/changelog.md`,
+        )
+        .join(", ")}.`,
+      `Releases for the remaining plugins live on GitHub: ${PRODUCT_LIST.filter(
+        (product) => !product.hasChangelog,
+      )
+        .map(
+          (product) =>
+            `${product.name} https://github.com/${product.githubRepo}/releases`,
+        )
+        .join(", ")}.`,
+      `Retrieval keywords: ${PRODUCT_LIST.flatMap((product) => product.keywords).join(", ")}.`,
+    ],
   },
 
   sitemap: {
@@ -119,7 +187,17 @@ export default defineNuxtConfig({
 
   routeRules: {
     // Global
-    "/": { prerender: true },
+    "/": {
+      prerender: true,
+      headers: {
+        Link: [
+          `<${SITE_URL}/sitemap.xml>; rel="sitemap"; type="application/xml"`,
+          `<${SITE_URL}/sitemap.md>; rel="sitemap"; type="text/markdown"`,
+          `<${SITE_URL}/llms.txt>; rel="describedby"; type="text/plain"`,
+          `<${SITE_URL}/llms-full.txt>; rel="describedby"; type="text/plain"`,
+        ].join(", "),
+      },
+    },
     "/license": { prerender: true },
     "/license/zero-one-edition": { prerender: true },
     // Playgrounds
@@ -187,7 +265,14 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/robots.txt", "/sitemap.xml"],
+      routes: [
+        "/robots.txt",
+        "/sitemap.xml",
+        "/sitemap.md",
+        ...PRODUCT_LIST.filter((product) => product.hasChangelog).map(
+          (product) => `/${product.id}/changelog.md`,
+        ),
+      ],
     },
   },
 });

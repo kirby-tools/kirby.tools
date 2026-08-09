@@ -113,7 +113,7 @@ testimonials:
       usage: Kirby SEO Audit
 products:
   - title: Kirby Copilot
-    type: commercial
+    license: commercial
     id: copilot
     description: AI-powered content generation and text editing for Kirby CMS. Generate layouts, refine text, or let AI complete your thoughts as you type.
     reverse: true
@@ -142,7 +142,7 @@ products:
         description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
         icon: i-ri-input-cursor-move
   - title: Kirby Content Translator
-    type: commercial
+    license: commercial
     id: content-translator
     description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
     video:
@@ -170,7 +170,7 @@ products:
         description: Integrate translations in CLI commands and custom workflows. Batch translate pages or automate language setup.
         icon: i-ri-terminal-box-line
   - title: Kirby SEO Audit
-    type: commercial
+    license: commercial
     id: seo-audit
     description: Analyze your pages, improve your content, and boost your rankings.
     reverse: true
@@ -199,7 +199,7 @@ products:
         description: No external API calls, no hidden costs. The SEO checks are performed client-side in the Kirby Panel!
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
-    type: commercial
+    license: commercial
     id: live-preview
     description: Display your page with unsaved changes in real time. It is the plugin content editors and clients have been waiting for.
     video:
@@ -227,7 +227,7 @@ products:
         description: See how your page looks before saving your changes and without leaving the Panel.
         icon: i-ri-notification-badge-line
   - title: Kirby Minimap
-    type: free
+    license: free
     id: minimap
     description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
     video:
