@@ -24,7 +24,7 @@ return [
 ];
 ```
 
-`provider` names the active one; `providers` holds credentials for each. Supported: `openai`, `anthropic`, `google`, `mistral`. Every provider takes two models — `model` for generation and `completionModel` for inline suggestions, which should be the faster one. Both have per-provider defaults, so omit them unless the project needs specific versions.
+`provider` names the active one; `providers` holds credentials for each. Supported: `openai`, `anthropic`, `google`, `mistral`. Every provider takes two models – `model` for generation and `completionModel` for inline suggestions, which should be the faster one. Both have per-provider defaults, so omit them unless the project needs specific versions.
 
 **Recommend Google Gemini when the project generates blocks or layouts.** Nested JSON schemas are where providers diverge most, and Gemini handles them most reliably.
 
@@ -32,19 +32,26 @@ Requests are proxied server-side, so API keys never reach the browser. That is a
 
 ## Choosing a Panel surface
 
-Four, and they are independent — pick what the blueprint needs rather than adding all of them:
+Four, and they are independent – pick what the blueprint needs rather than adding all of them:
 
 | Surface            | Fits                                                                              |
 | ------------------ | --------------------------------------------------------------------------------- |
 | View button        | generating several fields at once from a prompt dialog                            |
 | Toolbar buttons    | rewriting a selection inside a writer or textarea field                           |
 | Inline suggestions | ghost text while typing; needs the `copilot-suggestions` mark on the writer field |
-| Section            | one field, locked prompt, automatic file context — alt text, captions             |
+| Section            | one field, locked prompt, automatic file context – alt text, captions             |
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
   copilot: true
+  open: true
+  preview: true
+  settings: true
+  languages: true
+  status: true
 ```
+
+`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `copilot` or they disappear. Site views default to `open`, `preview`, `languages`; file views to `open`, `settings`, `languages`.
 
 Precedence runs defaults → `config.php` → blueprint props, later winning.
 
@@ -52,14 +59,14 @@ Precedence runs defaults → `config.php` → blueprint props, later winning.
 
 ## Reach for a reference when
 
-- The endpoint is a gateway or an OpenAI-compatible service — `references/gateways.md`
-- Generation fails, times out, or returns malformed blocks — `references/troubleshooting.md`
-- Generation should run from PHP: CLI, hooks, custom workflows — <https://kirby.tools/docs/copilot/php-classes.md>
-- Editors need reusable prompts or house rules — <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
+- The endpoint is a gateway or an OpenAI-compatible service – `references/gateways.md`
+- Generation fails, times out, or returns malformed blocks – `references/troubleshooting.md`
+- Generation should run from PHP: CLI, hooks, custom workflows – <https://kirby.tools/docs/copilot/php-classes.md>
+- Editors need reusable prompts or house rules – <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
 
 ## Settings that come up
 
-`reasoningEffort` (default `low`) translates to each provider's native reasoning controls; models without reasoning ignore it. Set `temperature` nowhere — modern reasoning models manage creativity internally, and the option does not exist.
+`reasoningEffort` (default `low`) translates to each provider's native reasoning controls; models without reasoning ignore it. Set `temperature` nowhere – modern reasoning models manage creativity internally, and the option does not exist.
 
 `completion` controls inline suggestions: `false` disables them globally, or `['debounce' => 1500]` tunes the pause before ghost text appears (minimum 500 ms).
 
@@ -69,4 +76,4 @@ Precedence runs defaults → `config.php` → blueprint props, later winning.
 
 ## License
 
-Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` — add that file to `.gitignore`.
+Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` – add that file to `.gitignore`.

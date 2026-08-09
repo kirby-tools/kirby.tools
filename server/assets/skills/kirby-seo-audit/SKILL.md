@@ -1,4 +1,4 @@
-A commercial Kirby CMS plugin that fetches a page's rendered HTML and scores it against a keyphrase, inside the Panel. It **audits** output — it does not render meta tags. Producing the tags stays your template's job.
+A commercial Kirby CMS plugin that fetches a page's rendered HTML and scores it against a keyphrase, inside the Panel. It **audits** output – it does not render meta tags. Producing the tags stays your template's job.
 
 ## Install
 
@@ -13,12 +13,17 @@ Two surfaces, and they can coexist. The view button is the recommended one:
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
   - seo-audit
+  - open
   - preview
+  - "-"
   - settings
+  - languages
   - status
 ```
 
-The section renders results inline instead of in a dialog, and adds two properties the button lacks — `label` and `persisted` — plus Kirby query resolution in `keyphrase` and `synonyms`:
+`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `seo-audit` or they disappear. Site views default to `open`, `preview`, `languages`.
+
+The section renders results inline instead of in a dialog, and adds two properties the button lacks – `label` and `persisted` – plus Kirby query resolution in `keyphrase` and `synonyms`:
 
 ```yaml [site/blueprints/pages/default.yml]
 sections:
@@ -50,8 +55,8 @@ The plugin retrieves the preview URL through a server-side proxy, so anything th
 
 ## Auditing a decoupled frontend
 
-Point Kirby's page preview URL at the frontend and the audit follows it — it analyzes whatever the preview URL returns, not Kirby's own templates.
+Point Kirby's page preview URL at the frontend and the audit follows it – it analyzes whatever the preview URL returns, not Kirby's own templates.
 
 ## License
 
-Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` — add that file to `.gitignore`.
+Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` – add that file to `.gitignore`.

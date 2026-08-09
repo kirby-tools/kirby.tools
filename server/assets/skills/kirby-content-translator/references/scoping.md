@@ -4,7 +4,7 @@ Four settings narrow the field set, and they compose rather than override. All o
 
 ## `fieldTypes`
 
-Which field **types** participate. The default covers every text-like type — `list`, `tags`, `text`, `textarea`, `writer`, `markdown` — plus the containers they nest in: `blocks`, `layout`, `object`, `structure`. Third-party `markdown` and `table` fields are included when their plugins are present.
+Which field **types** participate. The default covers every text-like type – `list`, `tags`, `text`, `textarea`, `writer`, `markdown` – plus the containers they nest in: `blocks`, `layout`, `object`, `structure`. Third-party `markdown` and `table` fields are included when their plugins are present.
 
 ```yaml
 fieldTypes:
