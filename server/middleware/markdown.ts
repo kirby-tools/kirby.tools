@@ -1,4 +1,5 @@
 import type { H3Event } from "h3";
+import type { AlternateCollection } from "#shared/alternate";
 import type { ProductId } from "#shared/constants";
 import { queryCollection } from "@nuxt/content/server";
 import { pagePath, resolveAlternate } from "#shared/alternate";
@@ -28,7 +29,7 @@ export default defineEventHandler(async (event) => {
 
 async function sendCollectionPage(
   event: H3Event,
-  collection: "docs" | "posts",
+  collection: AlternateCollection,
   path: string,
 ) {
   const page = await queryCollection(event, collection).path(path).first();

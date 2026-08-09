@@ -4,17 +4,32 @@ import { isProductId, PRODUCTS } from "./constants";
 
 const SUFFIX = ".md";
 
+/** Prose outside the docs and blog trees that agents get asked about, minus the legal boilerplate. */
+const PROSE_PATHS = new Set([
+  "/ai",
+  "/license",
+  "/license/zero-one-edition",
+  "/license-compatibility",
+]);
+
+export type AlternateCollection = "docs" | "posts" | "pages";
+
 /**
  * What an alternate is rendered from. Callers switch on this to fetch it; only
  * this module decides which pages have one.
  */
 export type Alternate =
-  | { kind: "collection"; collection: "docs" | "posts" }
+  | { kind: "collection"; collection: AlternateCollection }
   | { kind: "changelog"; productId: ProductId };
 
 /** Resolves what a page's alternate renders from, or `undefined` for a page without one. */
 export function resolveAlternate(path: string): Alternate | undefined {
-  const segments = withoutTrailingSlash(path).split("/").filter(Boolean);
+  const normalizedPath = withoutTrailingSlash(path);
+  const segments = normalizedPath.split("/").filter(Boolean);
+
+  if (PROSE_PATHS.has(normalizedPath)) {
+    return { kind: "collection", collection: "pages" };
+  }
 
   if (segments.length > 1) {
     if (segments[0] === "docs") {

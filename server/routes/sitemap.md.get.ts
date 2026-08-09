@@ -10,7 +10,7 @@ import {
 export default defineEventHandler(async (event) => {
   const { domain } = useRuntimeConfig(event).llms;
 
-  const [docs, posts] = await Promise.all([
+  const [docs, posts, licensing] = await Promise.all([
     queryCollection(event, "docs")
       // `stem` keeps the numeric directory prefixes, so it orders by the
       // sidebar's reading order rather than the alphabet.
@@ -23,12 +23,17 @@ export default defineEventHandler(async (event) => {
       .select("path", "title", "date")
       .order("date", "DESC")
       .all(),
+    queryCollection(event, "pages")
+      .select("path", "title")
+      .where("path", "LIKE", "/license%")
+      .order("path", "ASC")
+      .all(),
   ]);
 
   const lines = [
     "# Kirby Tools Sitemap",
     "",
-    "> Every documentation and blog page of kirby.tools, linked as Markdown. Strip the `.md` suffix from any URL below to reach the HTML page.",
+    "> Every documentation, blog and licensing page of kirby.tools, linked as Markdown. Strip the `.md` suffix from any URL below to reach the HTML page.",
     "",
   ];
 
@@ -55,10 +60,16 @@ export default defineEventHandler(async (event) => {
     lines.push(markdownLink(domain, post.title, post.path));
   }
 
+  lines.push("", "## Licensing", "");
+  for (const page of licensing) {
+    lines.push(markdownLink(domain, page.title, page.path));
+  }
+
   lines.push(
     "",
     "## Sets",
     "",
+    `- [How to read this site as an agent](${joinURL(domain, alternatePath("/ai"))})`,
     `- [Index for language models](${joinURL(domain, "/llms.txt")})`,
     `- [Every documentation page in one file](${joinURL(domain, "/llms-full.txt")})`,
     `- [Agent skills, one per plugin](${joinURL(domain, "/.well-known/agent-skills/index.json")})`,
