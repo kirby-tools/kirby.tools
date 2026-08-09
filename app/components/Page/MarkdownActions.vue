@@ -9,7 +9,9 @@ const props = defineProps<{
 
 const toast = useToast();
 const appConfig = useAppConfig();
-const { copy, copied } = useClipboard();
+const { copy: copyMarkdown, copied, copyPending } = useClipboard();
+// A second instance, so copying the link leaves the button's checkmark alone.
+const { copy: copyUrl } = useClipboard();
 const { product: routeProduct } = useProduct();
 const { path: markdownPath, url: markdownUrl } = useMarkdownPath();
 
@@ -29,7 +31,7 @@ const items = computed<DropdownMenuItem[]>(() => [
     label: "Copy Markdown link",
     icon: "i-ri-link",
     onSelect() {
-      copy(markdownUrl.value);
+      copyUrl(markdownUrl.value);
       toast.add({
         title: "Copied to clipboard",
         icon: appConfig.ui.icons.copyCheck,
@@ -56,8 +58,10 @@ const items = computed<DropdownMenuItem[]>(() => [
   },
 ]);
 
-async function copyPage() {
-  copy(await $fetch<string>(markdownPath.value));
+function copyPage() {
+  // The thunk form writes a promise-backed `ClipboardItem` inside the click;
+  // awaiting the fetch first would leave Safari's gesture window.
+  return copyMarkdown(() => $fetch<string>(markdownPath.value));
 }
 </script>
 
@@ -66,6 +70,7 @@ async function copyPage() {
     <UButton
       label="Copy page"
       :icon="copied ? appConfig.ui.icons.copyCheck : appConfig.ui.icons.copy"
+      :loading="copyPending"
       color="neutral"
       variant="outline"
       :ui="{ leadingIcon: copied ? 'text-primary' : undefined }"
