@@ -11,8 +11,11 @@ export interface Product {
   description: string;
   icon: string;
   license: ProductLicense;
-  /** Option namespace the plugin reads from Kirby's `config.php`. */
-  configKey: string;
+  /**
+   * Option namespace the plugin reads from Kirby's `config.php`. Products
+   * configured through blueprints alone leave this unset.
+   */
+  configKey?: string;
   githubRepo: string;
   composerPackage: string;
   /**
@@ -108,7 +111,6 @@ const PRODUCT_REGISTRY = {
     description: "Real-time page preview",
     icon: "i-ri-picture-in-picture-line",
     license: "commercial",
-    configKey: "johannschopplich.live-preview",
     githubRepo: "kirby-tools/kirby-live-preview",
     composerPackage: "johannschopplich/kirby-live-preview",
     hasChangelog: true,
@@ -128,7 +130,6 @@ const PRODUCT_REGISTRY = {
     description: "Sidebar content navigation",
     icon: "i-ri-timeline-view",
     license: "free",
-    configKey: "johannschopplich.minimap",
     githubRepo: "johannschopplich/kirby-minimap",
     composerPackage: "johannschopplich/kirby-minimap",
     keywords: [
@@ -145,7 +146,8 @@ const PRODUCT_REGISTRY = {
     description: "API-first CMS toolkit",
     icon: "i-ri-code-block",
     license: "free",
-    configKey: "johannschopplich.headless",
+    // Predates the vendor-prefixed convention the commercial plugins follow.
+    configKey: "headless",
     githubRepo: "johannschopplich/kirby-headless",
     composerPackage: "johannschopplich/kirby-headless",
     docsEntry: "getting-started",
@@ -181,6 +183,10 @@ export function resolveProductId(path: string): ProductId | undefined {
 
 export function productPath(id: ProductId): string {
   return `/${id}`;
+}
+
+export function productSkillName(id: ProductId): string {
+  return `kirby-${id}`;
 }
 
 export function productDocsPath(id: ProductId): string {

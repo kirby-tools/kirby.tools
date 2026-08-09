@@ -54,6 +54,7 @@ export default defineEventHandler(async (event) => {
     "",
     `- [Index for language models](${joinURL(domain, "/llms.txt")})`,
     `- [Every documentation page in one file](${joinURL(domain, "/llms-full.txt")})`,
+    `- [Agent skills, one per plugin](${joinURL(domain, "/.well-known/agent-skills/index.json")})`,
     "",
   );
 

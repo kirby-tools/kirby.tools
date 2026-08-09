@@ -1,3 +1,6 @@
+import { readdir } from "node:fs/promises";
+import { join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 import { PRODUCT_LIST } from "./shared/constants/products";
 
 const SITE_URL = "https://kirby.tools";
@@ -110,6 +113,27 @@ export default defineNuxtConfig({
     name: "Kirby Tools",
   },
 
+  hooks: {
+    // The crawler only reads `x-nitro-prerender` off HTML responses, so the
+    // skill files – Markdown below a JSON index – have to be named up front.
+    "prerender:routes": async function ({ routes }) {
+      const skillsDir = fileURLToPath(
+        new URL("server/assets/skills", import.meta.url),
+      );
+      const entries = await readdir(skillsDir, {
+        recursive: true,
+        withFileTypes: true,
+      });
+
+      for (const entry of entries) {
+        if (!entry.isFile()) continue;
+
+        const file = relative(skillsDir, join(entry.parentPath, entry.name));
+        routes.add(`/.well-known/agent-skills/${file}`);
+      }
+    },
+  },
+
   llms: {
     domain: SITE_URL,
     title: "Kirby Tools",
@@ -126,7 +150,9 @@ export default defineNuxtConfig({
         title: product.name,
         description: [
           `${product.description}.`,
-          `Composer package \`${product.composerPackage}\`, options under \`${product.configKey}\` in \`config.php\`.`,
+          product.configKey
+            ? `Composer package \`${product.composerPackage}\`, options under \`${product.configKey}\` in \`config.php\`.`
+            : `Composer package \`${product.composerPackage}\`, configured through blueprints rather than \`config.php\`.`,
           product.license === "commercial"
             ? "Commercial plugin – free to run locally, licensed for production."
             : "Free and open source.",
@@ -169,6 +195,7 @@ export default defineNuxtConfig({
             `${product.name} https://github.com/${product.githubRepo}/releases`,
         )
         .join(", ")}.`,
+      `An agent skill per plugin – install with \`npx skills add ${SITE_URL}\`, or read the index at ${SITE_URL}/.well-known/agent-skills/index.json.`,
       `Retrieval keywords: ${PRODUCT_LIST.flatMap((product) => product.keywords).join(", ")}.`,
     ],
   },
@@ -269,6 +296,7 @@ export default defineNuxtConfig({
         "/robots.txt",
         "/sitemap.xml",
         "/sitemap.md",
+        "/.well-known/agent-skills/index.json",
         ...PRODUCT_LIST.filter((product) => product.hasChangelog).map(
           (product) => `/${product.id}/changelog.md`,
         ),
