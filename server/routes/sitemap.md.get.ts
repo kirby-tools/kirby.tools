@@ -1,5 +1,6 @@
 import { queryCollection } from "@nuxt/content/server";
 import { joinURL } from "ufo";
+import { alternatePath } from "#shared/alternate";
 import { PRODUCT_LIST, resolveProductId } from "#shared/constants";
 
 export default defineEventHandler(async (event) => {
@@ -64,5 +65,5 @@ export default defineEventHandler(async (event) => {
 
 function markdownLink(domain: string, title: string, path: string) {
   const label = title.replace(/[[\]\\]/g, "\\$&");
-  return `- [${label}](${joinURL(domain, `${path}.md`)})`;
+  return `- [${label}](${joinURL(domain, alternatePath(path))})`;
 }
