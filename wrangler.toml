@@ -14,5 +14,5 @@ database_id = "d5f82623-d41a-4d60-b48b-4d2e09029ffb"
 
 [assets]
 directory = "./.output/public"
-not_found_handling = "single-page-application"
+not_found_handling = "none"
 binding = "ASSETS"
