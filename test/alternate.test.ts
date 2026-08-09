@@ -23,7 +23,17 @@ describe("resolveAlternate", () => {
     });
   });
 
-  it.each(["/", "/docs", "/blog", "/copilot/buy"])(
+  it.each(["/ai", "/license", "/license/zero-one-edition"])(
+    "resolves %s to the pages collection",
+    (path) => {
+      expect(resolveAlternate(path)).toEqual({
+        kind: "collection",
+        collection: "pages",
+      });
+    },
+  );
+
+  it.each(["/", "/docs", "/blog", "/copilot/buy", "/privacy-policy"])(
     "returns undefined for %s",
     (path) => {
       expect(resolveAlternate(path)).toBeUndefined();

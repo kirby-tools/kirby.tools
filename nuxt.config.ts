@@ -179,6 +179,15 @@ export default defineNuxtConfig({
           { field: "path", operator: "LIKE" as const, value: "/blog/%" },
         ],
       },
+      {
+        title: "Licensing",
+        description:
+          "The license agreement, the Zero One Edition it differs from, and which plugin generation runs on which Kirby version.",
+        contentCollection: "pages",
+        contentFilters: [
+          { field: "path", operator: "LIKE" as const, value: "/license%" },
+        ],
+      },
     ],
     notes: [
       "Kirby is a PHP flat-file CMS. These plugins install via Composer or as a ZIP into `site/plugins/` and are configured through the `options` array in `site/config/config.php` – there is no npm package and no database.",
@@ -201,6 +210,7 @@ export default defineNuxtConfig({
         )
         .join(", ")}.`,
       `An agent skill per plugin – install with \`npx skills add ${SITE_URL}\`, or read the index at ${SITE_URL}/.well-known/agent-skills/index.json.`,
+      `Every entry point above is documented at ${SITE_URL}/ai.md.`,
       `Retrieval keywords: ${PRODUCT_LIST.flatMap((product) => product.keywords).join(", ")}.`,
     ],
   },

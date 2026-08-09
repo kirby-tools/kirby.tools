@@ -22,6 +22,10 @@ const columns: FooterColumn[] = [
         to: "/license-compatibility",
       },
       {
+        label: "For AI Agents",
+        to: "/ai",
+      },
+      {
         label: "Contact",
         to: "/contact",
       },
