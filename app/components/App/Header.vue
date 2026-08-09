@@ -2,7 +2,12 @@
 import type { NavigationMenuItem } from "@nuxt/ui";
 import type { ProductId } from "#shared/constants";
 import { withoutTrailingSlash } from "ufo";
-import { PRODUCT_LIST, productDocsPath, productPath } from "#shared/constants";
+import {
+  PRODUCT_LIST,
+  productChangelogPath,
+  productDocsPath,
+  productPath,
+} from "#shared/constants";
 
 const route = useRoute();
 const { productId, product } = useProduct();
@@ -68,18 +73,7 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
 
 const { data: docsNavigation } = await useDocsNavigation();
 
-const { data: version } = await useAsyncData(
-  () => `${productId.value}-version`,
-  () =>
-    queryCollection("versions")
-      .where("path", "LIKE", `%${productId.value}/%`)
-      .order("date", "DESC")
-      .first(),
-  {
-    immediate: !!productId.value,
-    watch: [productId],
-  },
-);
+const { data: version } = await useLatestProductVersion(productId);
 </script>
 
 <template>
@@ -139,7 +133,7 @@ const { data: version } = await useAsyncData(
         icon="i-ri-download-line"
         color="neutral"
         variant="ghost"
-        :to="`${productPath(productId)}/changelog`"
+        :to="productChangelogPath(productId)"
         class="max-lg:hidden"
       />
       <UButton
@@ -184,7 +178,7 @@ const { data: version } = await useAsyncData(
         icon="i-ri-download-line"
         color="neutral"
         variant="ghost"
-        :to="`${productPath(productId)}/changelog`"
+        :to="productChangelogPath(productId)"
         block
         class="mb-3"
       />

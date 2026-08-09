@@ -210,3 +210,12 @@ export function productDocsPath(id: ProductId): string {
   const { docsEntry } = PRODUCTS[id];
   return docsEntry ? `/docs/${id}/${docsEntry}` : `/docs/${id}`;
 }
+
+export function productChangelogPath(id: ProductId): string {
+  return `/${id}/changelog`;
+}
+
+/** `LIKE` pattern matching every release page of a product. */
+export function productVersionsPattern(id: ProductId): string {
+  return `${productChangelogPath(id)}/%`;
+}
