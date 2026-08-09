@@ -32,7 +32,7 @@ Three consequences worth holding onto:
 
 - **The path wins.** `/de/about` stays German under `X-Language: en`, so a proxy stamping the header on every request cannot overrule a URL.
 - **An unknown code is ignored** and the request falls back to the default language, rather than erroring.
-- **This needs one language at the site root**, Kirby's default multi-language setup. Where every language carries a prefix, Kirby redirects an unprefixed path before the header is ever read — so the header never applies.
+- **This needs one language at the site root**, Kirby's default multi-language setup. Where every language carries a prefix, Kirby redirects an unprefixed path before the header is ever read – so the header never applies.
 
 `t()` resolves in the same language as the surrounding content, so a template mixing translated labels into its JSON stays internally consistent.
 

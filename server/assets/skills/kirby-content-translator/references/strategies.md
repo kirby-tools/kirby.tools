@@ -23,7 +23,7 @@ return [
 The option drives the UI, not just the call:
 
 - A closure or `Strategy` instance enables the translation buttons **without** a `DeepL.apiKey`.
-- `'ai'` makes Copilot the only provider on offer, so no provider dialog renders — with one option there is nothing to pick.
+- `'ai'` makes Copilot the only provider on offer, so no provider dialog renders – with one option there is nothing to pick.
 - With both available, the AI toggle carries the Copilot provider's name (`Gemini`, `GPT (OpenAI)`, `Claude`, `Mistral AI`), falling back to `AI (Copilot)`.
 
 ## Leaving it unset

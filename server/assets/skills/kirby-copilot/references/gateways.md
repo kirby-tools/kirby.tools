@@ -1,6 +1,6 @@
 # Gateways and OpenAI-compatible endpoints
 
-Any endpoint that speaks the OpenAI shape is configured as `provider: 'openai'` with a custom `baseUrl` — Vercel AI Gateway, Cloudflare AI Gateway, OpenRouter, llama.cpp, vLLM, LiteLLM.
+Any endpoint that speaks the OpenAI shape is configured as `provider: 'openai'` with a custom `baseUrl` – Vercel AI Gateway, Cloudflare AI Gateway, OpenRouter, llama.cpp, vLLM, LiteLLM.
 
 ## The `api` option decides whether it works at all
 
@@ -8,11 +8,11 @@ Copilot defaults to the Responses API (`/v1/responses`). Endpoints that only exp
 
 | Endpoint                                      | Responses API | `api`  |
 | --------------------------------------------- | ------------- | ------ |
-| Direct OpenAI (`api.openai.com/v1`)           | yes           | —      |
-| Vercel AI Gateway (`ai-gateway.vercel.sh/v1`) | yes           | —      |
-| Cloudflare AI Gateway `…/openai`              | yes           | —      |
+| Direct OpenAI (`api.openai.com/v1`)           | yes           | –      |
+| Vercel AI Gateway (`ai-gateway.vercel.sh/v1`) | yes           | –      |
+| Cloudflare AI Gateway `…/openai`              | yes           | –      |
 | Cloudflare AI Gateway `…/compat`              | no            | `chat` |
-| OpenRouter (`openrouter.ai/api/v1`)           | yes           | —      |
+| OpenRouter (`openrouter.ai/api/v1`)           | yes           | –      |
 | Self-hosted: llama.cpp, vLLM, LiteLLM default | typically no  | `chat` |
 
 For anything unlisted, check the gateway's docs for `/v1/responses` and set `api: 'chat'` when it is absent.
@@ -38,14 +38,14 @@ return [
 ];
 ```
 
-**Set `completionModel` explicitly whenever the model carries a foreign prefix.** Copilot derives a completion model from the provider, and it will not guess one across gateways — leave it out and inline suggestions fail while everything else works.
+**Set `completionModel` explicitly whenever the model carries a foreign prefix.** Copilot derives a completion model from the provider, and it will not guess one across gateways – leave it out and inline suggestions fail while everything else works.
 
 ## What a gateway costs you
 
 Two capabilities degrade on the OpenAI-compatible path, so test before relying on them:
 
-- **Structured output** — blocks, layouts, and field schemas depend on the gateway translating `json_schema` faithfully.
-- **`reasoningEffort`** — it cannot map reliably onto another vendor's models through the OpenAI shape. For full reasoning control on Anthropic or Google models, configure `provider: 'anthropic'` or `provider: 'google'` directly.
+- **Structured output** – blocks, layouts, and field schemas depend on the gateway translating `json_schema` faithfully.
+- **`reasoningEffort`** – it cannot map reliably onto another vendor's models through the OpenAI shape. For full reasoning control on Anthropic or Google models, configure `provider: 'anthropic'` or `provider: 'google'` directly.
 
 ## Dynamic keys
 
