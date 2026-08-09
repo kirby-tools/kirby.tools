@@ -5,6 +5,9 @@ import { queryCollection } from "@nuxt/content/server";
 import { pagePath, resolveAlternate } from "#shared/alternate";
 import { productVersionsPattern } from "#shared/constants";
 
+/** Markdown these routes publish themselves, rather than beside an HTML page. */
+const ROUTE_OWNED_PREFIXES = ["/sitemap.md", "/.well-known/"];
+
 /**
  * Serves the alternate of a page.
  *
@@ -16,11 +19,16 @@ export default defineEventHandler(async (event) => {
   if (event.method !== "GET") return;
 
   const [pathname] = event.path.split("?");
-  const path = pathname ? pagePath(pathname) : undefined;
+  if (!pathname || ROUTE_OWNED_PREFIXES.some((it) => pathname.startsWith(it))) {
+    return;
+  }
+
+  const path = pagePath(pathname);
   if (!path) return;
 
   const alternate = resolveAlternate(path);
-  if (!alternate) return;
+  // A miss deserves the format the agent asked for, not the HTML error page.
+  if (!alternate) return sendMarkdownNotFound(event, path);
 
   return alternate.kind === "changelog"
     ? sendChangelog(event, alternate.productId, path)
