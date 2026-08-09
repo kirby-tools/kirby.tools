@@ -4,9 +4,9 @@ navigation.icon: i-ri-translate
 hero:
   orientation: horizontal
   headline:
-    label: "New: AI Translation via Copilot"
-    to: /docs/content-translator/providers/ai-translation
-    icon: i-ri-sparkling-2-line
+    label: "New: Full DeepL Language Catalogue"
+    to: /docs/content-translator/providers/deepl#supported-languages
+    icon: i-ri-translate-2
     color: neutral
     variant: solid
   title: '<span class="text-primary">DeepL & AI Translations</span><br> for Kirby CMS'

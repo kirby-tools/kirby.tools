@@ -4,9 +4,9 @@ navigation.icon: i-ri-seo-line
 hero:
   orientation: horizontal
   headline:
-    label: "New: Panel View Button"
-    to: /seo-audit/changelog#whats-new
-    icon: i-ri-drag-drop-fill
+    label: Powered by Yoast SEO v3
+    to: /docs/seo-audit/guide/assessments
+    icon: i-ri-wordpress-fill
   title: '<span class="text-primary">Yoast SEO Analysis</span><br> for Kirby CMS'
   description: Kirby SEO Audit brings the power of Yoast SEO to the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
   links:
@@ -27,7 +27,7 @@ sections:
         description: Built on the latest Yoast SEO v3 engine with improved performance, web worker architecture, and enhanced accuracy.
         icon: i-ri-wordpress-fill
         to: /docs/seo-audit/guide/assessments
-      - title: Panel View Button & Section
+      - title: View Button & Section
         description: Analyze content with a convenient view button, or use the dedicated Panel section. Works with any Kirby site.
         icon: i-ri-plug-line
         to: /docs/seo-audit/getting-started

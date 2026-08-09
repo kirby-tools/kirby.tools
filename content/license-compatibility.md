@@ -36,7 +36,7 @@ Moving to a new major plugin version that adds significant features or Kirby com
 
 ## Current Status
 
-All Kirby Tools plugins support both Kirby 4 and Kirby 5:
+Every commercial Kirby Tools plugin has a version for Kirby 4 and one for Kirby 5:
 
 | Plugin                   | Kirby 4 Version | Kirby 5 Version |
 | ------------------------ | --------------- | --------------- |
