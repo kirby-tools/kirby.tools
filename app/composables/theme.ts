@@ -1,6 +1,8 @@
 import type { RouteLocationNormalized } from "vue-router";
 import type { ThemeColor } from "#shared/constants";
 import {
+  DEFAULT_THEME_COLOR,
+  isThemeColor,
   PRODUCTS,
   resolveProductId,
   THEME_COLOR_PALETTE,
@@ -14,13 +16,15 @@ export function useDynamicTheme() {
   const appConfig = useAppConfig();
   const currentThemeColor = useState<ThemeColor>(
     "app.theme.color",
-    () => "danube",
+    () => DEFAULT_THEME_COLOR,
   );
 
   function getThemeColorFromPath(path: string): ThemeColor {
     const productId = resolveProductId(path);
     const slot = productId ? PRODUCTS[productId].colorSlot : undefined;
-    return slot ? (appConfig.ui.colors[slot] as ThemeColor) : "danube";
+    const color = slot ? appConfig.ui.colors[slot] : undefined;
+    // An unregistered slot would otherwise reach the favicon as `fill="undefined"`.
+    return isThemeColor(color) ? color : DEFAULT_THEME_COLOR;
   }
 
   function updateThemeColor(to: RouteLocationNormalized) {
