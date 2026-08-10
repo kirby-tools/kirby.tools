@@ -165,9 +165,11 @@ export default defineNuxtConfig({
         contentCollection: "docs",
         contentFilters: [
           {
+            // No slash before the wildcard, so a flat documentation tree keeps
+            // its index page at `/docs/<id>` alongside the nested pages.
             field: "path",
             operator: "LIKE" as const,
-            value: `/docs/${product.id}/%`,
+            value: `/docs/${product.id}%`,
           },
         ],
       })),
@@ -190,7 +192,7 @@ export default defineNuxtConfig({
       },
     ],
     notes: [
-      "Kirby is a PHP flat-file CMS. These plugins install via Composer or as a ZIP into `site/plugins/` and are configured through the `options` array in `site/config/config.php` – there is no npm package and no database.",
+      "These plugins install via Composer or as a ZIP into `site/plugins/` and are configured in `site/config/config.php` under their `johannschopplich.*` option key.",
       "Commercial plugins run unlicensed in local development. Production needs a license key, activated in the Panel's system view and stored in `site/config/.kirby-tools-licenses`. Each plugin is licensed separately.",
       "Append `.md` to any documentation or blog URL to retrieve its Markdown source, for example `https://kirby.tools/docs/copilot/getting-started.md`.",
       `Changelogs, newest release first: ${PRODUCT_LIST.filter(
