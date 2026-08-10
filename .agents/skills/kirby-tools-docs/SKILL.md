@@ -28,11 +28,10 @@ Facts about this corpus, not about the components:
 - `::code-group` holds runtime alternatives for one task; `::tabs` holds orthogonal axes that aren't substitutes.
 - `::steps` numbers an ordered set of three or more: a procedure, a precedence list, or a pipeline.
 - `::accordion` is unused – folding hides content from search and skim-readers.
-- Colon count is two plus the nesting depth, on opening and closing fence alike.
 
 ## Headings
 
-APA title case at every level. Capitalise words of 4 or more letters, lowercase `a, an, the, and, but, or, for, nor, on, at, to, from, by, with, in, of, as`, and always capitalise the first and last word: `## Migrating From v5 to v6`, `## Working With Files as Context`.
+APA title case at every level. Capitalise every word of four letters or more, which puts `From`, `With` and `Into` in capitals; lowercase only articles and the conjunctions and prepositions of three letters or fewer – `a, an, the, and, but, or, nor, for, on, at, to, by, in, of, as`. First and last word are always capitalised, and so is the particle of a phrasal verb: `## Migrating From v5 to v6`, `## Working With Files as Context`, `## Plug In Your Own Provider`.
 
 Property headings carry the identifier in backticks. Feature names are noun phrases – "Prompt Storage", not "Storing Prompts".
 
