@@ -6,11 +6,9 @@ badge:
   label: News
 ---
 
-Coding agents know Kirby well. They know these plugins less well, and it shows in a way you have probably run into: a config block that looks right – right nesting, right keys, one option that doesn't exist.
+Coding agents know Kirby well. They know these plugins less well, and it shows in a way you might have run into: a config block that looks right – right nesting, right keys, one option that doesn't exist.
 
-Everything needed to get it right is on this site. It just wasn't in a form an agent could read.
-
-So every page is now published twice – once rendered for you, once as plain Markdown for agents.
+Everything needed to get it right is on this site. It just wasn't in a form an agent could read, so every page is now published twice – once rendered for you, once as plain Markdown for agents.
 
 ## Append `.md` to Any Page
 
@@ -34,7 +32,7 @@ If you would rather hand over everything at once, [`llms-full.txt`](/llms-full.t
 
 The index helps once an agent decides to look something up. A skill loads on its own, whenever the task matches.
 
-Each plugin now ships one: what it does, what it deliberately does not do, and the handful of options that decide the outcome. Live Preview, for instance, has no `config.php` namespace at all – every option is a section property, and an agent reaching for `johannschopplich.live-preview` finds nothing. Batch translation wants `batchConcurrency` set to `1` when the provider rate-limits.
+Each plugin now ships one: what it does, what it deliberately does not do, and the handful of options that decide the outcome. That Copilot's inline suggestions need the `copilot-suggestions` mark as soon as a writer field defines its own marks, or Kirby filters them out and nothing appears. That Content Translator falls back to DeepL when `strategy` is left out, whether or not DeepL is what the project intended.
 
 ```bash
 npx skills add https://kirby.tools
@@ -46,7 +44,7 @@ Writing them was worth it for the documentation alone. Compressing a plugin into
 
 ## Point Your Agent at It
 
-No account, no API key, no server of mine in between. Static files over HTTP, generated from the same content this site renders.
+Whichever fits how you work: append `.md` while you read, hand over `llms.txt` at the start of a task, or install the skills once and forget about them.
 
 If your agent still gets something wrong, that is worth an [issue](https://github.com/kirby-tools/community/issues) – it usually means the page it read was unclear.
 
