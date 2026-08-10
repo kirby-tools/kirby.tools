@@ -6,11 +6,11 @@ badge:
   label: News
 ---
 
-Ask a coding agent how to configure one of these plugins and you usually get a config block that looks right – right shape, right nesting, an option that doesn't exist. Content Translator scopes translation with `fieldTypes`, and a model that has read a hundred other plugins reaches for `fields` instead.
+Coding agents know Kirby well. They know these plugins less well, and it shows in a way you have probably run into: a config block that looks right – right nesting, right keys, one option that doesn't exist.
 
-The documentation has always said `fieldTypes`. Getting an agent to read it was the problem: every page here is HTML built for a browser, and pulling two config keys out of that is more work than filling the gap from memory.
+Everything needed to get it right is on this site. It just wasn't in a form an agent could read.
 
-So every page is now published twice – once rendered for you, once as plain Markdown.
+So every page is now published twice – once rendered for you, once as plain Markdown for agents.
 
 ## Append `.md` to Any Page
 
@@ -20,36 +20,34 @@ Every documentation page, blog post, changelog and license page has a Markdown t
 curl https://kirby.tools/docs/content-translator/configuration/global.md
 ```
 
-No navigation, no components, no markup to work around. Title, description and canonical URL sit in the frontmatter, so whatever fetched the file knows where it came from, and each page points at its twin with a `<link rel="alternate">` in the head.
+No navigation, no components, no markup to work around.
 
 Documentation pages and blog posts also carry a **Copy page** button. One click puts the Markdown on your clipboard for the next chat; the dropdown beside it opens the page in ChatGPT or Claude with the prompt already written.
 
 ## An Index, Not a Dump
 
-Pasting the entire documentation into a chat is rarely the right move – it spends context you would rather keep for your own code. [`llms.txt`](/llms.txt) is the index instead: every plugin, every page, one line each. The agent reads it, then fetches the two pages the task actually needs.
+Your agent's context is better spent on your code than on my documentation. [`llms.txt`](/llms.txt) is an index: every plugin, every page, one line each. The agent reads that, then fetches the two pages the task needs.
 
-It also states what no individual page does: that Kirby is a flat-file CMS with no npm package, that commercial plugins run unlicensed in local development, that each plugin is licensed separately. Without that, an agent will cheerfully suggest an npm install for a plugin that only exists on Packagist.
-
-If you would rather have it all at once, [`llms-full.txt`](/llms-full.txt) is there too.
+If you would rather hand over everything at once, [`llms-full.txt`](/llms-full.txt) is there too.
 
 ## One Skill per Plugin
 
 The index helps once an agent decides to look something up. A skill loads on its own, whenever the task matches.
 
-Each plugin now ships one: what it does, what it deliberately does not do, the handful of options that decide the outcome, and the mistakes that keep coming up in support. That `buttons` in a blueprint is an allow-list, so adding `content-translator` there drops Kirby's own buttons unless you name them alongside it. That batch translation wants `batchConcurrency` set to `1` when the provider rate-limits.
+Each plugin now ships one: what it does, what it deliberately does not do, and the handful of options that decide the outcome. Live Preview, for instance, has no `config.php` namespace at all – every option is a section property, and an agent reaching for `johannschopplich.live-preview` finds nothing. Batch translation wants `batchConcurrency` set to `1` when the provider rate-limits.
 
 ```bash
 npx skills add https://kirby.tools
 ```
 
-That installs one skill per plugin into whichever agent your project uses – Claude Code, Cursor, Codex, Windsurf and the rest. Each skill links to the Markdown pages behind it, so the agent can read the full reference when the summary isn't enough.
+That installs one skill per plugin into whichever agent your project uses. Each of them links to the Markdown pages behind it, so the agent can read the full reference when the summary isn't enough.
 
-Writing them changed the documentation as well. Compressing a plugin into a page of instructions makes it obvious which decisions were never written down anywhere, and I fixed several pages because a skill wouldn't come together without them.
+Writing them was worth it for the documentation alone. Compressing a plugin into one page of instructions shows you which decisions you never actually wrote down – a few pages here read better now because of it.
 
-## Nothing to Set Up
+## Point Your Agent at It
 
-No account, no API key, no server of mine between your agent and the docs. These are static files over HTTP, generated from the same content this site renders, so they can't fall behind the pages you read.
+No account, no API key, no server of mine in between. Static files over HTTP, generated from the same content this site renders.
 
-If your agent still gets a config wrong, that is worth an [issue](https://github.com/kirby-tools/community/issues) – it usually means the page it read was unclear.
+If your agent still gets something wrong, that is worth an [issue](https://github.com/kirby-tools/community/issues) – it usually means the page it read was unclear.
 
 [Read the reference for AI agents](/ai)
