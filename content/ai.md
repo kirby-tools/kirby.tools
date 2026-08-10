@@ -1,6 +1,6 @@
 ---
 title: Kirby Tools for AI Agents
-description: Every page of this site is available as Markdown, and each plugin ships an agent skill. Here is how to point your coding agent at them.
+description: "Point your coding agent at the documentation: every page as Markdown, llms.txt as the index, and a skill per plugin."
 navigation.icon: i-ri-robot-2-line
 ---
 
@@ -36,15 +36,6 @@ Install them with the [`skills`](https://skills.sh) CLI:
 npx skills add https://kirby.tools
 ```
 
-It writes them into whichever agent your project uses – Claude Code, Cursor, Codex. To pick a single one, or install for every project at once:
-
-```bash
-npx skills add https://kirby.tools --agent claude-code
-npx skills add https://kirby.tools --global
-```
+It writes them into whichever agent your project uses.
 
 Each skill links back to the Markdown pages it summarizes, so an agent can read the full reference when the summary runs out. The index lives at [`/.well-known/agent-skills/index.json`](https://kirby.tools/.well-known/agent-skills/index.json) if you would rather wire it up yourself.
-
-## Support
-
-[Discussions](https://github.com/kirby-tools/community/discussions) for open-ended questions, [Issues](https://github.com/kirby-tools/community/issues) for bugs.
