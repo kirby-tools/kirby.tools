@@ -35,7 +35,7 @@ Three files describe the site as a whole:
 Start with `llms.txt`. It lists the paths, and the agent fetches the two or three pages it actually needs.
 
 ::note
-In Cursor or Windsurf, add these URLs under `@docs`. In ChatGPT or Claude, pasting the URL into the conversation is enough – both fetch it.
+There is no MCP server – these URLs are the integration. In Cursor or Windsurf, add them under `@docs`. In ChatGPT or Claude, pasting one into the conversation is enough, both fetch it.
 ::
 
 ## Agent Skills
@@ -57,8 +57,6 @@ npx skills add https://kirby.tools --global
 
 Each skill links back to the Markdown pages it summarizes, so an agent can read the full reference when the summary runs out. The index lives at [`/.well-known/agent-skills/index.json`](https://kirby.tools/.well-known/agent-skills/index.json) if you would rather wire it up yourself.
 
-## Nothing to Set Up
+## Support
 
-There is no MCP server. Everything here is a static file fetched over HTTP, generated from the same content the site renders, so there is nothing between your agent and the docs that can be down when you need it.
-
-Support questions still reach a human: [Discussions](https://github.com/kirby-tools/community/discussions) for the open-ended ones, [Issues](https://github.com/kirby-tools/community/issues) for bugs.
+[Discussions](https://github.com/kirby-tools/community/discussions) for open-ended questions, [Issues](https://github.com/kirby-tools/community/issues) for bugs. Both reach a person.
