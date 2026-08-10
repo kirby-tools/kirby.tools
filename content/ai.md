@@ -4,9 +4,7 @@ description: Every page of this site is available as Markdown, and each plugin s
 navigation.icon: i-ri-robot-2-line
 ---
 
-Most of the questions our plugins get asked – which config key does this, does that field type translate, why is the preview blank – are questions a coding agent could answer if it had read the documentation. So we publish it in a form agents can read.
-
-Nothing here needs an account or an API key. It is the same documentation you are reading, in plain Markdown.
+Setting up a plugin goes faster when the agent you are working with has read its documentation. So all of it is published as Markdown as well – single pages, the whole site as one index, and a skill per plugin.
 
 ## Any Page as Markdown
 
@@ -14,12 +12,6 @@ Append `.md` to any documentation, blog, changelog or license URL and you get it
 
 ```bash
 curl https://kirby.tools/docs/copilot/getting-started.md
-```
-
-Each file carries its title, description and canonical URL in the frontmatter, so an agent that fetched one knows where it came from. Every page with a twin announces it in the HTML head:
-
-```
-<link rel="alternate" type="text/markdown" href="https://kirby.tools/docs/copilot/getting-started.md">
 ```
 
 Documentation pages and blog posts carry a **Copy page** button that puts the Markdown on your clipboard, ready to paste into a chat. The dropdown beside it copies the link instead, or opens the page in ChatGPT or Claude with a prompt already filled in.
@@ -34,10 +26,6 @@ Three files describe the site as a whole:
 
 Start with `llms.txt`. It lists the paths, and the agent fetches the two or three pages it actually needs.
 
-::note
-There is no MCP server – these URLs are the integration. In Cursor or Windsurf, add them under `@docs`. In ChatGPT or Claude, pasting one into the conversation is enough, both fetch it.
-::
-
 ## Agent Skills
 
 A skill is a set of instructions an agent loads when the task matches, rather than something you paste in each time. We ship one per plugin: what the plugin does, what it deliberately does not do, the configuration that actually matters, and the mistakes we see in support.
@@ -48,7 +36,7 @@ Install them with the [`skills`](https://skills.sh) CLI:
 npx skills add https://kirby.tools
 ```
 
-The CLI supports Claude Code, Cursor, Codex, Windsurf, Cline and the rest, and writes the skills into whichever one your project uses. To pick a single agent, or install for every project at once:
+It writes them into whichever agent your project uses – Claude Code, Cursor, Codex. To pick a single one, or install for every project at once:
 
 ```bash
 npx skills add https://kirby.tools --agent claude-code
@@ -59,4 +47,4 @@ Each skill links back to the Markdown pages it summarizes, so an agent can read 
 
 ## Support
 
-[Discussions](https://github.com/kirby-tools/community/discussions) for open-ended questions, [Issues](https://github.com/kirby-tools/community/issues) for bugs. Both reach a person.
+[Discussions](https://github.com/kirby-tools/community/discussions) for open-ended questions, [Issues](https://github.com/kirby-tools/community/issues) for bugs.
