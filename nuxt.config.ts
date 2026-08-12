@@ -242,6 +242,14 @@ export default defineNuxtConfig({
         ].join(", "),
       },
     },
+    "/llms.txt": { headers: { "Content-Type": "text/plain; charset=utf-8" } },
+    "/llms-full.txt": {
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    },
+    "/robots.txt": { headers: { "Content-Type": "text/plain; charset=utf-8" } },
+    "/*.md": {
+      headers: { "Content-Type": "text/markdown; charset=utf-8" },
+    },
     "/license": { prerender: true },
     "/license/zero-one-edition": { prerender: true },
     // Playgrounds
