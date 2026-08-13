@@ -5,6 +5,7 @@ import {
   PRODUCT_LIST,
   productChangelogPath,
   resolveProductId,
+  UNLISTED_PATHS,
 } from "#shared/constants";
 
 export default defineEventHandler(async (event) => {
@@ -26,6 +27,7 @@ export default defineEventHandler(async (event) => {
     queryCollection(event, "pages")
       .select("path", "title")
       .where("path", "LIKE", "/license%")
+      .where("path", "NOT IN", UNLISTED_PATHS)
       .order("path", "ASC")
       .all(),
   ]);
