@@ -1,6 +1,5 @@
 import { readdir } from "node:fs/promises";
 import { join, relative } from "node:path";
-import { fileURLToPath } from "node:url";
 import { alternatePath } from "./shared/alternate";
 import {
   PRODUCT_LIST,
@@ -121,9 +120,7 @@ export default defineNuxtConfig({
     // The crawler only reads `x-nitro-prerender` off HTML responses, so the
     // skill files – Markdown below a JSON index – have to be named up front.
     "prerender:routes": async function ({ routes }) {
-      const skillsDir = fileURLToPath(
-        new URL("server/assets/skills", import.meta.url),
-      );
+      const skillsDir = join(import.meta.dirname, "server/assets/skills");
       const entries = await readdir(skillsDir, {
         recursive: true,
         withFileTypes: true,
