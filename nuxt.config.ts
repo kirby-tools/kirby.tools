@@ -5,6 +5,7 @@ import {
   PRODUCT_LIST,
   productChangelogPath,
 } from "./shared/constants/products";
+import { UNLISTED_PATHS } from "./shared/constants/unlisted";
 
 const SITE_URL = "https://kirby.tools";
 
@@ -181,10 +182,15 @@ export default defineNuxtConfig({
       {
         title: "Licensing",
         description:
-          "The license agreement, the Zero One Edition it differs from, and which plugin generation runs on which Kirby version.",
+          "The license agreement and which plugin generation runs on which Kirby version.",
         contentCollection: "pages",
         contentFilters: [
           { field: "path", operator: "LIKE" as const, value: "/license%" },
+          ...UNLISTED_PATHS.map((path) => ({
+            field: "path",
+            operator: "<>" as const,
+            value: path,
+          })),
         ],
       },
     ],
@@ -216,6 +222,8 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
+    // Copied, because the module pushes its own entries onto the array.
+    exclude: [...UNLISTED_PATHS],
   },
 
   ogImage: {
@@ -248,7 +256,9 @@ export default defineNuxtConfig({
       headers: { "Content-Type": "text/markdown; charset=utf-8" },
     },
     "/license": { prerender: true },
-    "/license/zero-one-edition": { prerender: true },
+    ...Object.fromEntries(
+      UNLISTED_PATHS.map((path) => [path, { prerender: true, robots: false }]),
+    ),
     // Playgrounds
     "/copilot/playground": {
       redirect: { to: "https://try.kirbycopilot.com", statusCode: 302 },
