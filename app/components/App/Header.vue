@@ -22,7 +22,12 @@ const featuredProducts = PRODUCT_LIST.filter((listed) =>
 ).map((listed) => ({ label: listed.label, to: productPath(listed.id) }));
 const moreProducts = PRODUCT_LIST.filter(
   (listed) => !featuredProductIds.has(listed.id),
-).map((listed) => ({ label: listed.label, to: productPath(listed.id) }));
+).map((listed) => ({
+  label: listed.label,
+  description: listed.description,
+  icon: listed.icon,
+  to: productPath(listed.id),
+}));
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
@@ -145,7 +150,12 @@ const { data: version } = await useLatestProductVersion(productId);
       />
     </template>
 
-    <UNavigationMenu :items="navigationItems" class="hidden lg:flex" />
+    <UNavigationMenu
+      :items="navigationItems"
+      content-orientation="vertical"
+      :ui="{ content: 'w-72' }"
+      class="hidden lg:flex"
+    />
 
     <template #body>
       <UNavigationMenu
