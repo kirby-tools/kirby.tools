@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
-import type { ProductId } from "#shared/constants";
+import type { Product, ProductId } from "#shared/constants";
 import { withoutTrailingSlash } from "ufo";
 import {
   PRODUCT_LIST,
@@ -19,15 +19,10 @@ const featuredProductIds = new Set<ProductId>([
 ]);
 const featuredProducts = PRODUCT_LIST.filter((listed) =>
   featuredProductIds.has(listed.id),
-).map((listed) => ({ label: listed.label, to: productPath(listed.id) }));
+).map(toNavigationItem);
 const moreProducts = PRODUCT_LIST.filter(
   (listed) => !featuredProductIds.has(listed.id),
-).map((listed) => ({
-  label: listed.label,
-  description: listed.description,
-  icon: listed.icon,
-  to: productPath(listed.id),
-}));
+).map(toNavigationItem);
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
@@ -77,8 +72,16 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
 );
 
 const { data: docsNavigation } = await useDocsNavigation();
-
 const { data: version } = await useLatestProductVersion(productId);
+
+function toNavigationItem(listed: Product & { id: ProductId }) {
+  return {
+    label: listed.label,
+    description: listed.description,
+    icon: listed.icon,
+    to: productPath(listed.id),
+  };
+}
 </script>
 
 <template>
