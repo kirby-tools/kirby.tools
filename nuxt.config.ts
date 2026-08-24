@@ -323,6 +323,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
+      failOnError: true,
       crawlLinks: true,
       routes: [
         "/robots.txt",
