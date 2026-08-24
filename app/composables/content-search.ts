@@ -41,14 +41,17 @@ function useSiteNavigation() {
   );
 }
 
+// Shiki appends its highlighting rules as a `style` node to each document body.
+const SEARCH_SECTION_OPTIONS = { ignoredTags: ["style"] };
+
 function useSiteSearch() {
   return useLazyAsyncData(
     "search",
     async () => {
       const result = await Promise.all([
-        queryCollectionSearchSections("pages"),
-        queryCollectionSearchSections("docs"),
-        queryCollectionSearchSections("posts"),
+        queryCollectionSearchSections("pages", SEARCH_SECTION_OPTIONS),
+        queryCollectionSearchSections("docs", SEARCH_SECTION_OPTIONS),
+        queryCollectionSearchSections("posts", SEARCH_SECTION_OPTIONS),
       ]);
       return result.flat();
     },
