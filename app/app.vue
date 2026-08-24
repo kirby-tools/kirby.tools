@@ -18,8 +18,7 @@ const searchLinks: ContentSearchLink[] = PRODUCT_LIST.map((listed) => ({
 }));
 const { getThemeColorFromPath, createFaviconDataUri } = useDynamicTheme();
 
-const { data: navigation } = await useSiteNavigation();
-const { data: files } = useSiteSearch();
+const { navigation, files, isLoading } = useContentSearchData();
 
 if (import.meta.server) {
   const themeColor = getThemeColorFromPath(route.path);
@@ -67,7 +66,8 @@ useSeoMeta({
         :files="files"
         :navigation="navigation"
         :links="searchLinks"
-        :fuse="{ resultLimit: 42 }"
+        :loading="isLoading"
+        :fuse="{ resultLimit: 100 }"
       />
     </ClientOnly>
   </UApp>

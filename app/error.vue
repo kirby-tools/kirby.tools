@@ -10,8 +10,7 @@ useSeoMeta({
   description: "Sorry, this page could not be found.",
 });
 
-const { data: navigation } = await useSiteNavigation();
-const { data: files } = useSiteSearch();
+const { navigation, files, isLoading } = useContentSearchData();
 </script>
 
 <template>
@@ -32,7 +31,8 @@ const { data: files } = useSiteSearch();
       <LazyUContentSearch
         :files="files"
         :navigation="navigation"
-        :fuse="{ resultLimit: 42 }"
+        :loading="isLoading"
+        :fuse="{ resultLimit: 100 }"
       />
     </ClientOnly>
 
