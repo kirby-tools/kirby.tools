@@ -137,7 +137,13 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**",
-        exclude: ["index.yml", "**/changelog/**", "blog.yml", "blog/**"],
+        exclude: [
+          "index.yml",
+          "1.docs/**", // Covered by the `docs` collection.
+          "**/changelog/**",
+          "blog.yml",
+          "blog/**",
+        ],
       },
       schema: createBaseSchema(),
     }),
