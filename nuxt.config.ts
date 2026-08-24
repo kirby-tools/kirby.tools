@@ -8,6 +8,7 @@ import {
 import { UNLISTED_PATHS } from "./shared/constants/unlisted";
 
 const SITE_URL = "https://kirby.tools";
+const IMMUTABLE_CACHE_CONTROL = "public, max-age=31536000, immutable";
 
 export default defineNuxtConfig({
   modules: [
@@ -254,6 +255,20 @@ export default defineNuxtConfig({
     "/robots.txt": { headers: { "Content-Type": "text/plain; charset=utf-8" } },
     "/*.md": {
       headers: { "Content-Type": "text/markdown; charset=utf-8" },
+    },
+    // Cloudflare serves assets with `max-age=0` unless `_headers` says otherwise.
+    // Everything below carries a build hash in its name, except the videos.
+    ...Object.fromEntries(
+      ["/_nuxt/**.js", "/_nuxt/**.css", "/_nuxt/**.wasm"].map((pattern) => [
+        pattern,
+        { headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL } },
+      ]),
+    ),
+    "/_nuxt/builds/meta/**": {
+      headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL },
+    },
+    "/vid/**": {
+      headers: { "Cache-Control": "public, max-age=2592000" },
     },
     "/license": { prerender: true },
     ...Object.fromEntries(
