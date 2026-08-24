@@ -96,6 +96,7 @@ function handleEnded() {
         :aria-label="label"
         muted
         playsinline
+        preload="none"
         class="focus-visible:ring-primary block w-full rounded-xl focus:outline-none focus-visible:ring-2"
         tabindex="0"
         @ended="handleEnded"

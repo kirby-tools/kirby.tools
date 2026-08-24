@@ -29,7 +29,7 @@ const accessibleLabel = computed(() => {
     muted
     controls
     playsinline
-    preload="metadata"
+    preload="none"
     class="w-full rounded-xl"
   />
 </template>
