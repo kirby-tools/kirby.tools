@@ -20,7 +20,7 @@ export default defineNuxtModule({
     const logger = useLogger("cloudflare-assets");
 
     nuxt.hook("nitro:init", (nitro) => {
-      // Nitro's redirect stubs only exist once prerendering is done.
+      // The output directory is only complete once prerendering is done.
       nitro.hooks.hook("prerender:done", async () => {
         const publicDir = nitro.options.output.publicDir;
         const routeRules = nuxt.options.routeRules ?? {};
