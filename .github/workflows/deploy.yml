@@ -27,9 +27,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run build
-        env:
-          NITRO_PRESET: static
+        run: pnpm run generate
 
       - name: Deploy to Cloudflare
         run: npx wrangler deploy
