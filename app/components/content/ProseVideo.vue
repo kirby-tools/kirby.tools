@@ -13,6 +13,8 @@ const POSTER_WIDTH = 1280;
 
 const img = useImage();
 
+const videoUrl = useAssetUrl(() => withLeadingSlash(props.src));
+
 // The `poster` attribute bypasses `NuxtImg`, so the URL has to be built by hand.
 const posterUrl = computed(() =>
   props.poster
@@ -32,7 +34,7 @@ const accessibleLabel = computed(() => {
 
 <template>
   <video
-    :src="withLeadingSlash(src)"
+    :src="videoUrl"
     :poster="posterUrl"
     :width="width"
     :height="height"

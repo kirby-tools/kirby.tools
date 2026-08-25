@@ -44,6 +44,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      assetsBaseUrl: "https://assets.kirby.tools",
       paddle: {
         clientToken: "live_92e480cc12385b49df50126b4b9",
       },
@@ -256,7 +257,7 @@ export default defineNuxtConfig({
       headers: { "Content-Type": "text/markdown; charset=utf-8" },
     },
     // Cloudflare serves assets with `max-age=0` unless `_headers` says otherwise.
-    // Everything below carries a build hash in its name, except the videos.
+    // Everything below carries a build hash in its name.
     ...Object.fromEntries(
       ["/_nuxt/**.js", "/_nuxt/**.css", "/_nuxt/**.wasm"].map((pattern) => [
         pattern,
@@ -266,16 +267,13 @@ export default defineNuxtConfig({
     "/_nuxt/builds/meta/**": {
       headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL },
     },
-    "/vid/**": {
-      headers: { "Cache-Control": "public, max-age=2592000" },
-    },
     "/_fonts/**": { headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL } },
     "/__nuxt_content/**": {
       headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL },
     },
     // Unversioned, so a week rather than a year.
     ...Object.fromEntries(
-      ["/_ipx/**", "/img/**"].map((pattern) => [
+      ["/_ipx/**", "/img/**", "/screencasts/**"].map((pattern) => [
         pattern,
         { headers: { "Cache-Control": "public, max-age=604800" } },
       ]),

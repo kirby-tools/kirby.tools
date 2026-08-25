@@ -16,8 +16,8 @@ hero:
       target: _blank
       size: xl
   video:
-    src: /vid/kirby-seo-audit-view-button.mp4
-    poster: /vid/kirby-seo-audit-view-button-poster-start.jpg
+    src: /screencasts/kirby-seo-audit-view-button.mp4
+    poster: /screencasts/kirby-seo-audit-view-button-poster-start.jpg
 sections:
   - title: Your New Favorite <br class="hidden lg:block"> <span class="text-primary">Must-Have Plugin</span>
     slot: features
@@ -52,8 +52,8 @@ sections:
   - title: SEO Reports<br> in the <span class="text-primary">Kirby Panel</span>
     slot: video
     video:
-      src: /vid/kirby-seo-audit-section.mp4
-      poster: /vid/kirby-seo-audit-section-poster-start.jpg
+      src: /screencasts/kirby-seo-audit-section.mp4
+      poster: /screencasts/kirby-seo-audit-section-poster-start.jpg
       label: Demonstration of the SEO Audit section in the Kirby Panel
 cta:
   title: Watch Your Rankings Grow

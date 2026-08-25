@@ -109,8 +109,8 @@ products:
     description: AI-powered content generation and text editing for Kirby CMS. Generate layouts, refine text, or let AI complete your thoughts as you type.
     reverse: true
     video:
-      src: /vid/kirby-copilot-multi-fields-generation.mp4
-      poster: /vid/kirby-copilot-multi-fields-generation-poster-start.jpg
+      src: /screencasts/kirby-copilot-multi-fields-generation.mp4
+      poster: /screencasts/kirby-copilot-multi-fields-generation-poster-start.jpg
       label: Demonstration of generating many fields at once in the Kirby Panel
     links:
       - label: Learn More
@@ -137,8 +137,8 @@ products:
     id: content-translator
     description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
     video:
-      src: /vid/kirby-content-translator-batch-translation.mp4
-      poster: /vid/kirby-content-translator-batch-translation-poster.jpg
+      src: /screencasts/kirby-content-translator-batch-translation.mp4
+      poster: /screencasts/kirby-content-translator-batch-translation-poster.jpg
       label: Demonstration of Content Translator batch translations in the Kirby Panel
     links:
       - label: Learn More
@@ -166,8 +166,8 @@ products:
     description: Analyze your pages, improve your content, and boost your rankings.
     reverse: true
     video:
-      src: /vid/kirby-seo-audit-view-button.mp4
-      poster: /vid/kirby-seo-audit-view-button-poster-start.jpg
+      src: /screencasts/kirby-seo-audit-view-button.mp4
+      poster: /screencasts/kirby-seo-audit-view-button-poster-start.jpg
       label: Demonstration of the SEO Audit plugin, showcasing its features and functionality
     links:
       - label: Learn More
@@ -194,8 +194,8 @@ products:
     id: live-preview
     description: Display your page with unsaved changes in real time. It is the plugin content editors and clients have been waiting for.
     video:
-      src: /vid/kirby-live-preview-devices.mp4
-      poster: /vid/kirby-live-preview-devices-poster.jpg
+      src: /screencasts/kirby-live-preview-devices.mp4
+      poster: /screencasts/kirby-live-preview-devices-poster.jpg
       label: Demonstration of live preview with different device screen sizes in the Kirby Panel
     links:
       - label: Learn More
@@ -222,8 +222,8 @@ products:
     id: minimap
     description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
     video:
-      src: /vid/kirby-minimap-screencast.mp4
-      poster: /vid/kirby-minimap-screencast-poster.jpg
+      src: /screencasts/kirby-minimap-screencast.mp4
+      poster: /screencasts/kirby-minimap-screencast-poster.jpg
       label: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
     links:
       - label: Learn More

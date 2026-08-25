@@ -11,8 +11,8 @@ hero:
       to: https://play.kirby.tools
       size: xl
   video:
-    src: /vid/kirby-live-preview-responsive-demo.mp4
-    poster: /vid/kirby-live-preview-responsive-demo-poster.jpg
+    src: /screencasts/kirby-live-preview-responsive-demo.mp4
+    poster: /screencasts/kirby-live-preview-responsive-demo-poster.jpg
 sections:
   - title: <span class="text-primary">Feature-Complete</span><br> Page Previews
     slot: features
@@ -32,8 +32,8 @@ sections:
   - title: Responsive Preview<br> with <span class="text-primary">Device Simulation</span>
     slot: video
     video:
-      src: /vid/kirby-live-preview-devices.mp4
-      poster: /vid/kirby-live-preview-devices-poster-start.jpg
+      src: /screencasts/kirby-live-preview-devices.mp4
+      poster: /screencasts/kirby-live-preview-devices-poster-start.jpg
 cta:
   title: Not Convinced?
   description: Give it a try and feel the breeze of a real-time preview in the Panel. All eyes on your content!

@@ -6,7 +6,7 @@ product: copilot
 badge:
   label: Release
 image:
-  src: /vid/kirby-copilot-inline-suggestions-poster.jpg
+  src: /screencasts/kirby-copilot-inline-suggestions-poster.jpg
 ---
 
 When I first built Kirby Copilot in early 2024, there was essentially one AI provider anyone talked about. OpenAI had the market, and the idea of AI-assisted content editing inside a CMS was still novel. I wanted to be the first to bring it to the Kirby Panel – partly out of curiosity, partly because I wanted to see if it could actually be useful.
@@ -33,7 +33,7 @@ This is probably the most visible change. As you type in a writer or textarea fi
 
 Inline suggestions use a lightweight completion model optimized for speed, so they feel responsive even on longer documents. They're designed to reduce friction, not take over your writing.
 
-![Inline suggestions appearing as ghost text in a textarea field](/vid/kirby-copilot-inline-suggestions-poster.jpg)
+![Inline suggestions appearing as ghost text in a textarea field](/screencasts/kirby-copilot-inline-suggestions-poster.jpg)
 
 [Read more about inline suggestions](/docs/copilot/usage/inline-suggestions)
 

@@ -11,6 +11,7 @@ const POSTER_WIDTH = 1280;
 const GLOW_WIDTH = 128;
 
 const img = useImage();
+const videoUrl = useAssetUrl(() => props.src);
 // The `poster` attribute bypasses `NuxtImg`, so the URL has to be built by hand.
 const posterUrl = computed(() => img(props.poster, { width: POSTER_WIDTH }));
 const glowUrl = computed(() => img(props.poster, { width: GLOW_WIDTH }));
@@ -98,13 +99,13 @@ function handleEnded() {
     >
       <video
         ref="video"
-        :src="src"
+        :src="videoUrl"
         :poster="posterUrl"
         :loop="loop"
         :aria-label="label"
         muted
         playsinline
-        preload="none"
+        preload="metadata"
         class="focus-visible:ring-primary block w-full rounded-xl focus:outline-none focus-visible:ring-2"
         tabindex="0"
         @ended="handleEnded"
