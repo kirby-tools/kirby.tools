@@ -13,7 +13,7 @@ The Composer package a customer installs into their Kirby site. A Product has ex
 _Avoid_: Extension, add-on
 
 **ProductId**:
-The canonical key of a Product, e.g. `copilot` or `seo-audit`. It is also the first path segment of the landing page and the second of a documentation page, but identity comes first and routes are derived from it.
+The canonical key of a Product, e.g. `copilot` or `seo-audit`. It is also the first path segment of the landing page and the second of a documentation page, but identity comes first and routes are derived from it. On disk the documentation lives in `content/1.docs/<n>.<ProductId>/` and the landing page with its changelog in `content/<n>.<ProductId>/`, where `<n>` orders the siblings and differs between the two trees.
 _Avoid_: Slug, product key, product name
 
 **License**:
