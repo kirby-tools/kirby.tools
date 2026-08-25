@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
 #
 # Remuxes every recording staged in .data/screencasts, writes its two posters
-# and uploads it to R2, which is the only place the videos live – the bucket
-# serves them in development too, so none of this ends up in the bundle. Run it
-# by hand after adding a recording; the deploy workflow stays out of it, since
-# screencasts change a few times a year and would otherwise cost 90 MB on every
-# commit.
-#
-# The remux moves the `moov` atom to the front of the file. Without it a
-# browser has to stream the entire video before the first frame appears.
+# and uploads it to R2. See SKILL.md next to this file.
 #
 # Usage: .agents/skills/screencasts/upload.sh [--force] [file[@timestamp] ...]
-#
-# The timestamp picks the frame for `-poster.jpg`, as in `demo.mp4@00:04`.
 
 set -euo pipefail
 shopt -s nullglob
@@ -22,8 +13,7 @@ KEY_PREFIX="screencasts"
 CACHE_CONTROL="public, max-age=2592000"
 STAGING_DIRECTORY=".data/screencasts"
 POSTER_DIRECTORY="public/screencasts"
-# The `assetsBaseUrl` from `nuxt.config.ts`, duplicated because a shell script
-# cannot read it.
+# The `assetsBaseUrl` from `nuxt.config.ts`, which a shell script cannot read.
 ASSETS_BASE_URL="https://assets.kirby.tools"
 # The level that reproduces the file size of the posters already committed.
 POSTER_QUALITY=3
@@ -39,8 +29,8 @@ shouldForceUpload=""
 recordingPaths=()
 posterTimestamps=()
 
-# Arguments are resolved against the caller's directory, since the working
-# directory moves to the repository root further down.
+# Resolved against the caller's directory, since the working directory moves
+# to the repository root further down.
 for argument in "$@"; do
   if [ "$argument" = "--force" ]; then
     shouldForceUpload=1
@@ -64,9 +54,8 @@ for argument in "$@"; do
   posterTimestamps+=("$posterTimestamp")
 done
 
-# The repository root, derived from the script rather than from the working
-# directory so that the script runs from anywhere. Three levels up lands there
-# either way, through `.agents/skills/` or through the `.claude/skills` symlink.
+# Three levels up lands on the repository root through `.agents/skills/` and
+# through the `.claude/skills` symlink alike.
 cd "$(dirname "$0")/../../.."
 
 if [ ${#recordingPaths[@]} -eq 0 ]; then
@@ -93,8 +82,7 @@ for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
   recordingName="$(basename "${recordingPath%.*}")"
   objectName="$recordingName.mp4"
 
-  # Repacking is only lossless while the codec already is what browsers want.
-  # Copying anything else into an MP4 would produce a file that plays nowhere.
+  # Copying any other codec into an MP4 would produce a file that plays nowhere.
   codec="$(ffprobe -v error -select_streams v:0 \
     -show_entries stream=codec_name -of csv=p=0 "$recordingPath")"
   if [ "$codec" != "h264" ]; then
@@ -112,17 +100,12 @@ for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
     exit 1
   fi
 
-  # The first frame, and the only poster that can be derived rather than
-  # chosen, which is why it is written for every recording whether or not a
-  # page ends up pointing at it.
   startPosterPath="$POSTER_DIRECTORY/$recordingName-poster-start.jpg"
   if [ ! -f "$startPosterPath" ]; then
     ffmpeg -v error -y -i "$recordingPath" -frames:v 1 \
       -q:v "$POSTER_QUALITY" "$startPosterPath"
   fi
 
-  # A hand-picked poster is only replaced on request, so re-running the script
-  # never silently swaps a chosen frame for the first one.
   posterPath="$POSTER_DIRECTORY/$recordingName-poster.jpg"
   if [ -n "$posterTimestamp" ]; then
     ffmpeg -v error -y -ss "$posterTimestamp" -i "$recordingPath" -frames:v 1 \
@@ -132,11 +115,9 @@ for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
     echo "  $recordingName-poster.jpg is the first frame - pass @<timestamp>." >&2
   fi
 
-  # R2 reports the content MD5 as the ETag at this object size, so a single
-  # HEAD decides whether the bytes up there are the bytes just built. The query
-  # string is a nonce: Cloudflare caches the 404 that this very request
-  # produces for a new video for four hours, which would hide the upload
-  # following it from the next run.
+  # R2 reports the content MD5 as the ETag at this object size. The query
+  # string is a nonce, since Cloudflare caches the 404 this request produces
+  # for a new video long enough to hide the upload that follows it.
   localChecksum="$(md5 -q "$remuxedPath")"
   publishedChecksum="$(curl -fsI "$ASSETS_BASE_URL/$KEY_PREFIX/$objectName?$$" |
     tr -d '\r' | awk -F'"' 'tolower($1) ~ /^etag:/ { print $2 }')" ||
@@ -149,8 +130,8 @@ for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
   fi
 
   echo "→ $objectName ($(du -h "$remuxedPath" | cut -f1))"
-  # Called directly rather than through `pnpm exec`, which spends three seconds
-  # on a dependency check before every single upload.
+  # Called directly, since `pnpm exec` spends three seconds on a dependency
+  # check before every upload.
   node_modules/.bin/wrangler r2 object put "$BUCKET/$KEY_PREFIX/$objectName" \
     --remote \
     --file="$remuxedPath" \
