@@ -112,8 +112,9 @@ for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
     exit 1
   fi
 
-  # `Media/Video` autoplays and shows the first frame until it does, so any
-  # other frame makes the picture jump the moment playback starts.
+  # The first frame, and the only poster that can be derived rather than
+  # chosen, which is why it is written for every recording whether or not a
+  # page ends up pointing at it.
   startPosterPath="$POSTER_DIRECTORY/$recordingName-poster-start.jpg"
   if [ ! -f "$startPosterPath" ]; then
     ffmpeg -v error -y -i "$recordingPath" -frames:v 1 \

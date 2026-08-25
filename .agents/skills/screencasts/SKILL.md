@@ -21,10 +21,9 @@ Re-running is free: a video whose bytes already match the bucket is skipped, and
 
 ## The Two Posters
 
-- `-poster-start.jpg` is the first frame. It belongs on `Media/Video`, which autoplays, and any other frame visibly jumps the moment playback starts.
-- `-poster.jpg` is a chosen frame. It belongs on `ProseVideo`, which waits for a click.
+The script writes both for every recording, and every recording keeps both. `-poster-start.jpg` is the first frame, the one poster that can be derived rather than chosen; `-poster.jpg` is a frame picked for what it shows.
 
-Six of the fifteen product-page references still point at `-poster.jpg`. That is a leftover, not a second convention.
+Which of the two a page references is an editorial call made per video, not a rule to apply. A start poster keeps an autoplaying `Media/Video` from jumping when playback begins. A frame from the middle tells a visitor what the recording is about before they commit to it – and on touch devices `Media/Video` never autoplays, so the poster is the thumbnail they tap. Both readings are in use on purpose, on landing pages as well as in the documentation. Leave the poster an existing page references as it is.
 
 ## Wiring
 
@@ -44,3 +43,5 @@ video:
 ```
 
 `label` is optional on both components, but `ProseVideo` otherwise builds one from the filename, which reads badly aloud.
+
+A poster that does not exist fails the build, named alongside the page that links it. A `src` that does not exist does not: it points at the bucket and is never fetched while building, so check that spelling against the upload output.
