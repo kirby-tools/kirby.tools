@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Remuxes every recording staged in .data/screencasts, writes its two posters
-# and uploads it to R2, which is the only place the videos live - the bucket
+# and uploads it to R2, which is the only place the videos live – the bucket
 # serves them in development too, so none of this ends up in the bundle. Run it
 # by hand after adding a recording; the deploy workflow stays out of it, since
 # screencasts change a few times a year and would otherwise cost 90 MB on every
@@ -18,13 +18,14 @@ set -euo pipefail
 shopt -s nullglob
 
 BUCKET="kirby-tools-assets"
-PREFIX="screencasts"
+KEY_PREFIX="screencasts"
 CACHE_CONTROL="public, max-age=2592000"
-SOURCE_DIR=".data/screencasts"
-POSTER_DIR="public/screencasts"
-# Mirrors `assetsBaseUrl` in `nuxt.config.ts`, which a shell script cannot read.
+STAGING_DIRECTORY=".data/screencasts"
+POSTER_DIRECTORY="public/screencasts"
+# The `assetsBaseUrl` from `nuxt.config.ts`, duplicated because a shell script
+# cannot read it.
 ASSETS_BASE_URL="https://assets.kirby.tools"
-# Matches the file size of the posters already in the repository.
+# The level that reproduces the file size of the posters already committed.
 POSTER_QUALITY=3
 
 for binary in ffmpeg ffprobe; do
@@ -34,126 +35,128 @@ for binary in ffmpeg ffprobe; do
   fi
 done
 
-force=""
-paths=()
-stamps=()
+shouldForceUpload=""
+recordingPaths=()
+posterTimestamps=()
 
 # Arguments are resolved against the caller's directory, since the working
-# directory moves to the repository root below.
+# directory moves to the repository root further down.
 for argument in "$@"; do
   if [ "$argument" = "--force" ]; then
-    force=1
+    shouldForceUpload=1
     continue
   fi
 
-  path="$argument"
-  stamp=""
+  recordingPath="$argument"
+  posterTimestamp=""
   case "$argument" in
     *@*)
-      path="${argument%@*}"
-      stamp="${argument##*@}"
+      recordingPath="${argument%@*}"
+      posterTimestamp="${argument##*@}"
       ;;
   esac
-  case "$path" in
+  case "$recordingPath" in
     /*) ;;
-    *) path="$PWD/$path" ;;
+    *) recordingPath="$PWD/$recordingPath" ;;
   esac
 
-  paths+=("$path")
-  stamps+=("$stamp")
+  recordingPaths+=("$recordingPath")
+  posterTimestamps+=("$posterTimestamp")
 done
 
-# Derived from the script rather than the working directory, so the script runs
-# from anywhere. Three levels up lands on the root either way, whether the
-# script is reached through `.agents/skills/` or the `.claude/skills` symlink.
+# The repository root, derived from the script rather than from the working
+# directory so that the script runs from anywhere. Three levels up lands there
+# either way, through `.agents/skills/` or through the `.claude/skills` symlink.
 cd "$(dirname "$0")/../../.."
 
-if [ ${#paths[@]} -eq 0 ]; then
-  for path in "$SOURCE_DIR"/*.mp4 "$SOURCE_DIR"/*.mov; do
-    paths+=("$path")
-    stamps+=("")
+if [ ${#recordingPaths[@]} -eq 0 ]; then
+  for recordingPath in "$STAGING_DIRECTORY"/*.mp4 "$STAGING_DIRECTORY"/*.mov; do
+    recordingPaths+=("$recordingPath")
+    posterTimestamps+=("")
   done
 fi
 
-if [ ${#paths[@]} -eq 0 ]; then
-  echo "No recordings in $SOURCE_DIR." >&2
+if [ ${#recordingPaths[@]} -eq 0 ]; then
+  echo "No recordings in $STAGING_DIRECTORY." >&2
   exit 1
 fi
 
-workDir="$(mktemp -d)"
-trap 'rm -rf "$workDir"' EXIT
+temporaryDirectory="$(mktemp -d)"
+trap 'rm -rf "$temporaryDirectory"' EXIT
 
-uploaded=0
-unchanged=0
+uploadedCount=0
+unchangedCount=0
 
-for ((index = 0; index < ${#paths[@]}; index++)); do
-  path="${paths[$index]}"
-  stamp="${stamps[$index]}"
-  base="$(basename "${path%.*}")"
-  name="$base.mp4"
+for ((index = 0; index < ${#recordingPaths[@]}; index++)); do
+  recordingPath="${recordingPaths[$index]}"
+  posterTimestamp="${posterTimestamps[$index]}"
+  recordingName="$(basename "${recordingPath%.*}")"
+  objectName="$recordingName.mp4"
 
   # Repacking is only lossless while the codec already is what browsers want.
   # Copying anything else into an MP4 would produce a file that plays nowhere.
   codec="$(ffprobe -v error -select_streams v:0 \
-    -show_entries stream=codec_name -of csv=p=0 "$path")"
+    -show_entries stream=codec_name -of csv=p=0 "$recordingPath")"
   if [ "$codec" != "h264" ]; then
-    echo "Skipped $base: encoded as $codec, expected h264." >&2
+    echo "Skipped $recordingName: encoded as $codec, expected h264." >&2
     continue
   fi
 
-  remuxed="$workDir/$name"
-  ffmpeg -v error -i "$path" -c copy -movflags +faststart "$remuxed"
+  remuxedPath="$temporaryDirectory/$objectName"
+  ffmpeg -v error -i "$recordingPath" -c copy -movflags +faststart "$remuxedPath"
 
-  # Reading through a process substitution rather than a pipe, since `grep`
-  # quits on the match and would leave `head` to die on SIGPIPE under pipefail.
-  if ! LC_ALL=C grep -qa moov <(head -c 65536 "$remuxed"); then
-    echo "Aborted on $name: no moov atom near the start after remuxing." >&2
+  # Read through a process substitution rather than a pipe, since `grep` quits
+  # on the match and would leave `head` to die on SIGPIPE under `pipefail`.
+  if ! LC_ALL=C grep -qa moov <(head -c 65536 "$remuxedPath"); then
+    echo "Aborted on $objectName: no moov atom near the start after remuxing." >&2
     exit 1
   fi
 
-  # The autoplaying component shows the first frame, so the poster has to be
-  # that exact frame or the picture jumps the moment playback starts.
-  startPoster="$POSTER_DIR/$base-poster-start.jpg"
-  if [ ! -f "$startPoster" ]; then
-    ffmpeg -v error -y -i "$path" -frames:v 1 -q:v "$POSTER_QUALITY" "$startPoster"
+  # `Media/Video` autoplays and shows the first frame until it does, so any
+  # other frame makes the picture jump the moment playback starts.
+  startPosterPath="$POSTER_DIRECTORY/$recordingName-poster-start.jpg"
+  if [ ! -f "$startPosterPath" ]; then
+    ffmpeg -v error -y -i "$recordingPath" -frames:v 1 \
+      -q:v "$POSTER_QUALITY" "$startPosterPath"
   fi
 
   # A hand-picked poster is only replaced on request, so re-running the script
   # never silently swaps a chosen frame for the first one.
-  poster="$POSTER_DIR/$base-poster.jpg"
-  if [ -n "$stamp" ]; then
-    ffmpeg -v error -y -ss "$stamp" -i "$path" -frames:v 1 \
-      -q:v "$POSTER_QUALITY" "$poster"
-  elif [ ! -f "$poster" ]; then
-    cp "$startPoster" "$poster"
-    echo "  $base-poster.jpg is the first frame - re-run with @<timestamp>." >&2
+  posterPath="$POSTER_DIRECTORY/$recordingName-poster.jpg"
+  if [ -n "$posterTimestamp" ]; then
+    ffmpeg -v error -y -ss "$posterTimestamp" -i "$recordingPath" -frames:v 1 \
+      -q:v "$POSTER_QUALITY" "$posterPath"
+  elif [ ! -f "$posterPath" ]; then
+    cp "$startPosterPath" "$posterPath"
+    echo "  $recordingName-poster.jpg is the first frame - pass @<timestamp>." >&2
   fi
 
-  # R2 reports the content MD5 as the ETag for objects this size, so one HEAD
-  # tells us whether the bytes already up there are the bytes we just built.
-  # The query string is a nonce: Cloudflare caches the 404 this very request
-  # produces for a new video for four hours, and would then hide the upload
-  # that follows it from the next run.
-  checksum="$(md5 -q "$remuxed")"
-  published="$(curl -fsI "$ASSETS_BASE_URL/$PREFIX/$name?$$" |
-    tr -d '\r' | awk -F'"' 'tolower($1) ~ /^etag:/ { print $2 }')" || published=""
+  # R2 reports the content MD5 as the ETag at this object size, so a single
+  # HEAD decides whether the bytes up there are the bytes just built. The query
+  # string is a nonce: Cloudflare caches the 404 that this very request
+  # produces for a new video for four hours, which would hide the upload
+  # following it from the next run.
+  localChecksum="$(md5 -q "$remuxedPath")"
+  publishedChecksum="$(curl -fsI "$ASSETS_BASE_URL/$KEY_PREFIX/$objectName?$$" |
+    tr -d '\r' | awk -F'"' 'tolower($1) ~ /^etag:/ { print $2 }')" ||
+    publishedChecksum=""
 
-  if [ -z "$force" ] && [ "$published" = "$checksum" ]; then
-    echo "= $name unchanged"
-    unchanged=$((unchanged + 1))
+  if [ -z "$shouldForceUpload" ] && [ "$publishedChecksum" = "$localChecksum" ]; then
+    echo "= $objectName unchanged"
+    unchangedCount=$((unchangedCount + 1))
     continue
   fi
 
-  echo "→ $name ($(du -h "$remuxed" | cut -f1))"
+  echo "→ $objectName ($(du -h "$remuxedPath" | cut -f1))"
   # Called directly rather than through `pnpm exec`, which spends three seconds
   # on a dependency check before every single upload.
-  node_modules/.bin/wrangler r2 object put "$BUCKET/$PREFIX/$name" \
+  node_modules/.bin/wrangler r2 object put "$BUCKET/$KEY_PREFIX/$objectName" \
     --remote \
-    --file="$remuxed" \
+    --file="$remuxedPath" \
     --content-type=video/mp4 \
     --cache-control="$CACHE_CONTROL"
 
-  uploaded=$((uploaded + 1))
+  uploadedCount=$((uploadedCount + 1))
 done
 
-echo "$uploaded uploaded to $BUCKET/$PREFIX/, $unchanged unchanged"
+echo "$uploadedCount uploaded to $BUCKET/$KEY_PREFIX/, $unchangedCount unchanged"
