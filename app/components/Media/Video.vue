@@ -7,6 +7,16 @@ const props = defineProps<{
   loop?: boolean;
 }>();
 
+// Wide enough for a 3x mobile screen; the frame is replaced the moment playback starts.
+const POSTER_WIDTH = 1280;
+// The glow is blurred beyond recognition, so it only needs a colour wash.
+const GLOW_WIDTH = 128;
+
+const img = useImage();
+// The `poster` attribute bypasses `NuxtImg`, so the URL has to be built by hand.
+const posterUrl = computed(() => img(props.poster, { width: POSTER_WIDTH }));
+const glowUrl = computed(() => img(props.poster, { width: GLOW_WIDTH }));
+
 const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 const hasTouchCapability = useMediaQuery("(hover: none)");
 const video = useTemplateRef("video");
@@ -69,15 +79,15 @@ function handleEnded() {
 
 <template>
   <div class="relative [--ui-radius:0.25rem]">
-    <NuxtImg
+    <img
       v-if="glow"
-      :src="poster"
+      :src="glowUrl"
       alt=""
       aria-hidden="true"
       loading="lazy"
       class="pointer-events-none absolute -inset-1 -z-10 rounded-2xl object-cover blur-xl saturate-125 transition-opacity duration-500 lg:-inset-2"
       :class="[isPlaying ? 'opacity-55' : 'opacity-30']"
-    />
+    >
 
     <div
       role="button"
@@ -91,7 +101,7 @@ function handleEnded() {
       <video
         ref="video"
         :src="src"
-        :poster="poster"
+        :poster="posterUrl"
         :loop="loop"
         :aria-label="label"
         muted

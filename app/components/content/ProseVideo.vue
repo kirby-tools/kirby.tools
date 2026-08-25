@@ -9,6 +9,18 @@ const props = defineProps<{
   label?: string;
 }>();
 
+// Wide enough for a 3x mobile screen; the frame is replaced the moment playback starts.
+const POSTER_WIDTH = 1280;
+
+const img = useImage();
+
+// The `poster` attribute bypasses `NuxtImg`, so the URL has to be built by hand.
+const posterUrl = computed(() =>
+  props.poster
+    ? img(withLeadingSlash(props.poster), { width: POSTER_WIDTH })
+    : undefined,
+);
+
 const accessibleLabel = computed(() => {
   if (props.label) return props.label;
   const filename = props.src
@@ -22,7 +34,7 @@ const accessibleLabel = computed(() => {
 <template>
   <video
     :src="withLeadingSlash(src)"
-    :poster="poster ? withLeadingSlash(poster) : undefined"
+    :poster="posterUrl"
     :width="width"
     :height="height"
     :aria-label="accessibleLabel"
