@@ -3,6 +3,9 @@ import { readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { defineNuxtModule, useLogger } from "nuxt/kit";
 
+// Cloudflare silently ignores every rule past this limit.
+const MAX_HEADER_RULES = 100;
+
 /**
  * Translates the redirect and header `routeRules` into the files Cloudflare's
  * asset router reads.
@@ -98,6 +101,12 @@ function collectHeaders(
     if (!headers || Object.keys(headers).length === 0) continue;
 
     rules.push({ pattern: toAssetPattern(pattern), headers });
+  }
+
+  if (rules.length > MAX_HEADER_RULES) {
+    throw new Error(
+      `Collected ${rules.length} header rules, but \`_headers\` holds at most ${MAX_HEADER_RULES}.`,
+    );
   }
 
   return rules;
