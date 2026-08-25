@@ -270,8 +270,6 @@ export default defineNuxtConfig({
     "/vid/**": {
       headers: { "Cache-Control": "public, max-age=2592000" },
     },
-    // Both carry a version in the URL – the font filename is a hash, the content
-    // dumps are queried with `?v=`.
     "/_fonts/**": { headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL } },
     "/__nuxt_content/**": {
       headers: { "Cache-Control": IMMUTABLE_CACHE_CONTROL },

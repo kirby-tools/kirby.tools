@@ -9,7 +9,6 @@ const props = defineProps<{
   label?: string;
 }>();
 
-// Wide enough for a 3x mobile screen; the frame is replaced the moment playback starts.
 const POSTER_WIDTH = 1280;
 
 const img = useImage();
