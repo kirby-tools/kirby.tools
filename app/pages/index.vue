@@ -90,7 +90,7 @@ const testimonialItems = computed(() =>
         <template #top>
           <!-- A radial gradient, because Safari rasterizes a blur this wide on the CPU. -->
           <div
-            class="from-primary/15 absolute left-1/2 z-[-1] size-[52rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-radial to-transparent to-65%"
+            class="from-primary/15 absolute left-1/2 z-[-1] aspect-square w-full max-w-[52rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-radial to-transparent to-65%"
           />
         </template>
 
