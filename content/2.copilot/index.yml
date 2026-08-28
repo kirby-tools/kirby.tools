@@ -85,6 +85,8 @@ sections:
         - filename: site/commands/generate-meta-descriptions.php
           language: php
           content: |
+            // Run: kirby generate-meta-descriptions
+
             use JohannSchopplich\Copilot\AI\Client;
             use Kirby\CLI\CLI;
 
@@ -110,10 +112,6 @@ sections:
                     $cli->success('Done');
                 }
             ];
-        - filename: Terminal
-          language: bash
-          content: |
-            kirby generate-meta-descriptions
 cta:
   title: Do Not Take<br class="md:hidden"> Our Word for It
   description: Install the plugin and try Copilot in the Panel yourself.

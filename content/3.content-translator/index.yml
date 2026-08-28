@@ -66,6 +66,8 @@ sections:
         - filename: site/commands/translate-blog.php
           language: php
           content: |
+            // Run: kirby translate-blog
+
             use JohannSchopplich\ContentTranslator\Translation\Strategies\CopilotAIStrategy;
             use Kirby\CLI\CLI;
 
@@ -87,10 +89,6 @@ sections:
                     $cli->success('All posts translated!');
                 }
             ];
-        - filename: Terminal
-          language: bash
-          content: |
-            kirby translate-blog
 cta:
   title: Still scrolling?
   description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
