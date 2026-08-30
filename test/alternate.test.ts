@@ -16,7 +16,7 @@ describe("resolveAlternate", () => {
     });
   });
 
-  it("resolves a changelog to its product's releases", () => {
+  it("resolves a changelog page to its product id", () => {
     expect(resolveAlternate("/copilot/changelog")).toEqual({
       kind: "changelog",
       productId: "copilot",
@@ -33,8 +33,15 @@ describe("resolveAlternate", () => {
     },
   );
 
-  it.each(["/", "/docs", "/blog", "/copilot/buy", "/privacy-policy"])(
-    "returns undefined for %s",
+  it.each(["/", "/docs", "/blog"])(
+    "returns undefined for the index page %s",
+    (path) => {
+      expect(resolveAlternate(path)).toBeUndefined();
+    },
+  );
+
+  it.each(["/copilot/buy", "/privacy-policy"])(
+    "returns undefined for %s outside the docs and blog trees",
     (path) => {
       expect(resolveAlternate(path)).toBeUndefined();
     },
