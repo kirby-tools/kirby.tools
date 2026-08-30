@@ -6,9 +6,6 @@
 // carry Kirby's ~56 KB of tokens and reset.
 import "#kirby-panel/styles/config.css";
 import "#kirby-panel/styles/reset.css";
-// `.k-panel`'s colors are declared as `html`/`body` rules inside the component
-// that owns the view. Take only its style block – the component itself needs a
-// whole Panel instance.
 import "#kirby-panel/components/View/Panel.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/styles/utilities.css";
 import { extensions } from "#panel-preview/extensions";

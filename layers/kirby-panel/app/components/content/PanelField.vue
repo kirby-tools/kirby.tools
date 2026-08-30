@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// Kirby's `k-field` builds its class list from a `name` and a `type` a mock has
-// no reason to carry. Import only the style block it holds and restate its
-// markup below.
 import "#kirby-panel/components/Forms/Field.vue?vue&type=style&index=0&lang.css";
 
 defineProps<{

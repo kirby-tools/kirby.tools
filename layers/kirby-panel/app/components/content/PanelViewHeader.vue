@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// `k-header` sizes its title with the `--text-h1` group, which Kirby declares in
-// the component behind `k-headline`. Import only that style block.
 import "#kirby-panel/components/Text/Headline.vue?vue&type=style&index=0&lang.css";
 
 const props = defineProps<{
