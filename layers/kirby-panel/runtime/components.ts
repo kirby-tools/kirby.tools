@@ -2,6 +2,7 @@ import Empty from "#kirby-panel/components/Collection/Empty.vue";
 import Dropdown from "#kirby-panel/components/Dropdowns/Dropdown.vue";
 import DropdownItem from "#kirby-panel/components/Dropdowns/DropdownItem.vue";
 import Input from "#kirby-panel/components/Forms/Input.vue";
+import Toolbar from "#kirby-panel/components/Forms/Toolbar/Toolbar.vue";
 import Box from "#kirby-panel/components/Layout/Box.vue";
 import Header from "#kirby-panel/components/Layout/Header.vue";
 import Icon from "#kirby-panel/components/Misc/Icon.vue";
@@ -33,6 +34,7 @@ export const components = {
   "k-link": Link,
   "k-section": Section,
   "k-text": Text,
+  "k-toolbar": Toolbar,
   "k-view-button": ViewButton,
   "k-view-buttons": ViewButtons,
 };
