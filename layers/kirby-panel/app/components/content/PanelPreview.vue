@@ -25,6 +25,18 @@ withDefaults(
 
 <template>
   <figure class="panel-preview my-6">
+    <figcaption class="panel-preview-chrome">
+      <k-icon type="kirby" />
+      <span>Kirby Panel</span>
+      <span v-if="label" class="panel-preview-chrome-label">{{ label }}</span>
+    </figcaption>
+
+    <div class="k-panel" :data-theme="theme">
+      <div class="panel-preview-stage">
+        <slot />
+      </div>
+    </div>
+
     <!-- Kirby inlines plugin icons into the document; `k-icon` points a `<use>` at them. -->
     <svg hidden aria-hidden="true">
       <symbol
@@ -35,15 +47,6 @@ withDefaults(
         v-html="body"
       />
     </svg>
-
-    <div class="k-panel" :data-theme="theme">
-      <div class="panel-preview-stage">
-        <slot />
-      </div>
-    </div>
-    <figcaption v-if="label" class="text-muted mt-2 text-sm">
-      {{ label }}
-    </figcaption>
   </figure>
 </template>
 
@@ -71,5 +74,25 @@ withDefaults(
   container-type: inline-size;
   padding: var(--spacing-4);
   background: var(--panel-color-back);
+}
+
+/* px rather than Tailwind utilities: Kirby's sheet redefines `--spacing-*` and
+   `--text-*` for everything under `.panel-preview`. */
+.panel-preview-chrome {
+  --icon-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--ui-border);
+  background: var(--ui-bg);
+  padding: 6px 10px;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+}
+
+.panel-preview-chrome-label {
+  margin-left: auto;
+  color: var(--ui-text-dimmed);
 }
 </style>
