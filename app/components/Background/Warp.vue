@@ -88,7 +88,7 @@ const sides = computed(() =>
         '--beam-size': `${beamSize}%`,
         '--beam-duration': `${beamDuration}s`,
       }"
-      class="@container-size pointer-events-none absolute inset-0 overflow-hidden perspective-(--perspective) transform-3d [clip-path:inset(0)]"
+      class="@container-size pointer-events-none absolute inset-0 overflow-hidden [clip-path:inset(0)] perspective-(--perspective) transform-3d"
     >
       <div
         v-for="side in sides"
