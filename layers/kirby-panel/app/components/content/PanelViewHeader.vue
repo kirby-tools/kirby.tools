@@ -3,16 +3,13 @@
 // the component behind `k-headline`. Import only that style block.
 import "#kirby-panel/components/Text/Headline.vue?vue&type=style&index=0&lang.css";
 
-// `buttons` takes what a blueprint's `buttons` key does, where a `"-"` between
-// two entries starts a new group.
 const props = defineProps<{
   title?: string;
   buttons?: (Record<string, unknown> | string)[];
 }>();
 
 // `k-view-buttons` expects what Kirby's PHP side hands it: the blueprint entry
-// resolved into `{ component, props }`. An entry carrying `items` names the
-// component that draws its dropdown open.
+// resolved into `{ component, props }`.
 const buttons = computed(() =>
   (props.buttons ?? []).map((button, index) =>
     typeof button === "string"
