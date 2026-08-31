@@ -7,6 +7,7 @@
 import "#kirby-panel/styles/config.css";
 import "#kirby-panel/styles/reset.css";
 import "#kirby-panel/components/View/Panel.vue?vue&type=style&index=0&lang.css";
+import "#kirby-panel/components/Collection/Item.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/styles/utilities.css";
 import { extensions } from "#panel-preview/extensions";
 

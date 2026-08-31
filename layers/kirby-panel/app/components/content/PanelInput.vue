@@ -59,7 +59,7 @@ withDefaults(
 </template>
 
 <style>
-.k-copilot-suggestion-text {
+.panel-preview .k-copilot-suggestion-text {
   color: light-dark(var(--color-gray-600), var(--color-gray-500));
 }
 </style>
