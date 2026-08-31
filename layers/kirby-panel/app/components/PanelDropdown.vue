@@ -9,19 +9,31 @@ interface DropdownItem extends Record<string, unknown> {
 
 defineProps<{
   items?: (DropdownItem | "-")[];
-  /** Where the dropdown hangs from its trigger, which sits before it. */
   align?: "start" | "end";
+  selected?: number;
 }>();
 </script>
 
 <template>
-  <div class="panel-dropdown k-dropdown" :data-align-x="align">
+  <!-- max-w-80: half the dialog, as in the Panel, so a long `info` truncates. -->
+  <div
+    class="panel-dropdown k-dropdown top-full max-w-80"
+    :data-align-x="align"
+  >
     <template v-for="(item, index) in items" :key="index">
       <hr v-if="item === '-'" />
-      <k-dropdown-item v-else v-bind="item">
-        <span class="panel-dropdown-item">
+      <k-dropdown-item
+        v-else
+        v-bind="item"
+        :class="index === selected && 'panel-dropdown-item-selected'"
+      >
+        <span class="inline-flex min-w-0 items-center gap-(--spacing-3)">
           <span>{{ item.text }}</span>
-          <span v-if="item.info">{{ item.info }}</span>
+          <span
+            v-if="item.info"
+            class="truncate text-[length:var(--text-xs)] text-[color:var(--color-text-dimmed)]"
+            >{{ item.info }}</span
+          >
         </span>
       </k-dropdown-item>
     </template>
@@ -29,30 +41,13 @@ defineProps<{
 </template>
 
 <style>
-.panel-dropdown {
-  inset-block-start: 100%;
-  /* Half the dialog, as in the Panel, so a long `info` truncates. */
-  max-width: 20rem;
-}
-
 /* Kirby resets `inset-inline-start` so that `left` stays authoritative, and
    pairs `end` with a `-100%` translation. */
 .panel-dropdown[data-align-x="end"] {
   left: 100%;
 }
 
-.panel-dropdown-item {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-3);
-  min-width: 0;
-}
-
-.panel-dropdown-item > :nth-child(2) {
-  color: var(--color-text-dimmed);
-  font-size: var(--text-xs);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.panel-dropdown-item-selected {
+  --button-color-back: var(--dropdown-color-hr);
 }
 </style>

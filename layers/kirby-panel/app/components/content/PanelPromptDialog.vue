@@ -17,7 +17,7 @@ const props = defineProps<{
    * outermost open component.
    */
   dropdown?: Record<string, unknown> & {
-    under: "placeholders" | "templates" | "history" | "fields";
+    under: "placeholders" | "templates" | "history" | "fields" | "skills";
   };
 }>();
 
@@ -32,7 +32,8 @@ const INSERT_OPTIONS = [
   { value: "append", text: "Append" },
 ];
 
-const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)|(@skill:\/\/[\w-]+)/g;
+// The bare trigger comes last, so a complete reference wins the alternation.
+const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)|(@skill:\/\/[\w-]+)|(@skill:\/\/)/g;
 
 const tokens = computed(() => {
   const parts: { text: string; type?: string }[] = [];
@@ -44,7 +45,13 @@ const tokens = computed(() => {
     }
     parts.push({
       text: match[0],
-      type: match[1] ? "placeholder" : match[2] ? "page-ref" : "skill-ref",
+      type: match[1]
+        ? "placeholder"
+        : match[2]
+          ? "page-ref"
+          : match[3]
+            ? "skill-ref"
+            : "skill-trigger",
     });
     index = match.index + match[0].length;
   }
@@ -71,29 +78,41 @@ const dropdownSpace = computed(() => {
     dropdown.under === "fields" ? 1.75 : 0,
   );
 
-  return { marginBottom: `calc(${rows} * var(--height) + var(--spacing-4))` };
+  // The typeahead hangs from the editor rather than the toolbar, so the toolbar
+  // row and the footer already cover its first two rows.
+  const uncovered = rows - (dropdown.under === "skills" ? 2 : 0);
+  if (uncovered <= 0) return undefined;
+
+  return {
+    marginBottom: `calc(${uncovered} * var(--height) + var(--spacing-4))`,
+  };
 });
 </script>
 
 <template>
   <PanelDialog size="large" class="panel-prompt-dialog" :style="dropdownSpace">
     <div class="relative rounded-[var(--rounded)]">
-      <!-- Stands in for Copilot's editor, down to its three-line minimum. -->
-      <p
-        class="min-h-[calc(1.5em*3+1rem)] p-2 leading-[1.5] whitespace-pre-wrap"
+      <div
+        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] whitespace-pre-wrap"
       >
-        <span
-          v-for="(token, index) in tokens"
-          :key="index"
-          :class="token.type && `k-copilot-token-${token.type}`"
-          >{{ token.text }}</span
-        >
-      </p>
+        <template v-for="(token, index) in tokens" :key="index">
+          <span v-if="token.type === 'skill-trigger'" class="relative"
+            >{{ token.text
+            }}<PanelDropdown
+              v-if="dropdown?.under === 'skills'"
+              v-bind="dropdownProps" /></span
+          ><span
+            v-else
+            :class="token.type && `k-copilot-token-${token.type}`"
+            >{{ token.text }}</span
+          >
+        </template>
+      </div>
 
       <details
         v-if="preview !== undefined"
         :open="previewOpen"
-        class="group mx-2 mb-2 rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
+        class="group mx-(--spacing-2) mb-(--spacing-2) rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
       >
         <summary
           class="flex cursor-pointer list-none items-center gap-0.5 rounded-[var(--rounded)] p-1.5 [&::-webkit-details-marker]:hidden"
@@ -104,13 +123,15 @@ const dropdownSpace = computed(() => {
           />
           <span>Preview</span>
         </summary>
-        <div class="px-1.5 py-2">
+        <div class="px-1.5 py-(--spacing-2)">
           <p class="leading-[1.375] whitespace-pre-wrap">{{ preview }}</p>
         </div>
       </details>
 
-      <div class="flex items-center justify-between px-2 pb-2">
-        <div class="flex flex-wrap items-center gap-1">
+      <div
+        class="flex items-center justify-between px-(--spacing-2) pb-(--spacing-2)"
+      >
+        <div class="flex flex-wrap items-center gap-(--spacing-1)">
           <k-button
             icon="attachment"
             :badge="files ? { theme: 'notice', text: files } : undefined"
@@ -126,7 +147,7 @@ const dropdownSpace = computed(() => {
           </span>
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex gap-(--spacing-2)">
           <k-select-input
             v-if="selection"
             :options="INSERT_OPTIONS"

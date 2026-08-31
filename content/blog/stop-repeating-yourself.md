@@ -11,7 +11,26 @@ On your own, it's a small thing you stop noticing. On a team it's a quieter kind
 
 Skills let you write that _how_ down once, so nobody has to remember it again.
 
-![Prompt editor showing a green @skill://brand-voice token and the open skill typeahead dropdown](/img/kirby-copilot-skills.png)
+:::panel-preview
+::panel-prompt-dialog
+---
+selection: true
+prompt: |-
+  Write a product tagline for our new mixer.
+  @skill://brand-voice @skill://
+dropdown:
+  under: skills
+  selected: 1
+  items:
+    - text: Brand Voice
+      info: brand-voice
+    - text: Concise
+      info: concise
+    - text: Bilingual Output
+      info: de-en-bilingual
+---
+::
+:::
 
 ## Define It Once
 
