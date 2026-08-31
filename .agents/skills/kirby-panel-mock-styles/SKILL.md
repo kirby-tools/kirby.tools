@@ -35,7 +35,7 @@ A rule earns a block when it
 
 Scope it under `.panel-preview`: Kirby's own selectors are rewritten to that prefix, and the rule should reach nothing outside a preview. Keep the mock's hook class (`.panel-section-body`, `.panel-audit-result`) on the element so sibling mocks can target it.
 
-A mock renders into `.panel-preview-stage`, which stands in for whatever the real Panel supplies around it – the portal a dialog centers in, the view a header sits above, the viewport a container query measures. A rule about those surroundings reaches the stage from the mock's own block: `.panel-preview .panel-preview-stage:has(> .panel-dialog)`. A container query names `panel-stage`, because Kirby's dialogs are containers too and an unnamed query measures whichever one is nearest.
+A mock renders into `.panel-preview-stage`, which stands in for whatever the real Panel supplies around it – the portal a dialog centers in, the view a header sits above, the viewport a container query measures. A rule about those surroundings reaches the stage from the mock's own block: `.panel-preview .panel-preview-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
 
 A block that departs from Kirby names what Kirby does and why the mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a mock cropped to the header alone would sit off-center.
 

@@ -26,8 +26,7 @@ const RATING_COLOR_MAP: Record<Rating, string> = {
   feedback: "gray",
 };
 
-// Remove aggressive exclamation mark at the end of the text.
-const toned = (text: string) => text.replace(/!$/, ".");
+const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 
 const groups = computed(() =>
   Object.keys(RATING_LABEL)
@@ -80,7 +79,7 @@ const groups = computed(() =>
               backgroundColor: `var(--color-${RATING_COLOR_MAP[group.rating]}-600)`,
             }"
           />
-          <div v-html="toned(item.text)" />
+          <div v-html="replaceTrailingExclamation(item.text)" />
         </div>
 
         <hr v-if="index < groups.length - 1" class="my-(--spacing-4)" />

@@ -11,8 +11,8 @@ defineProps<{
   <k-section :label="label">
     <template v-if="options" #options>
       <div class="flex items-center gap-(--spacing-2)">
-        <!-- The size and variant Kirby's own `#options` fallback passes, ahead
-             of `v-bind` so a figure can still override them. -->
+        <!-- The size and variant that Kirby's own `#options` fallback passes,
+             ahead of `v-bind` so a figure can override them. -->
         <k-button-group
           v-for="(group, index) in options"
           :key="index"

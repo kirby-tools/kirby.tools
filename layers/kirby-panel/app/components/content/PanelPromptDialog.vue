@@ -213,8 +213,7 @@ const dropdownSpace = computed(() => {
 }
 
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
-   toolbar wrap. The mock's dialog is as wide as the stage, not the viewport, so
-   the same 40rem is asked of the container. The figure's own subject stays. */
+   toolbar wrap. The one whose dropdown a figure opens stays. */
 @container panel-stage (max-width: 40rem) {
   .panel-prompt-dialog .panel-prompt-tool:not(:has(.panel-dropdown)) {
     display: none;

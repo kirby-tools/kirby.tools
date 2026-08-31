@@ -55,8 +55,7 @@ withDefaults(
 .panel-preview {
   display: block;
   /* Kirby's sheet stacks a Panel against the viewport – `.k-header` alone sits
-     at `z-index: 300`. Without a stacking context here those numbers compete
-     with the docs site's own, and the mock paints over the navigation. */
+     at `z-index: 300`, which outranks the docs navigation. */
   isolation: isolate;
   overflow: hidden;
   border-radius: var(--ui-radius);
@@ -72,8 +71,7 @@ withDefaults(
 
 /* Kirby's view buttons, `k-table` and the mock's own view-header rule query a
    container. In the Panel that is the view; here it is a box inside a page, so
-   the stage establishes one. It carries a name because Kirby's dialogs are
-   containers too, and a mock inside one would otherwise measure the dialog. */
+   the stage establishes one. */
 .panel-preview .panel-preview-stage {
   container-type: inline-size;
   container-name: panel-stage;
