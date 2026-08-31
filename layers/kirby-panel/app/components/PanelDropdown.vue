@@ -24,10 +24,10 @@ defineProps<{
         :class="index === selected && 'panel-dropdown-item-selected'"
       >
         <span class="inline-flex w-full items-center gap-(--spacing-3)">
-          <span class="truncate">{{ item.text }}</span>
+          <span class="truncate leading-[1.5]">{{ item.text }}</span>
           <span
             v-if="item.info"
-            class="truncate text-[length:var(--text-xs)] text-[color:var(--color-text-dimmed)]"
+            class="truncate text-[length:var(--text-xs)]/[1.5] text-[color:var(--color-text-dimmed)]"
             >{{ item.info }}</span
           >
         </span>
