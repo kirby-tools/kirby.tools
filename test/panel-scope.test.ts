@@ -6,6 +6,7 @@ import { join } from "node:path";
 import postcss from "postcss";
 import { describe, expect, it } from "vitest";
 import {
+  CSS_LAYER,
   SCOPE,
   scopeStylesheet,
 } from "../layers/kirby-panel/modules/kirby-panel/vite";
@@ -19,6 +20,13 @@ describe("scopeStylesheet", () => {
       expect(selectors.filter((s) => !s.includes(SCOPE))).toEqual([]);
     },
   );
+
+  it("layers the sheet below the utilities a mock puts on its own markup", () => {
+    const css = scope("styles/reset.css");
+
+    expect(css).toContain(`@layer theme, base, components, ${CSS_LAYER},`);
+    expect(css).toContain(`@layer ${CSS_LAYER} {`);
+  });
 
   it("inlines the imports Vite would otherwise resolve on its own", () => {
     const css = scope("styles/config.css");

@@ -5,6 +5,12 @@ import { dirname, resolve } from "node:path";
 import postcss from "postcss";
 
 export const SCOPE = ".panel-preview";
+export const CSS_LAYER = "kirby";
+
+// The order `app/assets/css/main.css` declares as well: a layer takes its place
+// from the first statement that names it, and a Panel style block reaches the
+// document ahead of the site's own stylesheet.
+const CSS_LAYER_ORDER = `@layer theme, base, components, ${CSS_LAYER}, utilities;`;
 
 const KIRBY_ALIAS = /(["'])@\//g;
 
@@ -98,16 +104,13 @@ export function scopeStylesheet(css: string, file: string) {
     rule.selectors = rule.selectors.flatMap((selector) => {
       const scoped = scopeSelector(selector);
 
-      // `auto` follows the site's own `.dark`, resolved in CSS so the mock
-      // survives SSR. It extends Kirby's rule rather than restating it, because
-      // the switch redefines the whole `--color-l-*` ramp.
       return scoped.includes(PANEL_DARK)
         ? [scoped, `.dark ${scoped.replace(PANEL_DARK, PANEL_AUTO)}`]
         : [scoped];
     });
   });
 
-  return root.toString();
+  return `${CSS_LAYER_ORDER}\n@layer ${CSS_LAYER} {\n${root.toString()}\n}\n`;
 }
 
 /**

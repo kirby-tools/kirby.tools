@@ -1,3 +1,5 @@
+@layer theme, base, components, kirby, utilities;
+
 @import "tailwindcss";
 @import "@nuxt/ui";
 

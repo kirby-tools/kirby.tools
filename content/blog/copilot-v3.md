@@ -45,7 +45,28 @@ You can also create your own templates, stored in your browser's local storage. 
 
 All templates are available in English, German, French, and Dutch.
 
-![The prompt templates dropdown showing built-in templates](/img/kirby-copilot-templates-dropdown.png)
+:::panel-preview
+::panel-prompt-dialog
+---
+replace: true
+prompt: |-
+  Fix all spelling and grammar errors in the given text. IMPORTANT: Preserve all formatting (bold, italic, links, code, headings, lists, etc.) exactly as in the original. Only output the corrected text, nothing else.
+dropdown:
+  under: templates
+  items:
+    - icon: add
+      text: Save as template
+    - icon: settings
+      text: Edit templates
+    - "-"
+    - text: Fix Grammar & Spelling
+    - text: Make Concise
+    - text: Simplify
+    - text: Extend
+    - text: Summarize
+---
+::
+:::
 
 [Explore prompt templates](/docs/copilot/prompt-dialog/templates)
 
