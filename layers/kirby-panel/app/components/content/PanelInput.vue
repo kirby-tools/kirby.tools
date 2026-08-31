@@ -1,6 +1,8 @@
 <script setup lang="ts">
-// Kirby's `k-textarea-input` and `k-writer-input` mount an editor a mock has
-// no content for.
+// `k-writer-input` mounts a ProseMirror editor a mock has no content for, and
+// `k-textarea-input` pulls in `k-textarea-toolbar`, which reads `window.panel`.
+// Neither is registered in `components.ts`, so both are mocked here from
+// Kirby's own markup and styles.
 import "#kirby-panel/components/Forms/Input/TextareaInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Input/WriterInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&lang.css";
@@ -27,8 +29,6 @@ withDefaults(
         :data-inline="false"
         class="k-writer-toolbar"
       />
-      <!-- ProseMirror keeps an empty paragraph in an empty document, which is
-           what gives the editor its one-line height. -->
       <div class="ProseMirror">
         <p v-if="value">
           {{ value

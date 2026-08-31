@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// Kirby's `k-dropdown` is a `<dialog>` its script mounts and positions with
-// inline `top` and `left`. A mock runs no script, so the class goes on a plain
-// element and the style block below places it.
 interface DropdownItem extends Record<string, unknown> {
   text?: string;
   info?: string;
@@ -15,6 +12,9 @@ defineProps<{
 </script>
 
 <template>
+  <!-- Kirby's `k-dropdown` is a `<dialog>` its script mounts and positions with
+       inline `top` and `left`. A mock runs no script, so the class goes on a
+       plain element and the style block below places it. -->
   <div class="panel-dropdown k-dropdown top-full" :data-align-x="align">
     <template v-for="(item, index) in items" :key="index">
       <hr v-if="item === '-'" />

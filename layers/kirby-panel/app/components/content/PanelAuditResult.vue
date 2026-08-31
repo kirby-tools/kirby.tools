@@ -87,8 +87,8 @@ const groups = computed(() =>
 </template>
 
 <style>
-/* The dialog leaves the rule at its default; only the section, which sits on a
-   box of its own, darkens it. */
+/* The dialog leaves the rule at its default. Inside a section the result sits
+   on a passive box, whose grey swallows it, so only there is it darkened. */
 .panel-section-body .panel-audit-result hr {
   background: light-dark(var(--color-gray-350), var(--color-border));
 }

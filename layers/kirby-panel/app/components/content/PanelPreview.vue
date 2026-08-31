@@ -3,10 +3,11 @@
    which rules win. */
 
 // Import here rather than in the layer's plugin, so only pages that show a mock
-// carry Kirby's ~56 KB of tokens and reset.
+// carry Kirby's stylesheet.
 import "#kirby-panel/styles/config.css";
 import "#kirby-panel/styles/reset.css";
 import "#kirby-panel/components/View/Panel.vue?vue&type=style&index=0&lang.css";
+// Declares the `--item-*` tokens `k-choice-input` and `k-empty` read.
 import "#kirby-panel/components/Collection/Item.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/styles/utilities.css";
 import { extensions } from "#panel-preview/extensions";
@@ -54,7 +55,7 @@ withDefaults(
 .panel-preview {
   display: block;
   overflow: hidden;
-  border-radius: var(--ui-radius, 0.375rem);
+  border-radius: var(--ui-radius);
   border: 1px solid var(--ui-border);
 }
 
@@ -65,17 +66,22 @@ withDefaults(
   color-scheme: light;
 }
 
-/* Kirby sizes the view header and the view button row against a container it
-   never establishes itself, because in the Panel that is the viewport. Here the
-   mock is a box inside a page, so the box answers those queries. */
+/* Kirby's view buttons, `k-table` and the mock's own view-header rule query a
+   container. In the Panel that is the view; here it is a box inside a page, so
+   the stage establishes one. */
 .panel-preview .panel-preview-stage {
   container-type: inline-size;
   padding: var(--spacing-4);
   background: var(--panel-color-back);
 }
 
-/* px rather than Tailwind utilities: Kirby's sheet redefines `--spacing-*` and
-   `--text-*` for everything under `.panel-preview`. */
+/* Kirby's sheet redeclares `--font-sans` on `.panel-preview`, so the chrome
+   inside it would read the Panel's system stack. This carries the docs font
+   past the shadowing. */
+:root {
+  --panel-preview-chrome-font: var(--font-sans);
+}
+
 .panel-preview-chrome {
   --icon-size: 14px;
 
@@ -86,6 +92,7 @@ withDefaults(
   background: var(--ui-bg);
   padding: 6px 10px;
   color: var(--ui-text-muted);
+  font-family: var(--panel-preview-chrome-font);
   font-size: 12px;
 }
 
