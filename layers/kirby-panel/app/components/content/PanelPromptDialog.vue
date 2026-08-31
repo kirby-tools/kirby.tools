@@ -4,8 +4,6 @@ const props = defineProps<{
   preview?: string;
   previewOpen?: boolean;
   files?: number;
-  /** Whether a stored prompt exists, which is what shows the history button. */
-  history?: boolean;
   /** `true` for the field picker, a number to badge it with a selection count. */
   fields?: number | boolean;
   /**
@@ -62,12 +60,11 @@ const tokens = computed(() => {
   return parts;
 });
 
+// The plugin hides the history button until a prompt is stored, so it belongs
+// only to a figure that opens its dropdown.
 const tools = computed(() =>
   TOOLS.filter(
-    (tool) =>
-      tool.under !== "history" ||
-      props.history ||
-      props.dropdown?.under === "history",
+    (tool) => tool.under !== "history" || props.dropdown?.under === "history",
   ),
 );
 
