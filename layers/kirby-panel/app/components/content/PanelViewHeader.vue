@@ -50,7 +50,7 @@ const buttons = computed(() =>
   }
 }
 
-@container (min-width: 40rem) {
+@container panel-stage (min-width: 40rem) {
   .panel-preview .panel-view-header {
     flex-wrap: nowrap;
   }
