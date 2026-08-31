@@ -11,8 +11,8 @@ const props = defineProps<{
   replace?: boolean;
   /**
    * The one dropdown the mock shows open, under the toolbar button named by
-   * `under`. MDC only resolves a slot on a top-level component, so a dropdown
-   * cannot be nested into this one from markdown.
+   * `under`. A prop rather than a slot, because MDC resolves a named slot only
+   * on a top-level component.
    */
   dropdown?: Record<string, unknown> & {
     under: "placeholders" | "templates" | "history" | "fields";
@@ -48,10 +48,9 @@ const dropdownProps = computed(() => {
   return rest;
 });
 
-// The dropdown floats over whatever the Panel puts below the dialog, which a
-// mock cropped to the dialog does not have. The dialog reserves the room
-// instead, so the figure does not clip the dropdown away.
-const reserve = computed(() => {
+// Room for the dropdown, which floats over the view below the dialog in the
+// Panel and would be clipped by a figure cropped to the dialog.
+const dropdownSpace = computed(() => {
   if (!props.dropdown) return undefined;
 
   const items = (props.dropdown.items ?? []) as unknown[];
@@ -65,7 +64,7 @@ const reserve = computed(() => {
 </script>
 
 <template>
-  <PanelDialog size="large" class="panel-prompt-dialog" :style="reserve">
+  <PanelDialog size="large" class="panel-prompt-dialog" :style="dropdownSpace">
     <div class="relative rounded-[var(--rounded)]">
       <!-- Copilot's prompt editor, whose ProseMirror carries the padding. -->
       <p
@@ -134,7 +133,7 @@ const reserve = computed(() => {
                   : undefined
               "
             />
-            <PanelDropdown
+            <PanelPicklistDropdown
               v-if="dropdown?.under === 'fields'"
               v-bind="dropdownProps"
               align="end"
