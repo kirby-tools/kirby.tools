@@ -32,7 +32,7 @@ const INSERT_OPTIONS = [
   { value: "append", text: "Append" },
 ];
 
-const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)/g;
+const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)|(@skill:\/\/[\w-]+)/g;
 
 const tokens = computed(() => {
   const parts: { text: string; type?: string }[] = [];
@@ -42,7 +42,10 @@ const tokens = computed(() => {
     if (match.index > index) {
       parts.push({ text: props.prompt!.slice(index, match.index) });
     }
-    parts.push({ text: match[0], type: match[1] ? "placeholder" : "page-ref" });
+    parts.push({
+      text: match[0],
+      type: match[1] ? "placeholder" : match[2] ? "page-ref" : "skill-ref",
+    });
     index = match.index + match[0].length;
   }
 
@@ -168,8 +171,7 @@ const dropdownSpace = computed(() => {
   overflow: visible;
 }
 
-.panel-prompt-dialog
-  :is(.k-copilot-token-placeholder, .k-copilot-token-page-ref) {
+.panel-prompt-dialog [class*="k-copilot-token-"] {
   border-radius: var(--rounded-xs);
   padding-inline: var(--spacing-1);
 }
@@ -182,5 +184,10 @@ const dropdownSpace = computed(() => {
 .panel-prompt-dialog .k-copilot-token-page-ref {
   color: light-dark(var(--color-blue-800), var(--color-blue-900));
   background: var(--color-blue-300);
+}
+
+.panel-prompt-dialog .k-copilot-token-skill-ref {
+  color: light-dark(var(--color-green-800), var(--color-green-900));
+  background: var(--color-green-300);
 }
 </style>

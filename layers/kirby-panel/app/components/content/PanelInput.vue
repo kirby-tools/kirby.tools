@@ -9,6 +9,8 @@ withDefaults(
   defineProps<{
     type?: "textarea" | "writer";
     value?: string;
+    /** Copilot's ghost text, which trails the value inside the writer. */
+    suggestion?: string;
     placeholder?: string;
     buttons?: (Record<string, unknown> | string)[];
   }>(),
@@ -28,7 +30,12 @@ withDefaults(
       <!-- ProseMirror keeps an empty paragraph in an empty document, which is
            what gives the editor its one-line height. -->
       <div class="ProseMirror">
-        <p v-if="value">{{ value }}</p>
+        <p v-if="value">
+          {{ value
+          }}<span v-if="suggestion" class="k-copilot-suggestion-text">{{
+            suggestion
+          }}</span>
+        </p>
         <p v-else><br /></p>
       </div>
     </div>
@@ -50,3 +57,11 @@ withDefaults(
     </div>
   </k-input>
 </template>
+
+<style>
+/* Copilot ships this as a plain stylesheet rather than a component style block,
+   so a mock cannot import it. */
+.k-copilot-suggestion-text {
+  color: light-dark(var(--color-gray-600), var(--color-gray-500));
+}
+</style>

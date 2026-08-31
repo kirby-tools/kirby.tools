@@ -2,15 +2,15 @@ import { defineNuxtPlugin } from "#app";
 import safeHtml from "#kirby-panel/config/safeHtml";
 import array from "#kirby-panel/helpers/array";
 import color from "#kirby-panel/helpers/color";
+import field from "#kirby-panel/helpers/field";
 import isComponent from "#kirby-panel/helpers/isComponent";
 import object from "#kirby-panel/helpers/object";
 import ratio from "#kirby-panel/helpers/ratio";
-import string from "#kirby-panel/helpers/string";
-import translationsJson from "../kirby/i18n/translations/en.json";
+import string, { escapeHTML } from "#kirby-panel/helpers/string";
+import { HtmlString } from "#kirby-panel/panel/html";
 import { components } from "./components";
 import { extensions } from "./extensions";
-
-const translations: Record<string, string> = translationsJson;
+import { translate } from "./translate";
 
 /** What Kirby's components read off `$panel` while rendering. */
 const PANEL = {
@@ -27,6 +27,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   config.globalProperties.$helper = {
     array,
     color,
+    field,
     object,
     ratio,
     string,
@@ -36,6 +37,21 @@ export default defineNuxtPlugin((nuxtApp) => {
   };
   config.globalProperties.$t = translate;
   nuxtApp.vueApp.use(safeHtml);
+
+  // Kirby's own directive writes on `mounted`, so whatever it carries is missing
+  // from the server-rendered HTML until the page hydrates.
+  const safeHtmlDirective = nuxtApp.vueApp.directive("safe-html")!;
+  nuxtApp.vueApp.directive("safe-html", {
+    ...safeHtmlDirective,
+    getSSRProps: ({ value }) => ({
+      innerHTML:
+        value instanceof HtmlString
+          ? value.toString()
+          : value == null
+            ? ""
+            : escapeHTML(value),
+    }),
+  });
 
   // Kirby's own `v-direction` reads `window.panel` and brings no SSR props.
   nuxtApp.vueApp.directive("direction", {
@@ -49,20 +65,3 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component(name, component);
   }
 });
-
-/**
- * Resolves a Panel translation key through Kirby's own `template()`, so
- * placeholders like `{ min }` behave as they do in the Panel.
- */
-function translate(
-  key: string,
-  data?: Record<string, string>,
-  fallback?: string,
-) {
-  if (typeof data === "string") {
-    fallback = data;
-    data = undefined;
-  }
-
-  return string.template(translations[key] ?? fallback ?? key, data);
-}
