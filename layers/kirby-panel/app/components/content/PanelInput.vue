@@ -59,8 +59,6 @@ withDefaults(
 </template>
 
 <style>
-/* Copilot ships this as a plain stylesheet rather than a component style block,
-   so a mock cannot import it. */
 .k-copilot-suggestion-text {
   color: light-dark(var(--color-gray-600), var(--color-gray-500));
 }
