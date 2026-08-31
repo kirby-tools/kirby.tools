@@ -1,20 +1,33 @@
 # Prettier's markdown parser reads a component's `---` props block as a
 # thematic break plus a list, de-indents the entries to column 0 and drops the
 # nesting a mock's `buttons` key relies on.
+content/1.docs/1.copilot/1.getting-started/2.installation.md
 content/1.docs/1.copilot/2.configuration/2.local.md
 content/1.docs/1.copilot/3.usage/1.view-button.md
 content/1.docs/1.copilot/3.usage/2.toolbar-buttons.md
+content/1.docs/1.copilot/3.usage/3.inline-suggestions.md
 content/1.docs/1.copilot/3.usage/4.section.md
 content/1.docs/1.copilot/4.prompt-dialog/1.placeholders.md
 content/1.docs/1.copilot/4.prompt-dialog/2.templates.md
 content/1.docs/1.copilot/4.prompt-dialog/4.page-references.md
+content/1.docs/1.copilot/4.prompt-dialog/5.skills.md
+content/1.docs/2.content-translator/1.getting-started/1.index.md
+content/1.docs/2.content-translator/1.getting-started/2.installation.md
 content/1.docs/2.content-translator/2.configuration/2.local.md
+content/1.docs/2.content-translator/3.providers/2.ai-translation.md
+content/1.docs/2.content-translator/7.cli-automation/4.janitor.md
+content/1.docs/3.seo-audit/1.getting-started/1.index.md
+content/1.docs/3.seo-audit/1.getting-started/2.installation.md
 content/1.docs/3.seo-audit/2.configuration/2.local.md
 content/1.docs/4.live-preview/1.index.md
 content/2.copilot/changelog/v2.5.0.md
 content/2.copilot/changelog/v2.7.0.md
 content/2.copilot/changelog/v2.9.0.md
 content/2.copilot/changelog/v3.5.0.md
+content/2.copilot/changelog/v3.7.0.md
 content/3.content-translator/changelog/v2.3.0.md
+content/3.content-translator/changelog/v3.9.0.md
+content/4.seo-audit/changelog/v3.0.0.md
 content/5.live-preview/changelog/v2.3.0.md
 content/blog/copilot-v3.md
+content/blog/stop-repeating-yourself.md
