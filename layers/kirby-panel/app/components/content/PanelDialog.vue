@@ -5,6 +5,7 @@ import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.c
 import "#kirby-panel/components/Dialogs/Elements/Body.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Buttons.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Footer.vue?vue&type=style&index=0&lang.css";
+import "#kirby-panel/components/Layout/Overlay.vue?vue&type=style&index=0&lang.css";
 
 withDefaults(
   defineProps<{
@@ -40,5 +41,6 @@ withDefaults(
 .panel-preview .panel-preview-stage:has(> .panel-dialog) {
   display: flex;
   justify-content: center;
+  background: var(--overlay-color-back);
 }
 </style>
