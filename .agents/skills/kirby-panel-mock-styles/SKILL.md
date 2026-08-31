@@ -1,6 +1,6 @@
 ---
 name: kirby-panel-mock-styles
-description: Where styling goes in the Kirby Panel mock components under `layers/kirby-panel/app/components/` – Tailwind utility versus `<style>` block, and which tokens to spend. Use when adding a `Panel*.vue` mock, changing one's appearance, or deciding where a new rule belongs. Don't use for the docs site's own components outside that path.
+description: Where a style rule goes in the Kirby Panel mocks under `layers/kirby-panel/app/components/`. Use when styling a `Panel*.vue` mock, or when a mock has to line up with a plugin's own prefixed Panel CSS. Don't use for the docs site's own components under `app/components/`.
 ---
 
 # Panel Mock Styling
@@ -21,8 +21,6 @@ text-[color:var(--color-text-dimmed)]
 
 Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the `.panel-preview` chrome, the figure's own page margin – take the plain utility.
 
-Kirby declares no bare `--spacing`, which is the variable Tailwind v4 computes its scale from, so utilities resolve identically inside and outside `.panel-preview`.
-
 ## `<style>`
 
 A rule earns a block when it
@@ -32,6 +30,14 @@ A rule earns a block when it
 - sets a custom property – `--dialog-padding`, `--button-color-back`
 
 Scope it under `.panel-preview` where it competes with Kirby's own rule, and keep the mock's hook class (`.panel-section-body`, `.panel-audit-result`) on the element so sibling mocks can target it.
+
+A block that departs from Kirby names what Kirby does and why the mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a mock cropped to the header alone would sit off-center.
+
+## The Preview Shell
+
+`.panel-preview` wraps `.panel-preview-chrome` and `.panel-preview-stage`, and a mock renders into the stage. The stage stands in for whatever the real Panel supplies around a mock – the portal a dialog centers in, the view a header sits above, the viewport a container query measures – so a rule about those surroundings reaches the stage from the mock's own block: `.panel-preview .panel-preview-stage:has(> .panel-dialog)`.
+
+Kirby's sheet is scoped to `.panel-preview`, and the chrome sits inside that scope. Tailwind's spacing utilities survive it, because `gap-2` computes from the bare `--spacing` that Kirby never declares. Named tokens do not: Kirby redeclares `--text-*`, `--color-gray-*`, `--shadow-*` and `--font-sans`, so `text-3xl` renders 1.75rem inside the preview against 1.875rem outside it. The chrome takes raw values.
 
 ## Borrowed Kirby Classes
 
