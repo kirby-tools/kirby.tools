@@ -89,7 +89,9 @@ const dropdownSpace = computed(() => {
   const height = `${rows} * var(--height-sm) + ${separators} * (1rem + 1px) + 2 * var(--dropdown-padding)`;
 
   if (dropdown.under !== "skills") {
-    return { marginBottom: `calc(${height} + var(--spacing-4))` };
+    return {
+      marginBottom: `calc(min(${height}, var(--panel-dropdown-cap)) + var(--spacing-4))`,
+    };
   }
 
   // The typeahead hangs from the editor rather than the toolbar, so the prompt
@@ -105,7 +107,7 @@ const dropdownSpace = computed(() => {
   <PanelDialog size="large" class="panel-prompt-dialog" :style="dropdownSpace">
     <div class="relative rounded-[var(--rounded)]">
       <div
-        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] whitespace-pre-wrap"
+        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap"
       >
         <template v-for="(token, index) in tokens" :key="index">
           <span v-if="token.type === 'skill-trigger'" class="relative"
@@ -156,7 +158,7 @@ const dropdownSpace = computed(() => {
             <PanelDropdown
               v-if="dropdown?.under === tool.under"
               v-bind="dropdownProps"
-              class="max-w-[30rem] min-w-[8rem]"
+              class="max-h-[var(--panel-dropdown-cap)] max-w-[30rem] min-w-[8rem] overflow-y-auto"
             />
           </span>
         </div>

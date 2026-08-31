@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <div class="panel-view-button">
     <k-view-button v-bind="$attrs" dropdown />
-    <PanelDropdown :items="items" />
+    <PanelDropdown :items="items" align="end" />
   </div>
 </template>
 

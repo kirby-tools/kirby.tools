@@ -43,7 +43,7 @@ const groups = computed(() =>
     </k-text>
 
     <k-text
-      class="pb-(--spacing-2) [&>div+div]:mt-(--spacing-4)"
+      class="pb-(--spacing-2) [&>div+div]:mt-[var(--spacing-4)]"
       :style="{
         '--link-color': 'var(--color-text)',
         '--link-color-hover':

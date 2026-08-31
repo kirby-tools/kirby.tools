@@ -22,7 +22,12 @@ withDefaults(
 
 <template>
   <k-input :type="type">
-    <div v-if="type === 'writer'" class="k-writer k-writer-input">
+    <div
+      v-if="type === 'writer'"
+      class="k-writer k-writer-input"
+      :data-placeholder="placeholder"
+      :data-empty="!value"
+    >
       <k-toolbar
         v-if="buttons"
         :buttons="buttons"

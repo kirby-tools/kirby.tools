@@ -37,6 +37,15 @@ defineProps<{
 </template>
 
 <style>
+/* The height Copilot's `ContentDropdown` caps its body at, borrowed from
+   Kirby's own `PicklistDropdown`: nine and a half rows, so the tenth is
+   visibly cut and reads as scrollable. */
+.panel-preview {
+  --panel-dropdown-cap: calc(
+    var(--button-height) * 9.5 + 2px * 9 + var(--dropdown-padding)
+  );
+}
+
 /* Kirby's script measures `left` and leaves the `end` alignment itself to a
    `-100%` translation. The mock has no script, so `left` comes off the trigger
    the dropdown follows in flow. */
