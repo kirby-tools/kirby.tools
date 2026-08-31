@@ -26,8 +26,8 @@ dropdown:
       info: brand-voice
     - text: Concise
       info: concise
-    - text: Bilingual Output
-      info: de-en-bilingual
+    - text: Formal Address
+      info: formal-address
 ---
 ::
 :::
@@ -41,7 +41,7 @@ A skill is a small, named set of instructions you keep in your Kirby config. It 
     [
         'id' => 'brand-voice',
         'label' => 'Brand Voice',
-        'instructions' => 'Write in a warm, conversational tone. Avoid corporate jargon. Prefer short sentences.'
+        'instructions' => 'Write in a casual, direct voice. Short sentences. Prefer concrete nouns over abstract ones. Avoid marketing jargon such as leverage, empower or best-in-class. Address the reader as you.'
     ]
 ]
 ```
