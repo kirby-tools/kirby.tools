@@ -21,9 +21,9 @@ text-[color:var(--color-text-dimmed)]
 
 Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the figure's own page margin – take the plain utility.
 
-A class copied from a plugin, so the two stay in step, is written to compile on both sides. kirbyup runs UnoCSS `presetWind3`, which parses neither the `(--var)` shorthand nor a prefixed variant, so a mirrored class takes `[var(--spacing-4)]` and puts the plugin's prefix on the utility alone: `[&>div+div]:mt-[var(--spacing-4)]` in the mock, `[&>div+div]:ksr-mt-[var(--spacing-4)]` in the plugin.
+A class mirrored from a plugin compiles on both sides. kirbyup's UnoCSS `presetWind3` parses neither the `(--var)` shorthand nor a prefixed variant, so the token takes its bracket form and the prefix goes on the utility alone: `[&>div+div]:mt-[var(--spacing-4)]` here, `[&>div+div]:ksr-mt-[var(--spacing-4)]` there.
 
-`space-y-*` is the one class that must not be mirrored: Tailwind v4 compiles it to `:not(:last-child)` and Wind3 to `> :not([hidden]) ~ :not([hidden])`. The same name leaves the last child unstyled on one side only, so write the child selector out.
+Spell a child selector out where Tailwind offers `space-y-*`: v4 compiles that name to `:not(:last-child)` and Wind3 to `> :not([hidden]) ~ :not([hidden])`, so it leaves the last child to Kirby on one side only.
 
 ## `<style>`
 
@@ -39,15 +39,9 @@ A mock renders into `.panel-preview-stage`, which stands in for whatever the rea
 
 A block that departs from Kirby names what Kirby does and why the mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a mock cropped to the header alone would sit off-center.
 
-## Checking a Mock Against the Real Thing
+## Checking a Mock
 
-Three sources, and each answers one kind of question:
-
-- **Plugin markup** – the plugin's playground, running. `pnpm dev` in the plugin repo, then measure computed styles in Chrome.
-- **Kirby's CSS** – the playground too. It runs Kirby 5, which is near enough.
-- **Kirby's templates, props and defaults** – `layers/kirby-panel/kirby` only. This is where 5 and 6 diverge, and the playground answers confidently and wrongly: Kirby 5 opens a view-button dropdown at `align-x="start"`, Kirby 6 at `end`.
-
-Measure the property that fails, not one next to it. `scrollHeight > clientHeight` means the content overflows; it clips only where `overflow` is `hidden` or `clip` on that axis.
+A running plugin playground answers what the plugin renders and how Kirby styles it. Kirby's templates, props and defaults come from `layers/kirby-panel/kirby` instead: the playgrounds run Kirby 5 against mocks built on 6, and the templates are where the two diverge – a view-button dropdown aligns `start` in 5 and `end` in 6.
 
 ## Borrowed Kirby Classes
 

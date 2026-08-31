@@ -37,9 +37,8 @@ defineProps<{
 </template>
 
 <style>
-/* The height Copilot's `ContentDropdown` caps its body at, borrowed from
-   Kirby's own `PicklistDropdown`: nine and a half rows, so the tenth is
-   visibly cut and reads as scrollable. */
+/* Kirby's cap on `.k-picklist-input-body`, where the half row leaves the tenth
+   item visibly cut so the list reads as scrollable. */
 .panel-preview {
   --panel-dropdown-cap: calc(
     var(--button-height) * 9.5 + 2px * 9 + var(--dropdown-padding)
