@@ -32,6 +32,10 @@ _Avoid_: Theme color, brand color
 A hand-written document that teaches an AI coding agent how to work with one Plugin. Published per Product, named `kirby-<ProductId>`.
 _Avoid_: Agent doc, instructions
 
+**Mock**:
+A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation page where a screenshot would otherwise go. A Mock is a stage, not a replica: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match.
+_Avoid_: Screenshot, demo, replica
+
 **Alternate**:
 The Markdown representation of a page, published beside it and announced by a `rel="alternate"` link. It is regenerated from the stored content rather than copied from it, so it is a second rendering of the page – not the file an author wrote.
 _Avoid_: Twin, source, raw
