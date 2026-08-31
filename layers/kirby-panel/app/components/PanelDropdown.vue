@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Kirby's `k-dropdown` is a `<dialog>` its script mounts and positions with
+// inline `top` and `left`. A mock runs no script, so the class goes on a plain
+// element and the style block below places it.
 interface DropdownItem extends Record<string, unknown> {
   text?: string;
   info?: string;
@@ -6,19 +9,13 @@ interface DropdownItem extends Record<string, unknown> {
 
 defineProps<{
   items?: (DropdownItem | "-")[];
-  search?: string;
+  /** Where the dropdown hangs from its trigger, which sits before it. */
   align?: "start" | "end";
 }>();
 </script>
 
 <template>
   <div class="panel-dropdown k-dropdown" :data-align-x="align">
-    <div v-if="search !== undefined" class="panel-dropdown-search">
-      <k-input type="text" icon="search">
-        <input type="text" :placeholder="search" readonly />
-      </k-input>
-    </div>
-
     <template v-for="(item, index) in items" :key="index">
       <hr v-if="item === '-'" />
       <k-dropdown-item v-else v-bind="item">
@@ -42,17 +39,6 @@ defineProps<{
    pairs `end` with a `-100%` translation. */
 .panel-dropdown[data-align-x="end"] {
   left: 100%;
-}
-
-.panel-dropdown-search {
-  --input-color-back: var(--color-gray-850);
-  --input-color-border: transparent;
-
-  padding: var(--spacing-1) var(--spacing-1) var(--spacing-2);
-}
-
-.panel-dropdown-search input {
-  padding: var(--input-padding);
 }
 
 .panel-dropdown-item {

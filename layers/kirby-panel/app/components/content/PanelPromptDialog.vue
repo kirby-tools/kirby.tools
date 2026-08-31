@@ -3,12 +3,14 @@ const props = defineProps<{
   prompt?: string;
   preview?: string;
   previewOpen?: boolean;
-  /** Number of attached files, which the file picker carries as a badge. */
   files?: number;
   /** `true` for the field picker, a number to badge it with a selection count. */
   fields?: number | boolean;
-  /** The insert select, which Copilot shows when a toolbar passes a selection. */
-  replace?: boolean;
+  /**
+   * Text a toolbar passed along, which Copilot answers with the insert select in
+   * place of the field picker.
+   */
+  selection?: boolean;
   /**
    * The one dropdown the mock shows open, under the toolbar button named by
    * `under`. A prop rather than a slot, because MDC binds a named slot to the
@@ -24,6 +26,11 @@ const TOOLS = [
   { under: "templates", icon: "bookmark" },
   { under: "history", icon: "clock" },
 ] as const;
+
+const INSERT_OPTIONS = [
+  { value: "replace", text: "Replace" },
+  { value: "append", text: "Append" },
+];
 
 const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)/g;
 
@@ -55,12 +62,10 @@ const dropdownSpace = computed(() => {
   if (!dropdown) return undefined;
 
   // The field picker is a picklist, which brings a search field of its own.
-  const hasSearch =
-    dropdown.under === "fields" || dropdown.search !== undefined;
   const items = (dropdown.items ?? dropdown.options ?? []) as unknown[];
   const rows = items.reduce<number>(
     (total, item) => total + (item === "-" ? 0.5 : 1),
-    hasSearch ? 1.75 : 0,
+    dropdown.under === "fields" ? 1.75 : 0,
   );
 
   return { marginBottom: `calc(${rows} * var(--height) + var(--spacing-4))` };
@@ -88,7 +93,7 @@ const dropdownSpace = computed(() => {
         class="group mx-2 mb-2 rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
       >
         <summary
-          class="flex list-none items-center gap-0.5 rounded-[var(--rounded)] p-1.5 [&::-webkit-details-marker]:hidden"
+          class="flex cursor-pointer list-none items-center gap-0.5 rounded-[var(--rounded)] p-1.5 [&::-webkit-details-marker]:hidden"
         >
           <k-icon
             type="angle-dropdown"
@@ -119,14 +124,13 @@ const dropdownSpace = computed(() => {
         </div>
 
         <div class="flex gap-2">
-          <!-- Copilot renders this as a select, which Kirby underlines. -->
-          <k-button
-            v-if="replace"
-            text="Replace"
-            variant="dimmed"
-            class="underline [text-underline-offset:var(--link-underline-offset)]"
+          <k-select-input
+            v-if="selection"
+            :options="INSERT_OPTIONS"
+            value="replace"
+            class="underline underline-offset-[var(--link-underline-offset)]"
           />
-          <span v-if="fields" class="relative flex">
+          <span v-else-if="fields" class="relative flex">
             <k-button
               text="Fields"
               variant="filled"
@@ -164,17 +168,18 @@ const dropdownSpace = computed(() => {
   overflow: visible;
 }
 
-[class*="k-copilot-token-"] {
+.panel-prompt-dialog
+  :is(.k-copilot-token-placeholder, .k-copilot-token-page-ref) {
   border-radius: var(--rounded-xs);
   padding-inline: var(--spacing-1);
 }
 
-.k-copilot-token-placeholder {
+.panel-prompt-dialog .k-copilot-token-placeholder {
   color: light-dark(var(--color-purple-800), var(--color-purple-900));
   background: var(--color-purple-300);
 }
 
-.k-copilot-token-page-ref {
+.panel-prompt-dialog .k-copilot-token-page-ref {
   color: light-dark(var(--color-blue-800), var(--color-blue-900));
   background: var(--color-blue-300);
 }

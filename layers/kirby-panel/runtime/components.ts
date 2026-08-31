@@ -6,6 +6,7 @@ import CheckboxesInput from "#kirby-panel/components/Forms/Input/CheckboxesInput
 import ChoiceInput from "#kirby-panel/components/Forms/Input/ChoiceInput.vue";
 import PicklistInput from "#kirby-panel/components/Forms/Input/PicklistInput.vue";
 import SearchInput from "#kirby-panel/components/Forms/Input/SearchInput.vue";
+import SelectInput from "#kirby-panel/components/Forms/Input/SelectInput.vue";
 import StringInput from "#kirby-panel/components/Forms/Input/StringInput.vue";
 import Toolbar from "#kirby-panel/components/Forms/Toolbar/Toolbar.vue";
 import Box from "#kirby-panel/components/Layout/Box.vue";
@@ -46,6 +47,7 @@ export const components = {
   "k-picklist-input": PicklistInput,
   "k-search-input": SearchInput,
   "k-section": Section,
+  "k-select-input": SelectInput,
   "k-string-input": StringInput,
   "k-text": Text,
   "k-toolbar": Toolbar,

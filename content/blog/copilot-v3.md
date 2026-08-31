@@ -48,7 +48,7 @@ All templates are available in English, German, French, and Dutch.
 :::panel-preview
 ::panel-prompt-dialog
 ---
-replace: true
+selection: true
 prompt: |-
   Fix all spelling and grammar errors in the given text. IMPORTANT: Preserve all formatting (bold, italic, links, code, headings, lists, etc.) exactly as in the original. Only output the corrected text, nothing else.
 dropdown:

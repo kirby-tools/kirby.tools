@@ -1,8 +1,5 @@
 <script setup lang="ts">
-// Kirby's `k-dropdown` is a `<dialog>` its script opens and places, neither of
-// which a static mock can do.
-//
-// It lives in `global/`, because `k-view-buttons` resolves the `component` key
+// Lives in `global/`, because `k-view-buttons` resolves the `component` key
 // against the app the same way it does for a view button a plugin ships.
 defineOptions({ inheritAttrs: false });
 
@@ -14,29 +11,16 @@ defineProps<{
 <template>
   <div class="panel-view-button">
     <k-view-button v-bind="$attrs" dropdown />
-
-    <div class="k-dropdown">
-      <k-dropdown-item
-        v-for="(item, index) in items"
-        :key="index"
-        v-bind="item"
-      >
-        {{ item.text }}
-      </k-dropdown-item>
-    </div>
+    <PanelDropdown :items="items" />
   </div>
 </template>
 
 <style>
-.panel-view-button {
-  position: relative;
-}
-
 /* Kirby's script places the dropdown flush under the button and lets it cover
    whatever the view puts below the header. Absolute here too, so the header
    keeps the height its border-bottom belongs at. */
-.panel-view-button .k-dropdown {
-  inset-block-start: 100%;
+.panel-view-button {
+  position: relative;
 }
 
 /* The view the dropdown would cover is not part of a mock cropped to the header,
