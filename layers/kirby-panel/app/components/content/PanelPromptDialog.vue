@@ -100,7 +100,8 @@ const dropdownSpace = computed(() => {
             >{{ token.text
             }}<PanelDropdown
               v-if="dropdown?.under === 'skills'"
-              v-bind="dropdownProps" /></span
+              v-bind="dropdownProps"
+              class="max-w-[24rem] min-w-[14rem]" /></span
           ><span
             v-else
             :class="token.type && `k-copilot-token-${token.type}`"

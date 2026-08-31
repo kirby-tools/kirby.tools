@@ -15,11 +15,7 @@ defineProps<{
 </script>
 
 <template>
-  <!-- max-w-80: half the dialog, as in the Panel, so a long `info` truncates. -->
-  <div
-    class="panel-dropdown k-dropdown top-full max-w-80"
-    :data-align-x="align"
-  >
+  <div class="panel-dropdown k-dropdown top-full" :data-align-x="align">
     <template v-for="(item, index) in items" :key="index">
       <hr v-if="item === '-'" />
       <k-dropdown-item
@@ -41,8 +37,9 @@ defineProps<{
 </template>
 
 <style>
-/* Kirby resets `inset-inline-start` so that `left` stays authoritative, and
-   pairs `end` with a `-100%` translation. */
+/* Kirby's script measures `left` and leaves the `end` alignment itself to a
+   `-100%` translation. The mock has no script, so `left` comes off the trigger
+   the dropdown follows in flow. */
 .panel-dropdown[data-align-x="end"] {
   left: 100%;
 }

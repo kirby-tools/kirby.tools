@@ -9,9 +9,8 @@ defineProps<{
 </script>
 
 <template>
-  <!-- max-w-80: half the dialog, as in the Panel. -->
   <div
-    class="panel-dropdown k-dropdown k-picklist-dropdown top-full max-w-80"
+    class="panel-dropdown k-dropdown k-picklist-dropdown top-full"
     :data-align-x="align"
   >
     <k-picklist-input :options="options" :value="value" />
