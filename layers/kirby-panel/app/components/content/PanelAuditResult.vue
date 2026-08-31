@@ -92,10 +92,4 @@ const groups = computed(() =>
 .panel-section-body .panel-audit-result hr {
   background: light-dark(var(--color-gray-350), var(--color-border));
 }
-
-/* The section keeps the report and its timestamp in one block, so its own
-   rhythm stops at the report. */
-.panel-section-body > :has(.panel-audit-result) {
-  margin-bottom: 0;
-}
 </style>

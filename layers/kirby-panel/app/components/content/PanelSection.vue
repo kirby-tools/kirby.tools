@@ -19,8 +19,9 @@ defineProps<{
       </div>
     </template>
 
-    <!-- Every Kirby Tools section stacks its body on one rhythm of its own, so
-         the mock owns it rather than each block repeating it. -->
+    <!-- Kirby styles a section's header and leaves the body to whoever fills
+         it. The mock gives every body one rhythm rather than each block
+         bringing its own. -->
     <div v-if="$slots.default" class="panel-section-body space-y-(--spacing-4)">
       <slot />
     </div>
