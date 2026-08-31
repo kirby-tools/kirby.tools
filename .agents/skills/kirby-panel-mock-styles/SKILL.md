@@ -1,13 +1,17 @@
 ---
 name: kirby-panel-mock-styles
-description: Where a style rule goes in the Kirby Panel mocks under `layers/kirby-panel/app/components/`. Use when styling a `Panel*.vue` mock. Don't use for the docs site's own components under `app/components/`.
+description: Styling a Kirby Panel mock (`Panel*.vue` under `layers/kirby-panel/app/components/`): where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. Don't use for the docs site's own components under `app/components/`.
 ---
 
 # Panel Mock Styling
 
-The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Which element the rule is about decides where it lives.
+The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the mock renders, a `<style>` block for everything else.
 
 Kirby's whole sheet sits in the `kirby` cascade layer, below `utilities` (`app/assets/css/main.css`), so a utility beats any Kirby rule on the same element, whatever the specificity.
+
+## Borrowed Kirby Classes
+
+Kirby ships styling that no component exposes: `.k-button-badge` lives in the style block of `Navigation/Button.vue`. Every component in `runtime/components.ts` carries its styles into the bundle, so those classes are available on any element. Put the class on the element and add utilities for the declarations that differ, the way `PanelAuditResult.vue` does with `k-button-badge static transform-none shadow-none`.
 
 ## Tailwind
 
@@ -21,9 +25,7 @@ text-[color:var(--color-text-dimmed)]
 
 Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the figure's own page margin – take the plain utility.
 
-A class mirrored from a plugin compiles on both sides. kirbyup's UnoCSS `presetWind3` parses neither the `(--var)` shorthand nor a prefixed variant, so the token takes its bracket form and the prefix goes on the utility alone: `[&>div+div]:mt-[var(--spacing-4)]` here, `[&>div+div]:ksr-mt-[var(--spacing-4)]` there.
-
-Spell a child selector out where Tailwind offers `space-y-*`: v4 compiles that name to `:not(:last-child)` and Wind3 to `> :not([hidden]) ~ :not([hidden])`, so it leaves the last child to Kirby on one side only.
+A class mirrored from a plugin has to mean the same on both sides, and kirbyup's UnoCSS `presetWind3` disagrees with Tailwind v4 three ways: it parses neither the `(--var)` shorthand nor a prefixed variant, and it compiles `space-y-*` to `> :not([hidden]) ~ :not([hidden])` where v4 emits `:not(:last-child)`, leaving the last child to Kirby on one side only. So the token takes its bracket form, the prefix goes on the utility alone, and a child selector is spelled out: `[&>div+div]:mt-[var(--spacing-4)]` here, `[&>div+div]:ksr-mt-[var(--spacing-4)]` there.
 
 ## `<style>`
 
@@ -41,8 +43,4 @@ A block that departs from Kirby names what Kirby does and why the mock differs, 
 
 ## Checking a Mock
 
-A running plugin playground answers what the plugin renders and how Kirby styles it. Kirby's templates, props and defaults come from `layers/kirby-panel/kirby` instead: the playgrounds run Kirby 5 against mocks built on 6, and the templates are where the two diverge – a view-button dropdown aligns `start` in 5 and `end` in 6.
-
-## Borrowed Kirby Classes
-
-Kirby ships styling that no component exposes: `.k-button-badge` lives in the style block of `Navigation/Button.vue`. Every component in `runtime/components.ts` carries its styles into the bundle, so those classes are available on any element. Put the class on the element and add utilities for the declarations that differ, the way `PanelAuditResult.vue` does with `k-button-badge static transform-none shadow-none`.
+A running plugin playground is authoritative for the plugin's own markup and for Kirby's CSS. Kirby's templates, props and defaults come from `layers/kirby-panel/kirby`: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6.
