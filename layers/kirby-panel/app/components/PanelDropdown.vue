@@ -1,15 +1,12 @@
 <script setup lang="ts">
 interface DropdownItem extends Record<string, unknown> {
   text?: string;
-  /** Second, dimmed line, as the placeholder picker shows a field's value. */
   info?: string;
 }
 
 defineProps<{
   items?: (DropdownItem | "-")[];
-  /** Search field above the items, as Copilot's field picker shows it. */
   search?: string;
-  /** Where the dropdown hangs from its trigger, which sits before it. */
   align?: "start" | "end";
 }>();
 </script>

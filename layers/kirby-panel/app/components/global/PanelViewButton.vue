@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// Kirby's `k-dropdown` is a `dialog` its script opens and places, neither of
-// which a static mock can do. Restate it open instead.
+// Kirby's `k-dropdown` is a `<dialog>` its script opens and places, neither of
+// which a static mock can do.
 //
 // It lives in `global/`, because `k-view-buttons` resolves the `component` key
 // against the app the same way it does for a view button a plugin ships.

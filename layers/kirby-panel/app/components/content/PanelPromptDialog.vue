@@ -11,8 +11,8 @@ const props = defineProps<{
   replace?: boolean;
   /**
    * The one dropdown the mock shows open, under the toolbar button named by
-   * `under`. A prop rather than a slot, because MDC resolves a named slot only
-   * on a top-level component.
+   * `under`. A prop rather than a slot, because MDC binds a named slot to the
+   * outermost open component.
    */
   dropdown?: Record<string, unknown> & {
     under: "placeholders" | "templates" | "history" | "fields";
@@ -51,12 +51,16 @@ const dropdownProps = computed(() => {
 // Room for the dropdown, which floats over the view below the dialog in the
 // Panel and would be clipped by a figure cropped to the dialog.
 const dropdownSpace = computed(() => {
-  if (!props.dropdown) return undefined;
+  const dropdown = props.dropdown;
+  if (!dropdown) return undefined;
 
-  const items = (props.dropdown.items ?? []) as unknown[];
+  // The field picker is a picklist, which brings a search field of its own.
+  const hasSearch =
+    dropdown.under === "fields" || dropdown.search !== undefined;
+  const items = (dropdown.items ?? dropdown.options ?? []) as unknown[];
   const rows = items.reduce<number>(
     (total, item) => total + (item === "-" ? 0.5 : 1),
-    props.dropdown.search === undefined ? 0 : 1.75,
+    hasSearch ? 1.75 : 0,
   );
 
   return { marginBottom: `calc(${rows} * var(--height) + var(--spacing-4))` };
@@ -66,7 +70,7 @@ const dropdownSpace = computed(() => {
 <template>
   <PanelDialog size="large" class="panel-prompt-dialog" :style="dropdownSpace">
     <div class="relative rounded-[var(--rounded)]">
-      <!-- Copilot's prompt editor, whose ProseMirror carries the padding. -->
+      <!-- Stands in for Copilot's editor, down to its three-line minimum. -->
       <p
         class="min-h-[calc(1.5em*3+1rem)] p-2 leading-[1.5] whitespace-pre-wrap"
       >

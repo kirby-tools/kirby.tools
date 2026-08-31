@@ -12,7 +12,6 @@ import { extensions } from "#panel-preview/extensions";
 
 withDefaults(
   defineProps<{
-    /** `auto` follows the site's color mode, in CSS, so the mock survives SSR. */
     theme?: "light" | "dark" | "auto";
     label?: string;
   }>(),
@@ -34,7 +33,8 @@ withDefaults(
       </div>
     </div>
 
-    <!-- Kirby inlines plugin icons into the document; `k-icon` points a `<use>` at them. -->
+    <!-- Where `k-icon` resolves a plugin icon: a `<use>` pointing at a symbol
+         the Panel inlines into its own document. -->
     <svg hidden aria-hidden="true">
       <symbol
         v-for="(body, name) in extensions.icons"

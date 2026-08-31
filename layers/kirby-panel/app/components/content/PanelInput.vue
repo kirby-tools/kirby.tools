@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// Kirby's `k-textarea-input` and `k-writer-input` pull in an editor, a toolbar
-// component and a `direction` directive. Import only the style blocks they
-// carry and restate their markup below.
+// Kirby's `k-textarea-input` and `k-writer-input` mount an editor a mock has
+// no content for.
 import "#kirby-panel/components/Forms/Input/TextareaInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Input/WriterInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&lang.css";
@@ -11,7 +10,6 @@ withDefaults(
     type?: "textarea" | "writer";
     value?: string;
     placeholder?: string;
-    /** A `"|"` between two entries draws a separator, as in a blueprint. */
     buttons?: (Record<string, unknown> | string)[];
   }>(),
   { type: "textarea" },

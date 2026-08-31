@@ -1,4 +1,5 @@
 import { defineNuxtPlugin } from "#app";
+import safeHtml from "#kirby-panel/config/safeHtml";
 import array from "#kirby-panel/helpers/array";
 import color from "#kirby-panel/helpers/color";
 import isComponent from "#kirby-panel/helpers/isComponent";
@@ -32,6 +33,15 @@ export default defineNuxtPlugin((nuxtApp) => {
     isComponent: (name: string) => isComponent(name, nuxtApp.vueApp),
   };
   config.globalProperties.$t = translate;
+  nuxtApp.vueApp.use(safeHtml);
+
+  // Kirby's own `v-direction` reads `window.panel` and brings no SSR props.
+  nuxtApp.vueApp.directive("direction", {
+    getSSRProps: () => ({ dir: PANEL.direction }),
+    beforeMount: (el: HTMLElement) => {
+      el.dir = PANEL.direction;
+    },
+  });
 
   for (const [name, component] of Object.entries(components)) {
     nuxtApp.vueApp.component(name, component);

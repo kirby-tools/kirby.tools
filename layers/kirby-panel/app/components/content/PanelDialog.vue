@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// Kirby's `k-dialog` teleports into a portal the Panel owns, and Vue collects a
-// teleport's content beside the page rather than in it. Import only the style
-// blocks and restate the markup below.
+// Kirby's `k-dialog` teleports into a portal the Panel owns, which puts its
+// content beside the page rather than in the mock.
 import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Body.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Buttons.vue?vue&type=style&index=0&lang.css";

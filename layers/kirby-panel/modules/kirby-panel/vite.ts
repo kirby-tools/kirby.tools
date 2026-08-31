@@ -7,7 +7,7 @@ import postcss from "postcss";
 export const SCOPE = ".panel-preview";
 export const CSS_LAYER = "kirby";
 
-// The order `app/assets/css/main.css` declares as well: a layer takes its place
+// The same order `app/assets/css/main.css` declares: a layer takes its place
 // from the first statement that names it, and a Panel style block reaches the
 // document ahead of the site's own stylesheet.
 const CSS_LAYER_ORDER = `@layer theme, base, components, ${CSS_LAYER}, utilities;`;

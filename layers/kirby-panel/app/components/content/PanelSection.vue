@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // The header buttons are a prop rather than the named slot `k-section` offers,
-// because MDC drops a component's children once one of them opens a named slot.
+// because MDC binds a named slot to the outermost open component.
 defineProps<{
   label?: string;
   options?: Record<string, unknown>[];

@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div class="k-field">
     <header v-if="label" class="k-field-header">
-      <!-- Left out, `input` casts to `false`, which turns the label into a
+      <!-- An absent `input` casts to `false`, which turns the label into a
            heading. Kirby's own field passes it as `null`. -->
       <k-label :input="null" type="field" :title="label">{{ label }}</k-label>
     </header>

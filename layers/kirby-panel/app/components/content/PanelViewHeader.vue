@@ -6,8 +6,6 @@ const props = defineProps<{
   buttons?: (Record<string, unknown> | string)[];
 }>();
 
-// `k-view-buttons` expects what Kirby's PHP side hands it: the blueprint entry
-// resolved into `{ component, props }`.
 const buttons = computed(() =>
   (props.buttons ?? []).map((button, index) =>
     typeof button === "string"
