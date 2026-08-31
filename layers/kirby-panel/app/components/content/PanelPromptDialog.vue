@@ -4,7 +4,7 @@ const props = defineProps<{
   preview?: string;
   previewOpen?: boolean;
   files?: number;
-  /** The plugin hides the history button until a prompt has been stored. */
+  /** Whether a stored prompt exists, which is what shows the history button. */
   history?: boolean;
   /** `true` for the field picker, a number to badge it with a selection count. */
   fields?: number | boolean;

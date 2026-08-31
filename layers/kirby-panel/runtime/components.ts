@@ -50,8 +50,9 @@ import { withPlaceholder } from "./withPlaceholder";
 
 /**
  * The Panel components a mock may use, under Kirby's own names. Registering all
- * of them would pull in the ones that read `window.panel` at module scope,
- * which fails on the server; these do not, so mocks reach the initial HTML.
+ * of them would pull in the ones that read `window.panel` while rendering,
+ * which is undefined on a server; these do not, so mocks reach the initial
+ * HTML.
  */
 export const components = {
   "k-box": Box,
