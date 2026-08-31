@@ -21,6 +21,10 @@ text-[color:var(--color-text-dimmed)]
 
 Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the figure's own page margin – take the plain utility.
 
+A class copied from a plugin, so the two stay in step, is written to compile on both sides. kirbyup runs UnoCSS `presetWind3`, which parses neither the `(--var)` shorthand nor a prefixed variant, so a mirrored class takes `[var(--spacing-4)]` and puts the plugin's prefix on the utility alone: `[&>div+div]:mt-[var(--spacing-4)]` in the mock, `[&>div+div]:ksr-mt-[var(--spacing-4)]` in the plugin.
+
+`space-y-*` is the one class that must not be mirrored: Tailwind v4 compiles it to `:not(:last-child)` and Wind3 to `> :not([hidden]) ~ :not([hidden])`. The same name leaves the last child unstyled on one side only, so write the child selector out.
+
 ## `<style>`
 
 A rule earns a block when it
@@ -34,6 +38,16 @@ Scope it under `.panel-preview`: Kirby's own selectors are rewritten to that pre
 A mock renders into `.panel-preview-stage`, which stands in for whatever the real Panel supplies around it – the portal a dialog centers in, the view a header sits above, the viewport a container query measures. A rule about those surroundings reaches the stage from the mock's own block: `.panel-preview .panel-preview-stage:has(> .panel-dialog)`.
 
 A block that departs from Kirby names what Kirby does and why the mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a mock cropped to the header alone would sit off-center.
+
+## Checking a Mock Against the Real Thing
+
+Three sources, and each answers one kind of question:
+
+- **Plugin markup** – the plugin's playground, running. `pnpm dev` in the plugin repo, then measure computed styles in Chrome.
+- **Kirby's CSS** – the playground too. It runs Kirby 5, which is near enough.
+- **Kirby's templates, props and defaults** – `layers/kirby-panel/kirby` only. This is where 5 and 6 diverge, and the playground answers confidently and wrongly: Kirby 5 opens a view-button dropdown at `align-x="start"`, Kirby 6 at `end`.
+
+Measure the property that fails, not one next to it. `scrollHeight > clientHeight` means the content overflows; it clips only where `overflow` is `hidden` or `clip` on that axis.
 
 ## Borrowed Kirby Classes
 
