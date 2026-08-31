@@ -4,6 +4,8 @@ const props = defineProps<{
   preview?: string;
   previewOpen?: boolean;
   files?: number;
+  /** The plugin hides the history button until a prompt has been stored. */
+  history?: boolean;
   /** `true` for the field picker, a number to badge it with a selection count. */
   fields?: number | boolean;
   /**
@@ -60,6 +62,15 @@ const tokens = computed(() => {
   return parts;
 });
 
+const tools = computed(() =>
+  TOOLS.filter(
+    (tool) =>
+      tool.under !== "history" ||
+      props.history ||
+      props.dropdown?.under === "history",
+  ),
+);
+
 const dropdownProps = computed(() => {
   const { under, ...rest } = props.dropdown ?? {};
   return rest;
@@ -71,20 +82,24 @@ const dropdownSpace = computed(() => {
   const dropdown = props.dropdown;
   if (!dropdown) return undefined;
 
-  // The field picker is a picklist, which brings a search field of its own.
   const items = (dropdown.items ?? dropdown.options ?? []) as unknown[];
-  const rows = items.reduce<number>(
-    (total, item) => total + (item === "-" ? 0.5 : 1),
-    dropdown.under === "fields" ? 1.75 : 0,
-  );
+  const separators = items.filter((item) => item === "-").length;
+  // The field picker is a picklist, which brings a search field of its own.
+  const rows =
+    items.length - separators + (dropdown.under === "fields" ? 1.75 : 0);
 
-  // The typeahead hangs from the editor rather than the toolbar, so the toolbar
-  // row and the footer already cover its first two rows.
-  const uncovered = rows - (dropdown.under === "skills" ? 2 : 0);
-  if (uncovered <= 0) return undefined;
+  // Kirby's separator is a 1px rule with 0.5rem of margin on each side.
+  const height = `${rows} * var(--height-sm) + ${separators} * (1rem + 1px) + 2 * var(--dropdown-padding)`;
 
+  if (dropdown.under !== "skills") {
+    return { marginBottom: `calc(${height} + var(--spacing-4))` };
+  }
+
+  // The typeahead hangs from the editor rather than the toolbar, so the prompt
+  // text below it and the toolbar row already cover its first two rows. It caps
+  // its own list the way `SkillSuggestDropdown` does.
   return {
-    marginBottom: `calc(${uncovered} * var(--height) + var(--spacing-4))`,
+    marginBottom: `calc(min(${height}, 16rem) - 2 * var(--height-sm) + var(--spacing-4))`,
   };
 });
 </script>
@@ -101,7 +116,7 @@ const dropdownSpace = computed(() => {
             }}<PanelDropdown
               v-if="dropdown?.under === 'skills'"
               v-bind="dropdownProps"
-              class="max-w-[24rem] min-w-[14rem]" /></span
+              class="mt-(--spacing-1) max-h-[16rem] max-w-[24rem] min-w-[14rem] overflow-y-auto" /></span
           ><span
             v-else
             :class="token.type && `k-copilot-token-${token.type}`"
@@ -139,7 +154,7 @@ const dropdownSpace = computed(() => {
           />
           <k-button v-if="files" text="Clear" variant="dimmed" size="sm" />
 
-          <span v-for="tool in TOOLS" :key="tool.under" class="relative flex">
+          <span v-for="tool in tools" :key="tool.under" class="relative flex">
             <k-button :icon="tool.icon" dropdown />
             <PanelDropdown
               v-if="dropdown?.under === tool.under"
