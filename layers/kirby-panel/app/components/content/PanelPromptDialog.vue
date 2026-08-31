@@ -156,6 +156,7 @@ const dropdownSpace = computed(() => {
             <PanelDropdown
               v-if="dropdown?.under === tool.under"
               v-bind="dropdownProps"
+              class="max-w-[30rem] min-w-[8rem]"
             />
           </span>
         </div>
