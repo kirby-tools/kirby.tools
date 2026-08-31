@@ -26,6 +26,9 @@ const RATING_COLOR_MAP: Record<Rating, string> = {
   feedback: "gray",
 };
 
+// Remove aggressive exclamation mark at the end of the text.
+const toned = (text: string) => text.replace(/!$/, ".");
+
 const groups = computed(() =>
   Object.keys(RATING_LABEL)
     .map((rating) => ({
@@ -60,7 +63,7 @@ const groups = computed(() =>
           <!-- Kirby's badge hangs in a button's top-right corner. Here it
                follows the heading in the text flow. -->
           <span
-            class="k-button-badge static transform-none shadow-none [font-weight:var(--font-semi)]"
+            class="k-button-badge static transform-none [font-weight:var(--font-semi)] shadow-none"
             :data-theme="RATING_BADGE_COLOR_MAP[group.rating]"
             >{{ group.items.length }}</span
           >
@@ -77,7 +80,7 @@ const groups = computed(() =>
               backgroundColor: `var(--color-${RATING_COLOR_MAP[group.rating]}-600)`,
             }"
           />
-          <div v-html="item.text" />
+          <div v-html="toned(item.text)" />
         </div>
 
         <hr v-if="index < groups.length - 1" class="my-(--spacing-4)" />

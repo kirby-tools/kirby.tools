@@ -27,7 +27,13 @@ const ROW_OPTIONS = [
   >
     <template #options>
       <k-button-group layout="collapsed">
-        <k-button text="Add" icon="add" variant="filled" size="xs" />
+        <k-button
+          text="Add"
+          icon="add"
+          variant="filled"
+          size="xs"
+          :responsive="true"
+        />
         <k-button icon="dots" variant="filled" size="xs" />
       </k-button-group>
     </template>

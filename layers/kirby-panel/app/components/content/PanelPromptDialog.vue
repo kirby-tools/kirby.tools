@@ -153,7 +153,11 @@ const dropdownSpace = computed(() => {
           />
           <k-button v-if="files" text="Clear" variant="dimmed" size="sm" />
 
-          <span v-for="tool in tools" :key="tool.under" class="relative flex">
+          <span
+            v-for="tool in tools"
+            :key="tool.under"
+            class="panel-prompt-tool relative flex"
+          >
             <k-button :icon="tool.icon" dropdown />
             <PanelDropdown
               v-if="dropdown?.under === tool.under"
@@ -206,6 +210,15 @@ const dropdownSpace = computed(() => {
   --dialog-rounded: var(--rounded);
 
   overflow: visible;
+}
+
+/* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
+   toolbar wrap. The mock's dialog is as wide as the stage, not the viewport, so
+   the same 40rem is asked of the container. The figure's own subject stays. */
+@container panel-stage (max-width: 40rem) {
+  .panel-prompt-dialog .panel-prompt-tool:not(:has(.panel-dropdown)) {
+    display: none;
+  }
 }
 
 .panel-prompt-dialog [class*="k-copilot-token-"] {
