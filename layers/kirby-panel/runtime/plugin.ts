@@ -4,6 +4,7 @@ import array from "#kirby-panel/helpers/array";
 import color from "#kirby-panel/helpers/color";
 import isComponent from "#kirby-panel/helpers/isComponent";
 import object from "#kirby-panel/helpers/object";
+import ratio from "#kirby-panel/helpers/ratio";
 import string from "#kirby-panel/helpers/string";
 import translationsJson from "../kirby/i18n/translations/en.json";
 import { components } from "./components";
@@ -27,6 +28,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     array,
     color,
     object,
+    ratio,
     string,
     // Kirby's own implementation, which otherwise reaches for the app through
     // `window.panel` – undefined on a server.
