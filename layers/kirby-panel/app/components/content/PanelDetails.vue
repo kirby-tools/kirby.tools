@@ -8,20 +8,10 @@ defineProps<{
 <template>
   <details :open="open">
     <summary>{{ summary }}</summary>
-    <div class="panel-details-body">
+    <!-- Kirby styles no `details` of its own, so the disclosure stays at the
+         browser default and only its body carries the plugin's rhythm. -->
+    <div class="mt-(--spacing-3) space-y-(--spacing-2)">
       <slot />
     </div>
   </details>
 </template>
-
-<style>
-/* Kirby styles no `details` of its own, so the disclosure itself stays at the
-   browser default and only its body carries the plugin's own rhythm. */
-.panel-details-body {
-  margin-top: var(--spacing-3);
-}
-
-.panel-details-body > * + * {
-  margin-top: var(--spacing-2);
-}
-</style>

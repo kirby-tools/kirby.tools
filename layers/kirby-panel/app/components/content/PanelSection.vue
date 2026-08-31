@@ -10,7 +10,7 @@ defineProps<{
 <template>
   <k-section :label="label">
     <template v-if="options" #options>
-      <div class="panel-section-options">
+      <div class="flex items-center gap-(--spacing-2)">
         <k-button-group
           v-for="(group, index) in options"
           :key="index"
@@ -19,29 +19,19 @@ defineProps<{
       </div>
     </template>
 
-    <div v-if="$slots.default" class="panel-section-body">
+    <!-- Every Kirby Tools section stacks its body on one rhythm of its own, so
+         the mock owns it rather than each block repeating it. -->
+    <div v-if="$slots.default" class="panel-section-body space-y-(--spacing-4)">
       <slot />
     </div>
   </k-section>
 </template>
 
 <style>
-/* Every Kirby Tools section wraps its body in a `space-y-4` stack of its own,
-   so the mock owns the rhythm rather than each block repeating it. */
-.panel-section-body > * + * {
-  margin-top: var(--spacing-4);
-}
-
 /* A section always has a body in the Panel, so Kirby leaves the gap its header
    reserves for one unconditionally. A mock cropped to the header alone would
    sit off-center in the preview. */
 .panel-preview .k-section-header:last-child {
   margin-bottom: 0;
-}
-
-.panel-section-options {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
 }
 </style>
