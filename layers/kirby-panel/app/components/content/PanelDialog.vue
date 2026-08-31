@@ -22,6 +22,8 @@ const props = withDefaults(
 // Kirby escapes field text unless the key marks it trusted, so `<help>` is what
 // lets a mock's help text carry a link.
 const fields = computed(() => HtmlString.resolve(props.fields));
+
+const values = ref({ ...props.value });
 </script>
 
 <template>
@@ -30,21 +32,19 @@ const fields = computed(() => HtmlString.resolve(props.fields));
       <k-fieldset
         v-if="fields"
         :fields="fields"
-        :value="value ?? {}"
+        :value="values"
         class="k-dialog-fields"
+        @input="values = $event"
       />
       <slot />
     </div>
 
     <footer v-if="buttons" class="k-dialog-footer">
-      <k-button-group class="k-dialog-buttons">
-        <k-button
-          v-for="(button, index) in buttons"
-          :key="index"
-          variant="filled"
-          v-bind="button"
-        />
-      </k-button-group>
+      <k-button-group
+        :buttons="buttons"
+        variant="filled"
+        class="k-dialog-buttons"
+      />
     </footer>
   </div>
 </template>
