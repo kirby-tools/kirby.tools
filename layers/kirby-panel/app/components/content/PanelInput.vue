@@ -34,7 +34,9 @@ withDefaults(
         :data-inline="false"
         class="k-writer-toolbar"
       />
-      <div class="ProseMirror">
+      <!-- Kirby's editor puts `k-text` on the ProseMirror node from
+           `Editor.ts`, so it is nowhere in `WriterInput.vue` to copy. -->
+      <div class="ProseMirror k-text">
         <p v-if="value">
           {{ value
           }}<span v-if="suggestion" class="k-copilot-suggestion-text">{{

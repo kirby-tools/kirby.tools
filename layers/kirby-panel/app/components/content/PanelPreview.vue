@@ -94,10 +94,12 @@ withDefaults(
   gap: 6px;
   border-bottom: 1px solid var(--ui-border);
   background: var(--ui-bg);
-  padding: 6px 10px;
-  color: var(--ui-text-muted);
+  padding: 8px 12px;
+  color: var(--ui-text-highlighted);
   font-family: var(--panel-preview-chrome-font);
   font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .panel-preview-chrome-label {
