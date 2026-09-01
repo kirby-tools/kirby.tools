@@ -20,7 +20,11 @@ const featuredProductIds = new Set<ProductId>([
 ]);
 const featuredProducts = PRODUCT_LIST.filter((listed) =>
   featuredProductIds.has(listed.id),
-).map(toNavigationItem);
+).map((item) => ({
+  label: item.label,
+  description: item.description,
+  to: productPath(item.id),
+}));
 const moreProducts = PRODUCT_LIST.filter(
   (listed) => !featuredProductIds.has(listed.id),
 ).map(toNavigationItem);
@@ -61,12 +65,10 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
         ...featuredProducts,
         {
           label: "More Plugins",
-          icon: "i-ri-folder-5-line",
           children: moreProducts,
         },
         {
           label: "Blog",
-          icon: "i-ri-article-line",
           to: "/blog",
         },
       ],
@@ -142,12 +144,12 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
   ];
 });
 
-function toNavigationItem(listed: Product & { id: ProductId }) {
+function toNavigationItem(item: Product & { id: ProductId }) {
   return {
-    label: listed.label,
-    description: listed.description,
-    icon: listed.icon,
-    to: productPath(listed.id),
+    label: item.label,
+    description: item.description,
+    icon: item.icon,
+    to: productPath(item.id),
   };
 }
 </script>
