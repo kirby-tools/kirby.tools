@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// Where `--menu-padding` is declared.
+import "#kirby-panel/components/View/Menu.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/View/Notifications.vue?vue&type=style&index=0&lang.css";
 
 withDefaults(
@@ -22,10 +24,7 @@ withDefaults(
 </template>
 
 <style>
-/* Kirby offsets the toast by `--menu-padding`, which only the menu declares. */
 .panel-preview .k-panel-notification {
   position: absolute;
-  inset-block-end: var(--spacing-4);
-  inset-inline-end: var(--spacing-4);
 }
 </style>

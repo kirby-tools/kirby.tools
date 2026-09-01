@@ -78,7 +78,8 @@ withDefaults(
   position: relative;
   container-type: inline-size;
   container-name: panel-stage;
-  padding: var(--spacing-4);
+  --panel-stage-inset: var(--spacing-4);
+  padding: var(--panel-stage-inset);
   background: var(--panel-color-back);
 }
 

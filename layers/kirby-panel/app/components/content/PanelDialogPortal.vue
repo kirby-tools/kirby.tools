@@ -17,9 +17,9 @@ import "#kirby-panel/components/Layout/Overlay.vue?vue&type=style&index=0&lang.c
   display: flex;
   overflow: auto;
   overscroll-behavior: contain;
-  /* Kirby reserves `--dialog-margin` against a viewport. The stage is a few
-     hundred pixels wide, so the inset it reserves is the stage's own. */
-  padding: var(--spacing-4);
+  /* In place of `--dialog-margin`, which Kirby sizes for a viewport: the dialog
+     keeps the inset of everything else on the stage. */
+  padding: var(--panel-stage-inset);
   background: var(--overlay-color-back);
 }
 

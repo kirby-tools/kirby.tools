@@ -50,8 +50,9 @@ const values = ref({ ...props.value });
 </template>
 
 <style>
-/* Kirby's portal centers the dialog over the whole viewport and dims the Panel
-   behind it. The stage stands in for the portal here. */
+/* A dialog with no view behind it: the stage does what `k-portal` does,
+   centering the dialog and dimming what it covers. A figure that shows the view
+   too puts the dialog in a `PanelDialogPortal` instead. */
 .panel-preview .panel-preview-stage:has(> .panel-dialog) {
   display: flex;
   justify-content: center;

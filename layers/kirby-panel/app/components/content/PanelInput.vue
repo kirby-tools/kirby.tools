@@ -17,8 +17,8 @@ const fieldType = inject(panelFieldTypeKey);
 const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
 
 /**
- * The writer stores HTML, and ProseMirror renders one node per paragraph. The
- * mock takes plain text and splits it on a blank line to reach the same nodes.
+ * One entry per ProseMirror node: the writer stores HTML and renders a node per
+ * paragraph, so plain text splits on a blank line to reach the same markup.
  */
 const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
 </script>
