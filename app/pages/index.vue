@@ -78,7 +78,7 @@ const testimonialItems = computed(() =>
       ]"
     />
 
-    <BackgroundWarp :beam-duration="6">
+    <BackgroundWarp :beam-duration="12">
       <UPageHero
         :description="page.description"
         :links="page.hero.links"
@@ -123,6 +123,10 @@ const testimonialItems = computed(() =>
         <template #description>
           <span v-html="page.hero.description" />
         </template>
+
+        <div class="mt-6 w-full">
+          <HomePanelStage />
+        </div>
       </UPageHero>
     </BackgroundWarp>
 

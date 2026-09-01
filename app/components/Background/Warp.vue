@@ -1,21 +1,13 @@
 <script lang="ts" setup>
-interface Props {
-  perspective?: number;
-  beamsPerSide?: number;
-  beamSize?: number;
-  beamDelayMax?: number;
-  beamDelayMin?: number;
-  beamDuration?: number;
-}
+const props = defineProps<{
+  beamDuration: number;
+}>();
 
-const props = withDefaults(defineProps<Props>(), {
-  perspective: 100,
-  beamsPerSide: 3,
-  beamSize: 5,
-  beamDelayMax: 3,
-  beamDelayMin: 0,
-  beamDuration: 3,
-});
+const PERSPECTIVE = 100;
+const BEAMS_PER_SIDE = 3;
+
+/** Beam width, as a percentage of the side it rises along. */
+const BEAM_SIZE = 5;
 
 /** OKLCH hues of danube, orchid, lima and pumpkin. */
 const BEAM_HUES = [250.8, 318.6, 134.6, 48.7];
@@ -55,18 +47,16 @@ function scatter(n: number) {
 }
 
 function generateBeams(side: number) {
-  const delayRange = props.beamDelayMax - props.beamDelayMin;
-
-  return Array.from({ length: props.beamsPerSide }, (_, index) => {
-    const seed = side * props.beamsPerSide + index;
+  return Array.from({ length: BEAMS_PER_SIDE }, (_, index) => {
+    const seed = side * BEAMS_PER_SIDE + index;
 
     return {
-      x: `${(index * 100) / props.beamsPerSide}%`,
+      x: `${(index * 100) / BEAMS_PER_SIDE}%`,
       // Negative, so the beam is already mid-flight on the first frame.
-      delay: -(props.beamDelayMin + scatter(seed + 1) * delayRange),
+      delay: -(scatter(seed + 1) * props.beamDuration),
       hue: BEAM_HUES[seed % BEAM_HUES.length]!,
-      // A different point in the sequence, so the aspect ratio doesn't
-      // track the delay.
+      // A different point in the sequence, so `aspectRatio` doesn't
+      // track `delay`.
       aspectRatio: 2 + Math.floor(scatter(seed + 17) * 8),
     };
   });
@@ -84,8 +74,8 @@ const sides = computed(() =>
   <div class="relative">
     <div
       :style="{
-        '--perspective': `${perspective}px`,
-        '--beam-size': `${beamSize}%`,
+        '--perspective': `${PERSPECTIVE}px`,
+        '--beam-size': `${BEAM_SIZE}%`,
         '--beam-duration': `${beamDuration}s`,
       }"
       class="@container-size pointer-events-none absolute inset-0 overflow-hidden [clip-path:inset(0)] perspective-(--perspective) transform-3d"
@@ -115,11 +105,6 @@ const sides = computed(() =>
 </template>
 
 <style>
-/*
- * Not scoped: Vue rewrites `@keyframes` names in scoped styles but leaves the
- * name inside a Tailwind utility class untouched, so the animation would never
- * resolve.
- */
 @keyframes beam-rise {
   from {
     transform: translateY(50cqmax);
