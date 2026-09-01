@@ -145,7 +145,7 @@ products:
         variant: subtle
     features:
       - name: One-Click Translation
-        description: Translate entire pages — including nested blocks, layouts, and structure fields — with a single click in the Panel.
+        description: Translate entire pages – including nested blocks, layouts, and structure fields – with a single click in the Panel.
         icon: i-ri-cursor-line
       - name: AI-Powered Translation
         description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.

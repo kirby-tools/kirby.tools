@@ -16,7 +16,7 @@ Skills let you write that _how_ down once, so nobody has to remember it again.
 ---
 selection: true
 prompt: |-
-  Write a product tagline for our new mixer.
+  Write a tagline for the documentary festival's 2027 edition.
   @skill://brand-voice @skill://
 dropdown:
   under: skills
@@ -54,7 +54,7 @@ If you run a multilingual Panel, both the label and the instructions can be loca
 
 Editors never touch the config. In the prompt dialog, they start typing `@skill://` and a dropdown lists everything you've defined. Pick one and it drops in as a green token. Add as many as the task needs – `@skill://brand-voice` and `@skill://concise` together, say.
 
-The prompt itself stays about the content – _write a tagline for the new mixer_ – while the skills quietly carry the _how_. When you send the request, their instructions are folded into the system prompt behind the scenes and the tokens are stripped back out, so the AI is shaped by your rules without ever seeing `@skill://` as part of the ask.
+The prompt itself stays about the content – _write a tagline for the festival's 2027 edition_ – while the skills quietly carry the _how_. When you send the request, their instructions are folded into the system prompt behind the scenes and the tokens are stripped back out, so the AI is shaped by your rules without ever seeing `@skill://` as part of the ask.
 
 ## Presets, Not Agents
 
