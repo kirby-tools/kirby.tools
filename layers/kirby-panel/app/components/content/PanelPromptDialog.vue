@@ -125,7 +125,7 @@ const dropdownSpace = computed(() => {
       </div>
 
       <details
-        v-if="preview !== undefined"
+        v-if="preview"
         :open="previewOpen"
         class="group mx-(--spacing-2) mb-(--spacing-2) rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
       >
