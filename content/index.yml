@@ -4,13 +4,6 @@ navigation: false
 hero:
   title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
   description: Plugins that empower your Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
-  links:
-    - label: Meet the Plugins
-      trailingIcon: i-ri-arrow-down-circle-fill
-      to: /#products
-      color: neutral
-      variant: ghost
-      size: xl
 testimonials:
   title: Trusted by Teams Worldwide
   items:
