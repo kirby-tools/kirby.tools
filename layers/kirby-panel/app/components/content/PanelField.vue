@@ -5,7 +5,6 @@ const props = withDefaults(
     /** The blueprint key, which Kirby turns into `k-field-name-<name>`. */
     name?: string;
     type?: PanelFieldType;
-    /** The blueprint `width`, a fraction of the fieldset grid such as `1/2`. */
     width?: string;
   }>(),
   { type: "textarea" },
