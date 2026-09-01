@@ -26,14 +26,22 @@ const toolbarButtons = computed(() =>
   props.buttons === true ? PANEL_TEXTAREA_BUTTONS : props.buttons || undefined,
 );
 
-const textarea = useTemplateRef<HTMLTextAreaElement>("textarea");
+const isWriterEmpty = ref(!props.value);
 
-// Sizes the textarea to its value where the browser lacks `field-sizing`, as
-// Kirby's autosize does on mount.
+const textarea = useTemplateRef<HTMLTextAreaElement>("textarea");
+const isTextareaSizedByScript = ref(false);
+
+// Sizes the textarea to its content where the browser lacks `field-sizing`, as
+// Kirby's autosize does on mount and on every input.
+const sizeTextareaToContent = () => {
+  if (!textarea.value) return;
+  textarea.value.style.height = "auto";
+  textarea.value.style.height = `${textarea.value.scrollHeight}px`;
+};
+
 onMounted(() => {
-  if (textarea.value && !CSS.supports("field-sizing", "content")) {
-    textarea.value.style.height = `${textarea.value.scrollHeight}px`;
-  }
+  isTextareaSizedByScript.value = !CSS.supports("field-sizing", "content");
+  if (isTextareaSizedByScript.value) sizeTextareaToContent();
 });
 </script>
 
@@ -43,7 +51,7 @@ onMounted(() => {
       v-if="type === 'writer'"
       class="k-writer k-writer-input"
       :data-placeholder="placeholder"
-      :data-empty="!value"
+      :data-empty="isWriterEmpty"
     >
       <k-toolbar
         v-if="toolbarButtons"
@@ -53,12 +61,17 @@ onMounted(() => {
       />
       <!-- Kirby's editor puts `k-text` on the ProseMirror node from
            `Editor.ts`, so it is nowhere in `WriterInput.vue` to copy. -->
-      <div class="ProseMirror k-text">
+      <div
+        class="ProseMirror k-text"
+        contenteditable="true"
+        @input="isWriterEmpty = !($event.target as HTMLElement).textContent"
+      >
         <p v-for="(paragraph, index) in paragraphs" :key="index">
           {{ paragraph
           }}<span
             v-if="suggestion && index === paragraphs.length - 1"
             class="k-copilot-suggestion-text"
+            contenteditable="false"
             >{{ suggestion }}</span
           >
         </p>
@@ -79,7 +92,7 @@ onMounted(() => {
           class="k-textarea-input-native field-sizing-content overflow-hidden"
           :placeholder="placeholder"
           :value="value"
-          readonly
+          @input="isTextareaSizedByScript && sizeTextareaToContent()"
         />
       </div>
     </div>

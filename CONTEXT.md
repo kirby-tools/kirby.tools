@@ -29,7 +29,7 @@ A brand color registered in the Nuxt UI theme, e.g. `copilot` or `seo`. A design
 _Avoid_: Theme color, brand color
 
 **Mock**:
-A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation page where a screenshot would otherwise go. A Mock is a stage, not a replica: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match.
+A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation page where a screenshot would otherwise go. A Mock is a stage, not a replica: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type, a Mock lets the reader type too; nothing else in it responds and nothing is kept.
 _Avoid_: Screenshot, demo, replica
 
 **Stage**:
