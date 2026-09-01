@@ -7,17 +7,17 @@ import "#kirby-panel/components/Forms/Input/TextareaInput.vue?vue&type=style&ind
 import "#kirby-panel/components/Forms/Input/WriterInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&lang.css";
 
-withDefaults(
-  defineProps<{
-    type?: "textarea" | "writer";
-    value?: string;
-    /** Copilot's ghost text, which trails the value inside the writer. */
-    suggestion?: string;
-    placeholder?: string;
-    buttons?: (Record<string, unknown> | string)[];
-  }>(),
-  { type: "textarea" },
-);
+const props = defineProps<{
+  type?: PanelFieldType;
+  value?: string;
+  /** Copilot's ghost text, which trails the value inside the writer. */
+  suggestion?: string;
+  placeholder?: string;
+  buttons?: (Record<string, unknown> | string)[];
+}>();
+
+const fieldType = inject(panelFieldTypeKey);
+const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
 </script>
 
 <template>
