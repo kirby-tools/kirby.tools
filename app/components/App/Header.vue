@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ContentNavigationItem } from "@nuxt/content";
 import type { NavigationMenuItem } from "@nuxt/ui";
 import type { Product, ProductId } from "#shared/constants";
 import { withoutTrailingSlash } from "ufo";
@@ -73,6 +74,73 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
 
 const { data: docsNavigation } = await useDocsNavigation();
 const { data: version } = await useLatestProductVersion(productId);
+
+const mobileNavigation = computed<ContentNavigationItem[]>(() => {
+  if (!product.value || !productId.value) {
+    return [
+      {
+        title: "Plugins",
+        path: "/",
+        children: PRODUCT_LIST.map((listed) => ({
+          title: listed.label,
+          path: productPath(listed.id),
+          icon: listed.icon,
+        })),
+      },
+      {
+        title: "Resources",
+        path: "/blog",
+        children: [{ title: "Blog", path: "/blog", icon: "i-ri-article-line" }],
+      },
+    ];
+  }
+
+  const id = productId.value;
+
+  return [
+    {
+      title: product.value.label,
+      path: productPath(id),
+      children: [
+        { title: "Features", path: productPath(id), icon: "i-ri-shapes-line" },
+        {
+          title: "Documentation",
+          path: productDocsPath(id),
+          icon: "i-ri-book-2-line",
+        },
+        ...(version.value
+          ? [
+              {
+                title: `Changelog ${version.value.title}`,
+                path: productChangelogPath(id),
+                icon: "i-ri-download-line",
+              },
+            ]
+          : []),
+        ...(product.value.license === "commercial"
+          ? [
+              {
+                title: "Buy",
+                path: `${productPath(id)}/buy`,
+                icon: "i-ri-shopping-bag-3-line",
+              },
+            ]
+          : []),
+        ...(product.value.playground
+          ? [
+              {
+                title: "Playground",
+                path: product.value.playground,
+                icon: "i-ri-play-circle-line",
+                target: "_blank",
+              },
+            ]
+          : []),
+      ],
+    },
+    ...(docsNavigation.value ?? []),
+  ];
+});
 
 function toNavigationItem(listed: Product & { id: ProductId }) {
   return {
@@ -161,56 +229,17 @@ function toNavigationItem(listed: Product & { id: ProductId }) {
     />
 
     <template #body>
-      <UNavigationMenu
-        :items="navigationItems"
-        orientation="vertical"
-        class="-mx-2.5"
-      />
+      <UContentSearchButton :collapsed="false" :kbds="[]" class="mb-4 w-full" />
 
-      <template v-if="docsNavigation?.length">
-        <USeparator class="my-6" />
+      <UContentNavigation :navigation="mobileNavigation" highlight />
 
-        <UContentNavigation
-          :navigation="docsNavigation"
-          default-open
-          highlight
-        />
-      </template>
-
-      <USeparator class="my-6" />
-
-      <UContentSearchButton
-        v-if="!product"
-        :collapsed="false"
-        :kbds="[]"
-        class="mb-3 w-full"
-      />
-      <UButton
-        v-if="productId && version"
-        :label="version.title"
-        icon="i-ri-download-line"
-        color="neutral"
-        variant="ghost"
-        :to="productChangelogPath(productId)"
-        block
-        class="mb-3"
-      />
-      <UButton
-        v-if="productId && product?.license === 'commercial'"
-        label="Buy"
-        trailing-icon="i-ri-shopping-bag-3-fill"
-        color="primary"
-        variant="subtle"
-        :to="`${productPath(productId)}/buy`"
-        block
-        class="mb-3"
-      />
       <UButton
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
         to="https://hub.kirby.tools"
         target="_blank"
         block
+        class="mt-6"
       />
     </template>
   </UHeader>
