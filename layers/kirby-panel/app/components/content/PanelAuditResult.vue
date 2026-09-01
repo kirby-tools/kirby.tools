@@ -1,25 +1,23 @@
 <script setup lang="ts">
-type Rating = "good" | "ok" | "bad" | "feedback";
-
 const props = defineProps<{
-  report: { rating: Rating; text: string }[];
+  report: PanelAuditResultEntry[];
   title?: string;
 }>();
 
-const RATING_LABEL: Record<Rating, string> = {
+const RATING_LABEL: Record<PanelAuditRating, string> = {
   good: "Good",
   ok: "OK",
   bad: "Needs improvement",
   feedback: "Feedback",
 };
 
-const RATING_BADGE_COLOR_MAP: Partial<Record<Rating, string>> = {
+const RATING_BADGE_COLOR_MAP: Partial<Record<PanelAuditRating, string>> = {
   good: "green",
   ok: "orange",
   bad: "red",
 };
 
-const RATING_COLOR_MAP: Record<Rating, string> = {
+const RATING_COLOR_MAP: Record<PanelAuditRating, string> = {
   good: "green",
   ok: "orange",
   bad: "red",
@@ -31,7 +29,7 @@ const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 const groups = computed(() =>
   Object.keys(RATING_LABEL)
     .map((rating) => ({
-      rating: rating as Rating,
+      rating: rating as PanelAuditRating,
       items: props.report.filter((item) => item.rating === rating),
     }))
     .filter((group) => group.items.length > 0),

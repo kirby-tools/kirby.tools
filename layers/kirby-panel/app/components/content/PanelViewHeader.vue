@@ -3,7 +3,7 @@ import "#kirby-panel/components/Text/Headline.vue?vue&type=style&index=0&lang.cs
 
 const props = defineProps<{
   title?: string;
-  buttons?: (Record<string, unknown> | string)[];
+  buttons?: PanelViewButton[];
 }>();
 
 const buttons = computed(() =>

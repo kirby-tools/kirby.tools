@@ -10,7 +10,7 @@ const props = defineProps<{
   /** Copilot's ghost text, which trails the value inside the writer. */
   suggestion?: string;
   placeholder?: string;
-  buttons?: (Record<string, unknown> | string)[];
+  buttons?: boolean | (Record<string, unknown> | string)[];
 }>();
 
 const fieldType = inject(panelFieldTypeKey);
@@ -21,6 +21,20 @@ const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
  * paragraph, so plain text splits on a blank line to reach the same markup.
  */
 const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
+
+const toolbarButtons = computed(() =>
+  props.buttons === true ? PANEL_TEXTAREA_BUTTONS : props.buttons || undefined,
+);
+
+const textarea = useTemplateRef<HTMLTextAreaElement>("textarea");
+
+// Sizes the textarea to its value where the browser lacks `field-sizing`, as
+// Kirby's autosize does on mount.
+onMounted(() => {
+  if (textarea.value && !CSS.supports("field-sizing", "content")) {
+    textarea.value.style.height = `${textarea.value.scrollHeight}px`;
+  }
+});
 </script>
 
 <template>
@@ -32,8 +46,8 @@ const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
       :data-empty="!value"
     >
       <k-toolbar
-        v-if="buttons"
-        :buttons="buttons"
+        v-if="toolbarButtons"
+        :buttons="toolbarButtons"
         :data-inline="false"
         class="k-writer-toolbar"
       />
@@ -55,12 +69,14 @@ const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
     <div v-else-if="type === 'textarea'" class="k-textarea-input">
       <div class="k-textarea-input-wrapper">
         <k-toolbar
-          v-if="buttons"
-          :buttons="buttons"
+          v-if="toolbarButtons"
+          :buttons="toolbarButtons"
           class="k-textarea-toolbar"
         />
+        <!-- What Kirby's autosize sets inline on mount. -->
         <textarea
-          class="k-textarea-input-native"
+          ref="textarea"
+          class="k-textarea-input-native field-sizing-content overflow-hidden"
           :placeholder="placeholder"
           :value="value"
           readonly
