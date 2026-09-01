@@ -73,6 +73,9 @@ withDefaults(
    container. In the Panel that is the view; here it is a box inside a page, so
    the stage establishes one. */
 .panel-preview .panel-preview-stage {
+  /* The anchor for what Kirby fixes to the viewport: the dialog portal and
+     the notification. */
+  position: relative;
   container-type: inline-size;
   container-name: panel-stage;
   padding: var(--spacing-4);
