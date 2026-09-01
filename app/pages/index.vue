@@ -125,7 +125,7 @@ const testimonialItems = computed(() =>
         </template>
 
         <div class="mt-6 w-full">
-          <HomePanelStage />
+          <HomePanelShowcase />
         </div>
       </UPageHero>
     </BackgroundWarp>

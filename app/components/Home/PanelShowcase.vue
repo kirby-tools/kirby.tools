@@ -2,14 +2,14 @@
 import type { ProductColorSlot, ProductId } from "#shared/constants";
 import { PRODUCTS } from "#shared/constants";
 
-// #region Stage
-const STAGE_IDS = [
+// #region Showcase
+const SHOWCASE_PRODUCT_IDS = [
   "copilot",
   "content-translator",
   "seo-audit",
 ] as const satisfies readonly ProductId[];
 
-type StageId = (typeof STAGE_IDS)[number];
+type ShowcaseProductId = (typeof SHOWCASE_PRODUCT_IDS)[number];
 
 const COLOR_CLASSES: Record<
   ProductColorSlot | "primary",
@@ -26,10 +26,10 @@ const COLOR_CLASSES: Record<
   },
 };
 
-const colorClassesOf = (id: StageId) =>
+const colorClassesOf = (id: ShowcaseProductId) =>
   COLOR_CLASSES[PRODUCTS[id].colorSlot ?? "primary"];
 
-const STAGE_TABS = STAGE_IDS.map((id) => ({
+const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
   value: id,
   label: PRODUCTS[id].name,
   description: PRODUCTS[id].description,
@@ -38,7 +38,7 @@ const STAGE_TABS = STAGE_IDS.map((id) => ({
 }));
 
 // Each plugin's view button, as its blueprint documentation defines it.
-const PLUGIN_VIEW_BUTTONS: Record<StageId, PanelViewButtonProps> = {
+const PLUGIN_VIEW_BUTTONS: Record<ShowcaseProductId, PanelViewButtonProps> = {
   copilot: {
     text: "Copilot",
     icon: "sparkling",
@@ -138,14 +138,14 @@ const SEO_REPORT: PanelAuditResultEntry[] = [
 ];
 // #endregion
 
-const activeStageId = ref<StageId>("copilot");
+const activeProductId = ref<ShowcaseProductId>("copilot");
 
 const accentClass = computed(
-  () => colorClassesOf(activeStageId.value).accentClass,
+  () => colorClassesOf(activeProductId.value).accentClass,
 );
 
 const viewButtons = computed(() => [
-  PLUGIN_VIEW_BUTTONS[activeStageId.value],
+  PLUGIN_VIEW_BUTTONS[activeProductId.value],
   ...KIRBY_VIEW_BUTTONS,
 ]);
 </script>
@@ -153,8 +153,8 @@ const viewButtons = computed(() => [
 <template>
   <div>
     <UTabs
-      v-model="activeStageId"
-      :items="STAGE_TABS"
+      v-model="activeProductId"
+      :items="SHOWCASE_TABS"
       :content="false"
       variant="link"
       :ui="{
@@ -169,7 +169,7 @@ const viewButtons = computed(() => [
         <span
           class="flex size-8 items-center justify-center rounded-md transition-colors"
           :class="
-            activeStageId === item.value
+            activeProductId === item.value
               ? item.chipClass
               : 'bg-elevated text-dimmed'
           "
@@ -233,15 +233,14 @@ const viewButtons = computed(() => [
 
         <PanelDialogPortal>
           <PanelPromptDialog
-            v-if="activeStageId === 'copilot'"
+            v-if="activeProductId === 'copilot'"
             :files="1"
-            :fields="1"
             :prompt="COPILOT_PROMPT"
             :preview="COPILOT_PROMPT_PREVIEW"
           />
 
           <PanelDialog
-            v-else-if="activeStageId === 'content-translator'"
+            v-else-if="activeProductId === 'content-translator'"
             size="medium"
             :fields="TRANSLATOR_FIELDS"
             :value="TRANSLATOR_VALUE"

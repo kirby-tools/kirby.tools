@@ -31,3 +31,7 @@ _Avoid_: Theme color, brand color
 **Mock**:
 A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation page where a screenshot would otherwise go. A Mock is a stage, not a replica: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match.
 _Avoid_: Screenshot, demo, replica
+
+**Stage**:
+The frame a Mock renders into, standing in for whatever the Panel supplies around a component – the view a header sits above, the portal a dialog centers in, the viewport a container query measures. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
+_Avoid_: Frame, canvas, wrapper, viewport
