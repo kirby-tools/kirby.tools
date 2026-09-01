@@ -52,7 +52,7 @@ const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
       </div>
     </div>
 
-    <div v-else class="k-textarea-input">
+    <div v-else-if="type === 'textarea'" class="k-textarea-input">
       <div class="k-textarea-input-wrapper">
         <k-toolbar
           v-if="buttons"
@@ -67,6 +67,13 @@ const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
         />
       </div>
     </div>
+
+    <component
+      :is="`k-${type}-input`"
+      v-else
+      :value="value"
+      :placeholder="placeholder"
+    />
   </k-input>
 </template>
 
