@@ -1,9 +1,6 @@
 <script setup lang="ts">
-// `k-writer-input` mounts a ProseMirror editor a mock has no content for, and
-// `k-textarea-input` pulls in `k-textarea-toolbar`, which reads `window.panel`.
-// Neither is registered in `components.ts`, so both are mocked here from
-// Kirby's own markup and styles.
 import "#kirby-panel/components/Forms/Input/TextareaInput.vue?vue&type=style&index=0&lang.css";
+import "#kirby-panel/components/Forms/Toolbar/TextareaToolbar.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Input/WriterInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&lang.css";
 
@@ -18,6 +15,12 @@ const props = defineProps<{
 
 const fieldType = inject(panelFieldTypeKey);
 const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
+
+/**
+ * The writer stores HTML, and ProseMirror renders one node per paragraph. The
+ * mock takes plain text and splits it on a blank line to reach the same nodes.
+ */
+const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
 </script>
 
 <template>
@@ -37,13 +40,15 @@ const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
       <!-- Kirby's editor puts `k-text` on the ProseMirror node from
            `Editor.ts`, so it is nowhere in `WriterInput.vue` to copy. -->
       <div class="ProseMirror k-text">
-        <p v-if="value">
-          {{ value
-          }}<span v-if="suggestion" class="k-copilot-suggestion-text">{{
-            suggestion
-          }}</span>
+        <p v-for="(paragraph, index) in paragraphs" :key="index">
+          {{ paragraph
+          }}<span
+            v-if="suggestion && index === paragraphs.length - 1"
+            class="k-copilot-suggestion-text"
+            >{{ suggestion }}</span
+          >
         </p>
-        <p v-else><br /></p>
+        <p v-if="!paragraphs.length"><br /></p>
       </div>
     </div>
 
