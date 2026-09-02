@@ -19,7 +19,7 @@ withDefaults(
 .background-dots {
   background-image: radial-gradient(
     circle,
-    var(--ui-border-muted) 0.75px,
+    --alpha(currentColor / 15%) 0.75px,
     transparent 1px
   );
   background-size: 8px 8px;
