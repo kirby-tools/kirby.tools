@@ -114,7 +114,8 @@ const dropdownSpace = computed(() => {
         class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap"
       >
         <template v-for="(token, index) in tokens" :key="index">
-          <span v-if="token.type === 'skill-trigger'" class="relative"
+          <!-- Above the toolbar row, which the typeahead hangs over. -->
+          <span v-if="token.type === 'skill-trigger'" class="relative z-[1]"
             >{{ token.text
             }}<PanelDropdown
               v-if="dropdown?.under === 'skills'"

@@ -5,3 +5,10 @@ export type PanelViewButtonProps = Record<string, unknown>;
 export type PanelViewButton = PanelViewButtonProps | string;
 
 export type PanelFieldType = "text" | "textarea" | "writer";
+
+export interface PanelBlock {
+  type: "heading" | "text" | "quote";
+  text: string;
+  level?: string;
+  citation?: string;
+}

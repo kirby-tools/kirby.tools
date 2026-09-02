@@ -50,11 +50,11 @@ const values = ref({ ...props.value });
 </template>
 
 <style>
-/* A dialog with no view behind it: the stage does what `k-portal` does,
-   centering the dialog and dimming what it covers. A figure that shows the view
-   too puts the dialog in a `PanelDialogPortal` instead. */
+/* A dialog without a view: the stage centers and dims, as `k-portal` does. */
 .panel-preview .panel-preview-stage:has(> .panel-dialog) {
   display: flex;
+  /* Cards crop the stage taller than the dialog, which `stretch` would fill. */
+  align-items: start;
   justify-content: center;
   background: var(--overlay-color-back);
 }

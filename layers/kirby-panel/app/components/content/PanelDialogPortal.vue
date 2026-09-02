@@ -1,10 +1,14 @@
 <script setup lang="ts">
 // Where `--overlay-color-back` is declared.
 import "#kirby-panel/components/Layout/Overlay.vue?vue&type=style&index=0&lang.css";
+
+defineProps<{
+  align?: "start" | "end";
+}>();
 </script>
 
 <template>
-  <div class="panel-dialog-portal">
+  <div class="panel-dialog-portal" :data-align="align">
     <slot />
   </div>
 </template>
@@ -25,5 +29,13 @@ import "#kirby-panel/components/Layout/Overlay.vue?vue&type=style&index=0&lang.c
 
 .panel-preview .panel-dialog-portal > * {
   margin: auto;
+}
+
+.panel-preview .panel-dialog-portal[data-align="start"] > * {
+  margin-top: 0;
+}
+
+.panel-preview .panel-dialog-portal[data-align="end"] > * {
+  margin-bottom: 0;
 }
 </style>

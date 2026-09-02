@@ -7,7 +7,8 @@ import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&
 const props = defineProps<{
   type?: PanelFieldType;
   value?: string;
-  /** Copilot's ghost text, which trails the value inside the writer. */
+  selection?: string;
+  /** Copilot's ghost text, which follows the last node. */
   suggestion?: string;
   placeholder?: string;
   buttons?: boolean | (Record<string, unknown> | string)[];
@@ -36,6 +37,20 @@ const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
  * paragraph, so plain text splits on a blank line to reach the same markup.
  */
 const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
+
+/** Each paragraph in up to three segments, the middle one selected. */
+const segments = computed(() =>
+  paragraphs.value.map((paragraph) => {
+    const start = props.selection ? paragraph.indexOf(props.selection) : -1;
+    if (start === -1) return [{ text: paragraph }];
+    const end = start + props.selection!.length;
+    return [
+      { text: paragraph.slice(0, start) },
+      { text: paragraph.slice(start, end), selected: true },
+      { text: paragraph.slice(end) },
+    ];
+  }),
+);
 
 const toolbarButtons = computed(() =>
   props.buttons === true ? TEXTAREA_BUTTONS : props.buttons || undefined,
@@ -81,10 +96,16 @@ onMounted(() => {
         contenteditable="true"
         @input="isWriterEmpty = !($event.target as HTMLElement).textContent"
       >
-        <p v-for="(paragraph, index) in paragraphs" :key="index">
-          {{ paragraph
-          }}<span
-            v-if="suggestion && index === paragraphs.length - 1"
+        <p v-for="(paragraph, index) in segments" :key="index">
+          <template
+            v-for="(segment, segmentIndex) in paragraph"
+            :key="segmentIndex"
+            ><span v-if="segment.selected" class="panel-selection">{{
+              segment.text
+            }}</span
+            ><template v-else>{{ segment.text }}</template></template
+          ><span
+            v-if="suggestion && index === segments.length - 1"
             class="k-copilot-suggestion-text"
             contenteditable="false"
             >{{ suggestion }}</span
@@ -122,6 +143,12 @@ onMounted(() => {
 </template>
 
 <style>
+/* Painted, since a native selection ends once the dialog takes focus. */
+.panel-preview .panel-selection {
+  background: Highlight;
+  color: HighlightText;
+}
+
 .panel-preview .k-copilot-suggestion-text {
   color: light-dark(var(--color-gray-600), var(--color-gray-500));
   pointer-events: none;

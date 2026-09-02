@@ -4,15 +4,19 @@
 
 defineOptions({ inheritAttrs: false });
 
-defineProps<{
-  items?: Record<string, unknown>[];
-}>();
+withDefaults(
+  defineProps<{
+    items?: Record<string, unknown>[];
+    align?: "start" | "end";
+  }>(),
+  { align: "end" },
+);
 </script>
 
 <template>
   <div class="panel-view-button">
     <k-view-button v-bind="$attrs" dropdown />
-    <PanelDropdown :items="items" align="end" />
+    <PanelDropdown :items="items" :align="align" />
   </div>
 </template>
 
