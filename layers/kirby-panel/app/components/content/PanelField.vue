@@ -2,7 +2,6 @@
 const props = withDefaults(
   defineProps<{
     label?: string;
-    /** The blueprint key, which Kirby turns into `k-field-name-<name>`. */
     name?: string;
     type?: PanelFieldType;
     width?: string;
