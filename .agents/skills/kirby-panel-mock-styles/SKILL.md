@@ -25,7 +25,7 @@ text-[color:var(--color-text-dimmed)]
 
 Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the figure's own page margin – take the plain utility.
 
-A class mirrored from a plugin has to mean the same on both sides, and kirbyup's UnoCSS `presetWind3` disagrees with Tailwind v4 three ways: it parses neither the `(--var)` shorthand nor a prefixed variant, and it compiles `space-y-*` to `> :not([hidden]) ~ :not([hidden])` where v4 emits `:not(:last-child)`, leaving the last child to Kirby on one side only. So the token takes its bracket form, the prefix goes on the utility alone, and a child selector is spelled out: `[&>div+div]:mt-[var(--spacing-4)]` here, `[&>div+div]:ksr-mt-[var(--spacing-4)]` there.
+A class mirrored from a plugin has to mean the same on both sides, and the plugins compile with UnoCSS Wind3, not Tailwind v4. So the token takes its bracket form, the prefix goes on the utility alone, and sibling spacing is spelled out as `[&>*+*]:mt-[var(--spacing-4)]` on both sides, because the two engines compile `space-*` to different selectors.
 
 ## `<style>`
 
