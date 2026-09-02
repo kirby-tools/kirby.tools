@@ -95,8 +95,8 @@ onMounted(() => {
         :class="[
           FEATURE_SLOTS.has(section.slot!) && 'relative overflow-hidden',
           index % 2 === 1 && 'bg-muted/25',
-          index === 0 &&
-            !$slots['sections-cta'] &&
+          !FEATURE_SLOTS.has(section.slot!) &&
+            !FEATURE_SLOTS.has(page.sections[index - 1]?.slot!) &&
             'border-default lg:border-t',
         ]"
         :ui="{

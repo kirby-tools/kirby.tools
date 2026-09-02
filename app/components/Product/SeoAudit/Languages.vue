@@ -26,14 +26,14 @@ const ANALYSIS_LANGUAGES = [
 </script>
 
 <template>
-  <ul class="flex h-full flex-wrap content-center gap-2 p-6">
+  <ul class="flex h-full flex-wrap content-center gap-1 p-6">
     <li v-for="language in ANALYSIS_LANGUAGES" :key="language">
       <UBadge
         :label="language"
         color="neutral"
-        variant="soft"
-        size="lg"
-        class="text-muted rounded-full"
+        variant="outline"
+        size="xl"
+        class="font-display rounded-full"
       />
     </li>
   </ul>
