@@ -13,6 +13,21 @@ const props = defineProps<{
   buttons?: boolean | (Record<string, unknown> | string)[];
 }>();
 
+const TEXTAREA_BUTTONS: (Record<string, unknown> | string)[] = [
+  { icon: "title", title: "Headings" },
+  "|",
+  { icon: "bold", title: "Bold" },
+  { icon: "italic", title: "Italic" },
+  { icon: "code", title: "Code" },
+  "|",
+  { icon: "url", title: "Link" },
+  { icon: "email", title: "Email" },
+  { icon: "attachment", title: "File" },
+  "|",
+  { icon: "list-bullet", title: "Bullet list" },
+  { icon: "list-numbers", title: "Ordered list" },
+];
+
 const fieldType = inject(panelFieldTypeKey);
 const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
 
@@ -23,7 +38,7 @@ const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
 const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
 
 const toolbarButtons = computed(() =>
-  props.buttons === true ? PANEL_TEXTAREA_BUTTONS : props.buttons || undefined,
+  props.buttons === true ? TEXTAREA_BUTTONS : props.buttons || undefined,
 );
 
 const isWriterEmpty = ref(!props.value);
