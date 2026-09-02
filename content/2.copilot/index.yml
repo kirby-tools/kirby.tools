@@ -16,51 +16,41 @@ hero:
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
+  - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
+    slot: feature-cards
+    cards:
+      - id: view-button
+        name: View Button
+        title: Fill several fields from one prompt
+        description: Tick the fields in the dialog and write one prompt. Copilot fills them all in one run, streaming into the form. Attach files, or pull another page in with @page://.
+        to: /docs/copilot/usage/view-button
+        wide: true
+      - id: skills
+        name: Skills
+        title: Your house rules, one mention away
+        description: Define brand voice and writing rules once in config. Editors type @skill:// in the prompt dialog, pick from the typeahead, and the instructions join the request.
+        to: /docs/copilot/prompt-dialog/skills
+      - id: inline-suggestions
+        name: Inline Suggestions
+        title: Ghost text after a pause
+        description: Pause in a writer field and a grey continuation appears. Tab keeps it, anything else drops it. On by default, with a fast completion model beside your main one.
+        to: /docs/copilot/usage/inline-suggestions
+      - id: toolbar-buttons
+        name: Toolbar Buttons
+        title: Rewrite the selection where it sits
+        description: Select text in a writer or textarea field, press the Copilot button and say what should change. The result replaces the selection or follows it, streaming into the field.
+        to: /docs/copilot/usage/toolbar-buttons
+      - id: blocks-and-layouts
+        name: Blocks & Layouts
+        title: Whole layouts from your own blocks
+        description: Prompt once and Copilot streams complete blocks or multi-column layouts built from your block blueprints, custom blocks included.
+        to: /docs/copilot/advanced/blocks-and-layouts
   - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
     slot: video
     video:
       src: /screencasts/kirby-copilot-multi-fields-generation.mp4
       poster: /screencasts/kirby-copilot-multi-fields-generation-poster-start.jpg
       label: Demonstration of generating many fields at once in the Kirby Panel
-  - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
-    slot: features
-    features:
-      - title: Inline Suggestions
-        description: Ghost text appears after a brief pause. Press Tab to accept.
-        icon: i-ri-magic-line
-        to: /docs/copilot/usage/inline-suggestions
-      - title: Multi-Field Generation
-        description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
-        icon: i-ri-list-check-2
-        to: /docs/copilot/usage/view-button
-      - title: Structure-Aware Generation
-        description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
-        icon: i-ri-dashboard-line
-        to: /docs/copilot/advanced/blocks-and-layouts
-      - title: In-Context Editing
-        description: Use the Copilot button in writer/textarea fields to refine text with AI assistance. Works perfectly with selected text.
-        icon: i-ri-input-cursor-move
-        to: /docs/copilot/usage/toolbar-buttons
-      - title: Prompt Templates
-        description: Tailor AI responses with user instructions. Save frequently used prompts as templates for quick access.
-        icon: i-ri-bookmark-line
-        to: /docs/copilot/prompt-dialog/templates
-      - title: Rich Context
-        description: Go beyond text. Use other fields, images, and even PDF documents as context for more accurate and relevant AI responses.
-        icon: i-ri-braces-line
-        to: /docs/copilot/prompt-dialog/placeholders
-  - title: AI Text Editing with<br> <span class="text-primary">Templates & Suggestions</span>
-    slot: video
-    video:
-      src: /screencasts/kirby-copilot-writer-features.mp4
-      poster: /screencasts/kirby-copilot-writer-features-poster-start.jpg
-      label: Applying prompt templates to fix grammar and make text concise, followed by inline suggestions in a writer field
-  - title: Generate Kirby Layouts<br> <span class="text-primary">From Custom Blocks</span>
-    slot: video
-    video:
-      src: /screencasts/kirby-copilot-generate-layouts.mp4
-      poster: /screencasts/kirby-copilot-generate-layouts-poster-start.jpg
-      label: Demonstration of generating layouts directly in the Kirby Panel
   - title: Drive Copilot<br> From <span class="text-primary">PHP</span>
     id: php-api
     slot: code

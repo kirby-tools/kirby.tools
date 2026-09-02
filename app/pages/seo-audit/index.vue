@@ -32,27 +32,20 @@ useSeoMeta({
 
 <template>
   <PagesProduct :page="page!">
-    <template #sections-cta>
-      <UPageSection
-        :ui="{
-          container: 'pt-0 sm:pt-0 lg:pt-0',
-        }"
-      >
-        <UPageCTA
-          variant="subtle"
-          orientation="horizontal"
-          :ui="{
-            container: 'sm:py-16 lg:py-16',
-            title: 'text-3xl sm:text-4xl text-center lg:text-7xl lg:text-left',
-          }"
-        >
-          <template #title>
-            <span class="text-(--ui-seo)">Never Slip</span> on SEO Again
-          </template>
-
-          <IllustrationLuckyUnlucky12 class="mx-auto w-1/2 lg:w-2/3" />
-        </UPageCTA>
-      </UPageSection>
+    <template #feature-scores>
+      <ProductSeoAuditReport />
+    </template>
+    <template #feature-entry-points>
+      <ProductSeoAuditEntryPoints />
+    </template>
+    <template #feature-keyphrase>
+      <ProductSeoAuditKeyphrase />
+    </template>
+    <template #feature-languages>
+      <ProductSeoAuditLanguages />
+    </template>
+    <template #feature-local-analysis>
+      <ProductSeoAuditLocalAnalysis />
     </template>
 
     <template #cta-image>

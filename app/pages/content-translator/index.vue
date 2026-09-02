@@ -32,6 +32,22 @@ useSeoMeta({
 
 <template>
   <PagesProduct :page="page!">
+    <template #feature-batch-translation>
+      <ProductTranslatorDialog />
+    </template>
+    <template #feature-translation-coverage>
+      <ProductTranslatorCoverage />
+    </template>
+    <template #feature-view-button>
+      <ProductTranslatorViewButton />
+    </template>
+    <template #feature-nested-fields>
+      <ProductTranslatorBlocks />
+    </template>
+    <template #feature-kirbytags>
+      <ProductTranslatorKirbyTags />
+    </template>
+
     <template #cta-image>
       <IllustrationPartnershapes7 class="w-1/3 max-lg:mt-4 lg:mx-auto" />
     </template>

@@ -48,5 +48,21 @@ useSeoMeta({
         />
       </div>
     </template>
+
+    <template #feature-view-button>
+      <ProductCopilotFieldPicker />
+    </template>
+    <template #feature-skills>
+      <ProductCopilotSkills />
+    </template>
+    <template #feature-inline-suggestions>
+      <ProductCopilotGhostText />
+    </template>
+    <template #feature-toolbar-buttons>
+      <ProductCopilotToolbarButton />
+    </template>
+    <template #feature-blocks-and-layouts>
+      <ProductCopilotBlocks />
+    </template>
   </PagesProduct>
 </template>
