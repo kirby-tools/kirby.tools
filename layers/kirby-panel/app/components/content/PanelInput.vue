@@ -35,12 +35,11 @@ const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
 /**
  * One entry per ProseMirror node: the writer stores HTML and renders a node per
  * paragraph, so plain text splits on a blank line to reach the same markup.
+ * Each paragraph splits again around the selection, since only a node of its
+ * own can be painted.
  */
-const paragraphs = computed(() => props.value?.split("\n\n") ?? []);
-
-/** Each paragraph in up to three segments, the middle one selected. */
-const segments = computed(() =>
-  paragraphs.value.map((paragraph) => {
+const paragraphs = computed(() =>
+  (props.value?.split("\n\n") ?? []).map((paragraph) => {
     const start = props.selection ? paragraph.indexOf(props.selection) : -1;
     if (start === -1) return [{ text: paragraph }];
     const end = start + props.selection!.length;
@@ -96,7 +95,7 @@ onMounted(() => {
         contenteditable="true"
         @input="isWriterEmpty = !($event.target as HTMLElement).textContent"
       >
-        <p v-for="(paragraph, index) in segments" :key="index">
+        <p v-for="(paragraph, index) in paragraphs" :key="index">
           <template
             v-for="(segment, segmentIndex) in paragraph"
             :key="segmentIndex"
@@ -105,7 +104,7 @@ onMounted(() => {
             }}</span
             ><template v-else>{{ segment.text }}</template></template
           ><span
-            v-if="suggestion && index === segments.length - 1"
+            v-if="suggestion && index === paragraphs.length - 1"
             class="k-copilot-suggestion-text"
             contenteditable="false"
             >{{ suggestion }}</span
