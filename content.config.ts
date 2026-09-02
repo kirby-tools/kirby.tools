@@ -69,15 +69,13 @@ const createCodeSchema = () =>
     minHeight: z.string().optional(),
   });
 
-const createCardItemSchema = () =>
-  z.object({
+const createFeatureCardSchema = () =>
+  createBaseSchema().extend({
     id: z.string().nonempty(),
-    title: z.string().nonempty(),
-    description: z.string().nonempty(),
-    icon: z.string().nonempty(),
-    color: z.string().optional(),
-    gradient: z.string().optional(),
+    name: z.string().nonempty(),
     to: z.string().optional(),
+    target: z.string().optional(),
+    wide: z.boolean().optional(),
   });
 
 export default defineContentConfig({
@@ -209,7 +207,7 @@ export default defineContentConfig({
             links: z.array(createLinkSchema()).optional(),
             video: createVideoSchema().optional(),
             code: createCodeSchema().optional(),
-            cards: z.array(createCardItemSchema()).optional(),
+            cards: z.array(createFeatureCardSchema()).optional(),
           }),
         ),
         cta: createBaseSchema().extend({

@@ -36,50 +36,9 @@ const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
   icon: PRODUCTS[id].icon,
   ...colorClassesOf(id),
 }));
-
-// Each plugin's view button, as its blueprint documentation defines it.
-const PLUGIN_VIEW_BUTTONS: Record<ShowcaseProductId, PanelViewButtonProps> = {
-  copilot: {
-    text: "Copilot",
-    icon: "sparkling",
-    theme: "notice-icon",
-    responsive: true,
-  },
-  "content-translator": {
-    text: "Translator",
-    icon: "content-translator-global",
-    theme: "notice-icon",
-    responsive: true,
-  },
-  "seo-audit": {
-    text: "SEO Audit",
-    icon: "seo-audit-analyze",
-    theme: "positive",
-    responsive: true,
-  },
-};
-
-// The buttons Kirby puts on every page view, which the plugin's button joins.
-const KIRBY_VIEW_BUTTONS: PanelViewButton[] = [
-  { icon: "window" },
-  { icon: "cog", dropdown: true },
-  { text: "Unlisted", icon: "status-unlisted", theme: "info-icon" },
-];
 // #endregion
 
 // #region Fixtures
-const EXHIBITION_PAGE = {
-  title: "Anna Vogel: Rooms of Silence",
-  text: [
-    "Anna Vogel photographs rooms after everyone has left them: a school gym on the first morning of the holidays, a ferry terminal at four in the morning, the back office of a shop that closed last spring.",
-    "The twenty-eight prints in this exhibition were made over six winters in northern Germany and on the Faroe Islands. Vogel works with a large-format camera and available light, which means exposures long enough for the dust to settle inside the frame.",
-    "Rooms of Silence is her first solo exhibition in Kassel. A conversation with the artist takes place on 14 November at 7 pm, admission free.",
-  ].join("\n\n"),
-  description:
-    "Twenty-eight large-format photographs of rooms just after the people have gone. Kassel, 12 September to 30 November.",
-  dates: "12 September – 30 November",
-};
-
 const COPILOT_PROMPT = `Write the teaser for "{title}" in our house voice, max 60 words.
 
 Use the attached press photo and the artist's page: @page://artists/anna-vogel`;
@@ -88,35 +47,6 @@ const COPILOT_PROMPT_PREVIEW = COPILOT_PROMPT.replace(
   "{title}",
   EXHIBITION_PAGE.title,
 );
-
-const TRANSLATOR_FIELDS = {
-  languages: {
-    type: "checkboxes",
-    label: "Translate to",
-    options: [
-      { value: "de", text: "Deutsch" },
-      { value: "es", text: "Español" },
-      { value: "fr", text: "Français" },
-    ],
-  },
-  provider: {
-    type: "toggles",
-    label: "Translate with",
-    labels: true,
-    grow: true,
-    options: [
-      { value: "deepl", text: "DeepL", icon: "translate" },
-      { value: "ai", text: "GPT (OpenAI)", icon: "content-translator-openai" },
-    ],
-  },
-};
-
-const TRANSLATOR_VALUE = { languages: ["de", "es", "fr"], provider: "ai" };
-
-const TRANSLATOR_BUTTONS = [
-  { icon: "cancel", text: "Cancel" },
-  { icon: "translate", text: "Translate", theme: "positive" },
-];
 
 const SEO_REPORT: PanelSeoAuditResultEntry[] = [
   {
@@ -242,9 +172,9 @@ const viewButtons = computed(() => [
           <PanelDialog
             v-else-if="activeProductId === 'content-translator'"
             size="medium"
-            :fields="TRANSLATOR_FIELDS"
-            :value="TRANSLATOR_VALUE"
-            :buttons="TRANSLATOR_BUTTONS"
+            :fields="TRANSLATOR_DIALOG_FIELDS"
+            :value="TRANSLATOR_DIALOG_VALUE"
+            :buttons="TRANSLATOR_DIALOG_BUTTONS"
           />
 
           <PanelDialog v-else size="large">

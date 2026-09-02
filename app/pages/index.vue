@@ -92,6 +92,10 @@ const testimonialItems = computed(() =>
           <div
             class="from-primary/15 absolute left-1/2 z-[-1] aspect-square w-full max-w-[52rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-radial to-transparent to-65%"
           />
+          <BackgroundDots
+            mask="fade-bottom"
+            class="h-[19rem] sm:h-[22rem] lg:h-[26rem]"
+          />
         </template>
 
         <template #headline>
@@ -194,16 +198,14 @@ const testimonialItems = computed(() =>
         :links="product.links"
         orientation="horizontal"
         :reverse="product.reverse"
-        class="border-default"
-        :class="[
-          index % 2 === 1 ? 'bg-muted/25' : '',
-          index === 0 && license === 'commercial' ? '' : 'lg:border-t',
-        ]"
+        class="border-default relative overflow-hidden"
+        :class="index === 0 && license === 'commercial' ? '' : 'lg:border-t'"
       >
         <template #top>
-          <div
-            aria-hidden="true"
-            class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+          <BackgroundContainerRules />
+          <BackgroundDots
+            mask="fade-bottom"
+            class="mx-4 h-[19rem] sm:mx-6 sm:h-[22rem] lg:mx-8 lg:h-[26rem]"
           />
         </template>
 

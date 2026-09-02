@@ -10,6 +10,8 @@ const SECTION_SLOT_WIDTHS: Record<string, string> = {
   video: "max-w-4xl",
 };
 
+const FEATURE_SLOTS = new Set(["features", "feature-cards"]);
+
 const NuxtLink = resolveComponent("NuxtLink");
 
 const { isLoading } = useLoadingIndicator();
@@ -78,7 +80,7 @@ onMounted(() => {
 
     <template v-for="(section, index) of page.sections" :key="index">
       <USeparator
-        v-if="section.slot === 'features'"
+        v-if="FEATURE_SLOTS.has(section.slot!)"
         :ui="{ border: 'border-primary/25' }"
       />
 
@@ -91,7 +93,7 @@ onMounted(() => {
           section.orientation === 'horizontal' ? section.features : undefined
         "
         :class="[
-          section.slot === 'features' && 'relative overflow-hidden',
+          FEATURE_SLOTS.has(section.slot!) && 'relative overflow-hidden',
           index % 2 === 1 && 'bg-muted/25',
           index === 0 &&
             !$slots['sections-cta'] &&
@@ -103,20 +105,12 @@ onMounted(() => {
         }"
       >
         <template #top>
-          <div
-            aria-hidden="true"
-            class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
+          <BackgroundContainerRules />
+          <BackgroundDots
+            v-if="FEATURE_SLOTS.has(section.slot!)"
+            class="mx-4 sm:mx-6 lg:mx-8"
           />
         </template>
-
-        <div
-          v-if="section.slot === 'features'"
-          class="bg-primary absolute top-10 -left-10 z-10 size-[300px] rounded-full opacity-10 blur-[200px]"
-        />
-        <div
-          v-if="section.slot === 'features'"
-          class="bg-primary absolute -right-10 -bottom-10 z-10 size-[300px] rounded-full opacity-10 blur-[200px]"
-        />
 
         <template v-if="section.title" #title>
           <span v-html="section.title" />
@@ -164,30 +158,28 @@ onMounted(() => {
           v-bind="section.code"
         />
 
-        <UPageGrid v-else-if="section.slot === 'cards' && section.cards">
-          <UPageCard
+        <UPageGrid
+          v-else-if="section.slot === 'feature-cards' && section.cards"
+          class="gap-4"
+        >
+          <ProductFeatureCard
             v-for="card in section.cards"
             :key="card.id"
-            :title="card.title"
-            :description="card.description"
-            :icon="card.icon"
-            :to="card.to"
-            :class="card.gradient"
-          />
+            v-bind="card"
+          >
+            <slot :name="`feature-${card.id}`" />
+          </ProductFeatureCard>
         </UPageGrid>
       </UPageSection>
 
       <USeparator
-        v-if="section.slot === 'features'"
+        v-if="FEATURE_SLOTS.has(section.slot!)"
         :ui="{ border: 'border-primary/25' }"
       />
     </template>
 
     <UPageCTA v-bind="page.cta" variant="subtle" class="relative rounded-none">
-      <div
-        aria-hidden="true"
-        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
-      />
+      <BackgroundContainerRules />
 
       <template v-if="page.cta.title" #title>
         <span v-html="page.cta.title" />
