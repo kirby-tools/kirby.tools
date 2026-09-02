@@ -14,7 +14,7 @@ Translate Kirby CMS content with DeepL or AI. One click translates entire pages,
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
-State-of-the-art SEO analysis for Kirby CMS. Perform 28 SEO and readability assessments directly in the Panel to improve your content and boost your rankings.
+Kirby SEO Audit brings the power of Yoast SEO to the Kirby Panel. Improve your content and boost your rankings with 28 detailed assessments and actionable recommendations.
 
 ### 🪩 [Kirby Live Preview](https://kirby.tools/live-preview)
 

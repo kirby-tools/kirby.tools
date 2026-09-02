@@ -117,13 +117,13 @@ products:
         variant: subtle
     features:
       - name: Multi-Field Generation
-        description: Select fields in the prompt dialog and generate their content from a single prompt. It just works™.
+        description: Tick the fields, write one prompt, and Copilot fills them all in one run – with files and other pages as context.
         icon: i-ri-list-check-2
-      - name: Structure-Aware Generation
-        description: Generate entire layouts from a single prompt, based on your project's unique block definitions.
+      - name: Blocks & Layouts
+        description: Generate whole layouts from your own block blueprints, custom blocks included.
         icon: i-ri-dashboard-line
-      - name: In-Context Editing
-        description: Use the Copilot button in writer/textarea fields to refine text with AI assistance.
+      - name: Inline Suggestions
+        description: Pause while writing and a grey continuation appears. Tab keeps it, anything else drops it.
         icon: i-ri-input-cursor-move
   - title: Kirby Content Translator
     license: commercial
@@ -148,10 +148,10 @@ products:
         description: Translate entire pages – including nested blocks, layouts, and structure fields – with a single click in the Panel.
         icon: i-ri-cursor-line
       - name: AI-Powered Translation
-        description: Use OpenAI, Anthropic, Google, or Mistral via Kirby Copilot for context-aware AI translations.
+        description: Use GPT, Claude, Gemini, or Mistral via Kirby Copilot for context-aware AI translations.
         icon: i-ri-sparkling-2-line
       - name: Programmatic PHP API
-        description: Integrate translations in CLI commands and custom workflows. Batch translate pages or automate language setup.
+        description: Integrate translations in CLI commands and custom workflows. Batch translate pages or sync content from the default language.
         icon: i-ri-terminal-box-line
   - title: Kirby SEO Audit
     license: commercial
@@ -173,14 +173,14 @@ products:
         to: /docs/seo-audit/getting-started/installation
         variant: subtle
     features:
-      - name: Powered by Yoast SEO v3
-        description: Built on the latest Yoast SEO v3 engine with improved performance, web worker architecture, and enhanced accuracy.
-        icon: i-ri-wordpress-fill
       - name: 28 SEO & Readability Assessments
-        description: Comprehensive analysis including 20 SEO assessments and 8 readability checks, such as keyword density or meta description length.
+        description: Every check graded into Good, OK, Needs improvement and Feedback, from keyword density to meta description length.
         icon: i-ri-checkbox-circle-line
-      - name: Privacy First
-        description: No external API calls, no hidden costs. The SEO checks are performed client-side in the Kirby Panel!
+      - name: View Button & Section
+        description: A view button opens the report in a dialog, a section shows it inline and keeps the last run. Both are set in the blueprint.
+        icon: i-ri-layout-top-line
+      - name: Runs in the Editor's Browser
+        description: The Yoast engine ships with the plugin and runs in a Web Worker. No third-party service ever sees the content.
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
     license: commercial
