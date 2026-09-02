@@ -25,8 +25,8 @@ defineProps<{
     </template>
 
     <!-- Kirby styles a section's header and leaves the body to whoever fills
-         it. The mock gives every body one rhythm rather than each block
-         bringing its own. -->
+         it. Copilot and SEO Audit wrap theirs in `space-y-4`, and the mock
+         gives every section that same rhythm. -->
     <div v-if="$slots.default" class="panel-section-body space-y-(--spacing-4)">
       <slot />
     </div>

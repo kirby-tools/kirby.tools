@@ -109,5 +109,7 @@ onMounted(() => {
 <style>
 .panel-preview .k-copilot-suggestion-text {
   color: light-dark(var(--color-gray-600), var(--color-gray-500));
+  pointer-events: none;
+  user-select: none;
 }
 </style>

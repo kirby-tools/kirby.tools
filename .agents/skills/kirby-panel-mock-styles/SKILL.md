@@ -43,4 +43,4 @@ A block that departs from Kirby names what Kirby does and why the mock differs, 
 
 ## Checking a Mock
 
-A running plugin playground is authoritative for the plugin's own markup and for Kirby's CSS. Kirby's templates, props and defaults come from `layers/kirby-panel/kirby`: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6.
+A running plugin playground is authoritative for the plugin's own markup. For Kirby's rendering it is not: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6. Measure Kirby against a worktree of `origin/v6/develop` served with `php -S`; its templates, props and defaults are also readable in `layers/kirby-panel/kirby`.
