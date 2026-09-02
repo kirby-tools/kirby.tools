@@ -12,7 +12,7 @@ On your own, it's a small thing you stop noticing. On a team it's a quieter kind
 Skills let you write that _how_ down once, so nobody has to remember it again.
 
 :::panel-preview
-::panel-prompt-dialog
+::panel-copilot-prompt-dialog
 ---
 selection: true
 prompt: |-

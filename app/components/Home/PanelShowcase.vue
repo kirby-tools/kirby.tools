@@ -118,7 +118,7 @@ const TRANSLATOR_BUTTONS = [
   { icon: "translate", text: "Translate", theme: "positive" },
 ];
 
-const SEO_REPORT: PanelAuditResultEntry[] = [
+const SEO_REPORT: PanelSeoAuditResultEntry[] = [
   {
     rating: "good",
     text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
@@ -232,7 +232,7 @@ const viewButtons = computed(() => [
         </div>
 
         <PanelDialogPortal>
-          <PanelPromptDialog
+          <PanelCopilotPromptDialog
             v-if="activeProductId === 'copilot'"
             :files="1"
             :prompt="COPILOT_PROMPT"
@@ -248,7 +248,7 @@ const viewButtons = computed(() => [
           />
 
           <PanelDialog v-else size="large">
-            <PanelAuditResult
+            <PanelSeoAuditResult
               title="SEO & Readability Scores"
               :report="SEO_REPORT"
             />

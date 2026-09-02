@@ -1,23 +1,23 @@
 <script setup lang="ts">
 const props = defineProps<{
-  report: PanelAuditResultEntry[];
+  report: PanelSeoAuditResultEntry[];
   title?: string;
 }>();
 
-const RATING_LABEL: Record<PanelAuditRating, string> = {
+const RATING_LABEL: Record<PanelSeoAuditRating, string> = {
   good: "Good",
   ok: "OK",
   bad: "Needs improvement",
   feedback: "Feedback",
 };
 
-const RATING_BADGE_COLOR_MAP: Partial<Record<PanelAuditRating, string>> = {
+const RATING_BADGE_COLOR_MAP: Partial<Record<PanelSeoAuditRating, string>> = {
   good: "green",
   ok: "orange",
   bad: "red",
 };
 
-const RATING_COLOR_MAP: Record<PanelAuditRating, string> = {
+const RATING_COLOR_MAP: Record<PanelSeoAuditRating, string> = {
   good: "green",
   ok: "orange",
   bad: "red",
@@ -29,7 +29,7 @@ const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 const groups = computed(() =>
   Object.keys(RATING_LABEL)
     .map((rating) => ({
-      rating: rating as PanelAuditRating,
+      rating: rating as PanelSeoAuditRating,
       items: props.report.filter((item) => item.rating === rating),
     }))
     .filter((group) => group.items.length > 0),
@@ -37,7 +37,7 @@ const groups = computed(() =>
 </script>
 
 <template>
-  <div class="panel-audit-result">
+  <div class="panel-seo-audit-result">
     <k-text v-if="title" class="mb-(--spacing-4)">
       <h2>{{ title }}</h2>
     </k-text>
@@ -89,7 +89,7 @@ const groups = computed(() =>
 <style>
 /* The `<hr>` keeps Kirby's default in a dialog. Inside a section the result
    sits on a passive box, whose grey swallows it, so only there is it darkened. */
-.k-section .panel-audit-result hr {
+.k-section .panel-seo-audit-result hr {
   background: light-dark(var(--color-gray-350), var(--color-border));
 }
 </style>

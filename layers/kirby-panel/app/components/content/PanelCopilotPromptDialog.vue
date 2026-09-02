@@ -104,7 +104,11 @@ const dropdownSpace = computed(() => {
 </script>
 
 <template>
-  <PanelDialog size="large" class="panel-prompt-dialog" :style="dropdownSpace">
+  <PanelDialog
+    size="large"
+    class="panel-copilot-prompt-dialog"
+    :style="dropdownSpace"
+  >
     <div class="relative rounded-[var(--rounded)]">
       <div
         class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap"
@@ -156,7 +160,7 @@ const dropdownSpace = computed(() => {
           <span
             v-for="tool in tools"
             :key="tool.under"
-            class="panel-prompt-tool relative flex"
+            class="panel-copilot-prompt-tool relative flex"
           >
             <k-button :icon="tool.icon" dropdown />
             <PanelDropdown
@@ -204,7 +208,7 @@ const dropdownSpace = computed(() => {
 </template>
 
 <style>
-.panel-preview .panel-prompt-dialog {
+.panel-preview .panel-copilot-prompt-dialog {
   --dialog-color-back: var(--input-color-back);
   --dialog-padding: 0;
   --dialog-rounded: var(--rounded);
@@ -215,27 +219,28 @@ const dropdownSpace = computed(() => {
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
    toolbar wrap. The one whose dropdown a figure opens stays. */
 @container panel-stage (max-width: 40rem) {
-  .panel-prompt-dialog .panel-prompt-tool:not(:has(.panel-dropdown)) {
+  .panel-copilot-prompt-dialog
+    .panel-copilot-prompt-tool:not(:has(.panel-dropdown)) {
     display: none;
   }
 }
 
-.panel-prompt-dialog [class*="k-copilot-token-"] {
+.panel-copilot-prompt-dialog [class*="k-copilot-token-"] {
   border-radius: var(--rounded-xs);
   padding-inline: var(--spacing-1);
 }
 
-.panel-prompt-dialog .k-copilot-token-placeholder {
+.panel-copilot-prompt-dialog .k-copilot-token-placeholder {
   color: light-dark(var(--color-purple-800), var(--color-purple-900));
   background: var(--color-purple-300);
 }
 
-.panel-prompt-dialog .k-copilot-token-page-ref {
+.panel-copilot-prompt-dialog .k-copilot-token-page-ref {
   color: light-dark(var(--color-blue-800), var(--color-blue-900));
   background: var(--color-blue-300);
 }
 
-.panel-prompt-dialog .k-copilot-token-skill-ref {
+.panel-copilot-prompt-dialog .k-copilot-token-skill-ref {
   color: light-dark(var(--color-green-800), var(--color-green-900));
   background: var(--color-green-300);
 }

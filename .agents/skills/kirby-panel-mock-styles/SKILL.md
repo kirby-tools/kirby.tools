@@ -1,9 +1,11 @@
 ---
 name: kirby-panel-mock-styles
-description: Styling a Kirby Panel mock (`Panel*.vue` under `layers/kirby-panel/app/components/`): where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. Don't use for the docs site's own components under `app/components/`.
+description: Building or styling a Kirby Panel mock (`Panel*.vue` under `layers/kirby-panel/app/components/`) – what to name it, where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. The docs site's own components under `app/components/` follow Nuxt UI instead.
 ---
 
 # Panel Mock Styling
+
+A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class.
 
 The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the mock renders, a `<style>` block for everything else.
 
@@ -11,7 +13,7 @@ Kirby's whole sheet sits in the `kirby` cascade layer, below `utilities` (`app/a
 
 ## Borrowed Kirby Classes
 
-Kirby ships styling that no component exposes: `.k-button-badge` lives in the style block of `Navigation/Button.vue`. Every component in `runtime/components.ts` carries its styles into the bundle, so those classes are available on any element. Put the class on the element and add utilities for the declarations that differ, the way `PanelAuditResult.vue` does with `k-button-badge static transform-none shadow-none`.
+Kirby ships styling that no component exposes: `.k-button-badge` lives in the style block of `Navigation/Button.vue`. Every component in `runtime/components.ts` carries its styles into the bundle, so those classes are available on any element. Put the class on the element and add utilities for the declarations that differ, the way `PanelSeoAuditResult.vue` does with `k-button-badge static transform-none shadow-none`.
 
 ## Tailwind
 
@@ -35,7 +37,7 @@ A rule earns a block when it
 - needs a selector no element can carry – `:has()`, an attribute selector, `@container`, a media query
 - sets a custom property – `--dialog-padding`, `--button-color-back`
 
-Scope it under `.panel-preview`: Kirby's own selectors are rewritten to that prefix, and the rule should reach nothing outside a preview. Keep the mock's hook class (`.panel-section-body`, `.panel-audit-result`) on the element so sibling mocks can target it.
+Scope it under `.panel-preview`: Kirby's own selectors are rewritten to that prefix, and the rule should reach nothing outside a preview. Keep the mock's hook class (`.panel-copilot-prompt-dialog`, `.panel-seo-audit-result`) on the element so sibling mocks can target it.
 
 A mock renders into the Stage, `.panel-preview-stage`. A rule about what the Panel would supply around a component reaches it from the mock's own block: `.panel-preview .panel-preview-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
 
