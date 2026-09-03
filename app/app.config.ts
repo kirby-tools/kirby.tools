@@ -52,6 +52,10 @@ export default defineAppConfig({
       },
     },
     prose: {
+      // `vscode-icons` has no `file-type-conf`.
+      codeIcon: {
+        conf: "i-vscode-icons-file-type-config",
+      },
       card: {
         slots: {
           description: "space-y-4! [&_p]:leading-relaxed! [&_ul_li]:my-0!",
