@@ -12,6 +12,18 @@ const BEAM_SIZE = 5;
 /** OKLCH hues of danube, orchid, lima and pumpkin. */
 const BEAM_HUES = [250.8, 318.6, 134.6, 48.7];
 
+/**
+ * How far into its rise a beam may already be on the first frame, as a
+ * fraction of its duration.
+ */
+const BEAM_HEAD_START = 0.25;
+
+/**
+ * Shortest and longest rise, as factors of `beamDuration`. Equal durations
+ * would keep the phases bunched the way they start.
+ */
+const [BEAM_DURATION_MIN, BEAM_DURATION_MAX] = [0.85, 1.15];
+
 const SIDE_LAYOUTS = [
   {
     key: "top",
@@ -52,8 +64,11 @@ function generateBeams(side: number) {
 
     return {
       x: `${(index * 100) / BEAMS_PER_SIDE}%`,
-      // Negative, so the beam is already mid-flight on the first frame.
-      delay: -(scatter(seed + 1) * props.beamDuration),
+      delay: -(scatter(seed + 1) * BEAM_HEAD_START * props.beamDuration),
+      duration:
+        props.beamDuration *
+        (BEAM_DURATION_MIN +
+          scatter(seed + 5) * (BEAM_DURATION_MAX - BEAM_DURATION_MIN)),
       hue: BEAM_HUES[seed % BEAM_HUES.length]!,
       // A different point in the sequence, so `aspectRatio` doesn't
       // track `delay`.
@@ -76,7 +91,6 @@ const sides = computed(() =>
       :style="{
         '--perspective': `${PERSPECTIVE}px`,
         '--beam-size': `${BEAM_SIZE}%`,
-        '--beam-duration': `${beamDuration}s`,
       }"
       class="@container-size pointer-events-none absolute inset-0 overflow-hidden [clip-path:inset(0)] perspective-(--perspective) transform-3d"
     >
@@ -92,6 +106,7 @@ const sides = computed(() =>
           :style="{
             '--beam-x': beam.x,
             '--beam-delay': `${beam.delay}s`,
+            '--beam-duration': `${beam.duration}s`,
             '--beam-aspect-ratio': beam.aspectRatio,
             '--beam-color': `oklch(74% 0.16 ${beam.hue})`,
           }"
