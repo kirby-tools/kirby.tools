@@ -1,20 +1,10 @@
-minimumReleaseAgeExclude:
-  - "@iconify-json/lucide@1.2.121"
-  - "@iconify-json/vscode-icons@1.2.68"
-  - "@vue/language-core@3.3.9"
-  - vue-tsc@3.3.9
+minimumReleaseAgeExcludePrune: true
 
-shellEmulator: true
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@6.3.1
 
-# TODO: Remove once `@nuxt/icon` restores SSR icon loading – 2.4.x leaves
-# Iconify without a fetch on the server.
-# https://github.com/nuxt/icon/issues/518
-overrides:
-  "@nuxt/icon": 2.3.1
-
+shellEmulator: true
 allowBuilds:
   esbuild: true
   sharp: true
