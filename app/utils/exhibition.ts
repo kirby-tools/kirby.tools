@@ -76,3 +76,74 @@ export const TRANSLATOR_DIALOG_BUTTONS = [
   { icon: "cancel", text: "Cancel" },
   { icon: "translate", text: "Translate", theme: "positive" },
 ];
+
+// The Languages view of the exhibition site. English is the default language and gets no ring.
+export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
+  [
+    { code: "de", name: "Deutsch", percentage: 100, incompletePageCount: 0 },
+    { code: "fr", name: "Français", percentage: 64, incompletePageCount: 5 },
+    { code: "es", name: "Español", percentage: 21, incompletePageCount: 15 },
+  ];
+
+export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
+  {
+    label: "Exhibitions",
+    icon: "image",
+    isOpen: true,
+    children: [
+      {
+        label: "Anna Vogel: Rooms of Silence",
+        icon: "image",
+        missingLanguages: ["es", "fr"],
+      },
+      {
+        label: "Winter Light",
+        icon: "image",
+        children: [
+          {
+            label: "Opening Night",
+            icon: "calendar",
+            missingLanguages: ["es"],
+          },
+          { label: "Catalogue", icon: "book", missingLanguages: ["es", "fr"] },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Artists",
+    icon: "users",
+    missingLanguages: ["es"],
+    children: [
+      { label: "Anna Vogel", icon: "user", missingLanguages: ["es"] },
+      { label: "Jonas Reuter", icon: "user", missingLanguages: ["es", "fr"] },
+      { label: "Mette Sørensen", icon: "user", missingLanguages: ["es"] },
+    ],
+  },
+  { label: "Visit", icon: "pin", missingLanguages: ["es", "fr"] },
+  {
+    label: "Blog",
+    icon: "text",
+    missingLanguages: ["es"],
+    children: [
+      {
+        label: "Six Winters in the North",
+        icon: "text",
+        missingLanguages: ["es"],
+      },
+      {
+        label: "Printing at Scale",
+        icon: "text",
+        missingLanguages: ["es", "fr"],
+      },
+      {
+        label: "A Conversation With Anna Vogel",
+        icon: "text",
+        missingLanguages: ["es"],
+      },
+      { label: "Behind the Catalogue", icon: "text", missingLanguages: ["es"] },
+      { label: "Opening Weekend", icon: "text", missingLanguages: ["es"] },
+    ],
+  },
+  { label: "About", icon: "info", missingLanguages: ["es"] },
+];

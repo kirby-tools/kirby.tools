@@ -6,3 +6,20 @@ export interface PanelSeoAuditResultEntry {
   text: string;
 }
 // #endregion
+
+// #region Content Translator
+export interface PanelContentTranslatorLanguageCoverage {
+  code: string;
+  name: string;
+  percentage: number;
+  incompletePageCount: number;
+}
+
+export interface PanelContentTranslatorTreeEntry {
+  label: string;
+  icon?: string;
+  isOpen?: boolean;
+  missingLanguages?: string[];
+  children?: PanelContentTranslatorTreeEntry[];
+}
+// #endregion

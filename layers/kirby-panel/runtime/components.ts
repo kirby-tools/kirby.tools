@@ -26,6 +26,9 @@ import ToggleFieldPreview from "#kirby-panel/components/Forms/Previews/ToggleFie
 import Toolbar from "#kirby-panel/components/Forms/Toolbar/Toolbar.vue";
 import Box from "#kirby-panel/components/Layout/Box.vue";
 import Column from "#kirby-panel/components/Layout/Column.vue";
+import Frame from "#kirby-panel/components/Layout/Frame/Frame.vue";
+import IconFrame from "#kirby-panel/components/Layout/Frame/IconFrame.vue";
+import ImageFrame from "#kirby-panel/components/Layout/Frame/ImageFrame.vue";
 import Grid from "#kirby-panel/components/Layout/Grid.vue";
 import Header from "#kirby-panel/components/Layout/Header.vue";
 import Table from "#kirby-panel/components/Layout/Table.vue";
@@ -37,6 +40,7 @@ import ButtonGroup from "#kirby-panel/components/Navigation/ButtonGroup.vue";
 import Link from "#kirby-panel/components/Navigation/Link.vue";
 import Navigate from "#kirby-panel/components/Navigation/Navigate.vue";
 import Pagination from "#kirby-panel/components/Navigation/Pagination.vue";
+import Tag from "#kirby-panel/components/Navigation/Tag.vue";
 import Section from "#kirby-panel/components/Sections/Section.vue";
 import Headline from "#kirby-panel/components/Text/Headline.vue";
 import Label from "#kirby-panel/components/Text/Label.vue";
@@ -71,10 +75,13 @@ export const components = {
   "k-empty": Empty,
   "k-field": Field,
   "k-fieldset": Fieldset,
+  "k-frame": Frame,
   "k-grid": Grid,
   "k-header": Header,
   "k-headline": Headline,
   "k-icon": Icon,
+  "k-icon-frame": IconFrame,
+  "k-image-frame": ImageFrame,
   "k-info-field": InfoField,
   "k-input": Input,
   "k-input-validator": InputValidator,
@@ -91,6 +98,7 @@ export const components = {
   "k-string-input": StringInput,
   "k-table": Table,
   "k-table-cell": TableCell,
+  "k-tag": Tag,
   "k-text": Text,
   "k-text-field": TextField,
   "k-text-field-preview": TextFieldPreview,

@@ -11,7 +11,7 @@ So a question keeps coming back, and often it comes from someone else – a coll
 
 I kept hitting that same question with no quick way to answer it: what's left to translate? Translation Coverage adds that answer to the Kirby Panel.
 
-![Translation Coverage view in the Languages panel showing per-language completion rings and a focused tree of pages with missing translations](/img/kirby-content-translator-translation-coverage.png)
+:product-translator-coverage{tree}
 
 ## One Place to See What's Missing
 

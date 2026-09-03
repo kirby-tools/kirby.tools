@@ -36,7 +36,7 @@ useSeoMeta({
       <ProductTranslatorDialog />
     </template>
     <template #feature-translation-coverage>
-      <ProductTranslatorCoverage />
+      <ProductTranslatorCoverage tree />
     </template>
     <template #feature-view-button>
       <ProductTranslatorViewButton />
