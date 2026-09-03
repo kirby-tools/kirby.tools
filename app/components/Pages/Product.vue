@@ -160,7 +160,7 @@ onMounted(() => {
 
         <UPageGrid
           v-else-if="section.slot === 'feature-cards' && section.cards"
-          class="gap-4"
+          class="gap-8 sm:gap-4"
         >
           <ProductFeatureCard
             v-for="card in section.cards"

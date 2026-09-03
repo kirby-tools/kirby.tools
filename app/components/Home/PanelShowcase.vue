@@ -126,7 +126,7 @@ const viewButtons = computed(() => [
       />
 
       <PanelPreview
-        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-preview-stage]:min-h-104"
+        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-preview-stage]:min-h-104 max-sm:[&_.panel-preview-stage]:h-104 max-sm:[&_.panel-preview-stage]:overflow-hidden"
       >
         <div>
           <PanelViewHeader

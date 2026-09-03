@@ -19,8 +19,10 @@ defineProps<{
   inset: 0;
   z-index: var(--z-dialog);
   display: flex;
+  /* `.k-overlay[open]` also sets `overscroll-behavior: contain`, against a
+     viewport it fills. Kept here, it would stop the page under a pointer over
+     the stage even when nothing overflows. */
   overflow: auto;
-  overscroll-behavior: contain;
   /* In place of `--dialog-margin`, which Kirby sizes for a viewport: the dialog
      keeps the inset of everything else on the stage. */
   padding: var(--panel-stage-inset);
