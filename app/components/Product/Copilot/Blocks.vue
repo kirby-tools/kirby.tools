@@ -8,7 +8,7 @@ const BLOCKS: PanelBlock[] = [
   {
     type: "quote",
     text: "I wait until the dust has settled inside the frame.",
-    citation: "Alma Frey",
+    citation: "Luise Frey",
   },
 ];
 </script>

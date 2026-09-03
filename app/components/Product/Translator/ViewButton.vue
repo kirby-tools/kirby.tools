@@ -16,7 +16,7 @@ const VIEW_BUTTONS: PanelViewButton[] = [
 <template>
   <PanelMock label="Deutsch">
     <PanelViewHeader
-      title="Alma Frey: Räume der Stille"
+      title="Luise Frey: Räume der Stille"
       :buttons="VIEW_BUTTONS"
     />
   </PanelMock>
