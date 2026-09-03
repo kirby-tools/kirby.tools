@@ -14,7 +14,7 @@ defineProps<{
 </template>
 
 <style>
-/* Kirby's `k-stats` wraps below 14rem per stat, which fits one ring in a feature card. */
+/* Kirby's `k-stats` wraps below 14rem per stat, which orphans a ring in a narrow feature card. */
 .product-feature-card .panel-content-translator-coverage .k-stats {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

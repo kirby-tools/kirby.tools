@@ -35,17 +35,14 @@ useSeoMeta({
     <template #feature-batch-translation>
       <ProductTranslatorDialog />
     </template>
-    <template #feature-translation-coverage>
-      <ProductTranslatorCoverage tree />
+    <template #feature-kirbytags>
+      <ProductTranslatorKirbyTags />
     </template>
     <template #feature-view-button>
       <ProductTranslatorViewButton />
     </template>
-    <template #feature-nested-fields>
-      <ProductTranslatorBlocks />
-    </template>
-    <template #feature-kirbytags>
-      <ProductTranslatorKirbyTags />
+    <template #feature-translation-coverage>
+      <ProductTranslatorCoverage tree />
     </template>
 
     <template #cta-image>

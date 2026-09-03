@@ -22,34 +22,31 @@ hero:
     label: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
 sections:
   - title: Same Page,<br> <span class="text-primary">Every Language</span>
+    description: "Import, Translate and Batch walk the same fields: text, tags, writer and every other text-like field, nested in blocks, layouts and structures however deep. What a blueprint marks untranslatable stays put."
     slot: feature-cards
     cards:
       - id: batch-translation
         name: Batch Translation
-        title: Pick languages and engine in one dialog
-        description: "In the default language, tick the target languages and pick the engine: DeepL, or the AI provider Kirby Copilot is set up with. Each language is translated and saved."
+        title: Pick languages and provider in one dialog
+        description: "In the default language, tick the target languages and choose DeepL or the AI provider Kirby Copilot is set up with. Every translatable field goes along, nested or not."
         to: /docs/content-translator/configuration/local#batch
         wide: true
-      - id: translation-coverage
-        name: Translation Coverage
-        title: See what still needs translating
-        description: The Languages view shows a completion ring per language and the pages missing a translation. Each language tag opens the page in the language that lacks content.
-        to: /docs/content-translator/panel/translation-coverage
-      - id: view-button
-        name: View Button
-        title: Import or translate, from the header
-        description: In a secondary language the Translator button offers Import, which copies the default language's content, and Translate, which sends the current content through the provider. The result lands in the form for review before you save.
-        to: /docs/content-translator/configuration/local#view-button-configuration
-      - id: nested-fields
-        name: Nested Fields
-        title: Blocks, layouts and structures, translated in place
-        description: The plugin walks blocks, layouts, structures and objects the way the blueprint defines them and translates every text field it finds. What a blueprint marks untranslatable stays as it is, however deep it sits.
-        to: /docs/content-translator/configuration/local#fieldtypes
       - id: kirbytags
         name: KirbyTags
         title: Links and images survive translation
         description: In textarea and markdown fields, KirbyTags become placeholders before the text leaves the site. Only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay verbatim.
         to: /docs/content-translator/advanced/kirbytags
+      - id: view-button
+        name: View Button
+        title: Import or translate, one language at a time
+        description: In a secondary language, the Translator button copies the default language's content in or translates what the form holds. Nothing is saved until you have looked at it, which batch translation cannot offer.
+        to: /docs/content-translator/configuration/local#view-button-configuration
+      - id: translation-coverage
+        name: Translation Coverage
+        title: See what still needs translating
+        description: The Languages view shows a completion ring per language and a tree of the pages still missing one. Each language tag opens the page in the language that lacks content.
+        to: /docs/content-translator/panel/translation-coverage
+        wide: true
   - title: Automate with the<br> <span class="text-primary">PHP API</span>
     id: php-api
     slot: code
