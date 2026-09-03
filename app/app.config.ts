@@ -1,12 +1,13 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: "danube",
-      secondary: "pumpkin",
+      primary: "pumpkin",
+      secondary: "danube",
       neutral: "stone",
-      // Custom colors for products
+      // Brand colors, keyed by product ID.
       copilot: "orchid",
-      seo: "lima",
+      "content-translator": "danube",
+      "seo-audit": "lima",
     },
     icons: {
       caution: "i-ri-alert-line",

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { isObject } from "@vue/shared";
+import { DEFAULT_THEME_COLOR } from "#shared/constants";
 import logoMetrics from "~/data/logo-metrics.json";
 
 const { data: page } = await useAsyncData("index", () =>
@@ -40,7 +41,7 @@ defineOgImage("Default", {
   headline: "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
-  color: "danube",
+  color: DEFAULT_THEME_COLOR,
 });
 
 const maxLogoHeight = Math.max(

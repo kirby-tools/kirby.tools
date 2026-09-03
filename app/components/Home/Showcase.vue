@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductColorSlot, ProductId } from "#shared/constants";
+import type { ProductId } from "#shared/constants";
 import { PRODUCTS } from "#shared/constants";
 
 // #region Showcase
@@ -12,29 +12,29 @@ const SHOWCASE_PRODUCT_IDS = [
 type ShowcaseProductId = (typeof SHOWCASE_PRODUCT_IDS)[number];
 
 const COLOR_CLASSES: Record<
-  ProductColorSlot | "primary",
+  ShowcaseProductId,
   { chipClass: string; accentClass: string }
 > = {
   copilot: {
     chipClass: "bg-copilot/10 text-copilot",
     accentClass: "bg-copilot",
   },
-  seo: { chipClass: "bg-seo/10 text-seo", accentClass: "bg-seo" },
-  primary: {
-    chipClass: "bg-primary/10 text-primary",
-    accentClass: "bg-primary",
+  "content-translator": {
+    chipClass: "bg-content-translator/10 text-content-translator",
+    accentClass: "bg-content-translator",
+  },
+  "seo-audit": {
+    chipClass: "bg-seo-audit/10 text-seo-audit",
+    accentClass: "bg-seo-audit",
   },
 };
-
-const colorClassesOf = (id: ShowcaseProductId) =>
-  COLOR_CLASSES[PRODUCTS[id].colorSlot ?? "primary"];
 
 const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
   value: id,
   label: PRODUCTS[id].name,
   description: PRODUCTS[id].description,
   icon: PRODUCTS[id].icon,
-  ...colorClassesOf(id),
+  ...COLOR_CLASSES[id],
 }));
 // #endregion
 
@@ -71,7 +71,7 @@ const SEO_REPORT: PanelSeoAuditResultEntry[] = [
 const activeProductId = ref<ShowcaseProductId>("copilot");
 
 const accentClass = computed(
-  () => colorClassesOf(activeProductId.value).accentClass,
+  () => COLOR_CLASSES[activeProductId.value].accentClass,
 );
 
 const viewButtons = computed(() => [

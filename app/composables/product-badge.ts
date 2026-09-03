@@ -1,10 +1,10 @@
-import type { ProductColorSlot } from "#shared/constants";
-import { isProductId, PRODUCTS } from "#shared/constants";
+import type { BrandColorProductId } from "#shared/constants";
+import { hasBrandColor, isProductId, PRODUCTS } from "#shared/constants";
 
 export interface ProductBadge {
   label: string;
   icon: string;
-  color: ProductColorSlot | "primary";
+  color: BrandColorProductId | "primary";
 }
 
 export function getProductBadge(productId?: string): ProductBadge | undefined {
@@ -15,6 +15,6 @@ export function getProductBadge(productId?: string): ProductBadge | undefined {
   return {
     label: product.label,
     icon: product.icon,
-    color: product.colorSlot ?? "primary",
+    color: hasBrandColor(productId) ? productId : "primary",
   };
 }

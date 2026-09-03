@@ -9,8 +9,8 @@ const BEAMS_PER_SIDE = 3;
 /** Beam width, as a percentage of the side it rises along. */
 const BEAM_SIZE = 5;
 
-/** OKLCH hues of danube, orchid, lima and pumpkin. */
-const BEAM_HUES = [250.8, 318.6, 134.6, 48.7];
+/** OKLCH hues of pumpkin, orchid, danube and lima. */
+const BEAM_HUES = [48.7, 318.6, 250.8, 134.6];
 
 /**
  * How far into its rise a beam may already be on the first frame, as a

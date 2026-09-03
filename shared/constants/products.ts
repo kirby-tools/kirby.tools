@@ -1,8 +1,5 @@
 export type ProductId = keyof typeof PRODUCT_REGISTRY;
 export type ProductLicense = "commercial" | "free";
-/** Registered brand color slot (see `app.config.ts` → `ui.colors`). */
-export type ProductColorSlot = "copilot" | "seo";
-
 export interface Product {
   /** Canonical name, always carrying the CMS prefix: "Kirby Copilot". */
   name: string;
@@ -28,7 +25,6 @@ export interface Product {
    * without one leave releases to their GitHub repository.
    */
   hasChangelog?: boolean;
-  colorSlot?: ProductColorSlot;
   playground?: string;
   /** Retrieval terms, surfaced to agents through `llms.txt`. */
   keywords: readonly string[];
@@ -55,7 +51,6 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-copilot",
     docsEntry: "getting-started",
     hasChangelog: true,
-    colorSlot: "copilot",
     playground: "https://try.kirbycopilot.com",
     keywords: [
       "kirby ai",
@@ -103,7 +98,6 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-seo-audit",
     docsEntry: "getting-started",
     hasChangelog: true,
-    colorSlot: "seo",
     playground: "https://try.kirbyseo.com",
     keywords: [
       "kirby seo",
@@ -189,6 +183,21 @@ export const PRODUCT_LIST: (Product & { id: ProductId })[] = Object.entries(
 
 export function isProductId(value: string | undefined): value is ProductId {
   return !!value && value in PRODUCTS;
+}
+
+/** Products with a color of their own in `app.config.ts` → `ui.colors`. */
+export const BRAND_COLOR_PRODUCT_IDS = [
+  "copilot",
+  "content-translator",
+  "seo-audit",
+] as const satisfies readonly ProductId[];
+
+export type BrandColorProductId = (typeof BRAND_COLOR_PRODUCT_IDS)[number];
+
+export function hasBrandColor(
+  productId: ProductId,
+): productId is BrandColorProductId {
+  return (BRAND_COLOR_PRODUCT_IDS as readonly ProductId[]).includes(productId);
 }
 
 /** Resolves the product a path belongs to, or `undefined` off a product route. */
