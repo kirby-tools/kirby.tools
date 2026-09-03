@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Remuxes every recording staged in .data/screencasts, writes its two posters
+# Remuxes every recording in .data/screencasts, writes its two posters
 # and uploads it to R2. See SKILL.md next to this file.
 #
 # Usage: .agents/skills/screencasts/upload.sh [--force] [file[@timestamp] ...]
@@ -11,7 +11,7 @@ shopt -s nullglob
 BUCKET="kirby-tools-assets"
 KEY_PREFIX="screencasts"
 CACHE_CONTROL="public, max-age=2592000"
-STAGING_DIRECTORY=".data/screencasts"
+RECORDINGS_DIRECTORY=".data/screencasts"
 POSTER_DIRECTORY="public/screencasts"
 # The `assetsBaseUrl` from `nuxt.config.ts`, which a shell script cannot read.
 ASSETS_BASE_URL="https://assets.kirby.tools"
@@ -59,14 +59,14 @@ done
 cd "$(dirname "$0")/../../.."
 
 if [ ${#recordingPaths[@]} -eq 0 ]; then
-  for recordingPath in "$STAGING_DIRECTORY"/*.mp4 "$STAGING_DIRECTORY"/*.mov; do
+  for recordingPath in "$RECORDINGS_DIRECTORY"/*.mp4 "$RECORDINGS_DIRECTORY"/*.mov; do
     recordingPaths+=("$recordingPath")
     posterTimestamps+=("")
   done
 fi
 
 if [ ${#recordingPaths[@]} -eq 0 ]; then
-  echo "No recordings in $STAGING_DIRECTORY." >&2
+  echo "No recordings in $RECORDINGS_DIRECTORY." >&2
   exit 1
 fi
 

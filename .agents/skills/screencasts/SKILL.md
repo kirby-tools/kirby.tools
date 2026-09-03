@@ -1,6 +1,6 @@
 ---
 name: screencasts
-description: Adds or replaces a Panel screencast on kirby.tools – staging a recording, uploading it to the R2 assets bucket, the two posters, and the content wiring. Use when a new `.mp4` goes on a product page or documentation page, or an existing recording is replaced. Don't use for still images under `public/img/`.
+description: Adds or replaces a Panel screencast on kirby.tools – dropping a recording into `.data/screencasts`, uploading it to the R2 assets bucket, the two posters, and the content wiring. Use when a new `.mp4` goes on a product page or documentation page, or an existing recording is replaced. Don't use for still images under `public/img/`.
 ---
 
 # Adding a Screencast
@@ -15,7 +15,7 @@ Record at 1816×1080, name the file `kirby-<plugin>-<feature>.mp4`, drop it in `
 .agents/skills/screencasts/upload.sh .data/screencasts/kirby-copilot-inline-suggestions.mp4@00:04
 ```
 
-Everything after `@` is the timestamp of the frame to freeze as `-poster.jpg`. Without arguments the script takes the whole staging directory. Re-running skips what already matches the bucket.
+Everything after `@` is the timestamp of the frame to freeze as `-poster.jpg`. Without arguments the script takes every recording in `.data/screencasts/`. Re-running skips what already matches the bucket.
 
 Nothing is ever deleted from the bucket, so a re-recording needs a new filename.
 

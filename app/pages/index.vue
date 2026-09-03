@@ -129,7 +129,7 @@ const testimonialItems = computed(() =>
         </template>
 
         <div class="mt-6 w-full">
-          <HomePanelShowcase />
+          <HomeShowcase />
         </div>
       </UPageHero>
     </BackgroundWarp>
