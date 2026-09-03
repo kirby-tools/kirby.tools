@@ -143,12 +143,12 @@ onMounted(() => {
 
 <style>
 /* Painted, since a native selection ends once the dialog takes focus. */
-.panel-preview .panel-selection {
+.panel-mock .panel-selection {
   background: Highlight;
   color: HighlightText;
 }
 
-.panel-preview .k-copilot-suggestion-text {
+.panel-mock .k-copilot-suggestion-text {
   color: light-dark(var(--color-gray-600), var(--color-gray-500));
   pointer-events: none;
   user-select: none;

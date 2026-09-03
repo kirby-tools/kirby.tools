@@ -1,5 +1,5 @@
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelSection>
       <PanelFieldset>
         <PanelField label="Text" name="text" type="writer">
@@ -10,5 +10,5 @@
         </PanelField>
       </PanelFieldset>
     </PanelSection>
-  </PanelPreview>
+  </PanelMock>
 </template>

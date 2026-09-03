@@ -28,7 +28,7 @@ export default defineNuxtModule({
     }
 
     nuxt.options.alias["#kirby-panel"] = srcDir;
-    nuxt.options.alias["#panel-preview"] = resolve("../../runtime");
+    nuxt.options.alias["#panel-mock"] = resolve("../../runtime");
 
     addVitePlugin(kirbyAliasPlugin(srcDir));
     addVitePlugin(kirbyCssPlugin(srcDir));

@@ -51,7 +51,7 @@ const values = ref({ ...props.value });
 
 <style>
 /* A dialog without a view: the stage centers and dims, as `k-portal` does. */
-.panel-preview .panel-preview-stage:has(> .panel-dialog) {
+.panel-mock .panel-mock-stage:has(> .panel-dialog) {
   display: flex;
   /* Cards crop the stage taller than the dialog, which `stretch` would fill. */
   align-items: start;

@@ -209,7 +209,7 @@ const dropdownSpace = computed(() => {
 </template>
 
 <style>
-.panel-preview .panel-copilot-prompt-dialog {
+.panel-mock .panel-copilot-prompt-dialog {
   --dialog-color-back: var(--input-color-back);
   --dialog-padding: 0;
   --dialog-rounded: var(--rounded);

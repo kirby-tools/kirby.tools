@@ -41,8 +41,8 @@ defineProps<{
 </template>
 
 <style>
-/* The card is the figure's frame: the preview fills it and drops its own. */
-.product-feature-card .panel-preview {
+/* The card is the figure's frame: the mock fills it and drops its own. */
+.product-feature-card .panel-mock {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -51,7 +51,7 @@ defineProps<{
   border-radius: 0;
 }
 
-.product-feature-card .panel-preview .k-panel {
+.product-feature-card .panel-mock .k-panel {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -60,7 +60,7 @@ defineProps<{
 
 /* Clipped to the card rather than grown to its content, so a dialog aligns to
    what the card shows of the stage. */
-.product-feature-card .panel-preview-stage {
+.product-feature-card .panel-mock-stage {
   flex: 1;
   min-height: 0;
   overflow: hidden;

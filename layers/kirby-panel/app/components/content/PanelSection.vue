@@ -31,8 +31,8 @@ defineProps<{
 <style>
 /* A section always has a body in the Panel, so Kirby leaves the gap its header
    reserves for one unconditionally. A mock cropped to the header alone would
-   sit off-center in the preview. */
-.panel-preview .k-section-header:last-child {
+   sit off-center on the stage. */
+.panel-mock .k-section-header:last-child {
   margin-bottom: 0;
 }
 </style>

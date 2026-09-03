@@ -1,5 +1,5 @@
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelCopilotPromptDialog
       :files="1"
       :fields="2"
@@ -15,5 +15,5 @@
         ],
       }"
     />
-  </PanelPreview>
+  </PanelMock>
 </template>

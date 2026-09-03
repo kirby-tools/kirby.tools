@@ -39,7 +39,7 @@ defineProps<{
 <style>
 /* Kirby's cap on `.k-picklist-input-body`, where the half row leaves the tenth
    item visibly cut so the list reads as scrollable. */
-.panel-preview {
+.panel-mock {
   --panel-dropdown-cap: calc(
     var(--button-height) * 9.5 + 2px * 9 + var(--dropdown-padding)
   );

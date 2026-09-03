@@ -6,7 +6,7 @@ const VIEW_BUTTONS: PanelViewButton[] = [
 </script>
 
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelViewHeader :title="EXHIBITION_PAGE.title" :buttons="VIEW_BUTTONS" />
     <PanelSection label="SEO Audit">
       <PanelSeoAuditSectionBody>
@@ -19,5 +19,5 @@ const VIEW_BUTTONS: PanelViewButton[] = [
         />
       </PanelSeoAuditSectionBody>
     </PanelSection>
-  </PanelPreview>
+  </PanelMock>
 </template>

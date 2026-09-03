@@ -24,9 +24,9 @@ const REPORT: PanelSeoAuditResultEntry[] = [
 </script>
 
 <template>
-  <PanelPreview label="SEO Audit">
+  <PanelMock label="SEO Audit">
     <PanelDialog size="large">
       <PanelSeoAuditResult title="SEO & Readability Scores" :report="REPORT" />
     </PanelDialog>
-  </PanelPreview>
+  </PanelMock>
 </template>

@@ -33,11 +33,11 @@ const buttons = computed(() =>
 /* Kirby pads the header itself and reserves a gap below it for the view. A mock
    cropped to the header shows no view, so the gap goes and Kirby's own padding
    stands in for the stage's. */
-.panel-preview .panel-view-header:last-child {
+.panel-mock .panel-view-header:last-child {
   margin-bottom: 0;
 }
 
-.panel-preview .panel-preview-stage:has(> .panel-view-header) {
+.panel-mock .panel-mock-stage:has(> .panel-view-header) {
   padding-top: 0;
 }
 
@@ -45,13 +45,13 @@ const buttons = computed(() =>
    mock is a box a few hundred pixels wide inside such a viewport. It wraps on
    its own width instead. */
 @media screen and (min-width: 70rem) {
-  .panel-preview .panel-view-header {
+  .panel-mock .panel-view-header {
     flex-wrap: wrap;
   }
 }
 
 @container panel-stage (min-width: 40rem) {
-  .panel-preview .panel-view-header {
+  .panel-mock .panel-view-header {
     flex-wrap: nowrap;
   }
 }

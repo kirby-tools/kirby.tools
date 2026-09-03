@@ -4,7 +4,7 @@ const SKILLS_PROMPT = `Write the teaser for "${EXHIBITION_PAGE.title}" @skill://
 </script>
 
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelCopilotPromptDialog
       :prompt="SKILLS_PROMPT"
       :dropdown="{
@@ -17,5 +17,5 @@ const SKILLS_PROMPT = `Write the teaser for "${EXHIBITION_PAGE.title}" @skill://
         ],
       }"
     />
-  </PanelPreview>
+  </PanelMock>
 </template>

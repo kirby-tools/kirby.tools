@@ -12,7 +12,7 @@ const KEYPHRASE_RESULTS: PanelSeoAuditResultEntry[] = [
 </script>
 
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelSection>
       <PanelFieldset>
         <PanelField label="Focus Keyphrase" name="keyphrase" type="text">
@@ -25,5 +25,5 @@ const KEYPHRASE_RESULTS: PanelSeoAuditResultEntry[] = [
         <PanelSeoAuditResult :report="KEYPHRASE_RESULTS" />
       </PanelBox>
     </PanelSection>
-  </PanelPreview>
+  </PanelMock>
 </template>

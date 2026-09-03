@@ -14,8 +14,8 @@ const BLOCKS: PanelBlock[] = [
 </script>
 
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelBlocksField name="text" label="Text" :blocks="BLOCKS" />
     <PanelNotification text="Content generated" />
-  </PanelPreview>
+  </PanelMock>
 </template>

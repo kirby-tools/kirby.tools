@@ -45,7 +45,7 @@ You can also create your own templates, stored in your browser's local storage. 
 
 All templates are available in English, German, French, and Dutch.
 
-:::panel-preview
+:::panel-mock
 ::panel-copilot-prompt-dialog
 ---
 selection: true

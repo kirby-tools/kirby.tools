@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import postcss from "postcss";
 
-export const SCOPE = ".panel-preview";
+export const SCOPE = ".panel-mock";
 export const CSS_LAYER = "kirby";
 
 // The same order `app/assets/css/main.css` declares: a layer takes its place

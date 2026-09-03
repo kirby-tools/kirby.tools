@@ -14,7 +14,7 @@ defineProps<{
 </template>
 
 <style>
-.panel-preview .panel-dialog-portal {
+.panel-mock .panel-dialog-portal {
   position: absolute;
   inset: 0;
   z-index: var(--z-dialog);
@@ -29,15 +29,15 @@ defineProps<{
   background: var(--overlay-color-back);
 }
 
-.panel-preview .panel-dialog-portal > * {
+.panel-mock .panel-dialog-portal > * {
   margin: auto;
 }
 
-.panel-preview .panel-dialog-portal[data-align="start"] > * {
+.panel-mock .panel-dialog-portal[data-align="start"] > * {
   margin-top: 0;
 }
 
-.panel-preview .panel-dialog-portal[data-align="end"] > * {
+.panel-mock .panel-dialog-portal[data-align="end"] > * {
   margin-bottom: 0;
 }
 </style>

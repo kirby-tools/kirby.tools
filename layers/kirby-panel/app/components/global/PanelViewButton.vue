@@ -31,7 +31,7 @@ withDefaults(
 /* The view the dropdown would cover is not part of a mock cropped to the header,
    so the stage stands in for it. Enough for the dropdowns the docs show open; a
    taller one would be clipped and obvious. */
-.panel-preview .panel-preview-stage:has(.panel-view-button) {
+.panel-mock .panel-mock-stage:has(.panel-view-button) {
   padding-bottom: var(--spacing-12);
 }
 </style>

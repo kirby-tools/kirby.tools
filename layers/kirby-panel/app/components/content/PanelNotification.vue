@@ -24,7 +24,7 @@ withDefaults(
 </template>
 
 <style>
-.panel-preview .k-panel-notification {
+.panel-mock .k-panel-notification {
   position: absolute;
 }
 </style>

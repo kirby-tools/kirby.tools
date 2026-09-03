@@ -1,10 +1,10 @@
 <template>
-  <PanelPreview>
+  <PanelMock>
     <PanelDialog
       size="medium"
       :fields="TRANSLATOR_DIALOG_FIELDS"
       :value="TRANSLATOR_DIALOG_VALUE"
       :buttons="TRANSLATOR_DIALOG_BUTTONS"
     />
-  </PanelPreview>
+  </PanelMock>
 </template>

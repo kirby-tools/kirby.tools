@@ -14,10 +14,10 @@ const VIEW_BUTTONS: PanelViewButton[] = [
 </script>
 
 <template>
-  <PanelPreview label="Deutsch">
+  <PanelMock label="Deutsch">
     <PanelViewHeader
       title="Anna Vogel: Räume der Stille"
       :buttons="VIEW_BUTTONS"
     />
-  </PanelPreview>
+  </PanelMock>
 </template>

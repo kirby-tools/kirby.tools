@@ -1,5 +1,5 @@
 <template>
-  <PanelPreview label="Deutsch">
+  <PanelMock label="Deutsch">
     <PanelField label="Text" name="text">
       <PanelInput
         value="Die Öffnungszeiten stehen im (link: page://exhibitions text: vollständigen Programm)."
@@ -8,5 +8,5 @@
     </PanelField>
 
     <PanelNotification text="Content translated" />
-  </PanelPreview>
+  </PanelMock>
 </template>
