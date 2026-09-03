@@ -1,5 +1,4 @@
 import { defineNuxtPlugin } from "#app";
-import safeHtml from "#kirby-panel/config/safeHtml";
 import array from "#kirby-panel/helpers/array";
 import color from "#kirby-panel/helpers/color";
 import field from "#kirby-panel/helpers/field";
@@ -36,21 +35,24 @@ export default defineNuxtPlugin((nuxtApp) => {
     isComponent: (name: string) => isComponent(name, nuxtApp.vueApp),
   };
   config.globalProperties.$t = translate;
-  nuxtApp.vueApp.use(safeHtml);
 
-  // Kirby's own directive writes on `mounted`, so whatever it carries is missing
-  // from the server-rendered HTML until the page hydrates.
-  const safeHtmlDirective = nuxtApp.vueApp.directive("safe-html")!;
+  // Kirby's `v-safe-html` writes on `mounted` only, so the server-rendered
+  // HTML would carry nothing until hydration.
+  const toHtml = (value: unknown) =>
+    value instanceof HtmlString
+      ? String(value)
+      : value == null
+        ? ""
+        : escapeHTML(value);
+
   nuxtApp.vueApp.directive("safe-html", {
-    ...safeHtmlDirective,
-    getSSRProps: ({ value }) => ({
-      innerHTML:
-        value instanceof HtmlString
-          ? value.toString()
-          : value == null
-            ? ""
-            : escapeHTML(value),
-    }),
+    getSSRProps: ({ value }) => ({ innerHTML: toHtml(value) }),
+    mounted: (el: HTMLElement, { value }) => {
+      el.innerHTML = toHtml(value);
+    },
+    updated: (el: HTMLElement, { value, oldValue }) => {
+      if (value !== oldValue) el.innerHTML = toHtml(value);
+    },
   });
 
   // Kirby's own `v-direction` reads `window.panel` and brings no SSR props.
