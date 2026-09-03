@@ -90,11 +90,18 @@ const viewButtons = computed(() => [
       :ui="{
         list: 'gap-2 mb-0 -mt-px border-t border-b-0',
         indicator: `bottom-auto -top-px h-px w-8 translate-x-[calc(var(--reka-tabs-indicator-position)+var(--reka-tabs-indicator-size)/2-calc(var(--spacing)*4))] ${accentClass}`,
-        trigger: 'flex-1 cursor-pointer flex-col gap-2 px-4 py-6',
+        trigger: 'flex-1 cursor-pointer flex-col gap-2 px-4 py-6 after:hidden',
         label: 'block w-full whitespace-normal',
       }"
     >
       <template #leading="{ item }">
+        <!-- Holds the indicator's spot until Reka mounts it on the client. -->
+        <span
+          aria-hidden="true"
+          class="absolute -top-[calc(var(--spacing)+1px)] left-1/2 hidden h-px w-8 -translate-x-1/2 in-[[data-slot=list]:not(:has([data-slot=indicator]))]:group-data-[state=active]:block"
+          :class="item.accentClass"
+        />
+
         <!-- What the indicator's `w-8` is measured against. -->
         <span
           class="flex size-8 items-center justify-center rounded-md transition-colors"
