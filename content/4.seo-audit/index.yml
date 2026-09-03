@@ -25,13 +25,13 @@ sections:
       - id: scores
         name: SEO & Readability Scores
         title: Every check graded, every fix named
-        description: Results land in Good, OK, Needs improvement and Feedback. Each line links to the matching yoast.com article or states the fix right there, so editors know what to change next.
+        description: Results land in Good, OK, Needs improvement and Feedback. Each line links to the matching yoast.com article or states the fix right there.
         to: /docs/seo-audit/getting-started#analysis-categories
         wide: true
       - id: entry-points
         name: View Button & Section
         title: One click from header or section
-        description: A view button opens the report in a dialog. A section keeps it on the page, and the last report is still there when the editor returns, ready to compare before and after.
+        description: A view button opens the report in a dialog. A section keeps it on the page, the last report included, ready to compare before and after.
         to: /docs/seo-audit/configuration/local#view-button-configuration
       - id: keyphrase
         name: Keyphrase Field
@@ -41,12 +41,12 @@ sections:
       - id: languages
         name: Language-Specific Features
         title: Graded in the page's own language
-        description: Passive voice, transition words and sentence length are judged by the rules of the page's language, German, Dutch, Spanish and 19 more, with nothing to configure.
+        description: Passive voice, transition words and sentence length follow German, Dutch or Spanish rules, 22 languages in all, with nothing to configure.
         to: /docs/seo-audit/guide/assessments#language-specific-features
       - id: local-analysis
         name: Local Analysis
         title: No service, no API key, no data leaving
-        description: The Yoast engine ships with the plugin and analyzes the page's preview HTML right in the browser. No account, no per-run cost, and no third party ever sees the content.
+        description: The Yoast engine ships with the plugin and grades the page's preview HTML right in the browser.
         to: /docs/seo-audit/getting-started#key-features
 cta:
   title: Watch Your Rankings Grow

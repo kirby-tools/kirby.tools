@@ -22,28 +22,28 @@ sections:
       - id: view-button
         name: View Button
         title: Fill several fields from one prompt
-        description: Tick the fields in the dialog and write one prompt. Copilot fills them all in one run, streaming into the form. Attach files, or pull another page in as context with @page://.
+        description: Tick the fields in the dialog and write one prompt. Copilot fills them all, streaming into the form. Attach files, or pull another page in as context with @page://.
         to: /docs/copilot/usage/view-button
         wide: true
       - id: skills
         name: Skills
         title: Your house rules, one mention away
-        description: Define brand voice and writing rules once. Editors type @skill://, pick from the typeahead, and every prompt follows the house rules without repeating them.
+        description: Define brand voice and writing rules once. Editors type @skill://, pick from the typeahead, and the prompt follows them.
         to: /docs/copilot/prompt-dialog/skills
       - id: inline-suggestions
         name: Inline Suggestions
         title: Keep typing, Copilot finishes the sentence
-        description: Pause in a writer field and a grey continuation appears. Tab keeps it, anything else drops it. No prompt, no dialog, on from the first install.
+        description: Pause in a writer field and a grey continuation appears. Tab keeps it, anything else drops it.
         to: /docs/copilot/usage/inline-suggestions
       - id: toolbar-buttons
         name: Toolbar Buttons
         title: Rewrite the selection where it sits
-        description: Select text in a writer or textarea field, press the Copilot button and say what should change. The result replaces the selection or follows it, so nothing leaves the field.
+        description: Select text in a writer or textarea field, press the Copilot button and say what should change. The result replaces the selection or follows it.
         to: /docs/copilot/usage/toolbar-buttons
       - id: blocks-and-layouts
         name: Blocks & Layouts
         title: Whole layouts from your own blocks
-        description: Prompt once and Copilot fills the field with complete blocks or multi-column layouts built from your block blueprints, custom blocks included.
+        description: Prompt once and Copilot fills the field with blocks or multi-column layouts built from your block blueprints, custom blocks included.
         to: /docs/copilot/advanced/blocks-and-layouts
   - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
     slot: video

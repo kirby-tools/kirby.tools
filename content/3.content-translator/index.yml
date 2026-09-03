@@ -22,7 +22,6 @@ hero:
     label: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
 sections:
   - title: Same Page,<br> <span class="text-primary">Every Language</span>
-    description: "Import, Translate and Batch walk the same fields: text, tags, writer and every other text-like field, nested in blocks, layouts and structures however deep. What a blueprint marks untranslatable stays put."
     slot: feature-cards
     cards:
       - id: batch-translation
@@ -34,12 +33,12 @@ sections:
       - id: kirbytags
         name: KirbyTags
         title: Links and images survive translation
-        description: In textarea and markdown fields, KirbyTags become placeholders before the text leaves the site. Only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay verbatim.
+        description: In textarea and markdown fields, only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay verbatim.
         to: /docs/content-translator/advanced/kirbytags
       - id: view-button
         name: View Button
         title: Import or translate, one language at a time
-        description: In a secondary language, the Translator button copies the default language's content in or translates what the form holds. Nothing is saved until you have looked at it, which batch translation cannot offer.
+        description: In a secondary language, the Translator button copies the default language's content in or translates what the form holds. Nothing is saved until you have looked at it.
         to: /docs/content-translator/configuration/local#view-button-configuration
       - id: translation-coverage
         name: Translation Coverage
