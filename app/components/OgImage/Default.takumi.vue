@@ -1,27 +1,38 @@
 <script setup lang="ts">
-import type { ThemeColor } from "#shared/constants";
 import { computed } from "vue";
-import { DEFAULT_THEME_COLOR, THEME_COLOR_PALETTE } from "#shared/constants";
+import {
+  DEFAULT_THEME_COLOR,
+  isProductId,
+  PRODUCTS,
+  THEME_COLOR_PALETTE,
+} from "#shared/constants";
 
 const props = withDefaults(
   defineProps<{
     title?: string;
     description?: string;
     headline?: string;
-    color?: ThemeColor;
+    /** ID of the product the page belongs to; unknown IDs get the site's color. */
+    productId?: string;
   }>(),
   {
     title: "Kirby Tools",
     description: "Premium Plugins for Kirby CMS",
-    headline: "Kirby Tools",
-    color: DEFAULT_THEME_COLOR,
+    headline: undefined,
+    productId: undefined,
   },
 );
 
+// nuxt-og-image lists the declared props from the script bindings, so a local
+// named like a prop hides that prop from the renderer.
+const product = computed(() =>
+  isProductId(props.productId) ? PRODUCTS[props.productId] : undefined,
+);
+const resolvedHeadline = computed(
+  () => props.headline ?? product.value?.name ?? "Kirby Tools",
+);
 const hex = computed(
-  () =>
-    THEME_COLOR_PALETTE[props.color] ||
-    THEME_COLOR_PALETTE[DEFAULT_THEME_COLOR],
+  () => THEME_COLOR_PALETTE[product.value?.color ?? DEFAULT_THEME_COLOR],
 );
 </script>
 
@@ -71,7 +82,7 @@ const hex = computed(
         class="text-xl font-semibold tracking-wide uppercase"
         :style="{ color: hex }"
       >
-        {{ headline }}
+        {{ resolvedHeadline }}
       </div>
     </div>
 

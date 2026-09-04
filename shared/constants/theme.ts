@@ -2,6 +2,7 @@ import { PRODUCTS, resolveProductId } from "./products";
 
 export type ThemeColor = "pumpkin" | "orchid" | "danube" | "lima";
 
+/** Hex of each 500 shade in `main.css`, for the favicon and the OG image, which cannot read CSS variables. */
 export const THEME_COLOR_PALETTE: Record<ThemeColor, string> = {
   pumpkin: "#fe7712",
   orchid: "#c66bdf",

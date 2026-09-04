@@ -8,7 +8,17 @@ import {
 } from "#shared/constants";
 
 const siteConfig = useSiteConfig();
+const appConfig = useAppConfig();
 const route = useRoute();
+const themeColor = computed(() => resolveThemeColor(route.path));
+
+watch(
+  themeColor,
+  (color) => {
+    appConfig.ui.colors.primary = color;
+  },
+  { immediate: true },
+);
 const colorMode = useColorMode();
 const color = computed(() =>
   colorMode.value === "dark" ? "#0c0a09" : "white",
@@ -30,18 +40,23 @@ if (import.meta.server) {
     link: [
       { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
       {
-        rel: "icon",
-        href: createFaviconDataUri(resolveThemeColor(route.path)),
-        sizes: "any",
-        type: "image/svg+xml",
-      },
-      {
         rel: "canonical",
         href: joinURL(siteConfig.url, route.path),
       },
     ],
   });
 }
+
+useHead({
+  link: [
+    {
+      rel: "icon",
+      href: () => createFaviconDataUri(themeColor.value),
+      sizes: "any",
+      type: "image/svg+xml",
+    },
+  ],
+});
 
 useSeoMeta({
   themeColor: color,

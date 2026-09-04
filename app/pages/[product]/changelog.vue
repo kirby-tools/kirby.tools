@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { isProductId, PRODUCTS, resolveThemeColor } from "#shared/constants";
+import { isProductId, PRODUCTS } from "#shared/constants";
 
 definePageMeta({
   // Enforces `hasChangelog`: a product without one 404s instead of rendering empty.
@@ -15,7 +15,7 @@ definePageMeta({
 });
 
 const route = useRoute();
-const { product } = useProduct();
+const { productId } = useProduct();
 
 const { data: page } = await useAsyncData(
   withoutTrailingSlash(route.path),
@@ -41,10 +41,9 @@ useSeoMeta({
 useMarkdownAlternate();
 
 defineOgImage("Default", {
-  headline: product.value?.name ?? "Kirby Tools",
+  productId: productId.value,
   title: page.value.title,
   description: page.value.description,
-  color: resolveThemeColor(route.path),
 });
 </script>
 

@@ -27,6 +27,7 @@ if (!post.value.image?.src) {
     headline: "Blog",
     title: post.value.title,
     description: post.value.description,
+    productId: post.value.product,
   });
 }
 

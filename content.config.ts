@@ -4,7 +4,7 @@ import { defineCollection, defineContentConfig, z } from "@nuxt/content";
 const variantEnum = z.enum(["solid", "outline", "subtle", "soft", "ghost", "link"]);
 const badgeVariantEnum = z.enum(["solid", "outline", "subtle", "soft"]);
 // prettier-ignore
-const colorEnum = z.enum(["primary", "secondary", "neutral", "error", "warning", "success", "info"]);
+const colorEnum = z.enum(["primary", "neutral", "error", "warning", "success", "info"]);
 const sizeEnum = z.enum(["xs", "sm", "md", "lg", "xl"]);
 const orientationEnum = z.enum(["vertical", "horizontal"]);
 

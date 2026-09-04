@@ -2,7 +2,6 @@ export default defineAppConfig({
   ui: {
     colors: {
       primary: "pumpkin",
-      secondary: "danube",
       neutral: "stone",
       // Brand colors, keyed by product ID.
       copilot: "orchid",
