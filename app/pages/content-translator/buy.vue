@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { resolveThemeColor } from "#shared/constants";
 
 const route = useRoute();
 const { product } = useProduct();
@@ -27,13 +28,11 @@ useSeoMeta({
   ogDescription: description,
 });
 
-const { getThemeColorFromPath } = useDynamicTheme();
-
 defineOgImage("Default", {
   headline: product.value?.name ?? "Kirby Tools",
   title,
   description,
-  color: getThemeColorFromPath(route.path),
+  color: resolveThemeColor(route.path),
 });
 </script>
 

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { ContentSearchLink } from "@nuxt/ui";
 import { joinURL } from "ufo";
-import { PRODUCT_LIST, productDocsPath } from "#shared/constants";
+import {
+  PRODUCT_LIST,
+  productDocsPath,
+  resolveThemeColor,
+} from "#shared/constants";
 
 const siteConfig = useSiteConfig();
 const route = useRoute();
@@ -16,13 +20,9 @@ const searchLinks: ContentSearchLink[] = PRODUCT_LIST.map((listed) => ({
   icon: listed.icon,
   to: productDocsPath(listed.id),
 }));
-const { getThemeColorFromPath, createFaviconDataUri } = useDynamicTheme();
-
 const { navigation, files, isLoading } = useContentSearchData();
 
 if (import.meta.server) {
-  const themeColor = getThemeColorFromPath(route.path);
-
   useHead({
     htmlAttrs: {
       lang: "en",
@@ -31,7 +31,7 @@ if (import.meta.server) {
       { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
       {
         rel: "icon",
-        href: createFaviconDataUri(themeColor),
+        href: createFaviconDataUri(resolveThemeColor(route.path)),
         sizes: "any",
         type: "image/svg+xml",
       },

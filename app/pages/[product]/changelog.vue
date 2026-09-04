@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { isProductId, PRODUCTS } from "#shared/constants";
+import { isProductId, PRODUCTS, resolveThemeColor } from "#shared/constants";
 
 definePageMeta({
   // Enforces `hasChangelog`: a product without one 404s instead of rendering empty.
@@ -40,13 +40,11 @@ useSeoMeta({
 
 useMarkdownAlternate();
 
-const { getThemeColorFromPath } = useDynamicTheme();
-
 defineOgImage("Default", {
   headline: product.value?.name ?? "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
-  color: getThemeColorFromPath(route.path),
+  color: resolveThemeColor(route.path),
 });
 </script>
 

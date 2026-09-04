@@ -1,47 +1,19 @@
 import type { RouteLocationNormalized } from "vue-router";
 import type { ThemeColor } from "#shared/constants";
-import {
-  DEFAULT_THEME_COLOR,
-  hasBrandColor,
-  isThemeColor,
-  resolveProductId,
-  THEME_COLOR_PALETTE,
-} from "#shared/constants";
+import { resolveThemeColor, THEME_COLOR_PALETTE } from "#shared/constants";
 import faviconSvgRaw from "~/assets/icons/favicon.svg?raw";
-
-export type { ThemeColor };
-export { THEME_COLOR_PALETTE };
 
 export function useDynamicTheme() {
   const appConfig = useAppConfig();
-  const currentThemeColor = useState<ThemeColor>(
-    "app.theme.color",
-    () => DEFAULT_THEME_COLOR,
-  );
-
-  function getThemeColorFromPath(path: string): ThemeColor {
-    const productId = resolveProductId(path);
-    const color =
-      productId && hasBrandColor(productId)
-        ? appConfig.ui.colors[productId]
-        : undefined;
-    // An unregistered color name would otherwise reach the favicon as `fill="undefined"`.
-    return isThemeColor(color) ? color : DEFAULT_THEME_COLOR;
-  }
 
   function updateThemeColor(to: RouteLocationNormalized) {
-    const primaryColor = getThemeColorFromPath(to.path);
+    const themeColor = resolveThemeColor(to.path);
 
-    currentThemeColor.value = primaryColor;
-    appConfig.ui.colors.primary = primaryColor;
-    updateFavicon(primaryColor);
+    appConfig.ui.colors.primary = themeColor;
+    updateFavicon(themeColor);
   }
 
-  return {
-    getThemeColorFromPath,
-    updateThemeColor,
-    createFaviconDataUri,
-  };
+  return { updateThemeColor };
 }
 
 function updateFavicon(themeColor: ThemeColor) {
@@ -66,7 +38,7 @@ function updateFavicon(themeColor: ThemeColor) {
   }
 }
 
-function createFaviconDataUri(themeColor: ThemeColor) {
+export function createFaviconDataUri(themeColor: ThemeColor) {
   const hexColor = THEME_COLOR_PALETTE[themeColor];
   const svg = faviconSvgRaw.replace(
     'fill="currentColor"',

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { resolveThemeColor } from "#shared/constants";
 
 definePageMeta({
   layout: "docs",
@@ -43,13 +44,11 @@ useSeoMeta({
 
 useMarkdownAlternate();
 
-const { getThemeColorFromPath } = useDynamicTheme();
-
 defineOgImage("Default", {
   headline: product.value?.name ?? "Kirby Tools",
   title: page.value.title,
   description: page.value.description,
-  color: getThemeColorFromPath(route.path),
+  color: resolveThemeColor(route.path),
 });
 </script>
 

@@ -1,3 +1,5 @@
+import type { ThemeColor } from "./theme";
+
 export type ProductId = keyof typeof PRODUCT_REGISTRY;
 export type ProductLicense = "commercial" | "free";
 export interface Product {
@@ -25,6 +27,11 @@ export interface Product {
    * without one leave releases to their GitHub repository.
    */
   hasChangelog?: boolean;
+  /**
+   * Brand color, registered under the product ID in `app.config.ts` →
+   * `ui.colors`. Products without one are themed in the site's color.
+   */
+  color?: ThemeColor;
   playground?: string;
   /** Retrieval terms, surfaced to agents through `llms.txt`. */
   keywords: readonly string[];
@@ -51,6 +58,7 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-copilot",
     docsEntry: "getting-started",
     hasChangelog: true,
+    color: "orchid",
     playground: "https://try.kirbycopilot.com",
     keywords: [
       "kirby ai",
@@ -75,6 +83,7 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-content-translator",
     docsEntry: "getting-started",
     hasChangelog: true,
+    color: "danube",
     keywords: [
       "kirby translation",
       "kirby multilanguage",
@@ -98,6 +107,7 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-seo-audit",
     docsEntry: "getting-started",
     hasChangelog: true,
+    color: "lima",
     playground: "https://try.kirbyseo.com",
     keywords: [
       "kirby seo",
@@ -185,19 +195,17 @@ export function isProductId(value: string | undefined): value is ProductId {
   return !!value && value in PRODUCTS;
 }
 
-/** Products with a color of their own in `app.config.ts` → `ui.colors`. */
-export const BRAND_COLOR_PRODUCT_IDS = [
-  "copilot",
-  "content-translator",
-  "seo-audit",
-] as const satisfies readonly ProductId[];
-
-export type BrandColorProductId = (typeof BRAND_COLOR_PRODUCT_IDS)[number];
+/** Products with a color of their own. */
+export type BrandColorProductId = {
+  [Id in ProductId]: (typeof PRODUCT_REGISTRY)[Id] extends { color: ThemeColor }
+    ? Id
+    : never;
+}[ProductId];
 
 export function hasBrandColor(
   productId: ProductId,
 ): productId is BrandColorProductId {
-  return (BRAND_COLOR_PRODUCT_IDS as readonly ProductId[]).includes(productId);
+  return PRODUCTS[productId].color !== undefined;
 }
 
 /** Resolves the product a path belongs to, or `undefined` off a product route. */
