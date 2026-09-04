@@ -3,6 +3,15 @@ import type { ProductId } from "#shared/constants";
 // The one fictional site every landing-page Mock depicts: a photography
 // exhibition, edited in a Panel that has all three plugins installed.
 
+// The Products whose Plugins the exhibition's Panel has installed.
+export const EXHIBITION_PRODUCT_IDS = [
+  "copilot",
+  "content-translator",
+  "seo-audit",
+] as const satisfies readonly ProductId[];
+
+export type ExhibitionProductId = (typeof EXHIBITION_PRODUCT_IDS)[number];
+
 export const EXHIBITION_PAGE = {
   title: "Luise Frey: Rooms of Silence",
   text: [
@@ -44,6 +53,15 @@ export const PLUGIN_VIEW_BUTTONS = {
   },
 } satisfies Partial<Record<ProductId, PanelViewButtonProps>>;
 
+export const COPILOT_PROMPT = `Write the teaser for "{title}" in our house voice, max 60 words.
+
+Use the attached press photo and the artist's page: @page://artists/luise-frey`;
+
+export const COPILOT_PROMPT_PREVIEW = COPILOT_PROMPT.replace(
+  "{title}",
+  EXHIBITION_PAGE.title,
+);
+
 export const TRANSLATOR_DIALOG_FIELDS = {
   languages: {
     type: "checkboxes",
@@ -75,6 +93,25 @@ export const TRANSLATOR_DIALOG_VALUE = {
 export const TRANSLATOR_DIALOG_BUTTONS = [
   { icon: "cancel", text: "Cancel" },
   { icon: "translate", text: "Translate", theme: "positive" },
+];
+
+export const SEO_REPORT: PanelSeoAuditResultEntry[] = [
+  {
+    rating: "good",
+    text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
+  },
+  {
+    rating: "good",
+    text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
+  },
+  {
+    rating: "ok",
+    text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
+  },
+  {
+    rating: "bad",
+    text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
+  },
 ];
 
 // The Languages view of the exhibition site. English is the default language and gets no ring.

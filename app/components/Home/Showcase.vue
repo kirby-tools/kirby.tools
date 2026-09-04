@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import type { ProductId } from "#shared/constants";
 import { PRODUCTS } from "#shared/constants";
 
 // #region Showcase
-const SHOWCASE_PRODUCT_IDS = [
-  "copilot",
-  "content-translator",
-  "seo-audit",
-] as const satisfies readonly ProductId[];
-
-type ShowcaseProductId = (typeof SHOWCASE_PRODUCT_IDS)[number];
-
 const COLOR_CLASSES: Record<
-  ShowcaseProductId,
+  ExhibitionProductId,
   { chipClass: string; accentClass: string }
 > = {
   copilot: {
@@ -29,7 +20,7 @@ const COLOR_CLASSES: Record<
   },
 };
 
-const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
+const SHOWCASE_TABS = EXHIBITION_PRODUCT_IDS.map((id) => ({
   value: id,
   label: PRODUCTS[id].name,
   description: PRODUCTS[id].description,
@@ -38,46 +29,11 @@ const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
 }));
 // #endregion
 
-// #region Fixtures
-const COPILOT_PROMPT = `Write the teaser for "{title}" in our house voice, max 60 words.
-
-Use the attached press photo and the artist's page: @page://artists/luise-frey`;
-
-const COPILOT_PROMPT_PREVIEW = COPILOT_PROMPT.replace(
-  "{title}",
-  EXHIBITION_PAGE.title,
-);
-
-const SEO_REPORT: PanelSeoAuditResultEntry[] = [
-  {
-    rating: "good",
-    text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
-  },
-  {
-    rating: "good",
-    text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
-  },
-  {
-    rating: "ok",
-    text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
-  },
-  {
-    rating: "bad",
-    text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
-  },
-];
-// #endregion
-
-const activeProductId = ref<ShowcaseProductId>("copilot");
+const activeProductId = ref<ExhibitionProductId>("copilot");
 
 const accentClass = computed(
   () => COLOR_CLASSES[activeProductId.value].accentClass,
 );
-
-const viewButtons = computed(() => [
-  PLUGIN_VIEW_BUTTONS[activeProductId.value],
-  ...KIRBY_VIEW_BUTTONS,
-]);
 </script>
 
 <template>
@@ -132,66 +88,10 @@ const viewButtons = computed(() => [
         :class="accentClass"
       />
 
-      <PanelMock
+      <HomeShowcaseScene
+        :product-id="activeProductId"
         class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:min-h-104 max-sm:[&_.panel-mock-stage]:h-104 max-sm:[&_.panel-mock-stage]:overflow-hidden"
-      >
-        <div>
-          <PanelViewHeader
-            :title="EXHIBITION_PAGE.title"
-            :buttons="viewButtons"
-          />
-
-          <PanelColumns>
-            <PanelColumn width="2/3">
-              <PanelSection>
-                <PanelFieldset>
-                  <PanelField label="Text" name="text" type="writer">
-                    <PanelInput :value="EXHIBITION_PAGE.text" />
-                  </PanelField>
-                </PanelFieldset>
-              </PanelSection>
-            </PanelColumn>
-
-            <PanelColumn width="1/3">
-              <PanelSection>
-                <PanelFieldset>
-                  <PanelField label="Description" name="description">
-                    <PanelInput :value="EXHIBITION_PAGE.description" buttons />
-                  </PanelField>
-
-                  <PanelField label="Dates" name="dates" type="text">
-                    <PanelInput :value="EXHIBITION_PAGE.dates" />
-                  </PanelField>
-                </PanelFieldset>
-              </PanelSection>
-            </PanelColumn>
-          </PanelColumns>
-        </div>
-
-        <PanelDialogPortal>
-          <PanelCopilotPromptDialog
-            v-if="activeProductId === 'copilot'"
-            :files="1"
-            :prompt="COPILOT_PROMPT"
-            :preview="COPILOT_PROMPT_PREVIEW"
-          />
-
-          <PanelDialog
-            v-else-if="activeProductId === 'content-translator'"
-            size="medium"
-            :fields="TRANSLATOR_DIALOG_FIELDS"
-            :value="TRANSLATOR_DIALOG_VALUE"
-            :buttons="TRANSLATOR_DIALOG_BUTTONS"
-          />
-
-          <PanelDialog v-else size="large">
-            <PanelSeoAuditResult
-              title="SEO & Readability Scores"
-              :report="SEO_REPORT"
-            />
-          </PanelDialog>
-        </PanelDialogPortal>
-      </PanelMock>
+      />
     </div>
   </div>
 </template>
