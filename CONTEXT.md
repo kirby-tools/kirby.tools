@@ -24,9 +24,9 @@ _Avoid_: Paid, pricing, isPaid
 The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschopplich.copilot`. The commercial Plugins namespace under the Composer vendor; Headless claims the bare `headless` key it has used since before that convention. Live Preview and Minimap have none – they are configured through blueprints alone.
 _Avoid_: Namespace, option prefix
 
-**ColorSlot**:
-A brand color registered in the Nuxt UI theme, e.g. `copilot` or `seo`. A design-system resource, not part of a Product's identity – most Products have none and fall back to `primary`.
-_Avoid_: Theme color, brand color
+**ThemeColor**:
+One of the four named palettes the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its brand color, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. The Nuxt UI color slot keyed by ProductId is derived from this, never the source.
+_Avoid_: Color slot, brand color, hex code
 
 **Mock**:
 A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept.
