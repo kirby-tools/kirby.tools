@@ -18,7 +18,7 @@ hero:
     poster: /screencasts/kirby-minimap-screencast-poster.jpg
     label: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
 sections:
-  - title: Minimap <span class="text-primary">Features</span>
+  - title: A <span class="text-primary">Table of Contents</span><br> for the Panel
     slot: features
     features:
       - title: Jump to a field or block

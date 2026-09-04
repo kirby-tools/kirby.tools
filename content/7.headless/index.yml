@@ -61,7 +61,7 @@ sections:
                 }
               ]
             }
-  - title: Headless <span class="text-primary">Features</span>
+  - title: Everything Between<br> <span class="text-primary">Kirby and Your Frontend</span>
     id: features
     slot: features
     features:
