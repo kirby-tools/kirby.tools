@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from "@nuxt/content";
 import type { NavigationMenuItem } from "@nuxt/ui";
-import type { Product, ProductId } from "#shared/constants";
+import type { Product, ProductId } from "#shared/products";
 import { withoutTrailingSlash } from "ufo";
 import {
   PRODUCT_LIST,
   productChangelogPath,
   productDocsPath,
   productPath,
-} from "#shared/constants";
+} from "#shared/products";
 
 const route = useRoute();
 const { productId, product } = useProduct();

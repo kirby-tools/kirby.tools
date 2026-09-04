@@ -1,4 +1,5 @@
-import { DEFAULT_THEME_COLOR, PRODUCT_THEME_COLORS } from "#shared/constants";
+import { PRODUCT_THEME_COLORS } from "#shared/products";
+import { DEFAULT_THEME_COLOR } from "#shared/theme";
 
 export default defineAppConfig({
   ui: {

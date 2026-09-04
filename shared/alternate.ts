@@ -1,6 +1,6 @@
-import type { ProductId } from "./constants";
+import type { ProductId } from "./products";
 import { withoutTrailingSlash } from "ufo";
-import { isProductId, PRODUCTS } from "./constants";
+import { isProductId, PRODUCTS } from "./products";
 
 const SUFFIX = ".md";
 

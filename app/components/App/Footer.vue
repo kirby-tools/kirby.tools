@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FooterColumn } from "@nuxt/ui";
-import { PRODUCT_LIST, productDocsPath } from "#shared/constants";
+import { PRODUCT_LIST, productDocsPath } from "#shared/products";
 
 const columns: FooterColumn[] = [
   {

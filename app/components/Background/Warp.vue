@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { THEME_COLORS } from "#shared/constants";
+import { THEME_COLORS } from "#shared/theme";
 
 const props = defineProps<{
   beamDuration: number;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ProductId } from "#shared/constants";
-import { isProductId, PRODUCTS } from "#shared/constants";
+import type { ProductId } from "#shared/products";
+import { isProductId, PRODUCTS } from "#shared/products";
 
 const props = defineProps<{
   product?: ProductId;

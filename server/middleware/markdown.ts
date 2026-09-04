@@ -1,9 +1,9 @@
 import type { H3Event } from "h3";
 import type { AlternateCollection } from "#shared/alternate";
-import type { ProductId } from "#shared/constants";
+import type { ProductId } from "#shared/products";
 import { queryCollection } from "@nuxt/content/server";
 import { pagePath, resolveAlternate } from "#shared/alternate";
-import { productVersionsPattern } from "#shared/constants";
+import { productVersionsPattern } from "#shared/products";
 
 /** Markdown these routes publish themselves, rather than beside an HTML page. */
 const ROUTE_OWNED_PREFIXES = ["/sitemap.md", "/.well-known/"];

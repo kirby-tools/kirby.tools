@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from "@nuxt/ui";
-import { isProductId, PRODUCTS } from "#shared/constants";
+import { isProductId, PRODUCTS } from "#shared/products";
 
 // Blog posts name their product in frontmatter; docs pages carry it in the route.
 const props = defineProps<{

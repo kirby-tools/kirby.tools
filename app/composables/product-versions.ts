@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
-import type { ProductId } from "#shared/constants";
-import { productVersionsPattern } from "#shared/constants";
+import type { ProductId } from "#shared/products";
+import { productVersionsPattern } from "#shared/products";
 
 /** Fetches the newest release of a product, or `null` off a product route. */
 export function useLatestProductVersion(productId: Ref<ProductId | undefined>) {

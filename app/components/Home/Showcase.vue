@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PRODUCTS } from "#shared/constants";
+import { PRODUCTS } from "#shared/products";
 
 // #region Showcase
 const COLOR_CLASSES: Record<

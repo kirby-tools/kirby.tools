@@ -1,4 +1,4 @@
-import { PRODUCT_LIST, productSkillName } from "#shared/constants";
+import { PRODUCT_LIST, productSkillName } from "#shared/products";
 
 /**
  * Serves one skill file. `SKILL.md` gets its frontmatter, heading and version

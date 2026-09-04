@@ -1,5 +1,5 @@
-import type { ProductId } from "#shared/constants";
-import { PRODUCTS, resolveProductId } from "#shared/constants";
+import type { ProductId } from "#shared/products";
+import { PRODUCTS, resolveProductId } from "#shared/products";
 
 export function useProduct() {
   const route = useRoute();

@@ -1,5 +1,5 @@
 import type { H3Event } from "h3";
-import type { ProductId } from "#shared/constants";
+import type { ProductId } from "#shared/products";
 import { queryCollection } from "@nuxt/content/server";
 import { joinURL } from "ufo";
 import { alternatePath } from "#shared/alternate";
@@ -8,7 +8,7 @@ import {
   PRODUCTS,
   productSkillName,
   productVersionsPattern,
-} from "#shared/constants";
+} from "#shared/products";
 
 export function skillFileKeys(productId: ProductId) {
   return useStorage("assets:server").getKeys(

@@ -5,8 +5,8 @@ import {
   PRODUCT_LIST,
   productChangelogPath,
   resolveProductId,
-  UNLISTED_PATHS,
-} from "#shared/constants";
+} from "#shared/products";
+import { UNLISTED_PATHS } from "#shared/unlisted";
 
 export default defineEventHandler(async (event) => {
   const { domain } = useRuntimeConfig(event).llms;

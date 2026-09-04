@@ -24,6 +24,10 @@ _Avoid_: Paid, pricing, isPaid
 The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschopplich.copilot`. The commercial Plugins namespace under the Composer vendor; Headless claims the bare `headless` key it has used since before that convention. Live Preview and Minimap have none – they are configured through blueprints alone.
 _Avoid_: Namespace, option prefix
 
+**Unlisted**:
+A page published at its URL and kept out of every list – the sitemap, the agent-facing index, search engines. Kirby's own status for such a page, borrowed for the site.
+_Avoid_: Hidden, private, noindex
+
 **ThemeColor**:
 One of the four named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed. The Nuxt UI color slot keyed by ProductId is derived from this, never the source.
 _Avoid_: Color slot, brand color, palette, hex code

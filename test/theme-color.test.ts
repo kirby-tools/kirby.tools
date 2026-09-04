@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { colordx } from "@colordx/core";
 import { describe, expect, it } from "vitest";
-import { resolveThemeColor, THEME_COLORS } from "../shared/constants/theme";
+import { resolveThemeColor, THEME_COLORS } from "../shared/theme";
 
 const RAMP_PATTERN =
   /--color-(?<name>[a-z-]+)-500:\s*(?<value>oklch\([^)]+\));/g;

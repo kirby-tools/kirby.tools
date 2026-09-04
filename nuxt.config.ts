@@ -5,8 +5,8 @@ import {
   PRODUCT_LIST,
   PRODUCT_THEME_COLORS,
   productChangelogPath,
-} from "./shared/constants/products";
-import { UNLISTED_PATHS } from "./shared/constants/unlisted";
+} from "./shared/products";
+import { UNLISTED_PATHS } from "./shared/unlisted";
 
 const SITE_URL = "https://kirby.tools";
 const IMMUTABLE_CACHE_CONTROL = "public, max-age=31536000, immutable";
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
         "vscode-icons:file-type-config",
       ],
       scan: {
-        // `ts` for `app.config.ts` and `shared/constants`, which the default scan skips.
+        // `ts` for `app.config.ts` and `shared/`, which the default scan skips.
         globInclude: ["**/*.{vue,jsx,tsx,ts,md,mdc,mdx,yml,yaml}"],
       },
     },

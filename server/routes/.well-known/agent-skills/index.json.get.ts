@@ -1,4 +1,4 @@
-import { PRODUCT_LIST, productSkillName } from "#shared/constants";
+import { PRODUCT_LIST, productSkillName } from "#shared/products";
 
 /**
  * Serves the skill discovery index in the v0.1.0 shape the `skills` CLI

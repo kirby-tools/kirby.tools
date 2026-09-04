@@ -1,4 +1,4 @@
-import type { ProductId } from "#shared/constants";
+import type { ProductId } from "#shared/products";
 
 // The one fictional site every landing-page Mock depicts: a photography
 // exhibition, edited in a Panel that has all three plugins installed.

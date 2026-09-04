@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { isProductId, PRODUCTS } from "#shared/constants";
+import { isProductId, PRODUCTS } from "#shared/products";
 
 definePageMeta({
   // Enforces `hasChangelog`: a product without one 404s instead of rendering empty.

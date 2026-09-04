@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  DEFAULT_THEME_COLOR,
-  isProductId,
-  PRODUCTS,
-  THEME_COLORS,
-} from "#shared/constants";
+import { isProductId, PRODUCTS } from "#shared/products";
+import { DEFAULT_THEME_COLOR, THEME_COLORS } from "#shared/theme";
 
 const props = withDefaults(
   defineProps<{

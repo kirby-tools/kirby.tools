@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import type { ContentSearchLink } from "@nuxt/ui";
 import { joinURL } from "ufo";
-import {
-  PRODUCT_LIST,
-  productDocsPath,
-  resolveThemeColor,
-} from "#shared/constants";
+import { PRODUCT_LIST, productDocsPath } from "#shared/products";
+import { resolveThemeColor } from "#shared/theme";
 
 const siteConfig = useSiteConfig();
 const appConfig = useAppConfig();

@@ -1,5 +1,5 @@
-import type { ProductIdWithThemeColor } from "#shared/constants";
-import { hasThemeColor, isProductId, PRODUCTS } from "#shared/constants";
+import type { ProductIdWithThemeColor } from "#shared/products";
+import { hasThemeColor, isProductId, PRODUCTS } from "#shared/products";
 
 export interface ProductBadge {
   label: string;

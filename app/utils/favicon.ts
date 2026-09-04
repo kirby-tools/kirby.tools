@@ -1,5 +1,5 @@
-import type { ThemeColor } from "#shared/constants";
-import { THEME_COLORS } from "#shared/constants";
+import type { ThemeColor } from "#shared/theme";
+import { THEME_COLORS } from "#shared/theme";
 import faviconSvgRaw from "~/assets/icons/favicon.svg?raw";
 
 /** Builds the SVG favicon as a data URI, filled in the given theme color. */
