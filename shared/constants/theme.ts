@@ -5,8 +5,8 @@ export type ThemeColor = "pumpkin" | "orchid" | "danube" | "lima";
 /** Hex of each 500 shade in `main.css`, for the favicon and the OG image, which cannot read CSS variables. */
 export const THEME_COLOR_PALETTE: Record<ThemeColor, string> = {
   pumpkin: "#fe7712",
-  orchid: "#c66bdf",
-  danube: "#6697cb",
+  orchid: "#d353f5",
+  danube: "#3196f5",
   lima: "#75c932",
 };
 
