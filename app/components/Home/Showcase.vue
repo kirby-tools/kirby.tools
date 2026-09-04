@@ -41,7 +41,7 @@ const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
 // #region Fixtures
 const COPILOT_PROMPT = `Write the teaser for "{title}" in our house voice, max 60 words.
 
-Use the attached press photo and the artist's page: @page://artists/anna-vogel`;
+Use the attached press photo and the artist's page: @page://artists/luise-frey`;
 
 const COPILOT_PROMPT_PREVIEW = COPILOT_PROMPT.replace(
   "{title}",
