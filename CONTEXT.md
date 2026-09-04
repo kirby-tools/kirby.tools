@@ -40,6 +40,14 @@ _Avoid_: Frame, canvas, wrapper, viewport
 The one-line pitch of a Product, written for the SocialCard and the agent-facing index. It is one sentence, short enough to stand on a single line of the SocialCard, and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
 _Avoid_: Subtitle, subline, claim, slogan
 
+**FeatureCard**:
+One of the cards a Product's landing page lays out in a grid: a title, a paragraph, and a link into the documentation. The title may claim or joke; the paragraph says what the editor or developer does, what happens, and where it stops, and it is the longest place on the site where a single feature is described in prose.
+_Avoid_: Feature box, tile, USP
+
+**FeatureList**:
+The three lines under a Product on the home page, each a name and one sentence. It is the FeatureCard's shorter sibling with the same register: the name may claim, the sentence states behavior. A FeatureList names the Product's three strongest features, not everything it does.
+_Avoid_: Feature bullets, highlights, key features
+
 **SocialCard**:
 A PNG rendered from the site's own components – Mocks included – for sharing off-site. It comes in two formats: the Open Graph format, linked from a page's meta tags, and the 4:3 format, posted by hand. A SocialCard is rendered, never drawn; the design tool that once produced it is gone.
 _Avoid_: OG image, social image, header image, Lemon Squeezy image
