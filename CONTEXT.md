@@ -25,8 +25,8 @@ The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschop
 _Avoid_: Namespace, option prefix
 
 **ThemeColor**:
-One of the four named palettes the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its brand color, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. The Nuxt UI color slot keyed by ProductId is derived from this, never the source.
-_Avoid_: Color slot, brand color, hex code
+One of the four named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed. The Nuxt UI color slot keyed by ProductId is derived from this, never the source.
+_Avoid_: Color slot, brand color, palette, hex code
 
 **Mock**:
 A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept.
@@ -35,3 +35,11 @@ _Avoid_: Screenshot, demo, replica
 **Stage**:
 The frame a Mock renders into, standing in for whatever the Panel supplies around a component – the view a header sits above, the portal a dialog centers in, the viewport a container query measures. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
 _Avoid_: Frame, canvas, wrapper, viewport
+
+**Tagline**:
+The one-line pitch of a Product, written for the places that have room for a sentence: the SocialCard and the agent-facing index. It says what the Plugin does for whom; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
+_Avoid_: Subtitle, subline, claim, slogan
+
+**SocialCard**:
+A PNG rendered from the site's own components – Mocks included – for sharing off-site. It comes in two formats: the Open Graph format, linked from a page's meta tags, and the 4:3 format, posted by hand. A SocialCard is rendered, never drawn; the design tool that once produced it is gone.
+_Avoid_: OG image, social image, header image, Lemon Squeezy image
