@@ -1,9 +1,9 @@
 title: Kirby Tools – Premium Plugins for Kirby CMS
-description: Professional Kirby CMS plugins for AI content generation, translation, and SEO analysis. Built for editors and developers.
+description: Kirby CMS plugins for editors and developers. AI content generation, translation, SEO analysis, live preview and Panel navigation, plus a PHP API and a headless toolkit.
 navigation: false
 hero:
   title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
-  description: Plugins that empower your Kirby Panel with AI content generation,<br class="hidden md:inline"> multilingual translation, and SEO analysis.
+  description: Editors generate, translate, audit and preview their content in the Panel.<br class="hidden md:inline"> Developers script the same from PHP or serve it headless.
 testimonials:
   title: Trusted by Teams Worldwide
   items:
@@ -99,7 +99,7 @@ products:
   - title: Kirby Copilot
     license: commercial
     id: copilot
-    description: AI-powered content generation and text editing for Kirby CMS. Generate layouts, refine text, or let AI complete your thoughts as you type.
+    description: Generate with AI inside the Kirby Panel. Fill fields from one prompt, build layouts from your own blocks, or accept a suggestion as you type.
     reverse: true
     video:
       src: /screencasts/kirby-copilot-multi-fields-generation.mp4
@@ -116,13 +116,13 @@ products:
         to: /docs/copilot/getting-started/installation
         variant: subtle
     features:
-      - name: Multi-Field Generation
+      - title: Multi-Field Generation
         description: Tick the fields, write one prompt, and Copilot fills them all in one run – with files and other pages as context.
         icon: i-ri-list-check-2
-      - name: Blocks & Layouts
+      - title: Blocks & Layouts
         description: Generate whole layouts from your own block blueprints, custom blocks included.
         icon: i-ri-dashboard-line
-      - name: Inline Suggestions
+      - title: Inline Suggestions
         description: Pause while writing and a grey continuation appears. Tab keeps it, anything else drops it.
         icon: i-ri-input-cursor-move
   - title: Kirby Content Translator
@@ -144,19 +144,19 @@ products:
         to: /docs/content-translator/getting-started/installation
         variant: subtle
     features:
-      - name: One-Click Translation
-        description: Translate entire pages – including nested blocks, layouts, and structure fields – with a single click in the Panel.
+      - title: Whole Pages in One Click
+        description: Nested blocks, layouts and structure fields translate along with the page.
         icon: i-ri-cursor-line
-      - name: AI-Powered Translation
-        description: Use GPT, Claude, Gemini, or Mistral via Kirby Copilot for context-aware AI translations.
+      - title: DeepL or AI
+        description: Translate with DeepL, or route through Kirby Copilot to GPT, Claude, Gemini or Mistral.
         icon: i-ri-sparkling-2-line
-      - name: Programmatic PHP API
-        description: Integrate translations in CLI commands and custom workflows. Batch translate pages or sync content from the default language.
+      - title: The Same Pipeline from PHP
+        description: Batch translate pages or sync from the default language in CLI commands and hooks.
         icon: i-ri-terminal-box-line
   - title: Kirby SEO Audit
     license: commercial
     id: seo-audit
-    description: Analyze your pages, improve your content, and boost your rankings.
+    description: The Yoast SEO engine grades every page in the Panel. Each check comes with a verdict and the fix it asks for.
     reverse: true
     video:
       src: /screencasts/kirby-seo-audit-view-button.mp4
@@ -173,19 +173,19 @@ products:
         to: /docs/seo-audit/getting-started/installation
         variant: subtle
     features:
-      - name: 28 SEO & Readability Assessments
+      - title: SEO & Readability Assessments
         description: Every check graded into Good, OK, Needs improvement and Feedback, from keyword density to meta description length.
         icon: i-ri-checkbox-circle-line
-      - name: View Button & Section
+      - title: View Button & Section
         description: A view button opens the report in a dialog, a section shows it inline and keeps the last run. Both are set in the blueprint.
         icon: i-ri-layout-top-line
-      - name: Runs in the Editor's Browser
+      - title: Runs in the Editor's Browser
         description: The Yoast engine ships with the plugin and runs in a Web Worker. No third-party service ever sees the content.
         icon: i-ri-file-lock-line
   - title: Kirby Live Preview
     license: commercial
     id: live-preview
-    description: Display your page with unsaved changes in real time. It is the plugin content editors and clients have been waiting for.
+    description: A Panel section renders the page as editors type, unsaved changes included. Switch widths, click through to other pages, and stay in the editor.
     video:
       src: /screencasts/kirby-live-preview-devices.mp4
       poster: /screencasts/kirby-live-preview-devices-poster.jpg
@@ -201,19 +201,19 @@ products:
         to: /docs/live-preview
         variant: subtle
     features:
-      - name: Device Screen Sizes
-        description: Simulate different screen sizes to see how your content will look on mobile, tablet, and desktop.
-        icon: i-ri-device-line
-      - name: Detect Preview Mode
-        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
-        icon: i-ri-drag-drop-line
-      - name: Real-Time Preview
-        description: See how your page looks before saving your changes and without leaving the Panel.
+      - title: Renders as You Type
+        description: The section refreshes on every change, before anything is saved.
         icon: i-ri-notification-badge-line
+      - title: Three Screen Widths
+        description: Toggle between phone, tablet and desktop width with one click.
+        icon: i-ri-device-line
+      - title: Knows It Is a Preview
+        description: The page can hide the cookie banner or skip animations when rendered for the Panel.
+        icon: i-ri-drag-drop-line
   - title: Kirby Minimap
     license: free
     id: minimap
-    description: A structured list of all fields and blocks of the current Panel tab. Especially useful for complex page blueprints.
+    description: A sidebar lists the fields and blocks of the current Panel tab and scrolls to the one you click. Made for long blueprints.
     video:
       src: /screencasts/kirby-minimap-screencast.mp4
       poster: /screencasts/kirby-minimap-screencast-poster.jpg
@@ -229,15 +229,70 @@ products:
         to: /docs/minimap
         variant: subtle
     features:
-      - name: Field Navigation
-        description: Click on any field or block to scroll to that position in the content editor.
+      - title: Jump to a Field
+        description: Click an entry and the Panel scrolls it into view, with a pulse on blocks.
         icon: i-ri-cursor-line
-      - name: Block Preview
-        description: For block fields, the minimap shows each block with its type icon and content preview.
+      - title: Blocks by Icon and First Words
+        description: Every block appears with its fieldset icon and the start of its text.
         icon: i-ri-layout-grid-line
-      - name: Automatic Highlighting
-        description: The minimap automatically highlights your current position as you scroll through the Panel view.
+      - title: Marks Where You Are
+        description: Fields and blocks in view are marked in the sidebar as you scroll.
         icon: i-ri-focus-3-line
+  - title: Kirby Headless
+    license: free
+    id: headless
+    description: Keep editing in Kirby and serve the content as JSON. A bearer token guards the API, KQL answers from one endpoint, and templates can return JSON instead of HTML.
+    code:
+      minHeight: 360px
+      files:
+        - filename: KQL Request
+          language: bash
+          content: |
+            curl https://example.com/api/kql \
+              -H "Authorization: Bearer your-token" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "query": "page(\"blog\").children.listed",
+                "select": {
+                  "title": true,
+                  "text": "page.text.toBlocks.toArray",
+                  "url": true
+                }
+              }'
+        - filename: Response
+          language: json
+          content: |
+            {
+              "code": 200,
+              "status": "OK",
+              "result": [
+                {
+                  "title": "Hello World",
+                  "text": [...],
+                  "url": "https://example.com/blog/hello-world"
+                }
+              ]
+            }
+    links:
+      - label: Learn More
+        to: /headless
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/headless/getting-started/installation
+        variant: subtle
+    features:
+      - title: One Token Guards the API
+        description: Set it in config.php and every KQL or custom route request has to carry it.
+        icon: i-ri-shield-keyhole-line
+      - title: Pages Answer as JSON
+        description: Templates return JSON, cached per page and language, drafts behind a preview token.
+        icon: i-ri-braces-line
+      - title: Routes as Middleware Chains
+        description: Compose custom endpoints from the token check, resolvers and functions of your own.
+        icon: i-ri-git-merge-line
 cta:
   title: Custom Plugin Development
   description: Need something specific? We are experienced with Kirby plugins, especially Panel plugins. We can tailor new plugins to your needs. Just drop us a line!

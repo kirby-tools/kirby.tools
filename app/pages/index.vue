@@ -176,8 +176,8 @@ const testimonialItems = computed(() =>
       <UPageSection
         v-if="license === 'free'"
         icon="i-ri-gift-line"
-        title="Free Plugins"
-        description="Not all of our plugins are commercial. Some of them are free to use and can be used without any restrictions."
+        title="On the House"
+        description="No license key, no invoice. The free plugins ship with the same docs and support as the rest."
         class="border-default lg:border-t"
         :ui="{
           container: 'pb-16 sm:pb-16 lg:pb-16',
@@ -235,6 +235,7 @@ const testimonialItems = computed(() =>
         </template>
 
         <MediaVideo v-if="product.video" v-bind="product.video" glow />
+        <MediaCode v-else-if="product.code" v-bind="product.code" />
       </UPageSection>
     </template>
 

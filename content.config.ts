@@ -111,11 +111,12 @@ export default defineContentConfig({
             headline: createBadgeSchema().optional(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
-            video: createVideoSchema(),
+            video: createVideoSchema().optional(),
+            code: createCodeSchema().optional(),
             links: z.array(createLinkSchema()),
             features: z.array(
               z.object({
-                name: z.string().nonempty(),
+                title: z.string().nonempty(),
                 description: z.string().nonempty(),
                 icon: z.string().nonempty(),
                 to: z.string().optional(),

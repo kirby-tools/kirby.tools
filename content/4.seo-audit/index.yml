@@ -8,7 +8,7 @@ hero:
     to: /docs/seo-audit/guide/assessments
     icon: i-ri-wordpress-fill
   title: '<span class="text-primary">Yoast SEO Analysis</span><br> for Kirby CMS'
-  description: Kirby SEO Audit brings the power of Yoast SEO to the Kirby Panel. Improve your content and boost your rankings with detailed assessments and actionable recommendations.
+  description: Kirby SEO Audit brings the Yoast SEO engine into the Panel. Every check comes with a grade and the fix it asks for, so editors improve the page before it goes live.
   links:
     - label: Generate Your SEO Report
       trailingIcon: i-ri-arrow-right-line
