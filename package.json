@@ -45,6 +45,7 @@
     "nuxt": "^4.5.2",
     "nuxt-llms": "^0.2.0",
     "nuxt-og-image": "^6.7.8",
+    "nuxtseo-layer-devtools": "^5.3.14",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",

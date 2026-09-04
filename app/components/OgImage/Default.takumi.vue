@@ -12,7 +12,6 @@ const props = withDefaults(
     title?: string;
     description?: string;
     headline?: string;
-    /** ID of the product the page belongs to; unknown IDs get the site's color. */
     productId?: string;
   }>(),
   {
@@ -56,16 +55,25 @@ const hex = computed(
     />
 
     <!-- Frame lines -->
-    <div class="absolute inset-y-0 left-26 w-[1px] bg-stone-800" />
-    <div class="absolute inset-y-0 right-26 w-[1px] bg-stone-800" />
-    <div class="absolute inset-x-0 top-12 h-[1px] bg-stone-800" />
-    <div class="absolute inset-x-0 bottom-12 h-[1px] bg-stone-800" />
-
-    <!-- Top accent bar -->
-    <div class="absolute inset-x-0 top-0 h-1" :style="{ background: hex }" />
+    <div
+      class="absolute inset-y-0 left-26 w-[1px] opacity-40"
+      :style="{ background: hex }"
+    />
+    <div
+      class="absolute inset-y-0 right-26 w-[1px] opacity-40"
+      :style="{ background: hex }"
+    />
+    <div
+      class="absolute inset-x-0 top-12 h-[1px] opacity-40"
+      :style="{ background: hex }"
+    />
+    <div
+      class="absolute inset-x-0 bottom-12 h-[1px] opacity-40"
+      :style="{ background: hex }"
+    />
 
     <!-- Header: logo + headline -->
-    <div class="mx-26 mt-18 flex flex-row items-center gap-4 pb-5 pl-8">
+    <div class="mx-26 mt-18 flex flex-row items-center gap-4 pb-5 pl-7">
       <svg
         width="32"
         height="32"
@@ -87,7 +95,7 @@ const hex = computed(
     </div>
 
     <!-- Separator line under header -->
-    <div class="mx-26 h-[1px] bg-stone-800" />
+    <div class="mx-26 h-[1px] opacity-40" :style="{ background: hex }" />
 
     <!-- Title + description -->
     <div class="mx-34 mt-10 flex h-[240px] flex-col justify-center">
