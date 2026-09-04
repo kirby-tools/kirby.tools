@@ -214,6 +214,7 @@ export function hasThemeColor(
   return productId in PRODUCT_THEME_COLORS;
 }
 
+/** Resolves the product a path belongs to, or `undefined` off a product route. */
 export function resolveProductId(path: string): ProductId | undefined {
   const segments = path.split("/").filter(Boolean);
   const candidateId = segments[0] === "docs" ? segments[1] : segments[0];

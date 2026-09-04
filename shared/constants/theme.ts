@@ -4,15 +4,24 @@ import {
   resolveProductId,
 } from "./products";
 
-export type ThemeColor = "pumpkin" | "orchid" | "danube" | "lima";
+interface ThemeColorShade {
+  /** Lightness as the percentage `main.css` writes, chroma and hue bare. */
+  l: number;
+  c: number;
+  h: number;
+  /** The same shade as a hex, for the favicon and the SocialCard, which render outside a stylesheet. */
+  hex: string;
+}
 
-/** Hex of each 500 shade in `main.css`, for the favicon and the OG image, which cannot read CSS variables. */
-export const THEME_COLOR_PALETTE: Record<ThemeColor, string> = {
-  pumpkin: "#fe7712",
-  orchid: "#d353f5",
-  danube: "#3196f5",
-  lima: "#75c932",
-};
+/** The 500 shade of every ramp `app/assets/css/main.css` declares. */
+export const THEME_COLORS = {
+  pumpkin: { l: 71.8, c: 0.189, h: 48.7, hex: "#fe7712" },
+  orchid: { l: 67.5, c: 0.247, h: 318.6, hex: "#d353f5" },
+  danube: { l: 66.3, c: 0.167, h: 250.8, hex: "#3196f5" },
+  lima: { l: 75.4, c: 0.197, h: 134.6, hex: "#75c932" },
+} satisfies Record<string, ThemeColorShade>;
+
+export type ThemeColor = keyof typeof THEME_COLORS;
 
 export const DEFAULT_THEME_COLOR: ThemeColor = "pumpkin";
 

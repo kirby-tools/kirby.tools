@@ -4,7 +4,7 @@ import {
   DEFAULT_THEME_COLOR,
   isProductId,
   PRODUCTS,
-  THEME_COLOR_PALETTE,
+  THEME_COLORS,
 } from "#shared/constants";
 
 const props = withDefaults(
@@ -31,7 +31,7 @@ const resolvedHeadline = computed(
   () => props.headline ?? product.value?.name ?? "Kirby Tools",
 );
 const hex = computed(
-  () => THEME_COLOR_PALETTE[product.value?.color ?? DEFAULT_THEME_COLOR],
+  () => THEME_COLORS[product.value?.color ?? DEFAULT_THEME_COLOR].hex,
 );
 </script>
 

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { THEME_COLORS } from "#shared/constants";
+
 const props = defineProps<{
   beamDuration: number;
 }>();
@@ -9,8 +11,11 @@ const BEAMS_PER_SIDE = 3;
 /** Beam width, as a percentage of the side it rises along. */
 const BEAM_SIZE = 5;
 
-/** OKLCH hues of pumpkin, orchid, danube and lima. */
-const BEAM_HUES = [48.7, 318.6, 250.8, 134.6];
+/**
+ * A beam takes the hue alone and renders it at one lightness and chroma, so the
+ * four read as a set rather than as their ramps.
+ */
+const BEAM_HUES = Object.values(THEME_COLORS).map(({ h }) => h);
 
 /**
  * How far into its rise a beam may already be on the first frame, as a

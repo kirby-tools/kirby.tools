@@ -11,6 +11,9 @@ importers:
       '@antfu/eslint-config':
         specifier: ^9.5.1
         version: 9.5.1(@typescript-eslint/typescript-estree@8.69.0(supports-color@10.2.2)(typescript@6.0.3))(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(@vue/compiler-sfc@3.5.42)(eslint@10.9.1(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.4.1)(vite@8.2.2(@types/node@26.4.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)))
+      '@colordx/core':
+        specifier: ^6.2.0
+        version: 6.2.0
       '@iconify-json/logos':
         specifier: ^1.2.13
         version: 1.2.13
@@ -407,6 +410,9 @@ packages:
 
   '@colordx/core@5.7.0':
     resolution: {integrity: sha512-Qbms38g1xs+4c6bNjIpgDGUVGVG25MtZxMNUs+kbmmeoFuaR/wuiKtu1wAOhtVPQShqE/p8F+uFQpoZiTR+1Jw==}
+
+  '@colordx/core@6.2.0':
+    resolution: {integrity: sha512-hf/gsfL/D/o+BG6mp0WPj4lLLdOHkGjYFakrR1N179nLh+MBgic42wZu7mYYf8idvRTatma95sr9DdJ3Y6gIoA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -7629,6 +7635,8 @@ snapshots:
     optional: true
 
   '@colordx/core@5.7.0': {}
+
+  '@colordx/core@6.2.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
