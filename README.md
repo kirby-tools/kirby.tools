@@ -24,7 +24,7 @@ See unsaved changes live, on any screen size. A Panel section renders the page a
 
 Jump to any field or block from a sidebar. Free, and there is nothing to configure: install it and the sidebar appears next to every page view.
 
-### 🔌 [Kirby Headless](https://kirby.tools/headless)
+### 🦭 [Kirby Headless](https://kirby.tools/headless)
 
 Bearer auth, KQL, JSON templates, API builder. Free and open source; keep editing in Kirby and serve the content to whatever frontend you prefer.
 

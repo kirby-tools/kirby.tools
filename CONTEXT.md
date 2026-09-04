@@ -41,7 +41,7 @@ The frame a Mock renders into, standing in for whatever the Panel supplies aroun
 _Avoid_: Frame, canvas, wrapper, viewport
 
 **Tagline**:
-The one-line pitch of a Product, written for the SocialCard and the agent-facing index. It is one sentence, short enough to stand on a single line of the SocialCard, and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
+The one-line pitch of a Product. It is one sentence, short enough to stand on a single line of the SocialCard, and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
 _Avoid_: Subtitle, subline, claim, slogan
 
 **FeatureCard**:

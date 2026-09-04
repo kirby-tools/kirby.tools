@@ -9,7 +9,7 @@ export interface Product {
   label: string;
   /** The line under the name in menus. */
   description: string;
-  /** The one-line pitch for the SocialCard and the agent-facing index, short enough for one line of the card. */
+  /** The one-line pitch, short enough for one line of the SocialCard. */
   tagline: string;
   icon: string;
   license: ProductLicense;
