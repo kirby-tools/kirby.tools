@@ -3,6 +3,7 @@ import { join, relative } from "node:path";
 import { alternatePath } from "./shared/alternate";
 import {
   PRODUCT_LIST,
+  PRODUCT_THEME_COLORS,
   productChangelogPath,
 } from "./shared/constants/products";
 import { UNLISTED_PATHS } from "./shared/constants/unlisted";
@@ -35,9 +36,7 @@ export default defineNuxtConfig({
         "info",
         "warning",
         "error",
-        "copilot",
-        "content-translator",
-        "seo-audit",
+        ...Object.keys(PRODUCT_THEME_COLORS),
       ],
     },
   },

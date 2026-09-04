@@ -1,12 +1,11 @@
+import { DEFAULT_THEME_COLOR, PRODUCT_THEME_COLORS } from "#shared/constants";
+
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: "pumpkin",
+      primary: DEFAULT_THEME_COLOR,
       neutral: "stone",
-      // Brand colors, keyed by product ID.
-      copilot: "orchid",
-      "content-translator": "danube",
-      "seo-audit": "lima",
+      ...PRODUCT_THEME_COLORS,
     },
     icons: {
       caution: "i-ri-alert-line",

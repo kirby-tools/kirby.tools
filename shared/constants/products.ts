@@ -28,8 +28,8 @@ export interface Product {
    */
   hasChangelog?: boolean;
   /**
-   * Brand color, registered under the product ID in `app.config.ts` →
-   * `ui.colors`. Products without one are themed in the site's color.
+   * Theme color the product is drawn in. Products without one are themed in
+   * the site's color.
    */
   color?: ThemeColor;
   playground?: string;
@@ -195,20 +195,25 @@ export function isProductId(value: string | undefined): value is ProductId {
   return !!value && value in PRODUCTS;
 }
 
-/** Products with a color of their own. */
-export type BrandColorProductId = {
+export type ProductIdWithThemeColor = {
   [Id in ProductId]: (typeof PRODUCT_REGISTRY)[Id] extends { color: ThemeColor }
     ? Id
     : never;
 }[ProductId];
 
-export function hasBrandColor(
+export const PRODUCT_THEME_COLORS = Object.fromEntries(
+  PRODUCT_LIST.filter((product) => product.color).map(({ id, color }) => [
+    id,
+    color,
+  ]),
+) as Record<ProductIdWithThemeColor, ThemeColor>;
+
+export function hasThemeColor(
   productId: ProductId,
-): productId is BrandColorProductId {
-  return PRODUCTS[productId].color !== undefined;
+): productId is ProductIdWithThemeColor {
+  return productId in PRODUCT_THEME_COLORS;
 }
 
-/** Resolves the product a path belongs to, or `undefined` off a product route. */
 export function resolveProductId(path: string): ProductId | undefined {
   const segments = path.split("/").filter(Boolean);
   const candidateId = segments[0] === "docs" ? segments[1] : segments[0];

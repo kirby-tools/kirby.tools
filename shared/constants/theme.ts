@@ -1,4 +1,8 @@
-import { PRODUCTS, resolveProductId } from "./products";
+import {
+  hasThemeColor,
+  PRODUCT_THEME_COLORS,
+  resolveProductId,
+} from "./products";
 
 export type ThemeColor = "pumpkin" | "orchid" | "danube" | "lima";
 
@@ -15,5 +19,8 @@ export const DEFAULT_THEME_COLOR: ThemeColor = "pumpkin";
 /** Resolves the color a path is themed in: the product's own, or the site's off product routes. */
 export function resolveThemeColor(path: string): ThemeColor {
   const productId = resolveProductId(path);
-  return (productId && PRODUCTS[productId].color) || DEFAULT_THEME_COLOR;
+
+  return productId && hasThemeColor(productId)
+    ? PRODUCT_THEME_COLORS[productId]
+    : DEFAULT_THEME_COLOR;
 }

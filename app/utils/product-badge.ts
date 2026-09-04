@@ -1,10 +1,10 @@
-import type { BrandColorProductId } from "#shared/constants";
-import { hasBrandColor, isProductId, PRODUCTS } from "#shared/constants";
+import type { ProductIdWithThemeColor } from "#shared/constants";
+import { hasThemeColor, isProductId, PRODUCTS } from "#shared/constants";
 
 export interface ProductBadge {
   label: string;
   icon: string;
-  color: BrandColorProductId | "primary";
+  color: ProductIdWithThemeColor | "primary";
 }
 
 export function getProductBadge(productId?: string): ProductBadge | undefined {
@@ -15,6 +15,6 @@ export function getProductBadge(productId?: string): ProductBadge | undefined {
   return {
     label: product.label,
     icon: product.icon,
-    color: hasBrandColor(productId) ? productId : "primary",
+    color: hasThemeColor(productId) ? productId : "primary",
   };
 }
