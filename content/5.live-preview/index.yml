@@ -17,16 +17,16 @@ sections:
   - title: <span class="text-primary">Feature-Complete</span><br> Page Previews
     slot: features
     features:
-      - title: Detect Preview Mode
-        description: Conditionally hide elements, such as a cookie banner, or turn off animations in the rendered preview page.
+      - title: Tell the preview apart from the site
+        description: The rendered page carries a preview-mode attribute on its html element and a previewMode() method in PHP. Hide the cookie banner, skip animations, or leave analytics out for the preview.
         icon: i-ri-drag-drop-line
         to: /docs/live-preview/preview-mode
-      - title: Panel Redirects
-        description: Clicking inside the preview opens the corresponding Panel page instead of following the link.
+      - title: Click a link, land on its Panel page
+        description: A link inside the preview opens the linked page in the Panel instead of leaving the editor. Links to other sites open in a new tab; anchors and links you mark as ignored behave as usual.
         icon: i-ri-links-line
         to: /docs/live-preview
-      - title: Simulate Device Screen Sizes
-        description: Choose from a variety of device screen sizes to see how your content will look on mobile (390w), tablet (768w), and desktop (1440w).
+      - title: Three widths, one click each
+        description: Toggle the preview to 390, 768 or 1440 pixels wide. Where the section is narrower than the preset, the page renders at full width and is scaled down, so the layout stays true.
         icon: i-ri-device-line
         to: /docs/live-preview#step-2-blueprint-setup
   - title: Responsive Preview<br> with <span class="text-primary">Device Simulation</span>

@@ -21,16 +21,16 @@ sections:
   - title: Minimap <span class="text-primary">Features</span>
     slot: features
     features:
-      - title: Field Navigation
-        description: Click on any field or block to scroll to that position in the content editor.
+      - title: Jump to a field or block
+        description: Click an entry and the Panel scrolls it into the middle of the view, with a short pulse on blocks. The list follows the active tab and shows the fields of its field sections.
         icon: i-ri-cursor-line
         to: /docs/minimap
-      - title: Block Preview
-        description: For block fields, the minimap shows each block with its type icon and content preview.
+      - title: Every block, with its icon and first words
+        description: Blocks fields unfold into their blocks, each with the fieldset's icon and the first 50 characters of text, an image's alt text, or the type name where there is no text.
         icon: i-ri-layout-grid-line
         to: /docs/minimap
-      - title: Automatic Highlighting
-        description: The minimap automatically highlights your current position as you scroll through the Panel view.
+      - title: See where you are
+        description: Fields and blocks currently in view are marked in the sidebar as you scroll, and required fields carry a star. The sidebar collapses to a strip of dashes and remembers its state across reloads.
         icon: i-ri-focus-3-line
         to: /docs/minimap
 cta:

@@ -6,7 +6,7 @@ hero:
     label: Free & Open Source
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Headless CMS</span><br> Toolkit for Kirby'
-  description: Everything you need to use Kirby as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – all with zero-config defaults.
+  description: Everything you need to use Kirby as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – one config.php for all of it.
   links:
     - label: Get Started
       trailingIcon: i-ri-arrow-right-line
@@ -17,13 +17,13 @@ sections:
     id: kql
     slot: code
     orientation: horizontal
-    description: Use Kirby's Query Language via a dedicated API endpoint. Built-in response caching and multi-language support included.
+    description: Send Kirby Query Language queries to one endpoint and get JSON back. With Kirby's pages cache on, responses are cached per query and language and flushed on every content change.
     features:
       - title: Bearer Token Auth
-        description: Secure your API with modern token-based authentication
+        description: Switch the endpoint to bearer mode and one token from config.php guards it
         icon: i-ri-shield-keyhole-line
-      - title: Automatic Caching
-        description: Query responses are cached out of the box
+      - title: Response Caching
+        description: Cached per query and language once the pages cache is on; one header bypasses it
         icon: i-ri-speed-line
     links:
       - label: KQL Reference
@@ -52,6 +52,7 @@ sections:
           content: |
             {
               "code": 200,
+              "status": "OK",
               "result": [
                 {
                   "title": "Hello World",
@@ -64,30 +65,30 @@ sections:
     id: features
     slot: features
     features:
-      - title: Bearer Token Auth
-        description: Modern authentication for API endpoints. Drop-in replacement for basic auth with configurable tokens.
+      - title: One token guards the API
+        description: Set a token in config.php and every request has to carry it as a Bearer header; missing or wrong tokens get a 401. Kirby's own API keeps its session and basic auth.
         icon: i-ri-shield-keyhole-line
         to: /docs/headless/configuration/authentication
-      - title: KQL Endpoint
-        description: Query content via Kirby Query Language with automatic response caching and multi-language support.
+      - title: Query anything through one endpoint
+        description: POST a KQL query with a select map and get JSON back, in the language you pick by header or query parameter. Needs the getkirby/kql package.
         icon: i-ri-database-2-line
         to: /docs/headless/usage/kql
-      - title: JSON Templates
-        description: Return JSON from Kirby templates. Enable global routes to serve all content as structured data.
+      - title: Every page answers as JSON
+        description: Write templates that echo JSON. With global routes on, each page URL returns its template's output, cached per page, language and version, drafts included behind a preview token.
         icon: i-ri-braces-line
         to: /docs/headless/usage/json-templates
-      - title: Resolved Blocks
-        description: Automatically resolve UUIDs in block and layout fields to complete file and page objects.
+      - title: UUIDs become URLs, sizes and titles
+        description: Call toResolvedBlocks() on a blocks or layout field and image blocks come back with url, width, height, srcset and alt. Add resolvers per block type and field for pages and other files.
         icon: i-ri-puzzle-line
         to: /docs/headless/usage/field-methods
-      - title: API Builder
-        description: Express-style API builder with middleware support for custom routes and authentication.
+      - title: Routes as a chain of middlewares
+        description: Api::createHandler() runs your functions in order. A null continues, an array extends the context, anything else is the response. Token check, language, page resolution and body parsing ship as middlewares.
         icon: i-ri-terminal-box-line
         to: /docs/headless/advanced/api-builder
-      - title: CORS Support
-        description: Delegates to Kirby's native CORS handling for cross-origin requests out of the box.
-        icon: i-ri-global-line
-        to: /docs/headless/configuration/cors
+      - title: A sitemap with hreflang alternates
+        description: The sitemap endpoint lists every indexable page with its URL per language and an x-default entry. Exclude pages by template, by pattern, or per blueprint.
+        icon: i-ri-road-map-line
+        to: /docs/headless/usage/json-templates#sitemap-endpoint
   - title: Build Custom Routes with the<br> <span class="text-primary">API Builder</span>
     id: api-builder
     slot: code
@@ -96,10 +97,10 @@ sections:
     description: Define API routes with an Express-style middleware pattern. Chain authentication, validation, and response logic.
     features:
       - title: Middleware Support
-        description: Composable middleware functions for auth, validation, and more
+        description: Chain the token check, language and page resolvers with functions of your own
         icon: i-ri-stack-line
       - title: Consistent Responses
-        description: Built-in JSON response format for all API routes
+        description: Api::createResponse() wraps your data in code, status and result
         icon: i-ri-code-s-slash-line
     links:
       - label: API Builder Reference
@@ -118,15 +119,16 @@ sections:
             return [
                 'routes' => [
                     [
-                        'pattern' => '__api__/login',
+                        'pattern' => 'api/login',
                         'method' => 'POST',
                         'action' => Api::createHandler(
-                            [Middlewares::hasBearerToken()],
-                            function ($context) {
-                                $body = $context['body'];
-                                $user = kirby()->user($body['email']);
+                            Middlewares::hasBearerToken(),
+                            Middlewares::hasBody(...),
+                            function (array $context, array $args) {
+                                $email = $context['body']->get('email');
+                                $user = kirby()->user($email);
                                 return Api::createResponse(200, [
-                                    'user' => $user->email(),
+                                    'user' => $user?->email(),
                                 ]);
                             }
                         ),
