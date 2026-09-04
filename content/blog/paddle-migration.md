@@ -14,7 +14,7 @@ So I did the same.
 
 ## Why Paddle
 
-[Paddle](https://www.paddle.com) is an established Merchant of Record that powers over 4,000 software companies. It handles global VAT and sales tax, supports more payment methods, and has a mature API that's a pleasure to work with.
+[Paddle](https://www.paddle.com) is a Merchant of Record: it sells the license to you and handles VAT and sales tax for every country itself. It supports more payment methods than the previous provider, and its API covers everything the license flow needs.
 
 The most visible improvement: checkout is now an overlay that stays on kirby.tools. No more redirecting to a third-party page to complete your purchase. It's a small thing, but it makes the experience feel more cohesive.
 

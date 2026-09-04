@@ -1,6 +1,6 @@
 ---
 title: Kirby Copilot v2.5 – Beyond Single Fields
-description: Multi-field generation and custom blocks support turn Copilot into a proper content generation tool for the Kirby Panel.
+description: Multi-field generation fills several fields from one prompt, and custom blocks generate from your own blueprints.
 date: "2025-09-05"
 product: copilot
 badge:
@@ -17,7 +17,7 @@ Copilot v2.5 introduces a Panel view button that opens the prompt dialog from an
 
 The key is that Copilot understands your blueprint structure. It knows which fields exist on the current page, what types they are, and how they relate to each other. When you ask it to generate content for three fields simultaneously, the results are coherent – not three isolated pieces of text that happen to share a topic.
 
-This is the feature that turned Copilot from a writing aid into something closer to a content assistant. Select your fields, write a prompt that describes what the page should communicate, and let it draft everything at once. Edit from there.
+Before v2.5, Copilot wrote into one field at a time. Select your fields, write a prompt that describes what the page should communicate, and let it draft everything at once. Edit from there.
 
 [Learn more about multi-field generation](/docs/copilot/usage/view-button)
 
@@ -33,6 +33,6 @@ In practice, this means Copilot can now generate entire page layouts with your p
 
 ## What This Means
 
-These two features – multi-field generation and custom blocks – shift what Copilot is useful for. It's no longer just about helping with a paragraph here and there. It can draft a full page structure: metadata, body content, and custom blocks, all in one pass. For content-heavy Kirby projects, that's a meaningful change in how quickly editors can get from a blank page to a working draft.
+These two features – multi-field generation and custom blocks – shift what Copilot is useful for. It's no longer just about helping with a paragraph here and there. It can draft a full page structure: metadata, body content, and custom blocks, all in one pass. For content-heavy Kirby projects, editors start from a draft of the whole page instead of a blank one.
 
 Both updates are free for anyone with a v2 license. If you're on v1, check the [Hub](https://hub.kirby.tools) for upgrade options.

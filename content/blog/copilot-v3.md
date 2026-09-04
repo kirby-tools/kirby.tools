@@ -25,7 +25,7 @@ v3 is a **free upgrade for all existing users**. If you have a license, you alre
 
 ### Server-Side API Proxy
 
-All AI requests now route through a PHP proxy on your server. This means API keys never leave your backend – they're no longer visible in browser network requests. There's nothing to configure. It just works out of the box, and it's a significant improvement for security-conscious setups.
+All AI requests now route through a PHP proxy on your server. This means API keys never leave your backend – they're no longer visible in browser network requests. There's nothing to configure. Setups that could not expose a key to the browser before can use Copilot now.
 
 ### Inline Suggestions
 
@@ -41,7 +41,7 @@ Inline suggestions use a lightweight completion model optimized for speed, so th
 
 v3 ships with five built-in prompt templates: **Fix Grammar**, **Make Concise**, **Simplify**, **Extend**, and **Summarize**. Each one is a single click from the prompt dialog.
 
-You can also create your own templates, stored in your browser's local storage. Custom templates support the same placeholder syntax as built-in ones, so they integrate seamlessly with your fields.
+You can also create your own templates, stored in your browser's local storage. Custom templates support the same placeholder syntax as built-in ones, so they fill from your fields the same way.
 
 All templates are available in English, German, French, and Dutch.
 
