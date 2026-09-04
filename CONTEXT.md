@@ -13,7 +13,7 @@ The Composer package a customer installs into their Kirby site. A Product has ex
 _Avoid_: Extension, add-on
 
 **ProductId**:
-The canonical key of a Product, e.g. `copilot` or `seo-audit`. It is also the first path segment of the landing page and the second of a documentation page, but identity comes first and routes are derived from it. On disk the documentation lives in `content/1.docs/<n>.<ProductId>/` and the landing page with its changelog in `content/<n>.<ProductId>/`, where `<n>` orders the siblings and differs between the two trees.
+The canonical key of a Product, e.g. `copilot` or `seo-audit`. It is also the first path segment of the landing page and the second of a documentation page, but identity comes first and routes are derived from it.
 _Avoid_: Slug, product key, product name
 
 **License**:
@@ -24,13 +24,13 @@ _Avoid_: Paid, pricing, isPaid
 The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschopplich.copilot`. The commercial Plugins namespace under the Composer vendor; Headless claims the bare `headless` key it has used since before that convention. Live Preview and Minimap have none – they are configured through blueprints alone.
 _Avoid_: Namespace, option prefix
 
-**Unlisted**:
-A page published at its URL and kept out of every list – the sitemap, the agent-facing index, search engines. Kirby's own status for such a page, borrowed for the site.
-_Avoid_: Hidden, private, noindex
-
 **ThemeColor**:
-One of the four named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed. The Nuxt UI color slot keyed by ProductId is derived from this, never the source.
+One of the four named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed.
 _Avoid_: Color slot, brand color, palette, hex code
+
+**Exhibition**:
+The one fictional site the Mocks on the home and landing pages depict: a photography exhibition, edited in a Panel that has three Plugins installed – Copilot, Content Translator, SEO Audit. A Product is in the Exhibition when its Plugin is, and only then can a scene be staged for it.
+_Avoid_: Demo site, sample content, fixture
 
 **Mock**:
 A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept.
@@ -53,5 +53,5 @@ The three lines under a Product on the home page, each a name and one sentence. 
 _Avoid_: Feature bullets, highlights, key features
 
 **SocialCard**:
-A PNG rendered from the site's own components – Mocks included – for sharing off-site. It comes in two formats: the Open Graph format, linked from a page's meta tags, and the 4:3 format, posted by hand. A SocialCard is rendered, never drawn; the design tool that once produced it is gone.
-_Avoid_: OG image, social image, header image, Lemon Squeezy image
+A PNG rendered from the site's own components, with the Product's Exhibition scene as its Mock, for sharing off-site. Only a Product in the Exhibition has one, in two formats: the Open Graph format, linked from the landing page's meta tags, and the 4:3 format, posted by hand. Every other page shares the site's generated share image, which is not a SocialCard.
+_Avoid_: OG image, social image, header image
