@@ -5,7 +5,7 @@ description: Building or styling a Kirby Panel mock (`Panel*.vue` under `layers/
 
 # Panel Mock Styling
 
-A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A prop that exists only so a figure can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
+A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A plugin mock stands in until the plugin reaches Vue 3 and the site imports its components, so a prop named after the blueprint survives the swap. A prop that exists only so a figure can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
 
 The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the mock renders, a `<style>` block for everything else.
 
@@ -45,4 +45,4 @@ A block that departs from Kirby names what Kirby does and why the mock differs, 
 
 ## Checking a Mock
 
-A running plugin playground is authoritative for the plugin's own markup. For Kirby's rendering it is not: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6. Measure Kirby against a worktree of `origin/v6/develop` served with `php -S`; its templates, props and defaults are also readable in `layers/kirby-panel/kirby`.
+A running plugin playground is authoritative for the plugin's own markup. A divergence between a mock and the plugin it depicts is a finding about both repos; settle which side is wrong before patching either. For Kirby's rendering it is not: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6. Measure Kirby against a worktree of `origin/v6/develop` served with `php -S`; its templates, props and defaults are also readable in `layers/kirby-panel/kirby`.

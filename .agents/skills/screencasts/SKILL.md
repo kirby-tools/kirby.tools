@@ -1,6 +1,7 @@
 ---
 name: screencasts
-description: Adds or replaces a Panel screencast on kirby.tools – dropping a recording into `.data/screencasts`, uploading it to the R2 assets bucket, the two posters, and the content wiring. Use when a new `.mp4` goes on a product page or documentation page, or an existing recording is replaced. Don't use for still images under `public/img/`.
+description: Add or replace a Panel screencast – upload, posters, content wiring.
+disable-model-invocation: true
 ---
 
 # Adding a Screencast
