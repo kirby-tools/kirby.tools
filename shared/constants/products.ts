@@ -7,7 +7,10 @@ export interface Product {
   name: string;
   /** Short form for navigation, where repeating "Kirby" adds nothing. */
   label: string;
+  /** The line under the name in menus. */
   description: string;
+  /** The one-line pitch for the SocialCard and the agent-facing index, short enough for one line of the card. */
+  tagline: string;
   icon: string;
   license: ProductLicense;
   /**
@@ -50,7 +53,8 @@ const PRODUCT_REGISTRY = {
   copilot: {
     name: "Kirby Copilot",
     label: "Copilot",
-    description: "AI-powered content generation",
+    description: "AI content generation in the Panel",
+    tagline: "Generate with AI, from one field to entire layouts",
     icon: "i-ri-sparkling-line",
     license: "commercial",
     configKey: "johannschopplich.copilot",
@@ -75,7 +79,8 @@ const PRODUCT_REGISTRY = {
   "content-translator": {
     name: "Kirby Content Translator",
     label: "Content Translator",
-    description: "Content translation in the Panel or via CLI",
+    description: "DeepL and AI translation in the Panel",
+    tagline: "DeepL and AI translation, in the Panel or from the CLI",
     icon: "i-ri-translate",
     license: "commercial",
     configKey: "johannschopplich.content-translator",
@@ -99,7 +104,8 @@ const PRODUCT_REGISTRY = {
   "seo-audit": {
     name: "Kirby SEO Audit",
     label: "SEO Audit",
-    description: "State-of-the-art SEO analysis",
+    description: "Yoast SEO analysis in the Panel",
+    tagline: "Yoast SEO and readability checks, graded in the Panel",
     icon: "i-ri-seo-line",
     license: "commercial",
     configKey: "johannschopplich.seo-audit",
@@ -125,6 +131,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Live Preview",
     label: "Live Preview",
     description: "Real-time page preview",
+    tagline: "See unsaved changes live, on any screen size",
     icon: "i-ri-picture-in-picture-line",
     license: "commercial",
     githubRepo: "kirby-tools/kirby-live-preview",
@@ -145,7 +152,8 @@ const PRODUCT_REGISTRY = {
   minimap: {
     name: "Kirby Minimap",
     label: "Minimap",
-    description: "Sidebar content navigation",
+    description: "Sidebar navigation for fields and blocks",
+    tagline: "Jump to any field or block from a sidebar",
     icon: "i-ri-timeline-view",
     license: "free",
     githubRepo: "johannschopplich/kirby-minimap",
@@ -163,7 +171,8 @@ const PRODUCT_REGISTRY = {
   headless: {
     name: "Kirby Headless",
     label: "Headless",
-    description: "API-first CMS toolkit",
+    description: "KQL, JSON templates, and API routes",
+    tagline: "Bearer auth, KQL, JSON templates, API builder",
     icon: "i-ri-code-block",
     license: "free",
     // Predates the vendor-prefixed convention the commercial plugins follow.

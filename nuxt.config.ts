@@ -152,7 +152,7 @@ export default defineNuxtConfig({
       ...PRODUCT_LIST.map((product) => ({
         title: product.name,
         description: [
-          `${product.description}.`,
+          `${product.tagline}.`,
           product.configKey
             ? `Composer package \`${product.composerPackage}\`, options under \`${product.configKey}\` in \`config.php\`.`
             : `Composer package \`${product.composerPackage}\`, configured through blueprints rather than \`config.php\`.`,
