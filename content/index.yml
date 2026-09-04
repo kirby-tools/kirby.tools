@@ -148,7 +148,7 @@ products:
         description: Nested blocks, layouts and structure fields translate along with the page.
         icon: i-ri-cursor-line
       - title: DeepL or AI
-        description: Translate with DeepL, or route through Kirby Copilot to GPT, Claude, Gemini or Mistral.
+        description: Translate with DeepL, or route through Kirby Copilot to ChatGPT, Claude, Gemini or Mistral.
         icon: i-ri-sparkling-2-line
       - title: The Same Pipeline from PHP
         description: Batch translate pages or sync from the default language in CLI commands and hooks.

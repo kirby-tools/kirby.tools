@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { PRODUCTS } from "#shared/products";
 
 const route = useRoute();
 
@@ -26,6 +27,12 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
+});
+
+defineOgImage("Default", {
+  productId: "minimap",
+  title: PRODUCTS.minimap.tagline,
+  description,
 });
 </script>
 

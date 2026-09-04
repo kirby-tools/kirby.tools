@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ExhibitionProductId } from "#shared/exhibition";
+
 const props = defineProps<{
   productId: ExhibitionProductId;
 }>();
@@ -45,9 +47,10 @@ const viewButtons = computed(() => [
       <PanelCopilotPromptDialog
         v-if="productId === 'copilot'"
         :files="1"
+        :fields="COPILOT_FIELDS_DROPDOWN.value.length"
         :prompt="COPILOT_PROMPT"
         :preview="COPILOT_PROMPT_PREVIEW"
-        preview-open
+        :dropdown="COPILOT_FIELDS_DROPDOWN"
       />
 
       <PanelDialog

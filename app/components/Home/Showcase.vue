@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ExhibitionProductId } from "#shared/exhibition";
+import { EXHIBITION_PRODUCT_IDS } from "#shared/exhibition";
 import { PRODUCTS } from "#shared/products";
 
 // #region Showcase

@@ -16,8 +16,9 @@
     "test": "vitest run",
     "test:types": "vue-tsc -b --noEmit",
     "logo-soup:metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
-    "kirby:fetch": "node layers/kirby-panel/scripts/fetch-kirby.ts",
-    "prepare": "pnpm run kirby:fetch && nuxt prepare && pnpm run logo-soup:metrics"
+    "kirby-panel:fetch": "node layers/kirby-panel/scripts/fetch-kirby.ts",
+    "social-cards:render": "node scripts/social-cards.ts",
+    "prepare": "pnpm run kirby-panel:fetch && nuxt prepare && pnpm run logo-soup:metrics"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
@@ -47,6 +48,7 @@
     "nuxt-llms": "^0.2.0",
     "nuxt-og-image": "^6.7.8",
     "nuxtseo-layer-devtools": "^5.3.14",
+    "playwright-core": "^1.62.1",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",

@@ -3,15 +3,6 @@ import type { ProductId } from "#shared/products";
 // The one fictional site every landing-page Mock depicts: a photography
 // exhibition, edited in a Panel that has all three plugins installed.
 
-// The Products whose Plugins the exhibition's Panel has installed.
-export const EXHIBITION_PRODUCT_IDS = [
-  "copilot",
-  "content-translator",
-  "seo-audit",
-] as const satisfies readonly ProductId[];
-
-export type ExhibitionProductId = (typeof EXHIBITION_PRODUCT_IDS)[number];
-
 export const EXHIBITION_PAGE = {
   title: "Luise Frey: Rooms of Silence",
   text: [
@@ -53,14 +44,27 @@ export const PLUGIN_VIEW_BUTTONS = {
   },
 } satisfies Partial<Record<ProductId, PanelViewButtonProps>>;
 
-export const COPILOT_PROMPT = `Write the teaser for "{title}" in our house voice, max 60 words.
+export const COPILOT_PROMPT = `
+Write the teaser for "{title}" in our house voice, max 60 words.
 
-Use the attached press photo and the artist's page: @page://artists/luise-frey`;
+Use the attached press photo and the artist's page: @page://artists/luise-frey
+`.trim();
 
 export const COPILOT_PROMPT_PREVIEW = COPILOT_PROMPT.replace(
   "{title}",
   EXHIBITION_PAGE.title,
 );
+
+// The field picker lists the fields of the exhibition page's blueprint.
+export const COPILOT_FIELDS_DROPDOWN = {
+  under: "fields",
+  value: ["text", "description"],
+  options: [
+    { value: "text", text: "Text" },
+    { value: "description", text: "Description" },
+    { value: "dates", text: "Dates" },
+  ],
+} as const;
 
 export const TRANSLATOR_DIALOG_FIELDS = {
   languages: {

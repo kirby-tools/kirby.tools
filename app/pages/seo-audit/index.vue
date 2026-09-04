@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { socialCardPath } from "#shared/social-card";
 
 const route = useRoute();
 
@@ -26,7 +27,7 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-  ogImage: "/social-card-seo-audit.png",
+  ogImage: socialCardPath("seo-audit"),
 });
 </script>
 

@@ -23,7 +23,7 @@ export default defineNuxtModule({
       await access(srcDir);
     } catch {
       throw new Error(
-        "Kirby's Panel source is missing. Run `pnpm kirby:fetch` and try again.",
+        "Kirby's Panel source is missing. Run `pnpm kirby-panel:fetch` and try again.",
       );
     }
 

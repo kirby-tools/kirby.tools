@@ -223,12 +223,19 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
-    // Copied, because the module pushes its own entries onto the array.
+    // Duplicated, because the module pushes its own entries onto the array.
     exclude: [...UNLISTED_PATHS],
   },
 
   ogImage: {
     zeroRuntime: true,
+  },
+
+  typescript: {
+    nodeTsConfig: {
+      compilerOptions: { types: ["node"] },
+      include: ["../scripts/**/*", "../layers/*/scripts/**/*"],
+    },
   },
 
   fonts: {

@@ -65,13 +65,13 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <AppHeader />
+    <AppHeader v-if="!route.meta.standalone" />
 
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
 
-    <AppFooter />
+    <AppFooter v-if="!route.meta.standalone" />
 
     <ClientOnly>
       <LazyUContentSearch
