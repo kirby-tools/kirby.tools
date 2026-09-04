@@ -79,7 +79,7 @@ const dropdownSpace = computed(() => {
   const dropdown = props.dropdown;
   if (!dropdown) return undefined;
 
-  const items = (dropdown.items ?? dropdown.options ?? []) as unknown[];
+  const items = (dropdown.options ?? []) as unknown[];
   const separators = items.filter((item) => item === "-").length;
   // The field picker is a picklist, which brings a search field of its own.
   const rows =
@@ -193,7 +193,7 @@ const dropdownSpace = computed(() => {
             <PanelPicklistDropdown
               v-if="dropdown?.under === 'fields'"
               v-bind="dropdownProps"
-              align="end"
+              align-x="end"
             />
           </span>
           <k-button

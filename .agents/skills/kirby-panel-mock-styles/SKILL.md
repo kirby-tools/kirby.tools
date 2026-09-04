@@ -5,7 +5,7 @@ description: Building or styling a Kirby Panel mock (`Panel*.vue` under `layers/
 
 # Panel Mock Styling
 
-A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class.
+A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A prop that exists only so a figure can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
 
 The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the mock renders, a `<style>` block for everything else.
 

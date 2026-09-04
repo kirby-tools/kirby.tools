@@ -5,8 +5,8 @@ interface DropdownItem extends Record<string, unknown> {
 }
 
 defineProps<{
-  items?: (DropdownItem | "-")[];
-  align?: "start" | "end";
+  options?: (DropdownItem | "-")[];
+  alignX?: "start" | "end";
   selected?: number;
 }>();
 </script>
@@ -15,8 +15,8 @@ defineProps<{
   <!-- Kirby's `k-dropdown` is a `<dialog>` its script mounts and positions with
        inline `top` and `left`. A mock runs no script, so the class goes on a
        plain element and the style block below places it. -->
-  <div class="panel-dropdown k-dropdown top-full" :data-align-x="align">
-    <template v-for="(item, index) in items" :key="index">
+  <div class="panel-dropdown k-dropdown top-full" :data-align-x="alignX">
+    <template v-for="(item, index) in options" :key="index">
       <hr v-if="item === '-'" />
       <k-dropdown-item
         v-else

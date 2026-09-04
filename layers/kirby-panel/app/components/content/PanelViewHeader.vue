@@ -12,7 +12,7 @@ const buttons = computed(() =>
       ? button
       : {
           key: index,
-          component: button.items ? "PanelViewButton" : undefined,
+          component: button.options ? "PanelViewButton" : undefined,
           props: button,
         },
   ),

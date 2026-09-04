@@ -4,14 +4,14 @@ import "#kirby-panel/components/Dropdowns/PicklistDropdown.vue?vue&type=style&in
 defineProps<{
   options?: { value: string; text: string }[];
   value?: string[];
-  align?: "start" | "end";
+  alignX?: "start" | "end";
 }>();
 </script>
 
 <template>
   <div
     class="panel-dropdown k-dropdown k-picklist-dropdown top-full"
-    :data-align-x="align"
+    :data-align-x="alignX"
   >
     <k-picklist-input :options="options" :value="value" />
   </div>
