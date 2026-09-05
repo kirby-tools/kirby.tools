@@ -22,8 +22,6 @@ if (!isServerUp) {
 
 await mkdir(resolve(publicDirectory, "social-card"), { recursive: true });
 
-// System Chrome rather than a pinned Chromium build: cards get eyeballed after
-// every render, so a browser regression can't slip through unnoticed.
 const browser = await chromium.launch({ channel: "chrome" });
 const page = await browser.newPage({
   viewport: SOCIAL_CARD_FORMATS["4x3"],
