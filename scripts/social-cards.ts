@@ -22,6 +22,8 @@ if (!isServerUp) {
 
 await mkdir(resolve(publicDirectory, "social-card"), { recursive: true });
 
+// System Chrome rather than a pinned Chromium build: cards get eyeballed after
+// every render, so a browser regression can't slip through unnoticed.
 const browser = await chromium.launch({ channel: "chrome" });
 const page = await browser.newPage({
   viewport: SOCIAL_CARD_FORMATS["4x3"],
@@ -36,13 +38,14 @@ page.on("console", (message) => {
 for (const productId of EXHIBITION_PRODUCT_IDS) {
   for (const format of Object.keys(SOCIAL_CARD_FORMATS) as SocialCardFormat[]) {
     const path = socialCardPath(productId, format);
-    await page.goto(`${origin}/${productId}/social-card?format=${format}`, {
-      waitUntil: "networkidle",
+    await page.goto(`${origin}/${productId}/social-card?format=${format}`);
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      // Two frames: the first schedules the paint, the second runs after it.
+      await new Promise((settle) =>
+        requestAnimationFrame(() => requestAnimationFrame(settle)),
+      );
     });
-    await page.evaluate(() => document.fonts.ready);
-    await page.evaluate(
-      () => new Promise((settle) => requestAnimationFrame(settle)),
-    );
     await page.addStyleTag({
       content: "#nuxt-devtools-container { display: none; }",
     });
