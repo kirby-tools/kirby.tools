@@ -77,61 +77,52 @@ const testimonialItems = computed(() =>
       ]"
     />
 
-    <BackgroundWarp :beam-duration="12">
-      <UPageHero
-        :description="page.description"
-        :links="page.hero.links"
-        class="from-default bg-radial from-30%"
-        :ui="{
-          container: 'relative py-24 sm:py-24 lg:py-24',
-        }"
-      >
-        <template #top>
-          <!-- A radial gradient, because Safari rasterizes a blur this wide on the CPU. -->
-          <div
-            class="from-primary/15 absolute left-1/2 z-[-1] aspect-square w-full max-w-[52rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-radial to-transparent to-65%"
-          />
-          <BackgroundDots
-            mask="fade-bottom"
-            class="h-[19rem] sm:h-[22rem] lg:h-[26rem]"
-          />
-        </template>
+    <UPageHero
+      :description="page.description"
+      :links="page.hero.links"
+      class="from-default bg-radial from-30%"
+      :ui="{
+        container: 'py-24 sm:py-24 lg:py-24',
+      }"
+    >
+      <template #top>
+        <BackgroundSpotlight />
+      </template>
 
-        <template #headline>
-          <UBadge
-            v-if="page.hero.headline"
-            :as="NuxtLink"
-            :label="page.hero.headline.label"
-            :icon="
-              isObject(page.hero.headline.icon)
-                ? page.hero.headline.icon.name
-                : page.hero.headline.icon
-            "
-            :to="page.hero.headline.to"
-            :color="page.hero.headline.color"
-            :variant="page.hero.headline.variant || 'subtle'"
-            class="rounded-full"
-            :ui="{
-              leadingIcon: isObject(page.hero.headline.icon)
-                ? page.hero.headline.icon.class
-                : undefined,
-            }"
-          />
-        </template>
+      <template #headline>
+        <UBadge
+          v-if="page.hero.headline"
+          :as="NuxtLink"
+          :label="page.hero.headline.label"
+          :icon="
+            isObject(page.hero.headline.icon)
+              ? page.hero.headline.icon.name
+              : page.hero.headline.icon
+          "
+          :to="page.hero.headline.to"
+          :color="page.hero.headline.color"
+          :variant="page.hero.headline.variant || 'subtle'"
+          class="rounded-full"
+          :ui="{
+            leadingIcon: isObject(page.hero.headline.icon)
+              ? page.hero.headline.icon.class
+              : undefined,
+          }"
+        />
+      </template>
 
-        <template #title>
-          <span v-html="page.hero.title" />
-        </template>
+      <template #title>
+        <span v-html="page.hero.title" />
+      </template>
 
-        <template #description>
-          <span v-html="page.hero.description" />
-        </template>
+      <template #description>
+        <span v-html="page.hero.description" />
+      </template>
 
-        <div class="mt-6 w-full">
-          <HomeShowcase />
-        </div>
-      </UPageHero>
-    </BackgroundWarp>
+      <div class="mt-6 w-full">
+        <HomeShowcase />
+      </div>
+    </UPageHero>
 
     <USeparator />
 
