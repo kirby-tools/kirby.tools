@@ -66,7 +66,7 @@ function generateStars(count: number): Star[] {
     <div
       v-for="star in stars"
       :key="star.id"
-      class="star absolute"
+      class="absolute size-(--star-size) animate-[sky-twinkle_var(--twinkle-duration)_ease-in-out_var(--twinkle-delay)_infinite] rounded-full bg-(--star-color) will-change-[opacity] motion-reduce:animate-none"
       :style="{
         left: `${star.x}%`,
         top: `${star.y}%`,
@@ -80,18 +80,8 @@ function generateStars(count: number): Star[] {
   </div>
 </template>
 
-<style scoped>
-.star {
-  width: var(--star-size);
-  height: var(--star-size);
-  background-color: var(--star-color);
-  border-radius: 50%;
-  animation: twinkle var(--twinkle-duration) ease-in-out infinite;
-  animation-delay: var(--twinkle-delay);
-  will-change: opacity;
-}
-
-@keyframes twinkle {
+<style>
+@keyframes sky-twinkle {
   0%,
   100% {
     opacity: 0.2;

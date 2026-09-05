@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { THEME_COLORS } from "#shared/theme";
 
-const props = defineProps<{
-  beamDuration: number;
-}>();
+const props = withDefaults(
+  defineProps<{
+    beamDuration?: number;
+  }>(),
+  { beamDuration: 12 },
+);
 
 const PERSPECTIVE = 100;
 const BEAMS_PER_SIDE = 3;
@@ -55,12 +58,22 @@ const SIDE_LAYOUTS = [
 ];
 
 /**
- * Distributes values over [0, 1) via the golden ratio: spread evenly enough to
- * read as random, but identical on the server and the client, so the beams can
- * be rendered into the initial HTML instead of waiting for hydration.
+ * One step per stream. Sharing a single step and reading it at different
+ * offsets would tie duration and aspect ratio to delay by a constant.
  */
-function scatter(n: number) {
-  return (n * 0.618033988749895) % 1;
+const SCATTER_STEPS = {
+  delay: 0.618033988749895, // Golden ratio minus one
+  duration: 0.414213562373095, // Square root of two, minus one
+  aspectRatio: 0.732050807568877, // Square root of three, minus one
+};
+
+/**
+ * Distributes values over [0, 1): spread evenly enough to read as random, but
+ * identical on the server and the client, so the beams can be rendered into the
+ * initial HTML instead of waiting for hydration.
+ */
+function scatter(n: number, step: number) {
+  return (n * step) % 1;
 }
 
 function generateBeams(side: number) {
@@ -69,15 +82,19 @@ function generateBeams(side: number) {
 
     return {
       x: `${(index * 100) / BEAMS_PER_SIDE}%`,
-      delay: -(scatter(seed + 1) * BEAM_HEAD_START * props.beamDuration),
+      delay: -(
+        scatter(seed + 1, SCATTER_STEPS.delay) *
+        BEAM_HEAD_START *
+        props.beamDuration
+      ),
       duration:
         props.beamDuration *
         (BEAM_DURATION_MIN +
-          scatter(seed + 5) * (BEAM_DURATION_MAX - BEAM_DURATION_MIN)),
+          scatter(seed + 1, SCATTER_STEPS.duration) *
+            (BEAM_DURATION_MAX - BEAM_DURATION_MIN)),
       hue: BEAM_HUES[seed % BEAM_HUES.length]!,
-      // A different point in the sequence, so `aspectRatio` doesn't
-      // track `delay`.
-      aspectRatio: 2 + Math.floor(scatter(seed + 17) * 8),
+      aspectRatio:
+        2 + Math.floor(scatter(seed + 1, SCATTER_STEPS.aspectRatio) * 8),
     };
   });
 }
@@ -93,6 +110,7 @@ const sides = computed(() =>
 <template>
   <div class="relative">
     <div
+      aria-hidden="true"
       :style="{
         '--perspective': `${PERSPECTIVE}px`,
         '--beam-size': `${BEAM_SIZE}%`,
@@ -115,7 +133,7 @@ const sides = computed(() =>
             '--beam-aspect-ratio': beam.aspectRatio,
             '--beam-color': `oklch(74% 0.16 ${beam.hue})`,
           }"
-          class="absolute top-0 left-(--beam-x) aspect-[1/var(--beam-aspect-ratio)] w-(--beam-size) -translate-x-1/2 animate-[beam-rise_var(--beam-duration)_linear_infinite] bg-linear-to-b from-(--beam-color) to-transparent [animation-delay:var(--beam-delay)] motion-reduce:translate-y-[20cqmax] motion-reduce:animate-none"
+          class="absolute top-0 left-(--beam-x) aspect-[1/var(--beam-aspect-ratio)] w-(--beam-size) -translate-x-1/2 animate-[warp-beam-rise_var(--beam-duration)_linear_var(--beam-delay)_infinite] bg-linear-to-b from-(--beam-color) to-transparent motion-reduce:translate-y-[20cqmax] motion-reduce:animate-none"
         />
       </div>
     </div>
@@ -125,7 +143,7 @@ const sides = computed(() =>
 </template>
 
 <style>
-@keyframes beam-rise {
+@keyframes warp-beam-rise {
   from {
     transform: translateY(50cqmax);
   }
