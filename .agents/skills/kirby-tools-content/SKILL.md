@@ -17,6 +17,8 @@ Docs live under `content/1.docs/<ProductId>/`, built from Nuxt UI Prose componen
 
 Plain prose is the default. A component earns its place by doing a job no other component on the page is already doing. A configuration guide has one `###` heading per option, then prose, default and example. A reference page – PHP classes, exceptions – is tables and `::field-group`, one sentence per entry.
 
+A reference page states the contract, not the mechanism: what the reader calls – classes, signatures, config keys and defaults, the plugin's own exceptions – what they observe, and what costs them money or data. The path a value takes through the code, the internal classes, enums and SDK exceptions along it, and the arithmetic behind a number stay in the source, where a developer using the classes reads them.
+
 - `::callout` is link-out only and always carries `to=`; advice without a link is `::tip`, `::note` or `::warning`.
 - `::code-group` holds alternatives for one task; `::tabs` holds axes that are not substitutes.
 - `::steps` numbers an ordered set of three or more. `::accordion` is unused, since folding hides content from search.
