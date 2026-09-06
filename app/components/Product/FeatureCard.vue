@@ -31,10 +31,7 @@ provide(panelMockInertKey, true);
       <p class="text-muted text-sm">{{ name }}</p>
     </template>
 
-    <div
-      class="relative overflow-clip"
-      :class="wide ? 'min-h-96' : 'min-h-72'"
-    >
+    <div class="relative overflow-clip" :class="wide ? 'min-h-96' : 'min-h-72'">
       <div class="absolute inset-0">
         <slot />
       </div>
