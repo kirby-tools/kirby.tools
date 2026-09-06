@@ -35,14 +35,12 @@ const hex = computed(
   <div
     class="relative flex h-full w-full flex-col overflow-hidden bg-stone-950"
   >
-    <!-- Gradient glow: top-left -->
     <div
       class="absolute -top-20 -left-20 h-[420px] w-[420px] rounded-full opacity-15"
       :style="{
         background: `radial-gradient(circle, ${hex} 0%, transparent 70%)`,
       }"
     />
-    <!-- Gradient glow: bottom-right -->
     <div
       class="absolute -right-16 -bottom-24 h-[360px] w-[360px] rounded-full opacity-10"
       :style="{
@@ -90,7 +88,6 @@ const hex = computed(
       </div>
     </div>
 
-    <!-- Separator line under header -->
     <div class="mx-26 h-[1px] opacity-40" :style="{ background: hex }" />
 
     <!-- Title + description -->
@@ -106,7 +103,6 @@ const hex = computed(
       </p>
     </div>
 
-    <!-- Bottom domain -->
     <div
       class="absolute bottom-16 left-34 text-xl font-semibold tracking-wide text-stone-500"
     >

@@ -13,60 +13,62 @@ const viewButtons = computed(() => [
 
 <template>
   <PanelMock>
-    <div>
-      <PanelViewHeader :title="EXHIBITION_PAGE.title" :buttons="viewButtons" />
+    <PanelViewHeader :title="EXHIBITION_PAGE.title" :buttons="viewButtons" />
 
-      <PanelColumns>
-        <PanelColumn width="2/3">
-          <PanelSection>
-            <PanelFieldset>
-              <PanelField label="Text" name="text" type="writer">
-                <PanelInput :value="EXHIBITION_PAGE.text" />
-              </PanelField>
-            </PanelFieldset>
-          </PanelSection>
-        </PanelColumn>
+    <PanelColumns>
+      <PanelColumn width="2/3">
+        <PanelSection>
+          <PanelFieldset>
+            <PanelField label="Text" name="text" type="writer">
+              <PanelInput :value="EXHIBITION_PAGE.text" />
+            </PanelField>
+          </PanelFieldset>
+        </PanelSection>
+      </PanelColumn>
 
-        <PanelColumn width="1/3">
-          <PanelSection>
-            <PanelFieldset>
-              <PanelField label="Description" name="description">
-                <PanelInput :value="EXHIBITION_PAGE.description" buttons />
-              </PanelField>
+      <!-- A phone crops the stage to the dialog, so a second column would
+           only lengthen what the crop hides. -->
+      <PanelColumn width="1/3" class="max-sm:hidden">
+        <PanelSection>
+          <PanelFieldset>
+            <PanelField label="Description" name="description">
+              <PanelInput :value="EXHIBITION_PAGE.description" buttons />
+            </PanelField>
 
-              <PanelField label="Dates" name="dates" type="text">
-                <PanelInput :value="EXHIBITION_PAGE.dates" />
-              </PanelField>
-            </PanelFieldset>
-          </PanelSection>
-        </PanelColumn>
-      </PanelColumns>
-    </div>
+            <PanelField label="Dates" name="dates" type="text">
+              <PanelInput :value="EXHIBITION_PAGE.dates" />
+            </PanelField>
+          </PanelFieldset>
+        </PanelSection>
+      </PanelColumn>
+    </PanelColumns>
 
-    <PanelDialogPortal>
-      <PanelCopilotPromptDialog
-        v-if="productId === 'copilot'"
-        :files="1"
-        :fields="COPILOT_FIELDS_DROPDOWN.value.length"
-        :prompt="COPILOT_PROMPT"
-        :preview="COPILOT_PROMPT_PREVIEW"
-        :dropdown="COPILOT_FIELDS_DROPDOWN"
-      />
-
-      <PanelDialog
-        v-else-if="productId === 'content-translator'"
-        size="medium"
-        :fields="TRANSLATOR_DIALOG_FIELDS"
-        :value="TRANSLATOR_DIALOG_VALUE"
-        :buttons="TRANSLATOR_DIALOG_BUTTONS"
-      />
-
-      <PanelDialog v-else size="large">
-        <PanelSeoAuditResult
-          title="SEO & Readability Scores"
-          :report="SEO_REPORT"
+    <template #dialog>
+      <PanelDialogPortal>
+        <PanelCopilotPromptDialog
+          v-if="productId === 'copilot'"
+          :files="1"
+          :fields="COPILOT_FIELDS_DROPDOWN.value.length"
+          :prompt="COPILOT_PROMPT"
+          :preview="COPILOT_PROMPT_PREVIEW"
+          :dropdown="COPILOT_FIELDS_DROPDOWN"
         />
-      </PanelDialog>
-    </PanelDialogPortal>
+
+        <PanelDialog
+          v-else-if="productId === 'content-translator'"
+          size="medium"
+          :fields="TRANSLATOR_DIALOG_FIELDS"
+          :value="TRANSLATOR_DIALOG_VALUE"
+          :buttons="TRANSLATOR_DIALOG_BUTTONS"
+        />
+
+        <PanelDialog v-else size="large">
+          <PanelSeoAuditResult
+            title="SEO & Readability Scores"
+            :report="SEO_REPORT"
+          />
+        </PanelDialog>
+      </PanelDialogPortal>
+    </template>
   </PanelMock>
 </template>

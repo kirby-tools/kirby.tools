@@ -24,8 +24,10 @@ const SELECTION = EXHIBITION_PAGE.text.split("\n\n")[0];
       />
     </PanelField>
 
-    <PanelDialogPortal align="end">
-      <PanelCopilotPromptDialog prompt="Make this shorter." selection />
-    </PanelDialogPortal>
+    <template #dialog>
+      <PanelDialogPortal align="end">
+        <PanelCopilotPromptDialog prompt="Make this shorter." selection />
+      </PanelDialogPortal>
+    </template>
   </PanelMock>
 </template>

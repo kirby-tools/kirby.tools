@@ -19,6 +19,8 @@ withDefaults(
   }>(),
   { theme: "auto" },
 );
+
+const isInert = inject(panelMockInertKey, false);
 </script>
 
 <template>
@@ -30,8 +32,16 @@ withDefaults(
     </figcaption>
 
     <div class="k-panel" :data-theme="theme">
-      <div class="panel-mock-stage">
-        <slot />
+      <div class="panel-mock-stage" :inert="isInert">
+        <!-- Kirby's overlay is a `<dialog>` opened with `showModal()`, so the
+             platform inerts the view behind it. Nothing here is in the top
+             layer. -->
+        <div v-if="$slots.dialog" class="panel-mock-view" inert>
+          <slot />
+        </div>
+        <slot v-else />
+
+        <slot name="dialog" />
       </div>
     </div>
 
@@ -57,7 +67,7 @@ withDefaults(
   /* Kirby's sheet stacks a Panel against the viewport – `.k-header` alone sits
      at `z-index: 300`, which outranks the docs navigation. */
   isolation: isolate;
-  overflow: hidden;
+  overflow: clip;
   border-radius: var(--ui-radius);
   border: 1px solid var(--ui-border);
 }
@@ -67,6 +77,12 @@ withDefaults(
 .panel-mock:has(.k-panel[data-theme="light"]),
 :root:not(.dark) .panel-mock:has(.k-panel[data-theme="auto"]) {
   color-scheme: light;
+}
+
+/* `display: contents` drops the box, not the node: the stage's `:has(> …)`
+   rules stop at the wrapper, so nothing behind a dialog can be styled by one. */
+.panel-mock .panel-mock-view {
+  display: contents;
 }
 
 /* Kirby's view buttons, `k-table` and the mock's own view-header rule query a

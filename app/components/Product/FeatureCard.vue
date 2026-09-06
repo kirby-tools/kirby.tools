@@ -7,6 +7,8 @@ defineProps<{
   target?: string;
   wide?: boolean;
 }>();
+
+provide(panelMockInertKey, true);
 </script>
 
 <template>
@@ -30,7 +32,7 @@ defineProps<{
     </template>
 
     <div
-      class="relative overflow-hidden"
+      class="relative overflow-clip"
       :class="wide ? 'min-h-96' : 'min-h-72'"
     >
       <div class="absolute inset-0">
@@ -59,10 +61,11 @@ defineProps<{
 }
 
 /* Clipped to the card rather than grown to its content, so a dialog aligns to
-   what the card shows of the stage. */
+   what the card shows of the stage. `clip` rather than `hidden`: the crop is
+   not a scroll port, and nothing may scroll it back into view. */
 .product-feature-card .panel-mock-stage {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow: clip;
 }
 </style>

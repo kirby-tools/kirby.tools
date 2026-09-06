@@ -3,7 +3,6 @@ import type { ExhibitionProductId } from "#shared/exhibition";
 import { EXHIBITION_PRODUCT_IDS } from "#shared/exhibition";
 import { PRODUCTS } from "#shared/products";
 
-// #region Showcase
 const COLOR_CLASSES: Record<
   ExhibitionProductId,
   { chipClass: string; accentClass: string }
@@ -29,7 +28,6 @@ const SHOWCASE_TABS = EXHIBITION_PRODUCT_IDS.map((id) => ({
   icon: PRODUCTS[id].icon,
   ...COLOR_CLASSES[id],
 }));
-// #endregion
 
 const activeProductId = ref<ExhibitionProductId>("copilot");
 
@@ -97,7 +95,7 @@ const accentClass = computed(
 
       <HomeShowcaseScene
         :product-id="activeProductId"
-        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:min-h-104 max-sm:[&_.panel-mock-stage]:h-104 max-sm:[&_.panel-mock-stage]:overflow-hidden"
+        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:min-h-104 max-sm:[&_.panel-mock-stage]:h-104 max-sm:[&_.panel-mock-stage]:overflow-clip"
       />
     </div>
   </div>

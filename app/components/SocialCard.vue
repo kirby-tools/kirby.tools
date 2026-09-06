@@ -12,6 +12,8 @@ const props = withDefaults(
   { format: "og" },
 );
 
+provide(panelMockInertKey, true);
+
 const product = computed(() => PRODUCTS[props.productId]);
 const size = computed(() => SOCIAL_CARD_FORMATS[props.format]);
 const isWide = computed(() => props.format === "og");

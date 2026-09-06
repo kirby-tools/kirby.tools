@@ -1,8 +1,5 @@
 import type { ProductId } from "#shared/products";
 
-// The one fictional site every landing-page Mock depicts: a photography
-// exhibition, edited in a Panel that has all three plugins installed.
-
 export const EXHIBITION_PAGE = {
   title: "Luise Frey: Rooms of Silence",
   text: [

@@ -120,13 +120,11 @@ onMounted(() => {
           <span v-html="section.description" />
         </template>
 
-        <!-- Horizontal sections: media in default slot, features as prop -->
         <template v-if="section.orientation === 'horizontal'">
           <MediaVideo v-if="section.video" v-bind="section.video" />
           <MediaCode v-else-if="section.code" v-bind="section.code" />
         </template>
 
-        <!-- Vertical features section: render feature cards grid -->
         <UPageGrid v-else-if="section.slot === 'features' && section.features">
           <UPageCard
             v-for="(item, itemIndex) in section.features"

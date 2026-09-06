@@ -33,7 +33,7 @@ The one fictional site the Mocks on the home and landing pages depict: a photogr
 _Avoid_: Demo site, sample content, fixture
 
 **Mock**:
-A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept.
+A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept. That holds where the Mock is the reader's to touch: where the page has claimed the touch for itself – a card that is a link, a Stage rendered to a SocialCard – the Mock answers nothing, and a Mock staging a dialog answers only through it, as a Panel does.
 _Avoid_: Screenshot, demo, replica
 
 **Stage**:

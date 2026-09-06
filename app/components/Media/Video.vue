@@ -45,7 +45,8 @@ async function play() {
     await video.value?.play();
     isPlaying.value = true;
   } catch {
-    // Autoplay blocked by browser, user can still click to play.
+    // A browser that refuses autoplay leaves the poster up, and the play
+    // button still works.
   }
 }
 
@@ -127,7 +128,6 @@ function handleEnded() {
       </div>
     </div>
 
-    <!-- Screen reader announcements -->
     <div aria-live="polite" class="sr-only">
       {{ label || "Video" }}: {{ isPlaying ? "playing" : "paused" }}
     </div>
