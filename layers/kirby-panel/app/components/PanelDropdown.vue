@@ -1,11 +1,6 @@
 <script setup lang="ts">
-interface DropdownItem extends Record<string, unknown> {
-  text?: string;
-  info?: string;
-}
-
 defineProps<{
-  options?: (DropdownItem | "-")[];
+  options?: PanelDropdownOption[];
   alignX?: "start" | "end";
   selected?: number;
 }>();

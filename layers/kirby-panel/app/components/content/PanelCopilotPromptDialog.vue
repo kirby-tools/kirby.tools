@@ -16,9 +16,7 @@ const props = defineProps<{
    * `under`. A prop rather than a slot, because MDC binds a named slot to the
    * outermost open component.
    */
-  dropdown?: Record<string, unknown> & {
-    under: "placeholders" | "templates" | "history" | "fields" | "skills";
-  };
+  dropdown?: PanelCopilotPromptDropdown;
 }>();
 
 const TOOLS = [
@@ -69,7 +67,14 @@ const tools = computed(() =>
 );
 
 const dropdownProps = computed(() => {
-  const { under, ...rest } = props.dropdown ?? {};
+  if (!props.dropdown || props.dropdown.under === "fields") return;
+  const { under, ...rest } = props.dropdown;
+  return rest;
+});
+
+const picklistProps = computed(() => {
+  if (props.dropdown?.under !== "fields") return;
+  const { under, ...rest } = props.dropdown;
   return rest;
 });
 
@@ -79,7 +84,7 @@ const dropdownSpace = computed(() => {
   const dropdown = props.dropdown;
   if (!dropdown) return undefined;
 
-  const items = (dropdown.options ?? []) as unknown[];
+  const items: unknown[] = dropdown.options ?? [];
   const separators = items.filter((item) => item === "-").length;
   // The field picker is a picklist, which brings a search field of its own.
   const rows =
@@ -192,7 +197,7 @@ const dropdownSpace = computed(() => {
             />
             <PanelPicklistDropdown
               v-if="dropdown?.under === 'fields'"
-              v-bind="dropdownProps"
+              v-bind="picklistProps"
               align-x="end"
             />
           </span>

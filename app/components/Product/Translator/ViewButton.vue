@@ -2,8 +2,8 @@
 const VIEW_BUTTONS: PanelViewButton[] = [
   {
     ...PLUGIN_VIEW_BUTTONS["content-translator"],
-    align: "start",
-    items: [
+    alignX: "start",
+    options: [
       { icon: "import", text: "Import from EN" },
       "-",
       { icon: "translate", text: "Translate → DE" },

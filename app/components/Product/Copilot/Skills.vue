@@ -10,7 +10,7 @@ const SKILLS_PROMPT = `Write the teaser for "${EXHIBITION_PAGE.title}" @skill://
       :dropdown="{
         under: 'skills',
         selected: 1,
-        items: [
+        options: [
           { text: 'Brand Voice', info: 'brand-voice' },
           { text: 'Concise', info: 'concise' },
           { text: 'Formal Address', info: 'formal-address' },

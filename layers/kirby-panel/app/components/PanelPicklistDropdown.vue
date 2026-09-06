@@ -2,7 +2,7 @@
 import "#kirby-panel/components/Dropdowns/PicklistDropdown.vue?vue&type=style&index=0&lang.css";
 
 defineProps<{
-  options?: { value: string; text: string }[];
+  options?: PanelPicklistOption[];
   value?: string[];
   alignX?: "start" | "end";
 }>();

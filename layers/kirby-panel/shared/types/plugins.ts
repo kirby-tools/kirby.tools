@@ -1,3 +1,5 @@
+import type { PanelDropdownOption, PanelPicklistOption } from "./kirby";
+
 // #region SEO Audit
 export type PanelSeoAuditRating = "good" | "ok" | "bad" | "feedback";
 
@@ -22,4 +24,22 @@ export interface PanelContentTranslatorTreeEntry {
   missingLanguages?: string[];
   children?: PanelContentTranslatorTreeEntry[];
 }
+// #endregion
+
+// #region Copilot
+/**
+ * Under `fields` the dropdown is a picklist, which carries a selection rather
+ * than actions.
+ */
+export type PanelCopilotPromptDropdown =
+  | {
+      under: "placeholders" | "templates" | "history" | "skills";
+      options?: PanelDropdownOption[];
+      selected?: number;
+    }
+  | {
+      under: "fields";
+      options?: PanelPicklistOption[];
+      value?: string[];
+    };
 // #endregion

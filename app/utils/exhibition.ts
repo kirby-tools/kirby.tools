@@ -61,7 +61,7 @@ export const COPILOT_FIELDS_DROPDOWN = {
     { value: "description", text: "Description" },
     { value: "dates", text: "Dates" },
   ],
-} as const;
+} as const satisfies PanelCopilotPromptDropdown;
 
 export const TRANSLATOR_DIALOG_FIELDS = {
   languages: {
