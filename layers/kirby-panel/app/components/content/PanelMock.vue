@@ -16,6 +16,7 @@ withDefaults(
   defineProps<{
     theme?: "light" | "dark" | "auto";
     label?: string;
+    dialogAlign?: "start" | "end";
   }>(),
   { theme: "auto" },
 );
@@ -36,12 +37,16 @@ const isInert = inject(panelMockInertKey, false);
         <!-- Kirby's overlay is a `<dialog>` opened with `showModal()`, so the
              platform inerts the view behind it. Nothing here is in the top
              layer. -->
-        <div v-if="$slots.dialog" class="panel-mock-view" inert>
-          <slot />
-        </div>
-        <slot v-else />
+        <template v-if="$slots.dialog">
+          <div class="panel-mock-view" inert>
+            <slot />
+          </div>
 
-        <slot name="dialog" />
+          <div class="panel-mock-portal" :data-align="dialogAlign">
+            <slot name="dialog" />
+          </div>
+        </template>
+        <slot v-else />
       </div>
     </div>
 
@@ -83,6 +88,34 @@ const isInert = inject(panelMockInertKey, false);
    rules stop at the wrapper, so nothing behind a dialog can be styled by one. */
 .panel-mock .panel-mock-view {
   display: contents;
+}
+
+/* Kirby opens its portal over the viewport; a Mock's Panel reaches no further
+   than the stage. */
+.panel-mock .panel-mock-portal {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-dialog);
+  display: flex;
+  /* `.k-overlay[open]` also sets `overscroll-behavior: contain`, against a
+     viewport it fills. Kept here, it would stop the page under a pointer over
+     the stage even when nothing overflows. */
+  overflow: auto;
+  /* In place of `--dialog-margin`, which Kirby sizes for a viewport: the dialog
+     keeps the inset of everything else on the stage. */
+  padding: var(--panel-stage-inset);
+}
+
+.panel-mock .panel-mock-portal > * {
+  margin: auto;
+}
+
+.panel-mock .panel-mock-portal[data-align="start"] > * {
+  margin-top: 0;
+}
+
+.panel-mock .panel-mock-portal[data-align="end"] > * {
+  margin-bottom: 0;
 }
 
 /* Kirby's view buttons, `k-table` and the mock's own view-header rule query a

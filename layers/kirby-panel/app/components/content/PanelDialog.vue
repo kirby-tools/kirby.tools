@@ -50,12 +50,18 @@ const values = ref({ ...props.value });
 </template>
 
 <style>
-/* A dialog without a view: the stage centers and dims, as `k-portal` does. */
+/* The dim Kirby paints in the portal it opens. Declared here rather than on
+   either box, because the import above is what brings `--overlay-color-back`. */
+.panel-mock .panel-mock-portal,
+.panel-mock .panel-mock-stage:has(> .panel-dialog) {
+  background: var(--overlay-color-back);
+}
+
+/* The stage stands in for the portal where the dialog is all there is. */
 .panel-mock .panel-mock-stage:has(> .panel-dialog) {
   display: flex;
   /* Cards crop the stage taller than the dialog, which `stretch` would fill. */
   align-items: start;
   justify-content: center;
-  background: var(--overlay-color-back);
 }
 </style>

@@ -15,7 +15,7 @@ const SELECTION = EXHIBITION_PAGE.text.split("\n\n")[0];
 </script>
 
 <template>
-  <PanelMock>
+  <PanelMock dialog-align="end">
     <PanelField label="Text" name="text" type="writer">
       <PanelInput
         :value="EXHIBITION_PAGE.text"
@@ -25,9 +25,7 @@ const SELECTION = EXHIBITION_PAGE.text.split("\n\n")[0];
     </PanelField>
 
     <template #dialog>
-      <PanelDialogPortal align="end">
-        <PanelCopilotPromptDialog prompt="Make this shorter." selection />
-      </PanelDialogPortal>
+      <PanelCopilotPromptDialog prompt="Make this shorter." selection />
     </template>
   </PanelMock>
 </template>

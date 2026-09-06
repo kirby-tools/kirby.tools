@@ -44,31 +44,29 @@ const viewButtons = computed(() => [
     </PanelColumns>
 
     <template #dialog>
-      <PanelDialogPortal>
-        <PanelCopilotPromptDialog
-          v-if="productId === 'copilot'"
-          :files="1"
-          :fields="COPILOT_FIELDS_DROPDOWN.value.length"
-          :prompt="COPILOT_PROMPT"
-          :preview="COPILOT_PROMPT_PREVIEW"
-          :dropdown="COPILOT_FIELDS_DROPDOWN"
-        />
+      <PanelCopilotPromptDialog
+        v-if="productId === 'copilot'"
+        :files="1"
+        :fields="COPILOT_FIELDS_DROPDOWN.value.length"
+        :prompt="COPILOT_PROMPT"
+        :preview="COPILOT_PROMPT_PREVIEW"
+        :dropdown="COPILOT_FIELDS_DROPDOWN"
+      />
 
-        <PanelDialog
-          v-else-if="productId === 'content-translator'"
-          size="medium"
-          :fields="TRANSLATOR_DIALOG_FIELDS"
-          :value="TRANSLATOR_DIALOG_VALUE"
-          :buttons="TRANSLATOR_DIALOG_BUTTONS"
-        />
+      <PanelDialog
+        v-else-if="productId === 'content-translator'"
+        size="medium"
+        :fields="TRANSLATOR_DIALOG_FIELDS"
+        :value="TRANSLATOR_DIALOG_VALUE"
+        :buttons="TRANSLATOR_DIALOG_BUTTONS"
+      />
 
-        <PanelDialog v-else size="large">
-          <PanelSeoAuditResult
-            title="SEO & Readability Scores"
-            :report="SEO_REPORT"
-          />
-        </PanelDialog>
-      </PanelDialogPortal>
+      <PanelDialog v-else size="large">
+        <PanelSeoAuditResult
+          title="SEO & Readability Scores"
+          :report="SEO_REPORT"
+        />
+      </PanelDialog>
     </template>
   </PanelMock>
 </template>
