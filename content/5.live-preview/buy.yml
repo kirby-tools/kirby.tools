@@ -19,7 +19,7 @@ plan:
     - For Kirby 4 & Kirby 5
     # TODO (Kirby 6 launch): once Kirby 6 support ships, change this bullet to
     # present tense (e.g. "For Kirby 4, 5 & 6") and update the "Which Kirby
-    # versions are supported?" FAQ. See repo.kirby.tools/docs/kirby-6-launch.md
+    # versions are supported?" FAQ.
     - Includes Kirby 6 when released
     - Unlimited owned sites
     - Unlimited minor & patch updates
