@@ -61,7 +61,7 @@ const tokens = computed(() => {
 });
 
 // The plugin hides the history button until a prompt is stored, so it belongs
-// only to a figure that opens its dropdown.
+// only to a mock that opens its dropdown.
 const tools = computed(() =>
   TOOLS.filter(
     (tool) => tool.under !== "history" || props.dropdown?.under === "history",
@@ -74,7 +74,7 @@ const dropdownProps = computed(() => {
 });
 
 // Room for the dropdown, which floats over the view below the dialog in the
-// Panel and would be clipped by a figure cropped to the dialog.
+// Panel and would be clipped by a mock that stages the dialog alone.
 const dropdownSpace = computed(() => {
   const dropdown = props.dropdown;
   if (!dropdown) return undefined;
@@ -218,7 +218,7 @@ const dropdownSpace = computed(() => {
 }
 
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
-   toolbar wrap. The one whose dropdown a figure opens stays. */
+   toolbar wrap. The one whose dropdown a mock opens stays. */
 @container panel-stage (max-width: 40rem) {
   .panel-copilot-prompt-dialog
     .panel-copilot-prompt-tool:not(:has(.panel-dropdown)) {

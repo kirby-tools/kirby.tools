@@ -30,8 +30,8 @@ const buttons = computed(() =>
 </template>
 
 <style>
-/* Kirby pads the header itself and reserves a gap below it for the view. A mock
-   cropped to the header shows no view, so the gap goes and Kirby's own padding
+/* Kirby pads the header itself and reserves a gap below it for the view. A mock that
+   stages the header alone shows no view, so the gap goes and Kirby's own padding
    stands in for the stage's. */
 .panel-mock .panel-view-header:last-child {
   margin-bottom: 0;

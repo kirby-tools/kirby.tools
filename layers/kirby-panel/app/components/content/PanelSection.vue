@@ -12,7 +12,7 @@ defineProps<{
     <template v-if="options" #options>
       <div class="flex items-center gap-(--spacing-2)">
         <!-- The size and variant that Kirby's own `#options` fallback passes,
-             ahead of `v-bind` so a figure can override them. -->
+             ahead of `v-bind` so a mock can override them. -->
         <k-button-group
           v-for="(group, index) in options"
           :key="index"
@@ -30,8 +30,8 @@ defineProps<{
 
 <style>
 /* A section always has a body in the Panel, so Kirby leaves the gap its header
-   reserves for one unconditionally. A mock cropped to the header alone would
-   sit off-center on the stage. */
+   reserves for one unconditionally. A mock that stages the header alone
+   would sit off-center on the stage. */
 .panel-mock .k-section-header:last-child {
   margin-bottom: 0;
 }

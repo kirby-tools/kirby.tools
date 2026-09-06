@@ -33,19 +33,23 @@ The one fictional site the Mocks on the home and landing pages depict: a photogr
 _Avoid_: Demo site, sample content, fixture
 
 **Mock**:
-A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept. That holds where the Mock is the reader's to touch: where the page has claimed the touch for itself – a card that is a link, a Stage rendered to a SocialCard – the Mock answers nothing, and a Mock staging a dialog answers only through it, as a Panel does.
-_Avoid_: Screenshot, demo, replica
+A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept. A Mock the page shows rather than offers answers nothing at all: inside a FeatureCard, on a SocialCard, or behind a dialog it stages.
+_Avoid_: Screenshot, demo, replica, figure
 
 **Stage**:
 The frame a Mock renders into, standing in for whatever the Panel supplies around a component – the view a header sits above, the portal a dialog centers in, the viewport a container query measures. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
 _Avoid_: Frame, canvas, wrapper, viewport
+
+**Crop**:
+A Stage the page gives less room than the Mock renders into, showing the top of it and hiding the rest. The Mock is not shortened – the Panel it depicts has no short view – so what a Crop hides is live, and a cropped Stage is one the page shows rather than offers.
+_Avoid_: Clip, cutoff, truncation, fold
 
 **Tagline**:
 The one-line pitch of a Product. It is one sentence, short enough to stand on a single line of the SocialCard, and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
 _Avoid_: Subtitle, subline, claim, slogan
 
 **FeatureCard**:
-One of the cards a Product's landing page lays out in a grid: a title, a paragraph, and a link into the documentation. The title may claim or joke; the paragraph says what the editor or developer does, what happens, and where it stops, and it is the longest place on the site where a single feature is described in prose.
+One of the cards a Product's landing page lays out in a grid: a Mock above a title and a paragraph, the whole card a link into the documentation. The plainer icon-and-sentence grid a landing page may carry instead is not a FeatureCard. The title may claim or joke; the paragraph says what the editor or developer does, what happens, and where it stops, and it is the longest place on the site where a single feature is described in prose.
 _Avoid_: Feature box, tile, USP
 
 **FeatureList**:
