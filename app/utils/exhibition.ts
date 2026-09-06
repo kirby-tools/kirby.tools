@@ -81,7 +81,7 @@ export const TRANSLATOR_DIALOG_FIELDS = {
     grow: true,
     options: [
       { value: "deepl", text: "DeepL", icon: "translate" },
-      { value: "ai", text: "GPT (OpenAI)", icon: "content-translator-openai" },
+      { value: "ai", text: "ChatGPT", icon: "content-translator-openai" },
     ],
   },
 };
