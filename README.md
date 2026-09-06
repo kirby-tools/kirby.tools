@@ -1,6 +1,6 @@
 # Kirby Tools
 
-**Kirby Tools** is a set of plugins for [Kirby CMS](https://getkirby.com), built for the Panel first: editors get AI content generation, translation, SEO analysis, a live preview and a sidebar to navigate by, and developers get a PHP API for Copilot and Content Translator plus a headless toolkit. Four plugins are commercial, two are free.
+**Kirby Tools** is a set of plugins for [Kirby CMS](https://getkirby.com), built for the Panel first: editors get AI content generation, translation, SEO analysis and a sidebar to navigate by, and developers get a PHP API for Copilot and Content Translator plus a headless toolkit.
 
 ## Plugins
 
@@ -15,10 +15,6 @@ DeepL and AI translation, in the Panel or from the CLI. One click translates a w
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
 Yoast SEO and readability checks, graded in the Panel. The Yoast SEO v3 engine runs in the editor's browser, with no external service and no data leaving the site.
-
-### 🪩 [Kirby Live Preview](https://kirby.tools/live-preview)
-
-See unsaved changes live, on any screen size. A Panel section renders the page as editors type, and a click on a link inside the preview opens the matching Panel view.
 
 ### 🧭 [Kirby Minimap](https://kirby.tools/minimap)
 

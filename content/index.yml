@@ -1,9 +1,9 @@
 title: Kirby Tools – Premium Plugins for Kirby CMS
-description: Kirby CMS plugins for editors and developers. AI content generation, translation, SEO analysis, live preview and Panel navigation, plus a PHP API and a headless toolkit.
+description: Kirby CMS plugins for editors and developers. AI content generation, translation, SEO analysis and Panel navigation, plus a PHP API and a headless toolkit.
 navigation: false
 hero:
   title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
-  description: Editors generate, translate, audit and preview their content in the Panel.<br class="hidden md:inline"> Developers script the same from PHP or serve it headless.
+  description: Editors generate, translate and audit their content in the Panel.<br class="hidden md:inline"> Developers script the same from PHP or serve it headless.
 testimonials:
   title: Trusted by Teams Worldwide
   items:
@@ -182,34 +182,6 @@ products:
       - title: Runs in the Editor's Browser
         description: The Yoast engine ships with the plugin and runs in a Web Worker. No third-party service ever sees the content.
         icon: i-ri-file-lock-line
-  - title: Kirby Live Preview
-    license: commercial
-    id: live-preview
-    description: A Panel section renders the page as editors type, unsaved changes included. Switch widths, click through to other pages, and stay in the editor.
-    video:
-      src: /screencasts/kirby-live-preview-devices.mp4
-      poster: /screencasts/kirby-live-preview-devices-poster.jpg
-      label: Demonstration of live preview with different device screen sizes in the Kirby Panel
-    links:
-      - label: Learn More
-        to: /live-preview
-        color: neutral
-        variant: outline
-        trailingIcon: i-lucide-arrow-right
-      - label: Install now
-        icon: i-ri-download-line
-        to: /docs/live-preview
-        variant: subtle
-    features:
-      - title: Renders as You Type
-        description: The section refreshes on every change, before anything is saved.
-        icon: i-ri-notification-badge-line
-      - title: Three Screen Widths
-        description: Toggle between phone, tablet and desktop width with one click.
-        icon: i-ri-device-line
-      - title: Knows It Is a Preview
-        description: The page can hide the cookie banner or skip animations when rendered for the Panel.
-        icon: i-ri-drag-drop-line
   - title: Kirby Minimap
     license: free
     id: minimap
