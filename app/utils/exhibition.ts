@@ -5,10 +5,10 @@ export const EXHIBITION_PAGE = {
   text: [
     "Luise Frey photographs rooms after everyone has left them: a school gym on the first morning of the holidays, a ferry terminal at four in the morning, the back office of a shop that closed last spring.",
     "The twenty-eight prints in this exhibition were made over six winters in northern Germany and on the Faroe Islands. Frey works with a large-format camera and available light, which means exposures long enough for the dust to settle inside the frame.",
-    "Rooms of Silence is her first solo exhibition in Kassel. A conversation with the artist takes place on 14 November at 7 pm, admission free.",
+    "Rooms of Silence is her first solo exhibition in Leipzig. A conversation with the artist takes place on 14 November at 7 pm, admission free.",
   ].join("\n\n"),
   description:
-    "Twenty-eight large-format photographs of rooms just after the people have gone. Kassel, 12 September to 30 November.",
+    "Twenty-eight large-format photographs of rooms just after the people have gone. Leipzig, 12 September to 30 November.",
   dates: "12 September – 30 November",
 };
 
