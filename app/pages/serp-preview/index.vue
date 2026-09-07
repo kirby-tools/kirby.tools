@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { PRODUCTS } from "#shared/products";
+import { socialCardPath } from "#shared/social-card";
 
 const route = useRoute();
 
@@ -27,12 +27,7 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-});
-
-defineOgImage("Default", {
-  productId: "serp-preview",
-  title: PRODUCTS["serp-preview"].tagline,
-  description,
+  ogImage: socialCardPath("serp-preview"),
 });
 </script>
 

@@ -156,6 +156,7 @@ const PRODUCT_REGISTRY = {
     configKey: "johannschopplich.serp-preview",
     githubRepo: "johannschopplich/kirby-serp-preview",
     composerPackage: "johannschopplich/kirby-serp-preview",
+    color: "lima",
     keywords: [
       "kirby google snippet",
       "kirby meta description",
