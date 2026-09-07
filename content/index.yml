@@ -211,6 +211,7 @@ products:
     license: free
     id: minimap
     description: A sidebar lists the fields and blocks of the current Panel tab and scrolls to the one you click. Made for long blueprints.
+    reverse: true
     video:
       src: /screencasts/kirby-minimap-screencast.mp4
       poster: /screencasts/kirby-minimap-screencast-poster.jpg
