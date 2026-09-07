@@ -25,15 +25,15 @@ CORS is Kirby's own since 5.2.0, under the top-level `cors` key: <https://kirby.
 
 A token that is set but blank – typically an env var that failed to resolve – answers every guarded request with `401`. An unresolved variable never opens a site by accident, so check the env before the code.
 
-Media URLs under `/media/**` never need the token. Under `globalRoutes`, clean file URLs like `/about/hero.jpg` do, and additionally need Kirby's `content.fileRedirects`, which is off by default.
+Under `globalRoutes`, clean file URLs like `/about/hero.jpg` need the token and additionally Kirby's `content.fileRedirects`, which is off by default.
 
-`/api/__sitemap__` and `/api/__template__` sit outside the catch-all, so they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
+`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off, which also means they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
 
 <https://kirby.tools/docs/headless/configuration/authentication.md>
 
 ## JSON Templates
 
-A JSON template is an ordinary Kirby template that returns JSON, served for every page once `globalRoutes` is on. A prefixed path names its own language; an unprefixed path takes its language from the `X-Language` header, and `t()` resolves in that language too. The header only applies with one language at the site root, Kirby's default multi-language setup; where every language carries a prefix, Kirby redirects an unprefixed path before the header is read.
+A JSON template is an ordinary Kirby template that returns JSON, served for every page once `globalRoutes` is on. The `X-Language` header only applies with one language at the site root, Kirby's default multi-language setup; where every language carries a prefix, Kirby redirects an unprefixed path before the header is read.
 
 <https://kirby.tools/docs/headless/usage/json-templates.md>
 
@@ -41,7 +41,7 @@ A JSON template is an ordinary Kirby template that returns JSON, served for ever
 
 `/api/kql` needs the official plugin installed (`composer require getkirby/kql`). Bearer auth needs both `headless.token` and `kql.auth` set to `'bearer'`.
 
-A request names its language through the `X-Language` header or a `?language=` query parameter, and the query parameter wins when both are sent. Caching starts only once Kirby's pages cache is on; `X-Cacheable: false` bypasses it per request, and a query sent once with `?language=de` and once with `X-Language: de` is cached twice.
+A request names its language through the `X-Language` header or a `?language=` query parameter, and the query parameter wins when both are sent. A query sent once with `?language=de` and once with `X-Language: de` is cached twice.
 
 <https://kirby.tools/docs/headless/usage/kql.md>
 
@@ -56,7 +56,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Sitemap
 
-`/api/__sitemap__` lists every indexable page. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them) and an `isIndexable` closure. A blueprint's `options.sitemap: false` keeps a page out with no config entry.
+`/api/__sitemap__` lists every indexable page. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them) and an `isIndexable` closure.
 
 <https://kirby.tools/docs/headless/usage/json-templates.md>
 
