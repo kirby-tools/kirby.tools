@@ -6,9 +6,11 @@ composer require johannschopplich/kirby-content-translator
 
 The site must be multi-language. The plugin translates between Kirby's configured languages and adds none.
 
-## Two decisions, in order
+<https://kirby.tools/docs/content-translator/getting-started/installation.md>
 
-**1. Which backend translates.** Set `strategy` explicitly. Without it the plugin uses a configured `translateFn` if one exists and DeepL otherwise; `translateFn` is deprecated and goes away in v4, and migrating is a rename, since the closure signature is identical.
+## Which Backend Translates
+
+Set `strategy` explicitly. Without it the plugin uses a configured `translateFn` if one exists and DeepL otherwise; `translateFn` is deprecated and goes away in v4.
 
 | `strategy` | Resolves to                   | Needs                                                                          |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------ |
@@ -17,34 +19,12 @@ The site must be multi-language. The plugin translates between Kirby's configure
 | `Closure`  | wrapped in `CallableStrategy` | signature `fn (string $text, string $target, ?string $source): string`         |
 | `Strategy` | used as-is                    | an implementation of `JohannSchopplich\ContentTranslator\Translation\Strategy` |
 
-The option drives the Panel, not just the call: a closure or `Strategy` instance enables the translation buttons without a `DeepL.apiKey`; `'ai'` makes Copilot the only provider on offer, so no provider dialog renders; with both available, the AI toggle carries the name of the Copilot provider in use. `'ai'` routes through Copilot's provider stack, so Copilot's own provider configuration applies; shape the output with the global `ai.systemPrompt`, or per section with `systemPrompt`. A closure returns an empty string for a text it could not translate, and the field keeps its source text; returning the source text yourself counts as a translation.
-
-**2. What counts as translatable.** The defaults translate every text-like field. Four settings narrow the set, and they compose rather than override, globally in `config.php` and per blueprint:
-
-- `fieldTypes` – which field **types** participate. The default names eleven: `blocks`, `layout`, `list`, `object`, `structure`, `tags`, `text`, `textarea`, `writer`, plus `markdown` and `table` from community field plugins. Containers do not imply their contents: a text field inside a blocks field needs both `blocks` and `text` in the list, and a list of only `blocks` translates nothing.
-- `includeFields` and `excludeFields` – which **top-level** field names participate, case-insensitively; a field nested in a block, structure, layout or object is reached through its parent, never by its own name. Both still respect `fieldTypes`, so a name in `includeFields` whose type is absent from `fieldTypes` stays untranslated.
-- `translate: false` in a field's blueprint wins over all of the above. When a field refuses to translate and the config looks right, that flag is the first thing to check.
-- `kirbyTags` – KirbyTags are **excluded by default**, which keeps URLs, filenames and technical attributes intact. Opt in per tag type, naming only the attributes that carry prose: `link: [text, title]`, `image: [alt, title, caption]`. Listing an attribute that holds a URL sends it to the translator.
-
-`title` and `slug` are separate booleans, both `false` by default. Translating `slug` changes URLs, so decide it deliberately; it is ignored on file and site models and on the home and error pages.
-
-```php [site/config/config.php]
-return [
-    'johannschopplich.content-translator' => [
-        'strategy' => 'deepl',
-        'DeepL' => ['apiKey' => env('DEEPL_API_KEY')],
-        'fieldTypes' => ['blocks', 'text', 'textarea'],
-        'title' => true,
-        'slug' => true,
-    ],
-];
-```
+A closure or `Strategy` instance enables the translation buttons without a `DeepL.apiKey`. `'ai'` runs through Copilot's provider configuration; shape its output with the global `ai.systemPrompt`, or per section with `systemPrompt`. A closure that cannot translate a text returns an empty string, and the field keeps its source text.
 
 <https://kirby.tools/docs/content-translator/configuration/global.md>
-<https://kirby.tools/docs/content-translator/configuration/local.md>
-<https://kirby.tools/docs/content-translator/advanced/kirbytags.md>
+<https://kirby.tools/docs/content-translator/providers/custom-translator.md>
 
-## Adding it to a blueprint
+## Adding It to a Blueprint
 
 A view button, a section, or both:
 
@@ -62,19 +42,48 @@ sections:
     type: content-translator
 ```
 
-`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `content-translator` or they disappear. Site views default to `open`, `preview`, `languages`; file views to `open`, `settings`, `languages`.
-
-Precedence runs defaults → `config.php` → blueprint props, later winning. Three blueprint properties have no global twin: `systemPrompt` is section-only and corresponds to the global `ai.systemPrompt`, `theme` is button-only, and `label` falls back to a Panel translation rather than a config value.
+`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. `systemPrompt` is a section property; the view button ignores it and reads the global `ai.systemPrompt`.
 
 <https://kirby.tools/docs/content-translator/configuration/local.md>
 
-## Rate limits during batch translation
+## What Gets Translated
 
-Batch mode translates languages in parallel, two at a time. When the provider returns rate-limit errors, set `batchConcurrency` to `1` and the languages run in sequence.
+The defaults translate every text-like field. Four settings narrow the set, globally in `config.php` and per blueprint, and they compose rather than override:
 
-## Scripting it
+- `fieldTypes` – which field **types** participate. A container type opens its contents but does not translate them: a text field inside a blocks field needs both `blocks` and `text` in the list.
+- `includeFields` and `excludeFields` – which **top-level** field names participate. A field nested in a block, structure, layout or object is reached through its parent, never by its own name. Both still respect `fieldTypes`.
+- `translate: false` in a field's blueprint wins over all of the above. When a field refuses to translate and the config looks right, that flag is the first thing to check.
+- `kirbyTags` – excluded by default. Opt in per tag type, naming only the attributes that carry prose: `link: [text, title]`, `image: [alt, title, caption]`.
 
-`Translator` is the PHP entry point, and it is what the CLI recipes wrap – single page, all children, whole site, file metadata, and a Janitor command. Reach for these when a migration needs translating in bulk rather than page by page.
+`title` and `slug` are separate booleans, both `false` by default; `slug` is ignored on file and site models and on the home and error pages.
+
+```php [site/config/config.php]
+return [
+    'johannschopplich.content-translator' => [
+        'strategy' => 'deepl',
+        'DeepL' => ['apiKey' => env('DEEPL_API_KEY')],
+        'fieldTypes' => ['blocks', 'text', 'textarea'],
+        'title' => true,
+        'slug' => true,
+    ],
+];
+```
+
+<https://kirby.tools/docs/content-translator/configuration/local.md>
+<https://kirby.tools/docs/content-translator/advanced/kirbytags.md>
+
+## When a Field Keeps Its Source Text
+
+- The Panel notification reports counts; the browser console names the field, the language and the reason. A `placeholder mismatch` means the translation damaged a KirbyTag placeholder, and the field keeps its source text on every provider. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
+- The three hooks fire for DeepL, custom strategies, the CLI and `Translator` calls. AI translation started in the Panel runs in the browser and never reaches them, so terminology or logging wired up in a hook skips it. <https://kirby.tools/docs/content-translator/advanced/hooks.md>
+- The coverage dashboard is Kirby 5 only and reads `fieldTypes`, `includeFields` and `excludeFields` from `config.php` alone; blueprint narrowing does not change the rings. <https://kirby.tools/docs/content-translator/panel/translation-coverage.md>
+- Batch translation runs two languages in parallel. On provider rate-limit errors set `batchConcurrency` to `1`.
+- A Kirby language whose code DeepL cannot name throws `LogicException`; map it with `targetLanguageOverrides`. <https://kirby.tools/docs/content-translator/providers/deepl.md>
+- A strategy instance built at the top level of `config.php` throws `AuthException: Missing DeepL API key` even with the key set; build it inside Kirby's `ready` callback. <https://kirby.tools/docs/content-translator/php-classes/strategies/deepl-strategy.md>
+
+## Scripting It
+
+`Translator` is the PHP entry point, and the CLI recipes wrap it: single page, all children, whole site, file metadata, and a Janitor command.
 
 <https://kirby.tools/docs/content-translator/cli-automation/single-page.md>
 <https://kirby.tools/docs/content-translator/php-classes/translator.md>
