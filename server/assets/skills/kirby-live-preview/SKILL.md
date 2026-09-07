@@ -16,7 +16,7 @@ The plugin has no `config.php` namespace. Every option is a section property in 
 
 ## Section properties worth knowing
 
-`updateStrategy` takes `interval` or `blur` and `updateInterval` sets the frequency, 500 ms by default and 250 ms at the lowest; `false` stops only the rerenders that typing triggers, not the ones on load, on other Panel events, or on blur. `pageId` previews a different page than the one being edited, which is how you preview a detail page from a parent form. `interactable: false` gives the page `pointer-events: none`, which the reader's own CSS cannot undo. `aspectRatio` constrains the viewport.
+`updateStrategy` takes `interval` or `blur` and `updateInterval` sets the frequency, 500 ms by default and 250 ms at the lowest; `false` stops only the rerenders that typing triggers, not the ones on load, on other Panel events, or on blur. `pageId` previews a different page than the one being edited. `interactable: false` gives the page `pointer-events: none`, which the reader's own CSS cannot undo. `aspectRatio` constrains the viewport.
 
 Put the section in a sticky column when editors work in blocks.
 
