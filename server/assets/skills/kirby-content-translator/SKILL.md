@@ -74,12 +74,12 @@ return [
 
 ## When a Field Keeps Its Source Text
 
-- The Panel notification reports counts; the browser console names the field, the language and the reason. A `placeholder mismatch` means the translation damaged a KirbyTag placeholder, and the field keeps its source text on every provider. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
+- The browser console names the field, the language and the reason. A `placeholder mismatch` means the translation damaged a KirbyTag placeholder, and the field keeps its source text on every provider. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
 - The three hooks fire for DeepL, custom strategies, the CLI and `Translator` calls. AI translation started in the Panel runs in the browser and never reaches them, so terminology or logging wired up in a hook skips it. <https://kirby.tools/docs/content-translator/advanced/hooks.md>
 - The coverage dashboard is Kirby 5 only and reads `fieldTypes`, `includeFields` and `excludeFields` from `config.php` alone; blueprint narrowing does not change the rings. <https://kirby.tools/docs/content-translator/panel/translation-coverage.md>
-- Batch translation runs two languages in parallel. On provider rate-limit errors set `batchConcurrency` to `1`.
+- Batch translation runs two languages in parallel. On provider rate-limit errors set `batchConcurrency` to `1`. <https://kirby.tools/docs/content-translator/configuration/global.md#batchconcurrency>
 - A Kirby language whose code DeepL cannot name throws `LogicException`; map it with `targetLanguageOverrides`. <https://kirby.tools/docs/content-translator/providers/deepl.md>
-- A strategy instance built at the top level of `config.php` throws `AuthException: Missing DeepL API key` even with the key set; build it inside Kirby's `ready` callback. <https://kirby.tools/docs/content-translator/php-classes/strategies/deepl-strategy.md>
+- `new DeepL()` at the top level of `config.php` throws `AuthException: Missing DeepL API key` even with the key set, because the client reads the key as it is built; a bare `new DeepLStrategy()` resolves its client lazily and is safe there. Build a custom client inside Kirby's `ready` callback. <https://kirby.tools/docs/content-translator/php-classes/strategies/deepl-strategy.md>
 
 ## Scripting It
 
