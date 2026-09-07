@@ -9,6 +9,8 @@ description: Writing or editing anything a visitor or an agent reads on kirby.to
 
 A sentence's register follows its place. Hero, section and feature titles and CTAs may claim or joke. Everything that reads as information – descriptions, taglines, FeatureCard and FeatureList text, docs intros and bullets, README intros, buy-page heroes and FAQ answers, meta descriptions – says what the editor or developer does, what happens, and where it stops, taken from the plugin source rather than from adjectives. The blog is first person and may judge; an adjective still does not replace behavior. Two exceptions: Headless is the one page whose cards carry code identifiers, and the Yoast assessment count is never cited.
 
+Terminal punctuation follows form, not place: a sentence takes a period, a noun phrase or fragment takes none. A title is the exception – never a period, though it may end on a question or exclamation mark.
+
 A plugin README opens with its documentation intro; a change to one is a change to both.
 
 ## Documentation

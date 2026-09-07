@@ -20,10 +20,10 @@ sections:
     description: Send Kirby Query Language queries to one endpoint and get JSON back. With Kirby's pages cache on, responses are cached per query and language and flushed on every content change.
     features:
       - title: Bearer Token Auth
-        description: Switch the endpoint to bearer mode and one token from config.php guards it
+        description: Switch the endpoint to bearer mode and one token from config.php guards it.
         icon: i-ri-shield-keyhole-line
       - title: Response Caching
-        description: Cached per query and language once the pages cache is on; one header bypasses it
+        description: Cached per query and language once the pages cache is on; one header bypasses it.
         icon: i-ri-speed-line
     links:
       - label: KQL Reference
@@ -97,10 +97,10 @@ sections:
     description: Define API routes with an Express-style middleware pattern. Chain authentication, validation, and response logic.
     features:
       - title: Middleware Support
-        description: Chain the token check, language and page resolvers with functions of your own
+        description: Chain the token check, language and page resolvers with functions of your own.
         icon: i-ri-stack-line
       - title: Consistent Responses
-        description: Api::createResponse() wraps your data in code, status and result
+        description: Api::createResponse() wraps your data in code, status and result.
         icon: i-ri-code-s-slash-line
     links:
       - label: API Builder Reference
@@ -136,7 +136,7 @@ sections:
                 ],
             ];
 cta:
-  title: Open Source. Yours to Extend.
+  title: Open Source – Yours to Extend
   description: Install the Headless plugin and start building modern frontend applications with Kirby as your content backend.
   orientation: horizontal
   links:

@@ -59,10 +59,10 @@ sections:
     description: Call AI providers from CLI commands, hooks, or custom workflows. The same Client that powers the Panel is available to your code.
     features:
       - title: Hooks & CLI
-        description: Generate content on save or in batch from the command line
+        description: Generate content on save or in batch from the command line.
         icon: i-ri-terminal-box-line
       - title: Two Output Modes
-        description: Plain text or structured objects validated against a JSON schema
+        description: Plain text or structured objects validated against a JSON schema.
         icon: i-ri-code-line
     links:
       - label: PHP API Reference

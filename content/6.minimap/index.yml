@@ -34,7 +34,7 @@ sections:
         icon: i-ri-focus-3-line
         to: /docs/minimap
 cta:
-  title: You Don’t Have to Pay a Cent.
+  title: You Don’t Have to Pay a Cent
   description: Install the Minimap plugin to enhance your Kirby Panel experience.
   orientation: horizontal
   links:

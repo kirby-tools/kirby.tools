@@ -30,7 +30,7 @@ sections:
         icon: i-ri-scissors-cut-line
         to: /docs/serp-preview/formatters
 cta:
-  title: See What Google Sees.
+  title: See What Google Sees
   description: Install the SERP Preview plugin and add the section to any page blueprint.
   orientation: horizontal
   links:

@@ -54,10 +54,10 @@ sections:
     description: Integrate translations into CLI commands, hooks, or custom workflows. Full programmatic control over copying and translating content.
     features:
       - title: CLI Commands
-        description: Create Kirby CLI commands to batch translate pages
+        description: Create Kirby CLI commands to batch translate pages.
         icon: i-ri-terminal-box-line
       - title: Full Control
-        description: Copy, translate, and sync content programmatically
+        description: Copy, translate, and sync content programmatically.
         icon: i-ri-settings-3-line
     links:
       - label: PHP API Reference
