@@ -136,7 +136,7 @@ sections:
                 ],
             ];
 cta:
-  title: Free Forever. Open Source.
+  title: Open Source. Yours to Extend.
   description: Install the Headless plugin and start building modern frontend applications with Kirby as your content backend.
   orientation: horizontal
   links:

@@ -1,5 +1,5 @@
-title: Kirby Minimap – Free Panel Navigation Plugin for Kirby CMS
-description: Free sidebar navigation plugin for the Kirby Panel. Navigate complex blueprints with a structured list of all fields and blocks.
+title: Kirby Minimap – Panel Navigation Plugin for Kirby CMS
+description: Sidebar navigation plugin for the Kirby Panel. Navigate complex blueprints with a structured list of all fields and blocks.
 navigation.icon: i-ri-timeline-view
 hero:
   orientation: horizontal
@@ -35,7 +35,7 @@ sections:
         to: /docs/minimap
 cta:
   title: You Don’t Have to Pay a Cent.
-  description: Install the Minimap plugin for free to enhance your Kirby Panel experience.
+  description: Install the Minimap plugin to enhance your Kirby Panel experience.
   orientation: horizontal
   links:
     - label: Get Started
