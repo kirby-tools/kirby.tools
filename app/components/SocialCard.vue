@@ -43,7 +43,7 @@ const isWide = computed(() => props.format === "og");
           class="leading-tight font-medium text-(--social-card-tagline)"
           :class="
             isWide
-              ? 'mt-1.5 max-w-[960px] text-4xl'
+              ? 'mt-1.5 max-w-[960px] text-3xl'
               : 'mt-4 max-w-[1400px] text-5xl'
           "
         >
