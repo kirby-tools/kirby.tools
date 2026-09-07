@@ -12,9 +12,15 @@ export const EXHIBITION_PAGE = {
   dates: "12 September – 30 November",
 };
 
+// `y` is tuned to this glyph, since emoji fill the em box to different heights
+// and no baseline keyword evens that out.
+const EXHIBITION_FAVICON_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="54" font-size="72" text-anchor="middle" dominant-baseline="central">🏛️</text></svg>';
+
 export const EXHIBITION_SITE = {
   title: "Kunsthalle Leipzig",
   url: "https://kunsthalle-leipzig.de/rooms-of-silence",
+  faviconUrl: `data:image/svg+xml,${encodeURIComponent(EXHIBITION_FAVICON_SVG)}`,
 };
 
 // The buttons Kirby puts on every page view, which a plugin's button joins.

@@ -6,6 +6,7 @@
     />
     <PanelSection label="SERP Preview">
       <PanelSerpPreviewSnippet
+        :favicon-url="EXHIBITION_SITE.faviconUrl"
         :site-title="EXHIBITION_SITE.title"
         :site-url="EXHIBITION_SITE.url"
         :title="`${EXHIBITION_PAGE.title} – ${EXHIBITION_SITE.title}`"
