@@ -29,10 +29,6 @@ const moreProducts = PRODUCT_LIST.filter(
   (listed) => !featuredProductIds.has(listed.id),
 ).map(toNavigationItem);
 
-/**
- * The product switcher, as one group per License so the free plugins read as
- * their own shelf rather than as the tail of the paid ones.
- */
 const productSwitcherItems = computed<DropdownMenuItem[][]>(() =>
   (["commercial", "free"] as const).map((license) =>
     PRODUCT_LIST.filter((listed) => listed.license === license).map(
