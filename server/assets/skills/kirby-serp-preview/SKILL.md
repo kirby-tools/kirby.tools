@@ -6,7 +6,7 @@ composer require johannschopplich/kirby-serp-preview
 
 Or extract the ZIP from the releases page into `site/plugins/`.
 
-Then add the section to a page or the site blueprint:
+Then add the section to a blueprint:
 
 ```yaml
 sections:
@@ -18,7 +18,7 @@ sections:
 
 ## Pointing It at a Meta Title and Description
 
-`titleContentKey` and `descriptionContentKey` name the fields the snippet reads; `defaultTitle` and `defaultDescription` fill in while a field is empty and accept Kirby queries.
+`titleContentKey` and `descriptionContentKey` name the fields the snippet reads.
 
 ```yaml
 sections:
@@ -35,7 +35,7 @@ A content key takes a field name, not a query – a `{{ ... }}` there is read li
 
 ## Favicon, Site Name and URL Line
 
-`faviconUrl`, `siteTitle` and `siteUrl` accept Kirby queries; `searchConsoleUrl` adds a button below the snippet. `siteUrl` defaults to the URL Kirby runs under, so a staging install sets the production host. The path after it is the page's preview URL path, language prefix included; a blueprint with `preview: false` leaves the line at the site URL.
+`faviconUrl`, `siteTitle` and `siteUrl` accept Kirby queries. `siteUrl` defaults to the URL Kirby runs under, so a staging install sets the production host. The path after it is the page's preview URL path, language prefix included; a blueprint whose `options.preview` is `false` leaves the line at the site URL.
 
 ```yaml
 sections:
@@ -49,7 +49,7 @@ sections:
 
 ## Shortening the Text Rather Than Clipping It
 
-The section clamps the title to one line and the description to two. A closure under `johannschopplich.serp-preview.formatters`, keyed `title` or `description`, receives the resolved value and the page and returns what to draw:
+The section clamps the title to one line and the description to two. A formatter closure shortens the text before the clamp:
 
 ```php [site/config/config.php]
 use Kirby\Toolkit\Str;
@@ -63,6 +63,6 @@ return [
 ];
 ```
 
-Each change posts the value to the site, at most once per 250 ms per line, and a failed reply keeps the last drawn text – a formatter that throws shows no error, the failed request is in the browser's network tab. On the site view the page is the home page; on a file view the formatter does not run.
+Each change posts the value to the site, at most once per 250 ms with title and description sharing that window, and a failed reply keeps the last drawn text – a formatter that throws shows no error, the failed request is in the browser's network tab. On the site view the page is the home page; on a page's file view the formatter does not run, and a site or user file is formatted against the home page.
 
 <https://kirby.tools/docs/serp-preview/formatters.md>
