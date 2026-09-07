@@ -182,7 +182,7 @@ const PRODUCT_REGISTRY = {
     ],
     notFor: "Frontend navigation for site visitors.",
     skillDescription:
-      "Configure Kirby Minimap, which adds a sidebar outline of fields and blocks to the Panel. Use when installing it, or when a field or block is missing from the outline.",
+      "Install Kirby Minimap, which adds a sidebar outline of fields and blocks to the Panel. Use when a field or block is missing from the outline.",
   },
   headless: {
     name: "Kirby Headless",
