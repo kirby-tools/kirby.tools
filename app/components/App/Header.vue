@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from "@nuxt/content";
-import type { NavigationMenuItem } from "@nuxt/ui";
+import type { DropdownMenuItem, NavigationMenuItem } from "@nuxt/ui";
 import type { Product, ProductId } from "#shared/products";
 import { withoutTrailingSlash } from "ufo";
 import {
@@ -28,6 +28,26 @@ const featuredProducts = PRODUCT_LIST.filter((listed) =>
 const moreProducts = PRODUCT_LIST.filter(
   (listed) => !featuredProductIds.has(listed.id),
 ).map(toNavigationItem);
+
+/**
+ * The product switcher, as one group per License so the free plugins read as
+ * their own shelf rather than as the tail of the paid ones.
+ */
+const productSwitcherItems = computed<DropdownMenuItem[][]>(() =>
+  (["commercial", "free"] as const).map((license) =>
+    PRODUCT_LIST.filter((listed) => listed.license === license).map(
+      (listed) => ({
+        label: listed.label,
+        to: productPath(listed.id),
+        ...(listed.id === productId.value && {
+          type: "checkbox" as const,
+          color: "primary" as const,
+          checked: true,
+        }),
+      }),
+    ),
+  ),
+);
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
@@ -166,17 +186,7 @@ function toNavigationItem(item: Product & { id: ProductId }) {
         v-if="product"
         v-slot="{ open }"
         :modal="false"
-        :items="
-          PRODUCT_LIST.map((listed) => ({
-            label: listed.label,
-            to: productPath(listed.id),
-            ...(listed.id === productId && {
-              type: 'checkbox',
-              color: 'primary',
-              checked: true,
-            }),
-          }))
-        "
+        :items="productSwitcherItems"
       >
         <UButton
           :label="product.label"
