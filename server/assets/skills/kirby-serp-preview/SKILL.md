@@ -1,5 +1,3 @@
-A Kirby CMS plugin that adds a Panel section drawing the Google result snippet for the page being edited – favicon, site name, URL, title and description. It reads the open form rather than the saved content, so the snippet follows the editor's typing and nothing is written back.
-
 ## Install
 
 ```bash
@@ -54,7 +52,3 @@ return [
 Typing sends the current value to the server for formatting, so a formatter that fetches a remote URL makes typing slow.
 
 <https://kirby.tools/docs/serp-preview/formatters.md>
-
-## Scope
-
-SERP Preview draws a snippet and judges nothing – there is no score, no keyphrase and no recommendation in it. Kirby SEO Audit is the plugin that assesses the same fields. The section also has no effect on what the frontend renders: a title shortened by a formatter is short in the Panel only, and the `<title>` tag stays whatever the template writes.

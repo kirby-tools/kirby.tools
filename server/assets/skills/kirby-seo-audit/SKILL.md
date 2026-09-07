@@ -1,5 +1,3 @@
-A commercial Kirby CMS plugin that fetches a page's rendered HTML and scores it against a keyphrase, inside the Panel.
-
 ## Install
 
 ```bash

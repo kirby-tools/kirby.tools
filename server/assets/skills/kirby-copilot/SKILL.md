@@ -1,5 +1,3 @@
-A commercial Kirby CMS plugin that brings AI content generation into the Kirby Panel, plus a PHP API for CLI scripts and hooks.
-
 ## Install
 
 ```bash

@@ -1,5 +1,3 @@
-A commercial Kirby CMS plugin that renders a page inside a Panel section, refreshing as the editor types.
-
 ## Install
 
 ```bash

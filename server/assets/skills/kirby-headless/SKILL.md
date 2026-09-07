@@ -1,5 +1,3 @@
-A Kirby CMS plugin that exposes content as JSON for a decoupled frontend.
-
 ## Install
 
 ```bash

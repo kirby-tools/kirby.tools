@@ -1,5 +1,3 @@
-A commercial Kirby CMS plugin that translates existing content between the languages a Kirby site already defines.
-
 ## Install
 
 ```bash
