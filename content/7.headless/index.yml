@@ -3,8 +3,8 @@ description: Turn Kirby into a headless CMS. Bearer token auth, KQL with caching
 navigation.icon: i-ri-code-block
 hero:
   headline:
-    label: Free & Open Source
-    icon: i-ri-open-source-line
+    label: Free Plugin
+    icon: i-ri-gift-line
   title: '<span class="text-primary">Headless CMS</span><br> Toolkit for Kirby'
   description: Everything you need to use Kirby as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – one config.php for all of it.
   links:
