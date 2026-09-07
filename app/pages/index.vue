@@ -15,6 +15,10 @@ if (!page.value) {
 }
 
 const NuxtLink = resolveComponent("NuxtLink");
+const PRODUCT_MOCKS = {
+  "serp-preview": resolveComponent("ProductSerpPreviewSnippet"),
+} as Record<string, ReturnType<typeof resolveComponent>>;
+
 const { isLoading } = useLoadingIndicator();
 const isEntering = ref(false);
 const hasEntered = ref(false);
@@ -227,6 +231,10 @@ const testimonialItems = computed(() =>
 
         <MediaVideo v-if="product.video" v-bind="product.video" glow />
         <MediaCode v-else-if="product.code" v-bind="product.code" />
+        <component
+          :is="PRODUCT_MOCKS[product.mock]"
+          v-else-if="product.mock && PRODUCT_MOCKS[product.mock]"
+        />
       </UPageSection>
     </template>
 

@@ -12,6 +12,11 @@ export const EXHIBITION_PAGE = {
   dates: "12 September – 30 November",
 };
 
+export const EXHIBITION_SITE = {
+  title: "Kunsthalle Leipzig",
+  url: "https://kunsthalle-leipzig.de/rooms-of-silence",
+};
+
 // The buttons Kirby puts on every page view, which a plugin's button joins.
 export const KIRBY_VIEW_BUTTONS: PanelViewButton[] = [
   { icon: "window" },

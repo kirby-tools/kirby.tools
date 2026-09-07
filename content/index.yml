@@ -182,6 +182,31 @@ products:
       - title: Runs in the Editor's Browser
         description: The Yoast engine ships with the plugin and runs in a Web Worker. No third-party service ever sees the content.
         icon: i-ri-file-lock-line
+  - title: Kirby SERP Preview
+    license: free
+    id: serp-preview
+    description: A Panel section draws the Google result for the page you are editing – favicon, site name, URL, title and description – and redraws it on every keystroke.
+    mock: serp-preview
+    links:
+      - label: Learn More
+        to: /serp-preview
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install now
+        icon: i-ri-download-line
+        to: /docs/serp-preview
+        variant: subtle
+    features:
+      - title: Live, Before You Save
+        description: The section reads the form as it stands, so the snippet follows your typing.
+        icon: i-ri-refresh-line
+      - title: Reads Your Meta Fields
+        description: Name a title and description field and the snippet takes their values.
+        icon: i-ri-input-field
+      - title: Shortened Your Way
+        description: A closure in your config trims the text before the snippet draws it.
+        icon: i-ri-scissors-cut-line
   - title: Kirby Minimap
     license: free
     id: minimap

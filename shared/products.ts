@@ -149,6 +149,28 @@ const PRODUCT_REGISTRY = {
     skillDescription:
       "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview section to a blueprint, tuning when it refreshes, or fixing a preview that stays blank.",
   },
+  "serp-preview": {
+    name: "Kirby SERP Preview",
+    label: "SERP Preview",
+    description: "Google search result preview in the Panel",
+    tagline: "See the Google snippet while you write it",
+    icon: "i-ri-search-eye-line",
+    license: "free",
+    configKey: "johannschopplich.serp-preview",
+    githubRepo: "johannschopplich/kirby-serp-preview",
+    composerPackage: "johannschopplich/kirby-serp-preview",
+    keywords: [
+      "kirby serp preview",
+      "kirby google snippet",
+      "kirby meta description",
+      "kirby search result preview",
+      "kirby seo panel",
+    ],
+    notFor:
+      "Judging what it shows – it draws the snippet, Kirby SEO Audit scores it.",
+    skillDescription:
+      "Configure Kirby SERP Preview, a Panel section that draws the Google result snippet for a page as it is edited. Use when adding the section to a blueprint, pointing it at a meta title or description field, or shortening what it shows through a formatter.",
+  },
   minimap: {
     name: "Kirby Minimap",
     label: "Minimap",

@@ -111,6 +111,7 @@ export default defineContentConfig({
             headline: createBadgeSchema().optional(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
+            mock: z.string().optional(),
             video: createVideoSchema().optional(),
             code: createCodeSchema().optional(),
             links: z.array(createLinkSchema()),
