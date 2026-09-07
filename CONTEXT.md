@@ -5,7 +5,7 @@ The website, documentation and agent-facing surface for a set of Kirby CMS plugi
 ## Language
 
 **Product**:
-A unit offered on kirby.tools: a documentation section, a landing page, and – when commercial – a buy flow. Six exist: Copilot, Content Translator, SEO Audit, Live Preview, Minimap, Headless.
+A unit offered on kirby.tools: a documentation section, a landing page, and – when commercial – a buy flow.
 _Avoid_: Tool, module, package
 
 **Plugin**:
@@ -25,11 +25,11 @@ The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschop
 _Avoid_: Namespace, option prefix
 
 **ThemeColor**:
-One of the four named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed.
+One of the named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima. Pumpkin is the site's own; a Product may carry one of the others as its own, and everything themed after that Product – its pages, its favicon, its SocialCard – takes the color from the Product. Every path resolves to a ThemeColor, so a Product is distinguished by carrying one, not by being themed.
 _Avoid_: Color slot, brand color, palette, hex code
 
 **Exhibition**:
-The one fictional site the Mocks on the home and landing pages depict: a photography exhibition, edited in a Panel that has three Plugins installed – Copilot, Content Translator, SEO Audit. A Product is in the Exhibition when its Plugin is, and only then can a scene be staged for it.
+The one fictional site the Mocks on the home and landing pages depict: a photography exhibition, edited in a Panel that has several of the Plugins installed. A Product is in the Exhibition when its Plugin is, and only then can a scene be staged for it.
 _Avoid_: Demo site, sample content, fixture
 
 **Mock**:
