@@ -4,7 +4,7 @@
 composer require johannschopplich/kirby-copilot
 ```
 
-## Minimum working config
+## Minimum Working Config
 
 One provider with a valid key, under `johannschopplich.copilot`. Nothing works until this exists.
 
@@ -22,24 +22,39 @@ return [
 ];
 ```
 
-`provider` names the active one; `providers` holds credentials for each. Supported: `openai`, `anthropic`, `google`, `mistral`. Every provider takes two models – `model` for generation and `completionModel` for inline suggestions, which should be the faster one. Both have per-provider defaults, so omit them unless the project needs specific versions.
+`provider` names the active one of `openai`, `anthropic`, `google`, `mistral`; `providers` holds credentials for each. Every provider takes `model` for generation and `completionModel` for inline suggestions; both have per-provider defaults, so omit them unless the project needs specific versions. `reasoningEffort` (default `low`) is the one setting that trades speed for depth.
 
 **Recommend Google Gemini when the project generates blocks or layouts.** Nested JSON schemas are where providers diverge most, and Gemini handles them most reliably.
 
-Requests are proxied server-side, so API keys never reach the browser. That is automatic and needs no configuration.
+<https://kirby.tools/docs/copilot/configuration/global.md>
+
+## Gateways and OpenAI-Compatible Endpoints
+
+Any endpoint that speaks the OpenAI shape is `provider: 'openai'` with a custom `baseUrl` – Vercel AI Gateway, Cloudflare AI Gateway, OpenRouter, llama.cpp, vLLM, LiteLLM. Copilot defaults to the Responses API; an endpoint that only exposes `/v1/chat/completions` needs `api: 'chat'`, otherwise requests fail with 404 or JSON parse errors.
+
+| Endpoint                                      | `api`  |
+| --------------------------------------------- | ------ |
+| Direct OpenAI, Vercel AI Gateway, OpenRouter  | –      |
+| Cloudflare AI Gateway `…/openai`              | –      |
+| Cloudflare AI Gateway `…/compat`              | `chat` |
+| Self-hosted: llama.cpp, vLLM, LiteLLM default | `chat` |
+
+**Set `completionModel` explicitly whenever the `model` carries a foreign prefix** such as `google-ai-studio/…` – Copilot derives no completion model across gateways, and without one inline suggestions fail while everything else works.
+
+Structured output and `reasoningEffort` only reach a non-OpenAI model as far as the gateway translates them; for full control over Anthropic or Google models, configure that provider directly.
 
 <https://kirby.tools/docs/copilot/configuration/global.md>
 
-## Choosing a Panel surface
+## Choosing a Panel Surface
 
 Four, and they are independent – pick what the blueprint needs rather than adding all of them:
 
-| Surface            | Fits                                                                                                            |
-| ------------------ | --------------------------------------------------------------------------------------------------------------- |
-| View button        | generating several fields at once from a prompt dialog                                                          |
-| Toolbar buttons    | rewriting a selection inside a writer or textarea field                                                         |
-| Inline suggestions | ghost text while typing; on in every writer field unless a custom `marks` list leaves out `copilot-suggestions` |
-| Section            | one field; can lock the prompt (`editable: false`) and attach the current file (`files: auto`)                  |
+| Surface            | Fits                                                                                           |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| View button        | generating several fields at once from a prompt dialog                                         |
+| Toolbar buttons    | rewriting a selection inside a writer or textarea field                                        |
+| Inline suggestions | ghost text while typing, on in every writer field                                              |
+| Section            | one field; can lock the prompt (`editable: false`) and attach the current file (`files: auto`) |
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -51,57 +66,40 @@ buttons:
   status: true
 ```
 
-`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `copilot` or they disappear. Site views default to `open`, `preview`, `languages`; file views to `open`, `settings`, `languages`.
+`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included.
 
-Precedence runs defaults → `config.php` → blueprint props, later winning.
+`completion: false` stops ghost text appearing on its own while the shortcut still requests one; `['debounce' => 1500]` lengthens the pause before it appears.
 
 <https://kirby.tools/docs/copilot/configuration/local.md>
 
-## Settings that come up
+## Generating Blocks and Layouts
 
-`reasoningEffort` (default `low`) translates to each provider's native reasoning controls; models without reasoning ignore it. There is no `temperature` option – the model manages creativity from `reasoningEffort`.
+A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. The field's `fieldsets` narrows what is generated; `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the model learns about the block beyond its name. Generated content is appended to the field, never replacing it, and blocks nest one level, so a block inside a nested block is never generated.
 
-`completion` controls inline suggestions: `false` stops ghost text appearing on its own, while the shortcut still requests one; `['debounce' => 1500]` tunes the pause before it appears (minimum 500 ms).
+<https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
 
-`timeout` bounds a single provider request, 120 seconds by default, set per provider alongside `apiKey` and `model`. It applies to PHP runs through `Client`; Panel requests go through the proxy, which bounds them on its own.
+## Driving Generation From PHP
 
-`excludedBlocks` keeps custom block types out of structured generation.
+`Client::instance()` reads the same `johannschopplich.copilot` options as the Panel and keeps them until `Client::reset()`; `generateText` and `generateObject` are the two calls. The bound on a call is the provider's `timeout` (120 seconds, set per provider alongside `apiKey`), not the web server. `new Client(providerOverride: …)` forces a provider for one call.
 
-<https://kirby.tools/docs/copilot/configuration/global.md>
+<https://kirby.tools/docs/copilot/php-classes/client.md>
 
-## Gateways and OpenAI-compatible endpoints
+## When Generation Fails
 
-Any endpoint that speaks the OpenAI shape is `provider: 'openai'` with a custom `baseUrl` – Vercel AI Gateway, Cloudflare AI Gateway, OpenRouter, llama.cpp, vLLM, LiteLLM. Copilot defaults to the Responses API (`/v1/responses`); an endpoint that only exposes `/v1/chat/completions` needs `api: 'chat'`, otherwise requests fail with 404 or JSON parse errors.
+**Long generations cut off** – _No object generated_, _Unterminated string_, a 504, or a closed connection. In the Panel the cause is the web server's read timeout (nginx `fastcgi_read_timeout`, Apache `ProxyTimeout`); PHP's own execution limit is already lifted for proxy requests. From PHP the bound is the provider's `timeout`.
 
-| Endpoint                                      | `api`  |
-| --------------------------------------------- | ------ |
-| Direct OpenAI, Vercel AI Gateway, OpenRouter  | –      |
-| Cloudflare AI Gateway `…/openai`              | –      |
-| Cloudflare AI Gateway `…/compat`              | `chat` |
-| Self-hosted: llama.cpp, vLLM, LiteLLM default | `chat` |
+**A missing API key** – the PHP `Client` fails with `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`, the Panel with `Missing API key for the "<name>" provider`. The key sits under `providers.<name>.apiKey`, and an `env()` lookup resolves in the environment the **Panel** runs under, which routinely differs from the CLI's.
 
-**Set `completionModel` explicitly whenever the `model` carries a foreign prefix** such as `google-ai-studio/…` – Copilot derives no completion model across gateways, and without one inline suggestions fail while everything else works.
+**An option that is silently wrong** – with Kirby's `debug` off, the Panel swaps an option value it cannot use for the default, drops a `promptTemplates` or `skills` entry it cannot read, and turns an unknown `provider` into Google, all without an error; with `debug` on the exception names the option. The PHP `Client` always fails: `Unknown provider "<name>"` or `Missing required option "johannschopplich.copilot.provider"`.
 
-Structured output (blocks, layouts, field schemas) depends on the gateway translating `json_schema` faithfully, and `reasoningEffort` cannot map onto another vendor's models through the OpenAI shape. For full control over Anthropic or Google models, configure that provider directly.
+**Blocks come back malformed** – switch to Google Gemini, generate fewer blocks per prompt, and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
 
-<https://kirby.tools/docs/copilot/configuration/global.md>
-
-## When generation fails
-
-**Long generations cut off** – _No object generated_, _Unterminated string_, a 504, or a closed connection. In the Panel the cause is almost always a web server timeout: every request streams through a server-side PHP proxy, so the connection must stay open for the whole generation, 60+ seconds for longer content, and the web server's read timeout (nginx `fastcgi_read_timeout`, Apache `ProxyTimeout`) has to allow that. PHP's own execution limit is already lifted for proxy requests. From PHP – CLI, hooks, custom workflows – the bound is the provider's `timeout` instead.
-
-**A missing API key** – the PHP `Client` fails with `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`, the Panel with `Missing API key for the "<name>" provider`. In order: the key sits under `providers.<name>.apiKey`, not one level up; an `env()` lookup resolves in the environment the **Panel** runs under, which routinely differs from the CLI's; a closure returns a non-empty string for the current Panel user.
-
-**A provider the plugin does not know** – the PHP `Client` fails with `Unknown provider "<name>"` when `provider` names something outside `openai`, `anthropic`, `google`, `mistral`, and with `Missing required option "johannschopplich.copilot.provider"` when the key is absent. The Panel reports an unknown provider only while Kirby's `debug` option is on; otherwise it falls back to Google without saying so, which is what a wrong provider name looks like from the editor's side.
-
-**Blocks come back malformed** – missing fields, empty results, wrong structure. Switch to Google Gemini, generate fewer blocks per prompt, and set `logLevel: 'debug'` to see the system and user prompt that were actually sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
-
-**Inline suggestions never appear** – in order: a custom `marks` list on the writer field includes `copilot-suggestions` (`marks` is an allow-list, so a mark left out is dropped from the editor, and the next save strips that formatting from stored content, links included); `completion` is not `false`; behind a gateway with a prefixed `model`, `completionModel` is set. After a failed provider request Copilot waits 30 seconds before suggesting again; the manual shortcut retries immediately.
+**Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set. After a failed provider request Copilot waits 30 seconds before suggesting again; the manual shortcut retries immediately.
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
 
-## Reach for the docs when
+## Prompt Templates and Skills
 
-- Whole layouts are generated from the site's own block blueprints – <https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
-- Generation should run from PHP: CLI, hooks, custom workflows – <https://kirby.tools/docs/copilot/php-classes.md>
-- Editors need reusable prompts or house rules – <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
+Templates are reusable user prompts in the dialog, five built in; skills are house rules an editor layers onto a prompt with `@skill://<id>`. Both live in `config.php`.
+
+<https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
