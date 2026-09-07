@@ -184,11 +184,10 @@ const PRODUCT_REGISTRY = {
       "kirby panel navigation",
       "kirby sidebar",
       "kirby content overview",
-      "kirby minimap",
     ],
     notFor: "Frontend navigation – it is a Panel-only aid.",
     skillDescription:
-      "Configure Kirby Minimap, a zero-config sidebar that outlines the fields and blocks of the current Panel view. Use when a field fails to appear in the outline or the plugin needs installing.",
+      "Configure Kirby Minimap, which adds a sidebar outline of fields and blocks to the Panel. Use when installing it, or when a field or block is missing from the outline.",
   },
   headless: {
     name: "Kirby Headless",
