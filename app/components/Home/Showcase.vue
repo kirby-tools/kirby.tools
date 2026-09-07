@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ExhibitionProductId } from "#shared/exhibition";
-import { EXHIBITION_PRODUCT_IDS } from "#shared/exhibition";
+import type { ShowcaseProductId } from "#shared/exhibition";
+import { SHOWCASE_PRODUCT_IDS } from "#shared/exhibition";
 import { PRODUCTS } from "#shared/products";
 
 const COLOR_CLASSES: Record<
-  ExhibitionProductId,
+  ShowcaseProductId,
   { chipClass: string; accentClass: string }
 > = {
   copilot: {
@@ -21,7 +21,7 @@ const COLOR_CLASSES: Record<
   },
 };
 
-const SHOWCASE_TABS = EXHIBITION_PRODUCT_IDS.map((id) => ({
+const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
   value: id,
   label: PRODUCTS[id].name,
   description: PRODUCTS[id].description,
@@ -29,7 +29,7 @@ const SHOWCASE_TABS = EXHIBITION_PRODUCT_IDS.map((id) => ({
   ...COLOR_CLASSES[id],
 }));
 
-const activeProductId = ref<ExhibitionProductId>("copilot");
+const activeProductId = ref<ShowcaseProductId>("copilot");
 
 const accentClass = computed(
   () => COLOR_CLASSES[activeProductId.value].accentClass,
@@ -93,7 +93,7 @@ const accentClass = computed(
         :class="accentClass"
       />
 
-      <HomeShowcaseScene
+      <ExhibitionScene
         :product-id="activeProductId"
         class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:min-h-104 max-sm:[&_.panel-mock-stage]:h-104 max-sm:[&_.panel-mock-stage]:overflow-clip"
       />

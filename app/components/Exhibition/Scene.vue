@@ -5,10 +5,12 @@ const props = defineProps<{
   productId: ExhibitionProductId;
 }>();
 
-const viewButtons = computed(() => [
-  PLUGIN_VIEW_BUTTONS[props.productId],
-  ...KIRBY_VIEW_BUTTONS,
-]);
+const viewButtons = computed<PanelViewButton[]>(() => {
+  const pluginButton = PLUGIN_VIEW_BUTTONS[props.productId];
+  return pluginButton
+    ? [pluginButton, ...KIRBY_VIEW_BUTTONS]
+    : KIRBY_VIEW_BUTTONS;
+});
 </script>
 
 <template>
@@ -17,6 +19,19 @@ const viewButtons = computed(() => [
 
     <PanelColumns>
       <PanelColumn width="2/3">
+        <PanelSection
+          v-if="productId === 'serp-preview'"
+          label="SERP Preview"
+        >
+          <PanelSerpPreviewSnippet
+            :favicon-url="EXHIBITION_SITE.faviconUrl"
+            :site-title="EXHIBITION_SITE.title"
+            :site-url="EXHIBITION_SITE.url"
+            :title="`${EXHIBITION_PAGE.title} – ${EXHIBITION_SITE.title}`"
+            :description="EXHIBITION_PAGE.description"
+          />
+        </PanelSection>
+
         <PanelSection>
           <PanelFieldset>
             <PanelField label="Text" name="text" type="writer">
@@ -61,7 +76,7 @@ const viewButtons = computed(() => [
         :buttons="TRANSLATOR_DIALOG_BUTTONS"
       />
 
-      <PanelDialog v-else size="large">
+      <PanelDialog v-else-if="productId === 'seo-audit'" size="large">
         <PanelSeoAuditResult
           title="SEO & Readability Scores"
           :report="SEO_REPORT"

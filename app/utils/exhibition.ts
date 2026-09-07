@@ -1,3 +1,4 @@
+import type { ExhibitionProductId } from "#shared/exhibition";
 import type { ProductId } from "#shared/products";
 
 export const EXHIBITION_PAGE = {
@@ -31,7 +32,9 @@ export const KIRBY_VIEW_BUTTONS: PanelViewButton[] = [
 ];
 
 // Each plugin's view button, as its blueprint documentation defines it.
-export const PLUGIN_VIEW_BUTTONS = {
+export const PLUGIN_VIEW_BUTTONS: Partial<
+  Record<ProductId, PanelViewButtonProps>
+> = {
   copilot: {
     text: "Copilot",
     icon: "sparkling",
@@ -50,7 +53,7 @@ export const PLUGIN_VIEW_BUTTONS = {
     theme: "positive",
     responsive: true,
   },
-} satisfies Partial<Record<ProductId, PanelViewButtonProps>>;
+};
 
 export const COPILOT_PROMPT = `
 Write the teaser for "{title}" in our house voice, max 60 words.
