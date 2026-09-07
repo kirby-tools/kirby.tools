@@ -150,7 +150,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby SERP Preview",
     label: "SERP Preview",
     description: "Google search result preview in the Panel",
-    tagline: "See the Google snippet while you write it",
+    tagline: "See the Google snippet as you type",
     icon: "i-ri-search-eye-line",
     license: "free",
     configKey: "johannschopplich.serp-preview",
