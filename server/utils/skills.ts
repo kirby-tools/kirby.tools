@@ -42,6 +42,7 @@ export async function skillProvenance(event: H3Event, productId: ProductId) {
     .select("title", "date")
     .where("path", "LIKE", productVersionsPattern(productId))
     .order("date", "DESC")
+    .order("title", "DESC")
     .first();
 
   const changelogUrl = joinURL(
