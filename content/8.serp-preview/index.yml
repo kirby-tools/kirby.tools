@@ -5,7 +5,7 @@ hero:
   orientation: horizontal
   headline:
     label: Free Plugin
-    icon: i-ri-gift-line
+    icon: i-ri-open-source-line
   title: '<span class="text-primary">Google''s Snippet</span><br> While You Write It'
   description: A Panel section that draws the search result for the page being edited – favicon, site name, URL, title and description – and redraws it on every keystroke.
   links:

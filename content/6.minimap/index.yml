@@ -5,7 +5,7 @@ hero:
   orientation: horizontal
   headline:
     label: Free Plugin
-    icon: i-ri-gift-line
+    icon: i-ri-open-source-line
   title: '<span class="text-primary">Sidebar Content</span><br> Navigation'
   description: A structured list of all fields and blocks in the current Panel tab. Especially useful for complex page blueprints.
   links:

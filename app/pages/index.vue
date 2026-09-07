@@ -170,7 +170,7 @@ const testimonialItems = computed(() =>
 
       <UPageSection
         v-if="license === 'free'"
-        icon="i-ri-gift-line"
+        icon="i-ri-open-source-line"
         title="On the House"
         description="No license key, no invoice. The free plugins ship with the same docs and support as the rest."
         class="border-default lg:border-t"
