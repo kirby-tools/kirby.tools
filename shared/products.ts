@@ -212,7 +212,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Building the frontend itself – it exposes the content, you bring the client.",
     skillDescription:
-      "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when securing the API with a bearer token, setting up CORS, querying through KQL, or serving pages as JSON templates.",
+      "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when securing the API with a bearer token, serving every page as JSON, setting up CORS, querying through KQL, shaping a response in a JSON template or the API builder, or pointing the Panel's preview at the frontend.",
   },
 } satisfies Record<string, Product>;
 
