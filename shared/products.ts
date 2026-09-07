@@ -190,7 +190,7 @@ const PRODUCT_REGISTRY = {
   headless: {
     name: "Kirby Headless",
     label: "Headless",
-    description: "KQL, JSON templates, and API routes",
+    description: "KQL, JSON templates, and the API builder",
     tagline: "Bearer auth, KQL, JSON templates, API builder",
     icon: "i-ri-code-block",
     license: "free",
@@ -200,7 +200,6 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-headless",
     docsEntry: "getting-started",
     keywords: [
-      "kirby headless",
       "kirby api",
       "kirby kql",
       "kirby json",
@@ -209,7 +208,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Building the frontend itself – it exposes the content, you bring the client.",
     skillDescription:
-      "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when securing the API with a bearer token, serving every page as JSON, setting up CORS, querying through KQL, shaping a response in a JSON template or the API builder, or pointing the Panel's preview at the frontend.",
+      "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when locking the API behind a bearer token, serving every page as JSON, querying through KQL, resolving block and permalink UUIDs, filtering the sitemap, writing your own endpoint with the API builder, pointing the Panel's preview at the frontend, or when a request answers 401.",
   },
 } satisfies Record<string, Product>;
 
