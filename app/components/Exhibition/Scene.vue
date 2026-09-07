@@ -23,10 +23,7 @@ const viewButtons = computed<PanelViewButton[]>(() => {
 
     <PanelColumns>
       <PanelColumn width="2/3">
-        <PanelSection
-          v-if="productId === 'serp-preview'"
-          label="SERP Preview"
-        >
+        <PanelSection v-if="productId === 'serp-preview'" label="SERP Preview">
           <PanelSerpPreviewSnippet
             :favicon-url="EXHIBITION_SITE.faviconUrl"
             :site-title="EXHIBITION_SITE.title"
