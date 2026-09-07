@@ -39,7 +39,7 @@ Any endpoint that speaks the OpenAI shape is `provider: 'openai'` with a custom 
 | Cloudflare AI Gateway `…/compat`              | `chat` |
 | Self-hosted: llama.cpp, vLLM, LiteLLM default | `chat` |
 
-**Set `completionModel` explicitly whenever the `model` carries a foreign prefix** such as `google-ai-studio/…` – Copilot derives no completion model across gateways, and without one inline suggestions fail while everything else works.
+**Set `completionModel` explicitly whenever the `model` carries a foreign prefix** such as `google-ai-studio/…` – Copilot derives a completion model only from a prefix that matches the provider, and without one inline suggestions fail while everything else works.
 
 Structured output and `reasoningEffort` only reach a non-OpenAI model as far as the gateway translates them; for full control over Anthropic or Google models, configure that provider directly.
 
@@ -68,19 +68,19 @@ buttons:
 
 `buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included.
 
-`completion: false` stops ghost text appearing on its own while the shortcut still requests one; `['debounce' => 1500]` lengthens the pause before it appears.
+`completion: false` stops ghost text appearing on its own while the shortcut still requests one.
 
 <https://kirby.tools/docs/copilot/configuration/local.md>
 
 ## Generating Blocks and Layouts
 
-A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. The field's `fieldsets` narrows what is generated; `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the model learns about the block beyond its name. Generated content is appended to the field, never replacing it, and blocks nest one level, so a block inside a nested block is never generated.
+A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the model learns about the block beyond its name. Generated content is appended to the field, never replacing it, and blocks nest one level, so a block inside a nested block is never generated.
 
 <https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
 
 ## Driving Generation From PHP
 
-`Client::instance()` reads the same `johannschopplich.copilot` options as the Panel and keeps them until `Client::reset()`; `generateText` and `generateObject` are the two calls. The bound on a call is the provider's `timeout` (120 seconds, set per provider alongside `apiKey`), not the web server. `new Client(providerOverride: …)` forces a provider for one call.
+`Client::instance()` reads the same `johannschopplich.copilot` options as the Panel and keeps them until `Client::reset()`; `generateText` and `generateObject` are the two calls. The bound on a call is the provider's `timeout` (120 seconds, set per provider alongside `apiKey`), not the web server.
 
 <https://kirby.tools/docs/copilot/php-classes/client.md>
 
@@ -92,9 +92,9 @@ A view button or section on a `blocks` or `layout` field generates whole blocks 
 
 **An option that is silently wrong** – with Kirby's `debug` off, the Panel swaps an option value it cannot use for the default, drops a `promptTemplates` or `skills` entry it cannot read, and turns an unknown `provider` into Google, all without an error; with `debug` on the exception names the option. The PHP `Client` always fails: `Unknown provider "<name>"` or `Missing required option "johannschopplich.copilot.provider"`.
 
-**Blocks come back malformed** – switch to Google Gemini, generate fewer blocks per prompt, and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
+**Blocks come back malformed** – generate fewer blocks per prompt and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
 
-**Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set. After a failed provider request Copilot waits 30 seconds before suggesting again; the manual shortcut retries immediately.
+**Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set.
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
 
