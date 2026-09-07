@@ -157,16 +157,14 @@ const PRODUCT_REGISTRY = {
     githubRepo: "johannschopplich/kirby-serp-preview",
     composerPackage: "johannschopplich/kirby-serp-preview",
     keywords: [
-      "kirby serp preview",
       "kirby google snippet",
       "kirby meta description",
       "kirby search result preview",
-      "kirby seo panel",
     ],
     notFor:
       "Judging what it shows – it draws the snippet, Kirby SEO Audit scores it.",
     skillDescription:
-      "Configure Kirby SERP Preview, a Panel section that draws the Google result snippet for a page as it is edited. Use when adding the section to a blueprint, pointing it at a meta title or description field, or shortening what it shows through a formatter.",
+      "Configure Kirby SERP Preview, which draws the Google result snippet for a page inside the Panel. Use when adding the section to a blueprint, pointing it at a meta title or description field, setting the favicon, site name or URL line, or shortening the text through a formatter.",
   },
   minimap: {
     name: "Kirby Minimap",
