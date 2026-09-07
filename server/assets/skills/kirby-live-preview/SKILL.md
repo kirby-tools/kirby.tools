@@ -1,4 +1,4 @@
-A commercial Kirby CMS plugin that renders a page inside a Panel section, refreshing as the editor types. It previews **Kirby-rendered** pages; a decoupled frontend that renders outside Kirby is out of scope.
+A commercial Kirby CMS plugin that renders a page inside a Panel section, refreshing as the editor types.
 
 ## Install
 
@@ -11,25 +11,31 @@ Then add the section to a page or site blueprint:
 ```yaml [site/blueprints/pages/default.yml]
 sections:
   livePreview:
-    type: live-preview
+    type: preview
 ```
 
 The plugin has no `config.php` namespace. Every option is a section property in the blueprint – reaching for `johannschopplich.live-preview` in `config.php` finds nothing.
 
 ## Section properties worth knowing
 
-`updateStrategy` and `updateInterval` decide when the iframe re-renders; `pageId` previews a different page than the one being edited, which is how you preview a detail page from a parent form. `interactable` decides whether clicks reach the preview, and `aspectRatio` constrains the viewport.
+`updateStrategy` takes `interval` or `blur` and `updateInterval` sets the frequency, 500 ms by default and 250 ms at the lowest; `false` stops only the rerenders that typing triggers, not the ones on load, on other Panel events, or on blur. `pageId` previews a different page than the one being edited, which is how you preview a detail page from a parent form. `interactable: false` gives the page `pointer-events: none`, which the reader's own CSS cannot undo. `aspectRatio` constrains the viewport.
 
-Put the section in a sticky column when editors work in blocks – side-by-side is the case the plugin was built for.
+Put the section in a sticky column when editors work in blocks.
 
 <https://kirby.tools/docs/live-preview/configuration.md>
 
-## A blank preview in Safari
+## A blank preview
 
-Safari refuses to frame the Panel unless the site allows it. Add `frameAncestors` to `config.php`; this is a Kirby CSP option, not a plugin option.
+A render that throws replaces the preview with a **Preview failed** button; clicking it renders again, and the browser console carries the actual error.
+
+Safari refuses to frame the Panel unless the site allows it, and reports a sandbox access violation. Kirby's own `panel.frameAncestors` option opens it:
+
+```php [config.php]
+return [
+    'panel' => [
+        'frameAncestors' => true
+    ]
+];
+```
 
 <https://kirby.tools/docs/live-preview/troubleshooting.md>
-
-## License
-
-Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` – add that file to `.gitignore`.

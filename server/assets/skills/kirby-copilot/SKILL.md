@@ -1,4 +1,4 @@
-A commercial Kirby CMS plugin that brings AI content generation into the Kirby Panel, plus a PHP API for CLI scripts and hooks. It generates new content; translating existing content between languages is Kirby Content Translator's job.
+A commercial Kirby CMS plugin that brings AI content generation into the Kirby Panel, plus a PHP API for CLI scripts and hooks.
 
 ## Install
 
@@ -39,7 +39,7 @@ Four, and they are independent – pick what the blueprint needs rather than add
 | View button        | generating several fields at once from a prompt dialog                            |
 | Toolbar buttons    | rewriting a selection inside a writer or textarea field                           |
 | Inline suggestions | ghost text while typing; needs the `copilot-suggestions` mark on the writer field |
-| Section            | one field, locked prompt, automatic file context – alt text, captions             |
+| Section            | one field; can lock the prompt (`editable: false`) and attach the current file (`files: auto`) |
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -59,6 +59,7 @@ Precedence runs defaults → `config.php` → blueprint props, later winning.
 
 ## Reach for a reference when
 
+- Whole layouts are generated from the site's own block blueprints – <https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
 - The endpoint is a gateway or an OpenAI-compatible service – `references/gateways.md`
 - Generation fails, times out, or returns malformed blocks – `references/troubleshooting.md`
 - Generation should run from PHP: CLI, hooks, custom workflows – <https://kirby.tools/docs/copilot/php-classes.md>
@@ -66,14 +67,12 @@ Precedence runs defaults → `config.php` → blueprint props, later winning.
 
 ## Settings that come up
 
-`reasoningEffort` (default `low`) translates to each provider's native reasoning controls; models without reasoning ignore it. Set `temperature` nowhere – modern reasoning models manage creativity internally, and the option does not exist.
+`reasoningEffort` (default `low`) translates to each provider's native reasoning controls; models without reasoning ignore it. There is no `temperature` option – the model manages creativity from `reasoningEffort`.
 
-`completion` controls inline suggestions: `false` disables them globally, or `['debounce' => 1500]` tunes the pause before ghost text appears (minimum 500 ms).
+`completion` controls inline suggestions: `false` stops ghost text appearing on its own, while the shortcut still requests one; `['debounce' => 1500]` tunes the pause before it appears (minimum 500 ms).
+
+`timeout` bounds a single provider request, 120 seconds by default, set per provider alongside `apiKey` and `model`. It applies to PHP runs through `Client`; Panel requests go through the proxy, which bounds them on its own.
 
 `excludedBlocks` keeps custom block types out of structured generation.
 
 <https://kirby.tools/docs/copilot/configuration/global.md>
-
-## License
-
-Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` – add that file to `.gitignore`.

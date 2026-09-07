@@ -1,4 +1,4 @@
-A free Kirby CMS plugin that exposes content as JSON for a decoupled frontend. It serves the content; the client is yours to build.
+A Kirby CMS plugin that exposes content as JSON for a decoupled frontend.
 
 ## Install
 
@@ -6,9 +6,9 @@ A free Kirby CMS plugin that exposes content as JSON for a decoupled frontend. I
 composer require johannschopplich/kirby-headless
 ```
 
-## The one option that decides everything else
+## Configuration
 
-Its config namespace is the bare `headless` key, not `johannschopplich.headless` – the plugin predates the vendor-prefixed convention its siblings follow.
+Its config namespace is the bare `headless` key, not `johannschopplich.headless`.
 
 ```php [site/config/config.php]
 return [
@@ -21,7 +21,7 @@ return [
 
 `globalRoutes` is the fork in the road. Left off, Kirby routes as usual and the plugin only adds its endpoints. Turned on, a catch-all serves **every** page as JSON and Kirby stops rendering HTML – which is what a decoupled site wants and what a hybrid site must avoid.
 
-## Token behavior, exactly
+## Token behavior
 
 The token gate has three states, and the middle one is the trap:
 
@@ -31,9 +31,17 @@ The token gate has three states, and the middle one is the trap:
 
 Media URLs under `/media/**` never require the token; Kirby serves them from its own routes, which is why `$file->url()` keeps working in a browser. Clean file URLs like `/about/hero.jpg` do require it, and additionally need Kirby's `content.fileRedirects`, which is off by default.
 
+`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off, which also means they are public whenever no token is set.
+
 Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth. Set `kql.auth` to `false` when the endpoint should be public on purpose.
 
 <https://kirby.tools/docs/headless/configuration/authentication.md>
+
+## Where the Panel's preview button sends an editor
+
+`headless.panel` holds the frontend URL that `page.frontendUrl` resolves against, and `panel.redirect` decides what a browser gets when it opens the backend URL directly.
+
+<https://kirby.tools/docs/headless/configuration/panel.md>
 
 ## CORS is Kirby's, not the plugin's
 

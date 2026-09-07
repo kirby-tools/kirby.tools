@@ -1,4 +1,4 @@
-A commercial Kirby CMS plugin that translates existing content between the languages a Kirby site already defines. It moves text across languages; generating new text from a prompt is Kirby Copilot's job.
+A commercial Kirby CMS plugin that translates existing content between the languages a Kirby site already defines.
 
 ## Install
 
@@ -10,9 +10,9 @@ The site must be multi-language. The plugin translates between Kirby's configure
 
 ## Two decisions, in order
 
-**1. Which backend translates.** Set `strategy` explicitly – see `references/strategies.md`. Without it the plugin infers one, which is fine until someone wonders why DeepL is being called.
+**1. Which backend translates.** Set `strategy` explicitly – see `references/strategies.md`.
 
-**2. What counts as translatable.** The defaults translate every text-like field, which is almost never what a real project wants. See `references/scoping.md`.
+**2. What counts as translatable.** The defaults translate every text-like field. See `references/scoping.md` for narrowing them.
 
 ```php [site/config/config.php]
 return [
@@ -60,7 +60,3 @@ Batch mode translates languages in parallel, two at a time. When the provider re
 
 <https://kirby.tools/docs/content-translator/cli-automation/single-page.md>
 <https://kirby.tools/docs/content-translator/php-classes/translator.md>
-
-## License
-
-Runs unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` – add that file to `.gitignore`.

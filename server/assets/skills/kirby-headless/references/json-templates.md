@@ -28,7 +28,7 @@ await fetch("https://example.com/about", {
 });
 ```
 
-Three consequences worth holding onto:
+Three consequences:
 
 - **The path wins.** `/de/about` stays German under `X-Language: en`, so a proxy stamping the header on every request cannot overrule a URL.
 - **An unknown code is ignored** and the request falls back to the default language, rather than erroring.

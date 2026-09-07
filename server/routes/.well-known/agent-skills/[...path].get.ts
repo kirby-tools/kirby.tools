@@ -2,7 +2,8 @@ import { PRODUCT_LIST, productSkillName } from "#shared/products";
 
 /**
  * Serves one skill file. `SKILL.md` gets its frontmatter, heading and version
- * line prepended here, so the stored body holds nothing that would drift.
+ * line prepended and its license note appended here, so the stored body holds
+ * nothing that would drift.
  */
 export default defineEventHandler(async (event) => {
   const [skillName, ...filePath] = (getRouterParam(event, "path") ?? "").split(
@@ -37,6 +38,15 @@ export default defineEventHandler(async (event) => {
   ].join("\n");
 
   const provenance = await skillProvenance(event, product.id);
+  const license = skillLicenseNote(product.id);
 
-  return `${frontmatter}\n\n# ${product.name}\n\n${provenance}\n\n${body.trim()}\n`;
+  return `${[
+    frontmatter,
+    `# ${product.name}`,
+    provenance,
+    body.trim(),
+    license,
+  ]
+    .filter(Boolean)
+    .join("\n\n")  }\n`;
 });

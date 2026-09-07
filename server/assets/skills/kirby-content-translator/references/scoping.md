@@ -4,7 +4,7 @@ Four settings narrow the field set, and they compose rather than override. All o
 
 ## `fieldTypes`
 
-Which field **types** participate. The default covers every text-like type – `list`, `tags`, `text`, `textarea`, `writer`, `markdown` – plus the containers they nest in: `blocks`, `layout`, `object`, `structure`. Third-party `markdown` and `table` fields are included when their plugins are present.
+Which field **types** participate. The default names eleven: `blocks`, `layout`, `list`, `object`, `structure`, `tags`, `text`, `textarea`, `writer`, plus `markdown` and `table`, which come from community field plugins.
 
 ```yaml
 fieldTypes:
@@ -46,7 +46,7 @@ Listing an attribute that holds a URL or filename sends it to the translator, wh
 
 ## `title` and `slug`
 
-Separate booleans, because they are separate risks. Translating `title` is usually wanted; translating `slug` changes URLs, so decide it deliberately.
+Separate booleans, both `false` by default. Translating `slug` changes URLs, so decide it deliberately. `slug` is ignored on file and site models and on the home and error pages.
 
 Full reference:
 <https://kirby.tools/docs/content-translator/configuration/local.md>

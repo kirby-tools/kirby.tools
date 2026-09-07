@@ -1,6 +1,6 @@
 # KQL through Kirby Headless
 
-The plugin serves an enhanced KQL endpoint at `/api/kql`. It extends the official KQL plugin with bearer authentication, caching, and language handling – the query language itself is unchanged, so KQL documentation applies verbatim.
+The plugin serves an enhanced KQL endpoint at `/api/kql`. It extends the official KQL plugin with bearer authentication, caching, and language handling – the query language itself is unchanged, so KQL documentation applies verbatim. Caching starts only once Kirby's pages cache is on; `X-Cacheable: false` bypasses it per request, and a query sent once with `?language=de` and once with `X-Language: de` is cached twice.
 
 ## Enabling it
 

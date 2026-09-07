@@ -4,7 +4,9 @@
 
 Symptoms: _No object generated: could not parse the response_, _JSON parsing failed: Unterminated string_, a 504, or a connection that simply closes.
 
-The cause is almost always a web server timeout, not PHP. Every request goes through a server-side PHP proxy, so the connection must stay open for the whole generation – 60+ seconds for longer content. The proxy already calls `set_time_limit(0)`, so PHP's own limit is not the problem.
+In the Panel the cause is almost always a web server timeout, not PHP. Every request goes through a server-side PHP proxy, so the connection must stay open for the whole generation – 60+ seconds for longer content. PHP's own execution limit is already lifted for proxy requests.
+
+From PHP – CLI, hooks, custom workflows – the bound is the provider's `timeout` instead, 120 seconds by default.
 
 **Laravel Herd.** nginx with FastCGI, default `fastcgi_read_timeout` 60 s. In `~/Library/Application Support/Herd/config/nginx/herd.conf`, inside the existing `location ~ [^/]\.php(/|$) { }` block:
 
@@ -26,17 +28,19 @@ Then `herd restart`. Herd may overwrite its global config on update – run `her
 
 **Cloudflare.** The 120-second limit (HTTP 524) is an idle timeout between reads, not a wall clock, and streaming SSE should never hit it. Seeing 524 means something buffers the response: add `fastcgi_buffering off;` to the `__copilot__/proxy` location for nginx, and if streams still arrive in bursts, disable Brotli/gzip for that route – the proxy sends `Cache-Control: no-transform`, but compression can still buffer `text/event-stream`.
 
-## `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`
+## A missing API key
 
-The selected provider received an empty key. In order:
+The PHP `Client` fails with `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`, the Panel with `Missing API key for the "<name>" provider`. The selected provider received an empty key. In order:
 
 1. The key sits under `providers.<name>.apiKey`, not one level up.
 2. An `env()` lookup resolves in the environment the **Panel** runs under – CLI and web server environments routinely differ.
 3. A closure returns a non-empty string for the current Panel user, which matters when keys vary by role.
 
-## `Unknown provider "<name>"`
+## A provider the plugin does not know
 
-The top-level `provider` key is missing or names something outside `openai`, `anthropic`, `google`, `mistral`. Matching is case-insensitive.
+The PHP `Client` fails with `Unknown provider "<name>"` when the top-level `provider` key names something outside `openai`, `anthropic`, `google`, `mistral`, and with `Missing required option "johannschopplich.copilot.provider"` when the key is absent. Matching is case-insensitive.
+
+The Panel reports an unknown provider only while Kirby's `debug` option is on. Otherwise it falls back to Google without saying so, which is what a wrong provider name looks like from the editor's side.
 
 ## Blocks generation returns malformed content
 
@@ -44,7 +48,7 @@ Missing fields, empty results, or wrong structure come from the model's handling
 
 1. Switch to Google Gemini – the strongest structured-output support.
 2. Generate fewer blocks per prompt, or simplify the prompt.
-3. Set `logLevel: 'debug'` and inspect the raw response.
+3. Set `logLevel: 'debug'` – the browser console then carries the system and user prompt that were actually sent.
 
 Through an OpenAI-compatible gateway, also confirm the gateway translates `json_schema` at all – see `references/gateways.md`.
 

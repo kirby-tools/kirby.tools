@@ -24,6 +24,18 @@ export function skillFilePath(productId: ProductId, key: string) {
 }
 
 /**
+ * Builds the activation note a commercial plugin needs, and nothing for a free
+ * one.
+ */
+export function skillLicenseNote(productId: ProductId) {
+  if (PRODUCTS[productId].license !== "commercial") {
+    return "";
+  }
+
+  return "## License\n\nRuns unlicensed in local development. Production needs a key, activated in the Panel's system view and written to `site/config/.kirby-tools-licenses` \u2013 add that file to `.gitignore`.";
+}
+
+/**
  * Builds a dated version line, so an agent can tell how far the skill has
  * drifted from the plugin it describes.
  */
