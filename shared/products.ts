@@ -117,7 +117,6 @@ const PRODUCT_REGISTRY = {
     playground: "https://try.kirbyseo.com",
     keywords: [
       "kirby seo",
-      "kirby meta tags",
       "kirby seo analysis",
       "kirby readability",
       "kirby panel seo",
@@ -125,7 +124,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Rendering meta tags in the frontend – it audits the output, it does not produce it.",
     skillDescription:
-      "Configure Kirby SEO Audit, which scores a rendered page against a keyphrase inside the Panel. Use when adding the audit to a blueprint, wiring keyphrase and synonym fields, scoping the analyzed markup, auditing a decoupled frontend, or when the audit cannot fetch the page.",
+      "Configure Kirby SEO Audit, which scores a rendered page against a keyphrase inside the Panel. Use when adding the audit button or section to a blueprint, wiring the keyphrase and synonyms, or when the audit cannot fetch the page or aborts on an assessment.",
   },
   "live-preview": {
     name: "Kirby Live Preview",
