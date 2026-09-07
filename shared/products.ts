@@ -180,7 +180,7 @@ const PRODUCT_REGISTRY = {
       "kirby sidebar",
       "kirby content overview",
     ],
-    notFor: "Frontend navigation – it is a Panel-only aid.",
+    notFor: "Frontend navigation for site visitors.",
     skillDescription:
       "Configure Kirby Minimap, which adds a sidebar outline of fields and blocks to the Panel. Use when installing it, or when a field or block is missing from the outline.",
   },
