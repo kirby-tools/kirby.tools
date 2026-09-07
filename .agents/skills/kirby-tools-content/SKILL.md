@@ -1,6 +1,6 @@
 ---
 name: kirby-tools-content
-description: Writing or editing anything a visitor reads on kirby.tools – documentation under `content/1.docs/`, landing and home YAML, blog, buy pages, the plugin READMEs, the agent skills under `server/assets/skills/`. Which register a sentence takes by where it sits, and how a documentation page is built from Nuxt UI Prose components.
+description: Writing or editing anything a visitor or an agent reads on kirby.tools – documentation under `content/1.docs/`, landing and home YAML, blog, buy pages, the plugin READMEs, the agent skills under `server/assets/skills/`. Which register a sentence takes by where it sits, and how a documentation page is built from Nuxt UI Prose components.
 ---
 
 # kirby.tools Content
@@ -32,4 +32,4 @@ A code example is a contract: pasted into the file its info string names, it wor
 
 ## Skills
 
-`server/assets/skills/<Plugin>/SKILL.md` is the body of a Product's agent skill. The route serves it with the frontmatter, heading, provenance, not-for line and license note generated from `products.ts`, so the body carries none of them and opens at `## Install`. The pointer is `skillDescription` in `products.ts`: it names the branches the body has a section for. The body is the decisions a setup makes, in the order it makes them, then the gotchas from support, each section closing with the `.md` page it summarises; what that page already says is a link, not a copy. A mechanism fact stays only where it retires a wrong fix. A snippet is a contract like a documentation example, and the plugin on `main` is the truth, as it is for the documentation.
+`server/assets/skills/<Plugin>/SKILL.md` is the body of a Product's agent skill. The route serves it with the frontmatter, heading, provenance, not-for line and license note generated from `products.ts`, so the body carries none of them and opens at `## Install`. The pointer is `skillDescription` in `products.ts`: it names the branches the body has a section for. The body is the decisions a setup makes, in the order it makes them, then the gotchas from support, each section closing with the `.md` page it summarises; what that page already says is a link, not a copy. A mechanism fact stays only where it retires a wrong fix. A snippet is a contract, and the plugin on `main` is the truth.
