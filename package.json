@@ -15,11 +15,11 @@
     "format:check": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --check",
     "test": "vitest run",
     "test:types": "vue-tsc -b --noEmit",
-    "logo-soup:metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
     "kirby-panel:fetch": "node layers/kirby-panel/scripts/fetch-kirby.ts",
-    "social-cards:render": "node scripts/social-cards.ts",
+    "docs:logo-metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
+    "docs:social-cards": "node scripts/social-cards.ts",
     "docs:vanished-facts": "node scripts/vanished-facts.ts",
-    "prepare": "pnpm run kirby-panel:fetch && nuxt prepare && pnpm run logo-soup:metrics"
+    "prepare": "pnpm run kirby-panel:fetch && nuxt prepare && pnpm run docs:logo-metrics"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
