@@ -10,16 +10,16 @@ Two surfaces, and they can coexist. The view button is the recommended one:
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
-  - seo-audit
-  - open
-  - preview
-  - "-"
-  - settings
-  - languages
-  - status
+  seo-audit:
+    keyphraseField: metaKeyphrase
+  open: true
+  preview: true
+  settings: true
+  languages: true
+  status: true
 ```
 
-`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `seo-audit` or they disappear. Site views default to `open`, `preview`, `languages`.
+`buttons` is an allow-list, so Kirby's page defaults have to be named alongside `seo-audit` or they disappear. Site views default to `open`, `preview`, `languages`. The list form (`- seo-audit`) carries no properties; a property needs the map form above.
 
 The section renders results inline instead of in a dialog and adds `persisted`; `theme` belongs to the button alone. Everything else, `label` included, is shared, and both resolve Kirby queries in `keyphrase` and `synonyms`:
 
