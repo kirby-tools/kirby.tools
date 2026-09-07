@@ -18,6 +18,7 @@
     "logo-soup:metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
     "kirby-panel:fetch": "node layers/kirby-panel/scripts/fetch-kirby.ts",
     "social-cards:render": "node scripts/social-cards.ts",
+    "docs:vanished-facts": "node scripts/vanished-facts.ts",
     "prepare": "pnpm run kirby-panel:fetch && nuxt prepare && pnpm run logo-soup:metrics"
   },
   "devDependencies": {
