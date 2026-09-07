@@ -5,6 +5,10 @@ const props = defineProps<{
   productId: ExhibitionProductId;
 }>();
 
+const hasDialog = computed(() =>
+  SCENE_DIALOG_PRODUCT_IDS.includes(props.productId),
+);
+
 const viewButtons = computed<PanelViewButton[]>(() => {
   const pluginButton = PLUGIN_VIEW_BUTTONS[props.productId];
   return pluginButton
@@ -58,7 +62,7 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       </PanelColumn>
     </PanelColumns>
 
-    <template #dialog>
+    <template v-if="hasDialog" #dialog>
       <PanelCopilotPromptDialog
         v-if="productId === 'copilot'"
         :files="1"

@@ -55,6 +55,12 @@ export const PLUGIN_VIEW_BUTTONS: Partial<
   },
 };
 
+export const SCENE_DIALOG_PRODUCT_IDS: readonly ExhibitionProductId[] = [
+  "copilot",
+  "content-translator",
+  "seo-audit",
+];
+
 export const COPILOT_PROMPT = `
 Write the teaser for "{title}" in our house voice, max 60 words.
 
