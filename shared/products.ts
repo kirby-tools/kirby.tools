@@ -99,7 +99,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Generating new content from a prompt – use Kirby Copilot for that.",
     skillDescription:
-      "Configure Kirby Content Translator, which translates Panel content between Kirby's languages. Use when choosing a translation strategy, restricting which fields translate, translating KirbyTags, or scripting bulk translation from the CLI.",
+      "Configure Kirby Content Translator, which translates Panel content between Kirby's languages. Use when choosing a translation strategy, restricting which fields translate, translating KirbyTags, scripting bulk translation from the CLI, or when a field stays untranslated.",
   },
   "seo-audit": {
     name: "Kirby SEO Audit",
