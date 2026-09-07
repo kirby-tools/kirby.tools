@@ -21,15 +21,15 @@ const isWide = computed(() => props.format === "og");
 
 <template>
   <div
-    class="social-card relative overflow-hidden bg-(--social-card-back) font-sans"
+    class="social-card flex flex-col overflow-hidden bg-(--social-card-back) font-sans"
     :style="{ width: `${size.width}px`, height: `${size.height}px` }"
   >
     <div
-      class="absolute flex"
+      class="via-primary-500/50 flex shrink-0 bg-linear-to-r from-transparent to-transparent bg-size-[100%_1px] bg-top bg-no-repeat"
       :class="
         isWide
-          ? 'inset-x-[75px] top-[75px] flex-row items-center justify-between gap-12'
-          : 'top-[68px] left-[100px] flex-col-reverse items-start gap-[110px]'
+          ? 'flex-row items-center justify-between gap-12 px-[75px] pt-[75px] pb-16'
+          : 'flex-col-reverse items-start gap-[110px] px-[100px] pt-[68px] pb-30'
       "
     >
       <div>
@@ -53,15 +53,13 @@ const isWide = computed(() => props.format === "og");
       <UIcon
         name="i-tools-favicon"
         class="shrink-0 text-(--social-card-title)"
-        :class="isWide ? 'size-20' : 'size-23'"
+        :class="isWide ? 'size-20' : 'size-22'"
       />
     </div>
 
     <div
-      class="absolute bottom-0 rounded-t-[12px] border-4 border-b-0 border-black/5 shadow-[0_0_100px] shadow-white/12"
-      :class="
-        isWide ? 'inset-x-[75px] top-[233px]' : 'inset-x-[100px] top-[564px]'
-      "
+      class="shadow-primary-500/30 min-h-0 flex-1 rounded-t-[12px] border-b-0 border-black/5 shadow-[0_0_100px]"
+      :class="isWide ? 'mx-[75px] border-4' : 'mx-[100px] border-6'"
     >
       <!-- Chrome clips each layer on its own and leaves a light seam in the corners; a no-op mask clips the subtree in one pass. -->
       <div
@@ -71,7 +69,7 @@ const isWide = computed(() => props.format === "og");
           <ExhibitionScene :product-id="productId" theme="light" />
         </div>
         <div
-          class="absolute inset-x-0 bottom-0 h-1/5 bg-linear-to-b from-transparent to-black/50"
+          class="absolute inset-x-0 bottom-0 h-14 bg-linear-to-b from-transparent to-black/50"
         />
       </div>
     </div>
