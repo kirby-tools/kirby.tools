@@ -55,7 +55,7 @@ Failures that are not the fetch:
 
 - `options.preview: false` in the blueprint stops the audit with the error that the preview URL is disabled.
 - An assessment listed in `assessments` that does not support the page's `lang` aborts the analysis with an error naming the languages it supports; unlisted, it is skipped silently.
-- `logLevel: info` prints the fetched URL and the extracted HTML to the browser console, which is the check for `contentSelector` and for a proxy rewrite.
+- The browser console always shows the URL the audit starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
 
 <https://kirby.tools/docs/seo-audit/configuration/global.md>
 <https://kirby.tools/docs/seo-audit/guide/audit-url.md>
