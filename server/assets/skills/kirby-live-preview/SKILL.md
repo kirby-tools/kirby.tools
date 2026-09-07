@@ -4,20 +4,12 @@
 composer require johannschopplich/kirby-live-preview
 ```
 
-Then add the section to a page or site blueprint. A sticky column keeps the preview beside a long blocks field:
+Then add the section to a page or site blueprint; `sticky: true` on its column keeps the preview beside a long blocks field:
 
 ```yaml [site/blueprints/pages/default.yml]
-columns:
-  - width: 2/3
-    fields:
-      blocks:
-        type: blocks
-
-  - width: 1/3
-    sticky: true
-    sections:
-      livePreview:
-        type: preview
+sections:
+  livePreview:
+    type: preview
 ```
 
 The plugin has no `config.php` namespace – every option is a section property.
@@ -26,7 +18,7 @@ The plugin has no `config.php` namespace – every option is a section property.
 
 ## When It Rerenders
 
-`updateStrategy: blur` rerenders when a Panel element loses focus instead of while the editor types. `updateInterval: false` stops only the rerenders typing triggers, not the ones on load, on blur or from the toolbar button. `updateInterval` takes an integer or `false`; anything else throws when the section loads.
+`updateStrategy: blur` rerenders when a Panel element loses focus instead of while the editor types. `updateInterval: false` stops only the rerenders typing triggers, not the ones on load, on blur or from the toolbar button. `updateInterval` takes `false` or an integer and lifts anything under 250 to 250; a negative integer or any other type throws when the section loads.
 
 <https://kirby.tools/docs/live-preview/configuration.md>
 
@@ -38,9 +30,10 @@ The section renders the page being edited; on the site blueprint that is the hom
 
 ## What Editors Can Click
 
-A link inside the preview opens the matching Panel view; `data-preview-ignore` on the anchor keeps it an ordinary link, another origin opens a tab, and `/assets/` or `/media/` links do nothing. `interactable: false` makes the page inert with `pointer-events: none`, which the site's own CSS cannot undo.
+A link inside the preview opens the matching Panel view; `data-preview-ignore` on the anchor keeps it an ordinary link, and `/assets/` or `/media/` links do nothing. `interactable: false` makes the page inert, unless a site rule sets `pointer-events` with `!important`, which wins over it.
 
 <https://kirby.tools/docs/live-preview/preview-mode.md>
+<https://kirby.tools/docs/live-preview/configuration.md#interactable>
 
 ## Hiding Parts of the Page in Preview
 
