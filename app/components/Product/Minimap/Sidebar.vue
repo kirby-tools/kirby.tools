@@ -19,8 +19,7 @@
 </template>
 
 <style>
-/* The sidebar gives the Panel its height and the Stage is cropped to it, so
-   the page stands as tall as the list that navigates it. */
+/* The sidebar sets the Panel's height; the Stage is cropped to it. */
 .product-minimap-sidebar.panel-mock .k-panel-minimap {
   position: relative;
   inset: auto;

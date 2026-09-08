@@ -73,7 +73,7 @@ const isExpanded = ref(true);
 
 .panel-mock .k-panel:has(> .k-panel-minimap) .panel-mock-stage {
   margin-inline-end: var(--menu-width-open);
-  /* The floor of Kirby's `--main-padding-inline`, which is what keeps the view
+  /* The floor of Kirby's `--main-padding-inline`, the room the view keeps
      clear of the handle. */
   padding-inline-end: var(--spacing-6);
 }
@@ -103,8 +103,8 @@ const isExpanded = ref(true);
   height: 100%;
 }
 
-/* The plugin measures `.k-header`'s content box from JS; a Mock has at most
-   one header, so the offset is Kirby's own padding. */
+/* The plugin measures the header's content box from the viewport top; a Mock
+   has nothing above its header, so the offset is Kirby's own padding. */
 .panel-mock .k-panel:has(.k-header) .k-panel-minimap-body {
   padding-top: calc(var(--header-padding-block) + var(--spacing-1));
 }

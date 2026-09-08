@@ -227,7 +227,7 @@ export const MINIMAP_FIELDS: PanelMinimapField[] = [
     blocks: EXHIBITION_BLOCKS.map((block, index) => ({
       icon: MINIMAP_BLOCK_ICONS[block.type],
       text: block.text.slice(0, 50),
-      // In view on a cropped Stage.
+      // The blocks the Crop leaves in view.
       isActive: index < 2,
     })),
   },
