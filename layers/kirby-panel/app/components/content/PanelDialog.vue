@@ -51,7 +51,8 @@ const values = ref({ ...props.value });
 
 <style>
 /* The dim Kirby paints in the portal it opens. Declared here rather than on
-   either box, because the import above is what brings `--overlay-color-back`. */
+   either box, because `Dialog.vue`'s stylesheet, imported here, is what brings
+   `--overlay-color-back`. */
 .panel-mock .panel-mock-portal,
 .panel-mock .panel-mock-stage:has(> .panel-dialog) {
   background: var(--overlay-color-back);
