@@ -130,4 +130,9 @@ const isWide = computed(() => props.format === "og");
 .social-card .panel-mock:has(.panel-serp-preview-snippet) .k-header {
   position: static;
 }
+
+.social-card .k-panel:has(> .k-panel-minimap) > .panel-mock-stage {
+  filter: blur(3px);
+  opacity: 0.85;
+}
 </style>
