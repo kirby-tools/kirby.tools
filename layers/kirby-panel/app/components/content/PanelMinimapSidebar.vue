@@ -17,7 +17,9 @@ const isExpanded = ref(true);
         <div v-for="field in fields" :key="field.label">
           <div
             class="k-panel-minimap-menu-item"
-            :class="isExpanded ? 'py-[var(--spacing-2)]' : 'py-[var(--spacing-3)]'"
+            :class="
+              isExpanded ? 'py-[var(--spacing-2)]' : 'py-[var(--spacing-3)]'
+            "
             :data-active="String(Boolean(field.isActive))"
           >
             <template v-if="isExpanded">
@@ -27,7 +29,7 @@ const isExpanded = ref(true);
               <span
                 v-if="field.required"
                 data-theme="negative"
-                class="ms-[var(--spacing-1)] text-[color:var(--theme-color-600)] [font-weight:var(--font-semi)]"
+                class="ms-[var(--spacing-1)] [font-weight:var(--font-semi)] text-[color:var(--theme-color-600)]"
                 >✶</span
               >
             </template>
@@ -73,7 +75,9 @@ const isExpanded = ref(true);
   margin-inline-end: var(--menu-width-open);
 }
 
-.panel-mock .k-panel:has(> .k-panel-minimap[data-open="false"]) .panel-mock-stage {
+.panel-mock
+  .k-panel:has(> .k-panel-minimap[data-open="false"])
+  .panel-mock-stage {
   margin-inline-end: calc(var(--menu-toggle-width) + 2 * var(--menu-padding));
 }
 
