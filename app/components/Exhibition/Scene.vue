@@ -35,9 +35,11 @@ const viewButtons = computed<PanelViewButton[]>(() => {
 
         <PanelSection>
           <PanelFieldset>
-            <PanelField label="Text" name="text" type="writer">
-              <PanelInput :value="EXHIBITION_PAGE.text" />
-            </PanelField>
+            <PanelBlocksField
+              name="text"
+              label="Text"
+              :blocks="EXHIBITION_BLOCKS"
+            />
           </PanelFieldset>
         </PanelSection>
       </PanelColumn>

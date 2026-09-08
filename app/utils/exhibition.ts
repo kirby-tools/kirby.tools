@@ -201,36 +201,34 @@ export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   { label: "About", icon: "info", missingLanguages: ["es"] },
 ];
 
-// The blocks of the exhibition page's `text` field.
 export const EXHIBITION_BLOCKS: PanelBlock[] = [
   { type: "heading", level: "h2", text: "Rooms After Everyone Has Left" },
   { type: "text", text: EXHIBITION_PAGE.text.split("\n\n")[0]! },
+  { type: "text", text: EXHIBITION_PAGE.text.split("\n\n")[1]! },
   {
     type: "quote",
     text: "I wait until the dust has settled inside the frame.",
     citation: "Luise Frey",
   },
+  { type: "text", text: EXHIBITION_PAGE.text.split("\n\n")[2]! },
 ];
 
-// The content tab of the exhibition page, as the sidebar lists it: the fields
-// of both field sections, the `text` field unfolded into its blocks. The
-// sidebar cuts a block's text at 50 characters and leaves it cut.
+const MINIMAP_BLOCK_ICONS: Record<PanelBlock["type"], string> = {
+  heading: "title",
+  text: "text",
+  quote: "quote",
+};
+
 export const MINIMAP_FIELDS: PanelMinimapField[] = [
   {
     label: "Text",
     required: true,
-    active: true,
-    blocks: [
-      { icon: "title", text: "Rooms After Everyone Has Left" },
-      { icon: "text", text: "Luise Frey photographs rooms after everyone has le" },
-      {
-        icon: "quote",
-        text: "I wait until the dust has settled inside the frame",
-        active: true,
-      },
-      { icon: "list-bullet", text: "List" },
-      { icon: "markdown", text: "Press images are available on request. A conversat" },
-    ],
+    isActive: true,
+    blocks: EXHIBITION_BLOCKS.map((block) => ({
+      icon: MINIMAP_BLOCK_ICONS[block.type],
+      text: block.text.slice(0, 50),
+      isActive: block.type === "quote",
+    })),
   },
   { label: "Description", required: true },
   { label: "Dates" },

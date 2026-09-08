@@ -17,8 +17,8 @@ const isExpanded = ref(true);
         <div v-for="field in fields" :key="field.label">
           <div
             class="k-panel-minimap-menu-item"
-            :class="isExpanded ? 'py-(--spacing-2)' : 'py-(--spacing-3)'"
-            :data-active="String(Boolean(field.active))"
+            :class="isExpanded ? 'py-[var(--spacing-2)]' : 'py-[var(--spacing-3)]'"
+            :data-active="String(Boolean(field.isActive))"
           >
             <template v-if="isExpanded">
               <span class="k-label-text [font-weight:var(--font-semi)]">
@@ -27,18 +27,18 @@ const isExpanded = ref(true);
               <span
                 v-if="field.required"
                 data-theme="negative"
-                class="ms-(--spacing-1) text-[color:var(--theme-color-600)] [font-weight:var(--font-semi)]"
+                class="ms-[var(--spacing-1)] text-[color:var(--theme-color-600)] [font-weight:var(--font-semi)]"
                 >✶</span
               >
             </template>
-            <div v-else class="h-px flex-1 bg-(--color-text)" />
+            <div v-else class="h-px flex-1 bg-[var(--color-text)]" />
           </div>
 
           <div
             v-for="(block, index) in field.blocks"
             :key="index"
-            class="k-panel-minimap-menu-item flex items-center gap-(--spacing-2) py-(--spacing-1)"
-            :data-active="String(Boolean(block.active))"
+            class="k-panel-minimap-menu-item flex items-center gap-[var(--spacing-2)] py-[var(--spacing-1)]"
+            :data-active="String(Boolean(block.isActive))"
           >
             <k-icon :type="block.icon" />
             <span class="k-label-text">{{ block.text }}</span>
@@ -58,6 +58,10 @@ const isExpanded = ref(true);
 </template>
 
 <style>
+/* Only the plugin's desktop state is staged: no overlay, no scrolling.
+
+   @see https://github.com/johannschopplich/kirby-minimap/blob/main/src/panel/components/MinimapSidebar.vue */
+
 /* In the Panel the sidebar is fixed to the viewport and the view keeps clear of
    it through `--main-end`. A Mock's Panel reaches no further than its own box,
    so the anchor is the Panel element and the stage takes the margin. */
@@ -86,8 +90,11 @@ const isExpanded = ref(true);
   width: calc(var(--menu-toggle-width) + 2 * var(--menu-padding));
 }
 
+/* The plugin measures `.k-header`'s content box from JS; a Mock has one
+   header, so the offset is Kirby's own padding. */
 .panel-mock .k-panel-minimap-body {
   padding-block: var(--menu-padding);
+  padding-top: calc(var(--header-padding-block) + var(--spacing-1));
   overflow: hidden;
   height: 100%;
 }

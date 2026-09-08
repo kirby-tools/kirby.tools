@@ -49,7 +49,6 @@ const isInert = inject(panelMockInertKey, false);
         <slot v-else />
       </div>
 
-      <!-- What a plugin renders beside the view rather than inside it. -->
       <slot name="sidebar" />
     </div>
 
