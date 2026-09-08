@@ -50,6 +50,10 @@ for (const productId of EXHIBITION_PRODUCT_IDS) {
     await page.locator(".social-card").screenshot({
       path: resolve(publicDirectory, `.${path}`),
       type: "png",
+      // Hiding the caret writes an inline style to every input, which the
+      // hydration still under way then reports as a mismatch. Nothing on the
+      // card has focus.
+      caret: "initial",
     });
     console.log(path);
   }
