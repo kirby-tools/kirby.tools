@@ -1,5 +1,5 @@
 <template>
-  <PanelMock class="product-minimap-sidebar">
+  <PanelMock class="product-minimap-sidebar min-h-96">
     <PanelFieldset>
       <PanelBlocksField name="text" label="Text" :blocks="EXHIBITION_BLOCKS" />
 
@@ -19,7 +19,18 @@
 </template>
 
 <style>
-/* The sidebar sets the Panel's height; the Stage is cropped to it. */
+/* The sidebar sets the Panel's height, the page its minimum; the Stage is
+   cropped to it. */
+.product-minimap-sidebar.panel-mock {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-minimap-sidebar.panel-mock .k-panel {
+  display: flex;
+  flex: 1;
+}
+
 .product-minimap-sidebar.panel-mock .k-panel-minimap {
   position: relative;
   inset: auto;

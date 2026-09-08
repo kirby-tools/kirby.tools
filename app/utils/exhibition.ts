@@ -228,7 +228,7 @@ export const MINIMAP_FIELDS: PanelMinimapField[] = [
       icon: MINIMAP_BLOCK_ICONS[block.type],
       text: block.text.slice(0, 50),
       // The blocks the Crop leaves in view.
-      isActive: index < 2,
+      isActive: index < 3,
     })),
   },
   { label: "Description", required: true },
