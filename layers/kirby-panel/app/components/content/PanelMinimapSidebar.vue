@@ -3,26 +3,24 @@
 // other mock renders and whose stylesheet is therefore not in the bundle.
 import "#kirby-panel/components/View/Menu.vue?vue&type=style&index=0&lang.css";
 
-withDefaults(
-  defineProps<{
-    fields?: PanelMinimapField[];
-    open?: boolean;
-  }>(),
-  { open: true },
-);
+defineProps<{
+  fields?: PanelMinimapField[];
+}>();
+
+const isExpanded = ref(true);
 </script>
 
 <template>
-  <nav class="k-panel-minimap" :data-open="String(open)">
+  <nav class="k-panel-minimap" :data-open="String(isExpanded)">
     <div class="k-panel-minimap-body">
       <menu>
         <div v-for="field in fields" :key="field.label">
           <div
             class="k-panel-minimap-menu-item"
-            :class="open ? 'py-(--spacing-2)' : 'py-(--spacing-3)'"
+            :class="isExpanded ? 'py-(--spacing-2)' : 'py-(--spacing-3)'"
             :data-active="String(Boolean(field.active))"
           >
-            <template v-if="open">
+            <template v-if="isExpanded">
               <span class="k-label-text [font-weight:var(--font-semi)]">
                 {{ field.label }}
               </span>
@@ -50,9 +48,11 @@ withDefaults(
     </div>
 
     <k-button
-      :icon="open ? 'angle-right' : 'angle-left'"
+      :icon="isExpanded ? 'angle-right' : 'angle-left'"
+      :title="isExpanded ? 'Collapse' : 'Expand'"
       size="xs"
       class="k-panel-minimap-toggle"
+      @click="isExpanded = !isExpanded"
     />
   </nav>
 </template>
@@ -92,7 +92,7 @@ withDefaults(
   height: 100%;
 }
 
-/* The Panel fades the handle in on hover, which a figure has no pointer for. */
+/* The Panel fades the handle in on hover; here it stays visible. */
 .panel-mock .k-panel-minimap-toggle {
   --button-align: flex-start;
   --button-height: 100%;
