@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ProductCollectionItem } from "@nuxt/content";
-import { isObject } from "@vue/shared";
+import { isObject } from "utilful/object";
 
 defineProps<{
   page: ProductCollectionItem;

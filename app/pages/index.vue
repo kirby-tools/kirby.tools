@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isObject } from "@vue/shared";
+import { isObject } from "utilful/object";
 import logoMetrics from "~/data/logo-metrics.json";
 
 const { data: page } = await useAsyncData("index", () =>
