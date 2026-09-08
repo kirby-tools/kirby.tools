@@ -186,6 +186,7 @@ products:
     license: free
     id: serp-preview
     description: A Panel section draws the Google result for the page you are editing – favicon, site name, URL, title and description – and redraws it on every keystroke.
+    reverse: true
     mock: serp-preview
     links:
       - label: Learn More
@@ -211,7 +212,6 @@ products:
     license: free
     id: minimap
     description: A sidebar lists the fields and blocks of the current Panel tab and scrolls to the one you click. Made for long blueprints.
-    orientation: vertical
     mock: minimap
     links:
       - label: Learn More
@@ -237,6 +237,7 @@ products:
     license: free
     id: headless
     description: Keep editing in Kirby and serve the content as JSON. A bearer token guards the API, KQL answers from one endpoint, and templates can return JSON instead of HTML.
+    reverse: true
     code:
       minHeight: 360px
       files:
