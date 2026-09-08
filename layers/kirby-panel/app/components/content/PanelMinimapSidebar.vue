@@ -94,13 +94,16 @@ const isExpanded = ref(true);
   width: calc(var(--menu-toggle-width) + 2 * var(--menu-padding));
 }
 
-/* The plugin measures `.k-header`'s content box from JS; a Mock has one
-   header, so the offset is Kirby's own padding. */
 .panel-mock .k-panel-minimap-body {
   padding-block: var(--menu-padding);
-  padding-top: calc(var(--header-padding-block) + var(--spacing-1));
   overflow: hidden;
   height: 100%;
+}
+
+/* The plugin measures `.k-header`'s content box from JS; a Mock has at most
+   one header, so the offset is Kirby's own padding. */
+.panel-mock .k-panel:has(.k-header) .k-panel-minimap-body {
+  padding-top: calc(var(--header-padding-block) + var(--spacing-1));
 }
 
 /* The Panel fades the handle in on hover; here it stays visible. */

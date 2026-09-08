@@ -224,10 +224,11 @@ export const MINIMAP_FIELDS: PanelMinimapField[] = [
     label: "Text",
     required: true,
     isActive: true,
-    blocks: EXHIBITION_BLOCKS.map((block) => ({
+    blocks: EXHIBITION_BLOCKS.map((block, index) => ({
       icon: MINIMAP_BLOCK_ICONS[block.type],
       text: block.text.slice(0, 50),
-      isActive: block.type === "quote",
+      // In view on a cropped Stage.
+      isActive: index < 2,
     })),
   },
   { label: "Description", required: true },
