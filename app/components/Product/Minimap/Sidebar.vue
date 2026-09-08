@@ -19,8 +19,6 @@
 </template>
 
 <style>
-/* The sidebar sets the Panel's height, the page its minimum; the Stage is
-   cropped to it. */
 .product-minimap-sidebar.panel-mock {
   display: flex;
   flex-direction: column;
