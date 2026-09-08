@@ -191,7 +191,7 @@ const testimonialItems = computed(() =>
         :description="product.description"
         :features="product.features"
         :links="product.links"
-        orientation="horizontal"
+        :orientation="product.orientation ?? 'horizontal'"
         :reverse="product.reverse"
         class="border-default relative overflow-hidden"
         :class="index === 0 && license === 'commercial' ? '' : 'lg:border-t'"

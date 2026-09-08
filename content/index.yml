@@ -211,7 +211,7 @@ products:
     license: free
     id: minimap
     description: A sidebar lists the fields and blocks of the current Panel tab and scrolls to the one you click. Made for long blueprints.
-    reverse: true
+    orientation: vertical
     mock: minimap
     links:
       - label: Learn More
