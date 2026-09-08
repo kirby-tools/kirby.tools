@@ -17,6 +17,7 @@ if (!page.value) {
 const NuxtLink = resolveComponent("NuxtLink");
 const PRODUCT_MOCKS: Record<string, ReturnType<typeof resolveComponent>> = {
   "serp-preview": resolveComponent("ProductSerpPreviewSnippet"),
+  minimap: resolveComponent("ProductMinimapSidebar"),
 };
 
 const { isLoading } = useLoadingIndicator();

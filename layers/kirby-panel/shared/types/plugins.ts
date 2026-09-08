@@ -43,3 +43,20 @@ export type PanelCopilotPromptDropdown =
       value?: string[];
     };
 // #endregion
+
+// #region Minimap
+/** A block of a blocks field, as the sidebar resolves it for its own entry. */
+export interface PanelMinimapBlock {
+  icon: string;
+  text: string;
+  /** In view, which the sidebar marks while the editor scrolls. */
+  active?: boolean;
+}
+
+export interface PanelMinimapField {
+  label: string;
+  required?: boolean;
+  active?: boolean;
+  blocks?: PanelMinimapBlock[];
+}
+// #endregion

@@ -5,6 +5,7 @@ export const EXHIBITION_PRODUCT_IDS = [
   "content-translator",
   "seo-audit",
   "serp-preview",
+  "minimap",
 ] as const satisfies readonly ProductId[];
 
 export type ExhibitionProductId = (typeof EXHIBITION_PRODUCT_IDS)[number];

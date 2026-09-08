@@ -32,8 +32,8 @@ const isInert = inject(panelMockInertKey, false);
       <span v-if="label" class="panel-mock-chrome-label">{{ label }}</span>
     </figcaption>
 
-    <div class="k-panel" :data-theme="theme">
-      <div class="panel-mock-stage" :inert="isInert">
+    <div class="k-panel" :data-theme="theme" :inert="isInert">
+      <div class="panel-mock-stage">
         <!-- Kirby's overlay is a `<dialog>` opened with `showModal()`, so the
              platform inerts the view behind it. Nothing here is in the top
              layer. -->
@@ -48,6 +48,9 @@ const isInert = inject(panelMockInertKey, false);
         </template>
         <slot v-else />
       </div>
+
+      <!-- What a plugin renders beside the view rather than inside it. -->
+      <slot name="sidebar" />
     </div>
 
     <!-- Where `k-icon` resolves a plugin icon: a `<use>` pointing at a symbol

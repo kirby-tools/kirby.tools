@@ -59,6 +59,10 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       </PanelColumn>
     </PanelColumns>
 
+    <template v-if="productId === 'minimap'" #sidebar>
+      <PanelMinimapSidebar :fields="MINIMAP_FIELDS" />
+    </template>
+
     <template v-if="hasDialog" #dialog>
       <PanelCopilotPromptDialog
         v-if="productId === 'copilot'"

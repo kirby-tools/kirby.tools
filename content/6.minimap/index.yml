@@ -13,10 +13,6 @@ hero:
       trailingIcon: i-ri-arrow-right-line
       to: /docs/minimap
       size: xl
-  video:
-    src: /screencasts/kirby-minimap-screencast.mp4
-    poster: /screencasts/kirby-minimap-screencast-poster.jpg
-    label: Overview demonstration of the Minimap plugin for Kirby Panel, showcasing its features and functionality
 sections:
   - title: A <span class="text-primary">Table of Contents</span><br> for the Panel
     slot: features

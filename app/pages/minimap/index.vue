@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { PRODUCTS } from "#shared/products";
+import { socialCardPath } from "#shared/social-card";
 
 const route = useRoute();
 
@@ -27,17 +27,16 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-});
-
-defineOgImage("Default", {
-  productId: "minimap",
-  title: PRODUCTS.minimap.tagline,
-  description,
+  ogImage: socialCardPath("minimap"),
 });
 </script>
 
 <template>
   <PagesProduct :page="page!">
+    <template #hero>
+      <ProductMinimapSidebar />
+    </template>
+
     <template #cta-image>
       <IllustrationPartnershapes9
         class="w-1/3 max-lg:mt-4 lg:mx-auto lg:w-2/5"
