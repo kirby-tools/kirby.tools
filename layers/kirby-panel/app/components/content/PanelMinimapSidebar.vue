@@ -73,6 +73,9 @@ const isExpanded = ref(true);
 
 .panel-mock .k-panel:has(> .k-panel-minimap) .panel-mock-stage {
   margin-inline-end: var(--menu-width-open);
+  /* The floor of Kirby's `--main-padding-inline`, which is what keeps the view
+     clear of the handle. */
+  padding-inline-end: var(--spacing-6);
 }
 
 .panel-mock
