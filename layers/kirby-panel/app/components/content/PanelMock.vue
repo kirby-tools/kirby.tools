@@ -2,8 +2,8 @@
 /* eslint-disable perfectionist/sort-imports -- Kirby's own order decides
    which rules win. */
 
-// Import here rather than in the layer's plugin, so only pages that show a mock
-// carry Kirby's stylesheet.
+// Imported here rather than in the layer's plugin, so only pages that show a
+// mock carry Kirby's stylesheet.
 import "#kirby-panel/styles/config.css";
 import "#kirby-panel/styles/reset.css";
 import "#kirby-panel/components/View/Panel.vue?vue&type=style&index=0&lang.css";
@@ -135,8 +135,8 @@ const isInert = inject(panelMockInertKey, false);
 }
 
 /* Kirby's sheet redeclares `--font-sans` on `.panel-mock`, so the chrome
-   inside it would read the Panel's system stack. This carries the docs font
-   past the shadowing. */
+   inside it would read the Panel's system stack; the docs font is declared
+   again for it. */
 :root {
   --panel-mock-chrome-font: var(--font-sans);
 }

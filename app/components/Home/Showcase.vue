@@ -53,7 +53,7 @@ const accentClass = computed(
         }"
       >
         <template #leading="{ item }">
-          <!-- Holds the indicator's spot until Reka mounts it on the client. -->
+          <!-- The indicator's spot until Reka mounts it on the client. -->
           <span
             aria-hidden="true"
             class="absolute -top-[calc(var(--spacing)+1px)] left-1/2 hidden h-px w-8 -translate-x-1/2 in-[[data-slot=list]:not(:has([data-slot=indicator]))]:group-data-[state=active]:block"

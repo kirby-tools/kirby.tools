@@ -88,7 +88,7 @@ const groups = computed(() =>
 
 <style>
 /* The `<hr>` keeps Kirby's default in a dialog. Inside a section the result
-   sits on a passive box, whose grey swallows it, so only there is it darkened. */
+   sits on a passive box of the same gray, so only there is it darkened. */
 .k-section .panel-seo-audit-result hr {
   background: light-dark(var(--color-gray-350), var(--color-border));
 }

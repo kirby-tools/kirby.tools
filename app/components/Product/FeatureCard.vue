@@ -40,7 +40,6 @@ provide(panelMockInertKey, true);
 </template>
 
 <style>
-/* The card is the mock's frame: it fills the card and drops its own. */
 .product-feature-card .panel-mock {
   display: flex;
   flex-direction: column;
