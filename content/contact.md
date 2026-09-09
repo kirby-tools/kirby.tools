@@ -4,7 +4,7 @@ description: Where to send questions, bug reports, and anything about licenses a
 navigation.icon: i-ri-contacts-line
 ---
 
-Hello! I'm Johann, the developer behind these plugins. Whatever you send lands with me, so pick the channel that fits:
+Hello! I'm Johann, the developer behind these plugins. Everything you send reaches me directly, so pick the channel that fits:
 
 ::card{icon="i-ri-github-line" to="https://github.com/kirby-tools/community/discussions"}
 

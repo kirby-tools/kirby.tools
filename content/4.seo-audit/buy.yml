@@ -38,6 +38,6 @@ faq:
     - label: How do I receive updates for the plugin?
       content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-seo-audit/releases) on GitHub.
     - label: Do you offer technical support?
-      content: You can ask questions, report bugs or feature requests on [GitHub](https://github.com/kirby-tools/kirby-seo-audit). For anything that does not belong in public, [write me](/contact).
+      content: You can ask questions, report bugs or feature requests on [GitHub](https://github.com/kirby-tools/kirby-seo-audit). For anything private, [send me an email](/contact).
     - label: What is your refund policy?
-      content: Every purchase comes with a 30-day money-back guarantee. If the plugin does not work out for you, [request a full refund](/contact) within 30 days. Feedback on why is welcome, not required.
+      content: Every purchase comes with a 30-day money-back guarantee. If the plugin does not work out for you, [request a full refund](/contact) within 30 days. I would appreciate hearing why, but it is not required.

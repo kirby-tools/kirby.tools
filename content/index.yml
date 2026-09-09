@@ -291,7 +291,7 @@ products:
         icon: i-ri-git-merge-line
 cta:
   title: Custom Plugin Development
-  description: I build Kirby plugins, most of them for the Panel. Need one for your project? Write me.
+  description: I build Kirby plugins, most of them for the Panel. Need one for your project? Drop me a line.
   links:
     - label: Get in Touch
       icon: i-ri-mail-open-line
