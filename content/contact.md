@@ -6,6 +6,8 @@ navigation.icon: i-ri-contacts-line
 
 Hello! I'm Johann, the developer behind these plugins. Everything you send reaches me directly, so pick the channel that fits:
 
+<br>
+
 ::card{icon="i-ri-github-line" to="https://github.com/kirby-tools/community/discussions"}
 
 **Questions and Ideas**<br>
@@ -13,16 +15,12 @@ Ask how something works or suggest a feature in [GitHub Discussions](https://git
 
 ::
 
-<br>
-
 ::card{icon="i-ri-github-line" to="https://github.com/kirby-tools/community/issues"}
 
 **Bugs**<br>
 Report a bug in [GitHub Issues](https://github.com/kirby-tools/community/issues). Include the plugin version, the Kirby version and what you expected to happen.
 
 ::
-
-<br>
 
 ::card{icon="i-ri-mail-open-line" to="mailto:hello@kirby.tools"}
 
