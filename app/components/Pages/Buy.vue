@@ -72,10 +72,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
       <ReusePricingPlanTemplate v-else />
     </UContainer>
 
-    <UPageSection
-      :title="page.faq.title"
-      :ui="{ container: 'max-w-4xl' }"
-    >
+    <UPageSection :title="page.faq.title" :ui="{ container: 'max-w-4xl' }">
       <template #description>
         <MDC :value="page.faq.description" unwrap="p" />
       </template>

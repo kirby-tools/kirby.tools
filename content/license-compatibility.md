@@ -32,7 +32,7 @@ Bug fixes, security patches, and minor improvements within your licensed version
 
 Moving to a new major plugin version that adds significant features or Kirby compatibility. Upgrades typically coincide with new Kirby releases.
 
-**Why the distinction?** Major Kirby releases often require significant plugin rewrites. The upgrade model lets us continue development while offering existing customers generous discounts.
+**Why the distinction?** Major Kirby releases often require significant plugin rewrites. The upgrade model lets development continue while offering existing customers generous discounts.
 
 ## Current Status
 
