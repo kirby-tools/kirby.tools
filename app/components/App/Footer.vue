@@ -51,7 +51,7 @@ const columns: FooterColumn[] = [
 ];
 
 const aboutText = `
-We love Kirby – our plugins wouldn't exist without it. Help us improve: share feedback in [Discussions](https://github.com/kirby-tools/community/discussions) or report bugs via [Issues](https://github.com/kirby-tools/community/issues).
+Built on [Kirby](https://getkirby.com), with gratitude to the team and community that make it. Help us improve: share feedback in [Discussions](https://github.com/kirby-tools/community/discussions) or report bugs via [Issues](https://github.com/kirby-tools/community/issues).
 `;
 </script>
 
