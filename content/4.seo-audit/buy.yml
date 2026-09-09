@@ -17,9 +17,6 @@ plan:
     to: "#"
   features:
     - For Kirby 4 & Kirby 5
-    # TODO (Kirby 6 launch): once Kirby 6 support ships, change this bullet to
-    # present tense (e.g. "For Kirby 4, 5 & 6") and update the "Which Kirby
-    # versions are supported?" FAQ.
     - Includes Kirby 6 when released
     - Unlimited owned sites
     - Unlimited minor & patch updates
@@ -34,7 +31,7 @@ faq:
     - label: Which Kirby versions are supported?
       content: Kirby SEO Audit is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
     - label: What does “Unlimited minor & patch updates” include?
-      content: Every minor and patch release of the major version you bought, at no extra cost. A new major version is a paid upgrade at a discount, usually alongside a new major Kirby version.
+      content: Every minor and patch release of the major version you bought, at no extra cost. Which major versions your license covers is on the [license compatibility page](/license-compatibility).
     - label: How do I receive updates for the plugin?
       content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-seo-audit/releases) on GitHub.
     - label: Do you offer technical support?

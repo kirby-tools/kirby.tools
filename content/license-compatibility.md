@@ -49,15 +49,6 @@ Every commercial Kirby Tools plugin has a version for Kirby 4 and one for Kirby 
 Gen 2 licenses already include **Copilot v3** and **SEO Audit v3** – no upgrade needed.
 ::
 
-<!--
-TODO (Kirby 6 launch): Re-introduce the upgrade-discount section here once the
-Kirby 6 compatible plugin majors ship. Decided discount: Gen 1 & Gen 2 -> Gen 3
-at 50% off (one rule: any generation below the current one).
-Note: the Gen 1 -> 50% offer already works in the hub (getDiscountAmount); the
-Gen 2 -> 50% offer is intentionally not live yet (a Gen 2 -> Gen 3 buy would grant
-nothing until the majors ship) and is stated as a forward promise in the FAQ below.
--->
-
 ## Frequently Asked Questions
 
 ::accordion
@@ -111,17 +102,10 @@ License keys follow the format: `KT{generation}-{hash}-{hash}`. The digit after 
 
 Gen 3 currently mirrors Gen 2 – until Kirby 6 ships, both cover the same plugin versions. When each plugin's Kirby 6 compatible major is released, its Gen 3 constraint gains that major (e.g. `… || ^4`) while Gen 2 stays capped at the current one.
 
-<!--
-TODO (Kirby 6 launch): when each plugin's Kirby 6 major ships, add it to that
-plugin's Gen 3 Constraint column in the matrix above (e.g. add `|| ^4`), change
-the Gen 3 row below to "Kirby 4–6", and restore the Upgrade Discount section
-(Gen 1 & Gen 2 → Gen 3 at 50%).
--->
-
 ### Generation Timeline
 
-| Generation | Purchase Date              | Kirby Compatibility              |
-| ---------- | -------------------------- | -------------------------------- |
-| Gen 1      | Before Dec 1, 2024         | Kirby 4                          |
-| Gen 2      | Dec 1, 2024 – Jul 31, 2026 | Kirby 4 & 5                      |
-| Gen 3      | Aug 1, 2026+               | Kirby 4 & 5 (Kirby 6 on release) |
+| Generation | Purchase Date              | Kirby Compatibility                 |
+| ---------- | -------------------------- | ----------------------------------- |
+| Gen 1      | Before Dec 1, 2024         | Kirby 4                             |
+| Gen 2      | Dec 1, 2024 – Jul 31, 2026 | Kirby 4 & 5                         |
+| Gen 3      | Aug 1, 2026+               | Kirby 4 & 5 (Kirby 6 when released) |
