@@ -12,7 +12,7 @@ const props = withDefaults(
   }>(),
   {
     title: "Kirby Tools",
-    description: "Premium Plugins for Kirby CMS",
+    description: "AI, Translation & SEO Plugins for Kirby CMS",
     headline: undefined,
     productId: undefined,
   },

@@ -1,9 +1,9 @@
-title: Kirby Tools – Premium Plugins for Kirby CMS
+title: Kirby Tools – AI, Translation & SEO Plugins for Kirby CMS
 description: Kirby CMS plugins for editors and developers. AI content generation, translation, SEO analysis and Panel navigation, plus a PHP API and a headless toolkit.
 navigation: false
 hero:
-  title: 'Premium Plugins<br> for <span class="text-primary">Kirby CMS</span>'
-  description: Editors generate, translate and audit their content in the Panel.<br class="hidden md:inline"> Developers script the same from PHP or serve it headless.
+  title: 'Kirby Plugins Your Editors<br> <span class="text-primary">Will Thank You For</span>'
+  description: Because they generate, translate and audit content in the Panel.<br class="hidden md:inline"> You script the same from PHP or serve it headless.
 testimonials:
   title: Trusted by Teams Worldwide
   items:
