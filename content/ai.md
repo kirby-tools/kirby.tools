@@ -4,7 +4,7 @@ description: "Point your coding agent at the documentation: every page as Markdo
 navigation.icon: i-ri-robot-2-line
 ---
 
-Setting up a plugin goes faster when the agent you are working with has read its documentation. So all of it is published as Markdown as well – single pages, the whole site as one index, and a skill per plugin.
+Setting up a plugin goes faster when the agent you are working with has read its documentation. So all of it is published as Markdown too – single pages, the whole site as one index, and a skill per plugin.
 
 ## Any Page as Markdown
 

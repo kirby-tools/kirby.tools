@@ -32,7 +32,7 @@ Pricing, the 30-day money-back guarantee, and all license terms remain the same.
 
 Nothing. Your license key is unchanged. The [Hub](https://hub.kirby.tools) works exactly as before – log in with your email and the order number from your original Lemon Squeezy receipt.
 
-If you ever need to look up your order number, check the receipt email you got when you purchased. It came from Lemon Squeezy.
+If you ever need to look up your order number, check the receipt email you got when you bought the plugin. It came from Lemon Squeezy.
 
 ## Updated Legal Docs
 

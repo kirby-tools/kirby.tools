@@ -30,7 +30,7 @@ faq:
     - label: How does the licensing work?
       content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If you transfer the full IP rights to your client, the client needs their own license – just like with Kirby itself. The full terms are in the [license agreement](/license).
     - label: What if the SEO report is incorrect?
-      content: The checks come without a guarantee of accuracy. Most assessments are Yoast's, from the [`yoastseo`](/docs/seo-audit/guide/assessments) package, and a wrong verdict there is not something the license covers. Assessments I write myself are added over time to fill the gaps. Test the plugin in the [playground](https://try.kirbyseo.com) before you buy.
+      content: The checks come without a guarantee of accuracy. Most assessments are Yoast's, from the [`yoastseo`](/docs/seo-audit/guide/assessments) package, and a wrong verdict there is not something the license covers. I add my own assessments over time to fill the gaps. Test the plugin in the [playground](https://try.kirbyseo.com) before you buy.
     - label: Which Kirby versions are supported?
       content: Kirby SEO Audit is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
     - label: What does “Unlimited minor & patch updates” include?
@@ -38,6 +38,6 @@ faq:
     - label: How do I receive updates for the plugin?
       content: If you have installed the plugin via Composer, run `composer update`. Otherwise, download the latest version of the plugin as a ZIP file from the [releases page](https://github.com/kirby-tools/kirby-seo-audit/releases) on GitHub.
     - label: Do you offer technical support?
-      content: You can ask questions, report bugs or feature requests on [GitHub](https://github.com/kirby-tools/kirby-seo-audit). For anything private, [send me an email](/contact).
+      content: Ask a question, report a bug or request a feature on [GitHub](https://github.com/kirby-tools/kirby-seo-audit). For anything private, [send me an email](/contact).
     - label: What is your refund policy?
-      content: Every purchase comes with a 30-day money-back guarantee. If the plugin does not work out for you, [request a full refund](/contact) within 30 days. I would appreciate hearing why, but it is not required.
+      content: Every purchase comes with a 30-day money-back guarantee. If the plugin does not work out for you, [request a full refund](/contact) within 30 days. I'd love to hear why, but you don't have to.

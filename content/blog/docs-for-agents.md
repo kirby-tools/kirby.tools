@@ -32,7 +32,7 @@ If you would rather hand over everything at once, [`llms-full.txt`](/llms-full.t
 
 The index helps once an agent decides to look something up. A skill loads on its own, whenever the task matches.
 
-Each plugin now ships one: what it does, what it deliberately does not do, and the handful of options that decide the outcome. That Copilot's inline suggestions need the `copilot-suggestions` mark as soon as a writer field defines its own marks, or Kirby filters them out and nothing appears. That Content Translator falls back to DeepL when `strategy` is left out, whether or not DeepL is what the project intended.
+Each plugin now ships one: what it does, what it deliberately does not do, and the handful of options that decide the outcome. That Copilot's inline suggestions need the `copilot-suggestions` mark whenever a writer field defines its own marks, or Kirby filters them out and nothing appears. That Content Translator falls back to DeepL when `strategy` is left out, whether or not DeepL is what the project intended.
 
 ```bash
 npx skills add https://kirby.tools

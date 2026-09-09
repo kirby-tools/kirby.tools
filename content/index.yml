@@ -123,7 +123,7 @@ products:
         description: Generate whole layouts from your own block blueprints, custom blocks included.
         icon: i-ri-dashboard-line
       - title: Inline Suggestions
-        description: Pause while writing and a grey continuation appears. Tab keeps it, anything else drops it.
+        description: Pause while writing and grey ghost text picks up the sentence. Tab keeps it, anything else drops it.
         icon: i-ri-input-cursor-move
   - title: Kirby Content Translator
     license: commercial

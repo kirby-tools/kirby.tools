@@ -33,7 +33,7 @@ sections:
       - id: inline-suggestions
         name: Inline Suggestions
         title: Keep typing, Copilot finishes the sentence
-        description: Pause in a writer field and a grey continuation appears. Tab keeps it, anything else drops it.
+        description: Pause in a writer field and grey ghost text picks up the sentence. Tab keeps it, anything else drops it.
         to: /docs/copilot/usage/inline-suggestions
       - id: toolbar-buttons
         name: Toolbar Buttons
@@ -103,7 +103,7 @@ sections:
                 }
             ];
 cta:
-  title: Do Not Take<br class="md:hidden"> My Word for It
+  title: Don't Take<br class="md:hidden"> My Word for It
   description: Install the plugin and try Copilot in the Panel yourself.
   links:
     - label: Install for Free

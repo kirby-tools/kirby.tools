@@ -25,7 +25,7 @@ v3 is a **free upgrade for all existing users**. If you have a license, you alre
 
 ### Server-Side API Proxy
 
-All AI requests now route through a PHP proxy on your server. This means API keys never leave your backend – they're no longer visible in browser network requests. There's nothing to configure. Setups that could not expose a key to the browser before can use Copilot now.
+All AI requests now route through a PHP proxy on your server. This means API keys never leave your backend – they're no longer visible in browser network requests. There's nothing to configure. If your setup could never expose a key to the browser, Copilot works there now.
 
 ### Inline Suggestions
 

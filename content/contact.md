@@ -11,7 +11,7 @@ Hello! I'm Johann, the developer behind these plugins. Everything you send reach
 ::card{icon="i-ri-github-line" to="https://github.com/kirby-tools/community/discussions"}
 
 **Questions and Ideas**<br>
-Ask how something works or suggest a feature in [GitHub Discussions](https://github.com/kirby-tools/community/discussions). Other users read along, and answers stay findable.
+Ask how something works or suggest a feature in [GitHub Discussions](https://github.com/kirby-tools/community/discussions). Other people can follow the thread, and answers stay findable.
 
 ::
 

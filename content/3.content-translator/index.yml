@@ -27,18 +27,18 @@ sections:
       - id: batch-translation
         name: Batch Translation
         title: Pick languages and provider in one dialog
-        description: "In the default language, tick the target languages and choose DeepL or the AI provider Kirby Copilot is set up with. Every translatable field goes along, nested or not."
+        description: "In the default language, tick the target languages and choose DeepL or the AI provider Kirby Copilot is set up with. Every translatable field comes with it, nested or not."
         to: /docs/content-translator/configuration/local#batch
         wide: true
       - id: kirbytags
         name: KirbyTags
         title: Links and images survive translation
-        description: In textarea and markdown fields, only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay verbatim.
+        description: In textarea and markdown fields, only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay untouched.
         to: /docs/content-translator/advanced/kirbytags
       - id: view-button
         name: View Button
         title: Import or translate, one language at a time
-        description: In a secondary language, the Translator button copies the default language's content in or translates what the form holds. Nothing is saved until you have looked at it.
+        description: In a secondary language, the Translator button imports the default language's content or translates what is in the form. Nothing is saved until you have looked at it.
         to: /docs/content-translator/configuration/local#view-button-configuration
       - id: translation-coverage
         name: Translation Coverage
