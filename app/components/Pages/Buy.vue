@@ -28,15 +28,15 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
     <UPricingPlan v-bind="page.plan" class="relative shadow-md max-lg:max-w-lg">
       <template #button>
         <UFormField
-          label="Licensee"
-          help="Who will own this license (e.g. your full name, organization, or client)? Will be you by default."
+          label="License holder"
+          help="Your name, your organization, or a client. Defaults to you."
           :ui="{
             container: 'mt-2',
           }"
         >
           <UInput
             v-model="licenseHolder"
-            placeholder="License holder"
+            placeholder="Your name"
             class="w-full"
           />
         </UFormField>
@@ -74,9 +74,11 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
 
     <UPageSection
       :title="page.faq.title"
-      :description="page.faq.description"
       :ui="{ container: 'max-w-4xl' }"
     >
+      <template #description>
+        <MDC :value="page.faq.description" unwrap="p" />
+      </template>
       <UAccordion
         :items="page.faq.items"
         multiple

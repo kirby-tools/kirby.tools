@@ -6,7 +6,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Headless CMS</span><br> Toolkit for Kirby'
-  description: Everything you need to use Kirby as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – one config.php for all of it.
+  description: Keep editing in Kirby and treat it as a headless content backend. Query content via KQL, build custom API routes, and resolve blocks – one config.php for all of it.
   links:
     - label: Get Started
       trailingIcon: i-ri-arrow-right-line
@@ -137,7 +137,7 @@ sections:
             ];
 cta:
   title: Open Source – Yours to Extend
-  description: Install the Headless plugin and start building modern frontend applications with Kirby as your content backend.
+  description: Install the plugin and point your frontend at Kirby's API.
   orientation: horizontal
   links:
     - label: Read the Documentation

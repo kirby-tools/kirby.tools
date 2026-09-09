@@ -28,7 +28,7 @@ Start with `llms.txt`. It lists the paths, and the agent fetches the two or thre
 
 ## Agent Skills
 
-A skill is a set of instructions an agent loads when the task matches, rather than something you paste in each time. We ship one per plugin: what the plugin does, what it deliberately does not do, the configuration that actually matters, and the mistakes we see in support.
+A skill is a set of instructions an agent loads when the task matches, rather than something you paste in each time. I ship one per plugin: what the plugin does, what it deliberately does not do, the configuration that actually matters, and the mistakes I see in support.
 
 Install them with the [`skills`](https://skills.sh) CLI:
 

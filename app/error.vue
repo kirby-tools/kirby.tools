@@ -7,7 +7,7 @@ defineProps<{
 
 useSeoMeta({
   title: "Page not found",
-  description: "Sorry, this page could not be found.",
+  description: "This page does not exist.",
 });
 
 const { navigation, files, isLoading } = useContentSearchData();

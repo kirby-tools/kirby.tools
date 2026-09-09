@@ -7,17 +7,15 @@ badge:
   label: Release
 ---
 
-The first versions of Kirby Copilot had a clear limitation: one field at a time. You'd open the prompt dialog, generate text for a single writer or textarea field, and repeat the process for the next one. It was useful, but it didn't match how people actually create content. Nobody writes a page title in isolation from the intro text and meta description – they're all part of the same thought.
+The first versions of Kirby Copilot had a limitation I felt every time I used it myself: one field at a time. Open the prompt dialog, generate text for a single writer or textarea field, repeat for the next one. That is not how anyone writes a page. The title, the intro and the meta description are one thought, not three.
 
-Version 2.4 and 2.5 change that.
+Versions 2.4 and 2.5 change that.
 
 ## Multi-Field Generation
 
-Copilot v2.5 introduces a Panel view button that opens the prompt dialog from anywhere in the Panel – not just from within a specific field. From there, you can select multiple fields at once: page title, meta description, intro text, whatever your blueprint defines. One prompt, multiple outputs.
+v2.5 adds a Panel view button that opens the prompt dialog from anywhere in the Panel, not just from within a field. From there you select the fields you want filled: page title, meta description, intro text, whatever your blueprint defines. One prompt, several outputs.
 
-The key is that Copilot understands your blueprint structure. It knows which fields exist on the current page, what types they are, and how they relate to each other. When you ask it to generate content for three fields simultaneously, the results are coherent – not three isolated pieces of text that happen to share a topic.
-
-Before v2.5, Copilot wrote into one field at a time. Select your fields, write a prompt that describes what the page should communicate, and let it draft everything at once. Edit from there.
+Copilot reads your blueprint for this. It knows which fields exist on the current page, what types they are, and how they relate to each other. Ask for three fields at once and the results fit together, instead of three isolated texts that happen to share a topic. Write a prompt that says what the page should communicate, let it draft everything, edit from there.
 
 [Learn more about multi-field generation](/docs/copilot/usage/view-button)
 
@@ -25,14 +23,14 @@ Before v2.5, Copilot wrote into one field at a time. Select your fields, write a
 
 Before v2.4, Copilot could generate standard blocks – text, headings, images, lists. But custom blocks, the ones you define in your own project, were invisible to it. If you had a `testimonial` block with `quote`, `author`, and `role` fields, Copilot couldn't produce it.
 
-v2.4 solves this through JSON schema-based object generation. Copilot now reads the block definitions from your Kirby project – including any custom block types – and generates structured data that matches their exact field structure. The same approach works for layout fields.
+v2.4 solves this with JSON schema-based object generation. Copilot reads the block definitions from your Kirby project, custom block types included, and generates structured data that matches their field structure exactly. The same approach works for layout fields.
 
-In practice, this means Copilot can now generate entire page layouts with your project's own block vocabulary. It's not guessing at a generic structure – it's working with the actual building blocks you've defined.
+In practice, Copilot can now generate entire page layouts in your project's own block vocabulary.
 
 [Read the custom blocks documentation](/docs/copilot/advanced/blocks-and-layouts)
 
 ## What This Means
 
-These two features – multi-field generation and custom blocks – shift what Copilot is useful for. It's no longer just about helping with a paragraph here and there. It can draft a full page structure: metadata, body content, and custom blocks, all in one pass. For content-heavy Kirby projects, editors start from a draft of the whole page instead of a blank one.
+Together, the two change what I use Copilot for. Instead of a paragraph here and there, it drafts a full page in one pass: metadata, body content and custom blocks. Editors start from a draft of the whole page instead of a blank one.
 
 Both updates are free for anyone with a v2 license. If you're on v1, check the [Hub](https://hub.kirby.tools) for upgrade options.

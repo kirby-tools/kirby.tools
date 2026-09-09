@@ -17,7 +17,7 @@ That changed over the course of 2025. AI stopped being a novelty and started bec
 
 ## What v3 Is
 
-Kirby Copilot v3 is what the plugin was always meant to be: a quiet co-writer, right where content is created. Not flashy, not intrusive – just helpful. It sits in the background until you need it, then gets out of the way when you don't.
+Kirby Copilot v3 is what the plugin was always meant to be: a quiet co-writer, right where content is created. It sits in the background until you need it, then gets out of the way when you don't.
 
 v3 is a **free upgrade for all existing users**. If you have a license, you already have access.
 
@@ -31,7 +31,7 @@ All AI requests now route through a PHP proxy on your server. This means API key
 
 This is probably the most visible change. As you type in a writer or textarea field, ghost text appears after a brief pause – a suggestion for how your sentence might continue. Press **Tab** to accept, **Escape** to dismiss. You can also trigger suggestions manually with **Cmd+,** (or **Ctrl+,** on Windows/Linux).
 
-Inline suggestions use a lightweight completion model optimized for speed, so they feel responsive even on longer documents. They're designed to reduce friction, not take over your writing.
+Inline suggestions use a lightweight completion model optimized for speed, so they feel responsive even on longer documents.
 
 ![Inline suggestions appearing as ghost text in a textarea field](/screencasts/kirby-copilot-inline-suggestions-poster.jpg)
 
@@ -72,7 +72,7 @@ dropdown:
 
 ### Prompt Preview
 
-Ever wondered what the AI actually receives when you hit send? The new prompt preview lets you expand a **Preview** section in the prompt dialog to see all placeholders resolved with your actual field values. It's a small addition, but it makes debugging custom prompts much easier.
+Ever wondered what the AI actually receives when you hit send? The new prompt preview lets you expand a **Preview** section in the prompt dialog to see all placeholders resolved with your actual field values. It makes debugging custom prompts much easier.
 
 [Learn about prompt preview](/docs/copilot/prompt-dialog/placeholders#prompt-preview)
 

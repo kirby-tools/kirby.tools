@@ -51,13 +51,13 @@ sections:
     slot: code
     orientation: horizontal
     reverse: true
-    description: Integrate translations into CLI commands, hooks, or custom workflows. Full programmatic control over copying and translating content.
+    description: Call the translator on any page from CLI commands, hooks or your own code.
     features:
       - title: CLI Commands
         description: Create Kirby CLI commands to batch translate pages.
         icon: i-ri-terminal-box-line
-      - title: Full Control
-        description: Copy, translate, and sync content programmatically.
+      - title: The Same Pipeline
+        description: Copy, translate and sync content with the calls the Panel uses.
         icon: i-ri-settings-3-line
     links:
       - label: PHP API Reference
@@ -95,7 +95,7 @@ sections:
             ];
 cta:
   title: Still scrolling?
-  description: Test the plugin locally and see how it can improve your workflow. Pay only when you are ready to go live.
+  description: Test the plugin locally on real content. Pay only when you are ready to go live.
   orientation: horizontal
   links:
     - label: Install & Try for Free

@@ -8,18 +8,17 @@ hero:
     to: /docs/seo-audit/guide/assessments
     icon: i-ri-wordpress-fill
   title: '<span class="text-primary">Yoast SEO Analysis</span><br> for Kirby CMS'
-  description: Kirby SEO Audit brings the Yoast SEO engine into the Panel. Every check comes with a grade and the fix it asks for, so editors improve the page before it goes live.
+  description: Kirby SEO Audit brings the Yoast SEO engine into the Panel. Every check comes with a grade and the fix it asks for, so editors can fix the page before it goes live.
   links:
-    - label: Generate Your SEO Report
+    - label: Run Your First Audit
       trailingIcon: i-ri-arrow-right-line
       to: /docs/seo-audit/getting-started/installation
-      target: _blank
       size: xl
   video:
     src: /screencasts/kirby-seo-audit-view-button.mp4
     poster: /screencasts/kirby-seo-audit-view-button-poster-start.jpg
 sections:
-  - title: Your New Favorite <br class="hidden lg:block"> <span class="text-primary">Must-Have Plugin</span>
+  - title: Every Check, <br class="hidden lg:block"> <span class="text-primary">Graded in the Panel</span>
     slot: feature-cards
     cards:
       - id: scores
@@ -49,8 +48,8 @@ sections:
         description: The Yoast engine ships with the plugin and grades the page's preview HTML right in the browser.
         to: /docs/seo-audit/getting-started#key-features
 cta:
-  title: Watch Your Rankings Grow
-  description: Give Kirby SEO Audit a try in the interactive Panel playground and see how it can help you improve the quality of your content.
+  title: Read the Report Before Google Does
+  description: Install the plugin and run a report on a page you already have.
   orientation: horizontal
   links:
     - label: Analyze Your Page

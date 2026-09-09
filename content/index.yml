@@ -291,7 +291,7 @@ products:
         icon: i-ri-git-merge-line
 cta:
   title: Custom Plugin Development
-  description: Need something specific? We are experienced with Kirby plugins, especially Panel plugins. We can tailor new plugins to your needs. Just drop us a line!
+  description: I build Kirby plugins, most of them for the Panel. Need one for your project? Write me.
   links:
     - label: Get in Touch
       icon: i-ri-mail-open-line

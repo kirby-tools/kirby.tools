@@ -8,7 +8,7 @@ badge:
 
 When I launched Kirby Tools, Lemon Squeezy was the obvious choice for handling payments. It was built for indie developers, the integration was quick, and as a Merchant of Record it handled all the tax complexity I didn't want to deal with. It worked well for a long time.
 
-Then Stripe acquired Lemon Squeezy in mid-2024. Since then, the platform has largely stagnated – fewer updates, persistent checkout bugs, slower support responses, and an unclear roadmap. I wasn't the only one noticing. Many indie developers have been quietly migrating away over the past year.
+Then Stripe acquired Lemon Squeezy in mid-2024. Since then, the platform has largely stagnated – fewer updates, persistent checkout bugs, slower support responses, and an unclear roadmap. I wasn't the only one noticing. Many indie developers have been migrating away over the past year.
 
 So I did the same.
 
@@ -16,7 +16,7 @@ So I did the same.
 
 [Paddle](https://www.paddle.com) is a Merchant of Record: it sells the license to you and handles VAT and sales tax for every country itself. It supports more payment methods than the previous provider, and its API covers everything the license flow needs.
 
-The most visible improvement: checkout is now an overlay that stays on kirby.tools. No more redirecting to a third-party page to complete your purchase. It's a small thing, but it makes the experience feel more cohesive.
+The most visible improvement: checkout is now an overlay that stays on kirby.tools. No more redirecting to a third-party page to complete your purchase.
 
 ## What Changes for New Customers
 

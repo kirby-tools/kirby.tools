@@ -189,7 +189,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Headless",
     label: "Headless",
     description: "KQL, JSON templates, and the API builder",
-    tagline: "Bearer auth, KQL, JSON templates, API builder",
+    tagline: "JSON pages and KQL queries, served behind one bearer token",
     icon: "i-ri-code-block",
     license: "free",
     // Predates the vendor-prefixed convention the commercial plugins follow.

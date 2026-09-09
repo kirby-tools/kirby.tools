@@ -103,7 +103,7 @@ sections:
                 }
             ];
 cta:
-  title: Do Not Take<br class="md:hidden"> Our Word for It
+  title: Do Not Take<br class="md:hidden"> My Word for It
   description: Install the plugin and try Copilot in the Panel yourself.
   links:
     - label: Install for Free

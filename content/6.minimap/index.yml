@@ -31,7 +31,7 @@ sections:
         to: /docs/minimap
 cta:
   title: You Don’t Have to Pay a Cent
-  description: Install the Minimap plugin to enhance your Kirby Panel experience.
+  description: Install the plugin and add the minimap to any page blueprint.
   orientation: horizontal
   links:
     - label: Get Started

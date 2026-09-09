@@ -14,7 +14,7 @@ hero:
     src: /screencasts/kirby-live-preview-responsive-demo.mp4
     poster: /screencasts/kirby-live-preview-responsive-demo-poster.jpg
 sections:
-  - title: <span class="text-primary">Feature-Complete</span><br> Page Previews
+  - title: <span class="text-primary">What the Preview</span><br> Can Do
     slot: features
     features:
       - title: Tell the preview apart from the site
@@ -36,7 +36,7 @@ sections:
       poster: /screencasts/kirby-live-preview-devices-poster-start.jpg
 cta:
   title: Not Convinced?
-  description: Give it a try and feel the breeze of a real-time preview in the Panel. All eyes on your content!
+  description: Install the plugin and open a page with the preview beside it. Unsaved changes show up as you type.
   orientation: horizontal
   links:
     - label: Hoist the Sails
