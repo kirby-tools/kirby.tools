@@ -7,8 +7,8 @@ hero:
     label: Powered by Yoast SEO v3
     to: /docs/seo-audit/guide/assessments
     icon: i-ri-wordpress-fill
-  title: '<span class="text-primary">Yoast SEO Analysis</span><br> for Kirby CMS'
-  description: Kirby SEO Audit brings the Yoast SEO engine into the Panel. Every check comes with a grade and the fix it asks for, so editors can fix the page before it goes live.
+  title: '<span class="text-primary">Yoast SEO Analysis</span><br> in the Panel'
+  description: Kirby SEO Audit runs the Yoast SEO engine on the page you are editing. Every check comes with a grade and the fix it asks for, so editors fix the page before it goes live.
   links:
     - label: Run Your First Audit
       trailingIcon: i-ri-arrow-right-line

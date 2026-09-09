@@ -9,7 +9,7 @@ hero:
     icon: i-ri-translate-2
     color: neutral
     variant: solid
-  title: '<span class="text-primary">DeepL & AI Translations</span><br> for Kirby CMS'
+  title: '<span class="text-primary">DeepL & AI Translations</span><br> for Whole Pages'
   description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
   links:
     - label: Start Translating Now

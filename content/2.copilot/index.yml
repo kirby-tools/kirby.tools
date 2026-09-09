@@ -1,5 +1,5 @@
 title: Kirby Copilot – AI Content Generation Plugin for Kirby CMS
-description: AI-powered content generation plugin for Kirby CMS. Generate layouts, text, and structured content directly in the Kirby Panel with ChatGPT, Claude, or Gemini.
+description: AI content generation plugin for Kirby CMS. Generate layouts, text, and structured content directly in the Kirby Panel with ChatGPT, Claude, or Gemini.
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
@@ -8,8 +8,8 @@ hero:
     icon: i-ri-terminal-box-line
     color: neutral
     variant: solid
-  title: '<span class="primary-500">AI-Powered</span><br> Content Generation'
-  description: Generate entire layouts from your custom blocks, refine text with<br class="hidden lg:block"> inline suggestions, or let AI complete your thoughts as you type.
+  title: '<span class="primary-500">Generate with AI</span><br> in the Kirby Panel'
+  description: Whole layouts from your own blocks, custom blocks included. Refine or extend<br class="hidden lg:block"> the selected text from the toolbar, or take an inline suggestion as you type.
   links:
     - label: Try Copilot Yourself
       trailingIcon: i-ri-arrow-right-line
