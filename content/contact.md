@@ -24,7 +24,7 @@ Report a bug in [GitHub Issues](https://github.com/kirby-tools/community/issues)
 
 ::card{icon="i-ri-mail-open-line" to="mailto:hello@kirby.tools"}
 
-**Licenses, Invoices, and Everything Private**<br>
+**Licenses and Everything Private**<br>
 Email [hello@kirby.tools](mailto:hello@kirby.tools) for anything that should not be public – license transfers, invoices, refunds, or a project you would rather not describe in the open.
 
 ::

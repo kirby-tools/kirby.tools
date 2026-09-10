@@ -77,7 +77,7 @@ sections:
         description: Write templates that echo JSON. With global routes on, each page URL returns its template's output, cached per page, language, and version, drafts included behind a preview token.
         icon: i-ri-braces-line
         to: /docs/headless/usage/json-templates
-      - title: UUIDs become URLs, sizes, and titles
+      - title: UUIDs become URLs and sizes
         description: Call toResolvedBlocks() on a blocks or layout field and image blocks come back with url, width, height, srcset, and alt. Add resolvers per block type and field for pages and other files.
         icon: i-ri-puzzle-line
         to: /docs/headless/usage/field-methods
