@@ -14,7 +14,7 @@ return [
         'provider' => 'google',
         'providers' => [
             'google' => [
-                'apiKey' => env('GOOGLE_API_KEY'),
+                'apiKey' => 'your-google-api-key',
             ],
         ],
     ],
@@ -87,7 +87,7 @@ A view button or section on a `blocks` or `layout` field generates whole blocks 
 
 **Long generations cut off** – _No object generated_, _Unterminated string_, a 504, or a closed connection. In the Panel the cause is the web server's read timeout (nginx `fastcgi_read_timeout`, Apache `ProxyTimeout`); PHP's own execution limit is already lifted for proxy requests. From PHP the bound is the provider's `timeout`.
 
-**A missing API key** – the PHP `Client` fails with `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`, the Panel with `Missing API key for the "<name>" provider`. The key sits under `providers.<name>.apiKey`, and an `env()` lookup resolves in the environment the **Panel** runs under, which routinely differs from the CLI's.
+**A missing API key** – the PHP `Client` fails with `Missing API key in "johannschopplich.copilot.providers.<name>.apiKey"`, the Panel with `Missing API key for the "<name>" provider`. The key sits under `providers.<name>.apiKey`, and a key read from an environment variable resolves in the environment the **Panel** runs under, which routinely differs from the CLI's.
 
 **An option that is silently wrong** – with Kirby's `debug` off, the Panel swaps an option value it cannot use for the default, drops a `promptTemplates` or `skills` entry it cannot read, and turns an unknown `provider` into Google, all without an error; with `debug` on the exception names the option. The PHP `Client` always fails: `Unknown provider "<name>"` or `Missing required option "johannschopplich.copilot.provider"`.
 

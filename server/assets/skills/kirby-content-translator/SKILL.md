@@ -61,7 +61,7 @@ The defaults translate every text-like field. Four settings narrow the set, glob
 return [
     'johannschopplich.content-translator' => [
         'strategy' => 'deepl',
-        'DeepL' => ['apiKey' => env('DEEPL_API_KEY')],
+        'DeepL' => ['apiKey' => 'your-deepl-api-key'],
         'fieldTypes' => ['blocks', 'text', 'textarea'],
         'title' => true,
         'slug' => true,

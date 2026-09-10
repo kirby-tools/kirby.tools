@@ -11,7 +11,7 @@ Its config namespace is the bare `headless` key, not `johannschopplich.headless`
 ```php [site/config/config.php]
 return [
     'headless' => [
-        'token' => env('KIRBY_API_TOKEN'),
+        'token' => 'your-secret-token',
         'globalRoutes' => true,
     ],
 ];
