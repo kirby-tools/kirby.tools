@@ -7,21 +7,17 @@ hero:
 testimonials:
   title: Trusted by Teams Worldwide
   items:
+    - brand: KISS
+      logo:
+        light: /img/brands/kiss-light.svg
+        dark: /img/brands/kiss-dark.svg
+      website: https://www.kisscom.co.uk
+      usage: Kirby Copilot
     - brand: University of South-Eastern Norway
       logo:
         light: /img/brands/university-of-south-eastern-norway-light.svg
         dark: /img/brands/university-of-south-eastern-norway-dark.svg
       website: https://www.usn.no/english/
-      usage: Kirby Content Translator
-    - brand: Zammad
-      logo:
-        light: /img/brands/zammad-light.svg
-        dark: /img/brands/zammad-dark.svg
-      website: https://zammad.com
-      usage: Kirby Content Translator
-    - brand: Friedrich-Ebert-Stiftung e.V.
-      logo: /img/brands/friedrich-ebert-stiftung-ev.svg
-      website: https://www.fes.de
       usage: Kirby Content Translator
     - brand: documenta
       logo:
@@ -34,6 +30,16 @@ testimonials:
         light: /img/brands/opendesk-light.svg
         dark: /img/brands/opendesk-dark.svg
       website: https://www.opendesk.eu
+      usage: Kirby Content Translator
+    - brand: Zammad
+      logo:
+        light: /img/brands/zammad-light.svg
+        dark: /img/brands/zammad-dark.svg
+      website: https://zammad.com
+      usage: Kirby Content Translator
+    - brand: Friedrich-Ebert-Stiftung e.V.
+      logo: /img/brands/friedrich-ebert-stiftung-ev.svg
+      website: https://www.fes.de
       usage: Kirby Content Translator
     - brand: KATAPULT Magazin
       logo:
@@ -53,12 +59,6 @@ testimonials:
         dark: /img/brands/fontwerk-dark.svg
       website: https://fontwerk.de
       usage: Kirby Live Preview
-    - brand: KISS
-      logo:
-        light: /img/brands/kiss-light.svg
-        dark: /img/brands/kiss-dark.svg
-      website: https://www.kisscom.co.uk
-      usage: Kirby Copilot
     - brand: KEGGENHOFF | PARTNER
       logo:
         light: /img/brands/keggenhoff-partner-light.svg

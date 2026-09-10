@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { isObject } from "utilful/object";
-import logoMetrics from "~/data/logo-metrics.json";
 
 const { data: page } = await useAsyncData("index", () =>
   queryCollection("index").first(),
@@ -46,30 +45,6 @@ defineOgImage("Default", {
   title: page.value.title,
   description: page.value.description,
 });
-
-const maxLogoHeight = Math.max(
-  ...Object.values(logoMetrics).map((metric) => metric.height),
-);
-
-const testimonialItems = computed(() =>
-  page.value!.testimonials.items.map((testimonial) => {
-    const logoPath =
-      typeof testimonial.logo === "string"
-        ? testimonial.logo
-        : testimonial.logo.light;
-    const filename = logoPath.split("/").pop()!;
-    const metrics = logoMetrics[filename as keyof typeof logoMetrics];
-
-    return {
-      ...testimonial,
-      logoStyle: {
-        height: metrics
-          ? `${(metrics.height / maxLogoHeight) * 100}%`
-          : undefined,
-      },
-    };
-  }),
-);
 </script>
 
 <template>
@@ -136,32 +111,7 @@ const testimonialItems = computed(() =>
       :description="page.testimonials.description"
       class="relative overflow-hidden"
     >
-      <UMarquee pause-on-hover class="[--duration:50s]">
-        <UTooltip
-          v-for="(testimonial, index) in testimonialItems"
-          :key="index"
-          :text="testimonial.brand"
-          :delay-duration="100"
-        >
-          <span class="inline-flex h-18 shrink-0 items-center">
-            <UColorModeImage
-              v-if="isObject(testimonial.logo)"
-              :light="testimonial.logo.light"
-              :dark="testimonial.logo.dark"
-              :alt="`Logo for ${testimonial.brand}`"
-              class="w-auto"
-              :style="testimonial.logoStyle"
-            />
-            <img
-              v-else
-              :src="testimonial.logo"
-              :alt="`Logo for ${testimonial.brand}`"
-              class="w-auto"
-              :style="testimonial.logoStyle"
-            />
-          </span>
-        </UTooltip>
-      </UMarquee>
+      <HomeTestimonials :items="page.testimonials.items" />
     </UPageSection>
 
     <div id="products" />
