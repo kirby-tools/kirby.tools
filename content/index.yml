@@ -206,7 +206,7 @@ products:
         description: Name a title and description field and the snippet takes their values.
         icon: i-ri-input-field
       - title: Shortened Your Way
-        description: A closure in your config trims the text before the snippet draws it.
+        description: Trim or clean the text the way your templates do, so the snippet matches the live page.
         icon: i-ri-scissors-cut-line
   - title: Kirby Minimap
     license: free
@@ -225,7 +225,7 @@ products:
         variant: subtle
     features:
       - title: Jump to a Field
-        description: Click an entry and the Panel scrolls it into view, with a pulse on blocks.
+        description: Click an entry and the Panel scrolls to it.
         icon: i-ri-cursor-line
       - title: Blocks by Icon and First Words
         description: Every block appears with its fieldset icon and the start of its text.

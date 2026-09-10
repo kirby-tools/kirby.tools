@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Google Snippet,</span><br> as You Type'
-  description: A Panel section that draws the search result for the page being edited – favicon, site name, URL, title, and description – reading the open form rather than the saved content.
+  description: A Panel section shows the page you are editing as a Google result, before anything is saved.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line
@@ -18,15 +18,15 @@ sections:
     slot: features
     features:
       - title: Live, and before anything is saved
-        description: The section reads the form as it stands, so typing in the title or description field redraws the snippet. It never writes, and closing the page without saving leaves nothing behind.
+        description: Typing in the title or description field redraws the snippet. The section only reads and never saves.
         icon: i-ri-refresh-line
         to: /docs/serp-preview
       - title: Reads the meta fields you already have
-        description: Name a title and a description field and the snippet takes their values, falling back to a configured default, and then to the page title joined with the site title by an en dash.
+        description: Point the section at your title and description fields, with a default for when they are empty.
         icon: i-ri-input-field
         to: /docs/serp-preview/configuration
-      - title: Shortened the way your frontend shortens it
-        description: A closure in your config receives the resolved value and the page before the snippet draws it – truncate at the length a result shows, strip the HTML a textarea leaves, or vary it per template.
+      - title: Shortened your way
+        description: Trim or clean the text the way your templates do, so the snippet matches the live page.
         icon: i-ri-scissors-cut-line
         to: /docs/serp-preview/formatters
 cta:

@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
   const lines = [
     "# Kirby Tools Sitemap",
     "",
-    "> Every documentation, blog and licensing page of kirby.tools, linked as Markdown. Strip the `.md` suffix from any URL below to reach the HTML page.",
+    "> Every documentation, blog, and licensing page of kirby.tools, linked as Markdown. Strip the `.md` suffix from any URL below to reach the HTML page.",
     "",
   ];
 

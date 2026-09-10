@@ -18,15 +18,15 @@ sections:
     slot: features
     features:
       - title: Jump to a field or block
-        description: Click an entry and the Panel scrolls it into the middle of the view, with a short pulse on blocks. The list follows the active tab and shows the fields of its field sections.
+        description: Click an entry and the Panel scrolls to it. The list follows the tab you have open.
         icon: i-ri-cursor-line
         to: /docs/minimap
       - title: Every block, with its icon and first words
-        description: Blocks fields unfold into their blocks, each with the fieldset's icon and the first 50 characters of text, an image's alt text, or the type name where there is no text.
+        description: Blocks fields unfold into their blocks, each shown with its icon and the start of its text.
         icon: i-ri-layout-grid-line
         to: /docs/minimap
       - title: See where you are
-        description: Fields and blocks currently in view are marked in the sidebar as you scroll, and required fields carry a star. The sidebar collapses to a strip of dashes and remembers its state across reloads.
+        description: Whatever is in view is marked as you scroll, and required fields carry a star. Collapse the sidebar when you need the room.
         icon: i-ri-focus-3-line
         to: /docs/minimap
 cta:

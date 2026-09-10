@@ -18,7 +18,7 @@ The plugin has no `config.php` namespace – every option is a section property.
 
 ## When It Rerenders
 
-`updateStrategy: blur` rerenders when a Panel element loses focus instead of while the editor types. `updateInterval: false` stops only the rerenders typing triggers, not the ones on load, on blur or from the toolbar button. `updateInterval` takes `false` or an integer and lifts anything under 250 to 250; a negative integer or any other type throws when the section loads.
+`updateStrategy: blur` rerenders when a Panel element loses focus instead of while the editor types. `updateInterval: false` stops only the rerenders typing triggers, not the ones on load, on blur, or from the toolbar button. `updateInterval` takes `false` or an integer and lifts anything under 250 to 250; a negative integer or any other type throws when the section loads.
 
 <https://kirby.tools/docs/live-preview/configuration.md>
 
