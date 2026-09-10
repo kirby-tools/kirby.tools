@@ -95,7 +95,7 @@ const accentClass = computed(
 
       <ExhibitionScene
         :product-id="activeProductId"
-        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:min-h-104 max-sm:[&_.panel-mock-stage]:h-104 max-sm:[&_.panel-mock-stage]:overflow-clip"
+        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:h-112 [&_.panel-mock-stage]:overflow-clip max-sm:[&_.panel-mock-stage]:h-104"
       />
     </div>
   </div>
