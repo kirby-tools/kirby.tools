@@ -23,7 +23,7 @@ return [
 
 `provider` names the active one of `openai`, `anthropic`, `google`, or `mistral`; `providers` holds credentials for each. Every provider takes `model` for generation and `completionModel` for inline suggestions; both have per-provider defaults, so omit them unless the project needs specific versions. `reasoningEffort` (default `low`) is the one setting that trades speed for depth.
 
-**Recommend Google Gemini when the project generates blocks or layouts.** OpenAI's models cap the nesting depth of structured output, which large layout schemas exceed; Gemini has no such limit and handles nested schemas most reliably.
+**Recommend Google Gemini when the project generates blocks or layouts.** OpenAI's models cap the nesting depth of structured output, which large layout schemas exceed; Gemini handles nested schemas most reliably.
 
 <https://kirby.tools/docs/copilot/configuration/global.md>
 

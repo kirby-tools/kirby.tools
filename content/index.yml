@@ -211,7 +211,7 @@ products:
   - title: Kirby Minimap
     license: free
     id: minimap
-    description: A sidebar lists the fields and blocks of the current Panel tab and takes you to the one you click. Made for long blueprints.
+    description: A sidebar lists the fields and blocks of the current Panel tab. Click one and the Panel scrolls to it. Made for long blueprints.
     mock: minimap
     links:
       - label: Learn More
@@ -225,10 +225,10 @@ products:
         variant: subtle
     features:
       - title: Jump to a Field
-        description: Click an entry and the Panel scrolls to it.
+        description: Blocks pulse briefly once the Panel reaches them.
         icon: i-ri-cursor-line
       - title: Blocks by Icon and First Words
-        description: Every block appears with its fieldset icon and the start of its text.
+        description: Every block appears with its icon and a short label.
         icon: i-ri-layout-grid-line
       - title: Marks Where You Are
         description: Fields and blocks in view are marked in the sidebar as you scroll.

@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Sidebar Content</span><br> Navigation'
-  description: A sidebar lists the fields and blocks of the current Panel tab and takes you to the one you click. Made for long blueprints.
+  description: A sidebar lists the fields and blocks of the current Panel tab. Click one and the Panel scrolls to it. Made for long blueprints.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line
@@ -18,15 +18,15 @@ sections:
     slot: features
     features:
       - title: Jump to a field or block
-        description: Click an entry and the Panel scrolls to it. The list follows the tab you have open.
+        description: A block pulses briefly once the Panel reaches it. The list follows the tab you have open.
         icon: i-ri-cursor-line
         to: /docs/minimap
       - title: Every block, with its icon and first words
-        description: Blocks fields unfold into their blocks, each shown with its icon and the start of its text.
+        description: Blocks fields unfold into their blocks, each shown with its icon and a short label.
         icon: i-ri-layout-grid-line
         to: /docs/minimap
       - title: See where you are
-        description: Whatever is in view is marked as you scroll, and required fields carry a star. Collapse the sidebar when you need the room.
+        description: Whatever is in view is marked as you scroll, and required fields carry a star. Collapsed or open, the sidebar stays as you left it.
         icon: i-ri-focus-3-line
         to: /docs/minimap
 cta:
