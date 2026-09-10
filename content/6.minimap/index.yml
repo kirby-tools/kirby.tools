@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Sidebar Content</span><br> Navigation'
-  description: A sidebar lists the fields and blocks of the current Panel tab, each one click away. Made for long blueprints.
+  description: A sidebar lists the fields and blocks of the current Panel tab and takes you to the one you click. Made for long blueprints.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line

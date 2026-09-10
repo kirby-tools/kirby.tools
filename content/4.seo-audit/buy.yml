@@ -27,7 +27,7 @@ faq:
     - label: How does the licensing work?
       content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If you transfer the full IP rights to your client, the client needs their own license – just like with Kirby itself. The full terms are in the [license agreement](/license).
     - label: What if the SEO report is incorrect?
-      content: The checks come without a guarantee of accuracy. Most assessments are Yoast's, from the [`yoastseo`](/docs/seo-audit/guide/assessments) package, and a wrong verdict there is not something the license covers. I add my own assessments over time to fill the gaps. Test the plugin in the [playground](https://try.kirbyseo.com) before you buy.
+      content: The checks come without a guarantee of accuracy. Most assessments come from the [Yoast SEO engine](/docs/seo-audit/guide/assessments), and a wrong verdict there is not something the license covers. I add my own assessments over time to fill the gaps. Test the plugin in the [playground](https://try.kirbyseo.com) before you buy.
     - label: Which Kirby versions are supported?
       content: Kirby SEO Audit is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
     - label: What does “Unlimited minor & patch updates” include?

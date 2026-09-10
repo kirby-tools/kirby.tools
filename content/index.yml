@@ -211,7 +211,7 @@ products:
   - title: Kirby Minimap
     license: free
     id: minimap
-    description: A sidebar lists the fields and blocks of the current Panel tab, each one click away. Made for long blueprints.
+    description: A sidebar lists the fields and blocks of the current Panel tab and takes you to the one you click. Made for long blueprints.
     mock: minimap
     links:
       - label: Learn More
