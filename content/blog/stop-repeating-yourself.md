@@ -36,7 +36,7 @@ dropdown:
 
 A skill is a small, named set of instructions you keep in your Kirby config. It has an `id`, a `label`, and the `instructions` themselves:
 
-```php [config.php]
+```php [site/config/config.php]
 'skills' => [
     [
         'id' => 'brand-voice',
