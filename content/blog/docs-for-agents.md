@@ -12,7 +12,7 @@ Everything needed to get it right is on this site. It just wasn't in a form an a
 
 ## Append `.md` to Any Page
 
-Every documentation page, blog post, changelog and license page has a Markdown twin. Same URL, `.md` on the end:
+Every documentation page, blog post, changelog, and license page has a Markdown twin. Same URL, `.md` on the end:
 
 ```bash
 curl https://kirby.tools/docs/content-translator/configuration/global.md

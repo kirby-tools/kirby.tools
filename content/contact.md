@@ -18,13 +18,13 @@ Ask how something works or suggest a feature in [GitHub Discussions](https://git
 ::card{icon="i-ri-github-line" to="https://github.com/kirby-tools/community/issues"}
 
 **Bugs**<br>
-Report a bug in [GitHub Issues](https://github.com/kirby-tools/community/issues). Include the plugin version, the Kirby version and what you expected to happen.
+Report a bug in [GitHub Issues](https://github.com/kirby-tools/community/issues). Include the plugin version, the Kirby version, and what you expected to happen.
 
 ::
 
 ::card{icon="i-ri-mail-open-line" to="mailto:hello@kirby.tools"}
 
-**Licenses, Invoices and Everything Private**<br>
+**Licenses, Invoices, and Everything Private**<br>
 Email [hello@kirby.tools](mailto:hello@kirby.tools) for anything that should not be public – license transfers, invoices, refunds, or a project you would rather not describe in the open.
 
 ::

@@ -8,7 +8,7 @@ Setting up a plugin goes faster when the agent you are working with has read its
 
 ## Any Page as Markdown
 
-Append `.md` to any documentation, blog, changelog or license URL and you get its Markdown source instead of the rendered page:
+Append `.md` to any documentation, blog, changelog, or license URL and you get its Markdown source instead of the rendered page:
 
 ```bash
 curl https://kirby.tools/docs/copilot/getting-started.md

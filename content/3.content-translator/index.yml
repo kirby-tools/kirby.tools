@@ -33,7 +33,7 @@ sections:
       - id: kirbytags
         name: KirbyTags
         title: Links and images survive translation
-        description: In textarea and markdown fields, only the attributes you list, like link text or alt, are translated. URLs, UUIDs and file names stay untouched.
+        description: In textarea and markdown fields, only the attributes you list, like link text or alt, are translated. URLs, UUIDs, and file names stay untouched.
         to: /docs/content-translator/advanced/kirbytags
       - id: view-button
         name: View Button
@@ -46,18 +46,18 @@ sections:
         description: The Languages view shows a completion ring per language and a tree of the pages still missing one. Each language tag opens the page in the language that lacks content.
         to: /docs/content-translator/panel/translation-coverage
         wide: true
-  - title: Automate with the<br> <span class="text-primary">PHP API</span>
+  - title: Automate With the<br> <span class="text-primary">PHP API</span>
     id: php-api
     slot: code
     orientation: horizontal
     reverse: true
-    description: Call the translator on any page from CLI commands, hooks or your own code.
+    description: Call the translator on any page from CLI commands, hooks, or your own code.
     features:
       - title: CLI Commands
         description: Create Kirby CLI commands to batch translate pages.
         icon: i-ri-terminal-box-line
       - title: The Same Pipeline
-        description: Copy, translate and sync content with the calls the Panel uses.
+        description: Copy, translate, and sync content with the calls the Panel uses.
         icon: i-ri-settings-3-line
     links:
       - label: PHP API Reference
@@ -94,8 +94,8 @@ sections:
                 }
             ];
 cta:
-  title: Still scrolling?
-  description: Test the plugin locally on real content. Pay only when you are ready to go live.
+  title: Still Scrolling?
+  description: Test the plugin locally on real content. Pay only when you're ready to go live.
   orientation: horizontal
   links:
     - label: Install & Try for Free

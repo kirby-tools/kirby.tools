@@ -13,7 +13,7 @@ hero:
       to: /docs/headless/getting-started
       size: xl
 sections:
-  - title: Query Content with<br> <span class="text-primary">KQL</span>
+  - title: Query Content With<br> <span class="text-primary">KQL</span>
     id: kql
     slot: code
     orientation: horizontal
@@ -74,22 +74,22 @@ sections:
         icon: i-ri-database-2-line
         to: /docs/headless/usage/kql
       - title: Every page answers as JSON
-        description: Write templates that echo JSON. With global routes on, each page URL returns its template's output, cached per page, language and version, drafts included behind a preview token.
+        description: Write templates that echo JSON. With global routes on, each page URL returns its template's output, cached per page, language, and version, drafts included behind a preview token.
         icon: i-ri-braces-line
         to: /docs/headless/usage/json-templates
-      - title: UUIDs become URLs, sizes and titles
-        description: Call toResolvedBlocks() on a blocks or layout field and image blocks come back with url, width, height, srcset and alt. Add resolvers per block type and field for pages and other files.
+      - title: UUIDs become URLs, sizes, and titles
+        description: Call toResolvedBlocks() on a blocks or layout field and image blocks come back with url, width, height, srcset, and alt. Add resolvers per block type and field for pages and other files.
         icon: i-ri-puzzle-line
         to: /docs/headless/usage/field-methods
       - title: Routes as a chain of middlewares
-        description: Api::createHandler() runs your functions in order. A null continues, an array extends the context, anything else is the response. Token check, language, page resolution and body parsing ship as middlewares.
+        description: Api::createHandler() runs your functions in order. A null continues, an array extends the context, anything else is the response. Token check, language, page resolution, and body parsing ship as middlewares.
         icon: i-ri-terminal-box-line
         to: /docs/headless/advanced/api-builder
       - title: A sitemap with hreflang alternates
         description: The sitemap endpoint lists every indexable page with its URL per language and an x-default entry. Exclude pages by template, by pattern, or per blueprint.
         icon: i-ri-road-map-line
         to: /docs/headless/usage/json-templates#sitemap-endpoint
-  - title: Build Custom Routes with the<br> <span class="text-primary">API Builder</span>
+  - title: Build Custom Routes With the<br> <span class="text-primary">API Builder</span>
     id: api-builder
     slot: code
     orientation: horizontal
@@ -100,7 +100,7 @@ sections:
         description: Chain the token check, language and page resolvers with functions of your own.
         icon: i-ri-stack-line
       - title: Consistent Responses
-        description: Api::createResponse() wraps your data in code, status and result.
+        description: Api::createResponse() wraps your data in code, status, and result.
         icon: i-ri-code-s-slash-line
     links:
       - label: API Builder Reference

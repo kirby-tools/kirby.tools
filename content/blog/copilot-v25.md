@@ -7,7 +7,7 @@ badge:
   label: Release
 ---
 
-The first versions of Kirby Copilot had a limitation I felt every time I used it myself: one field at a time. Open the prompt dialog, generate text for a single writer or textarea field, repeat for the next one. That is not how anyone writes a page. The title, the intro and the meta description are one thought, not three.
+The first versions of Kirby Copilot had a limitation I felt every time I used it myself: one field at a time. Open the prompt dialog, generate text for a single writer or textarea field, repeat for the next one. That is not how anyone writes a page. The title, the intro, and the meta description are one thought, not three.
 
 Versions 2.4 and 2.5 change that.
 
@@ -31,6 +31,6 @@ In practice, Copilot can now generate entire page layouts in your project's own 
 
 ## What This Means
 
-Together, the two change what I use Copilot for. Instead of a paragraph here and there, it drafts a full page in one pass: metadata, body content and custom blocks. Editors start from a draft of the whole page instead of a blank one.
+Together, the two change what I use Copilot for. Instead of a paragraph here and there, it drafts a full page in one pass: metadata, body content, and custom blocks. Editors start from a draft of the whole page instead of a blank one.
 
 Both updates are free for anyone with a v2 license. If you're on v1, check the [Hub](https://hub.kirby.tools) for upgrade options.

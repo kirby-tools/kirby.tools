@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Google Snippet,</span><br> as You Type'
-  description: A Panel section that draws the search result for the page being edited – favicon, site name, URL, title and description – reading the open form rather than the saved content.
+  description: A Panel section that draws the search result for the page being edited – favicon, site name, URL, title, and description – reading the open form rather than the saved content.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line
