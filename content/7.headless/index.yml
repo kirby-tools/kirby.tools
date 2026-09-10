@@ -74,7 +74,7 @@ sections:
         icon: i-ri-puzzle-line
         to: /docs/headless/usage/field-methods
       - title: A sitemap with hreflang alternates
-        description: One endpoint lists every indexable page with its URL per language. Exclude pages by template, by ID, or in the blueprint.
+        description: One endpoint lists every indexable page with its URL per language. Exclude pages by template, by ID, in the blueprint, or with your own check.
         icon: i-ri-road-map-line
         to: /docs/headless/usage/json-templates#sitemap-endpoint
   - title: Build Custom Routes With the<br> <span class="text-primary">API Builder</span>
@@ -85,7 +85,7 @@ sections:
     description: Define API routes with an Express-style middleware pattern. Chain authentication, validation, and response logic.
     features:
       - title: Middleware Support
-        description: "Chain your own functions with the built-in ones: token check, language resolver, and page resolver."
+        description: Mix your own functions with built-in ones that check the token and body and resolve the language, file, and page.
         icon: i-ri-stack-line
       - title: Consistent Responses
         description: Api::createResponse() wraps your data in code, status, and result.

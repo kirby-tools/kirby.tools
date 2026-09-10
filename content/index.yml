@@ -200,7 +200,7 @@ products:
         variant: subtle
     features:
       - title: Live, Before You Save
-        description: Try a title and see the result – the section only reads the form and never saves.
+        description: The snippet follows the title and description fields as you type. The section reads the form and never writes to it.
         icon: i-ri-refresh-line
       - title: Reads Your Meta Fields
         description: Name a title and description field and the snippet takes their values.
@@ -211,7 +211,7 @@ products:
   - title: Kirby Minimap
     license: free
     id: minimap
-    description: A sidebar lists the fields and blocks of the current Panel tab. Click one and the Panel scrolls to it. Made for long blueprints.
+    description: A sidebar lists the fields and blocks of the current Panel tab, each one click away. Made for long blueprints.
     mock: minimap
     links:
       - label: Learn More
