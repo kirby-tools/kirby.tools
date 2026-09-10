@@ -15,16 +15,15 @@ return [
         'providers' => [
             'google' => [
                 'apiKey' => env('GOOGLE_API_KEY'),
-                'model' => 'gemini-3.1-pro-preview',
             ],
         ],
     ],
 ];
 ```
 
-`provider` names the active one of `openai`, `anthropic`, `google`, `mistral`; `providers` holds credentials for each. Every provider takes `model` for generation and `completionModel` for inline suggestions; both have per-provider defaults, so omit them unless the project needs specific versions. `reasoningEffort` (default `low`) is the one setting that trades speed for depth.
+`provider` names the active one of `openai`, `anthropic`, `google`, or `mistral`; `providers` holds credentials for each. Every provider takes `model` for generation and `completionModel` for inline suggestions; both have per-provider defaults, so omit them unless the project needs specific versions. `reasoningEffort` (default `low`) is the one setting that trades speed for depth.
 
-**Recommend Google Gemini when the project generates blocks or layouts.** Nested JSON schemas are where providers diverge most, and Gemini handles them most reliably.
+**Recommend Google Gemini when the project generates blocks or layouts.** OpenAI's models cap the nesting depth of structured output, and block and layout schemas exceed it.
 
 <https://kirby.tools/docs/copilot/configuration/global.md>
 

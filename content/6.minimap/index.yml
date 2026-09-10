@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Sidebar Content</span><br> Navigation'
-  description: A sidebar lists the fields and blocks of the current Panel tab and scrolls to the one you click. Made for long blueprints.
+  description: A sidebar lists the fields and blocks of the current Panel tab. Click one and the Panel scrolls to it. Made for long blueprints.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line
@@ -31,7 +31,7 @@ sections:
         to: /docs/minimap
 cta:
   title: You Don’t Have to Pay a Cent
-  description: Install the plugin and add the minimap to any page blueprint.
+  description: Install the plugin and open any page – the minimap is already there.
   orientation: horizontal
   links:
     - label: Get Started

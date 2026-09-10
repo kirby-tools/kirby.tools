@@ -14,7 +14,7 @@ DeepL and AI translation, in the Panel or from the CLI. One click translates a w
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
-Yoast SEO and readability checks, graded in the Panel. The Yoast SEO v3 engine runs in the editor's browser, with no external service and no data leaving the site.
+Yoast SEO and readability checks, graded in the Panel. The Yoast SEO engine runs in the editor's browser, with no external service and no data leaving the site.
 
 ### 🧭 [Kirby Minimap](https://kirby.tools/minimap)
 

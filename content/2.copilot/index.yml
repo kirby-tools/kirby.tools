@@ -8,7 +8,7 @@ hero:
     icon: i-ri-at-line
     color: neutral
     variant: solid
-  title: Generate with AI<br> in the Kirby Panel
+  title: Generate With AI<br> in the Kirby Panel
   description: Whole layouts from your own blocks, custom blocks included. Refine or extend<br class="hidden lg:block"> the selected text from the toolbar, or take an inline suggestion as you type.
   links:
     - label: Try Copilot Yourself

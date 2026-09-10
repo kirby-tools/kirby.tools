@@ -47,7 +47,7 @@ A render that throws replaces the preview with a **Preview failed** button; the 
 
 Safari refuses to frame the Panel unless the site allows it, and reports a sandbox access violation. Kirby's own `panel.frameAncestors` option opens it:
 
-```php [config.php]
+```php [site/config/config.php]
 return [
     'panel' => [
         'frameAncestors' => true

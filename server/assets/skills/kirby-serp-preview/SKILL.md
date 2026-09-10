@@ -33,7 +33,7 @@ A content key takes a field name, not a query – a `{{ ... }}` there is read li
 
 <https://kirby.tools/docs/serp-preview/configuration.md>
 
-## Favicon, Site Name, and URL Line
+## The Line Above the Title
 
 `faviconUrl`, `siteTitle`, and `siteUrl` accept Kirby queries. `siteUrl` defaults to the URL Kirby runs under, so a staging install sets the production host. The path after it is the page's preview URL path, language prefix included; a blueprint whose `options.preview` is `false` leaves the line at the site URL.
 
