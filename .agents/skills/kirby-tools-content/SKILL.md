@@ -13,7 +13,7 @@ The blog may judge; an adjective still does not replace behavior, and a pet phra
 
 ## Voice
 
-One person speaks on the site, as I – footer, contact page, blog, and every recommendation in a FAQ answer or docs note. Kirby Tools is the brand that person runs; the contact page is the one place that says who I is. A commitment or a disclaimer has no subject: "Every purchase comes with a 30-day money-back guarantee". License, privacy policy and legal notice keep their own voice, and an editor inside a Mock speaks in character.
+One person speaks on the site, as I – footer, contact page, blog, and every recommendation in a FAQ answer or docs note. Kirby Tools is the brand that person runs; the contact page is the one place that says who I is. A commitment or a disclaimer has no subject: "Every purchase comes with a 30-day money-back guarantee". License, privacy policy, and legal notice keep their own voice, and an editor inside a Mock speaks in character.
 
 The person sounds like one: contractions in titles and warm sentences, "you don't have to" where a form says "not required".
 
@@ -21,15 +21,17 @@ The person sounds like one: contractions in titles and warm sentences, "you don'
 
 Terminal punctuation follows form, not place: a sentence takes a period, a noun phrase or fragment takes none. A title is the exception – it ends without a period, though a question or exclamation mark may close it.
 
+A list of three or more takes the serial comma: "generate, translate, and audit".
+
 ## Documentation
 
 A documentation page is built from Nuxt UI Prose components: https://ui.nuxt.com/docs/typography. Read neighbouring pages for shape.
 
-Plain prose is the default. A component earns its place by doing a job no other component on the page is already doing. A configuration guide has one `###` heading per option, then prose, default and example. A reference page – PHP classes, exceptions – is tables and `::field-group`, one sentence per entry.
+Plain prose is the default. A component earns its place by doing a job no other component on the page is already doing. A configuration guide has one `###` heading per option, then prose, default, and example. A reference page – PHP classes, exceptions – is tables and `::field-group`, one sentence per entry.
 
-The documentation states the contract, not the mechanism: what the reader calls – classes, signatures, config keys and defaults, the Plugin's own exceptions – what they observe, and what costs them money or data. Mechanism – the path a value takes, the internal classes, enums and SDK exceptions along it, the arithmetic behind a number – stays in the source. After a cut, `pnpm docs:vanished-facts <base>..<head>` lists every number and identifier the cut removed from a Product's documentation entirely; each one is mechanism, or a fact that goes back.
+The documentation states the contract, not the mechanism: what the reader calls – classes, signatures, config keys and defaults, the Plugin's own exceptions – what they observe, and what costs them money or data. Mechanism – the path a value takes, the internal classes, enums, and SDK exceptions along it, the arithmetic behind a number – stays in the source. After a cut, `pnpm docs:vanished-facts <base>..<head>` lists every number and identifier the cut removed from a Product's documentation entirely; each one is mechanism, or a fact that goes back.
 
-- `::callout` is link-out only and always carries `to=`; advice without a link is `::tip`, `::note` or `::warning`.
+- `::callout` is link-out only and always carries `to=`; advice without a link is `::tip`, `::note`, or `::warning`.
 - `::code-group` holds alternatives for one task; `::tabs` holds axes that are not substitutes.
 - `::steps` numbers an ordered set of three or more. `::accordion` is unused, since folding hides content from search.
 - Code blocks of 30 or more lines go in `::code-collapse`.
