@@ -30,7 +30,7 @@ sections:
       - id: entry-points
         name: View Button & Section
         title: One click from header or section
-        description: A view button opens the report in a dialog. A section keeps it on the page, the last report included, ready to compare before and after.
+        description: A view button opens the report in a dialog. A section keeps it on the page, the last report included.
         to: /docs/seo-audit/configuration/local#view-button-configuration
       - id: keyphrase
         name: Keyphrase Field

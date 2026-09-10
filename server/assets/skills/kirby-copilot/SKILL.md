@@ -65,7 +65,7 @@ buttons:
   status: true
 ```
 
-`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included.
+`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `userPrompt` stay in the blueprint, and a blueprint's `buttons` wins over the option.
 
 `completion: false` stops ghost text appearing on its own while the shortcut still requests one.
 

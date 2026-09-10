@@ -42,7 +42,7 @@ sections:
     type: content-translator
 ```
 
-`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. `systemPrompt` is a section property; the view button ignores it and reads the global `ai.systemPrompt`.
+`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props then come from the global config, and a blueprint's `buttons` wins over the option. `systemPrompt` is a section property; the view button ignores it and reads the global `ai.systemPrompt`.
 
 <https://kirby.tools/docs/content-translator/configuration/local.md>
 

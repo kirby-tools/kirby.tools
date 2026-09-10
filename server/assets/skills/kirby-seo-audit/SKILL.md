@@ -19,7 +19,7 @@ buttons:
   status: true
 ```
 
-`buttons` is an allow-list, so Kirby's defaults for the view have to be named alongside `seo-audit` or they disappear.
+`buttons` is an allow-list, so Kirby's defaults for the view have to be named alongside `seo-audit` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `keyphraseField` stay in the blueprint, and a blueprint's `buttons` wins over the option.
 
 The section renders results inline instead of in a dialog and adds `persisted`; `theme` belongs to the button alone:
 
