@@ -46,14 +46,14 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 
 ## When the Audit Fails
 
-The audit analyzes whatever the model's preview URL returns, so a decoupled frontend is audited by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the audit:
+The audit analyzes the page behind the model's preview URL, so a decoupled frontend is audited by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the audit:
 
 - Kirby in Docker reaching a host-machine frontend: rewrite the URL with `johannschopplich.seo-audit.proxy.urlResolver`, a closure that receives the URL and returns the one to fetch. Return the URL unchanged when it needs no rewrite.
 - Preview URL behind HTTP auth: pass `basicAuth` through `johannschopplich.seo-audit.proxy.params`.
 
 Failures that are not the fetch:
 
-- `options.preview: false` in the blueprint stops the audit with the error that the preview URL is disabled.
+- A missing preview URL stops the audit: `options.preview: false` in the blueprint, or a role without the `pages.preview` or `site.preview` permission.
 - An assessment listed in `assessments` that does not support the page's `lang` aborts the analysis with an error naming the languages it supports; unlisted, it is skipped silently.
 - The browser console always shows the URL the audit starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
 
