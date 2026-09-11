@@ -73,7 +73,7 @@ buttons:
 
 ## Generating Blocks and Layouts
 
-A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the model learns about the block beyond its name. Generated content is appended to the field, never replacing it, and blocks nest one level, so a block inside a nested block is never generated.
+A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the AI model learns about the block beyond its name. Generated content is appended to the field, never replacing it, and blocks nest one level, so a block inside a nested block is never generated.
 
 <https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
 
