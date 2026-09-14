@@ -89,7 +89,7 @@ export const TRANSLATOR_DIALOG_FIELDS = {
     ],
     help: "Content from English will be translated and saved to all selected languages. This may take a few seconds.",
   },
-  provider: {
+  strategyName: {
     type: "toggles",
     label: "Translate with",
     labels: true,
@@ -103,7 +103,7 @@ export const TRANSLATOR_DIALOG_FIELDS = {
 
 export const TRANSLATOR_DIALOG_VALUE = {
   languages: ["de", "es", "fr"],
-  provider: "ai",
+  strategyName: "ai",
 };
 
 export const TRANSLATOR_DIALOG_BUTTONS = [

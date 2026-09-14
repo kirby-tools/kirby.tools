@@ -26,8 +26,8 @@ sections:
     cards:
       - id: batch-translation
         name: Batch Translation
-        title: Pick languages and provider in one dialog
-        description: "In the default language, tick the target languages and choose DeepL or the AI provider Kirby Copilot is set up with. Every translatable field comes with it, nested or not."
+        title: Pick languages and strategy in one dialog
+        description: "In the default language, tick the target languages and choose DeepL or the AI Kirby Copilot is set up with. Every eligible field comes with it, nested or not."
         to: /docs/content-translator/configuration/local#batch
         wide: true
       - id: kirbytags

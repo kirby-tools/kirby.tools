@@ -8,7 +8,7 @@ The site must be multi-language. The plugin translates between Kirby's configure
 
 <https://kirby.tools/docs/content-translator/getting-started/installation.md>
 
-## Which Backend Translates
+## Which Strategy Translates
 
 Set `strategy` explicitly. Without it the plugin uses a configured `translateFn` if one exists and DeepL otherwise; `translateFn` is deprecated and goes away in v4.
 
@@ -50,7 +50,7 @@ sections:
 
 The defaults translate every text-like field. Four settings narrow the set, globally in `config.php` and per blueprint, and they compose rather than override:
 
-- `fieldTypes` – which field **types** participate. A container type opens its contents but does not translate them: a text field inside a blocks field needs both `blocks` and `text` in the list.
+- `fieldTypes` – which field **types** participate. A container type opens its contents but does not translate them: a text field inside a blocks field needs both `blocks` and `text` in the list. Kirby's `code` block is never translated.
 - `includeFields` and `excludeFields` – which **top-level** field names participate. A field nested in a block, structure, layout, or object is reached through its parent, never by its own name. Both still respect `fieldTypes`.
 - `translate: false` in a field's blueprint wins over all of the above. When a field refuses to translate and the config looks right, that flag is the first thing to check.
 - `kirbyTags` – excluded by default. Opt in per tag type, naming only the attributes that carry prose: `link: [text, title]`, `image: [alt, title, caption]`.
@@ -78,6 +78,8 @@ return [
 - The three hooks fire for DeepL, custom strategies, the CLI, and `Translator` calls. AI translation started in the Panel runs in the browser and never reaches them, so terminology or logging wired up in a hook skips it. <https://kirby.tools/docs/content-translator/advanced/hooks.md>
 - The coverage dashboard is Kirby 5 only and reads `fieldTypes`, `includeFields`, and `excludeFields` from `config.php` alone; blueprint narrowing does not change the rings. <https://kirby.tools/docs/content-translator/panel/translation-coverage.md>
 - Batch translation runs two languages in parallel. On provider rate-limit errors set `batchConcurrency` to `1`. <https://kirby.tools/docs/content-translator/configuration/global.md#batchconcurrency>
+- A batch run skips a language with unsaved changes and stops before translating while another user edits the model. A field that fails blueprint validation after translation is still saved, and the report names it. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
+- `Kirby found no blueprint for this content` means the blueprint lookup failed: the blueprint filename must match the template exactly, including case. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
 - A Kirby language whose code DeepL cannot name throws `LogicException`; map it with `targetLanguageOverrides`. <https://kirby.tools/docs/content-translator/providers/deepl.md>
 - `new DeepL()` at the top level of `config.php` throws `AuthException: Missing DeepL API key` even with the key set, because the client reads the key as it is built; a bare `new DeepLStrategy()` resolves its client lazily and is safe there. Build a custom client inside Kirby's `ready` callback. <https://kirby.tools/docs/content-translator/php-classes/strategies/deepl-strategy.md>
 
