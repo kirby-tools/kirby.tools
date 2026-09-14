@@ -3,7 +3,7 @@ description: Kirby CMS plugins for editors and developers. AI content generation
 navigation: false
 hero:
   title: 'Kirby Plugins Your Editors<br> <span class="text-primary">Will Thank You For</span>'
-  description: Because they generate, translate, and audit content without leaving the Panel.<br class="hidden md:inline"> You get a PHP API for hooks and CLI, plus a headless toolkit.
+  description: They generate, translate, and audit content without leaving the Panel.<br class="hidden md:inline"> You get a PHP API for hooks and CLI commands.
 testimonials:
   title: Trusted by Teams Worldwide
   items:
