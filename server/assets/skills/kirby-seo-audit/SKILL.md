@@ -44,6 +44,12 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 
 <https://kirby.tools/docs/seo-audit/configuration/local.md>
 
+## Keeping the Rating Current
+
+Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore` to put the pages that need work first. Publishing the page again marks the rating stale until the next analysis. `auto: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.auto` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
+
+<https://kirby.tools/docs/seo-audit/guide/ratings.md>
+
 ## When the Audit Fails
 
 The audit analyzes the page behind the model's preview URL, so a decoupled frontend is audited by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the audit:

@@ -14,7 +14,11 @@ const VIEW_BUTTONS: PanelViewButton[] = [
           layout="collapsed"
           variant="filled"
           :buttons="[
-            { icon: 'seo-audit-analyze', text: 'Analyze', theme: 'positive' },
+            {
+              icon: 'seo-audit-analyze',
+              text: 'Analyze',
+              theme: 'positive-icon',
+            },
           ]"
         />
       </PanelSeoAuditSectionBody>

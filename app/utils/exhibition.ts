@@ -45,7 +45,7 @@ export const PLUGIN_VIEW_BUTTONS: Partial<
   "seo-audit": {
     text: "SEO Audit",
     icon: "seo-audit-analyze",
-    theme: "positive",
+    theme: "positive-icon",
     responsive: true,
   },
 };
