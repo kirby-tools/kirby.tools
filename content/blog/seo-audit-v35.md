@@ -1,7 +1,7 @@
 ---
 title: Kirby SEO Audit v3.5 – The Verdict Before the Report
 description: The analysis reads your unsaved changes, sums them up in two lights, and leaves a rating on every page it has seen.
-date: "2026-09-15"
+date: "2026-09-16"
 product: seo-audit
 badge:
   label: Release
@@ -22,6 +22,28 @@ The report opens with a light for SEO and one for readability, the same way Yoas
 ## A Rating on Every Page
 
 Every analysis leaves a rating behind, per page and language. The view button shows it as a colored dot, so the header tells you where a page stands before you open anything. Publish the page again and the dot gets an exclamation mark: the rating is stale, older than the content it describes.
+
+::::panel-mock
+:::panel-view-header
+---
+title: Our Studio
+buttons:
+  - text: SEO Audit
+    icon: seo-audit-analyze
+    theme: positive-icon
+    responsive: true
+    badge:
+      theme: negative
+      text: "!"
+  - icon: window
+  - icon: cog
+    dropdown: true
+  - text: Public
+    icon: status-listed
+    theme: positive-icon
+---
+:::
+::::
 
 The rating is available in blueprints and templates too. A pages section can show it per page and sort by it, which turns a section into a to-do list of the pages that need work:
 
