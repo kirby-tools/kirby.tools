@@ -46,7 +46,7 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 
 ## Keeping the Rating Current
 
-Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work. Publishing the page again marks the rating stale until the next analysis. `auto: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.auto` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
+Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work. Publishing the page again marks the rating stale until the next analysis. `analyzeOn: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.analyzeOn` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
 
 <https://kirby.tools/docs/seo-audit/guide/ratings.md>
 

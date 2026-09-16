@@ -78,7 +78,7 @@ buttons:
 :::
 ::::
 
-If you'd rather not click at all, set `auto: publish`. The analysis then runs on its own after you publish your changes, without a dialog or a notification, and the rating keeps up with the content.
+If you'd rather not click at all, set `analyzeOn: publish`. The analysis then runs on its own after you publish your changes, without a dialog or a notification, and the rating keeps up with the content.
 
 The rating is available in blueprints and templates too. A pages section can show it per page and sort by it, which turns a section into a to-do list of the pages that need work:
 
