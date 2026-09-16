@@ -21,6 +21,8 @@ const productId = computed(() => route.params.product as ExhibitionProductId);
 const format = computed<SocialCardFormat>(() =>
   route.query.format === "4x3" ? "4x3" : "og",
 );
+
+useSeoMeta({ title: "Social Card" });
 </script>
 
 <template>
