@@ -33,7 +33,7 @@ sections:
       - id: inline-suggestions
         name: Inline Suggestions
         title: Keep typing, Copilot finishes the sentence
-        description: Pause in a writer field and grey ghost text picks up the sentence. Tab keeps it, anything else drops it.
+        description: Pause in a writer field and gray ghost text picks up the sentence. Tab keeps it, anything else drops it.
         to: /docs/copilot/usage/inline-suggestions
       - id: toolbar-buttons
         name: Toolbar Buttons
