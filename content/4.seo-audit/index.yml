@@ -21,11 +21,11 @@ sections:
   - title: Know What to Fix<br class="hidden lg:block"> <span class="text-primary">Before You Publish</span>
     slot: feature-cards
     cards:
-      - id: scores
-        name: SEO & Readability Scores
-        title: Every check graded, every fix named
-        description: Results land in Good, OK, Needs improvement, and Feedback. Each line links to the matching yoast.com article or states the fix right there.
-        to: /docs/seo-audit/getting-started#analysis-categories
+      - id: ratings
+        name: SEO & Readability Ratings
+        title: One light per category, one dot on the button
+        description: Every result lands in Good, OK, Needs improvement, or Feedback with the fix named. The report rates SEO and readability, and the rating goes stale once the published content changes.
+        to: /docs/seo-audit/guide/ratings
         wide: true
       - id: entry-points
         name: View Button & Section
@@ -46,7 +46,7 @@ sections:
         name: Local Analysis
         title: No service, no API key, no data leaving
         description: The Yoast engine ships with the plugin and analyzes the page's preview HTML right in the browser.
-        to: /docs/seo-audit/getting-started#key-features
+        to: /docs/seo-audit/getting-started#features
 cta:
   title: Read the Report Before Google Does
   description: Install the plugin and run a report on a page you already have.
