@@ -345,6 +345,9 @@ export default defineNuxtConfig({
     },
     // SEO Audit
     "/docs/seo-audit": { redirect: "/docs/seo-audit/getting-started" },
+    "/docs/seo-audit/guide/audit-url": {
+      redirect: "/docs/seo-audit/guide/preview-url",
+    },
     // Other plugins
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/headless": { redirect: "/docs/headless/getting-started" },

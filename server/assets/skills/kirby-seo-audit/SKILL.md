@@ -52,7 +52,7 @@ Each analysis leaves a rating per page and language: a dot on the view button, `
 
 ## When the Analysis Fails
 
-The analysis reads the page behind the model's preview URL, so a decoupled frontend is analyzed by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the analysis:
+The analysis reads the page behind the model's preview URL, so a decoupled frontend is analyzed by pointing the blueprint's `options.preview` at it. While the form has unsaved changes the URL carries Kirby's `_version=changes` and `_token` query, a custom preview URL included; a frontend that ignores them renders the published content. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the analysis:
 
 - Kirby in Docker reaching a host-machine frontend: rewrite the URL with `johannschopplich.seo-audit.proxy.urlResolver`, a closure that receives the URL and returns the one to fetch. Return the URL unchanged when it needs no rewrite.
 - Preview URL behind HTTP auth: pass `basicAuth` through `johannschopplich.seo-audit.proxy.params`.
@@ -64,4 +64,4 @@ Failures that are not the fetch:
 - The browser console always shows the URL the analysis starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
 
 <https://kirby.tools/docs/seo-audit/configuration/global.md>
-<https://kirby.tools/docs/seo-audit/guide/audit-url.md>
+<https://kirby.tools/docs/seo-audit/guide/preview-url.md>
