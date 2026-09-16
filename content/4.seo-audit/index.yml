@@ -1,5 +1,5 @@
 title: Kirby SEO Audit – Yoast-Powered SEO Plugin for Kirby CMS
-description: SEO analysis plugin for Kirby CMS powered by Yoast SEO. Content, readability, and keyword assessments in the Kirby Panel.
+description: SEO analysis plugin for Kirby CMS powered by Yoast SEO. Content, readability, and keyphrase assessments in the Kirby Panel.
 navigation.icon: i-ri-seo-line
 hero:
   orientation: horizontal
@@ -8,7 +8,7 @@ hero:
     to: /docs/seo-audit/guide/assessments
     icon: i-ri-wordpress-fill
   title: '<span class="text-primary">Yoast SEO Analysis</span><br> in the Panel'
-  description: Kirby SEO Audit runs the Yoast SEO engine on the page you are editing. Every check comes with a grade and the fix it asks for – before the page goes live.
+  description: Kirby SEO Audit runs the Yoast SEO engine on the page you are editing. Every result comes with its light and the fix it asks for – before the page goes live.
   links:
     - label: Run Your First Audit
       trailingIcon: i-ri-arrow-right-line
@@ -34,18 +34,18 @@ sections:
         to: /docs/seo-audit/configuration/local#view-button-configuration
       - id: keyphrase
         name: Keyphrase Field
-        title: Grade the page against its keyword
-        description: Editors type the keyword into an ordinary text field. Keyword checks join the report, from density and distribution to the keyword in title, slug, meta description, and subheadings.
+        title: Rate the page against its keyphrase
+        description: Editors type the keyphrase into an ordinary text field. Keyphrase checks join the report, from density and distribution to the keyphrase in title, slug, meta description, and subheadings.
         to: /docs/seo-audit/configuration/local#keyphrasefield
       - id: languages
         name: Language-Specific Features
-        title: Graded in the page's own language
+        title: Rated in the page's own language
         description: Passive voice, transition words, and sentence length follow German, Dutch, or Spanish rules, 22 languages in all, with nothing to configure.
         to: /docs/seo-audit/guide/assessments#language-specific-features
       - id: local-analysis
         name: Local Analysis
         title: No service, no API key, no data leaving
-        description: The Yoast engine ships with the plugin and grades the page's preview HTML right in the browser.
+        description: The Yoast engine ships with the plugin and analyzes the page's preview HTML right in the browser.
         to: /docs/seo-audit/getting-started#key-features
 cta:
   title: Read the Report Before Google Does

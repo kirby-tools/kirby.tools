@@ -104,7 +104,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby SEO Audit",
     label: "SEO Audit",
     description: "Yoast SEO analysis in the Panel",
-    tagline: "Yoast SEO and readability checks, graded in the Panel",
+    tagline: "Yoast SEO and readability analysis, rated in the Panel",
     icon: "i-ri-seo-line",
     license: "commercial",
     configKey: "johannschopplich.seo-audit",
@@ -121,9 +121,9 @@ const PRODUCT_REGISTRY = {
       "kirby panel seo",
     ],
     notFor:
-      "Rendering meta tags in the frontend – it audits the output, it does not produce it.",
+      "Rendering meta tags in the frontend – it analyzes the output, it does not produce it.",
     skillDescription:
-      "Configure Kirby SEO Audit, which scores a rendered page against a keyphrase inside the Panel. Use when adding the audit button or section to a blueprint, wiring the keyphrase and synonyms, keeping the rating current after publishing, or when the audit cannot fetch the page or aborts on an assessment.",
+      "Configure Kirby SEO Audit, which analyzes the rendered page inside the Panel and rates it. Use when adding the view button or section to a blueprint, wiring the keyphrase and synonyms, keeping the rating current after publishing, or when the analysis cannot fetch the page or aborts on an assessment.",
   },
   "live-preview": {
     name: "Kirby Live Preview",

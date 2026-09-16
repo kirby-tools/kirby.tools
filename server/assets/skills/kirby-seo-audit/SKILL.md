@@ -46,22 +46,22 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 
 ## Keeping the Rating Current
 
-Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore` to put the pages that need work first. Publishing the page again marks the rating stale until the next analysis. `auto: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.auto` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
+Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work. Publishing the page again marks the rating stale until the next analysis. `auto: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.auto` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
 
 <https://kirby.tools/docs/seo-audit/guide/ratings.md>
 
-## When the Audit Fails
+## When the Analysis Fails
 
-The audit analyzes the page behind the model's preview URL, so a decoupled frontend is audited by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the audit:
+The analysis reads the page behind the model's preview URL, so a decoupled frontend is analyzed by pointing the blueprint's `options.preview` at it. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the analysis:
 
 - Kirby in Docker reaching a host-machine frontend: rewrite the URL with `johannschopplich.seo-audit.proxy.urlResolver`, a closure that receives the URL and returns the one to fetch. Return the URL unchanged when it needs no rewrite.
 - Preview URL behind HTTP auth: pass `basicAuth` through `johannschopplich.seo-audit.proxy.params`.
 
 Failures that are not the fetch:
 
-- A missing preview URL stops the audit: `options.preview: false` in the blueprint, or a role without the `pages.preview` or `site.preview` permission.
+- A missing preview URL stops the analysis: `options.preview: false` in the blueprint, or a role without the `pages.preview` or `site.preview` permission.
 - An assessment listed in `assessments` that does not support the page's `lang` aborts the analysis with an error naming the languages it supports; unlisted, it is skipped silently.
-- The browser console always shows the URL the audit starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
+- The browser console always shows the URL the analysis starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
 
 <https://kirby.tools/docs/seo-audit/configuration/global.md>
 <https://kirby.tools/docs/seo-audit/guide/audit-url.md>

@@ -13,7 +13,7 @@ Version 3.5 changes both.
 
 ## Unsaved Changes
 
-The analysis now reads what your form shows. Edit the intro, click the button, and the report grades the intro you just wrote. The report says which version it looked at – "Unsaved changes" or "Published version" – so there's no guessing.
+The analysis now reads what your form shows. Edit the intro, click the button, and the report rates the intro you just wrote. The report says which version it looked at – "Unsaved changes" or "Published version" – so there's no guessing.
 
 ## Two Lights
 
