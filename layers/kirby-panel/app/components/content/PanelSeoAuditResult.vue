@@ -1,7 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-  report: PanelSeoAuditResultEntry[];
+  results: PanelSeoAuditResults;
+  ratings?: PanelSeoAuditRatings;
   title?: string;
+  version?: PanelSeoAuditContentVersion;
+  timestamp?: string;
 }>();
 
 const RATING_LABEL: Record<PanelSeoAuditRating, string> = {
@@ -17,30 +20,37 @@ const RATING_BADGE_COLOR_MAP: Partial<Record<PanelSeoAuditRating, string>> = {
   bad: "red",
 };
 
-const RATING_COLOR_MAP: Record<PanelSeoAuditRating, string> = {
-  good: "green",
-  ok: "orange",
-  bad: "red",
-  feedback: "gray",
-};
-
 const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 
-const groups = computed(() =>
-  Object.keys(RATING_LABEL)
+const groups = computed(() => {
+  const items = Object.values(props.results).flat();
+
+  return Object.keys(RATING_LABEL)
     .map((rating) => ({
       rating: rating as PanelSeoAuditRating,
-      items: props.report.filter((item) => item.rating === rating),
+      items: items.filter((item) => item.rating === rating),
     }))
-    .filter((group) => group.items.length > 0),
-);
+    .filter((group) => group.items.length > 0);
+});
 </script>
 
 <template>
   <div class="panel-seo-audit-result">
-    <k-text v-if="title" class="mb-(--spacing-4)">
-      <h2>{{ title }}</h2>
-    </k-text>
+    <div v-if="title" class="mb-(--spacing-6) flex items-start justify-between">
+      <k-text>
+        <h2>{{ title }}</h2>
+        <PanelSeoAuditReportRatings
+          v-if="ratings"
+          :ratings="ratings"
+          class="mt-(--spacing-3)"
+        />
+      </k-text>
+    </div>
+    <PanelSeoAuditReportRatings
+      v-else-if="ratings"
+      :ratings="ratings"
+      class="mb-(--spacing-3)"
+    />
 
     <k-text
       class="pb-(--spacing-2) [&>div+div]:mt-[var(--spacing-4)]"
@@ -51,7 +61,9 @@ const groups = computed(() =>
       }"
     >
       <div v-for="(group, index) in groups" :key="group.rating">
-        <div class="mb-(--spacing-2) inline-flex items-center gap-1.5">
+        <div
+          class="mb-(--spacing-2) inline-flex items-center gap-(--spacing-2)"
+        >
           <h3
             class="text-[length:var(--text-font-size)]/[var(--text-line-height)] text-[color:var(--color-text)]"
           >
@@ -71,11 +83,9 @@ const groups = computed(() =>
           :key="itemIndex"
           class="flex items-start gap-(--spacing-2)"
         >
-          <div
-            class="mt-(--spacing-1) size-3 shrink-0 rounded-full"
-            :style="{
-              backgroundColor: `var(--color-${RATING_COLOR_MAP[group.rating]}-600)`,
-            }"
+          <PanelSeoAuditRatingStatus
+            :rating="group.rating"
+            class="mt-(--spacing-1) size-(--spacing-3)"
           />
           <div v-html="replaceTrailingExclamation(item.text)" />
         </div>
@@ -83,6 +93,13 @@ const groups = computed(() =>
         <hr v-if="index < groups.length - 1" class="my-(--spacing-4)" />
       </div>
     </k-text>
+
+    <p
+      v-if="timestamp"
+      class="mt-(--spacing-4) text-[color:var(--color-text-dimmed)]"
+    >
+      <PanelSeoAuditReportMeta :version="version" :timestamp="timestamp" />
+    </p>
   </div>
 </template>
 

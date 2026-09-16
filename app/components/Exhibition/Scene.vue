@@ -86,7 +86,10 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       <PanelDialog v-else-if="productId === 'seo-audit'" size="large">
         <PanelSeoAuditResult
           title="SEO & Readability Scores"
-          :report="SEO_REPORT"
+          :ratings="SEO_RATINGS"
+          :results="SEO_RESULTS"
+          version="changes"
+          timestamp="2026-09-01T08:40"
         />
       </PanelDialog>
     </template>

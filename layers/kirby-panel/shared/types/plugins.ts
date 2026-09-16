@@ -1,12 +1,28 @@
 import type { PanelDropdownOption, PanelPicklistOption } from "./kirby";
 
 // #region SEO Audit
+export type PanelSeoAuditCategory = "seo" | "readability";
+
 export type PanelSeoAuditRating = "good" | "ok" | "bad" | "feedback";
+
+export type PanelSeoAuditCategoryRating = "good" | "ok" | "bad" | "none";
+
+export type PanelSeoAuditContentVersion = "latest" | "changes";
 
 export interface PanelSeoAuditResultEntry {
   rating: PanelSeoAuditRating;
   text: string;
 }
+
+export type PanelSeoAuditResults = Record<
+  PanelSeoAuditCategory,
+  PanelSeoAuditResultEntry[]
+>;
+
+/** A category without results has no score. */
+export type PanelSeoAuditRatings = Partial<
+  Record<PanelSeoAuditCategory, { rating: PanelSeoAuditCategoryRating }>
+>;
 // #endregion
 
 // #region Content Translator

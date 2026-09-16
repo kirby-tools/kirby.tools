@@ -47,6 +47,7 @@ export const PLUGIN_VIEW_BUTTONS: Partial<
     icon: "seo-audit-analyze",
     theme: "positive-icon",
     responsive: true,
+    badge: { theme: "negative" },
   },
 };
 
@@ -111,24 +112,33 @@ export const TRANSLATOR_DIALOG_BUTTONS = [
   { icon: "translate", text: "Translate", theme: "positive" },
 ];
 
-export const SEO_REPORT: PanelSeoAuditResultEntry[] = [
-  {
-    rating: "good",
-    text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
-  },
-  {
-    rating: "good",
-    text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
-  },
-  {
-    rating: "ok",
-    text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
-  },
-  {
-    rating: "bad",
-    text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
-  },
-];
+export const SEO_RATINGS: PanelSeoAuditRatings = {
+  seo: { rating: "bad" },
+  readability: { rating: "good" },
+};
+
+export const SEO_RESULTS: PanelSeoAuditResults = {
+  seo: [
+    {
+      rating: "good",
+      text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
+    },
+    {
+      rating: "ok",
+      text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
+    },
+    {
+      rating: "bad",
+      text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
+    },
+  ],
+  readability: [
+    {
+      rating: "good",
+      text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
+    },
+  ],
+};
 
 // The Languages view of the exhibition site. English is the default language and gets no ring.
 export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =

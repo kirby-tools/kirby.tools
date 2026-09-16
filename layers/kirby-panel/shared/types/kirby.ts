@@ -18,6 +18,7 @@ export interface PanelViewButtonProps {
   icon?: string;
   theme?: string;
   responsive?: boolean;
+  badge?: { theme?: string; text?: string };
   /** Kirby's caret, on a button whose dropdown the mock leaves closed. */
   dropdown?: boolean;
   /** The options of the one dropdown a mock shows open under the button. */
