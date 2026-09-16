@@ -66,7 +66,11 @@ const isWide = computed(() => props.format === "og");
         class="relative h-full overflow-hidden rounded-t-[8px] mask-[linear-gradient(#000_0_0)]"
       >
         <div class="h-full" :style="{ zoom: isWide ? 1 : 1.4 }">
-          <ExhibitionScene :product-id="productId" theme="light" />
+          <ExhibitionScene
+            :product-id="productId"
+            should-hide-bad-results
+            theme="light"
+          />
         </div>
         <div
           class="absolute inset-x-0 bottom-0 h-14 bg-linear-to-b from-transparent to-black/50"

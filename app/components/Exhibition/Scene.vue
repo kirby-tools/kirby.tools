@@ -3,6 +3,7 @@ import type { ExhibitionProductId } from "#shared/exhibition";
 
 const props = defineProps<{
   productId: ExhibitionProductId;
+  shouldHideBadResults?: boolean;
 }>();
 
 const hasDialog = computed(() =>
@@ -11,10 +12,32 @@ const hasDialog = computed(() =>
 
 const viewButtons = computed<PanelViewButton[]>(() => {
   const pluginButton = PLUGIN_VIEW_BUTTONS[props.productId];
-  return pluginButton
-    ? [pluginButton, ...KIRBY_VIEW_BUTTONS]
-    : KIRBY_VIEW_BUTTONS;
+  if (!pluginButton) return KIRBY_VIEW_BUTTONS;
+
+  if (props.shouldHideBadResults && props.productId === "seo-audit") {
+    return [
+      { ...pluginButton, badge: { theme: "notice" } },
+      ...KIRBY_VIEW_BUTTONS,
+    ];
+  }
+
+  return [pluginButton, ...KIRBY_VIEW_BUTTONS];
 });
+
+const seoRatings = computed<PanelSeoAuditRatings>(() =>
+  props.shouldHideBadResults
+    ? { ...SEO_RATINGS, seo: { rating: "ok" } }
+    : SEO_RATINGS,
+);
+
+const seoResults = computed<PanelSeoAuditResults>(() =>
+  props.shouldHideBadResults
+    ? {
+        ...SEO_RESULTS,
+        seo: SEO_RESULTS.seo.filter((result) => result.rating !== "bad"),
+      }
+    : SEO_RESULTS,
+);
 </script>
 
 <template>
@@ -86,8 +109,8 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       <PanelDialog v-else-if="productId === 'seo-audit'" size="large">
         <PanelSeoAuditResult
           title="SEO & Readability Scores"
-          :ratings="SEO_RATINGS"
-          :results="SEO_RESULTS"
+          :ratings="seoRatings"
+          :results="seoResults"
           version="changes"
           timestamp="2026-09-01T08:40"
         />
