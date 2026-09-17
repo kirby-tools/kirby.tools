@@ -236,8 +236,6 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
-    // Copied, because the module pushes its own entries onto the array.
-    exclude: [...UNLISTED_PATHS],
   },
 
   ogImage: {
@@ -298,7 +296,6 @@ export default defineNuxtConfig({
         { headers: { "Cache-Control": "public, max-age=604800" } },
       ]),
     ),
-    "/license": { prerender: true },
     ...Object.fromEntries(
       UNLISTED_PATHS.map((path) => [path, { prerender: true, robots: false }]),
     ),
@@ -364,7 +361,6 @@ export default defineNuxtConfig({
     // Other plugins
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
     "/docs/headless": { redirect: "/docs/headless/getting-started" },
-    "/docs/headless/getting-started": { prerender: true },
   },
 
   nitro: {
@@ -373,7 +369,6 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         "/robots.txt",
-        "/sitemap.xml",
         "/sitemap.md",
         "/.well-known/agent-skills/index.json",
       ],
