@@ -72,7 +72,7 @@ defineOgImage("Default", {
       <template #headline>
         <UBadge
           v-if="page.hero.headline"
-          :as="NuxtLink"
+          :as="page.hero.headline.to ? NuxtLink : 'span'"
           :label="page.hero.headline.label"
           :icon="
             isObject(page.hero.headline.icon)
@@ -157,7 +157,7 @@ defineOgImage("Default", {
         <template #headline>
           <UBadge
             v-if="product.headline"
-            :as="NuxtLink"
+            :as="product.headline.to ? NuxtLink : 'span'"
             :label="product.headline.label"
             :icon="
               isObject(product.headline.icon)

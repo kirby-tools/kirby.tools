@@ -132,8 +132,8 @@ export default defineNuxtConfig({
         }
       }
     },
-    // The crawler only reads `x-nitro-prerender` off HTML responses, so the
-    // skill files – Markdown below a JSON index – have to be named up front.
+    // The crawler reads `x-nitro-prerender` only off HTML responses, so the
+    // Markdown skill files below the JSON index are listed up front.
     "prerender:routes": async function ({ routes }) {
       const skillsDir = join(import.meta.dirname, "server/assets/skills");
       const entries = await readdir(skillsDir, {
@@ -155,7 +155,7 @@ export default defineNuxtConfig({
     title: "Kirby Tools",
     description:
       "Plugins for Kirby CMS: AI content generation, translation, SEO auditing, Panel navigation, and a headless API toolkit.",
-    // Turns off `@nuxt/content`'s `/raw/**` route in favor of ours.
+    // Our own middleware serves the raw Markdown instead of `@nuxt/content`'s `/raw/**` route.
     contentRawMarkdown: false,
     full: {
       title: "Kirby Tools Full Documentation",
@@ -178,7 +178,7 @@ export default defineNuxtConfig({
         contentFilters: [
           {
             // No slash before the wildcard, so a flat documentation tree keeps
-            // its index page at `/docs/<id>` alongside the nested pages.
+            // its index page at `/docs/<id>`.
             field: "path",
             operator: "LIKE" as const,
             value: `/docs/${product.id}%`,
@@ -236,7 +236,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     zeroRuntime: true,
-    // Duplicated, because the module pushes its own entries onto the array.
+    // Copied, because the module pushes its own entries onto the array.
     exclude: [...UNLISTED_PATHS],
   },
 

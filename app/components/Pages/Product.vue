@@ -42,7 +42,7 @@ onMounted(() => {
       <template #headline>
         <UBadge
           v-if="page.hero.headline"
-          :as="NuxtLink"
+          :as="page.hero.headline.to ? NuxtLink : 'span'"
           :label="page.hero.headline.label"
           :icon="
             isObject(page.hero.headline.icon)
