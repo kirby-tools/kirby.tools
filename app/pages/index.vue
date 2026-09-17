@@ -194,7 +194,10 @@ defineOgImage("Default", {
         <span v-html="page.cta.title" />
       </template>
 
-      <slot name="cta-image" />
+      <Illustration
+        name="partnershapes-13"
+        class="w-1/3 max-lg:mt-4 lg:mx-auto lg:w-2/5"
+      />
     </UPageCTA>
   </div>
 </template>

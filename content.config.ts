@@ -126,10 +126,8 @@ export default defineContentConfig({
           }),
         ),
         cta: createBaseSchema().extend({
+          orientation: orientationEnum.optional(),
           links: z.array(createLinkSchema()),
-          icon: z.object({
-            name: z.string().nonempty(),
-          }),
         }),
       }),
     }),

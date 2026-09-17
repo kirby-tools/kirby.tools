@@ -292,10 +292,9 @@ products:
 cta:
   title: Custom Plugin Development
   description: I build Kirby plugins, most of them for the Panel. Need one for your project? Drop me a line.
+  orientation: horizontal
   links:
     - label: Get in Touch
       icon: i-ri-mail-open-line
       to: mailto:hello@kirby.tools
       variant: subtle
-  icon:
-    name: i-ri-code-s-slash-line

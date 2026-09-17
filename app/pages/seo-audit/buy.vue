@@ -30,7 +30,7 @@ useSeoMeta({
 <template>
   <PagesBuy :page="page!">
     <template #image-pricing>
-      <IllustrationLuckyUnlucky1 class="mx-auto w-2/3" />
+      <Illustration name="lucky-unlucky-1-stickman" class="mx-auto w-2/3" />
     </template>
   </PagesBuy>
 </template>

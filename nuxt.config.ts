@@ -60,6 +60,10 @@ export default defineNuxtConfig({
     },
   },
 
+  $production: {
+    ignore: ["app/pages/illustrations.vue"],
+  },
+
   icon: {
     clientBundle: {
       // Code block icons derive from the info string at runtime, so no scan finds them.

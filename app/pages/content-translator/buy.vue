@@ -37,7 +37,7 @@ defineOgImage("Default", {
 <template>
   <PagesBuy :page="page!">
     <template #image-pricing>
-      <IllustrationPartnershapes22 class="mx-auto w-2/3" />
+      <Illustration name="partnershapes-22" class="mx-auto w-2/3" />
     </template>
   </PagesBuy>
 </template>

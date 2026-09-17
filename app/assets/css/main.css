@@ -7,6 +7,12 @@
 
 :root {
   --ui-radius: 0;
+
+  --illustration-ink: var(--ui-text-highlighted);
+  --illustration-paper: var(--ui-bg);
+  --illustration-highlight: var(--ui-text-dimmed);
+  --illustration-primary: var(--ui-color-primary-300);
+  --illustration-accent: var(--color-pumpkin-200);
 }
 
 @theme static {
@@ -68,4 +74,6 @@
 
 .dark {
   --ui-bg: var(--ui-color-neutral-950);
+
+  --illustration-primary: var(--ui-color-primary-400);
 }

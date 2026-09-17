@@ -63,7 +63,9 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
         v-if="$slots['image-pricing']"
         class="lg:bg-primary-500 dark:lg:bg-primary-600 flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:p-12"
       >
-        <div class="max-lg:hidden">
+        <div
+          class="[--illustration-ink:var(--ui-color-neutral-900)] max-lg:hidden"
+        >
           <slot name="image-pricing" />
         </div>
 

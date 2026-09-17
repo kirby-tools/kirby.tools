@@ -47,7 +47,10 @@ useSeoMeta({
     </template>
 
     <template #cta-image>
-      <IllustrationPartnershapes7 class="w-1/3 max-lg:mt-4 lg:mx-auto" />
+      <Illustration
+        name="partnershapes-7"
+        class="w-1/3 max-lg:mt-4 lg:mx-auto"
+      />
     </template>
   </PagesProduct>
 </template>

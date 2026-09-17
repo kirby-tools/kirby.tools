@@ -17,13 +17,11 @@ const { navigation, files, isLoading } = useContentSearchData();
   <div>
     <AppHeader />
 
-    <UMain>
-      <UContainer>
-        <UPage>
-          <UError :error="error" />
-        </UPage>
-      </UContainer>
-    </UMain>
+    <UError :error="error" class="px-4" :ui="{ leading: 'mb-8' }">
+      <template #leading>
+        <Illustration name="partnershapes-16" class="w-48 sm:w-60" />
+      </template>
+    </UError>
 
     <AppFooter />
 
