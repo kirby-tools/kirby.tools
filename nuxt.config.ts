@@ -123,6 +123,15 @@ export default defineNuxtConfig({
   },
 
   hooks: {
+    // The entry chunk imports every illustration lazily, so each page would
+    // prefetch all of them.
+    "build:manifest": function (manifest) {
+      for (const chunk of Object.values(manifest)) {
+        if (chunk.src?.startsWith("assets/illustrations/")) {
+          chunk.prefetch = false;
+        }
+      }
+    },
     // The crawler only reads `x-nitro-prerender` off HTML responses, so the
     // skill files – Markdown below a JSON index – have to be named up front.
     "prerender:routes": async function ({ routes }) {
