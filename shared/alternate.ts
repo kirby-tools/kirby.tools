@@ -5,12 +5,7 @@ import { isProductId, PRODUCTS } from "./products";
 const SUFFIX = ".md";
 
 /** Prose outside the docs and blog trees that agents get asked about, minus the legal boilerplate. */
-const PROSE_PATHS = new Set([
-  "/ai",
-  "/license",
-  "/license/zero-one-edition",
-  "/license-compatibility",
-]);
+const PROSE_PATHS = new Set(["/ai", "/license", "/license-compatibility"]);
 
 export type AlternateCollection = "docs" | "posts" | "pages";
 

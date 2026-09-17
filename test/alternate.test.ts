@@ -23,7 +23,7 @@ describe("resolveAlternate", () => {
     });
   });
 
-  it.each(["/ai", "/license", "/license/zero-one-edition"])(
+  it.each(["/ai", "/license"])(
     "resolves %s to the pages collection",
     (path) => {
       expect(resolveAlternate(path)).toEqual({
