@@ -30,8 +30,6 @@ if (!post.value.image?.src) {
     productId: post.value.product,
   });
 }
-
-const productBadge = computed(() => getProductBadge(post.value?.product));
 </script>
 
 <template>
@@ -48,16 +46,6 @@ const productBadge = computed(() => getProductBadge(post.value?.product));
             :ui="{ leadingIcon: 'size-4' }"
           />
           <span class="text-muted">&middot;</span>
-
-          <template v-if="productBadge">
-            <UBadge
-              v-bind="productBadge"
-              variant="subtle"
-              size="sm"
-              class="rounded-full"
-            />
-            <span class="text-muted">&middot;</span>
-          </template>
           <time class="text-muted">{{
             new Date(post.date).toLocaleDateString("en", {
               year: "numeric",
