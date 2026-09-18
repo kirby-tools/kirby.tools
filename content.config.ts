@@ -161,7 +161,6 @@ export default defineContentConfig({
         image: z.object({ src: z.string().nonempty() }).optional(),
         date: z.string().nonempty(),
         product: z.string().nonempty().optional(),
-        badge: z.object({ label: z.string().nonempty() }).optional(),
       }),
     }),
     docs: defineCollection({

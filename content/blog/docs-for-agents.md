@@ -2,8 +2,6 @@
 title: Docs Your Agent Can Read
 description: Every page here has a Markdown twin, llms.txt indexes them, and each plugin ships an agent skill you can install in one command.
 date: "2026-08-09"
-badge:
-  label: News
 ---
 
 Coding agents know Kirby well. They know these plugins less well, and it shows in a way you might have run into: a config block that looks right – right nesting, right keys, one option that doesn't exist.

@@ -59,7 +59,6 @@ const productBadge = computed(() => getProductBadge(post.value?.product));
           <span v-if="productBadge && post.badge" class="text-muted"
             >&middot;</span
           >
-          <UBadge v-if="post.badge" v-bind="post.badge" variant="subtle" />
 
           <span v-if="productBadge || post.badge" class="text-muted"
             >&middot;</span

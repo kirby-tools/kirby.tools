@@ -3,8 +3,6 @@ title: Kirby Copilot v2.5 – Beyond Single Fields
 description: Multi-field generation fills several fields from one prompt, and custom blocks generate from your own blueprints.
 date: "2025-09-05"
 product: copilot
-badge:
-  label: Release
 ---
 
 The first versions of Kirby Copilot had a limitation I felt every time I used it myself: one field at a time. Open the prompt dialog, generate text for a single writer or textarea field, repeat for the next one. That is not how anyone writes a page. The title, the intro, and the meta description are one thought, not three.

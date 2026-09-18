@@ -3,8 +3,6 @@ title: Kirby SEO Audit v3.5 – The Verdict Before the Report
 description: The analysis reads your unsaved changes, sums them up in two lights, and leaves a rating on every page it has seen.
 date: "2026-09-16"
 product: seo-audit
-badge:
-  label: Release
 ---
 
 Until now, Kirby SEO Audit told you everything or nothing. You opened the report and got the full list of checks, or you didn't open it and knew nothing about the page. Most editors opened it only when they already suspected something was wrong. And whatever it told you was about the published page, not the text you were still editing.
