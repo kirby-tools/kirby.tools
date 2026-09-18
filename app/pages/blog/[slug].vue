@@ -49,20 +49,15 @@ const productBadge = computed(() => getProductBadge(post.value?.product));
           />
           <span class="text-muted">&middot;</span>
 
-          <UBadge
-            v-if="productBadge"
-            v-bind="productBadge"
-            variant="subtle"
-            size="sm"
-            class="rounded-full"
-          />
-          <span v-if="productBadge && post.badge" class="text-muted"
-            >&middot;</span
-          >
-
-          <span v-if="productBadge || post.badge" class="text-muted"
-            >&middot;</span
-          >
+          <template v-if="productBadge">
+            <UBadge
+              v-bind="productBadge"
+              variant="subtle"
+              size="sm"
+              class="rounded-full"
+            />
+            <span class="text-muted">&middot;</span>
+          </template>
           <time class="text-muted">{{
             new Date(post.date).toLocaleDateString("en", {
               year: "numeric",
