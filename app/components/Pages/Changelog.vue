@@ -93,7 +93,7 @@ const latestReleaseUrl = computed(() =>
             root: 'flex items-start',
             container: 'max-w-xl',
             header: 'border-default border-b pb-4',
-            title: 'text-3xl',
+            title: '-mt-1 text-3xl',
             date: 'text-highlighted font-mono text-xs/9',
             indicator:
               'sticky top-0 pt-16 -mt-16 sm:pt-24 sm:-mt-24 lg:pt-32 lg:-mt-32',
