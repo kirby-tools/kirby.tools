@@ -13,6 +13,24 @@
   --illustration-highlight: var(--ui-text-dimmed);
   --illustration-primary: var(--ui-color-primary-300);
   --illustration-accent: var(--color-pumpkin-200);
+
+  /* Instrument Serif runs narrower and lighter than Inter Bold, so headings
+     lift the type scale. */
+  --display-scale: 1.2;
+
+  --display-text-xs: var(--text-xs);
+  --display-text-sm: var(--text-sm);
+  --display-text-base: var(--text-base);
+  --display-text-lg: var(--text-lg);
+  --display-text-xl: var(--text-xl);
+  --display-text-2xl: var(--text-2xl);
+  --display-text-3xl: var(--text-3xl);
+  --display-text-4xl: var(--text-4xl);
+  --display-text-5xl: var(--text-5xl);
+  --display-text-6xl: var(--text-6xl);
+  --display-text-7xl: var(--text-7xl);
+  --display-text-8xl: var(--text-8xl);
+  --display-text-9xl: var(--text-9xl);
 }
 
 @theme static {
@@ -76,4 +94,24 @@
   --ui-bg: var(--ui-color-neutral-950);
 
   --illustration-primary: var(--ui-color-primary-400);
+}
+
+main :is(h1, h2[data-slot="title"]):not(.panel-mock *) {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+
+  --text-xs: calc(var(--display-text-xs) * var(--display-scale));
+  --text-sm: calc(var(--display-text-sm) * var(--display-scale));
+  --text-base: calc(var(--display-text-base) * var(--display-scale));
+  --text-lg: calc(var(--display-text-lg) * var(--display-scale));
+  --text-xl: calc(var(--display-text-xl) * var(--display-scale));
+  --text-2xl: calc(var(--display-text-2xl) * var(--display-scale));
+  --text-3xl: calc(var(--display-text-3xl) * var(--display-scale));
+  --text-4xl: calc(var(--display-text-4xl) * var(--display-scale));
+  --text-5xl: calc(var(--display-text-5xl) * var(--display-scale));
+  --text-6xl: calc(var(--display-text-6xl) * var(--display-scale));
+  --text-7xl: calc(var(--display-text-7xl) * var(--display-scale));
+  --text-8xl: calc(var(--display-text-8xl) * var(--display-scale));
+  --text-9xl: calc(var(--display-text-9xl) * var(--display-scale));
 }
