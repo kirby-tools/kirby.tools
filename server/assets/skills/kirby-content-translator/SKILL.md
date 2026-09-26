@@ -80,7 +80,7 @@ return [
 - Module pages or file metadata stay untranslated because they are separate models: name them in the blueprint's `cascade` option – blueprint only, no `config.php` counterpart. A failing query yields an empty cascade without an error. <https://kirby.tools/docs/content-translator/advanced/cascade.md>
 - Batch translation runs two languages in parallel. On provider rate-limit errors set `batchConcurrency` to `1`. <https://kirby.tools/docs/content-translator/configuration/global.md#batchconcurrency>
 - `Kirby found no blueprint for this content` means the blueprint lookup failed: the blueprint filename must match the template exactly, including case. <https://kirby.tools/docs/content-translator/panel/translation-results.md>
-- A Kirby language whose code DeepL cannot name throws `LogicException`; map it with `targetLanguageOverrides`. <https://kirby.tools/docs/content-translator/providers/deepl.md>
+- Translating into a Kirby language whose code DeepL cannot name fails with `Cannot resolve a DeepL target language`; map it with `targetLanguageOverrides`. <https://kirby.tools/docs/content-translator/providers/deepl.md>
 - `new DeepL()` at the top level of `config.php` throws `AuthException: Missing DeepL API key` even with the key set, because the client reads the key as it is built; a bare `new DeepLStrategy()` resolves its client lazily and is safe there. Build a custom client inside Kirby's `ready` callback. <https://kirby.tools/docs/content-translator/php-classes/strategies/deepl-strategy.md>
 
 ## Scripting It
