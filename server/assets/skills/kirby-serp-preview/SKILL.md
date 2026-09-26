@@ -63,6 +63,6 @@ return [
 ];
 ```
 
-Each change posts the value to the site, at most once per 250 ms with title and description sharing that window, and a failed reply keeps the last drawn text – a formatter that throws shows no error, the failed request is in the browser's network tab. On the site view the page is the home page; on a page's file view the formatter does not run, and a site or user file is formatted against the home page.
+A formatter that throws shows no error in the Panel: the snippet keeps the last drawn text, and the failed request is in the browser's network tab. On the site view the page is the home page.
 
 <https://kirby.tools/docs/serp-preview/formatters.md>
