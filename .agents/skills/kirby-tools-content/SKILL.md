@@ -37,7 +37,7 @@ The documentation states the contract, not the mechanism: what the reader calls 
 
 - `::callout` is link-out only and always carries `to=`; advice without a link is `::tip`, `::note`, or `::warning`.
 - `::code-group` holds alternatives for one task; `::tabs` holds axes that are not substitutes.
-- `::steps` numbers an ordered set of three or more. `::accordion` is unused, since folding hides content from search.
+- `::steps` numbers an ordered set of three or more. Documentation pages leave `::accordion` out, since folding hides content from search.
 - Code blocks of 30 or more lines go in `::code-collapse`.
 
 Headings in APA title case; a property heading carries the identifier in backticks; a feature name is a noun phrase. The frontmatter description summarises rather than echoes the first sentence, and keeps backticked identifiers only where an editor types them.
