@@ -1,7 +1,7 @@
 ---
 title: Kirby Modules Plugin Now Supported
 description: A translation started from a page now also translates the pages and files its blueprint names – modules, image metadata, and child pages – and saves them directly.
-date: "2026-09-26"
+date: "2026-09-28"
 product: content-translator
 ---
 
