@@ -1,5 +1,5 @@
 ---
-title: Kirby SEO Audit v3.5 – The Verdict Before the Report
+title: The Verdict Before the Report
 description: The analysis reads your unsaved changes, sums them up in two lights, and leaves a rating on every page it has seen.
 date: "2026-09-16"
 product: seo-audit

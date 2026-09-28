@@ -1,5 +1,5 @@
 ---
-title: Kirby Copilot v2.5 – Beyond Single Fields
+title: Beyond Single Fields
 description: Multi-field generation fills several fields from one prompt, and custom blocks generate from your own blueprints.
 date: "2025-09-05"
 product: copilot
