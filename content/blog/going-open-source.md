@@ -1,5 +1,5 @@
 ---
-title: Going Open Source with Commercial Plugins
+title: Going Open Source With Commercial Plugins
 description: How and why Kirby Tools plugins moved from a private Composer repo to Packagist and open source.
 date: "2024-06-18"
 ---
