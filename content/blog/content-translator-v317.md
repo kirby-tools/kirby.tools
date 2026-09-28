@@ -1,15 +1,19 @@
 ---
-title: Kirby Content Translator v3.17 – Modules Included
+title: Kirby Modules Plugin Now Supported
 description: A translation started from a page now also translates the pages and files its blueprint names – modules, image metadata, and child pages – and saves them directly.
 date: "2026-09-26"
 product: content-translator
 ---
 
-[Kirby Modules](https://github.com/medienbaecker/kirby-modules) builds a page out of modules, and every module is a page of its own. Editors don't notice – they edit the modules inline on the parent page, as if they were one form. Content Translator did: **Translate → Deutsch** on such a page translated the title and intro and left every module below them in English. Most of the page's content lives in those modules, and translating them meant going through them one by one.
+Last weekend, the Kirby community met in Mainz for the first Kirby Konf – six years after the planned 2020 edition was called off two weeks before it began. I had planned to be there this year, but I had just become a father, so I cancelled with a heavy heart.
+
+One of the speakers was Thomas Günther of [Medienbäcker](https://www.medienbaecker.com), the maker of [Kirby Modules](https://github.com/medienbaecker/kirby-modules). Since I couldn't shake his hand there, here's the next best thing: Content Translator v3.17 translates Kirby Modules, as some of you had asked.
+
+His plugin builds a page out of modules, and every module is a page of its own. Editors don't notice – they edit the modules inline on the parent page, as if they were one form. Content Translator did: **Translate → Deutsch** on such a page translated the title and intro and left every module below them in English. Most of the page's content lives in those modules, and translating them meant going through them one by one.
 
 Modules are the clearest case, not the only one. The alt texts and captions of a page's images live in the files' own content. An overview page is often little more than the sum of its children. The translation stopped at the page's own fields.
 
-Version 3.17 translates them along with the page, once the blueprint names them.
+Now all of them come along with the page, once the blueprint names them.
 
 ## One Line in the Blueprint
 
