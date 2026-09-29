@@ -38,7 +38,7 @@ sections:
       - id: view-button
         name: View Button
         title: Import or translate, one language at a time
-        description: In a secondary language, the Translator button imports the default language's content or translates what is in the form. Nothing is saved until you have looked at it.
+        description: In a secondary language, the Translator button imports the default language's content or translates what is in the form. Nothing in the form is saved until you have looked at it.
         to: /docs/content-translator/configuration/local#view-button-configuration
       - id: translation-coverage
         name: Translation Coverage
