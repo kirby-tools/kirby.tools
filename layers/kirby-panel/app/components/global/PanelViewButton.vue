@@ -6,7 +6,7 @@ defineOptions({ inheritAttrs: false });
 
 withDefaults(
   defineProps<{
-    options?: Record<string, unknown>[];
+    options?: PanelDropdownOption[];
     alignX?: "start" | "end";
   }>(),
   { alignX: "end" },

@@ -21,6 +21,8 @@ withDefaults(
   { theme: "auto" },
 );
 
+const emit = defineEmits<{ cancel: [] }>();
+
 const isInert = inject(panelMockInertKey, false);
 </script>
 
@@ -30,6 +32,7 @@ const isInert = inject(panelMockInertKey, false);
       <k-icon type="kirby" />
       <span>Kirby Panel</span>
       <span v-if="label" class="panel-mock-chrome-label">{{ label }}</span>
+      <slot name="chrome" />
     </figcaption>
 
     <div class="k-panel" :data-theme="theme" :inert="isInert">
@@ -42,7 +45,15 @@ const isInert = inject(panelMockInertKey, false);
             <slot />
           </div>
 
-          <div class="panel-mock-portal" :data-align="dialogAlign">
+          <!-- Kirby's dialog takes focus as it opens, so Escape cancels it.
+               A Mock's dialog takes it only when the reader opens it, and
+               answers Escape once the reader is in it. -->
+          <div
+            class="panel-mock-portal"
+            :data-align="dialogAlign"
+            @mousedown.self="emit('cancel')"
+            @keydown.esc="emit('cancel')"
+          >
             <slot name="dialog" />
           </div>
         </template>

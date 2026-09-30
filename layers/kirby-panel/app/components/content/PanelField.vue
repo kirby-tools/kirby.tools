@@ -9,15 +9,19 @@ const props = withDefaults(
   { type: "textarea" },
 );
 
+const id = useId();
+
 provide(
   panelFieldTypeKey,
   computed(() => props.type),
 );
+provide(panelFieldIdKey, id);
 </script>
 
 <template>
   <k-column :width="width">
     <k-field
+      :input="id"
       :label="label"
       :name="name"
       :type="type"
