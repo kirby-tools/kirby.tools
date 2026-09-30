@@ -24,6 +24,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
     "@colordx/core": "^6.2.0",
+    "@iconify-json/fluent": "^1.2.59",
     "@iconify-json/lucide": "^1.2.128",
     "@iconify-json/ri": "^1.2.10",
     "@iconify-json/simple-icons": "^1.2.94",

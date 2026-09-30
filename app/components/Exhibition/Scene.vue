@@ -1,120 +1,89 @@
 <script setup lang="ts">
-import type { ExhibitionProductId } from "#shared/exhibition";
-
 const props = defineProps<{
-  productId: ExhibitionProductId;
-  shouldHideBadResults?: boolean;
+  page: ExhibitionPage;
+  viewButton?: PanelViewButton;
+  crop?: "hero" | "showcase";
 }>();
 
-const hasDialog = computed(() =>
-  SCENE_DIALOG_PRODUCT_IDS.includes(props.productId),
-);
+// A phone keeps the height the Content Translator dialog needs for its buttons.
+const CROP_CLASSES: Record<NonNullable<typeof props.crop>, string> = {
+  hero: "[&_.panel-mock-stage]:h-120",
+  showcase: "[&_.panel-mock-stage]:h-120 sm:[&_.panel-mock-stage]:h-112",
+};
+
+const { languageCode, content, hasDiff, update } = props.page;
+const isInert = inject(panelMockInertKey, false);
 
 const viewButtons = computed<PanelViewButton[]>(() => {
-  const pluginButton = PLUGIN_VIEW_BUTTONS[props.productId];
-  if (!pluginButton) return KIRBY_VIEW_BUTTONS;
+  // The languages button earns its place only where the reader can click it.
+  const kirbyButtons = isInert
+    ? kirbyViewButtons()
+    : kirbyViewButtons(languageCode.value, (code) => {
+        languageCode.value = code;
+      });
 
-  if (props.shouldHideBadResults && props.productId === "seo-audit") {
-    return [
-      { ...pluginButton, badge: { theme: "notice" } },
-      ...KIRBY_VIEW_BUTTONS,
-    ];
-  }
-
-  return [pluginButton, ...KIRBY_VIEW_BUTTONS];
+  return props.viewButton ? [props.viewButton, ...kirbyButtons] : kirbyButtons;
 });
-
-const seoRatings = computed<PanelSeoAuditRatings>(() =>
-  props.shouldHideBadResults
-    ? { ...SEO_RATINGS, seo: { rating: "ok" } }
-    : SEO_RATINGS,
-);
-
-const seoResults = computed<PanelSeoAuditResults>(() =>
-  props.shouldHideBadResults
-    ? {
-        ...SEO_RESULTS,
-        seo: SEO_RESULTS.seo.filter((result) => result.rating !== "bad"),
-      }
-    : SEO_RESULTS,
-);
 </script>
 
 <template>
-  <PanelMock>
-    <PanelViewHeader :title="EXHIBITION_PAGE.title" :buttons="viewButtons" />
+  <PanelMock
+    :class="crop && [CROP_CLASSES[crop], '[&_.panel-mock-stage]:overflow-clip']"
+  >
+    <PanelViewHeader
+      :title="content.title"
+      :buttons="viewButtons"
+      :has-diff="hasDiff"
+    />
 
     <PanelColumns>
       <PanelColumn width="2/3">
-        <PanelSection v-if="productId === 'serp-preview'" label="SERP Preview">
-          <PanelSerpPreviewSnippet
-            :favicon-url="EXHIBITION_SITE.faviconUrl"
-            :site-title="EXHIBITION_SITE.title"
-            :site-url="EXHIBITION_SITE.url"
-            :title="`${EXHIBITION_PAGE.title} – ${EXHIBITION_SITE.title}`"
-            :description="EXHIBITION_PAGE.description"
-          />
-        </PanelSection>
+        <slot name="main" />
 
-        <PanelSection>
+        <PanelSection :key="languageCode">
           <PanelFieldset>
             <PanelBlocksField
               name="text"
               label="Text"
-              :blocks="EXHIBITION_BLOCKS"
+              :value="content.text"
+              @input="update({ text: $event })"
             />
           </PanelFieldset>
         </PanelSection>
       </PanelColumn>
 
-      <!-- A phone crops the stage to the dialog, so a second column would
-           only lengthen what the crop hides. -->
-      <PanelColumn width="1/3" class="max-sm:hidden">
-        <PanelSection>
+      <PanelColumn width="1/3">
+        <slot name="aside" />
+
+        <PanelSection :key="languageCode">
           <PanelFieldset>
             <PanelField label="Description" name="description">
-              <PanelInput :value="EXHIBITION_PAGE.description" buttons />
+              <PanelInput
+                :value="content.description"
+                :buttons="EXHIBITION_DESCRIPTION_BUTTONS"
+                @input="update({ description: $event })"
+              />
             </PanelField>
 
             <PanelField label="Dates" name="dates" type="text">
-              <PanelInput :value="EXHIBITION_PAGE.dates" />
+              <PanelInput
+                :value="content.dates"
+                @input="update({ dates: $event })"
+              />
             </PanelField>
           </PanelFieldset>
         </PanelSection>
       </PanelColumn>
     </PanelColumns>
 
-    <template v-if="productId === 'minimap'" #sidebar>
-      <PanelMinimapSidebar :fields="MINIMAP_FIELDS" />
+    <slot name="notification" />
+
+    <template v-if="$slots.sidebar" #sidebar>
+      <slot name="sidebar" />
     </template>
 
-    <template v-if="hasDialog" #dialog>
-      <PanelCopilotPromptDialog
-        v-if="productId === 'copilot'"
-        :files="1"
-        :fields="COPILOT_FIELDS_DROPDOWN.value.length"
-        :prompt="COPILOT_PROMPT"
-        :preview="COPILOT_PROMPT_PREVIEW"
-        :dropdown="COPILOT_FIELDS_DROPDOWN"
-      />
-
-      <PanelDialog
-        v-else-if="productId === 'content-translator'"
-        size="medium"
-        :fields="TRANSLATOR_DIALOG_FIELDS"
-        :value="TRANSLATOR_DIALOG_VALUE"
-        :buttons="TRANSLATOR_DIALOG_BUTTONS"
-      />
-
-      <PanelDialog v-else-if="productId === 'seo-audit'" size="large">
-        <PanelSeoAuditResult
-          title="SEO & Readability Scores"
-          :ratings="seoRatings"
-          :results="seoResults"
-          version="changes"
-          timestamp="2026-09-01T08:40"
-        />
-      </PanelDialog>
+    <template v-if="$slots.dialog" #dialog>
+      <slot name="dialog" />
     </template>
   </PanelMock>
 </template>
