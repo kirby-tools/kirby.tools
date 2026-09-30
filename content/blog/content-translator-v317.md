@@ -44,12 +44,10 @@ Before anything is translated, the dialog counts what comes along:
 ::panel-dialog
 ---
 size: medium
-buttons:
-  - icon: cancel
-    text: Cancel
-  - icon: translate
-    text: Translate
-    theme: positive
+cancelButton: true
+submitButton:
+  icon: translate
+  text: Translate
 fields:
   languages:
     type: checkboxes

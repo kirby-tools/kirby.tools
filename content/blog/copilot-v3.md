@@ -25,11 +25,11 @@ All AI requests now route through a PHP proxy on your server. This means API key
 
 ### Inline Suggestions
 
-This is probably the most visible change. As you type in a writer or textarea field, ghost text appears after a brief pause – a suggestion for how your sentence might continue. Press **Tab** to accept, **Escape** to dismiss. You can also trigger suggestions manually with **Cmd+,** (or **Ctrl+,** on Windows/Linux).
+This is probably the most visible change. As you type in a writer field, ghost text appears after a brief pause – a suggestion for how your sentence might continue. Press **Tab** to accept, **Escape** to dismiss. You can also trigger suggestions manually with **Cmd+,** (or **Ctrl+,** on Windows/Linux).
 
 Inline suggestions use a lightweight completion model optimized for speed, so they feel responsive even on longer documents.
 
-![Inline suggestions appearing as ghost text in a textarea field](/screencasts/kirby-copilot-inline-suggestions-poster.jpg)
+:product-copilot-suggestions
 
 [Read more about inline suggestions](/docs/copilot/usage/inline-suggestions)
 
@@ -44,8 +44,8 @@ All templates are available in English, German, French, and Dutch.
 :::panel-mock
 ::panel-copilot-prompt-dialog
 ---
-selection: true
-prompt: |-
+selection: We are six people in a former print shop in Leipzig.
+userPrompt: |-
   Fix all spelling and grammar errors in the given text. IMPORTANT: Preserve all formatting (bold, italic, links, code, headings, lists, etc.) exactly as in the original. Only output the corrected text, nothing else.
 dropdown:
   under: templates
