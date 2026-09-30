@@ -3,7 +3,7 @@ defineProps<{
   results: PanelSeoAuditResults;
   ratings: PanelSeoAuditRatings;
   version?: PanelSeoAuditContentVersion;
-  timestamp: string;
+  timestamp: number;
   isStale?: boolean;
 }>();
 </script>
@@ -15,7 +15,7 @@ defineProps<{
     </k-box>
 
     <p
-      class="mt-(--spacing-2) text-[length:var(--text-sm)] text-[color:var(--color-text-dimmed)]"
+      class="mt-[var(--spacing-2)] text-[length:var(--text-sm)] text-[color:var(--color-text-dimmed)]"
     >
       <PanelSeoAuditReportMeta
         :version="version"

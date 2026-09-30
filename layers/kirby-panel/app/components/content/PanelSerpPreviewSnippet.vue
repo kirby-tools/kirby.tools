@@ -14,7 +14,7 @@ defineProps<{
 
 <template>
   <div
-    class="panel-serp-preview-snippet overflow-hidden rounded-(--input-rounded) bg-(--input-color-back) p-4"
+    class="panel-serp-preview-snippet overflow-hidden rounded-[var(--input-rounded)] bg-[var(--input-color-back)] p-4"
   >
     <div class="mb-2 flex items-center gap-3">
       <span

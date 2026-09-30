@@ -19,17 +19,17 @@ const RATING_LABEL: Record<PanelSeoAuditCategoryRating, string> = {
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-x-(--spacing-4) gap-y-(--spacing-1)">
+  <div class="flex flex-wrap gap-x-[var(--spacing-4)] gap-y-[var(--spacing-1)]">
     <template v-for="category in CATEGORIES" :key="category">
       <span
         v-if="ratings[category]"
-        class="inline-flex items-center gap-(--spacing-2)"
+        class="inline-flex items-center gap-[var(--spacing-2)]"
       >
         <PanelSeoAuditRatingStatus
           :rating="ratings[category].rating"
-          class="size-(--spacing-3)"
+          class="size-[var(--spacing-3)]"
         />
-        <span class="inline-flex gap-(--spacing-2)">
+        <span class="inline-flex gap-[var(--spacing-2)]">
           <strong>{{ CATEGORY_LABEL[category] }}</strong>
           <span>{{ RATING_LABEL[ratings[category].rating] }}</span>
         </span>

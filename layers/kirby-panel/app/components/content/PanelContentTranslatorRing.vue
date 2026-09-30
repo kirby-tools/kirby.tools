@@ -24,7 +24,7 @@ const center = computed(() => props.size / 2);
     :aria-valuenow="value"
     aria-valuemin="0"
     aria-valuemax="100"
-    class="panel-content-translator-ring -rotate-90"
+    class="panel-content-translator-ring [transform:rotate(-90deg)]"
   >
     <circle
       class="panel-content-translator-ring-track"
