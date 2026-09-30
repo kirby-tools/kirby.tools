@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
-import { PRODUCTS } from "#shared/products";
+import { socialCardPath } from "#shared/social-card";
 
 const route = useRoute();
 
@@ -27,17 +27,16 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-});
-
-defineOgImage("Default", {
-  productId: "live-preview",
-  title: PRODUCTS["live-preview"].tagline,
-  description,
+  ogImage: socialCardPath("live-preview"),
 });
 </script>
 
 <template>
   <PagesProduct :page="page!">
+    <template #hero>
+      <ProductLivePreviewScene />
+    </template>
+
     <template #cta-image>
       <Illustration
         name="partnershapes-20"
