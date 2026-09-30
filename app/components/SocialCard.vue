@@ -13,6 +13,7 @@ const props = withDefaults(
 );
 
 provide(panelMockInertKey, true);
+provide(socialCardKey, true);
 
 const product = computed(() => PRODUCTS[props.productId]);
 const size = computed(() => SOCIAL_CARD_FORMATS[props.format]);
