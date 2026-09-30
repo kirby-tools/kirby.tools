@@ -50,13 +50,6 @@ const createBadgeSchema = () =>
     class: z.string().optional(),
   });
 
-const createVideoSchema = () =>
-  z.object({
-    src: z.string().nonempty(),
-    poster: z.string().nonempty(),
-    label: z.string().optional(),
-  });
-
 const createCodeSchema = () =>
   z.object({
     files: z.array(
@@ -111,8 +104,6 @@ export default defineContentConfig({
             headline: createBadgeSchema().optional(),
             orientation: orientationEnum.optional(),
             reverse: z.boolean().optional(),
-            mock: z.string().optional(),
-            video: createVideoSchema().optional(),
             code: createCodeSchema().optional(),
             links: z.array(createLinkSchema()),
             features: z.array(
@@ -179,7 +170,6 @@ export default defineContentConfig({
           headline: createBadgeSchema(),
           orientation: orientationEnum.optional(),
           links: z.array(createLinkSchema()),
-          video: createVideoSchema().optional(),
         }),
         sections: z.array(
           createBaseSchema().extend({
@@ -204,7 +194,6 @@ export default defineContentConfig({
               )
               .optional(),
             links: z.array(createLinkSchema()).optional(),
-            video: createVideoSchema().optional(),
             code: createCodeSchema().optional(),
             cards: z.array(createFeatureCardSchema()).optional(),
           }),
