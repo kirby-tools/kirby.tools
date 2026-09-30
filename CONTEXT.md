@@ -29,23 +29,34 @@ One of the named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima
 _Avoid_: Color slot, brand color, palette, hex code
 
 **Mock**:
-A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands in a documentation or landing page where a screenshot would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts, and it spends Kirby's own tokens wherever a Panel component renders, but the frame around it belongs to the page rather than to a Panel view, so the values Kirby uses to size a full view are not the Mock's to match. Where Kirby lets an editor type or unfold, a Mock lets the reader do the same; nothing else in it responds and nothing is kept. A Mock the page shows rather than offers answers nothing at all: inside a FeatureCard, on a SocialCard, or behind a dialog it stages.
+A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands on a page of the site where a screenshot or screencast would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts. Depending on where it stands, a Mock is interactive, looping, or still.
 _Avoid_: Screenshot, demo, replica, figure
+
+**Interactive Mock**:
+A Mock that lets the reader do what Kirby lets an editor do – type, unfold, close, switch language – and plays the Plugin's answer where the Plugin answers the editor; nothing else answers, nothing is kept, and while its dialog is open, only the dialog answers.
+
+**Looping Mock**:
+A Mock that plays its Plugin's answer on its own, over and over, for an answer whose trigger a reader would not find, such as the moment an editor stops typing. The reader can pause it, except inside a FeatureCard, where a click follows the card's link; nothing else reaches it.
+_Avoid_: Animated
+
+**Still Mock**:
+A Mock that answers nothing at all. An Interactive Mock is still inside a FeatureCard, and a SocialCard's Scene is still.
+_Avoid_: Static
 
 **Stage**:
 The frame a Mock renders into, standing in for whatever the Panel supplies around a component – the view a header sits above, the portal a dialog centers in, the viewport a container query measures. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
 _Avoid_: Frame, canvas, wrapper, viewport
 
 **Crop**:
-A Stage the page gives less room than the Mock renders into, showing the top of it and hiding the rest. The Mock is not shortened – the Panel it depicts has no short view – so what a Crop hides is live, and a cropped Stage is one the page shows rather than offers.
+A Stage the page gives less room than the Mock renders into, showing the top of it and hiding the rest. The Mock is not shortened – the Panel it depicts has no short view – so what a Crop hides is live.
 _Avoid_: Clip, cutoff, truncation, fold
 
 **Exhibition**:
-The one fictional site the Mocks on the home and landing pages depict: a photography exhibition, edited in a Panel that has several of the Plugins installed. A Product is in the Exhibition when its Plugin is, and only then does it have a Scene. Membership is a fact about the fiction, not a place on the site.
+The one fictional site every Scene depicts and other Mocks may borrow from: an art venue's site, edited in a Panel with several of the Plugins installed. Every Scene shows the same page of it: its page for a photography exhibition. A Product is in the Exhibition when its Plugin is, and only then does it have a Scene. Membership is a fact about the fiction, not a place on the site.
 _Avoid_: Demo site, sample content, fixture
 
 **Scene**:
-The Mock of the Exhibition's page, one for each Product in the Exhibition. The page is the same in every Scene; the Products differ in what their Plugin adds to it – a section, a view button, a dialog over the view. A Plugin that opens no dialog leaves its Scene with none, and the page it renders is undimmed, because the dim belongs to a dialog. A Scene is what a SocialCard renders and what the Showcase offers.
+The Interactive Mock of the Exhibition's page, one for each Product in the Exhibition; the page is the same in every Scene, and the Products differ in what their Plugin adds to it – a section, a sidebar, a view button, a dialog over the view. A Scene shows its Plugin's dialog open, if it has one, unless it can play its way there: in the Showcase and on a landing page, a Scene the reader scrolls to may play its way to its Plugin's answer once on its own, until the reader acts.
 _Avoid_: Demo, variant
 
 **Showcase**:
