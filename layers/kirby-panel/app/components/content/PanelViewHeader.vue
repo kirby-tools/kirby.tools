@@ -60,7 +60,7 @@ const buttons = computed(() =>
 </template>
 
 <style>
-/* Kirby pads the header itself and reserves a gap below it for the view. A mock that
+/* Kirby pads the header itself and reserves a gap below it for the view. A Mock that
    stages the header alone shows no view, so the gap goes and Kirby's own padding
    stands in for the stage's. */
 .panel-mock .panel-view-header:last-child {
@@ -76,7 +76,7 @@ const buttons = computed(() =>
 }
 
 /* Kirby keeps title and buttons on one line from a 70rem viewport up, but the
-   mock is a box a few hundred pixels wide inside such a viewport. It wraps on
+   Mock is a box a few hundred pixels wide inside such a viewport. It wraps on
    its own width instead. */
 @media screen and (min-width: 70rem) {
   .panel-mock .panel-view-header {

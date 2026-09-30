@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // The minimap borrows the `--menu-*` tokens from Kirby's own menu, which no
-// other mock renders and whose stylesheet is therefore not in the bundle.
+// other Mock renders and whose stylesheet is therefore not in the bundle.
 import "#kirby-panel/components/View/Menu.vue?vue&type=style&index=0&lang.css";
 
 defineProps<{

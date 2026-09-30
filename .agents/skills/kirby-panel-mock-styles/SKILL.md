@@ -1,13 +1,13 @@
 ---
 name: kirby-panel-mock-styles
-description: Building or styling a Kirby Panel mock (`Panel*.vue` under `layers/kirby-panel/app/components/`) – what to name it, where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. The docs site's own components under `app/components/` follow Nuxt UI instead.
+description: Building or styling a stand-in for a Kirby Panel component (`Panel*.vue` under `layers/kirby-panel/app/components/`) – what to name it, where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. The docs site's own components under `app/components/` follow Nuxt UI instead.
 ---
 
 # Panel Mock Styling
 
-A mock of a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A plugin mock stands in until the plugin reaches Vue 3 and the site imports its components, so a prop named after the blueprint survives the swap. A prop that exists only so a figure can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
+A stand-in for a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A plugin's stand-in serves until the plugin reaches Vue 3 and the site imports its components, so a prop named after the blueprint survives the swap. A prop that exists only so a Mock can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
 
-The mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the mock renders, a `<style>` block for everything else.
+The Mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the Mock renders, a `<style>` block for everything else.
 
 Kirby's whole sheet sits in the `kirby` cascade layer, below `utilities` (`app/assets/css/main.css`), so a utility beats any Kirby rule on the same element, whatever the specificity.
 
@@ -17,7 +17,7 @@ Kirby ships styling that no component exposes: `.k-button-badge` lives in the st
 
 ## Tailwind
 
-A rule over an element the mock itself renders goes on that element as a utility. Spend Kirby's token through the `(--var)` shorthand, and take the bracket form where the shorthand cannot carry it:
+A rule over an element the Mock itself renders goes on that element as a utility. Spend Kirby's token through the `(--var)` shorthand, and take the bracket form where the shorthand cannot carry it:
 
 ```
 gap-(--spacing-2)
@@ -25,7 +25,7 @@ text-[length:var(--text-font-size)]/[var(--text-line-height)]
 text-[color:var(--color-text-dimmed)]
 ```
 
-Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the figure's own page margin – take the plain utility.
+Kirby's scale is coarse and its steps are declared in `layers/kirby-panel/kirby/panel/src/styles/config/`. Off-scale steps (`gap-1.5`, `size-3`) and anything outside the Panel – the Mock's own page margin – take the plain utility.
 
 A class mirrored from a plugin has to mean the same on both sides, and the plugins compile with UnoCSS Wind3, not Tailwind v4. So the token takes its bracket form, the prefix goes on the utility alone, and sibling spacing is spelled out as `[&>*+*]:mt-[var(--spacing-4)]` on both sides, because the two engines compile `space-*` to different selectors.
 
@@ -33,16 +33,16 @@ A class mirrored from a plugin has to mean the same on both sides, and the plugi
 
 A rule earns a block when it
 
-- reaches an element the mock does not render – `.panel-mock .k-section-header:last-child`
+- reaches an element the Mock does not render – `.panel-mock .k-section-header:last-child`
 - needs a selector no element can carry – `:has()`, an attribute selector, `@container`, a media query
 - sets a custom property – `--dialog-padding`, `--button-color-back`
 
-Scope it under `.panel-mock`: Kirby's own selectors are rewritten to that prefix, and the rule should reach nothing outside a mock. Keep the mock's hook class (`.panel-copilot-prompt-dialog`, `.panel-seo-audit-result`) on the element so sibling mocks can target it.
+Scope it under `.panel-mock`: Kirby's own selectors are rewritten to that prefix, and the rule should reach nothing outside a Mock. Keep the component's hook class (`.panel-copilot-prompt-dialog`, `.panel-seo-audit-result`) on the element so sibling components can target it.
 
-A mock renders into the Stage, `.panel-mock-stage`. A rule about what the Panel would supply around a component reaches it from the mock's own block: `.panel-mock .panel-mock-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
+A Mock renders into the Stage, `.panel-mock-stage`. A rule about what the Panel would supply around a component reaches it from the Mock's own block: `.panel-mock .panel-mock-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
 
-A block that departs from Kirby names what Kirby does and why the mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a mock cropped to the header alone would sit off-center.
+A block that departs from Kirby names what Kirby does and why the Mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a Mock cropped to the header alone would sit off-center.
 
 ## Checking a Mock
 
-A running plugin playground is authoritative for the plugin's own markup. A divergence between a mock and the plugin it depicts is a finding about both repos; settle which side is wrong before patching either. For Kirby's rendering it is not: the playgrounds run Kirby 5 against mocks built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6. Measure Kirby against a worktree of `origin/v6/develop` served with `php -S`; its templates, props and defaults are also readable in `layers/kirby-panel/kirby`.
+A running plugin playground is authoritative for the plugin's own markup. A divergence between a Mock and the plugin it depicts is a finding about both repos; settle which side is wrong before patching either. For Kirby's rendering it is not: the playgrounds run Kirby 5 against components built on 6, and a view-button dropdown that aligns `start` in 5 aligns `end` in 6. Measure Kirby against a worktree of `origin/v6/develop` served with `php -S`; its templates, props and defaults are also readable in `layers/kirby-panel/kirby`.

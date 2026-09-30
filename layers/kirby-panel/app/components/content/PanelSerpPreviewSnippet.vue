@@ -5,7 +5,7 @@ defineProps<{
   siteUrl?: string;
   /**
    * The title and description the plugin resolves from `titleContentKey`,
-   * `defaultTitle` and the page, which a mock has no content to resolve from.
+   * `defaultTitle` and the page, which a Mock has no content to resolve from.
    */
   title?: string;
   description?: string;

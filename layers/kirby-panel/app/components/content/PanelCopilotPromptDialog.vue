@@ -12,7 +12,7 @@ const props = defineProps<{
   fields?: PanelFieldProps[];
   selection?: string;
   /**
-   * The one dropdown the mock shows open, under the toolbar button named by
+   * The one dropdown the Mock shows open, under the toolbar button named by
    * `under`. A prop rather than a slot, because MDC binds a named slot to the
    * outermost open component.
    */
@@ -73,7 +73,7 @@ const tokens = computed(() => {
 });
 
 // The plugin hides the history button until a prompt is stored, so it belongs
-// only to a mock that opens its dropdown.
+// only to a Mock that opens its dropdown.
 const tools = computed(() =>
   TOOLS.filter(
     (tool) => tool.under !== "history" || props.dropdown?.under === "history",
@@ -272,7 +272,7 @@ function submit() {
 }
 
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
-   toolbar wrap. The one whose dropdown a mock opens stays. */
+   toolbar wrap. The one whose dropdown a Mock opens stays. */
 @container panel-stage (max-width: 40rem) {
   .panel-copilot-prompt-dialog
     .panel-copilot-prompt-tool:not(:has(.panel-dropdown)) {

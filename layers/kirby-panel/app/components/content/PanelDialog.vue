@@ -2,7 +2,7 @@
 import { HtmlString } from "#kirby-panel/panel/html";
 import { translate } from "#panel-mock/translate";
 // Kirby's `k-dialog` teleports into a portal the Panel owns, which puts its
-// content beside the page rather than in the mock.
+// content beside the page rather than in the Mock.
 import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Body.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Buttons.vue?vue&type=style&index=0&lang.css";
@@ -37,7 +37,7 @@ const FOCUSABLE_SELECTOR =
   ":is(a[href], button, input, select, textarea, [contenteditable=true], [tabindex]):not([disabled], [type=hidden], [tabindex='-1'])";
 
 // Kirby escapes field text unless the key marks it trusted, so `<help>` is what
-// lets a mock's help text carry a link.
+// lets a Mock's help text carry a link.
 const fields = computed(() => HtmlString.resolve(props.fields));
 
 // Kirby's inputs change the arrays they are given in place, which the Panel

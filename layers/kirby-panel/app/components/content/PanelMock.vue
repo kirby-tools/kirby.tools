@@ -3,7 +3,7 @@
    which rules win. */
 
 // Imported here rather than in the layer's plugin, so only pages that show a
-// mock carry Kirby's stylesheet.
+// Mock carry Kirby's stylesheet.
 import "#kirby-panel/styles/config.css";
 import "#kirby-panel/styles/reset.css";
 import "#kirby-panel/components/View/Panel.vue?vue&type=style&index=0&lang.css";
@@ -131,7 +131,7 @@ const isInert = inject(panelMockInertKey, false);
   margin-bottom: 0;
 }
 
-/* Kirby's view buttons, `k-table` and the mock's own view-header rule query a
+/* Kirby's view buttons, `k-table` and the Mock's own view-header rule query a
    container. In the Panel that is the view; here it is a box inside a page, so
    the stage establishes one. */
 .panel-mock .panel-mock-stage {

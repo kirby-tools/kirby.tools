@@ -53,9 +53,9 @@ import { translate } from "./translate";
 import { withPlaceholder } from "./withPlaceholder";
 
 /**
- * The Panel components a mock may use, under Kirby's own names. Registering all
+ * The Panel components a Mock may use, under Kirby's own names. Registering all
  * of them would pull in the ones that read `window.panel` while rendering,
- * which is undefined on a server; these do not, so mocks reach the initial
+ * which is undefined on a server; these do not, so Mocks reach the initial
  * HTML.
  */
 export const components = {

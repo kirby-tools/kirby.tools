@@ -93,7 +93,7 @@ const isWide = computed(() => props.format === "og");
   );
 }
 
-/* The mock chrome and the frame around it belong to a page; here the frame is the card's. */
+/* The Mock's chrome and the frame around it belong to a page; here the frame is the card's. */
 .social-card .panel-mock {
   margin: 0;
   border: 0;

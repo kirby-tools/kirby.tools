@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <!-- Kirby's `k-dropdown` is a `<dialog>` its script mounts and positions with
-       inline `top` and `left`. A mock runs no script, so the class goes on a
+       inline `top` and `left`. A Mock runs no script, so the class goes on a
        plain element and the style block below places it. -->
   <div class="panel-dropdown k-dropdown top-full" :data-align-x="alignX">
     <template v-for="(item, index) in options" :key="index">
@@ -41,7 +41,7 @@ defineProps<{
 }
 
 /* Kirby's script measures `left` and leaves the `end` alignment itself to a
-   `-100%` translation. The mock has no script, so `left` comes off the trigger
+   `-100%` translation. The Mock has no script, so `left` comes off the trigger
    the dropdown follows in flow. */
 .panel-dropdown[data-align-x="end"] {
   left: 100%;
