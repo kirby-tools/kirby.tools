@@ -1,19 +1,26 @@
 <script setup lang="ts">
 import type { ExhibitionLanguageCode } from "~/utils/exhibition";
 
+const BATCH_TRANSLATION_TEXT = "EN → All Languages";
 // Translating the current language asks only for the strategy.
 const CONTENT_DIALOG_FIELDS = {
   strategyName: TRANSLATOR_DIALOG_FIELDS.strategyName,
 };
 
 const page = useExhibitionPage();
+const autoplay = useSceneAutoplay("content-translator", [
+  { click: PLUGIN_VIEW_BUTTONS["content-translator"].label },
+  { click: BATCH_TRANSLATION_TEXT },
+  { click: TRANSLATOR_DIALOG_SUBMIT_BUTTON.text },
+]);
+const { cursor } = autoplay;
 const {
   isOpen: isDialogOpen,
   openCount,
   hasReaderOpened: hasReaderOpenedDialog,
   open: openDialog,
   close: closeDialog,
-} = useSceneDialog();
+} = useSceneDialog(autoplay);
 const { languageCode } = page;
 const reducedMotion = usePreferredReducedMotion();
 const {
@@ -43,7 +50,7 @@ const options = computed<PanelDropdownOption[]>(() =>
     ? [
         {
           icon: "content-translator-global",
-          text: "EN → All Languages",
+          text: BATCH_TRANSLATION_TEXT,
           disabled: isTranslating.value,
           click: openBatchDialog,
         },
@@ -138,6 +145,7 @@ function fieldsWithoutTitle(code: ExhibitionLanguageCode) {
     :key="openCount"
     :page="page"
     :view-button="viewButton"
+    :cursor="cursor"
     @cancel="closeDialog"
   >
     <template #notification>

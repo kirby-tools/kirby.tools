@@ -14,6 +14,8 @@ const FEATURE_SLOTS = new Set(["features", "feature-cards"]);
 
 const NuxtLink = resolveComponent("NuxtLink");
 
+provide(sceneAutoplayKey, true);
+
 const { isLoading } = useLoadingIndicator();
 const isEntering = ref(false);
 const hasEntered = ref(false);

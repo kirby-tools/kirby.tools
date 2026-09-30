@@ -4,13 +4,17 @@ const ANALYSIS_DURATION = 800;
 const isOnSocialCard = inject(socialCardKey, false);
 const reducedMotion = usePreferredReducedMotion();
 const page = useExhibitionPage();
+const autoplay = useSceneAutoplay("seo-audit", [
+  { click: PLUGIN_VIEW_BUTTONS["seo-audit"].label },
+]);
+const { cursor } = autoplay;
 const {
   isOpen: isDialogOpen,
   openCount,
   hasReaderOpened: hasReaderOpenedDialog,
   open: openDialog,
   close: closeDialog,
-} = useSceneDialog();
+} = useSceneDialog(autoplay);
 const { isPending: isAnalyzing, start: startAnalysis } = useTimeoutFn(
   openDialog,
   ANALYSIS_DURATION,
@@ -50,6 +54,7 @@ function analyze() {
     :key="openCount"
     :page="page"
     :view-button="viewButton"
+    :cursor="cursor"
     @cancel="closeDialog"
   >
     <template v-if="isDialogOpen" #dialog>

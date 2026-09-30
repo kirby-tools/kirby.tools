@@ -3,6 +3,7 @@ const props = defineProps<{
   page: ExhibitionPage;
   viewButton?: PanelViewButton;
   crop?: "hero" | "showcase";
+  cursor?: SceneCursor;
 }>();
 
 // A phone keeps the height the Content Translator dialog needs for its buttons.
@@ -77,6 +78,8 @@ const viewButtons = computed<PanelViewButton[]>(() => {
     </PanelColumns>
 
     <slot name="notification" />
+
+    <ExhibitionCursor v-if="cursor" v-bind="cursor" />
 
     <template v-if="$slots.sidebar" #sidebar>
       <slot name="sidebar" />

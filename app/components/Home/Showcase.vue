@@ -31,6 +31,8 @@ const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
 
 const activeProductId = ref<ShowcaseProductId>("copilot");
 
+provide(sceneAutoplayKey, true);
+
 const accentClass = computed(
   () => COLOR_CLASSES[activeProductId.value].accentClass,
 );
