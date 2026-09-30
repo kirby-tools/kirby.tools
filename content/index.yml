@@ -101,10 +101,6 @@ products:
     id: copilot
     description: Generate with AI inside the Kirby Panel. Fill fields from one prompt, build layouts from your own blocks, or accept a suggestion as you type.
     reverse: true
-    video:
-      src: /screencasts/kirby-copilot-multi-fields-generation.mp4
-      poster: /screencasts/kirby-copilot-multi-fields-generation-poster-start.jpg
-      label: Demonstration of generating many fields at once in the Kirby Panel
     links:
       - label: Learn More
         to: /copilot
@@ -129,10 +125,6 @@ products:
     license: commercial
     id: content-translator
     description: One click translates entire pages, including nested blocks. Select target languages in the Panel or automate via CLI.
-    video:
-      src: /screencasts/kirby-content-translator-batch-translation.mp4
-      poster: /screencasts/kirby-content-translator-batch-translation-poster.jpg
-      label: Demonstration of Content Translator batch translations in the Kirby Panel
     links:
       - label: Learn More
         to: /content-translator
@@ -158,10 +150,6 @@ products:
     id: seo-audit
     description: The Yoast SEO engine analyzes the page you are editing in the Panel. Each result comes with its light and the fix it asks for.
     reverse: true
-    video:
-      src: /screencasts/kirby-seo-audit-view-button.mp4
-      poster: /screencasts/kirby-seo-audit-view-button-poster-start.jpg
-      label: Demonstration of the SEO Audit plugin, showcasing its features and functionality
     links:
       - label: Learn More
         to: /seo-audit
@@ -187,7 +175,6 @@ products:
     id: serp-preview
     description: A Panel section draws the Google result for the page you are editing – favicon, site name, URL, title, and description – and redraws it on every keystroke.
     reverse: true
-    mock: serp-preview
     links:
       - label: Learn More
         to: /serp-preview
@@ -212,7 +199,6 @@ products:
     license: free
     id: minimap
     description: A sidebar lists the fields and blocks of the current Panel tab. Click one and the Panel scrolls to it. Made for long blueprints.
-    mock: minimap
     links:
       - label: Learn More
         to: /minimap

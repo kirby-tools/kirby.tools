@@ -93,9 +93,11 @@ const accentClass = computed(
         :class="accentClass"
       />
 
-      <ExhibitionScene
-        :product-id="activeProductId"
-        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60 [&_.panel-mock-stage]:h-112 [&_.panel-mock-stage]:overflow-clip max-sm:[&_.panel-mock-stage]:h-104"
+      <component
+        :is="EXHIBITION_SCENES[activeProductId]"
+        :key="activeProductId"
+        crop="showcase"
+        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60"
       />
     </div>
   </div>

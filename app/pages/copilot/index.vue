@@ -43,6 +43,10 @@ useSeoMeta({
       </div>
     </template>
 
+    <template #scene>
+      <ProductCopilotScene crop="hero" />
+    </template>
+
     <template #feature-view-button>
       <ProductCopilotFieldPicker />
     </template>
@@ -50,7 +54,7 @@ useSeoMeta({
       <ProductCopilotSkills />
     </template>
     <template #feature-inline-suggestions>
-      <ProductCopilotGhostText />
+      <ProductCopilotSuggestions />
     </template>
     <template #feature-toolbar-buttons>
       <ProductCopilotToolbarButton />

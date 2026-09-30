@@ -33,6 +33,10 @@ useSeoMeta({
 
 <template>
   <PagesProduct :page="page!">
+    <template #hero>
+      <ProductTranslatorScene crop="hero" />
+    </template>
+
     <template #feature-batch-translation>
       <ProductTranslatorDialog />
     </template>
@@ -43,7 +47,7 @@ useSeoMeta({
       <ProductTranslatorViewButton />
     </template>
     <template #feature-translation-coverage>
-      <ProductTranslatorCoverage tree />
+      <ProductTranslatorCoverage />
     </template>
 
     <template #cta-image>
