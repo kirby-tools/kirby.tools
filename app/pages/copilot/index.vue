@@ -47,9 +47,6 @@ useSeoMeta({
       <ProductCopilotScene crop="hero" />
     </template>
 
-    <template #feature-view-button>
-      <ProductCopilotFieldPicker />
-    </template>
     <template #feature-skills>
       <ProductCopilotSkills />
     </template>
