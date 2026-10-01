@@ -73,7 +73,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Translating existing content between languages – use Kirby Content Translator for that.",
     skillDescription:
-      "Configure Kirby Copilot, which generates and rewrites Panel content with an AI provider. Use when wiring up an AI provider or gateway, adding generation to a blueprint, generating blocks or layouts, driving generation from PHP, handing editors prompt templates or skills, or when a generation fails or ghost text never appears.",
+      "Configure Kirby Copilot, which generates and rewrites Panel content with an AI provider and lets outside AI agents work on the content over MCP. Use when wiring up an AI provider or gateway, adding generation to a blueprint, generating blocks or layouts, driving generation from PHP, handing editors prompt templates or skills, connecting an agent like Claude Code or Cursor to a site, or when a generation fails, ghost text never appears, or an agent can't connect or write.",
   },
   "content-translator": {
     name: "Kirby Content Translator",
