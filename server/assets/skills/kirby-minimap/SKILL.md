@@ -12,6 +12,6 @@ The minimap appears next to the site view and every page view; below Kirby's 960
 
 ## When a Field or Block Is Missing From the Outline
 
-`gap`, `hidden`, `line`, `title`, and `slug` are never listed. Everything else follows the open tab, so a field on another tab is not missing, only elsewhere. Only a `blocks` field unfolds into its blocks: a `layout`, `structure`, or `object` field is one entry, and the blocks inside it stay hidden.
+`gap`, `hidden`, `line`, `title`, and `slug` are never listed. Everything else follows the open tab, so a field on another tab is not missing, only elsewhere. A `blocks` or `layout` field unfolds into its blocks: a `structure` or `object` field is one entry, and the blocks inside it stay hidden.
 
 <https://kirby.tools/docs/minimap/fields-support.md>

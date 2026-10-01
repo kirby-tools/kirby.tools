@@ -22,7 +22,7 @@ sections:
         icon: i-ri-cursor-line
         to: /docs/minimap
       - title: Every block, with its icon and first words
-        description: Blocks fields unfold into their blocks, each shown with its icon and a short label.
+        description: Blocks and layout fields unfold into their blocks, each shown with its icon and a short label.
         icon: i-ri-layout-grid-line
         to: /docs/minimap
       - title: See where you are
