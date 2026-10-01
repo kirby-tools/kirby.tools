@@ -26,7 +26,7 @@ faq:
     - label: How does the licensing work?
       content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If you transfer the full IP rights to your client, the client needs their own license – just like with Kirby itself. The full terms are in the [license agreement](/license).
     - label: Do I need an AI provider API key?
-      content: Yes, you need an API key from at least one supported provider. Kirby Copilot supports [OpenAI](https://platform.openai.com), [Google Gemini](https://ai.google.dev/gemini-api/docs/models) (free tier available), [Anthropic Claude](https://console.anthropic.com), and [Mistral](https://console.mistral.ai). I recommend Google Gemini – its free tier is enough to try the plugin, and its models handle the structured output that blocks and layouts need.
+      content: To generate in the Panel or from PHP, yes – an API key from at least one supported provider. Agents need none, since the agent brings its own model. Kirby Copilot supports [OpenAI](https://platform.openai.com), [Google Gemini](https://ai.google.dev/gemini-api/docs/models) (free tier available), [Anthropic Claude](https://console.anthropic.com), and [Mistral](https://console.mistral.ai). I recommend Google Gemini – its free tier is enough to try the plugin, and its models handle the structured output that blocks and layouts need.
     - label: Which Kirby versions are supported?
       content: Kirby Copilot is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
     - label: What does “Unlimited minor & patch updates” include?
