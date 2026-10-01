@@ -115,9 +115,9 @@ products:
       - title: Multi-Field Generation
         description: Tick the fields, write one prompt, and Copilot fills them all in one run – with files and other pages as context.
         icon: i-ri-list-check-2
-      - title: Blocks & Layouts
-        description: Generate whole layouts from your own block blueprints, custom blocks included.
-        icon: i-ri-dashboard-line
+      - title: Agents
+        description: Claude, ChatGPT, and Cursor work on the site's content as your Kirby user, and by default their edits wait in the Panel until you publish them.
+        icon: i-ri-plug-line
       - title: Inline Suggestions
         description: Pause while writing and gray ghost text picks up the sentence. Tab keeps it, anything else drops it.
         icon: i-ri-input-cursor-move

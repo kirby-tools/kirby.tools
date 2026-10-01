@@ -3,9 +3,9 @@ description: AI content generation plugin for Kirby CMS. Generate layouts, text,
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: Reference Other Pages
-    to: /docs/copilot/prompt-dialog/page-references
-    icon: i-ri-at-line
+    label: "New: Copilot Agents"
+    to: /docs/copilot/agents
+    icon: i-ri-plug-line
     color: neutral
     variant: solid
   title: Generate With AI<br> in the Kirby Panel
