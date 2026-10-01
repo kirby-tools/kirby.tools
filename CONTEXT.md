@@ -56,7 +56,7 @@ The one fictional site every Scene depicts and other Mocks may borrow from: an a
 _Avoid_: Demo site, sample content, fixture
 
 **Scene**:
-The Interactive Mock of the Exhibition's page, one for each Product in the Exhibition; the page is the same in every Scene, and the Products differ in what their Plugin adds to it – a section, a sidebar, a view button, a dialog over the view. A Scene shows its Plugin's dialog open, if it has one, unless it can play its way there: in the Showcase and on a landing page, a Scene the reader scrolls to may play its way to its Plugin's answer once on its own, until the reader acts.
+The Interactive Mock of the Exhibition's page, one for each Product in the Exhibition; the page is the same in every Scene, except that Copilot's, unless still, shows the page before its text and description are written, and the Products differ in what their Plugin adds to it – a section, a sidebar, a view button, a dialog over the view. A Scene shows its Plugin's dialog open, if it has one, unless it can play its way there: in the Showcase and on a landing page, a Scene the reader scrolls to may play its way to its Plugin's answer once on its own, until the reader acts.
 _Avoid_: Demo, variant
 
 **Showcase**:

@@ -7,7 +7,9 @@ const TRANSLATED_LANGUAGE_CODES: ExhibitionLanguageCode[] = ["de"];
 
 export type ExhibitionPage = ReturnType<typeof useExhibitionPage>;
 
-export function useExhibitionPage() {
+export function useExhibitionPage(
+  savedFields: Partial<ExhibitionPageContent> = {},
+) {
   const languageCode = ref<ExhibitionLanguageCode>("en");
   const translatedLanguageCodes = ref(TRANSLATED_LANGUAGE_CODES);
   // Shallow, so the blocks field gets back the array it reported rather than a
@@ -17,11 +19,12 @@ export function useExhibitionPage() {
   >({});
 
   // Kirby fills every field a translation lacks from the default language.
-  const savedContent = computed<ExhibitionPageContent>(() =>
-    translatedLanguageCodes.value.includes(languageCode.value)
+  const savedContent = computed<ExhibitionPageContent>(() => ({
+    ...(translatedLanguageCodes.value.includes(languageCode.value)
       ? { ...EXHIBITION_PAGE, ...EXHIBITION_CONTENT[languageCode.value] }
-      : EXHIBITION_PAGE,
-  );
+      : EXHIBITION_PAGE),
+    ...savedFields,
+  }));
 
   const content = computed<ExhibitionPageContent>(() => ({
     ...savedContent.value,
