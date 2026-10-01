@@ -11,6 +11,7 @@ hero:
       size: xl
 sections:
   - title: <span class="text-primary">What the Preview</span><br> Can Do
+    id: features
     slot: features
     features:
       - title: Tell the preview apart from the site

@@ -16,6 +16,7 @@ hero:
       size: xl
 sections:
   - title: Know What to Fix<br class="hidden lg:block"> <span class="text-primary">Before You Publish</span>
+    id: features
     slot: feature-cards
     cards:
       - id: ratings

@@ -7,7 +7,7 @@ defineProps<{
 }>();
 
 const SECTION_SLOT_WIDTHS: Record<string, string> = {
-  scene: "max-w-4xl",
+  mock: "max-w-4xl",
 };
 
 const FEATURE_SLOTS = new Set(["features", "feature-cards"]);
@@ -85,7 +85,7 @@ onMounted(() => {
       />
 
       <UPageSection
-        :id="section.slot"
+        :id="section.id"
         :links="section.links"
         :orientation="section.orientation"
         :reverse="section.reverse"
@@ -145,7 +145,10 @@ onMounted(() => {
           </UPageCard>
         </UPageGrid>
 
-        <slot v-else-if="section.slot === 'scene'" name="scene" />
+        <slot
+          v-else-if="section.slot === 'mock'"
+          :name="`mock-${section.id}`"
+        />
 
         <MediaCode
           v-else-if="section.slot === 'code' && section.code"
