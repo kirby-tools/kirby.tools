@@ -5,7 +5,7 @@ defineProps<{
   siteUrl?: string;
   /**
    * The title and description the plugin resolves from `titleContentKey`,
-   * `defaultTitle` and the page, which a mock has no content to resolve from.
+   * `defaultTitle` and the page, which a Mock has no content to resolve from.
    */
   title?: string;
   description?: string;
@@ -14,7 +14,7 @@ defineProps<{
 
 <template>
   <div
-    class="panel-serp-preview-snippet overflow-hidden rounded-(--input-rounded) bg-(--input-color-back) p-4"
+    class="panel-serp-preview-snippet overflow-hidden rounded-[var(--input-rounded)] bg-[var(--input-color-back)] p-4"
   >
     <div class="mb-2 flex items-center gap-3">
       <span

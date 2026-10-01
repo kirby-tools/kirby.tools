@@ -13,6 +13,7 @@ const props = withDefaults(
 );
 
 provide(panelMockInertKey, true);
+provide(socialCardKey, true);
 
 const product = computed(() => PRODUCTS[props.productId]);
 const size = computed(() => SOCIAL_CARD_FORMATS[props.format]);
@@ -66,11 +67,7 @@ const isWide = computed(() => props.format === "og");
         class="relative h-full overflow-hidden rounded-t-[8px] mask-[linear-gradient(#000_0_0)]"
       >
         <div class="h-full" :style="{ zoom: isWide ? 1 : 1.4 }">
-          <ExhibitionScene
-            :product-id="productId"
-            should-hide-bad-results
-            theme="light"
-          />
+          <component :is="EXHIBITION_SCENES[productId]" theme="light" />
         </div>
         <div
           class="absolute inset-x-0 bottom-0 h-14 bg-linear-to-b from-transparent to-black/50"
@@ -96,7 +93,7 @@ const isWide = computed(() => props.format === "og");
   );
 }
 
-/* The mock chrome and the frame around it belong to a page; here the frame is the card's. */
+/* The Mock's chrome and the frame around it belong to a page; here the frame is the card's. */
 .social-card .panel-mock {
   margin: 0;
   border: 0;

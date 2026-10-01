@@ -23,7 +23,7 @@ function countIncompletePages(
   return entries.reduce(
     (sum, entry) =>
       sum +
-      (entry.missingLanguages?.length ? 1 : 0) +
+      (entry.missingLanguages.length > 0 ? 1 : 0) +
       countIncompletePages(entry.children ?? []),
     0,
   );
@@ -65,13 +65,13 @@ function countIncompletePages(
       </button>
 
       <span
-        v-if="item.missingLanguages?.length"
+        v-if="item.missingLanguages.length > 0"
         class="flex shrink-0 items-center gap-[2px]"
       >
         <k-tag
-          v-for="code in item.missingLanguages"
-          :key="code"
-          :text="code.toUpperCase()"
+          v-for="language in item.missingLanguages"
+          :key="language.code"
+          :text="language.code.toUpperCase()"
           theme="light"
         />
       </span>

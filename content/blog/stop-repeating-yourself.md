@@ -14,8 +14,8 @@ Skills let you write that _how_ down once, so nobody has to remember it again.
 :::panel-mock
 ::panel-copilot-prompt-dialog
 ---
-selection: true
-prompt: |-
+selection: Ten days of documentaries by the river.
+userPrompt: |-
   Write a tagline for the documentary festival's 2027 edition.
   @skill://brand-voice @skill://
 dropdown:

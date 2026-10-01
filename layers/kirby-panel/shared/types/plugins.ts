@@ -1,4 +1,4 @@
-import type { PanelDropdownOption, PanelPicklistOption } from "./kirby";
+import type { PanelDropdownOption } from "./kirby";
 
 // #region SEO Audit
 export type PanelSeoAuditCategory = "seo" | "readability";
@@ -37,15 +37,15 @@ export interface PanelContentTranslatorTreeEntry {
   label: string;
   icon?: string;
   isOpen?: boolean;
-  missingLanguages?: string[];
+  missingLanguages: { code: string; name: string }[];
   children?: PanelContentTranslatorTreeEntry[];
 }
 // #endregion
 
 // #region Copilot
 /**
- * Under `fields` the dropdown is a picklist, which carries a selection rather
- * than actions.
+ * Under `fields` the dropdown is a picklist of the dialog's `fields`, which
+ * carries a selection rather than actions.
  */
 export type PanelCopilotPromptDropdown =
   | {
@@ -55,7 +55,6 @@ export type PanelCopilotPromptDropdown =
     }
   | {
       under: "fields";
-      options?: PanelPicklistOption[];
       value?: string[];
     };
 // #endregion

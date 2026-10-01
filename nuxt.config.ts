@@ -43,7 +43,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      assetsBaseUrl: "https://assets.kirby.tools",
       paddle: {
         clientToken: "live_92e480cc12385b49df50126b4b9",
       },
@@ -291,7 +290,7 @@ export default defineNuxtConfig({
     },
     // Unversioned, so a week rather than a year.
     ...Object.fromEntries(
-      ["/_ipx/**", "/img/**", "/screencasts/**"].map((pattern) => [
+      ["/_ipx/**", "/img/**"].map((pattern) => [
         pattern,
         { headers: { "Cache-Control": "public, max-age=604800" } },
       ]),

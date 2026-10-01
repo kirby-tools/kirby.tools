@@ -1,10 +1,17 @@
 <template>
   <PanelMock class="product-minimap-sidebar min-h-96">
     <PanelFieldset>
-      <PanelBlocksField name="text" label="Text" :blocks="EXHIBITION_BLOCKS" />
+      <PanelBlocksField
+        name="text"
+        label="Text"
+        :value="EXHIBITION_PAGE.text"
+      />
 
       <PanelField label="Description" name="description">
-        <PanelInput :value="EXHIBITION_PAGE.description" buttons />
+        <PanelInput
+          :value="EXHIBITION_PAGE.description"
+          :buttons="EXHIBITION_DESCRIPTION_BUTTONS"
+        />
       </PanelField>
 
       <PanelField label="Dates" name="dates" type="text">

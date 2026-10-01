@@ -14,9 +14,6 @@ hero:
       trailingIcon: i-ri-arrow-right-line
       to: /docs/seo-audit/getting-started/installation
       size: xl
-  video:
-    src: /screencasts/kirby-seo-audit-view-button.mp4
-    poster: /screencasts/kirby-seo-audit-view-button-poster-start.jpg
 sections:
   - title: Know What to Fix<br class="hidden lg:block"> <span class="text-primary">Before You Publish</span>
     slot: feature-cards

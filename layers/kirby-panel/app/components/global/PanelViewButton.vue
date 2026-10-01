@@ -6,7 +6,7 @@ defineOptions({ inheritAttrs: false });
 
 withDefaults(
   defineProps<{
-    options?: Record<string, unknown>[];
+    options?: PanelDropdownOption[];
     alignX?: "start" | "end";
   }>(),
   { alignX: "end" },
@@ -22,13 +22,13 @@ withDefaults(
 
 <style>
 /* Kirby's script places the dropdown flush under the button and lets it cover
-   whatever the view puts below the header. The mock keeps it out of flow too,
+   whatever the view puts below the header. The Mock keeps it out of flow too,
    so the header keeps the height its border-bottom belongs at. */
 .panel-view-button {
   position: relative;
 }
 
-/* A mock that stages the header alone has no view for the dropdown to cover, so
+/* A Mock that stages the header alone has no view for the dropdown to cover, so
    the stage stands in for it. Enough for the dropdowns the docs show open; a
    taller one would clip visibly. */
 .panel-mock .panel-mock-stage:has(.panel-view-button) {

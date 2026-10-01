@@ -2,7 +2,7 @@
   <PanelMock>
     <PanelViewHeader
       :title="EXHIBITION_PAGE.title"
-      :buttons="KIRBY_VIEW_BUTTONS"
+      :buttons="kirbyViewButtons()"
     />
     <PanelSection label="SERP Preview">
       <PanelSerpPreviewSnippet

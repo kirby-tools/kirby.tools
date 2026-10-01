@@ -7,12 +7,14 @@ defineProps<{
 }>();
 
 const SECTION_SLOT_WIDTHS: Record<string, string> = {
-  video: "max-w-4xl",
+  scene: "max-w-4xl",
 };
 
 const FEATURE_SLOTS = new Set(["features", "feature-cards"]);
 
 const NuxtLink = resolveComponent("NuxtLink");
+
+provide(sceneAutoplayKey, true);
 
 const { isLoading } = useLoadingIndicator();
 const isEntering = ref(false);
@@ -72,8 +74,6 @@ onMounted(() => {
       </template>
 
       <slot name="hero" />
-
-      <MediaVideo v-if="page.hero.video" v-bind="page.hero.video" />
     </UPageHero>
 
     <slot name="sections-cta" />
@@ -121,8 +121,7 @@ onMounted(() => {
         </template>
 
         <template v-if="section.orientation === 'horizontal'">
-          <MediaVideo v-if="section.video" v-bind="section.video" />
-          <MediaCode v-else-if="section.code" v-bind="section.code" />
+          <MediaCode v-if="section.code" v-bind="section.code" />
         </template>
 
         <UPageGrid v-else-if="section.slot === 'features' && section.features">
@@ -146,10 +145,7 @@ onMounted(() => {
           </UPageCard>
         </UPageGrid>
 
-        <MediaVideo
-          v-else-if="section.slot === 'video' && section.video"
-          v-bind="section.video"
-        />
+        <slot v-else-if="section.slot === 'scene'" name="scene" />
 
         <MediaCode
           v-else-if="section.slot === 'code' && section.code"

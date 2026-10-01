@@ -4,7 +4,8 @@
       size="medium"
       :fields="TRANSLATOR_DIALOG_FIELDS"
       :value="TRANSLATOR_DIALOG_VALUE"
-      :buttons="TRANSLATOR_DIALOG_BUTTONS"
+      cancel-button
+      :submit-button="TRANSLATOR_DIALOG_SUBMIT_BUTTON"
     />
   </PanelMock>
 </template>

@@ -6,6 +6,8 @@ defineProps<{
   value?: string[];
   alignX?: "start" | "end";
 }>();
+
+const emit = defineEmits<{ input: [value: string[]] }>();
 </script>
 
 <template>
@@ -13,6 +15,10 @@ defineProps<{
     class="panel-dropdown k-dropdown k-picklist-dropdown top-full"
     :data-align-x="alignX"
   >
-    <k-picklist-input :options="options" :value="value" />
+    <k-picklist-input
+      :options="options"
+      :value="value"
+      @input="emit('input', $event)"
+    />
   </div>
 </template>

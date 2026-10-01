@@ -2,18 +2,16 @@
 const props = withDefaults(
   defineProps<{
     editable?: boolean;
-    files?: boolean | number;
-    prompt?: string;
+    files?: boolean;
+    userPrompt?: string;
     open?: boolean;
+    /** Number of attached files, which the plugin holds in its own state. */
+    fileCount?: number;
   }>(),
   { editable: true, files: true },
 );
 
 const hasFiles = computed(() => props.files !== false);
-
-const fileCount = computed(() =>
-  typeof props.files === "number" ? props.files : 0,
-);
 
 const summary = computed(() =>
   [props.editable && "Prompt", hasFiles.value && "Context"]
@@ -29,7 +27,7 @@ const summary = computed(() =>
       <PanelInput
         v-if="editable"
         type="textarea"
-        :value="prompt"
+        :value="userPrompt"
         placeholder="What would you like to generate?"
       />
 

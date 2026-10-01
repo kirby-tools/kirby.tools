@@ -33,6 +33,10 @@ useSeoMeta({
 
 <template>
   <PagesProduct :page="page!">
+    <template #hero>
+      <ProductSeoAuditScene crop="hero" />
+    </template>
+
     <template #feature-ratings>
       <ProductSeoAuditReport />
     </template>

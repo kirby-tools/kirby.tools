@@ -21,7 +21,7 @@ describe("scopeStylesheet", () => {
     },
   );
 
-  it("layers the sheet below the utilities a mock puts on its own markup", () => {
+  it("layers the sheet below the utilities a Mock puts on its own markup", () => {
     const css = scope("styles/reset.css");
 
     expect(css).toContain(`@layer theme, base, components, ${CSS_LAYER},`);

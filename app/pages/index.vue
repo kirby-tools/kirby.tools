@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import type { ProductId } from "#shared/products";
 import { isObject } from "utilful/object";
+import { isProductId } from "#shared/products";
 
 const { data: page } = await useAsyncData("index", () =>
   queryCollection("index").first(),
@@ -14,7 +16,12 @@ if (!page.value) {
 }
 
 const NuxtLink = resolveComponent("NuxtLink");
-const PRODUCT_MOCKS: Record<string, ReturnType<typeof resolveComponent>> = {
+const PRODUCT_MOCKS: Partial<
+  Record<ProductId, ReturnType<typeof resolveComponent>>
+> = {
+  copilot: resolveComponent("ProductCopilotFieldPicker"),
+  "content-translator": resolveComponent("ProductTranslatorDialog"),
+  "seo-audit": resolveComponent("ProductSeoAuditReport"),
   "serp-preview": resolveComponent("ProductSerpPreviewSnippet"),
   minimap: resolveComponent("ProductMinimapSidebar"),
 };
@@ -181,10 +188,9 @@ defineOgImage("Default", {
         </template>
 
         <component
-          :is="PRODUCT_MOCKS[product.mock]"
-          v-if="product.mock && PRODUCT_MOCKS[product.mock]"
+          :is="PRODUCT_MOCKS[product.id]"
+          v-if="isProductId(product.id) && PRODUCT_MOCKS[product.id]"
         />
-        <MediaVideo v-else-if="product.video" v-bind="product.video" glow />
         <MediaCode v-else-if="product.code" v-bind="product.code" />
       </UPageSection>
     </template>

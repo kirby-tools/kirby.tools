@@ -4,7 +4,7 @@ const props = defineProps<{
   ratings?: PanelSeoAuditRatings;
   title?: string;
   version?: PanelSeoAuditContentVersion;
-  timestamp?: string;
+  timestamp?: number;
 }>();
 
 const RATING_LABEL: Record<PanelSeoAuditRating, string> = {
@@ -36,24 +36,27 @@ const groups = computed(() => {
 
 <template>
   <div class="panel-seo-audit-result">
-    <div v-if="title" class="mb-(--spacing-6) flex items-start justify-between">
+    <div
+      v-if="title"
+      class="mb-[var(--spacing-6)] flex items-start justify-between"
+    >
       <k-text>
         <h2>{{ title }}</h2>
         <PanelSeoAuditReportRatings
           v-if="ratings"
           :ratings="ratings"
-          class="mt-(--spacing-3)"
+          class="mt-[var(--spacing-3)]"
         />
       </k-text>
     </div>
     <PanelSeoAuditReportRatings
       v-else-if="ratings"
       :ratings="ratings"
-      class="mb-(--spacing-3)"
+      class="mb-[var(--spacing-3)]"
     />
 
     <k-text
-      class="pb-(--spacing-2) [&>div+div]:mt-[var(--spacing-4)]"
+      class="pb-[var(--spacing-2)] [&>div+div]:mt-[var(--spacing-4)]"
       :style="{
         '--link-color': 'var(--color-text)',
         '--link-color-hover':
@@ -62,7 +65,7 @@ const groups = computed(() => {
     >
       <div v-for="(group, index) in groups" :key="group.rating">
         <div
-          class="mb-(--spacing-2) inline-flex items-center gap-(--spacing-2)"
+          class="mb-[var(--spacing-2)] inline-flex items-center gap-[var(--spacing-2)]"
         >
           <h3
             class="text-[length:var(--text-font-size)]/[var(--text-line-height)] text-[color:var(--color-text)]"
@@ -81,22 +84,22 @@ const groups = computed(() => {
         <div
           v-for="(item, itemIndex) in group.items"
           :key="itemIndex"
-          class="flex items-start gap-(--spacing-2)"
+          class="flex items-start gap-[var(--spacing-2)]"
         >
           <PanelSeoAuditRatingStatus
             :rating="group.rating"
-            class="mt-(--spacing-1) size-(--spacing-3)"
+            class="mt-[var(--spacing-1)] size-[var(--spacing-3)]"
           />
           <div v-html="replaceTrailingExclamation(item.text)" />
         </div>
 
-        <hr v-if="index < groups.length - 1" class="my-(--spacing-4)" />
+        <hr v-if="index < groups.length - 1" class="my-[var(--spacing-4)]" />
       </div>
     </k-text>
 
     <p
       v-if="timestamp"
-      class="mt-(--spacing-4) text-[color:var(--color-text-dimmed)]"
+      class="mt-[var(--spacing-4)] text-[color:var(--color-text-dimmed)]"
     >
       <PanelSeoAuditReportMeta :version="version" :timestamp="timestamp" />
     </p>

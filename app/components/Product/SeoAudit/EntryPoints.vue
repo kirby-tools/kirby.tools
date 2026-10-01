@@ -1,7 +1,10 @@
 <script setup lang="ts">
 const VIEW_BUTTONS: PanelViewButton[] = [
-  PLUGIN_VIEW_BUTTONS["seo-audit"]!,
-  ...KIRBY_VIEW_BUTTONS,
+  {
+    component: "PanelSeoAuditButton",
+    props: { ...PLUGIN_VIEW_BUTTONS["seo-audit"], ratings: SEO_RATINGS },
+  },
+  ...kirbyViewButtons(),
 ];
 </script>
 

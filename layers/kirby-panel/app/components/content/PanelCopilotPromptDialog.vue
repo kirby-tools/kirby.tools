@@ -1,22 +1,26 @@
 <script setup lang="ts">
+import "#kirby-panel/components/Misc/Notification.vue?vue&type=style&index=0&lang.css";
+import "#kirby-panel/components/Dialogs/Elements/Notification.vue?vue&type=style&index=0&lang.css";
+
 const props = defineProps<{
-  prompt?: string;
+  userPrompt?: string;
+  /** The resolved prompt, which the plugin fills in from the page. */
   preview?: string;
   previewOpen?: boolean;
-  files?: number;
-  /** `true` for the field picker, a number to badge it with a selection count. */
-  fields?: number | boolean;
+  /** Number of attached files, which the plugin holds in its own state. */
+  fileCount?: number;
+  fields?: PanelFieldProps[];
+  selection?: string;
   /**
-   * Text a toolbar passed along, which Copilot answers with the insert select in
-   * place of the field picker.
-   */
-  selection?: boolean;
-  /**
-   * The one dropdown the mock shows open, under the toolbar button named by
+   * The one dropdown the Mock shows open, under the toolbar button named by
    * `under`. A prop rather than a slot, because MDC binds a named slot to the
    * outermost open component.
    */
   dropdown?: PanelCopilotPromptDropdown;
+}>();
+
+const emit = defineEmits<{
+  submit: [value: { selectedFieldNames: string[] }];
 }>();
 
 const TOOLS = [
@@ -33,13 +37,23 @@ const INSERT_OPTIONS = [
 // The bare trigger comes last, so a complete reference wins the alternation.
 const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)|(@skill:\/\/[\w-]+)|(@skill:\/\/)/g;
 
+const isFieldsDropdownOpen = ref(props.dropdown?.under === "fields");
+const selectedFieldNames = ref(
+  props.dropdown?.under === "fields" ? [...(props.dropdown.value ?? [])] : [],
+);
+const {
+  notification,
+  open: openNotification,
+  close: closeNotification,
+} = usePanelNotification();
+
 const tokens = computed(() => {
   const parts: { text: string; type?: string }[] = [];
   let index = 0;
 
-  for (const match of (props.prompt ?? "").matchAll(TOKEN)) {
+  for (const match of (props.userPrompt ?? "").matchAll(TOKEN)) {
     if (match.index > index) {
-      parts.push({ text: props.prompt!.slice(index, match.index) });
+      parts.push({ text: props.userPrompt!.slice(index, match.index) });
     }
     parts.push({
       text: match[0],
@@ -54,12 +68,12 @@ const tokens = computed(() => {
     index = match.index + match[0].length;
   }
 
-  parts.push({ text: (props.prompt ?? "").slice(index) });
+  parts.push({ text: (props.userPrompt ?? "").slice(index) });
   return parts;
 });
 
 // The plugin hides the history button until a prompt is stored, so it belongs
-// only to a mock that opens its dropdown.
+// only to a Mock that opens its dropdown.
 const tools = computed(() =>
   TOOLS.filter(
     (tool) => tool.under !== "history" || props.dropdown?.under === "history",
@@ -72,19 +86,16 @@ const dropdownProps = computed(() => {
   return rest;
 });
 
-const picklistProps = computed(() => {
-  if (props.dropdown?.under !== "fields") return;
-  const { under, ...rest } = props.dropdown;
-  return rest;
-});
-
 // Room for the dropdown, which floats over the view below the dialog in the
-// Panel and would be clipped by a mock that stages the dialog alone.
+// Panel and would be clipped by a Mock that stages the dialog alone. The field
+// picker opens and closes, so its room is kept while it is closed.
 const dropdownSpace = computed(() => {
-  const dropdown = props.dropdown;
+  const dropdown: PanelCopilotPromptDropdown | undefined =
+    props.dropdown ?? (props.fields?.length ? { under: "fields" } : undefined);
   if (!dropdown) return undefined;
 
-  const items: unknown[] = dropdown.options ?? [];
+  const items: unknown[] =
+    (dropdown.under === "fields" ? props.fields : dropdown.options) ?? [];
   const separators = items.filter((item) => item === "-").length;
   // The field picker is a picklist, which brings a search field of its own.
   const rows =
@@ -106,6 +117,18 @@ const dropdownSpace = computed(() => {
     marginBottom: `calc(min(${height}, 16rem) - 2 * var(--height-sm) + var(--spacing-4))`,
   };
 });
+
+function submit() {
+  if (props.fields?.length && selectedFieldNames.value.length === 0) {
+    openNotification({
+      text: "Pick one or more fields to generate content for.",
+      theme: "info",
+    });
+    return;
+  }
+
+  emit("submit", { selectedFieldNames: selectedFieldNames.value });
+}
 </script>
 
 <template>
@@ -114,9 +137,24 @@ const dropdownSpace = computed(() => {
     class="panel-copilot-prompt-dialog"
     :style="dropdownSpace"
   >
-    <div class="relative rounded-[var(--rounded)]">
+    <template #header>
       <div
-        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap"
+        v-if="notification"
+        :data-theme="notification.theme"
+        class="k-notification k-dialog-notification"
+      >
+        <p>{{ notification.text }}</p>
+        <k-button icon="cancel" @click="closeNotification()" />
+      </div>
+    </template>
+
+    <div
+      class="relative rounded-[var(--rounded)] has-[[data-autofocus]:focus]:[outline:var(--outline)]"
+    >
+      <div
+        data-autofocus
+        tabindex="-1"
+        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap outline-none"
       >
         <template v-for="(token, index) in tokens" :key="index">
           <!-- Above the toolbar row, which the typeahead hangs over. -->
@@ -125,7 +163,7 @@ const dropdownSpace = computed(() => {
             }}<PanelDropdown
               v-if="dropdown?.under === 'skills'"
               v-bind="dropdownProps"
-              class="mt-(--spacing-1) max-h-[16rem] max-w-[24rem] min-w-[14rem] overflow-y-auto" /></span
+              class="mt-[var(--spacing-1)] max-h-[16rem] max-w-[24rem] min-w-[14rem] overflow-y-auto" /></span
           ><span
             v-else
             :class="token.type && `k-copilot-token-${token.type}`"
@@ -137,31 +175,33 @@ const dropdownSpace = computed(() => {
       <details
         v-if="preview"
         :open="previewOpen"
-        class="group mx-(--spacing-2) mb-(--spacing-2) rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
+        class="group mx-[var(--spacing-2)] mb-[var(--spacing-2)] rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
       >
         <summary
           class="flex cursor-pointer list-none items-center gap-0.5 rounded-[var(--rounded)] p-1.5 [&::-webkit-details-marker]:hidden"
         >
           <k-icon
             type="angle-dropdown"
-            class="size-[var(--icon-size)] -rotate-90 transition-transform group-open:rotate-0"
+            class="size-[var(--icon-size)] [transform:rotate(-90deg)] transition-transform group-open:[transform:rotate(0deg)]"
           />
           <span>Preview</span>
         </summary>
-        <div class="px-1.5 py-(--spacing-2)">
+        <div class="px-1.5 py-[var(--spacing-2)]">
           <p class="leading-[1.375] whitespace-pre-wrap">{{ preview }}</p>
         </div>
       </details>
 
       <div
-        class="flex items-center justify-between px-(--spacing-2) pb-(--spacing-2)"
+        class="flex items-center justify-between px-[var(--spacing-2)] pb-[var(--spacing-2)]"
       >
-        <div class="flex flex-wrap items-center gap-(--spacing-1)">
+        <div class="flex flex-wrap items-center gap-[var(--spacing-1)]">
           <k-button
             icon="attachment"
-            :badge="files ? { theme: 'notice', text: files } : undefined"
+            :badge="
+              fileCount ? { theme: 'notice', text: fileCount } : undefined
+            "
           />
-          <k-button v-if="files" text="Clear" variant="dimmed" size="sm" />
+          <k-button v-if="fileCount" text="Clear" variant="dimmed" size="sm" />
 
           <span
             v-for="tool in tools"
@@ -177,35 +217,44 @@ const dropdownSpace = computed(() => {
           </span>
         </div>
 
-        <div class="flex gap-(--spacing-2)">
-          <k-select-input
-            v-if="selection"
-            :options="INSERT_OPTIONS"
-            value="replace"
-            class="underline underline-offset-[var(--link-underline-offset)]"
-          />
-          <span v-else-if="fields" class="relative flex">
+        <div class="flex gap-[var(--spacing-2)]">
+          <span v-if="fields?.length" class="relative flex">
             <k-button
               text="Fields"
               variant="filled"
               dropdown
               :badge="
-                typeof fields === 'number'
-                  ? { theme: 'info', text: fields }
+                selectedFieldNames.length
+                  ? { theme: 'info', text: selectedFieldNames.length }
                   : undefined
               "
+              @click="isFieldsDropdownOpen = !isFieldsDropdownOpen"
             />
             <PanelPicklistDropdown
-              v-if="dropdown?.under === 'fields'"
-              v-bind="picklistProps"
+              v-if="isFieldsDropdownOpen"
+              :options="
+                fields.map((field) => ({
+                  value: field.name,
+                  text: field.label,
+                }))
+              "
+              :value="selectedFieldNames"
               align-x="end"
+              @input="selectedFieldNames = $event"
             />
           </span>
+          <k-select-input
+            v-else-if="selection"
+            :options="INSERT_OPTIONS"
+            value="replace"
+            class="underline underline-offset-[var(--link-underline-offset)]"
+          />
           <k-button
             text="Generate"
             icon="sparkling"
             theme="notice-icon"
             variant="filled"
+            @click="submit"
           />
         </div>
       </div>
@@ -223,7 +272,7 @@ const dropdownSpace = computed(() => {
 }
 
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
-   toolbar wrap. The one whose dropdown a mock opens stays. */
+   toolbar wrap. The one whose dropdown a Mock opens stays. */
 @container panel-stage (max-width: 40rem) {
   .panel-copilot-prompt-dialog
     .panel-copilot-prompt-tool:not(:has(.panel-dropdown)) {

@@ -36,7 +36,7 @@ const RESULTS: PanelSeoAuditResults = {
         :ratings="RATINGS"
         :results="RESULTS"
         version="changes"
-        timestamp="2026-09-01T08:40"
+        :timestamp="SEO_REPORT_TIMESTAMP"
       />
     </PanelDialog>
   </PanelMock>

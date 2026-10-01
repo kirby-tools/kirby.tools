@@ -16,10 +16,6 @@ hero:
       trailingIcon: i-ri-arrow-right-line
       to: /docs/content-translator/getting-started/installation
       size: xl
-  video:
-    src: /screencasts/kirby-content-translator-batch-translation.mp4
-    poster: /screencasts/kirby-content-translator-batch-translation-poster.jpg
-    label: Overview demonstration of translating content with DeepL in Kirby Panel and CLI
 sections:
   - title: Same Page,<br> <span class="text-primary">Every Language</span>
     slot: feature-cards
