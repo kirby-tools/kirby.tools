@@ -40,7 +40,7 @@ const emit = defineEmits<{ input: [value: PanelBlock[]] }>();
 
       <PanelBlocks :value="value" @input="emit('input', $event)" />
 
-      <footer>
+      <footer v-if="value?.length">
         <k-button
           :title="translate('add')"
           icon="add"

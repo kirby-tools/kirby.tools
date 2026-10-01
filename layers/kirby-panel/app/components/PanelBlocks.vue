@@ -56,7 +56,11 @@ function update(index: number, fields: Partial<PanelBlock>) {
 </script>
 
 <template>
-  <div class="k-blocks" @focusout="deselectOnFocusOut">
+  <div
+    class="k-blocks"
+    :data-empty="renderedBlocks.length === 0"
+    @focusout="deselectOnFocusOut"
+  >
     <div class="k-blocks-list">
       <div
         v-for="(block, index) in renderedBlocks"
@@ -127,5 +131,9 @@ function update(index: number, fields: Partial<PanelBlock>) {
         </div>
       </div>
     </div>
+
+    <k-empty class="k-blocks-empty" icon="box">
+      {{ translate("field.blocks.empty") }}
+    </k-empty>
   </div>
 </template>
