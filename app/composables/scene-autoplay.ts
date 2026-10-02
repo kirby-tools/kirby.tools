@@ -9,7 +9,7 @@ export const sceneAutoplayKey: InjectionKey<boolean> = Symbol("scene-autoplay");
 const VISIBLE_RATIO = 0.6;
 const DWELL_DURATION = 800;
 // The pause after each step, in which the view answers it.
-const STEP_DWELL = 700;
+const STEP_DWELL = 400;
 // Fitts's law: a move takes the base time plus a time per bit of difficulty,
 // which grows with the distance and shrinks with the target's size.
 const MOVE_BASE_DURATION = 0.2;
@@ -159,8 +159,9 @@ export function useSceneAutoplay(
       Math.min(targetRect.width, targetRect.height),
     );
 
+    // A cursor already in view moves at once.
     animation = animate([
-      [opacity, 1, { duration: 0.2 }],
+      [opacity, 1, { duration: opacity.get() < 1 ? 0.2 : 0 }],
       [x, targetX, { duration, ease: "easeInOut" }],
       [y, targetY, { duration, ease: "easeInOut", at: "<" }],
       [scale, 0.8, { duration: 0.1 }],
