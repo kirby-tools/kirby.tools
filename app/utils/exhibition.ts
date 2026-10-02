@@ -1,5 +1,6 @@
 import type { ProductId } from "#shared/products";
 
+// #region Exhibition
 export interface ExhibitionPageContent {
   title: string;
   description: string;
@@ -34,21 +35,6 @@ export const EXHIBITION_PAGE: ExhibitionPageContent = {
   ],
 };
 
-/** A shorter toolbar than Kirby's default, which overflows the sidebar column. */
-export const EXHIBITION_DESCRIPTION_BUTTONS = [
-  { icon: "title", title: "Headings" },
-  { icon: "bold", title: "Bold" },
-  { icon: "italic", title: "Italic" },
-  { icon: "url", title: "Link" },
-];
-
-export const EXHIBITION_SITE = {
-  title: "Kunsthalle Leipzig",
-  url: "https://kunsthalle-leipzig.de/rooms-of-silence",
-  faviconUrl: "/img/exhibition-favicon.svg",
-};
-
-// English is the default language, which Kirby lists first.
 export const EXHIBITION_LANGUAGES = [
   { code: "en", name: "English" },
   { code: "de", name: "Deutsch" },
@@ -61,278 +47,6 @@ export type ExhibitionLanguageCode =
 
 const [DEFAULT_LANGUAGE, ...SECONDARY_LANGUAGES] = EXHIBITION_LANGUAGES;
 const [, SPANISH, FRENCH] = SECONDARY_LANGUAGES;
-
-// Builds Kirby's own view buttons for the Exhibition page, the languages
-// dropdown only for a current `languageCode`.
-export function kirbyViewButtons(
-  languageCode?: ExhibitionLanguageCode,
-  switchLanguage?: (code: ExhibitionLanguageCode) => void,
-): PanelViewButton[] {
-  const toOption = ({ code, name }: (typeof EXHIBITION_LANGUAGES)[number]) => ({
-    text: name,
-    code,
-    current: code === languageCode,
-    click: switchLanguage && (() => switchLanguage(code)),
-  });
-
-  return [
-    ...(languageCode
-      ? [
-          {
-            component: "PanelLanguagesDropdown",
-            props: {
-              text: languageCode.toUpperCase(),
-              options: [
-                toOption(DEFAULT_LANGUAGE),
-                "-",
-                ...SECONDARY_LANGUAGES.map(toOption),
-              ],
-            },
-          },
-        ]
-      : []),
-    {
-      text: "Unlisted",
-      title: "Status: Unlisted",
-      icon: "status-unlisted",
-      theme: "info-icon",
-      responsive: true,
-    },
-  ];
-}
-
-// Each plugin's view button as it renders by default, with its English label.
-export const PLUGIN_VIEW_BUTTONS = {
-  copilot: { label: "Copilot", icon: "sparkling", theme: "notice-icon" },
-  "content-translator": {
-    label: "Translator",
-    icon: "content-translator-global",
-    theme: "notice-icon",
-  },
-  "seo-audit": { label: "SEO Audit", theme: "positive-icon" },
-} satisfies Partial<
-  Record<ProductId, { label: string; icon?: string; theme: string }>
->;
-
-export const COPILOT_PROMPT = `
-Write the text and description for "{title}".
-
-Artist: @page://artists/luise-frey
-`.trim();
-
-export const COPILOT_FIELDS: PanelFieldProps[] = [
-  { name: "text", label: "Text" },
-  { name: "description", label: "Description" },
-  { name: "dates", label: "Dates" },
-];
-
-export const COPILOT_FIELDS_DROPDOWN = {
-  under: "fields",
-  value: ["text", "description"],
-} as const satisfies PanelCopilotPromptDropdown;
-
-export const COPILOT_SUGGESTION_PREFIX = "Luise Frey photographs rooms";
-
-export const COPILOT_SUGGESTION_TYPED_TEXT = " after everyone has left them:";
-
-export const COPILOT_SUGGESTION =
-  "a school gym on the first morning of the holidays, a ferry terminal at four in the morning.";
-
-export const TRANSLATOR_BATCH_TRANSLATION_TEXT = "EN → All Languages";
-
-/**
- * Builds the plugin's dropdown items under its default config: the batch
- * translation in the default language, import and translation in every other.
- */
-export function translatorDropdownOptions(
-  languageCode: ExhibitionLanguageCode,
-  actions?: {
-    isDisabled: boolean;
-    translateBatch: () => void;
-    importContent: () => void;
-    translateContent: () => void;
-  },
-): PanelDropdownOption[] {
-  if (languageCode === "en") {
-    return [
-      {
-        icon: "content-translator-global",
-        text: TRANSLATOR_BATCH_TRANSLATION_TEXT,
-        disabled: actions?.isDisabled,
-        click: actions?.translateBatch,
-      },
-    ];
-  }
-
-  return [
-    {
-      icon: "import",
-      text: "Import",
-      disabled: actions?.isDisabled,
-      click: actions?.importContent,
-    },
-    "-",
-    {
-      icon: "translate",
-      text: `Translate → ${languageCode.toUpperCase()}`,
-      disabled: actions?.isDisabled,
-      click: actions?.translateContent,
-    },
-  ];
-}
-
-export const TRANSLATOR_DIALOG_FIELDS = {
-  languages: {
-    type: "checkboxes",
-    label: "Translate to",
-    options: EXHIBITION_LANGUAGES.slice(1).map(({ code, name }) => ({
-      value: code,
-      text: name,
-    })),
-    help: "Content from English will be translated and saved to all selected languages. This may take a few seconds.",
-  },
-  strategyName: {
-    type: "toggles",
-    label: "Translate with",
-    labels: true,
-    grow: true,
-    options: [
-      { value: "deepl", text: "DeepL", icon: "translate" },
-      { value: "ai", text: "ChatGPT", icon: "content-translator-openai" },
-    ],
-  },
-};
-
-export const TRANSLATOR_DIALOG_VALUE = {
-  languages: EXHIBITION_LANGUAGES.slice(1).map(({ code }) => code),
-  strategyName: "ai",
-};
-
-export const TRANSLATOR_DIALOG_SUBMIT_BUTTON = {
-  icon: "translate",
-  text: "Translate",
-};
-
-export const SEO_RATINGS: PanelSeoAuditRatings = {
-  seo: { rating: "bad" },
-  readability: { rating: "good" },
-};
-
-export const SEO_RESULTS: PanelSeoAuditResults = {
-  seo: [
-    {
-      rating: "good",
-      text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
-    },
-    {
-      rating: "ok",
-      text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
-    },
-    {
-      rating: "bad",
-      text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
-    },
-  ],
-  readability: [
-    {
-      rating: "good",
-      text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
-    },
-  ],
-};
-
-export const SEO_REPORT_TIMESTAMP = Date.parse("2026-09-01T08:40Z");
-
-const TRANSLATOR_COVERAGE = {
-  de: { percentage: 100, incompletePageCount: 0 },
-  es: { percentage: 21, incompletePageCount: 15 },
-  fr: { percentage: 64, incompletePageCount: 5 },
-};
-
-// The Languages view of the exhibition site. English is the default language and gets no ring.
-export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
-  SECONDARY_LANGUAGES.map(({ code, name }) => ({
-    code,
-    name,
-    ...TRANSLATOR_COVERAGE[code],
-  }));
-
-export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
-  {
-    label: "Exhibitions",
-    icon: "image",
-    isOpen: true,
-    missingLanguages: [],
-    children: [
-      {
-        label: "Luise Frey: Rooms of Silence",
-        icon: "image",
-        missingLanguages: [SPANISH, FRENCH],
-      },
-      {
-        label: "Winter Light",
-        icon: "image",
-        missingLanguages: [],
-        children: [
-          {
-            label: "Opening Night",
-            icon: "calendar",
-            missingLanguages: [SPANISH],
-          },
-          {
-            label: "Catalogue",
-            icon: "book",
-            missingLanguages: [SPANISH, FRENCH],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Artists",
-    icon: "users",
-    missingLanguages: [SPANISH],
-    children: [
-      { label: "Luise Frey", icon: "user", missingLanguages: [SPANISH] },
-      {
-        label: "Jonas Reuter",
-        icon: "user",
-        missingLanguages: [SPANISH, FRENCH],
-      },
-      { label: "Mette Sørensen", icon: "user", missingLanguages: [SPANISH] },
-    ],
-  },
-  { label: "Visit", icon: "pin", missingLanguages: [SPANISH, FRENCH] },
-  {
-    label: "Blog",
-    icon: "text",
-    missingLanguages: [SPANISH],
-    children: [
-      {
-        label: "Six Winters in the North",
-        icon: "text",
-        missingLanguages: [SPANISH],
-      },
-      {
-        label: "Printing at Scale",
-        icon: "text",
-        missingLanguages: [SPANISH, FRENCH],
-      },
-      {
-        label: "A Conversation With Luise Frey",
-        icon: "text",
-        missingLanguages: [SPANISH],
-      },
-      {
-        label: "Behind the Catalogue",
-        icon: "text",
-        missingLanguages: [SPANISH],
-      },
-      { label: "Opening Weekend", icon: "text", missingLanguages: [SPANISH] },
-    ],
-  },
-  { label: "About", icon: "info", missingLanguages: [SPANISH] },
-];
 
 // German carries a title of its own; Spanish and French keep the default
 // language's.
@@ -431,6 +145,294 @@ export const EXHIBITION_CONTENT: Record<
   },
 };
 
+export const EXHIBITION_SITE = {
+  title: "Kunsthalle Leipzig",
+  url: "https://kunsthalle-leipzig.de/rooms-of-silence",
+  faviconUrl: "/img/exhibition-favicon.svg",
+};
+
+// A shorter toolbar than Kirby's default, which overflows the sidebar column.
+export const EXHIBITION_DESCRIPTION_BUTTONS = [
+  { icon: "title", title: "Headings" },
+  { icon: "bold", title: "Bold" },
+  { icon: "italic", title: "Italic" },
+  { icon: "url", title: "Link" },
+];
+
+export function kirbyViewButtons(
+  languageCode?: ExhibitionLanguageCode,
+  switchLanguage?: (code: ExhibitionLanguageCode) => void,
+): PanelViewButton[] {
+  const toOption = ({ code, name }: (typeof EXHIBITION_LANGUAGES)[number]) => ({
+    text: name,
+    code,
+    current: code === languageCode,
+    click: switchLanguage && (() => switchLanguage(code)),
+  });
+
+  return [
+    ...(languageCode
+      ? [
+          {
+            component: "PanelLanguagesDropdown",
+            props: {
+              text: languageCode.toUpperCase(),
+              options: [
+                toOption(DEFAULT_LANGUAGE),
+                "-",
+                ...SECONDARY_LANGUAGES.map(toOption),
+              ],
+            },
+          },
+        ]
+      : []),
+    {
+      text: "Unlisted",
+      title: "Status: Unlisted",
+      icon: "status-unlisted",
+      theme: "info-icon",
+      responsive: true,
+    },
+  ];
+}
+
+// Each plugin's view button as it renders by default, with its English label.
+export const PLUGIN_VIEW_BUTTONS = {
+  copilot: { label: "Copilot", icon: "sparkling", theme: "notice-icon" },
+  "content-translator": {
+    label: "Translator",
+    icon: "content-translator-global",
+    theme: "notice-icon",
+  },
+  "seo-audit": { label: "SEO Audit", theme: "positive-icon" },
+} satisfies Partial<
+  Record<ProductId, { label: string; icon?: string; theme: string }>
+>;
+// #endregion
+
+// #region Copilot
+export const COPILOT_PROMPT = `
+Write the text and description for "{title}".
+
+Artist: @page://artists/luise-frey
+`.trim();
+
+export const COPILOT_FIELDS: PanelFieldProps[] = [
+  { name: "text", label: "Text" },
+  { name: "description", label: "Description" },
+  { name: "dates", label: "Dates" },
+];
+
+export const COPILOT_FIELDS_DROPDOWN = {
+  under: "fields",
+  value: ["text", "description"],
+} as const satisfies PanelCopilotPromptDropdown;
+
+export const COPILOT_SUGGESTION_PREFIX = "Luise Frey photographs rooms";
+
+export const COPILOT_SUGGESTION_TYPED_TEXT = " after everyone has left them:";
+
+export const COPILOT_SUGGESTION =
+  "a school gym on the first morning of the holidays, a ferry terminal at four in the morning.";
+// #endregion
+
+// #region Content Translator
+export const TRANSLATOR_BATCH_TRANSLATION_TEXT = "EN → All Languages";
+
+// The plugin's items under its default config.
+export function translatorDropdownOptions(
+  languageCode: ExhibitionLanguageCode,
+  actions?: {
+    isDisabled: boolean;
+    translateBatch: () => void;
+    importContent: () => void;
+    translateContent: () => void;
+  },
+): PanelDropdownOption[] {
+  if (languageCode === DEFAULT_LANGUAGE.code) {
+    return [
+      {
+        icon: "content-translator-global",
+        text: TRANSLATOR_BATCH_TRANSLATION_TEXT,
+        disabled: actions?.isDisabled,
+        click: actions?.translateBatch,
+      },
+    ];
+  }
+
+  return [
+    {
+      icon: "import",
+      text: "Import",
+      disabled: actions?.isDisabled,
+      click: actions?.importContent,
+    },
+    "-",
+    {
+      icon: "translate",
+      text: `Translate → ${languageCode.toUpperCase()}`,
+      disabled: actions?.isDisabled,
+      click: actions?.translateContent,
+    },
+  ];
+}
+
+export const TRANSLATOR_DIALOG_FIELDS = {
+  languages: {
+    type: "checkboxes",
+    label: "Translate to",
+    options: SECONDARY_LANGUAGES.map(({ code, name }) => ({
+      value: code,
+      text: name,
+    })),
+    help: "Content from English will be translated and saved to all selected languages. This may take a few seconds.",
+  },
+  strategyName: {
+    type: "toggles",
+    label: "Translate with",
+    labels: true,
+    grow: true,
+    options: [
+      { value: "deepl", text: "DeepL", icon: "translate" },
+      { value: "ai", text: "ChatGPT", icon: "content-translator-openai" },
+    ],
+  },
+};
+
+export const TRANSLATOR_DIALOG_VALUE = {
+  languages: SECONDARY_LANGUAGES.map(({ code }) => code),
+  strategyName: "ai",
+};
+
+export const TRANSLATOR_DIALOG_SUBMIT_BUTTON = {
+  icon: "translate",
+  text: "Translate",
+};
+
+const TRANSLATOR_COVERAGE = {
+  de: { percentage: 100, incompletePageCount: 0 },
+  es: { percentage: 21, incompletePageCount: 15 },
+  fr: { percentage: 64, incompletePageCount: 5 },
+};
+
+export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
+  SECONDARY_LANGUAGES.map(({ code, name }) => ({
+    code,
+    name,
+    ...TRANSLATOR_COVERAGE[code],
+  }));
+
+export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
+  {
+    label: "Exhibitions",
+    icon: "image",
+    isOpen: true,
+    missingLanguages: [],
+    children: [
+      {
+        label: "Luise Frey: Rooms of Silence",
+        icon: "image",
+        missingLanguages: [SPANISH, FRENCH],
+      },
+      {
+        label: "Winter Light",
+        icon: "image",
+        missingLanguages: [],
+        children: [
+          {
+            label: "Opening Night",
+            icon: "calendar",
+            missingLanguages: [SPANISH],
+          },
+          {
+            label: "Catalogue",
+            icon: "book",
+            missingLanguages: [SPANISH, FRENCH],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Artists",
+    icon: "users",
+    missingLanguages: [SPANISH],
+    children: [
+      { label: "Luise Frey", icon: "user", missingLanguages: [SPANISH] },
+      {
+        label: "Jonas Reuter",
+        icon: "user",
+        missingLanguages: [SPANISH, FRENCH],
+      },
+      { label: "Mette Sørensen", icon: "user", missingLanguages: [SPANISH] },
+    ],
+  },
+  { label: "Visit", icon: "pin", missingLanguages: [SPANISH, FRENCH] },
+  {
+    label: "Blog",
+    icon: "text",
+    missingLanguages: [SPANISH],
+    children: [
+      {
+        label: "Six Winters in the North",
+        icon: "text",
+        missingLanguages: [SPANISH],
+      },
+      {
+        label: "Printing at Scale",
+        icon: "text",
+        missingLanguages: [SPANISH, FRENCH],
+      },
+      {
+        label: "A Conversation With Luise Frey",
+        icon: "text",
+        missingLanguages: [SPANISH],
+      },
+      {
+        label: "Behind the Catalogue",
+        icon: "text",
+        missingLanguages: [SPANISH],
+      },
+      { label: "Opening Weekend", icon: "text", missingLanguages: [SPANISH] },
+    ],
+  },
+  { label: "About", icon: "info", missingLanguages: [SPANISH] },
+];
+// #endregion
+
+// #region SEO Audit
+export const SEO_RATINGS: PanelSeoAuditRatings = {
+  seo: { rating: "bad" },
+  readability: { rating: "good" },
+};
+
+export const SEO_RESULTS: PanelSeoAuditResults = {
+  seo: [
+    {
+      rating: "good",
+      text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
+    },
+    {
+      rating: "ok",
+      text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
+    },
+    {
+      rating: "bad",
+      text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
+    },
+  ],
+  readability: [
+    {
+      rating: "good",
+      text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
+    },
+  ],
+};
+
+export const SEO_REPORT_TIMESTAMP = Date.parse("2026-09-01T08:40Z");
+// #endregion
+
+// #region Minimap
 const MINIMAP_BLOCK_ICONS: Record<PanelBlock["type"], string> = {
   heading: "title",
   text: "text",
@@ -452,3 +454,4 @@ export const MINIMAP_FIELDS: PanelMinimapField[] = [
   { label: "Description", required: true },
   { label: "Dates" },
 ];
+// #endregion
