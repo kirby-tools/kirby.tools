@@ -159,7 +159,6 @@ export function useSceneAutoplay(
       Math.min(targetRect.width, targetRect.height),
     );
 
-    // A cursor already in view moves at once.
     animation = animate([
       [opacity, 1, { duration: opacity.get() < 1 ? 0.2 : 0 }],
       [x, targetX, { duration, ease: "easeInOut" }],

@@ -1,6 +1,4 @@
 export const TOKEN_INTERVAL = 35;
-// The wait for a model's first token, in which Copilot's button already shows
-// the run.
 const FIRST_TOKEN_LATENCY = 1000;
 const TOKEN = /\S+\s*/g;
 
