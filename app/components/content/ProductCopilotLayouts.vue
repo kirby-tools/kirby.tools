@@ -14,46 +14,11 @@ const FIELDS_DROPDOWN = {
 const STAGE_CLASS = "[&_.panel-mock-stage]:min-h-80";
 
 const GENERATED_LAYOUTS: PanelLayout[] = [
+  { columns: [{ width: "1/1", blocks: EXHIBITION_PAGE.text.slice(0, 2) }] },
   {
     columns: [
-      {
-        width: "1/1",
-        blocks: [
-          {
-            type: "heading",
-            level: "h2",
-            text: "Six Winters, Twenty-Eight Empty Rooms",
-          },
-          {
-            type: "text",
-            text: "A school gym on the first morning of the holidays, a ferry terminal at four, the back office of a shop after closing time. Luise Frey waits with a large-format camera until everyone has gone.",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    columns: [
-      {
-        width: "1/2",
-        blocks: [
-          { type: "heading", level: "h3", text: "Visit" },
-          {
-            type: "text",
-            text: "Kunsthalle Leipzig, 12 September to 30 November. Tuesday to Sunday, 10 am to 6 pm.",
-          },
-        ],
-      },
-      {
-        width: "1/2",
-        blocks: [
-          { type: "heading", level: "h3", text: "Meet the Artist" },
-          {
-            type: "text",
-            text: "Luise Frey talks about the series on 14 November at 7 pm. Admission is free.",
-          },
-        ],
-      },
+      { width: "1/2", blocks: EXHIBITION_PAGE.text.slice(2, 3) },
+      { width: "1/2", blocks: EXHIBITION_PAGE.text.slice(3) },
     ],
   },
 ];
