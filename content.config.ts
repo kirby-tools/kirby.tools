@@ -209,6 +209,12 @@ export default defineContentConfig({
       type: "page",
       schema: createBaseSchema().extend({
         hero: createBaseSchema(),
+        illustration: z
+          .object({
+            name: z.string().nonempty(),
+            class: z.string().optional(),
+          })
+          .optional(),
         plan: createBaseSchema().extend({
           price: z.string().nonempty(),
           discount: z.string().optional(),

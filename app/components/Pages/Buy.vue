@@ -58,15 +58,18 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
       :ui="{ container: 'py-16 sm:py-16 lg:py-16' }"
     />
 
-    <UContainer :class="$slots['image-pricing'] ? 'max-w-6xl' : 'max-w-lg'">
+    <UContainer :class="page.illustration ? 'max-w-6xl' : 'max-w-lg'">
       <div
-        v-if="$slots['image-pricing']"
+        v-if="page.illustration"
         class="lg:bg-primary-500 dark:lg:bg-primary-600 flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:p-12"
       >
         <div
           class="[--illustration-ink:var(--ui-color-neutral-900)] max-lg:hidden"
         >
-          <slot name="image-pricing" />
+          <Illustration
+            :name="page.illustration.name"
+            :class="page.illustration.class"
+          />
         </div>
 
         <ReusePricingPlanTemplate />

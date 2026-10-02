@@ -4,6 +4,9 @@ navigation.icon: i-ri-shopping-bag-3-line
 hero:
   title: Buy Once, Use Forever
   description: Translation in every Panel you build, at a one-time price.
+illustration:
+  name: partnershapes-22
+  class: mx-auto w-2/3
 plan:
   title: Content Translator v3
   description: For solo developers and agencies

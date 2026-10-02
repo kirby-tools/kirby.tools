@@ -1,7 +1,20 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import { isProductId, PRODUCTS } from "#shared/products";
+
+definePageMeta({
+  validate(route) {
+    const { product } = route.params;
+    return (
+      typeof product === "string" &&
+      isProductId(product) &&
+      PRODUCTS[product].license === "commercial"
+    );
+  },
+});
 
 const route = useRoute();
+const { productId, product } = useProduct();
 
 const { data: page } = await useAsyncData(
   withoutTrailingSlash(route.path),
@@ -21,16 +34,18 @@ const description = page.value.seo?.description || page.value.description;
 
 useSeoMeta({
   title,
-  ogTitle: `${title} – Kirby Tools`,
+  ogTitle: `${title} – ${product.value!.name}`,
   description,
   ogDescription: description,
+});
+
+defineOgImage("Default", {
+  productId: productId.value,
+  title,
+  description,
 });
 </script>
 
 <template>
-  <PagesBuy :page="page!">
-    <template #image-pricing>
-      <Illustration name="partnershapes-8" class="mx-auto w-4/5" />
-    </template>
-  </PagesBuy>
+  <PagesBuy :page="page!" />
 </template>

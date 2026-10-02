@@ -15,7 +15,7 @@ definePageMeta({
 });
 
 const route = useRoute();
-const { productId } = useProduct();
+const { productId, product } = useProduct();
 
 const { data: page } = await useAsyncData(
   withoutTrailingSlash(route.path),
@@ -33,7 +33,7 @@ if (!page.value) {
 
 useSeoMeta({
   title: page.value.title,
-  ogTitle: `${page.value.title} – Kirby Tools`,
+  ogTitle: `${page.value.title} – ${product.value!.name}`,
   description: page.value.description,
   ogDescription: page.value.description,
 });

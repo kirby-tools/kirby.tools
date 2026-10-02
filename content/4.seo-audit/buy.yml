@@ -5,6 +5,9 @@ hero:
   title: Buy Once, Use Forever
   description: SEO reports in every Panel you build, at a one-time price.
   align: center
+illustration:
+  name: lucky-unlucky-1-stickman
+  class: mx-auto w-2/3
 plan:
   title: SEO Audit v3
   description: For solo developers and agencies
