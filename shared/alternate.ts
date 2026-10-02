@@ -2,20 +2,16 @@ import type { ProductId } from "./products";
 import { withoutTrailingSlash } from "ufo";
 import { isProductId, PRODUCTS } from "./products";
 
+export type AlternateCollection = "docs" | "posts" | "pages";
+
+export type Alternate =
+  | { kind: "collection"; collection: AlternateCollection }
+  | { kind: "changelog"; productId: ProductId };
+
 const SUFFIX = ".md";
 
 /** Prose outside the docs and blog trees that agents get asked about, minus the legal boilerplate. */
 const PROSE_PATHS = new Set(["/ai", "/license", "/license-compatibility"]);
-
-export type AlternateCollection = "docs" | "posts" | "pages";
-
-/**
- * What an alternate is rendered from. Callers switch on this to fetch it; only
- * this module decides which pages have one.
- */
-export type Alternate =
-  | { kind: "collection"; collection: AlternateCollection }
-  | { kind: "changelog"; productId: ProductId };
 
 /** Resolves what a page's alternate renders from, or `undefined` for a page without one. */
 export function resolveAlternate(path: string): Alternate | undefined {
