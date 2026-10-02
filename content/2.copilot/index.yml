@@ -16,8 +16,6 @@ hero:
       to: /docs/copilot/getting-started/installation
       size: xl
 sections:
-  - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
-    slot: scene
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
     slot: feature-cards
     cards:
@@ -43,6 +41,8 @@ sections:
         description: Select text in a writer or textarea field, press the Copilot button, and say what should change. The result replaces the selection or follows it.
         to: /docs/copilot/usage/toolbar-buttons
         wide: true
+  - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
+    slot: scene
   - title: Drive Copilot<br> From <span class="text-primary">PHP</span>
     id: php-api
     slot: code
