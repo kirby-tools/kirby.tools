@@ -1,22 +1,5 @@
 import type { ExhibitionPageContent } from "~/utils/exhibition";
 
-const GENERATED_CONTENT = {
-  text: [
-    {
-      type: "heading",
-      level: "h2",
-      text: "Twenty-Eight Rooms, No One in Them",
-    },
-    {
-      type: "text",
-      text: "A school gym on the first morning of the holidays. A ferry terminal at four. Luise Frey photographs rooms once everyone has gone, with exposures so long the dust settles inside the frame. Twenty-eight large-format prints from six winters, on view at Kunsthalle Leipzig from 12 September.",
-    },
-  ],
-  description:
-    "Luise Frey photographs rooms just after everyone has left – twenty-eight large-format prints from six winters. Kunsthalle Leipzig, 12 September to 30 November.",
-  dates: "12 September – 30 November 2026",
-} satisfies Omit<ExhibitionPageContent, "title">;
-
 export function useSceneGeneration(
   page: ExhibitionPage,
   notify: (notification: PanelNotificationProps) => void,
@@ -46,16 +29,16 @@ export function useSceneGeneration(
     if (fieldNames.includes("text"))
       changes.text = [
         ...startContent.text,
-        ...GENERATED_CONTENT.text.flatMap((block) => {
+        ...EXHIBITION_PAGE.text.flatMap((block) => {
           const text = take(block.text);
           return text ? [{ ...block, text }] : [];
         }),
       ];
     if (fieldNames.includes("description"))
       changes.description =
-        take(GENERATED_CONTENT.description) || startContent.description;
+        take(EXHIBITION_PAGE.description) || startContent.description;
     if (fieldNames.includes("dates"))
-      changes.dates = take(GENERATED_CONTENT.dates) || startContent.dates;
+      changes.dates = take(EXHIBITION_PAGE.dates) || startContent.dates;
     page.update(changes);
 
     const isComplete = hasTokensLeft();
