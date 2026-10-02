@@ -14,7 +14,11 @@ DeepL and AI translation, in the Panel or from the CLI. One click translates a w
 
 ### 🏃 [Kirby SEO Audit](https://kirby.tools/seo-audit)
 
-Yoast SEO and readability checks, graded in the Panel. The Yoast SEO engine runs in the editor's browser, with no external service and no data leaving the site.
+Yoast SEO and readability analysis, rated in the Panel. The Yoast SEO engine runs in the editor's browser, with no external service and no data leaving the site.
+
+### 🔍 [Kirby SERP Preview](https://kirby.tools/serp-preview)
+
+See the Google snippet as you type. Free, and a Panel section draws the result for the page you are editing – favicon, site name, URL, title, and description – and redraws it on every keystroke.
 
 ### 🧭 [Kirby Minimap](https://kirby.tools/minimap)
 
@@ -22,7 +26,7 @@ Jump to any field or block from a sidebar. Free, and there is nothing to configu
 
 ### 🦭 [Kirby Headless](https://kirby.tools/headless)
 
-Bearer auth, KQL, JSON templates, API builder. Free and open source; keep editing in Kirby and serve the content to whatever frontend you prefer.
+JSON pages and KQL queries, served behind one bearer token. Free and open source; keep editing in Kirby and serve the content to whatever frontend you prefer.
 
 ---
 
