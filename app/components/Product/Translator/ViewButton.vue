@@ -5,11 +5,7 @@ const VIEW_BUTTONS: PanelViewButton[] = [
     icon: PLUGIN_VIEW_BUTTONS["content-translator"].icon,
     theme: PLUGIN_VIEW_BUTTONS["content-translator"].theme,
     responsive: true,
-    options: [
-      { icon: "import", text: "Import from EN" },
-      "-",
-      { icon: "translate", text: "Translate → DE" },
-    ],
+    options: translatorDropdownOptions("de"),
     alignX: "start",
   },
   ...kirbyViewButtons("de"),

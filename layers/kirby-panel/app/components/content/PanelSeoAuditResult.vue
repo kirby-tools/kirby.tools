@@ -2,7 +2,8 @@
 const props = defineProps<{
   results: PanelSeoAuditResults;
   ratings?: PanelSeoAuditRatings;
-  title?: string;
+  /** A result inside the report dialog, the only place the plugin puts a heading above it. */
+  isDialog?: boolean;
   version?: PanelSeoAuditContentVersion;
   timestamp?: number;
 }>();
@@ -19,6 +20,14 @@ const RATING_BADGE_COLOR_MAP: Partial<Record<PanelSeoAuditRating, string>> = {
   ok: "orange",
   bad: "red",
 };
+
+const heading = computed(() => {
+  const { seo, readability } = props.results;
+  if (seo.length > 0 && readability.length > 0) {
+    return "SEO & Readability Scores";
+  }
+  return seo.length > 0 ? "SEO Scores" : "Readability Scores";
+});
 
 const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 
@@ -37,11 +46,11 @@ const groups = computed(() => {
 <template>
   <div class="panel-seo-audit-result">
     <div
-      v-if="title"
+      v-if="isDialog"
       class="mb-[var(--spacing-6)] flex items-start justify-between"
     >
       <k-text>
-        <h2>{{ title }}</h2>
+        <h2>{{ heading }}</h2>
         <PanelSeoAuditReportRatings
           v-if="ratings"
           :ratings="ratings"
@@ -93,7 +102,15 @@ const groups = computed(() => {
           <div v-html="replaceTrailingExclamation(item.text)" />
         </div>
 
-        <hr v-if="index < groups.length - 1" class="my-[var(--spacing-4)]" />
+        <hr
+          v-if="index < groups.length - 1"
+          class="my-[var(--spacing-4)]"
+          :style="{
+            background: isDialog
+              ? undefined
+              : 'light-dark(var(--color-gray-350), var(--color-border))',
+          }"
+        />
       </div>
     </k-text>
 
@@ -105,11 +122,3 @@ const groups = computed(() => {
     </p>
   </div>
 </template>
-
-<style>
-/* The `<hr>` keeps Kirby's default in a dialog. Inside a section the result
-   sits on a passive box of the same gray, so only there is it darkened. */
-.k-section .panel-seo-audit-result hr {
-  background: light-dark(var(--color-gray-350), var(--color-border));
-}
-</style>

@@ -59,7 +59,8 @@ export const EXHIBITION_LANGUAGES = [
 export type ExhibitionLanguageCode =
   (typeof EXHIBITION_LANGUAGES)[number]["code"];
 
-const [, , SPANISH, FRENCH] = EXHIBITION_LANGUAGES;
+const [DEFAULT_LANGUAGE, ...SECONDARY_LANGUAGES] = EXHIBITION_LANGUAGES;
+const [, SPANISH, FRENCH] = SECONDARY_LANGUAGES;
 
 // Builds Kirby's own view buttons for the Exhibition page, the languages
 // dropdown only for a current `languageCode`.
@@ -67,14 +68,12 @@ export function kirbyViewButtons(
   languageCode?: ExhibitionLanguageCode,
   switchLanguage?: (code: ExhibitionLanguageCode) => void,
 ): PanelViewButton[] {
-  const [defaultLanguage, ...secondaryLanguages] = EXHIBITION_LANGUAGES.map(
-    ({ code, name }) => ({
-      text: name,
-      code,
-      current: code === languageCode,
-      click: switchLanguage && (() => switchLanguage(code)),
-    }),
-  );
+  const toOption = ({ code, name }: (typeof EXHIBITION_LANGUAGES)[number]) => ({
+    text: name,
+    code,
+    current: code === languageCode,
+    click: switchLanguage && (() => switchLanguage(code)),
+  });
 
   return [
     ...(languageCode
@@ -83,7 +82,11 @@ export function kirbyViewButtons(
             component: "PanelLanguagesDropdown",
             props: {
               text: languageCode.toUpperCase(),
-              options: [defaultLanguage!, "-", ...secondaryLanguages],
+              options: [
+                toOption(DEFAULT_LANGUAGE),
+                "-",
+                ...SECONDARY_LANGUAGES.map(toOption),
+              ],
             },
           },
         ]
@@ -134,6 +137,49 @@ export const COPILOT_SUGGESTION_TYPED_TEXT = " after everyone has left them:";
 
 export const COPILOT_SUGGESTION =
   "a school gym on the first morning of the holidays, a ferry terminal at four in the morning.";
+
+export const TRANSLATOR_BATCH_TRANSLATION_TEXT = "EN → All Languages";
+
+/**
+ * Builds the plugin's dropdown items under its default config: the batch
+ * translation in the default language, import and translation in every other.
+ */
+export function translatorDropdownOptions(
+  languageCode: ExhibitionLanguageCode,
+  actions?: {
+    isDisabled: boolean;
+    translateBatch: () => void;
+    importContent: () => void;
+    translateContent: () => void;
+  },
+): PanelDropdownOption[] {
+  if (languageCode === "en") {
+    return [
+      {
+        icon: "content-translator-global",
+        text: TRANSLATOR_BATCH_TRANSLATION_TEXT,
+        disabled: actions?.isDisabled,
+        click: actions?.translateBatch,
+      },
+    ];
+  }
+
+  return [
+    {
+      icon: "import",
+      text: "Import",
+      disabled: actions?.isDisabled,
+      click: actions?.importContent,
+    },
+    "-",
+    {
+      icon: "translate",
+      text: `Translate → ${languageCode.toUpperCase()}`,
+      disabled: actions?.isDisabled,
+      click: actions?.translateContent,
+    },
+  ];
+}
 
 export const TRANSLATOR_DIALOG_FIELDS = {
   languages: {
@@ -197,13 +243,19 @@ export const SEO_RESULTS: PanelSeoAuditResults = {
 
 export const SEO_REPORT_TIMESTAMP = Date.parse("2026-09-01T08:40Z");
 
+const TRANSLATOR_COVERAGE = {
+  de: { percentage: 100, incompletePageCount: 0 },
+  es: { percentage: 21, incompletePageCount: 15 },
+  fr: { percentage: 64, incompletePageCount: 5 },
+};
+
 // The Languages view of the exhibition site. English is the default language and gets no ring.
 export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
-  [
-    { code: "de", name: "Deutsch", percentage: 100, incompletePageCount: 0 },
-    { code: "fr", name: "Français", percentage: 64, incompletePageCount: 5 },
-    { code: "es", name: "Español", percentage: 21, incompletePageCount: 15 },
-  ];
+  SECONDARY_LANGUAGES.map(({ code, name }) => ({
+    code,
+    name,
+    ...TRANSLATOR_COVERAGE[code],
+  }));
 
 export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   {

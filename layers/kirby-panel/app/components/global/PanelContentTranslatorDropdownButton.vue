@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   label: string;
   theme: string;
   /** A run in progress, which the plugin reads from its translation state. */
@@ -12,17 +12,13 @@ const props = defineProps<{
 }>();
 
 const dropdown = useTemplateRef<{ toggle: () => void }>("dropdown");
-
-const icon = computed(() =>
-  props.isTranslating ? "loader" : "content-translator-global",
-);
 </script>
 
 <template>
   <div>
     <k-button
       :text="label"
-      :icon="icon"
+      :icon="isTranslating ? 'loader' : 'content-translator-global'"
       :theme="theme"
       size="sm"
       variant="filled"

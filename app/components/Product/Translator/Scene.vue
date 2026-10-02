@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { ExhibitionLanguageCode } from "~/utils/exhibition";
 
-const BATCH_TRANSLATION_TEXT = "EN → All Languages";
 // Translating the current language asks only for the strategy.
 const CONTENT_DIALOG_FIELDS = {
   strategyName: TRANSLATOR_DIALOG_FIELDS.strategyName,
@@ -10,7 +9,7 @@ const CONTENT_DIALOG_FIELDS = {
 const page = useExhibitionPage();
 const autoplay = useSceneAutoplay("content-translator", [
   { click: PLUGIN_VIEW_BUTTONS["content-translator"].label },
-  { click: BATCH_TRANSLATION_TEXT },
+  { click: TRANSLATOR_BATCH_TRANSLATION_TEXT },
   { click: TRANSLATOR_DIALOG_SUBMIT_BUTTON.text },
 ]);
 const { cursor } = autoplay;
@@ -44,41 +43,18 @@ const isTranslating = computed(
   () => isBatchTranslating.value || isTranslatingContent.value,
 );
 
-// The plugin offers the batch translation in the default language only.
-const options = computed<PanelDropdownOption[]>(() =>
-  languageCode.value === "en"
-    ? [
-        {
-          icon: "content-translator-global",
-          text: BATCH_TRANSLATION_TEXT,
-          disabled: isTranslating.value,
-          click: openBatchDialog,
-        },
-      ]
-    : [
-        {
-          icon: "import",
-          text: "Import",
-          disabled: isTranslating.value,
-          click: importContent,
-        },
-        "-",
-        {
-          icon: "translate",
-          text: `Translate → ${languageCode.value.toUpperCase()}`,
-          disabled: isTranslating.value,
-          click: openContentDialog,
-        },
-      ],
-);
-
 const viewButton = computed<PanelViewButton>(() => ({
   component: "PanelContentTranslatorDropdownButton",
   props: {
     label: PLUGIN_VIEW_BUTTONS["content-translator"].label,
     theme: PLUGIN_VIEW_BUTTONS["content-translator"].theme,
     isTranslating: isTranslating.value,
-    options: options.value,
+    options: translatorDropdownOptions(languageCode.value, {
+      isDisabled: isTranslating.value,
+      translateBatch: openBatchDialog,
+      importContent,
+      translateContent: openContentDialog,
+    }),
   },
 }));
 

@@ -32,7 +32,7 @@ const RESULTS: PanelSeoAuditResults = {
   <PanelMock label="SEO Audit">
     <PanelDialog size="large">
       <PanelSeoAuditResult
-        title="SEO Audit"
+        is-dialog
         :ratings="RATINGS"
         :results="RESULTS"
         version="changes"

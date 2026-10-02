@@ -19,7 +19,7 @@ It also opens with a light for SEO and one for readability, the same way Yoast s
 ::::panel-dialog{size="large"}
 :::panel-seo-audit-result
 ---
-title: SEO Audit
+isDialog: true
 ratings:
   seo:
     rating: ok

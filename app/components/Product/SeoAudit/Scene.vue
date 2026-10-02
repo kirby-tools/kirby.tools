@@ -60,7 +60,7 @@ function analyze() {
     <template v-if="isDialogOpen" #dialog>
       <PanelDialog size="large" :autofocus="hasReaderOpenedDialog">
         <PanelSeoAuditResult
-          title="SEO & Readability Scores"
+          is-dialog
           :ratings="ratings"
           :results="results"
           version="changes"
