@@ -1,4 +1,7 @@
 export const TOKEN_INTERVAL = 35;
+// The wait for a model's first token, in which Copilot's button already shows
+// the run.
+const FIRST_TOKEN_LATENCY = 1000;
 const TOKEN = /\S+\s*/g;
 
 // `update` draws the answer up to the given token count and reports whether
@@ -8,10 +11,18 @@ export function useTokenStream(update: (tokenCount: number) => boolean) {
   let tokenCount = 0;
 
   const {
-    isActive: isStreaming,
-    pause: stop,
-    resume,
+    isActive: isStreamingTokens,
+    pause: pauseTokens,
+    resume: resumeTokens,
   } = useIntervalFn(streamNextToken, TOKEN_INTERVAL, { immediate: false });
+  const {
+    isPending: isAwaitingFirstToken,
+    start: awaitFirstToken,
+    stop: stopAwaitingFirstToken,
+  } = useTimeoutFn(resumeTokens, FIRST_TOKEN_LATENCY, { immediate: false });
+  const isStreaming = computed(
+    () => isAwaitingFirstToken.value || isStreamingTokens.value,
+  );
 
   function start() {
     if (reducedMotion.value === "reduce") {
@@ -20,12 +31,17 @@ export function useTokenStream(update: (tokenCount: number) => boolean) {
     }
 
     tokenCount = 0;
-    resume();
+    awaitFirstToken();
+  }
+
+  function stop() {
+    stopAwaitingFirstToken();
+    pauseTokens();
   }
 
   function streamNextToken() {
     tokenCount++;
-    if (update(tokenCount)) stop();
+    if (update(tokenCount)) pauseTokens();
   }
 
   return { isStreaming, start, stop };
