@@ -5,6 +5,8 @@ import {
   PRODUCT_LIST,
   PRODUCT_THEME_COLORS,
   productChangelogPath,
+  productDocsPath,
+  productPath,
 } from "./shared/products";
 import { UNLISTED_PATHS } from "./shared/unlisted";
 
@@ -208,7 +210,7 @@ export default defineNuxtConfig({
       },
     ],
     notes: [
-      "These plugins install via Composer or as a ZIP into `site/plugins/` and are configured in `site/config/config.php` under their `johannschopplich.*` option key.",
+      "These plugins install via Composer or as a ZIP into `site/plugins/`.",
       "Commercial plugins run unlicensed in local development. Production needs a license key, activated in the Panel's system view and stored in `site/config/.kirby-tools-licenses`. Each plugin is licensed separately.",
       "Append `.md` to any documentation or blog URL to retrieve its Markdown source, for example `https://kirby.tools/docs/copilot/getting-started.md`.",
       `Changelogs, newest release first: ${PRODUCT_LIST.filter(
@@ -299,16 +301,23 @@ export default defineNuxtConfig({
       UNLISTED_PATHS.map((path) => [path, { prerender: true, robots: false }]),
     ),
     // Playgrounds
-    "/copilot/playground": {
-      redirect: { to: "https://try.kirbycopilot.com", statusCode: 302 },
-    },
-    "/seo-audit/playground": {
-      redirect: { to: "https://try.kirbyseo.com", statusCode: 302 },
-    },
+    ...Object.fromEntries(
+      PRODUCT_LIST.filter((product) => product.playground).map(
+        ({ id, playground }) => [
+          `${productPath(id)}/playground`,
+          { redirect: { to: playground!, statusCode: 302 } },
+        ],
+      ),
+    ),
     // Core
     "/docs": { redirect: "/" },
+    ...Object.fromEntries(
+      PRODUCT_LIST.filter((product) => product.docsEntry).map(({ id }) => [
+        `/docs/${id}`,
+        { redirect: productDocsPath(id) },
+      ]),
+    ),
     // Copilot
-    "/docs/copilot": { redirect: "/docs/copilot/getting-started" },
     "/docs/copilot/usage/placeholders": {
       redirect: "/docs/copilot/prompt-dialog/placeholders",
     },
@@ -324,9 +333,6 @@ export default defineNuxtConfig({
     // Content Translator
     "/docs/content-translator/changelog": {
       redirect: "/content-translator/changelog",
-    },
-    "/docs/content-translator": {
-      redirect: "/docs/content-translator/getting-started",
     },
     "/docs/content-translator/configuration": {
       redirect: "/docs/content-translator/configuration/global",
@@ -353,13 +359,11 @@ export default defineNuxtConfig({
       redirect: "/docs/content-translator/getting-started/migration",
     },
     // SEO Audit
-    "/docs/seo-audit": { redirect: "/docs/seo-audit/getting-started" },
     "/docs/seo-audit/guide/audit-url": {
       redirect: "/docs/seo-audit/guide/preview-url",
     },
     // Other plugins
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
-    "/docs/headless": { redirect: "/docs/headless/getting-started" },
   },
 
   nitro: {
