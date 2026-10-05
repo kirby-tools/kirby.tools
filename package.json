@@ -58,7 +58,7 @@
     "tinyexec": "1.2.4",
     "typescript": "^6.0.3",
     "ufo": "^1.6.4",
-    "utilful": "^3.3.0",
+    "utilful": "^3.5.1",
     "vite": "^8.2.2",
     "vitest": "^4.1.11",
     "vue-tsc": "^3.3.11",

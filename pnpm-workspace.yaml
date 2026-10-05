@@ -1,5 +1,7 @@
 minimumReleaseAgeExcludePrune: true
 
+minimumReleaseAgeExclude:
+  - utilful@3.5.1
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@6.3.1
