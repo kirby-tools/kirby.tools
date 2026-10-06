@@ -24,7 +24,7 @@ A closure or `Strategy` instance enables the translation buttons without a `Deep
 <https://kirby.tools/docs/content-translator/configuration/global.md>
 <https://kirby.tools/docs/content-translator/providers/custom-translator.md>
 
-## Adding It to a Blueprint
+## Adding It to the Panel
 
 A view button, a section, or both:
 
@@ -44,7 +44,10 @@ sections:
 
 `buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props then come from the global config, and a blueprint's `buttons` wins over the option. `systemPrompt` is a section property; the view button ignores it and reads the global `ai.systemPrompt`.
 
+Kirby's language view, where the button translates language variables, has no blueprint: only `panel.viewButtons.language` puts the button there, listed alongside Kirby's `open`, `settings`, and `delete`. The button saves directly, and Kirby rewrites the language definition file as a plain array: a file that builds its variables in PHP, such as from a YAML file, loses that code.
+
 <https://kirby.tools/docs/content-translator/configuration/local.md>
+<https://kirby.tools/docs/content-translator/panel/language-variables.md>
 
 ## What Gets Translated
 

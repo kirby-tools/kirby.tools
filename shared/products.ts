@@ -98,7 +98,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Generating new content from a prompt – use Kirby Copilot for that.",
     skillDescription:
-      "Configure Kirby Content Translator, which translates Kirby content between the site's languages in the Panel, from the CLI, or from PHP. Use when choosing DeepL, Copilot AI, or a custom strategy, adding the button or section to a blueprint, restricting which fields or KirbyTag attributes translate, scripting translation from PHP, or when a field keeps its source text or a hook never fires.",
+      "Configure Kirby Content Translator, which translates Kirby content between the site's languages in the Panel, from the CLI, or from PHP. Use when choosing DeepL, Copilot AI, or a custom strategy, adding the button or section to a blueprint, translating language variables, restricting which fields or KirbyTag attributes translate, scripting translation from PHP, or when a field keeps its source text or a hook never fires.",
   },
   "seo-audit": {
     name: "Kirby SEO Audit",
