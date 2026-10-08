@@ -56,7 +56,9 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Sitemap
 
-`/api/__sitemap__` lists every indexable page. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them), and an `isIndexable` closure.
+`/api/__sitemap__` lists the indexable pages. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them), and an `isIndexable` closure.
+
+On a multi-language site it lists only the pages translated into the request language (`?language=` or `X-Language`, else the default), and each entry's `links` only the languages the page is translated into, plus an `x-default` when they include the default language. A page without any content counts as translated into every language.
 
 <https://kirby.tools/docs/headless/usage/json-templates.md>
 
