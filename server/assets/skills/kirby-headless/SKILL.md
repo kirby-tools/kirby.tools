@@ -33,7 +33,7 @@ Under `globalRoutes`, clean file URLs like `/about/hero.jpg` need the token and 
 
 ## JSON Templates
 
-A JSON template is an ordinary Kirby template that returns JSON, served for every page once `globalRoutes` is on. The `X-Language` header only applies with one language at the site root, Kirby's default multi-language setup; where every language carries a prefix, Kirby redirects an unprefixed path before the header is read.
+A JSON template is an ordinary Kirby template that returns JSON, served for every page once `globalRoutes` is on. The `X-Language` header only applies with one language at the site root; where every language carries a prefix, Kirby redirects an unprefixed path before the header is read.
 
 <https://kirby.tools/docs/headless/usage/json-templates.md>
 
