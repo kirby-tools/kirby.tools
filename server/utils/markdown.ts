@@ -1,6 +1,6 @@
 import type { PageCollectionItemBase } from "@nuxt/content";
 import type { H3Event } from "h3";
-import type { MinimarkNode } from "minimark";
+import type { MinimarkElement, MinimarkNode } from "minimark";
 import type { ProductDownload } from "#shared/products";
 import { stringify } from "minimark/stringify";
 import { joinURL } from "ufo";
@@ -68,16 +68,34 @@ export function sendMarkdownNotFound(event: H3Event, path: string) {
 }
 
 /** Replaces each `latest-version` component, an empty node in the stored body, with the page's download link. */
-function linkLatestVersion(
+export function linkLatestVersion(
   nodes: MinimarkNode[],
   latestDownload: ProductDownload,
+): MinimarkNode[] {
+  return mapElements(nodes, (element) =>
+    element[0] === "latest-version"
+      ? ["a", { href: latestDownload.url }, latestDownload.label]
+      : element,
+  );
+}
+
+/** Drops every link's `rel`, which Nuxt Content adds to external links and the MDC stringifier writes as a broken attribute. */
+export function dropLinkRel(nodes: MinimarkNode[]): MinimarkNode[] {
+  return mapElements(nodes, (element) => {
+    if (element[0] !== "a") return element;
+    const [tag, { rel: _rel, ...linkProps }, ...children] = element;
+    return [tag, linkProps, ...children];
+  });
+}
+
+/** Rewrites every element of a stored body, its children first. */
+function mapElements(
+  nodes: MinimarkNode[],
+  transform: (element: MinimarkElement) => MinimarkNode,
 ): MinimarkNode[] {
   return nodes.map((node) => {
     if (typeof node === "string") return node;
     const [tag, props, ...children] = node;
-    if (tag === "latest-version") {
-      return ["a", { href: latestDownload.url }, latestDownload.label];
-    }
-    return [tag, props, ...linkLatestVersion(children, latestDownload)];
+    return transform([tag, props, ...mapElements(children, transform)]);
   });
 }

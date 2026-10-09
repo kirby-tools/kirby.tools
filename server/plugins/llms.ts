@@ -14,4 +14,13 @@ export default defineNitroPlugin((nitroApp) => {
       }
     }
   });
+
+  // `llms-full.txt` stringifies each document itself, past the alternates' middleware.
+  nitroApp.hooks.hook("content:llms:generate:document", async (event, doc) => {
+    const latestDownload = await productPageDownload(event, doc.path);
+    const nodes = dropLinkRel(doc.body.value);
+    doc.body.value = latestDownload
+      ? linkLatestVersion(nodes, latestDownload)
+      : nodes;
+  });
 });
