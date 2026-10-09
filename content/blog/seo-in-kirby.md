@@ -37,7 +37,7 @@ The canonical tag doesn't hide unlisted pages, and Kirby adds `noindex` only to 
 <?php endif ?>
 ```
 
-For the sitemap, the [recipe in the Kirby cookbook](https://getkirby.com/docs/cookbook/navigation/sitemap) builds one from a route and a snippet. It lists every page, unlisted ones included, so I'd add the ones you don't want found to its `sitemap.ignore` option.
+For the sitemap, the [recipe in the Kirby cookbook](https://getkirby.com/docs/cookbook/navigation/sitemap) builds one from a route and a snippet. It lists every page, unlisted ones included, so I'd add the ones you don't want found to its `sitemap.ignore` option. If you'd rather not build it yourself, [Kirby Helpers](/docs/helpers/sitemap) serves a sitemap that lists each page's existing translations as `hreflang` alternates.
 
 ## Add hreflang Only for Translations That Exist
 
