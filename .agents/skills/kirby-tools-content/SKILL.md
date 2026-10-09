@@ -7,7 +7,7 @@ description: Writing or editing anything a visitor or an agent reads on kirby.to
 
 ## Register
 
-A sentence's register follows its place. Titles and CTA labels may claim or joke. Everything else, down to a CTA's description and the meta description, says what the editor or developer does, what happens, and where it stops, taken from the Plugin source rather than from adjectives. A price is stated, never graded. Headless is the one Product whose FeatureCards carry code identifiers, and the Yoast assessments are described, never counted.
+A sentence's register follows its place. Titles and CTA labels may claim or joke. Everything else, down to a CTA's description and the meta description, says what the editor or developer does, what happens, and where it stops, taken from the Plugin source rather than from adjectives. A price is stated, never graded. Headless, Helpers, and Live Preview carry code identifiers in their FeatureCards, and the Yoast assessments are described, never counted.
 
 ## Blog
 

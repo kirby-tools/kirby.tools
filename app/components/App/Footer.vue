@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import type { FooterColumn } from "@nuxt/ui";
-import { PRODUCT_LIST, productDocsPath } from "#shared/products";
+import { PRODUCT_LIST, productDocsPath, productPath } from "#shared/products";
 
 const columns: FooterColumn[] = [
+  {
+    label: "Plugins",
+    children: PRODUCT_LIST.map((product) => ({
+      label: product.label,
+      to: productPath(product.id),
+    })),
+  },
   {
     label: "Documentation",
     children: PRODUCT_LIST.map((product) => ({

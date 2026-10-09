@@ -1,0 +1,48 @@
+title: Kirby Helpers – Env, Meta Tags, Sitemap, Redirects, and Vite for Kirby
+description: Kirby CMS plugin that loads .env files, renders meta tags and Vite assets in your templates, and serves an XML sitemap, robots.txt, and redirects.
+navigation.icon: i-ri-tools-line
+hero:
+  headline:
+    label: Free Plugin
+    icon: i-ri-open-source-line
+  title: 'The <span class="text-primary">Plumbing</span><br> Every Kirby Site Rewrites'
+  description: Five helpers for your templates and config.php – a .env loader, meta tags, a sitemap, redirects, and Vite assets. Each stays off until you use it.
+  links:
+    - label: Get Started
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/helpers
+      size: xl
+sections:
+  - title: Five Helpers,<br> <span class="text-primary">One Composer Package</span>
+    id: features
+    slot: features
+    features:
+      - title: .env values in config.php
+        description: Load the file at the top of config.php and read it anywhere with env(). true, false, and null arrive as PHP values.
+        icon: i-ri-key-2-line
+        to: /docs/helpers/environment-variables
+      - title: Meta tags from your fields
+        description: Description, Open Graph, Twitter Card, and JSON-LD tags from page fields, a page model, or global defaults.
+        icon: i-ri-price-tag-3-line
+        to: /docs/helpers/meta-tags
+      - title: A sitemap with hreflang alternates
+        description: /sitemap.xml lists every listed and unlisted page, with an alternate for each language the page is translated into.
+        icon: i-ri-road-map-line
+        to: /docs/helpers/sitemap
+      - title: Redirects that never shadow a page
+        description: Route patterns send old URLs to new ones and fire only where Kirby would render the error page.
+        icon: i-ri-direction-line
+        to: /docs/helpers/redirects
+      - title: Vite in development and production
+        description: The dev server with hot reload until a build manifest exists, then the hashed files – in templates and the Panel.
+        icon: i-ri-flashlight-line
+        to: /docs/helpers/vite
+cta:
+  title: Install It, Use What You Need
+  description: Install the plugin with Composer, call the helpers from your templates, and configure the sitemap, robots.txt, and redirects in config.php.
+  orientation: horizontal
+  links:
+    - label: Read the Documentation
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/helpers
+      size: xl

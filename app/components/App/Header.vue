@@ -13,6 +13,9 @@ import {
 const route = useRoute();
 const { productId, product } = useProduct();
 
+// Too niche for the header's product lists; its own pages keep the product bar.
+const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
+
 const featuredProductIds = new Set<ProductId>([
   "copilot",
   "content-translator",
@@ -25,14 +28,15 @@ const featuredProducts = PRODUCT_LIST.filter((listed) =>
   description: item.description,
   to: productPath(item.id),
 }));
-const moreProducts = PRODUCT_LIST.filter(
-  (listed) => !featuredProductIds.has(listed.id),
-).map(toNavigationItem);
+const moreProducts = headerProducts
+  .filter((listed) => !featuredProductIds.has(listed.id))
+  .map(toNavigationItem);
 
 const productSwitcherItems = computed<DropdownMenuItem[][]>(() =>
   (["commercial", "free"] as const).map((license) =>
-    PRODUCT_LIST.filter((listed) => listed.license === license).map(
-      (listed) => ({
+    headerProducts
+      .filter((listed) => listed.license === license)
+      .map((listed) => ({
         label: listed.label,
         to: productPath(listed.id),
         ...(listed.id === productId.value && {
@@ -40,8 +44,7 @@ const productSwitcherItems = computed<DropdownMenuItem[][]>(() =>
           color: "primary" as const,
           checked: true,
         }),
-      }),
-    ),
+      })),
   ),
 );
 
@@ -99,7 +102,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       {
         title: "Plugins",
         path: "/",
-        children: PRODUCT_LIST.map((listed) => ({
+        children: headerProducts.map((listed) => ({
           title: listed.label,
           path: productPath(listed.id),
           icon: listed.icon,

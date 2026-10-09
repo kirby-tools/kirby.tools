@@ -208,6 +208,29 @@ const PRODUCT_REGISTRY = {
     skillDescription:
       "Configure Kirby Headless, which turns Kirby into a JSON API for a decoupled frontend. Use when locking the API behind a bearer token, serving every page as JSON, querying through KQL, resolving block and permalink UUIDs, filtering the sitemap, writing your own endpoint with the API builder, pointing the Panel's preview at the frontend, or when a request answers 401.",
   },
+  helpers: {
+    name: "Kirby Helpers",
+    label: "Helpers",
+    description: "Env, meta tags, sitemap, redirects, and Vite",
+    tagline: "Environment variables, meta tags, sitemap, redirects, and Vite",
+    icon: "i-ri-tools-line",
+    license: "free",
+    configKey: "johannschopplich.helpers",
+    githubRepo: "johannschopplich/kirby-helpers",
+    composerPackage: "johannschopplich/kirby-helpers",
+    keywords: [
+      "kirby env",
+      "kirby meta tags",
+      "kirby open graph",
+      "kirby xml sitemap",
+      "kirby redirects",
+      "kirby vite",
+    ],
+    notFor:
+      "Editing SEO fields in the Panel – it renders tags from the fields and page models you set up.",
+    skillDescription:
+      "Configure Kirby Helpers, which adds environment, SEO, and build helpers to a Kirby site. Use when reading environment variables, rendering Open Graph or JSON-LD tags, serving a sitemap or robots.txt, redirecting old URLs, or loading Vite assets in templates or the Panel, or when an environment variable reads as its default, a sitemap alternate is missing, a redirect never fires, or the site loads built Vite assets in development.",
+  },
 } satisfies Record<string, Product>;
 
 export const PRODUCTS: Record<ProductId, Product> = PRODUCT_REGISTRY;
