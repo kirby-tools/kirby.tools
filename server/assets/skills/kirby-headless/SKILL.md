@@ -49,7 +49,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 `toResolvedBlocks()`, `toResolvedLayouts()`, and `resolvePermalinks()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves; a `blocksResolver.files` list replaces that default rather than extending it, so keep `'image' => 'image'` in the list or the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
 
-`frontendUrl()`, `breadcrumbMeta()`, and `i18nMeta()` build the navigation data a frontend needs. `i18nMeta()` lists only the languages the page is translated into, by the same rule as the sitemap.
+`frontendUrl()`, `breadcrumbMeta()`, and `i18nMeta()` build the navigation data a frontend needs.
 
 <https://kirby.tools/docs/headless/usage/field-methods.md>
 <https://kirby.tools/docs/headless/usage/page-methods.md>
@@ -58,7 +58,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 `/api/__sitemap__` lists the indexable pages. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them), and an `isIndexable` closure.
 
-On a multi-language site it lists only the pages translated into the request language (`?language=` or `X-Language`, else the default), and each entry's `links` only the languages the page is translated into, plus an `x-default` when they include the default language. A page without any content counts as translated into every language.
+On a multi-language site it lists only the pages translated into the request's language, the default unless `?language=` or `X-Language` names another. A sitemap covering every language fetches once per language.
 
 <https://kirby.tools/docs/headless/usage/json-templates.md>
 
