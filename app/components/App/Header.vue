@@ -13,7 +13,6 @@ import {
 const route = useRoute();
 const { productId, product } = useProduct();
 
-// Too niche for the header's product lists; its own pages keep the product bar.
 const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
 
 const featuredProductIds = new Set<ProductId>([
