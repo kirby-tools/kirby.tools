@@ -17,11 +17,13 @@ const githubRepo = computed(() =>
 
 const { data: latestVersion } = await useLatestProductVersion(productId);
 
-const downloadUrl = computed(() =>
-  githubRepo.value && latestVersion.value?.title
+// Products without a changelog on this site link GitHub's latest release instead.
+const downloadUrl = computed(() => {
+  if (!githubRepo.value) return "";
+  return latestVersion.value?.title
     ? `https://github.com/${githubRepo.value}/archive/refs/tags/${latestVersion.value.title}.zip`
-    : "",
-);
+    : `https://github.com/${githubRepo.value}/releases/latest`;
+});
 </script>
 
 <template>
@@ -32,7 +34,11 @@ const downloadUrl = computed(() =>
     />
     <span
       class="text-primary group-hover:bg-primary-50 dark:group-hover:bg-primary-900 hover:border-primary focus-visible:outline-primary border-b border-transparent transition-colors"
-      >latest version {{ latestVersion?.title }}</span
+      >{{
+        latestVersion?.title
+          ? `latest version ${latestVersion.title}`
+          : "latest release"
+      }}</span
     >
   </a>
 </template>
