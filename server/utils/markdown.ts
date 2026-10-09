@@ -1,5 +1,7 @@
 import type { PageCollectionItemBase } from "@nuxt/content";
 import type { H3Event } from "h3";
+import type { MinimarkNode } from "minimark";
+import type { ProductDownload } from "#shared/products";
 import { stringify } from "minimark/stringify";
 import { joinURL } from "ufo";
 
@@ -13,12 +15,20 @@ export interface MarkdownDocument {
 
 /**
  * Renders a stored page body back to Markdown, with MDC components as HTML
- * tags. The `markdown/mdc` format emits every component at `::` regardless of
- * nesting, which makes `:::card` and `:::tabs-item` ambiguous.
+ * tags and a `latest-version` component as the download link passed in. The
+ * `markdown/mdc` format emits every component at `::` regardless of nesting,
+ * which makes `:::card` and `:::tabs-item` ambiguous.
  */
-export function stringifyPageBody(page: PageCollectionItemBase): string {
+export function stringifyPageBody(
+  page: PageCollectionItemBase,
+  latestDownload?: ProductDownload,
+): string {
+  const value = latestDownload
+    ? linkLatestVersion(page.body.value, latestDownload)
+    : page.body.value;
+
   return stringify(
-    { ...page.body, type: "minimark" },
+    { ...page.body, type: "minimark", value },
     { format: "markdown/html" },
   );
 }
@@ -55,4 +65,19 @@ export function sendMarkdownNotFound(event: H3Event, path: string) {
   setResponseHeader(event, "Content-Type", "text/markdown; charset=utf-8");
 
   return `---\ntitle: "Not Found"\n---\n\n# Not Found\n\nNo page exists at \`${path}\`. Browse <${joinURL(domain, "/sitemap.md")}> for every available page.\n`;
+}
+
+/** Replaces each `latest-version` component, an empty node in the stored body, with the page's download link. */
+function linkLatestVersion(
+  nodes: MinimarkNode[],
+  latestDownload: ProductDownload,
+): MinimarkNode[] {
+  return nodes.map((node) => {
+    if (typeof node === "string") return node;
+    const [tag, props, ...children] = node;
+    if (tag === "latest-version") {
+      return ["a", { href: latestDownload.url }, latestDownload.label];
+    }
+    return [tag, props, ...linkLatestVersion(children, latestDownload)];
+  });
 }

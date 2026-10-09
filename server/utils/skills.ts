@@ -1,13 +1,11 @@
 import type { H3Event } from "h3";
 import type { ProductId } from "#shared/products";
-import { queryCollection } from "@nuxt/content/server";
 import { joinURL } from "ufo";
 import { alternatePath } from "#shared/alternate";
 import {
   productChangelogPath,
   PRODUCTS,
   productSkillName,
-  productVersionsPattern,
 } from "#shared/products";
 
 export function skillFileKeys(productId: ProductId) {
@@ -38,12 +36,7 @@ export async function skillProvenance(event: H3Event, productId: ProductId) {
     return `Written against the latest ${name} release. Releases: <https://github.com/${githubRepo}/releases>`;
   }
 
-  const latest = await queryCollection(event, "versions")
-    .select("title", "date")
-    .where("path", "LIKE", productVersionsPattern(productId))
-    .order("date", "DESC")
-    .order("title", "DESC")
-    .first();
+  const latest = await queryLatestProductVersion(event, productId);
 
   const changelogUrl = joinURL(
     domain,

@@ -47,7 +47,7 @@ async function sendCollectionPage(
     title: page.title,
     description: page.description,
     path,
-    body: stringifyPageBody(page),
+    body: stringifyPageBody(page, await productPageDownload(event, path)),
   });
 }
 

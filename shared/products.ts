@@ -286,6 +286,28 @@ export function productChangelogPath(id: ProductId): string {
   return `/${id}/changelog`;
 }
 
+export interface ProductDownload {
+  url: string;
+  label: string;
+}
+
+/** Links the archive of a product's newest release, or GitHub's latest release for a product without a changelog on this site. */
+export function productDownload(
+  id: ProductId,
+  version?: string,
+): ProductDownload {
+  const { githubRepo } = PRODUCTS[id];
+  return version
+    ? {
+        url: `https://github.com/${githubRepo}/archive/refs/tags/${version}.zip`,
+        label: `latest version ${version}`,
+      }
+    : {
+        url: `https://github.com/${githubRepo}/releases/latest`,
+        label: "latest release",
+      };
+}
+
 /** `LIKE` pattern matching every release page of a product. */
 export function productVersionsPattern(id: ProductId): string {
   return `${productChangelogPath(id)}/%`;

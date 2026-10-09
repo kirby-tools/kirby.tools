@@ -14,6 +14,7 @@ export function useLatestProductVersion(productId: Ref<ProductId | undefined>) {
         .select("title", "date")
         .where("path", "LIKE", productVersionsPattern(id))
         .order("date", "DESC")
+        .order("title", "DESC")
         .first();
     },
     { immediate: !!productId.value },
