@@ -206,13 +206,7 @@ function toNavigationItem(item: Product & { id: ProductId }) {
     </template>
 
     <template #right>
-      <UContentSearchButton
-        v-if="!product"
-        :collapsed="false"
-        :kbds="[]"
-        variant="ghost"
-        class="max-lg:hidden"
-      />
+      <UContentSearchButton v-if="!product" class="max-lg:hidden" />
       <UButton
         v-if="productId && version"
         :label="version.title"
@@ -233,6 +227,7 @@ function toNavigationItem(item: Product & { id: ProductId }) {
 
     <UNavigationMenu
       :items="navigationItems"
+      color="neutral"
       content-orientation="vertical"
       :ui="{ content: 'w-72' }"
       class="hidden lg:flex"

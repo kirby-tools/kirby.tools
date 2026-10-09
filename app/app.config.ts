@@ -51,6 +51,15 @@ export default defineAppConfig({
         base: "active:hover:scale-[97%] transition-all ease-linear duration-100",
       },
     },
+    navigationMenu: {
+      variants: {
+        active: {
+          false: {
+            link: "text-toned",
+          },
+        },
+      },
+    },
     prose: {
       // `vscode-icons` has no `file-type-conf`.
       codeIcon: {
