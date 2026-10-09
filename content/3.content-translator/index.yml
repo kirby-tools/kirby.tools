@@ -18,6 +18,7 @@ hero:
       size: xl
 sections:
   - title: Same Page,<br> <span class="text-primary">Every Language</span>
+    id: features
     slot: feature-cards
     cards:
       - id: batch-translation

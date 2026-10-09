@@ -15,6 +15,7 @@ hero:
       size: xl
 sections:
   - title: A <span class="text-primary">Table of Contents</span><br> for the Panel
+    id: features
     slot: features
     features:
       - title: Jump to a field or block

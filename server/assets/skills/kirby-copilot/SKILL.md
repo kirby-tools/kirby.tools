@@ -6,7 +6,7 @@ composer require johannschopplich/kirby-copilot
 
 ## Minimum Working Config
 
-One provider with a valid key, under `johannschopplich.copilot`. Nothing works until this exists.
+One provider with a valid key, under `johannschopplich.copilot`. Nothing generates in the Panel or from PHP until this exists.
 
 ```php [site/config/config.php]
 return [
@@ -102,6 +102,32 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 **Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set.
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
+
+## Connecting Agents
+
+`'agents' => true` under `johannschopplich.copilot` lets Panel users connect any agent that supports remote MCP servers over HTTP with OAuth to the MCP URL, by default `https://<site>/api/copilot/mcp`. The agent logs in through the Panel, works as that Kirby user within their role, and brings its own model, so it needs no provider. Keep a role out with `copilot-agents: false` under `permissions.access` in its blueprint.
+
+```bash
+claude mcp add --transport http kirby https://example.com/api/copilot/mcp
+```
+
+Then `/mcp` in Claude Code or `claude mcp login kirby` opens the Panel's login.
+
+The user picks the connection permissions in the Panel's consent view, each capped by their role: **Read content** always, **Prepare changes** preselected, **Publish changes** and **Delete content** only when ticked. To change them, revoke the connection in the **Agents** view and connect again. Field writes wait in Kirby's unsaved changes until an editor publishes them, or the agent does at the user's request with **Publish changes**. Uploading files takes **Publish changes** too, since an upload is live at once.
+
+The hosting has to pass `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server` at the domain root, and the paths below them, to Kirby. It also has to pass the `Authorization` header to PHP. A Kirby in a subfolder such as `/cms` needs two rules at the domain root that pass `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server/cms` to it. The Panel's **Agents** view checks all of this from the browser and names the fix. After a server fix, Claude Code needs `claude mcp remove kirby` and the URL added again – it keeps the login server of an earlier connection.
+
+<https://kirby.tools/docs/copilot/agents.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
+
+## When an Agent's Write Goes Wrong
+
+A refused write or delete tells the connected agent why and what to do. Two failures don't explain themselves:
+
+**An agent's write is overwritten** – an editor who published and kept the page open and focused saves the published form over it with the next keystroke. Leave or reload the page after publishing.
+
+**A page delete stops halfway through its files** – a file template turns off `delete`, and Kirby deleted the page's other files first. Without `files.delete`, deleting a page with files fails outright, so give a role both `pages.delete` and `files.delete`, or neither.
+
+<https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
 
 ## Prompt Templates and Skills
 

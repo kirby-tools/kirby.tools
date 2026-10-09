@@ -14,8 +14,18 @@ const page = await useProductPage();
       </div>
     </template>
 
-    <template #scene>
+    <template #mock-multi-field>
       <ProductCopilotScene crop="hero" />
+    </template>
+    <template #mock-agents-consent>
+      <PanelMock>
+        <PanelCopilotAgentsAuthorizeView
+          :site="EXHIBITION_SITE.title"
+          account="editor@kunsthalle-leipzig.de"
+          :client="{ name: 'Claude', host: 'claude.ai' }"
+          :redirect="{ label: 'claude.ai' }"
+        />
+      </PanelMock>
     </template>
 
     <template #feature-skills>

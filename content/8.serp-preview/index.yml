@@ -15,6 +15,7 @@ hero:
       size: xl
 sections:
   - title: Write the Title <span class="text-primary">Where You Can See It</span>
+    id: features
     slot: features
     features:
       - title: Live, and before anything is saved

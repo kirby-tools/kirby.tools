@@ -3,9 +3,9 @@ description: AI content generation plugin for Kirby CMS. Generate layouts, text,
 navigation.icon: i-ri-sparkling-line
 hero:
   headline:
-    label: Reference Other Pages
-    to: /docs/copilot/prompt-dialog/page-references
-    icon: i-ri-at-line
+    label: "New: Copilot Agents"
+    to: /docs/copilot/agents
+    icon: i-ri-plug-line
     color: neutral
     variant: solid
   title: Generate With AI<br> in the Kirby Panel
@@ -17,6 +17,7 @@ hero:
       size: xl
 sections:
   - title: Bring Context to Your<br class="hidden lg:block"> <span class="text-primary">Prompt Party</span>
+    id: features
     slot: feature-cards
     cards:
       - id: skills
@@ -42,7 +43,43 @@ sections:
         to: /docs/copilot/usage/toolbar-buttons
         wide: true
   - title: Generate Content for<br> <span class="text-primary">Multiple Panel Fields</span>
-    slot: scene
+    id: multi-field
+    slot: mock
+  - title: You Choose What<br> <span class="text-primary">the Agent May Do</span>
+    id: agents-consent
+    slot: mock
+    description: Before an agent connects, the Panel names it, your site, and the account it works as – and you tick what it may do.
+  - title: Your Agent Prepares,<br> <span class="text-primary">You Publish</span>
+    id: agents
+    slot: code
+    orientation: horizontal
+    description: Connect Claude, ChatGPT, Cursor, or any other agent that supports remote MCP servers. It logs in through the Panel and works as your Kirby user, within your role.
+    features:
+      - title: Review First
+        description: Agents write into unsaved changes, and each write links to the changed content in the Panel. Publishing and deleting are permissions you tick yourself.
+        icon: i-ri-eye-line
+      - title: Every Connection in View
+        description: The Agents view lists each connected agent with its permissions and when it was last active. Revoke one there and it loses access at once.
+        icon: i-ri-plug-line
+    links:
+      - label: Set Up Agents
+        to: /docs/copilot/agents
+        trailingIcon: i-ri-arrow-right-line
+        variant: subtle
+    code:
+      files:
+        - filename: site/config/config.php
+          language: php
+          content: |
+            return [
+                'johannschopplich.copilot' => [
+                    'agents' => true
+                ]
+            ];
+        - filename: Terminal
+          language: bash
+          content: |
+            claude mcp add --transport http kirby https://example.com/api/copilot/mcp
   - title: Drive Copilot<br> From <span class="text-primary">PHP</span>
     id: php-api
     slot: code
