@@ -83,6 +83,28 @@ A view button or section on a `blocks` or `layout` field generates whole blocks 
 
 <https://kirby.tools/docs/copilot/php-classes/client.md>
 
+## Prompt Templates and Skills
+
+Templates are reusable user prompts in the dialog, some built in. Skills are house rules an editor layers onto a prompt with `@skill://<id>`. Both live in `config.php`.
+
+<https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
+
+## Connecting Agents
+
+`'agents' => true` under `johannschopplich.copilot` lets Panel users connect any agent that supports remote MCP servers over HTTP with OAuth to the MCP URL, by default `https://<site>/api/copilot/mcp`. The agent logs in through the Panel, works as that Kirby user within their role, and brings its own model, so it needs no provider. Keep a role out with `copilot-agents: false` under `permissions.access` in its blueprint.
+
+```bash
+claude mcp add --transport http kirby https://example.com/api/copilot/mcp
+```
+
+Then `/mcp` in Claude Code or `claude mcp login kirby` opens the Panel's login.
+
+The user picks the connection permissions in the Panel's consent view, capped by their role, and changes them later in the **Agents** view. A role blueprint withholds publishing or deleting from agents with `agentsPublish: false` or `agentsDelete: false` under `permissions.johannschopplich.copilot`. Publishing takes all unsaved changes of a page in a language, the user's own Panel edits included, as the Panel's **Save** button does.
+
+The hosting has to pass `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server` at the domain root, and the paths below them, to Kirby. It also has to pass the `Authorization` header to PHP. A Kirby in a subfolder such as `/cms` needs both passed on from the domain root, the second as `/.well-known/oauth-authorization-server/cms`. The Panel's **Agents** view checks all of this from the browser and names the fix. claude.ai, Claude Desktop, and ChatGPT connect from their own servers, so they need a site reachable from the internet, which the browser check doesn't test. After a server fix, Claude Code needs `claude mcp remove kirby` and the URL added again – it keeps the login server of an earlier connection.
+
+<https://kirby.tools/docs/copilot/agents.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
+
 ## When Generation Fails
 
 **Long generations cut off** – _No object generated_, _Unterminated string_, a 504, or a closed connection. In the Panel the cause is the web server's read timeout (nginx `fastcgi_read_timeout`, Apache `ProxyTimeout`); PHP's own execution limit is already lifted for proxy requests. From PHP the bound is the provider's `timeout`.
@@ -103,34 +125,12 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
 
-## Connecting Agents
-
-`'agents' => true` under `johannschopplich.copilot` lets Panel users connect any agent that supports remote MCP servers over HTTP with OAuth to the MCP URL, by default `https://<site>/api/copilot/mcp`. The agent logs in through the Panel, works as that Kirby user within their role, and brings its own model, so it needs no provider. Keep a role out with `copilot-agents: false` under `permissions.access` in its blueprint.
-
-```bash
-claude mcp add --transport http kirby https://example.com/api/copilot/mcp
-```
-
-Then `/mcp` in Claude Code or `claude mcp login kirby` opens the Panel's login.
-
-The user picks the connection permissions in the Panel's consent view, each capped by their role: **Read content** always, **Prepare changes** preselected, **Publish changes** and **Delete content** only when ticked. To change them, revoke the connection in the **Agents** view and connect again. Field writes wait in Kirby's unsaved changes until an editor publishes them, or the agent does at the user's request with **Publish changes**. Uploading files takes **Publish changes** too, since an upload is live at once.
-
-The hosting has to pass `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server` at the domain root, and the paths below them, to Kirby. It also has to pass the `Authorization` header to PHP. A Kirby in a subfolder such as `/cms` needs two rules at the domain root that pass `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server/cms` to it. The Panel's **Agents** view checks all of this from the browser and names the fix. After a server fix, Claude Code needs `claude mcp remove kirby` and the URL added again – it keeps the login server of an earlier connection.
-
-<https://kirby.tools/docs/copilot/agents.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
-
 ## When an Agent's Write Goes Wrong
 
 A refused write or delete tells the connected agent why and what to do. Two failures don't explain themselves:
 
-**An agent's write is overwritten** – an editor who published and kept the page open and focused saves the published form over it with the next keystroke. Leave or reload the page after publishing.
+**An agent's write is overwritten** – an editor who types in a page the agent just wrote to saves their form over it before the view reloads, which takes up to 10 seconds. Pause typing while the agent works.
 
 **A page delete stops halfway through its files** – a file template turns off `delete`, and Kirby deleted the page's other files first. Without `files.delete`, deleting a page with files fails outright, so give a role both `pages.delete` and `files.delete`, or neither.
 
 <https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
-
-## Prompt Templates and Skills
-
-Templates are reusable user prompts in the dialog, some built in. Skills are house rules an editor layers onto a prompt with `@skill://<id>`. Both live in `config.php`.
-
-<https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>

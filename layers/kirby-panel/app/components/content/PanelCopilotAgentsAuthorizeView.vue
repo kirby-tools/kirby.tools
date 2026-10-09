@@ -21,12 +21,12 @@ const PERMISSIONS = [
   {
     value: "content:prepare",
     text: "Prepare changes",
-    info: "New drafts and unsaved changes you review and publish – and discarding anyone’s unsaved changes",
+    info: "New drafts and unsaved changes you review and publish",
   },
   {
     value: "content:publish",
     text: "Publish changes",
-    info: "Publish anyone’s unsaved changes, change a page’s status, and upload files (live at once)",
+    info: "Publish or discard unsaved changes, change a page’s status, slug, or parent, and upload files (live at once)",
   },
   {
     value: "content:delete",
