@@ -27,7 +27,7 @@ A token that is set but blank â€“ typically an env var that failed to resolve â€
 
 Under `globalRoutes`, clean file URLs like `/about/hero.jpg` need the token and additionally Kirby's `content.fileRedirects`, which is off by default.
 
-`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off, which also means they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
+`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off. This also means they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
 
 <https://kirby.tools/docs/headless/configuration/authentication.md>
 
@@ -47,7 +47,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Resolving UUIDs
 
-`toResolvedBlocks()`, `toResolvedLayouts()`, and `resolvePermalinks()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves; a `blocksResolver.files` list replaces that default rather than extending it, so keep `'image' => 'image'` in the list or the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
+`toResolvedBlocks()`, `toResolvedLayouts()`, and `resolvePermalinks()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves. A `blocksResolver.files` list replaces that default rather than extending it. Without `'image' => 'image'` in the list, the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
 
 `frontendUrl()`, `breadcrumbMeta()`, and `i18nMeta()` build the navigation data a frontend needs.
 
@@ -56,7 +56,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Sitemap
 
-`/api/__sitemap__` lists the indexable pages. Three filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them), and an `isIndexable` closure.
+`/api/__sitemap__` lists the indexable pages. Filters under `headless.sitemap` narrow it: `exclude.templates`, `exclude.pages` (IDs or regex, or a callable returning them), and an `isIndexable` closure.
 
 On a multi-language site it lists only the pages translated into the request's language, the default unless `?language=` or `X-Language` names another. A sitemap covering every language fetches once per language.
 
@@ -64,12 +64,12 @@ On a multi-language site it lists only the pages translated into the request's l
 
 ## Building Your Own Endpoint
 
-`Api::createHandler()` runs middlewares in order and returns as soon as one yields anything but `null` or an array, so `Middlewares::hasBearerToken()` comes first or a resolver answers before the token is checked. `hasBearerToken()` is called (it returns the middleware); every other middleware is passed as a callable, `Middlewares::tryResolvePage(...)`.
+`Api::createHandler()` runs middlewares in order and returns as soon as one yields anything but `null` or an array. `Middlewares::hasBearerToken()` therefore comes first, or a resolver answers before the token is checked. `hasBearerToken()` is called (it returns the middleware); every other middleware is passed as a callable, `Middlewares::tryResolvePage(...)`.
 
 <https://kirby.tools/docs/headless/advanced/api-builder.md>
 
 ## Panel Preview
 
-`headless.panel.frontendUrl` is what `page.frontendUrl` and `site.frontendUrl` rebase onto; without it both return `null` and a blueprint `preview` built from them leads nowhere. `headless.panel.redirect` sends a browser that opens the backend URL to the Panel, but only inside the catch-all (`globalRoutes` on) or a route built with `hasBearerToken(true)`.
+`headless.panel.frontendUrl` is what `page.frontendUrl` and `site.frontendUrl` rebase onto. Without it both return `null`, and a blueprint `preview` built from them leads nowhere. `headless.panel.redirect` sends a browser that opens the backend URL to the Panel, but only inside the catch-all (`globalRoutes` on) or a route built with `hasBearerToken(true)`.
 
 <https://kirby.tools/docs/headless/configuration/panel.md>

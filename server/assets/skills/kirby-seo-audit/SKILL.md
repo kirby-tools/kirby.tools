@@ -6,7 +6,7 @@ composer require johannschopplich/kirby-seo-audit
 
 ## Add It to a Blueprint
 
-Two surfaces, and they can coexist. The view button is the recommended one:
+The view button and the section can coexist. The view button is the recommended one:
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -19,9 +19,9 @@ buttons:
   status: true
 ```
 
-`buttons` is an allow-list, so Kirby's defaults for the view have to be named alongside `seo-audit` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `keyphraseField` stay in the blueprint, and a blueprint's `buttons` wins over the option.
+`buttons` is an allow-list, so Kirby's defaults for the view have to be named alongside `seo-audit` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `keyphraseField` stay in the blueprint. A blueprint's `buttons` wins over the option.
 
-The section renders results inline instead of in a dialog and adds `persisted`; `theme` belongs to the button alone:
+`theme` belongs to the button alone. The section renders results inline instead of in a dialog and adds `persisted`:
 
 ```yaml [site/blueprints/pages/default.yml]
 sections:
@@ -40,19 +40,25 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 
 `synonymsField` and `synonyms` mirror the pair. A Kirby query resolves only in a string; a `{{ }}` inside a `synonyms` list stays unresolved, so a query goes in `synonyms: "{{ page.metaSynonyms }}"`.
 
-`assessments` narrows the report to the checks that matter for the template; `contentSelector` scopes the analysis to the markup that is content, e.g. `#main`.
+`assessments` narrows the report to the checks that matter for the template. `contentSelector` scopes the analysis to the markup that is content, e.g. `#main`.
 
 <https://kirby.tools/docs/seo-audit/configuration/local.md>
 
 ## Keeping the Rating Current
 
-Each analysis leaves a rating per page and language: a dot on the view button, `{{ page.seoAuditRating }}` in blueprints, `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work. Publishing the page again marks the rating stale until the next analysis. `analyzeOn: publish` runs that analysis after every publish, silently; set it once under `johannschopplich.seo-audit.analyzeOn` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
+Each analysis leaves a rating per page and language:
+
+- A dot on the view button
+- `{{ page.seoAuditRating }}` in blueprints
+- `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work
+
+Publishing the page again marks the rating stale until the next analysis. `analyzeOn: publish` runs that analysis after every publish, silently. Set it once under `johannschopplich.seo-audit.analyzeOn` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
 
 <https://kirby.tools/docs/seo-audit/guide/ratings.md>
 
 ## When the Analysis Fails
 
-The analysis reads the page behind the model's preview URL, so a decoupled frontend is analyzed by pointing the blueprint's `options.preview` at it. While the form has unsaved changes the URL carries Kirby's `_version=changes` and `_token` query, a custom preview URL included; a frontend that ignores them renders the published content. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the analysis:
+The analysis reads the page behind the model's preview URL, so a decoupled frontend is analyzed by pointing the blueprint's `options.preview` at it. While the form has unsaved changes, the URL carries Kirby's `_version=changes` and `_token` query, a custom preview URL included. A frontend that ignores them renders the published content. A preview URL on the Panel's own origin is fetched by the browser. Any other origin is fetched by Kirby on the server, so anything that hides the frontend from the server hides it from the analysis:
 
 - Kirby in Docker reaching a host-machine frontend: rewrite the URL with `johannschopplich.seo-audit.proxy.urlResolver`, a closure that receives the URL and returns the one to fetch. Return the URL unchanged when it needs no rewrite.
 - Preview URL behind HTTP auth: pass `basicAuth` through `johannschopplich.seo-audit.proxy.params`.
@@ -60,7 +66,7 @@ The analysis reads the page behind the model's preview URL, so a decoupled front
 Failures that are not the fetch:
 
 - A missing preview URL stops the analysis: `options.preview: false` in the blueprint, or a role without the `pages.preview` or `site.preview` permission.
-- An assessment listed in `assessments` that does not support the page's `lang` aborts the analysis with an error naming the languages it supports; unlisted, it is skipped silently.
+- An assessment listed in `assessments` that does not support the page's `lang` aborts the analysis with an error naming the languages it supports. Unlisted, it is skipped silently.
 - The browser console always shows the URL the analysis starts from, which is the preview URL before any `urlResolver` rewrite. `logLevel: info` adds the elements `contentSelector` matched and the extracted HTML, which is the check for the selector and for a rewrite.
 
 <https://kirby.tools/docs/seo-audit/configuration/global.md>
