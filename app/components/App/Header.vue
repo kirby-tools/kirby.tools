@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from "@nuxt/content";
-import type { DropdownMenuItem, NavigationMenuItem } from "@nuxt/ui";
+import type { NavigationMenuItem } from "@nuxt/ui";
 import type { Product, ProductId } from "#shared/products";
 import { withoutTrailingSlash } from "ufo";
 import {
@@ -9,8 +9,10 @@ import {
   productDocsPath,
   productPath,
 } from "#shared/products";
+import { DEFAULT_THEME_COLOR } from "#shared/theme";
 
 const route = useRoute();
+const colorMode = useColorMode();
 const { productId, product } = useProduct();
 
 const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
@@ -31,21 +33,21 @@ const moreProducts = headerProducts
   .filter((listed) => !featuredProductIds.has(listed.id))
   .map(toNavigationItem);
 
-const productSwitcherItems = computed<DropdownMenuItem[][]>(() =>
-  (["commercial", "free"] as const).map((license) =>
-    headerProducts
-      .filter((listed) => listed.license === license)
-      .map((listed) => ({
-        label: listed.label,
-        to: productPath(listed.id),
-        ...(listed.id === productId.value && {
-          type: "checkbox" as const,
-          color: "primary" as const,
-          checked: true,
-        }),
-      })),
-  ),
-);
+const productSwitcherGroups = [
+  {
+    id: useId(),
+    label: "Commercial",
+    products: headerProducts.filter(
+      (listed) => listed.license === "commercial",
+    ),
+  },
+  {
+    id: useId(),
+    label: "Free",
+    products: headerProducts.filter((listed) => listed.license === "free"),
+  },
+];
+const isProductSwitcherOpen = ref(false);
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
@@ -170,6 +172,12 @@ function toNavigationItem(item: Product & { id: ProductId }) {
     to: productPath(item.id),
   };
 }
+
+/** Resolves the color of the product's own pages, in the shade Nuxt UI uses for the color mode. */
+function productColor(item: Product) {
+  const shade = colorMode.value === "dark" ? 400 : 500;
+  return `var(--color-${item.color ?? DEFAULT_THEME_COLOR}-${shade})`;
+}
 </script>
 
 <template>
@@ -177,32 +185,98 @@ function toNavigationItem(item: Product & { id: ProductId }) {
     <template #left>
       <NuxtLink to="/" class="flex items-center gap-2">
         <UIcon name="i-tools-favicon" class="text-primary size-6" />
-        <span class="text-default text-lg font-bold">Kirby Tools</span>
+        <span
+          class="text-default text-lg font-bold whitespace-nowrap"
+          :class="product && 'max-sm:sr-only'"
+          >Kirby Tools</span
+        >
       </NuxtLink>
 
-      <UDropdownMenu
-        v-if="product"
-        v-slot="{ open }"
-        :modal="false"
-        :items="productSwitcherItems"
-      >
-        <UButton
-          :label="product.label"
-          variant="subtle"
-          trailing-icon="i-lucide-chevron-down"
-          size="sm"
-          class="ms-1 truncate rounded-full font-semibold"
-          :class="[open && 'bg-(--ui-primary)/15']"
-          :ui="{
-            trailingIcon: [
-              'transition-transform duration-200',
-              open ? 'rotate-180' : undefined,
-            ]
-              .filter(Boolean)
-              .join(' '),
-          }"
+      <template v-if="product">
+        <span
+          class="ms-2.5 h-5 w-px rotate-20 bg-(--ui-border-accented)"
+          aria-hidden="true"
         />
-      </UDropdownMenu>
+        <UPopover
+          v-model:open="isProductSwitcherOpen"
+          :modal="false"
+          :content="{ align: 'start' }"
+        >
+          <UButton
+            :icon="product.icon"
+            :label="product.label"
+            color="neutral"
+            variant="ghost"
+            trailing-icon="i-ri-expand-up-down-line"
+            class="text-highlighted text-base font-semibold"
+            :class="isProductSwitcherOpen && 'bg-elevated'"
+            :ui="{
+              leadingIcon: 'text-primary',
+              trailingIcon: 'text-dimmed size-4',
+            }"
+          />
+
+          <template #content>
+            <div
+              class="divide-default w-[min(34rem,calc(100vw-2rem))] divide-y"
+            >
+              <div
+                v-for="group in productSwitcherGroups"
+                :key="group.id"
+                class="p-2"
+              >
+                <p
+                  :id="group.id"
+                  class="text-highlighted px-3 py-1.5 text-xs font-semibold"
+                >
+                  {{ group.label }}
+                </p>
+                <ul
+                  :aria-labelledby="group.id"
+                  class="grid gap-2 sm:grid-cols-2"
+                >
+                  <li v-for="listed in group.products" :key="listed.id">
+                    <NuxtLink
+                      :to="productPath(listed.id)"
+                      :aria-current="
+                        listed.id === productId ? 'true' : undefined
+                      "
+                      class="group flex items-start gap-3 px-3 py-2 text-sm"
+                      @click="isProductSwitcherOpen = false"
+                    >
+                      <span
+                        class="flex size-9 shrink-0 items-center justify-center transition-colors"
+                        :class="
+                          listed.id === productId
+                            ? 'bg-(--product-color)/15 text-(--product-color)'
+                            : 'bg-elevated text-dimmed group-hover:bg-(--product-color)/15 group-hover:text-(--product-color)'
+                        "
+                        :style="{ '--product-color': productColor(listed) }"
+                      >
+                        <UIcon :name="listed.icon" class="size-5" />
+                      </span>
+                      <span class="min-w-0">
+                        <span
+                          class="block font-medium transition-colors"
+                          :class="
+                            listed.id === productId
+                              ? 'text-highlighted'
+                              : 'text-default group-hover:text-highlighted'
+                          "
+                          >{{ listed.label }}</span
+                        >
+                        <span class="text-muted block">{{
+                          listed.description
+                        }}</span>
+                      </span>
+                    </NuxtLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </template>
+        </UPopover>
+      </template>
     </template>
 
     <template #right>
