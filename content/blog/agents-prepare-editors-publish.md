@@ -1,7 +1,7 @@
 ---
 title: Agents Prepare, Editors Publish
 description: Copilot v3.14 connects Claude, ChatGPT, Cursor, and other agents to your Kirby site. They work as your Kirby user, within your role, and their edits wait as unsaved changes until you publish them.
-date: "2026-10-09"
+date: "2026-10-10"
 product: copilot
 ---
 
