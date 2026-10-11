@@ -53,7 +53,7 @@ const PRODUCT_REGISTRY = {
   copilot: {
     name: "Kirby Copilot",
     label: "Copilot",
-    description: "AI content generation in the Panel",
+    description: "AI generation in the Panel and from agents",
     tagline: "Generate with AI, from one field to entire layouts",
     icon: "i-ri-sparkling-line",
     license: "commercial",
