@@ -15,7 +15,7 @@ const { productId, product } = useProduct();
 const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
 
 const isProductSwitcherOpen = ref(false);
-const openNavigationItem = ref("");
+const openNavigationValue = ref("");
 
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
@@ -196,7 +196,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
     </template>
 
     <UNavigationMenu
-      v-model="openNavigationItem"
+      v-model="openNavigationValue"
       :items="navigationItems"
       color="neutral"
       content-orientation="vertical"
@@ -204,7 +204,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       class="hidden lg:flex"
     >
       <template #plugins-content>
-        <AppProductGrid @select="openNavigationItem = ''" />
+        <AppProductGrid @select="openNavigationValue = ''" />
       </template>
     </UNavigationMenu>
 
