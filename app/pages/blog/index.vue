@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import type { ProductBadge } from "~/utils/product-badge";
+
+const SPRING_TRANSITION = {
+  type: "spring",
+  stiffness: 300,
+  damping: 30,
+} as const;
+
 const route = useRoute();
 
 const { data: page } = await useAsyncData("blog", () =>
@@ -27,6 +35,12 @@ const decoratedPosts = computed(() =>
     productBadge: getProductBadge(post.product),
   })),
 );
+const latestPost = computed(() => decoratedPosts.value[0]);
+const olderPosts = computed(() => decoratedPosts.value.slice(1));
+
+function productColorStyle(badge?: ProductBadge) {
+  return badge ? { "--product-color": `var(--ui-${badge.color})` } : undefined;
+}
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en", {
@@ -34,6 +48,12 @@ function formatDate(date: string) {
     month: "short",
     day: "numeric",
   });
+}
+
+function productTileClass(badge?: ProductBadge) {
+  return badge
+    ? "bg-(--product-color)/15 text-(--product-color)"
+    : "bg-elevated text-dimmed";
 }
 </script>
 
@@ -63,62 +83,102 @@ function formatDate(date: string) {
       <UContainer>
         <div class="border-default border-x">
           <Motion
-            v-for="(post, index) in decoratedPosts"
-            :key="post.path"
-            :initial="{ opacity: 0, x: -20 }"
-            :animate="{ opacity: 1, x: 0 }"
-            :transition="{
-              delay: index * 0.05,
-              type: 'spring',
-              stiffness: 300,
-              damping: 30,
-            }"
-            class="group border-default border-b last:border-b-0"
+            v-if="latestPost"
+            :initial="{ opacity: 0, y: 12 }"
+            :animate="{ opacity: 1, y: 0 }"
+            :transition="SPRING_TRANSITION"
+            class="border-default border-b"
           >
-            <ULink
-              :to="post.path"
-              class="hover:bg-muted/30 flex flex-col gap-4 p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6"
+            <NuxtLink
+              :to="latestPost.path"
+              class="group hover:bg-muted/30 grid gap-6 p-6 transition-colors sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end"
+              :style="productColorStyle(latestPost.productBadge)"
             >
-              <div class="min-w-0 flex-1">
-                <div class="mb-1 flex items-center gap-2">
-                  <span class="text-muted shrink-0 font-mono text-xs">
-                    {{ formatDate(post.date) }}
-                  </span>
-                  <UBadge
-                    v-if="post.productBadge"
-                    v-bind="post.productBadge"
-                    variant="subtle"
-                    size="sm"
-                    class="rounded-full"
-                  />
-                </div>
-
+              <div>
+                <p class="text-muted mb-4 font-mono text-xs">
+                  Latest &middot;
+                  <time :datetime="latestPost.date">{{
+                    formatDate(latestPost.date)
+                  }}</time>
+                </p>
                 <h2
-                  class="text-highlighted group-hover:text-primary truncate font-medium transition-colors duration-200 sm:text-base"
+                  class="font-display text-highlighted text-4xl/tight text-balance sm:text-5xl/tight"
                 >
-                  {{ post.title }}
+                  {{ latestPost.title }}
                 </h2>
-                <p class="text-muted mt-1 line-clamp-2 text-sm sm:line-clamp-1">
-                  {{ post.description }}
+                <p class="text-muted mt-4 max-w-2xl text-base/7 text-pretty">
+                  {{ latestPost.description }}
                 </p>
               </div>
 
-              <div
-                class="flex shrink-0 items-center justify-between gap-3 sm:justify-end sm:gap-2"
-              >
-                <UAvatar
-                  src="https://github.com/johannschopplich.png"
-                  alt="Johann Schopplich"
-                  size="sm"
-                />
-
-                <UIcon
-                  name="i-ri-arrow-right-s-line"
-                  class="text-muted group-hover:text-highlighted size-4 shrink-0 transition-colors duration-200"
-                />
+              <div class="flex items-center gap-3">
+                <span
+                  class="flex size-10 items-center justify-center"
+                  :class="productTileClass(latestPost.productBadge)"
+                >
+                  <UIcon
+                    :name="latestPost.productBadge?.icon ?? 'i-tools-favicon'"
+                    class="size-5"
+                  />
+                  <span v-if="latestPost.productBadge" class="sr-only">{{
+                    latestPost.productBadge.label
+                  }}</span>
+                </span>
+                <span
+                  class="text-highlighted group-hover:text-primary inline-flex items-center gap-1 text-sm font-medium transition-colors"
+                >
+                  Read the post
+                  <UIcon name="i-ri-arrow-right-line" class="size-4" />
+                </span>
               </div>
-            </ULink>
+            </NuxtLink>
           </Motion>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3">
+            <Motion
+              v-for="(post, index) in olderPosts"
+              :key="post.path"
+              :initial="{ opacity: 0, y: 12 }"
+              :animate="{ opacity: 1, y: 0 }"
+              :transition="{ ...SPRING_TRANSITION, delay: (index + 1) * 0.05 }"
+              class="border-default -mb-px border-b sm:border-r sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0"
+            >
+              <NuxtLink
+                :to="post.path"
+                class="group hover:bg-muted/30 flex h-full flex-col p-6 transition-colors"
+                :style="productColorStyle(post.productBadge)"
+              >
+                <div class="mb-4 flex items-center gap-2">
+                  <span
+                    class="flex size-7 items-center justify-center"
+                    :class="productTileClass(post.productBadge)"
+                  >
+                    <UIcon
+                      :name="post.productBadge?.icon ?? 'i-tools-favicon'"
+                      class="size-4"
+                    />
+                    <span v-if="post.productBadge" class="sr-only">{{
+                      post.productBadge.label
+                    }}</span>
+                  </span>
+                  <time
+                    :datetime="post.date"
+                    class="text-muted font-mono text-xs"
+                  >
+                    {{ formatDate(post.date) }}
+                  </time>
+                </div>
+                <h2
+                  class="font-display text-highlighted text-2xl/tight text-balance"
+                >
+                  {{ post.title }}
+                </h2>
+                <p class="text-muted mt-2 line-clamp-3 text-sm/6 text-pretty">
+                  {{ post.description }}
+                </p>
+              </NuxtLink>
+            </Motion>
+          </div>
         </div>
       </UContainer>
     </UPageBody>
