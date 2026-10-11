@@ -99,7 +99,7 @@ if (!post.value.image?.src) {
           :style="{ '--product-color': `var(--ui-${productTile.color})` }"
         >
           <span
-            class="flex size-10 items-center justify-center bg-(--product-color)/15 text-(--product-color)"
+            class="flex size-9 items-center justify-center bg-(--product-color)/15 text-(--product-color)"
           >
             <UIcon :name="productTile.icon" class="size-5" />
           </span>
