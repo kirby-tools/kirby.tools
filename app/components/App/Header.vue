@@ -14,6 +14,10 @@ const { productId, product } = useProduct();
 
 const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
 
+const isCommercialProduct = computed(
+  () => product.value?.license === "commercial",
+);
+
 const isProductSwitcherOpen = ref(false);
 const openNavigationValue = ref("");
 
@@ -184,6 +188,9 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       <UContentSearchButton v-if="!product" class="max-lg:hidden" />
       <UButton
         label="Hub"
+        :trailing-icon="
+          isCommercialProduct ? undefined : 'i-ri-arrow-right-line'
+        "
         color="neutral"
         variant="ghost"
         to="https://hub.kirby.tools"
@@ -191,7 +198,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
         class="max-lg:hidden"
       />
       <UButton
-        v-if="productId && product?.license === 'commercial'"
+        v-if="productId && isCommercialProduct"
         label="Buy"
         trailing-icon="i-ri-arrow-right-line"
         :to="`${productPath(productId)}/buy`"
