@@ -69,6 +69,8 @@ const PRODUCT_REGISTRY = {
       "kirby content generation",
       "kirby writer field ai",
       "kirby blocks generation",
+      "kirby mcp server",
+      "kirby ai agents",
     ],
     notFor:
       "Translating existing content between languages – use Kirby Content Translator for that.",
