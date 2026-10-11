@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { isProductId, productPath, PRODUCTS } from "#shared/products";
+
 const route = useRoute();
 
 const { data: post } = await useAsyncData(route.path, () =>
@@ -19,6 +21,11 @@ useSeoMeta({
   ogDescription: post.value.description,
   ...(post.value.image?.src ? { ogImage: post.value.image.src } : {}),
 });
+
+const productId = isProductId(post.value.product)
+  ? post.value.product
+  : undefined;
+const productTile = getProductTile(productId);
 
 useMarkdownAlternate();
 
@@ -61,7 +68,9 @@ if (!post.value.image?.src) {
         <PageMarkdownActions :product="post.product" />
       </template>
 
-      <div class="mt-6 flex items-center gap-6">
+      <div
+        class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6"
+      >
         <ULink
           to="https://byjohann.link"
           target="_blank"
@@ -79,6 +88,28 @@ if (!post.value.image?.src) {
             <span
               class="text-muted group-hover:text-primary text-xs transition-colors"
               >@johannschopplich</span
+            >
+          </div>
+        </ULink>
+
+        <ULink
+          v-if="productId && productTile"
+          :to="productPath(productId)"
+          class="group flex items-center gap-3"
+          :style="{ '--product-color': `var(--ui-${productTile.color})` }"
+        >
+          <span
+            class="flex size-10 items-center justify-center bg-(--product-color)/15 text-(--product-color)"
+          >
+            <UIcon :name="productTile.icon" class="size-5" />
+          </span>
+          <div class="flex flex-col">
+            <span class="text-highlighted text-sm font-medium">{{
+              PRODUCTS[productId].name
+            }}</span>
+            <span
+              class="text-muted group-hover:text-primary text-xs transition-colors"
+              >{{ PRODUCTS[productId].description }}</span
             >
           </div>
         </ULink>
