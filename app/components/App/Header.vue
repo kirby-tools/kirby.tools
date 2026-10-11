@@ -40,14 +40,6 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
           to: productDocsPath(productId.value),
           active: route.path.startsWith(`/docs/${productId.value}`),
         },
-        ...(product.value.license === "commercial"
-          ? [
-              {
-                label: "Buy",
-                to: `${productPath(productId.value)}/buy`,
-              },
-            ]
-          : []),
         ...(product.value.playground
           ? [
               {
@@ -112,15 +104,6 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
                 title: `Changelog ${version.value.title}`,
                 path: productChangelogPath(id),
                 icon: "i-ri-download-line",
-              },
-            ]
-          : []),
-        ...(product.value.license === "commercial"
-          ? [
-              {
-                title: "Buy",
-                path: `${productPath(id)}/buy`,
-                icon: "i-ri-shopping-bag-3-line",
               },
             ]
           : []),
@@ -198,9 +181,16 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       <UButton
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
+        color="neutral"
+        variant="ghost"
         to="https://hub.kirby.tools"
         target="_blank"
         class="max-lg:hidden"
+      />
+      <UButton
+        v-if="productId && product?.license === 'commercial'"
+        label="Buy"
+        :to="`${productPath(productId)}/buy`"
       />
     </template>
 
@@ -226,6 +216,8 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
         label="Hub"
         trailing-icon="i-ri-arrow-right-line"
         to="https://hub.kirby.tools"
+        color="neutral"
+        variant="outline"
         target="_blank"
         block
         class="mt-6"
