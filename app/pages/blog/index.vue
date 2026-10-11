@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProductBadge } from "~/utils/product-badge";
+import type { ProductTile } from "~/utils/product-tile";
 
 const SPRING_TRANSITION = {
   type: "spring",
@@ -32,14 +32,14 @@ defineOgImage("Default", {
 const decoratedPosts = computed(() =>
   (posts.value ?? []).map((post) => ({
     ...post,
-    productBadge: getProductBadge(post.product),
+    productTile: getProductTile(post.product),
   })),
 );
 const latestPost = computed(() => decoratedPosts.value[0]);
 const olderPosts = computed(() => decoratedPosts.value.slice(1));
 
-function productColorStyle(badge?: ProductBadge) {
-  return badge ? { "--product-color": `var(--ui-${badge.color})` } : undefined;
+function productColorStyle(tile?: ProductTile) {
+  return tile ? { "--product-color": `var(--ui-${tile.color})` } : undefined;
 }
 
 function formatDate(date: string) {
@@ -50,8 +50,8 @@ function formatDate(date: string) {
   });
 }
 
-function productTileClass(badge?: ProductBadge) {
-  return badge
+function productTileClass(tile?: ProductTile) {
+  return tile
     ? "bg-(--product-color)/15 text-(--product-color)"
     : "bg-elevated text-dimmed";
 }
@@ -92,7 +92,7 @@ function productTileClass(badge?: ProductBadge) {
             <NuxtLink
               :to="latestPost.path"
               class="group hover:bg-muted/30 grid gap-6 p-6 transition-colors sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end"
-              :style="productColorStyle(latestPost.productBadge)"
+              :style="productColorStyle(latestPost.productTile)"
             >
               <div>
                 <p class="text-muted mb-4 font-mono text-xs">
@@ -114,14 +114,14 @@ function productTileClass(badge?: ProductBadge) {
               <div class="flex items-center gap-3">
                 <span
                   class="flex size-10 items-center justify-center"
-                  :class="productTileClass(latestPost.productBadge)"
+                  :class="productTileClass(latestPost.productTile)"
                 >
                   <UIcon
-                    :name="latestPost.productBadge?.icon ?? 'i-tools-favicon'"
+                    :name="latestPost.productTile?.icon ?? 'i-tools-favicon'"
                     class="size-5"
                   />
-                  <span v-if="latestPost.productBadge" class="sr-only">{{
-                    latestPost.productBadge.label
+                  <span v-if="latestPost.productTile" class="sr-only">{{
+                    latestPost.productTile.label
                   }}</span>
                 </span>
                 <span
@@ -146,19 +146,19 @@ function productTileClass(badge?: ProductBadge) {
               <NuxtLink
                 :to="post.path"
                 class="group hover:bg-muted/30 flex h-full flex-col p-6 transition-colors"
-                :style="productColorStyle(post.productBadge)"
+                :style="productColorStyle(post.productTile)"
               >
                 <div class="mb-4 flex items-center gap-2">
                   <span
                     class="flex size-7 items-center justify-center"
-                    :class="productTileClass(post.productBadge)"
+                    :class="productTileClass(post.productTile)"
                   >
                     <UIcon
-                      :name="post.productBadge?.icon ?? 'i-tools-favicon'"
+                      :name="post.productTile?.icon ?? 'i-tools-favicon'"
                       class="size-4"
                     />
-                    <span v-if="post.productBadge" class="sr-only">{{
-                      post.productBadge.label
+                    <span v-if="post.productTile" class="sr-only">{{
+                      post.productTile.label
                     }}</span>
                   </span>
                   <time

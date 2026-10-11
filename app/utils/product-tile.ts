@@ -1,13 +1,13 @@
 import type { ProductIdWithThemeColor } from "#shared/products";
 import { hasThemeColor, isProductId, PRODUCTS } from "#shared/products";
 
-export interface ProductBadge {
+export interface ProductTile {
   label: string;
   icon: string;
   color: ProductIdWithThemeColor | "primary";
 }
 
-export function getProductBadge(productId?: string): ProductBadge | undefined {
+export function getProductTile(productId?: string): ProductTile | undefined {
   if (!isProductId(productId)) return;
 
   const product = PRODUCTS[productId];
