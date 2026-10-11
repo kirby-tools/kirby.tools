@@ -19,7 +19,7 @@ const page = await useProductPage();
         <PanelCopilotAgentsAuthorizeView
           :site="EXHIBITION_SITE.title"
           account="editor@kunsthalle-leipzig.de"
-          :client="{ name: 'Claude', host: 'claude.ai' }"
+          :client="{ host: 'claude.ai' }"
           :redirect="{ label: 'claude.ai' }"
         />
       </PanelMock>

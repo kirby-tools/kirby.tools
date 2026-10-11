@@ -31,7 +31,6 @@ The Panel's new **Agents** view shows the MCP URL and checks whether agents can 
 site: Kunsthalle Leipzig
 account: editor@kunsthalle-leipzig.de
 client:
-  name: Claude
   host: claude.ai
 redirect:
   label: claude.ai

@@ -7,7 +7,7 @@ import "#kirby-panel/components/Dialogs/Elements/Footer.vue?vue&type=style&index
 defineProps<{
   site: string;
   account: string;
-  client: { name: string; host: string };
+  client: { host: string };
   redirect: { label: string };
 }>();
 
@@ -41,14 +41,7 @@ const selectedPermissions = ref(["content:read", "content:prepare"]);
 <template>
   <div class="panel-copilot-agents-authorize-view k-dialog">
     <div class="k-dialog-body [&>*+*]:mt-[var(--spacing-6)]">
-      <header class="[&>*+*]:mt-[var(--spacing-2)]">
-        <k-headline tag="h1">
-          Connect {{ client.host }} to {{ site }}?
-        </k-headline>
-        <k-text v-if="client.name !== client.host">
-          <p>{{ client.name }}</p>
-        </k-text>
-      </header>
+      <k-headline tag="h1">Connect {{ client.host }} to {{ site }}?</k-headline>
 
       <k-text>
         <p>
