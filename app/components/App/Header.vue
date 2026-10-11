@@ -169,7 +169,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
             color="neutral"
             variant="ghost"
             trailing-icon="i-ri-expand-up-down-line"
-            class="text-highlighted text-base font-semibold"
+            class="text-highlighted text-base/5 font-semibold"
             :class="isProductSwitcherOpen && 'bg-elevated'"
             :ui="{
               leadingIcon: 'text-primary',
@@ -202,6 +202,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
         label="Buy"
         trailing-icon="i-ri-arrow-right-line"
         :to="`${productPath(productId)}/buy`"
+        :ui="{ trailingIcon: 'max-sm:hidden' }"
       />
     </template>
 
