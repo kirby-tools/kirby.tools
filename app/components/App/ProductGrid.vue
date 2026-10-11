@@ -21,7 +21,6 @@ const groups = [
   },
 ];
 
-/** Resolves the color of the product's own pages, in the shade Nuxt UI uses for the color mode. */
 function productColor(item: Product) {
   const shade = colorMode.value === "dark" ? 400 : 500;
   return `var(--color-${item.color ?? DEFAULT_THEME_COLOR}-${shade})`;
