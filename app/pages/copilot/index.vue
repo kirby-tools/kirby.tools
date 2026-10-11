@@ -14,9 +14,6 @@ const page = await useProductPage();
       </div>
     </template>
 
-    <template #mock-multi-field>
-      <ProductCopilotScene crop="hero" />
-    </template>
     <template #mock-agents-consent>
       <PanelMock>
         <PanelCopilotAgentsAuthorizeView
