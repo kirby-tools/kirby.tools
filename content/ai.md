@@ -6,6 +6,10 @@ navigation.icon: i-ri-robot-2-line
 
 Setting up a plugin goes faster when the agent you are working with has read its documentation. So all of it is published as Markdown too – single pages, the whole site as one index, and a skill per plugin.
 
+::tip
+To let an agent edit your site's content rather than read the docs, see [Copilot Agents](/docs/copilot/agents).
+::
+
 ## Any Page as Markdown
 
 Append `.md` to any documentation, blog, changelog, or license URL and you get its Markdown source instead of the rendered page:
