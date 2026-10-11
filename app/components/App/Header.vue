@@ -26,6 +26,9 @@ watch(
   },
 );
 
+const { data: docsNavigation } = await useDocsNavigation();
+const { data: version } = await useLatestProductVersion(productId);
+
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
     ? [
@@ -40,6 +43,19 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
           to: productDocsPath(productId.value),
           active: route.path.startsWith(`/docs/${productId.value}`),
         },
+        ...(version.value
+          ? [
+              {
+                label: "Changelog",
+                to: productChangelogPath(productId.value),
+                badge: {
+                  label: version.value.title,
+                  color: "primary" as const,
+                  variant: "soft" as const,
+                },
+              },
+            ]
+          : []),
         ...(product.value.playground
           ? [
               {
@@ -61,9 +77,6 @@ const navigationItems = computed<NavigationMenuItem[]>(() =>
         },
       ],
 );
-
-const { data: docsNavigation } = await useDocsNavigation();
-const { data: version } = await useLatestProductVersion(productId);
 
 const mobileNavigation = computed<ContentNavigationItem[]>(() => {
   if (!product.value || !productId.value) {
@@ -170,17 +183,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
     <template #right>
       <UContentSearchButton v-if="!product" class="max-lg:hidden" />
       <UButton
-        v-if="productId && version"
-        :label="version.title"
-        icon="i-ri-download-line"
-        color="neutral"
-        variant="ghost"
-        :to="productChangelogPath(productId)"
-        class="max-lg:hidden"
-      />
-      <UButton
         label="Hub"
-        trailing-icon="i-ri-arrow-right-line"
         color="neutral"
         variant="ghost"
         to="https://hub.kirby.tools"
@@ -190,6 +193,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       <UButton
         v-if="productId && product?.license === 'commercial'"
         label="Buy"
+        trailing-icon="i-ri-arrow-right-line"
         :to="`${productPath(productId)}/buy`"
       />
     </template>
@@ -214,10 +218,9 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
 
       <UButton
         label="Hub"
-        trailing-icon="i-ri-arrow-right-line"
-        to="https://hub.kirby.tools"
         color="neutral"
         variant="outline"
+        to="https://hub.kirby.tools"
         target="_blank"
         block
         class="mt-6"
