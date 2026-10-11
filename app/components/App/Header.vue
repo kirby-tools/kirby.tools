@@ -17,6 +17,15 @@ const headerProducts = PRODUCT_LIST.filter((listed) => listed.id !== "helpers");
 const isProductSwitcherOpen = ref(false);
 const openNavigationValue = ref("");
 
+// Close on navigation rather than on click, so a click that opens a new tab or window keeps the grid open.
+watch(
+  () => route.fullPath,
+  () => {
+    isProductSwitcherOpen.value = false;
+    openNavigationValue.value = "";
+  },
+);
+
 const navigationItems = computed<NavigationMenuItem[]>(() =>
   product.value && productId.value
     ? [
@@ -169,7 +178,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
           />
 
           <template #content>
-            <AppProductGrid @select="isProductSwitcherOpen = false" />
+            <AppProductGrid />
           </template>
         </UPopover>
       </template>
@@ -204,7 +213,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       class="hidden lg:flex"
     >
       <template #plugins-content>
-        <AppProductGrid @select="openNavigationValue = ''" />
+        <AppProductGrid />
       </template>
     </UNavigationMenu>
 

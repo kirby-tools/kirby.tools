@@ -3,8 +3,6 @@ import type { Product } from "#shared/products";
 import { PRODUCT_LIST, productPath } from "#shared/products";
 import { DEFAULT_THEME_COLOR } from "#shared/theme";
 
-const emit = defineEmits<{ select: [] }>();
-
 const colorMode = useColorMode();
 const { productId } = useProduct();
 
@@ -45,7 +43,6 @@ function productColor(item: Product) {
             :to="productPath(listed.id)"
             :aria-current="listed.id === productId ? 'true' : undefined"
             class="group flex items-start gap-3 px-3 py-2 text-sm"
-            @click="emit('select')"
           >
             <span
               class="flex size-9 shrink-0 items-center justify-center transition-colors"
