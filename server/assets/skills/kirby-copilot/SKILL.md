@@ -127,10 +127,8 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 
 ## When an Agent's Write Goes Wrong
 
-A refused write or delete tells the connected agent why and what to do. Two failures don't explain themselves:
+A refused write or delete tells the connected agent why and what to do. One failure doesn't explain itself:
 
-**An agent's write is overwritten** – an editor who types in a page the agent just wrote to saves their form over it before the view reloads, which takes up to 10 seconds. Pause typing while the agent works.
-
-**A page delete stops halfway through its files** – a file template turns off `delete`, and Kirby deleted the page's other files first. Without `files.delete`, deleting a page with files fails outright, so give a role both `pages.delete` and `files.delete`, or neither.
+**An agent's write is overwritten** – an editor who types, clicks **Save**, or switches the language while their view of a page the agent just wrote to shows unsaved changes saves their form over it before the view reloads, which takes up to 10 seconds. Pause while the agent works.
 
 <https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
