@@ -9,7 +9,11 @@ export interface Product {
   label: string;
   /** The line under the name in menus. */
   description: string;
-  /** The one-line pitch, short enough for one line of the SocialCard. */
+  /**
+   * The one-line pitch, short enough for one line of the SocialCard. The
+   * Plugin's `composer.json` description and, after an emoji, its GitHub About
+   * repeat it verbatim.
+   */
   tagline: string;
   icon: string;
   license: ProductLicense;
@@ -53,8 +57,8 @@ const PRODUCT_REGISTRY = {
   copilot: {
     name: "Kirby Copilot",
     label: "Copilot",
-    description: "AI generation in the Panel and from agents",
-    tagline: "Generate with AI, from one field to entire layouts",
+    description: "AI generation and MCP for agents",
+    tagline: "Generate with AI in the Panel, or connect your agents",
     icon: "i-ri-sparkling-line",
     license: "commercial",
     configKey: "johannschopplich.copilot",
@@ -80,8 +84,8 @@ const PRODUCT_REGISTRY = {
   "content-translator": {
     name: "Kirby Content Translator",
     label: "Content Translator",
-    description: "DeepL and AI translation in the Panel",
-    tagline: "DeepL and AI translation, in the Panel or from the CLI",
+    description: "DeepL and AI translation",
+    tagline: "One click translates a whole page, nested blocks included",
     icon: "i-ri-translate",
     license: "commercial",
     configKey: "johannschopplich.content-translator",
@@ -105,8 +109,8 @@ const PRODUCT_REGISTRY = {
   "seo-audit": {
     name: "Kirby SEO Audit",
     label: "SEO Audit",
-    description: "Yoast SEO analysis in the Panel",
-    tagline: "Yoast SEO and readability analysis, rated in the Panel",
+    description: "Yoast SEO analysis",
+    tagline: "Yoast SEO and readability checks before the page goes live",
     icon: "i-ri-seo-line",
     license: "commercial",
     configKey: "johannschopplich.seo-audit",
@@ -151,7 +155,7 @@ const PRODUCT_REGISTRY = {
   "serp-preview": {
     name: "Kirby SERP Preview",
     label: "SERP Preview",
-    description: "Google search result preview in the Panel",
+    description: "Google search result preview",
     tagline: "See the Google snippet as you type",
     icon: "i-ri-search-eye-line",
     license: "free",
