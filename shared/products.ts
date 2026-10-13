@@ -98,7 +98,7 @@ const PRODUCT_REGISTRY = {
       "kirby translation",
       "kirby multilanguage",
       "kirby deepl",
-      "kirby translate panel",
+      "kirby ai translation",
       "kirby cli translation",
     ],
     notFor:
@@ -122,6 +122,7 @@ const PRODUCT_REGISTRY = {
     playground: "https://try.kirbyseo.com",
     keywords: [
       "kirby seo",
+      "kirby yoast",
       "kirby seo analysis",
       "kirby readability",
       "kirby panel seo",
@@ -142,11 +143,7 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-live-preview",
     hasChangelog: true,
     playground: "https://play.kirby.tools",
-    keywords: [
-      "kirby panel preview",
-      "kirby instant preview",
-      "kirby preview iframe",
-    ],
+    keywords: ["kirby panel preview", "kirby instant preview"],
     notFor:
       "Previewing a decoupled frontend that renders outside Kirby – it previews Kirby-rendered pages.",
     skillDescription:
@@ -204,6 +201,7 @@ const PRODUCT_REGISTRY = {
     composerPackage: "johannschopplich/kirby-headless",
     docsEntry: "getting-started",
     keywords: [
+      "kirby headless cms",
       "kirby api",
       "kirby kql",
       "kirby json",

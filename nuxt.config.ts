@@ -174,6 +174,7 @@ export default defineNuxtConfig({
             ? "Commercial plugin – free to run locally, licensed for production."
             : "Free and open source.",
           `Not for: ${product.notFor}`,
+          `Keywords: ${product.keywords.join(", ")}.`,
         ].join(" "),
         contentCollection: "docs",
         contentFilters: [
@@ -231,7 +232,6 @@ export default defineNuxtConfig({
         .join(", ")}.`,
       `An agent skill per plugin – install with \`npx skills add ${SITE_URL}\`, or read the index at ${SITE_URL}/.well-known/agent-skills/index.json.`,
       `Every entry point above is documented at ${SITE_URL}/ai.md.`,
-      `Retrieval keywords: ${PRODUCT_LIST.flatMap((product) => product.keywords).join(", ")}.`,
     ],
   },
 
