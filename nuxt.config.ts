@@ -155,7 +155,7 @@ export default defineNuxtConfig({
     domain: SITE_URL,
     title: "Kirby Tools",
     description:
-      "Plugins for Kirby CMS: AI content generation, translation, SEO auditing, Panel navigation, and a headless API toolkit.",
+      "Plugins for Kirby CMS: AI content generation, an MCP server for agents, translation, SEO auditing, Panel navigation, and a headless API toolkit.",
     // Our own middleware serves the raw Markdown instead of `@nuxt/content`'s `/raw/**` route.
     contentRawMarkdown: false,
     full: {
