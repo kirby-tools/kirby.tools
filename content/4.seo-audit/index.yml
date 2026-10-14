@@ -1,5 +1,5 @@
 title: Kirby SEO Audit – Yoast-Powered SEO Plugin for Kirby CMS
-description: SEO analysis plugin for Kirby CMS powered by Yoast SEO. Content, readability, and keyphrase assessments in the Kirby Panel.
+description: SEO analysis plugin for Kirby CMS powered by Yoast SEO. SEO and readability assessments in the Kirby Panel.
 navigation.icon: i-ri-seo-line
 hero:
   orientation: horizontal

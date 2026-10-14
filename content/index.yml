@@ -113,7 +113,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/copilot/getting-started/installation
         variant: subtle
@@ -137,7 +137,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/content-translator/getting-started/installation
         variant: subtle
@@ -162,7 +162,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/seo-audit/getting-started/installation
         variant: subtle
@@ -187,7 +187,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/serp-preview
         variant: subtle
@@ -211,7 +211,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/minimap
         variant: subtle
@@ -267,7 +267,7 @@ products:
         color: neutral
         variant: outline
         trailingIcon: i-lucide-arrow-right
-      - label: Install now
+      - label: Install Now
         icon: i-ri-download-line
         to: /docs/headless/getting-started/installation
         variant: subtle
