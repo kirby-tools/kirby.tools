@@ -105,11 +105,9 @@ onMounted(() => {
         }"
       >
         <template #top>
-          <BackgroundContainerRules />
-          <BackgroundDots
-            v-if="FEATURE_SLOTS.has(section.slot!)"
-            class="mx-4 sm:mx-6 lg:mx-8"
-          />
+          <BackgroundContainerRules>
+            <BackgroundDots v-if="FEATURE_SLOTS.has(section.slot!)" />
+          </BackgroundContainerRules>
         </template>
 
         <template v-if="section.title" #title>

@@ -154,11 +154,12 @@ defineOgImage("Default", {
         :class="index === 0 && license === 'commercial' ? '' : 'lg:border-t'"
       >
         <template #top>
-          <BackgroundContainerRules />
-          <BackgroundDots
-            mask="fade-bottom"
-            class="mx-4 h-[19rem] sm:mx-6 sm:h-[22rem] lg:mx-8 lg:h-[26rem]"
-          />
+          <BackgroundContainerRules>
+            <BackgroundDots
+              mask="fade-bottom"
+              class="h-[19rem] sm:h-[22rem] lg:h-[26rem]"
+            />
+          </BackgroundContainerRules>
         </template>
 
         <template #headline>
