@@ -105,7 +105,7 @@ products:
   - title: Kirby Copilot
     license: commercial
     id: copilot
-    description: Generate with AI inside the Kirby Panel, using OpenAI, Anthropic, Google, or Mistral. Or connect your agents to the site's content over MCP.
+    description: Generate with AI inside the Kirby Panel, using ChatGPT, Claude, Gemini, or Mistral. Or connect your agents to the site's content over MCP.
     reverse: true
     links:
       - label: Learn More
@@ -146,7 +146,7 @@ products:
         description: Nested blocks, layouts, and structure fields translate along with the page.
         icon: i-ri-cursor-line
       - title: DeepL or AI
-        description: Translate with DeepL, or route through Kirby Copilot to OpenAI, Anthropic, Google, or Mistral.
+        description: Translate with DeepL, or with ChatGPT, Claude, Gemini, or Mistral through Kirby Copilot.
         icon: i-ri-sparkling-2-line
       - title: The Same Pipeline From PHP
         description: Batch translate pages or sync from the default language in CLI commands and hooks.
