@@ -273,10 +273,10 @@ products:
         variant: subtle
     features:
       - title: One Token Guards the API
-        description: Set it in config.php and every KQL or custom route request has to carry it.
+        description: Set it in config.php, and every request for page JSON has to carry it – KQL requests too, once KQL is set to bearer auth.
         icon: i-ri-shield-keyhole-line
       - title: Pages Answer as JSON
-        description: Templates return JSON, cached per page and language, drafts behind a preview token.
+        description: Templates return JSON, served from Kirby's pages cache when it is on, with drafts behind a preview token.
         icon: i-ri-braces-line
       - title: Routes as Middleware Chains
         description: Compose custom endpoints from the token check, resolvers, and functions of your own.
