@@ -26,7 +26,7 @@ const PERMISSIONS = [
   {
     value: "content:publish",
     text: "Publish changes",
-    info: "Publish or discard unsaved changes, change a page’s status, slug, or parent, and upload files (live at once)",
+    info: "Publish or discard unsaved changes, change a page’s status, slug, or parent, and upload files to published pages (live at once)",
   },
   {
     value: "content:delete",
