@@ -91,7 +91,7 @@ Templates are reusable user prompts in the dialog, some built in. Skills are hou
 
 ## Connecting Agents
 
-`'agents' => true` under `johannschopplich.copilot` lets Panel users connect any agent that logs in to remote MCP servers with OAuth to the MCP URL, by default `https://<site>/api/copilot/mcp`. Kirby's `api` and `panel` options have to stay on. The agent logs in through the Panel, works as that Kirby user within their role, and brings its own model, so it needs no provider. Keep a role out with `copilot-agents: false` under `permissions.access` in its blueprint.
+`'agents' => true` under `johannschopplich.copilot` lets Panel users connect any agent that logs in to remote MCP servers with OAuth to the MCP URL, by default `https://<site>/api/copilot/mcp`. While Kirby's `api` or `panel` option is `false`, Agents stay off and the MCP URL answers 404. The agent logs in through the Panel, works as that Kirby user within their role, and brings its own model, so it needs no provider. Keep a role out with `copilot-agents: false` under `permissions.access` in its blueprint.
 
 ```bash
 claude mcp add --transport http kirby https://example.com/api/copilot/mcp
@@ -99,7 +99,7 @@ claude mcp add --transport http kirby https://example.com/api/copilot/mcp
 
 Then `/mcp` in Claude Code or `claude mcp login kirby` opens the Panel's login.
 
-The user picks the connection permissions in the Panel's consent view, capped by their role, and changes them later in the **Agents** view. An agent keeps the tool list it loaded when it connected, so the tools of a permission added later appear only once it reloads that list. A role blueprint withholds publishing or deleting from agents with `agentsPublish: false` or `agentsDelete: false` under `permissions.johannschopplich.copilot`. Publishing takes all unsaved changes of a page in a language, the user's own Panel edits included, as the Panel's **Save** button does.
+The user picks the connection permissions in the Panel's consent view, capped by their role, and changes them later in the **Agents** view. An agent keeps the tool list it loaded when it connected, so the tools of a permission added later appear only once it reloads that list. A role blueprint withholds publishing or deleting from agents with `agentsPublish: false` or `agentsDelete: false` under `permissions.johannschopplich.copilot`.
 
 The hosting has to pass the `/.well-known/` discovery paths and the `Authorization` header to Kirby. The Panel's **Agents** view checks this from the browser and names the fix. HTTP basic auth has to exempt the paths agents use. claude.ai, Claude Desktop, and ChatGPT connect from their own servers, so they need a site reachable from the internet, which the browser check doesn't test. After a server fix, Claude Code needs `claude mcp remove kirby` and the URL added again – it keeps the login server of an earlier connection.
 
