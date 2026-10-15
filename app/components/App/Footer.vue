@@ -15,7 +15,6 @@ interface FooterGroup {
   links: FooterLink[];
 }
 
-// Each inner array is one ruled cell; groups in the same cell stack.
 const cells: FooterGroup[][] = [
   [
     {
