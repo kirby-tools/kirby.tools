@@ -51,6 +51,11 @@ export default defineAppConfig({
         base: "active:hover:scale-[97%] transition-all ease-linear duration-100",
       },
     },
+    pageCTA: {
+      slots: {
+        container: "px-4 sm:px-6 lg:px-8",
+      },
+    },
     navigationMenu: {
       variants: {
         active: {

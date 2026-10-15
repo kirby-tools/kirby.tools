@@ -31,6 +31,13 @@
   --display-text-7xl: var(--text-7xl);
   --display-text-8xl: var(--text-8xl);
   --display-text-9xl: var(--text-9xl);
+
+  /* The container's edge is the page frame. `100%` resolves where the
+     container reads the variable, so the frame stays at least a gutter's
+     width from the viewport edge. */
+  @variant lg {
+    --ui-container: min(80rem, 100% - 4rem);
+  }
 }
 
 @theme static {

@@ -58,7 +58,13 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
       :ui="{ container: 'py-16 sm:py-16 lg:py-16' }"
     />
 
-    <UContainer :class="page.illustration ? 'max-w-6xl' : 'max-w-lg'">
+    <UContainer
+      :class="
+        page.illustration
+          ? 'max-w-[min(var(--container-6xl),var(--ui-container))]'
+          : 'max-w-lg'
+      "
+    >
       <div
         v-if="page.illustration"
         class="lg:bg-primary-500 dark:lg:bg-primary-600 flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:p-12"

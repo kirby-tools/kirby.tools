@@ -64,12 +64,11 @@ function productTileClass(tile?: ProductTile) {
     class="relative flex min-h-[calc(100vh-var(--ui-header-height))] flex-col"
   >
     <UPageHero :ui="{ container: 'relative py-10 sm:py-16 lg:py-24' }">
-      <BackgroundSky />
+      <template #top>
+        <BackgroundContainerRules />
+      </template>
 
-      <div
-        aria-hidden="true"
-        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
-      />
+      <BackgroundSky />
 
       <template #title>
         <MDC :value="page.hero.title" unwrap="p" cache-key="blog-hero-title" />
@@ -81,8 +80,8 @@ function productTileClass(tile?: ProductTile) {
     </UPageHero>
 
     <UPageBody class="border-default my-0! border-y py-0!">
-      <UContainer>
-        <div class="border-default border-x">
+      <div class="mx-auto max-w-(--ui-container)">
+        <div class="border-default lg:-mx-px lg:border-x">
           <Motion
             v-if="latestPost"
             :initial="{ opacity: 0, y: 12 }"
@@ -92,7 +91,7 @@ function productTileClass(tile?: ProductTile) {
           >
             <NuxtLink
               :to="latestPost.path"
-              class="group hover:bg-muted/30 grid gap-6 p-6 transition-colors sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end"
+              class="group hover:bg-muted/30 grid gap-6 px-4 py-6 transition-colors sm:px-6 sm:py-10 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8"
               :style="productColorStyle(latestPost.productTile)"
             >
               <div>
@@ -146,7 +145,7 @@ function productTileClass(tile?: ProductTile) {
             >
               <NuxtLink
                 :to="post.path"
-                class="group hover:bg-muted/30 flex h-full flex-col p-6 transition-colors"
+                class="group hover:bg-muted/30 flex h-full flex-col px-4 py-6 transition-colors sm:px-6 lg:px-8"
                 :style="productColorStyle(post.productTile)"
               >
                 <div class="mb-4 flex items-center gap-2">
@@ -181,14 +180,11 @@ function productTileClass(tile?: ProductTile) {
             </Motion>
           </div>
         </div>
-      </UContainer>
+      </div>
     </UPageBody>
 
-    <UContainer class="relative min-h-24 grow">
-      <div
-        aria-hidden="true"
-        class="border-default absolute inset-0 z-[-1] mx-4 hidden border-x sm:mx-6 lg:mx-8 lg:block"
-      />
-    </UContainer>
+    <div class="relative min-h-24 grow">
+      <BackgroundContainerRules />
+    </div>
   </main>
 </template>

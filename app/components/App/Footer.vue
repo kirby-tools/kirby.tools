@@ -64,18 +64,15 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
 
 <template>
   <footer class="border-default border-t">
-    <UContainer>
-      <div class="border-default -mx-px border-x">
+    <div class="mx-auto max-w-(--ui-container)">
+      <div class="border-default lg:-mx-px lg:border-x">
         <div
           class="border-default grid grid-cols-2 gap-px border-b bg-(--ui-border) lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
         >
           <div
-            class="bg-default relative col-span-2 px-6 py-8 lg:col-span-1 lg:px-8 lg:py-12"
+            class="bg-default relative col-span-2 px-4 py-8 sm:px-6 lg:col-span-1 lg:px-8 lg:py-12"
           >
-            <BackgroundRuleCross class="top-0 left-0" />
-            <BackgroundRuleCross
-              class="top-0 left-[calc(100%+1px)] lg:hidden"
-            />
+            <BackgroundRuleCross class="top-0 left-0 max-lg:hidden" />
             <UIcon name="i-tools-favicon" class="text-primary size-10" />
             <MDC
               :value="aboutText"
@@ -86,14 +83,20 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
           <div
             v-for="(groups, index) in cells"
             :key="index"
-            class="bg-default relative space-y-10 px-6 py-8 lg:px-8 lg:py-12"
+            class="bg-default relative space-y-10 px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
             :class="index === cells.length - 1 && 'col-span-2 lg:col-span-1'"
           >
-            <BackgroundRuleCross class="top-0 left-0" />
+            <!-- Below `lg`, only a right-column cell's corner sits on an inner rule. -->
             <BackgroundRuleCross
-              v-if="index > 0"
-              class="top-0 left-[calc(100%+1px)]"
-              :class="index < cells.length - 1 && 'lg:hidden'"
+              class="top-0 left-0"
+              :class="
+                (index % 2 === 0 || index === cells.length - 1) &&
+                'max-lg:hidden'
+              "
+            />
+            <BackgroundRuleCross
+              v-if="index === cells.length - 1"
+              class="top-0 left-[calc(100%+1px)] max-lg:hidden"
             />
             <div v-for="group in groups" :key="group.label">
               <h3
@@ -126,7 +129,7 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
         </div>
 
         <div
-          class="flex items-center justify-between gap-x-3 ps-6 pe-4 lg:ps-8"
+          class="flex items-center justify-between gap-x-3 px-4 sm:px-6 lg:px-8"
         >
           <p class="text-muted py-4 font-mono text-xs">
             © {{ new Date().getFullYear() }}
@@ -150,6 +153,6 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
           </div>
         </div>
       </div>
-    </UContainer>
+    </div>
   </footer>
 </template>
