@@ -73,6 +73,9 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
             class="bg-default relative col-span-2 px-6 py-8 lg:col-span-1 lg:px-8 lg:py-12"
           >
             <BackgroundRuleCross class="top-0 left-0" />
+            <BackgroundRuleCross
+              class="top-0 left-[calc(100%+1px)] lg:hidden"
+            />
             <UIcon name="i-tools-favicon" class="text-primary size-10" />
             <MDC
               :value="aboutText"
@@ -87,6 +90,11 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
             :class="index === cells.length - 1 && 'col-span-2 lg:col-span-1'"
           >
             <BackgroundRuleCross class="top-0 left-0" />
+            <BackgroundRuleCross
+              v-if="index > 0"
+              class="top-0 left-[calc(100%+1px)]"
+              :class="index < cells.length - 1 && 'lg:hidden'"
+            />
             <div v-for="group in groups" :key="group.label">
               <h3
                 class="text-dimmed font-mono text-xs tracking-widest uppercase"
