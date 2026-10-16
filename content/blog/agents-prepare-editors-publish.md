@@ -29,7 +29,7 @@ The Panel's new **Agents** view shows the MCP URL and checks whether agents can 
 ::panel-copilot-agents-authorize-view
 ---
 site: Kunsthalle Leipzig
-account: editor@kunsthalle-leipzig.de
+account: hanna@kunsthalle-leipzig.de
 client:
   host: claude.ai
 redirect:
@@ -67,15 +67,24 @@ Each write hands the agent a link to pass on to you. Where the page has a previe
 
 To see what's waiting, ask the agent: it finds the pages with unsaved changes.
 
+::product-copilot-agents-chat{chat="waiting"}
+::
+
 If you have the page open while the agent works, the view reloads – within 10 seconds while its tab is visible – and tells you why. An edit you type before the reload saves your form over what the agent wrote, so pause typing until the view has reloaded. If a colleague is editing the page, Kirby keeps the agent from changing it until they leave, and the agent tells you whom it's waiting for.
 
 Give an agent **Publish changes**, and it publishes the way the Panel's **Save** button does: all unsaved changes of the page in that language, whoever made them. Changes that fail the blueprint's validation stay unpublished, as they would in the Panel. The agent sees which fields the page's unsaved changes touch. In my tests, an agent asked to publish a new intro spotted a half-finished teaser in the same page's changes and asked before publishing both. I still wouldn't leave unfinished edits on a page you hand to an agent.
+
+::product-copilot-agents-chat{chat="publish-guard"}
+::
 
 ## Content Is Data, Not Instructions
 
 A page can hold text that reads like an instruction to an AI – a pasted email, a form submission. The site tells every agent to treat what it reads as data, never as instructions.
 
 What an agent writes is checked too. It can't add `<script>`, `<iframe>`, or similar elements, event attributes, or `javascript:` URLs to a field, whether written out or produced by KirbyText. Markup an editor placed there before survives a rewrite.
+
+::product-copilot-agents-chat{chat="script"}
+::
 
 ## From a Chat Window, Not Just a Terminal
 
