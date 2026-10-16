@@ -45,7 +45,7 @@ The agent brings its own model, so the site needs no AI provider for it.
 
 ## Going Live Is a Permission of Its Own
 
-A new connection may read content and prepare changes. Publishing or discarding unsaved changes, uploading a file, and changing a page's status, slug, or parent are live at once and take **Publish changes**; deleting takes **Delete content**. Both stay off until you tick them, and an agent only sees the tools its connection allows.
+A new connection may read content and prepare changes. Publishing or discarding unsaved changes, uploading a file outside a draft, and changing a page's status, slug, or parent are live at once and take **Publish changes**; deleting takes **Delete content**. Both stay off until you tick them, and an agent only sees the tools its connection allows.
 
 You change a connection's permissions later with **Change permissions** in its menu in the Agents view. On a team site, that decision doesn't have to rest with each editor: a role blueprint can keep publishing and deleting away from agents, even for a role that publishes in the Panel.
 
@@ -90,7 +90,7 @@ What an agent writes is checked too. It can't add `<script>`, `<iframe>`, or sim
 
 An agent in claude.ai or ChatGPT can't hand over a file from your disk the way a terminal can. So it uploads from a public HTTPS URL, up to the file template's `accept.maxsize`, or 20 MB without one, or sends a small file of up to 100 KB itself. Before it writes an image's alt text, it can look at the image.
 
-A file is live once it's uploaded, so uploading takes **Publish changes**. Only its fields, like the alt text, wait for review.
+A file on a published page or the site is live once it's uploaded, so uploading there takes **Publish changes**; uploading to a draft, or a page inside one, takes only **Prepare changes**. On a published page or the site, only the file's fields, like the alt text, wait for review.
 
 ## Where It Stops
 
