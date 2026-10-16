@@ -10,11 +10,12 @@ export interface Product {
   /** The line under the name in menus. */
   description: string;
   /**
-   * The one-line pitch, short enough for one line of the SocialCard. The
-   * Plugin's `composer.json` description and, after an emoji, its GitHub About
-   * repeat it verbatim.
+   * The pitch, short enough for one line of the SocialCard's Open Graph format.
+   * Each entry is one line of its 4:3 format. The Plugin's `composer.json`
+   * description and, after an emoji, its GitHub About repeat it verbatim, the
+   * entries joined by a space.
    */
-  tagline: string;
+  tagline: readonly string[];
   icon: string;
   license: ProductLicense;
   /**
@@ -58,7 +59,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Copilot",
     label: "Copilot",
     description: "AI generation and MCP for agents",
-    tagline: "Generate with AI in the Panel, or connect your agents",
+    tagline: ["Generate with AI in the Panel,", "or connect your agents"],
     icon: "i-ri-sparkling-line",
     license: "commercial",
     configKey: "johannschopplich.copilot",
@@ -85,7 +86,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Content Translator",
     label: "Content Translator",
     description: "DeepL and AI translation",
-    tagline: "One click translates a whole page, nested blocks included",
+    tagline: ["One click translates a whole page,", "nested blocks included"],
     icon: "i-ri-translate",
     license: "commercial",
     configKey: "johannschopplich.content-translator",
@@ -110,7 +111,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby SEO Audit",
     label: "SEO Audit",
     description: "Yoast SEO analysis",
-    tagline: "Yoast SEO and readability checks before the page goes live",
+    tagline: ["Yoast SEO and readability checks", "before the page goes live"],
     icon: "i-ri-seo-line",
     license: "commercial",
     configKey: "johannschopplich.seo-audit",
@@ -136,7 +137,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Live Preview",
     label: "Live Preview",
     description: "Real-time page preview",
-    tagline: "See unsaved changes live, on any screen size",
+    tagline: ["See unsaved changes live,", "on any screen size"],
     icon: "i-ri-picture-in-picture-line",
     license: "commercial",
     githubRepo: "kirby-tools/kirby-live-preview",
@@ -153,7 +154,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby SERP Preview",
     label: "SERP Preview",
     description: "Google search result preview",
-    tagline: "See the Google snippet as you type",
+    tagline: ["See the Google snippet as you type"],
     icon: "i-ri-search-eye-line",
     license: "free",
     configKey: "johannschopplich.serp-preview",
@@ -174,7 +175,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Minimap",
     label: "Minimap",
     description: "Sidebar navigation for fields and blocks",
-    tagline: "Jump to any field or block from a sidebar",
+    tagline: ["Jump to any field or block from a sidebar"],
     icon: "i-ri-timeline-view",
     license: "free",
     githubRepo: "johannschopplich/kirby-minimap",
@@ -192,7 +193,7 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Headless",
     label: "Headless",
     description: "KQL, JSON templates, and the API builder",
-    tagline: "JSON pages and KQL queries, served behind one bearer token",
+    tagline: ["JSON pages and KQL queries,", "served behind one bearer token"],
     icon: "i-ri-code-block",
     license: "free",
     // Predates the vendor-prefixed convention the commercial plugins follow.
@@ -216,7 +217,10 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Helpers",
     label: "Helpers",
     description: "Env, meta tags, sitemap, redirects, and Vite",
-    tagline: "Environment variables, meta tags, sitemap, redirects, and Vite",
+    tagline: [
+      "Environment variables, meta tags,",
+      "sitemap, redirects, and Vite",
+    ],
     icon: "i-ri-tools-line",
     license: "free",
     configKey: "johannschopplich.helpers",

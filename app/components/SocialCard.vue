@@ -26,15 +26,16 @@ const isWide = computed(() => props.format === "og");
     class="social-card flex flex-col overflow-hidden bg-(--social-card-back) font-sans"
     :style="{ width: `${size.width}px`, height: `${size.height}px` }"
   >
+    <!-- On 4:3 the two `1fr` rows keep the gap between logo and title equal to the one between Tagline and frame. -->
     <div
-      class="via-primary-500/50 flex shrink-0 bg-linear-to-r from-transparent to-transparent bg-size-[100%_1px] bg-top bg-no-repeat"
+      class="via-primary-500/50 grid min-h-0 flex-1 bg-linear-to-r from-transparent to-transparent bg-size-[100%_1px] bg-top bg-no-repeat"
       :class="
         isWide
-          ? 'flex-row items-center justify-between gap-12 px-[75px] pt-[75px] pb-16'
-          : 'flex-col-reverse items-start gap-[110px] px-[100px] pt-[68px] pb-30'
+          ? 'grid-cols-[1fr_auto] content-end items-center gap-12 px-[75px] pb-16'
+          : 'grid-rows-[auto_1fr_auto_1fr] justify-items-start px-[100px] pt-[68px]'
       "
     >
-      <div>
+      <div :class="{ 'row-start-3': !isWide }">
         <h1
           class="leading-none font-semibold text-(--social-card-title)"
           :class="isWide ? 'text-5xl' : 'text-8xl'"
@@ -42,26 +43,35 @@ const isWide = computed(() => props.format === "og");
           {{ product.name }}
         </h1>
         <p
-          class="leading-tight font-medium text-(--social-card-tagline)"
-          :class="
-            isWide
-              ? 'mt-1.5 max-w-[960px] text-3xl'
-              : 'mt-4 max-w-[1400px] text-5xl'
-          "
+          v-if="isWide"
+          class="mt-1.5 max-w-[960px] text-3xl leading-tight font-medium text-balance text-(--social-card-tagline)"
         >
-          {{ product.tagline }}
+          {{ product.tagline.join(" ") }}
+        </p>
+        <p
+          v-else
+          class="mt-4 text-5xl leading-tight font-medium text-(--social-card-tagline)"
+        >
+          <span v-for="line in product.tagline" :key="line" class="block">
+            {{ line }}
+          </span>
         </p>
       </div>
       <UIcon
         name="i-tools-favicon"
-        class="shrink-0 text-(--social-card-title)"
-        :class="isWide ? 'size-20' : 'size-22'"
+        class="text-(--social-card-title)"
+        :class="isWide ? 'size-20' : 'row-start-1 size-22'"
       />
     </div>
 
+    <!-- The frame keeps its height, so a Tagline that wraps takes its room from the header and lifts the title. -->
     <div
-      class="shadow-primary-500/30 min-h-0 flex-1 rounded-t-[12px] border-b-0 border-black/5 shadow-[0_0_100px]"
-      :class="isWide ? 'mx-[75px] border-4' : 'mx-[100px] border-6'"
+      class="shadow-primary-500/30 flex-none rounded-t-[12px] border-b-0 border-black/5 shadow-[0_0_100px]"
+      :class="
+        isWide
+          ? 'mx-[75px] h-[400px] border-4'
+          : 'mx-[100px] h-[640px] border-6'
+      "
     >
       <!-- Chrome clips each layer on its own and leaves a light seam in the corners; a no-op mask clips the subtree in one pass. -->
       <div

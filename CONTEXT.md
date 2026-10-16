@@ -64,7 +64,7 @@ The tabbed arrangement on the home page, showing one Scene at a time. It carries
 _Avoid_: Carousel, gallery, switcher
 
 **Tagline**:
-The one-line pitch of a Product. It is short enough to stand on a single line of the SocialCard and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
+The one-line pitch of a Product. It is short enough to stand on a single line of the SocialCard's Open Graph format and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.
 _Avoid_: Subtitle, subline, claim, slogan
 
 **FeatureCard**:
