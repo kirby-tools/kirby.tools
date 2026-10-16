@@ -90,7 +90,7 @@ function input(event: Event) {
 <template>
   <k-input
     :type="type"
-    :class="{ '[outline:var(--input-outline-focus)]': hasCaret }"
+    :class="[hasCaret && '[outline:var(--input-outline-focus)]']"
   >
     <PanelWriter
       v-if="type === 'writer'"

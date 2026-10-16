@@ -35,7 +35,7 @@ const isWide = computed(() => props.format === "og");
           : 'grid-rows-[auto_1fr_auto_1fr] justify-items-start px-[100px] pt-[68px]'
       "
     >
-      <div :class="{ 'row-start-3': !isWide }">
+      <div :class="[!isWide && 'row-start-3']">
         <h1
           class="leading-none font-semibold text-(--social-card-title)"
           :class="isWide ? 'text-5xl' : 'text-8xl'"
