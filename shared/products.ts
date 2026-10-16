@@ -12,8 +12,8 @@ export interface Product {
   /**
    * The pitch, short enough for one line of the SocialCard's Open Graph format.
    * Each entry is one line of its 4:3 format. The Plugin's `composer.json`
-   * description and, after an emoji, its GitHub About repeat it verbatim, the
-   * entries joined by a space.
+   * description, its subtitle on plugins.getkirby.com and, after an emoji, its
+   * GitHub About repeat it verbatim, the entries joined by a space.
    */
   tagline: readonly string[];
   icon: string;
