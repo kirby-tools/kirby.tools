@@ -44,7 +44,7 @@ A Mock that answers nothing at all. An Interactive Mock is still inside a Featur
 _Avoid_: Static
 
 **Stage**:
-The frame a Mock renders into, standing in for whatever the Panel supplies around a component – the view a header sits above, the portal a dialog centers in, the viewport a container query measures. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
+The frame a Mock renders into, standing in for whatever the Panel supplies around a component. The Stage belongs to the page, so its measures are the page's rather than Kirby's.
 _Avoid_: Frame, canvas, wrapper, viewport
 
 **Crop**:
@@ -68,11 +68,11 @@ The one-line pitch of a Product. It is short enough to stand on a single line of
 _Avoid_: Subtitle, subline, claim, slogan
 
 **FeatureCard**:
-One of the cards a Product's landing page lays out in a grid: a Mock above a title and a paragraph, the whole card a link into the documentation. The plainer icon-and-sentence grid a landing page may carry instead is not a FeatureCard. The title may claim or joke; the paragraph says what the editor or developer does, what happens, and where it stops, and it is the longest place on the site where a single feature is described in prose.
+One of the cards a Product's landing page lays out in a grid: a Mock above a title and a paragraph, the whole card a link into the documentation. The plainer icon-and-sentence grid a landing page may carry instead is not a FeatureCard.
 _Avoid_: Feature box, tile, USP
 
 **FeatureList**:
-The three lines under a Product on the home page, each a name and one sentence. It is the FeatureCard's shorter sibling with the same register: the name may claim, the sentence states behavior. A FeatureList names the Product's three strongest features, not everything it does.
+The three lines under a Product on the home page, each a name and one sentence. It is the FeatureCard's shorter sibling. A FeatureList names the Product's three strongest features, not everything it does.
 _Avoid_: Feature bullets, highlights, key features
 
 **SocialCard**:
