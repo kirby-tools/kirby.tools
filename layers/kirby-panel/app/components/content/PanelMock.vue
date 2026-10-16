@@ -29,10 +29,14 @@ const isFramed = inject(panelMockFramedKey, false);
 
 <template>
   <figure class="panel-mock my-6" :class="isFramed && 'is-framed'">
-    <figcaption v-if="!isFramed" class="panel-mock-chrome">
-      <k-icon type="kirby" />
+    <!-- As tall as a Window's tab strip, in its tabs' size. -->
+    <figcaption
+      v-if="!isFramed"
+      class="panel-mock-chrome border-default bg-default text-highlighted flex h-11 items-center gap-1.5 border-b px-3 font-(family-name:--panel-mock-chrome-font) text-sm font-medium"
+    >
+      <k-icon type="kirby" class="size-4" />
       <span>Kirby Panel</span>
-      <span v-if="label" class="panel-mock-chrome-label">{{ label }}</span>
+      <span v-if="label" class="text-dimmed ms-auto">{{ label }}</span>
       <slot name="chrome" />
     </figcaption>
 
@@ -163,26 +167,5 @@ const isFramed = inject(panelMockFramedKey, false);
    again for it. */
 :root {
   --panel-mock-chrome-font: var(--font-sans);
-}
-
-.panel-mock-chrome {
-  --icon-size: 14px;
-
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid var(--ui-border);
-  background: var(--ui-bg);
-  padding: 8px 12px;
-  color: var(--ui-text-highlighted);
-  font-family: var(--panel-mock-chrome-font);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 20px;
-}
-
-.panel-mock-chrome-label {
-  margin-left: auto;
-  color: var(--ui-text-dimmed);
 }
 </style>
