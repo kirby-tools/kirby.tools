@@ -1,4 +1,4 @@
-import type { ExhibitionProductId } from "./exhibition";
+import type { ProductId } from "./products";
 
 export const SOCIAL_CARD_FORMATS = {
   og: { width: 1200, height: 630 },
@@ -7,9 +7,8 @@ export const SOCIAL_CARD_FORMATS = {
 
 export type SocialCardFormat = keyof typeof SOCIAL_CARD_FORMATS;
 
-/** The public path of a product's rendered social card. */
 export function socialCardPath(
-  id: ExhibitionProductId,
+  id: ProductId,
   format: SocialCardFormat = "og",
 ): string {
   return `/social-card/${id}${format === "og" ? "" : `-${format}`}.png`;

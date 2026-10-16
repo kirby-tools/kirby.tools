@@ -3,7 +3,7 @@ import { mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import process from "node:process";
 import { chromium } from "playwright-core";
-import { EXHIBITION_PRODUCT_IDS } from "../shared/exhibition.ts";
+import { PRODUCT_LIST } from "../shared/products.ts";
 import { SOCIAL_CARD_FORMATS, socialCardPath } from "../shared/social-card.ts";
 
 const origin = process.env.SOCIAL_CARD_ORIGIN ?? "http://localhost:3000";
@@ -33,7 +33,7 @@ page.on("console", (message) => {
   if (message.type() === "error") console.error(`[chrome] ${message.text()}`);
 });
 
-for (const productId of EXHIBITION_PRODUCT_IDS) {
+for (const { id: productId } of PRODUCT_LIST) {
   for (const format of Object.keys(SOCIAL_CARD_FORMATS) as SocialCardFormat[]) {
     const path = socialCardPath(productId, format);
     await page.goto(`${origin}/${productId}/social-card?format=${format}`);

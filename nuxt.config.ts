@@ -251,7 +251,10 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    families: [{ name: "Inter", weights: [400, 600, 700], global: true }],
+    families: [
+      { name: "Inter", weights: [400, 600, 700], global: true },
+      { name: "JetBrains Mono", weights: [400, 600] },
+    ],
   },
 
   routeRules: {

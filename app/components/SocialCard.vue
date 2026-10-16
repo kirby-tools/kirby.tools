@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { ExhibitionProductId } from "#shared/exhibition";
+import type { ProductId } from "#shared/products";
 import type { SocialCardFormat } from "#shared/social-card";
+import { isExhibitionProductId } from "#shared/exhibition";
 import { PRODUCTS } from "#shared/products";
 import { SOCIAL_CARD_FORMATS } from "#shared/social-card";
 
 const props = withDefaults(
   defineProps<{
-    productId: ExhibitionProductId;
+    productId: ProductId;
     format?: SocialCardFormat;
   }>(),
   { format: "og" },
@@ -67,7 +68,12 @@ const isWide = computed(() => props.format === "og");
         class="relative h-full overflow-hidden rounded-t-[8px] mask-[linear-gradient(#000_0_0)]"
       >
         <div class="h-full" :style="{ zoom: isWide ? 1 : 1.4 }">
-          <component :is="EXHIBITION_SCENES[productId]" theme="light" />
+          <component
+            :is="EXHIBITION_SCENES[productId]"
+            v-if="isExhibitionProductId(productId)"
+            theme="light"
+          />
+          <SocialCardCode v-else v-bind="SOCIAL_CARD_CODE[productId]" />
         </div>
         <div
           class="absolute inset-x-0 bottom-0 h-14 bg-linear-to-b from-transparent to-black/50"

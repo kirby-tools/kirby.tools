@@ -52,7 +52,7 @@ A Stage the page gives less room than the Mock renders into, showing the top of 
 _Avoid_: Clip, cutoff, truncation, fold
 
 **Exhibition**:
-The one fictional site every Scene depicts and other Mocks may borrow from: an art venue's site, edited in a Panel with several of the Plugins installed. Every Scene shows the same page of it: its page for a photography exhibition. A Product is in the Exhibition when its Plugin is, and only then does it have a Scene. Membership is a fact about the fiction, not a place on the site.
+The one fictional site every Scene depicts and other Mocks and SocialCards may borrow from: an art venue's site, edited in a Panel with several of the Plugins installed. Every Scene shows the same page of it: its page for a photography exhibition. A Product is in the Exhibition when its Plugin adds to that page in the Panel, and only then does it have a Scene; a Plugin with nothing to add there may still serve the page without joining. Membership is a fact about the fiction, not a place on the site.
 _Avoid_: Demo site, sample content, fixture
 
 **Scene**:
@@ -76,5 +76,5 @@ The three lines under a Product on the home page, each a name and one sentence. 
 _Avoid_: Feature bullets, highlights, key features
 
 **SocialCard**:
-A PNG rendered from the site's own components, with the Product's Scene as its Mock, for sharing off-site. Only a Product in the Exhibition has one, in two formats: the Open Graph format, linked from the landing page's meta tags, and the 4:3 format, posted by hand. Every other page shares the site's generated share image, which is not a SocialCard.
+A PNG rendered from the site's own components for sharing off-site. Every Product has one, in two formats: the Open Graph format, linked from the landing page's meta tags, and the 4:3 format, posted by hand. The SocialCard of a Product in the Exhibition shows its Scene; any other Product's shows a file the developer writes beside what its Plugin renders from it for the Exhibition's page. Every other page shares the site's generated share image unless it brings its own; neither is a SocialCard.
 _Avoid_: OG image, social image, header image

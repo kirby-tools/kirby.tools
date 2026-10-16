@@ -1,12 +1,10 @@
 import { withoutTrailingSlash } from "ufo";
-import { isExhibitionProductId } from "#shared/exhibition";
 import { socialCardPath } from "#shared/social-card";
 
 /** Loads the current Product's landing page and sets its head. */
 export async function useProductPage() {
   const route = useRoute();
-  const nuxtApp = useNuxtApp();
-  const { productId, product } = useProduct();
+  const { productId } = useProduct();
   const id = productId.value!;
   const path = withoutTrailingSlash(route.path);
 
@@ -26,7 +24,7 @@ export async function useProductPage() {
     ogTitle: title,
     description,
     ogDescription: description,
-    ogImage: isExhibitionProductId(id) ? socialCardPath(id) : undefined,
+    ogImage: socialCardPath(id),
   });
 
   await asyncData;
@@ -37,18 +35,6 @@ export async function useProductPage() {
       statusMessage: "Page not found",
       fatal: true,
     });
-  }
-
-  // The share image reads the page's description, so it waits past the `await`
-  // and needs Nuxt's context back.
-  if (import.meta.server && !isExhibitionProductId(id)) {
-    nuxtApp.runWithContext(() =>
-      defineOgImage("Default", {
-        productId: id,
-        title: product.value!.tagline,
-        description: description(),
-      }),
-    );
   }
 
   return page;
