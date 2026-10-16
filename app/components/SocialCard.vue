@@ -14,6 +14,7 @@ const props = withDefaults(
 );
 
 provide(panelMockInertKey, true);
+provide(panelMockFramedKey, true);
 provide(socialCardKey, true);
 
 const product = computed(() => PRODUCTS[props.productId]);
@@ -107,23 +108,6 @@ const isWide = computed(() => props.format === "og");
   --social-card-tagline: oklch(
     from var(--color-primary-500) l calc(c * var(--social-card-chroma)) h
   );
-}
-
-/* The Mock's chrome and the frame around it belong to a page; here the frame is the card's. */
-.social-card .panel-mock {
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  height: 100%;
-}
-
-.social-card .panel-mock-chrome {
-  display: none;
-}
-
-.social-card .panel-mock .k-panel,
-.social-card .panel-mock .panel-mock-stage {
-  height: 100%;
 }
 
 /* Rendered larger without reflowing, so the columns keep their layout. */

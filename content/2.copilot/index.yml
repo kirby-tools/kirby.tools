@@ -44,8 +44,7 @@ sections:
         wide: true
   - title: Your Agent Prepares,<br> <span class="text-primary">You Publish</span>
     id: agents
-    slot: code
-    orientation: horizontal
+    slot: mock
     description: Connect Claude, ChatGPT, Cursor, or any other agent that supports remote MCP servers. It logs in through the Panel and works as your Kirby user, within your role.
     features:
       - title: Review First
@@ -59,20 +58,6 @@ sections:
         to: /docs/copilot/agents
         trailingIcon: i-ri-arrow-right-line
         variant: subtle
-    code:
-      files:
-        - filename: site/config/config.php
-          language: php
-          content: |
-            return [
-                'johannschopplich.copilot' => [
-                    'agents' => true
-                ]
-            ];
-        - filename: Terminal
-          language: bash
-          content: |
-            claude mcp add --transport http kirby https://example.com/api/copilot/mcp
   - title: You Choose What<br> <span class="text-primary">the Agent May Do</span>
     id: agents-consent
     slot: mock

@@ -29,7 +29,14 @@ const SHOWCASE_TABS = SHOWCASE_PRODUCT_IDS.map((id) => ({
   ...COLOR_CLASSES[id],
 }));
 
+const PANEL_TABS = [PANEL_TAB];
+// A phone keeps the height the Content Translator dialog needs for its buttons.
+const BODY_CLASS = "h-120 sm:h-112";
+
 const activeProductId = ref<ShowcaseProductId>("copilot");
+const activeTab = ref("panel");
+// Bumping it remounts the Scene, so the Window's Replay plays it from the start.
+const replayCount = ref(0);
 
 provide(sceneAutoplayKey, true);
 
@@ -95,12 +102,33 @@ const accentClass = computed(
         :class="accentClass"
       />
 
-      <component
-        :is="EXHIBITION_SCENES[activeProductId]"
-        :key="activeProductId"
-        crop="showcase"
-        class="my-0! rounded-sm shadow-2xl shadow-black/10 dark:shadow-black/60"
-      />
+      <!-- Copilot's Window has a second tab, where Claude writes what Copilot
+           writes in the Panel tab. -->
+      <ProductCopilotAgents
+        v-if="activeProductId === 'copilot'"
+        start="panel"
+        :body-class="BODY_CLASS"
+        class="shadow-2xl shadow-black/10 dark:shadow-black/60"
+      >
+        <template #idle>
+          <ProductCopilotScene />
+        </template>
+      </ProductCopilotAgents>
+      <ExhibitionWindow
+        v-else
+        v-model="activeTab"
+        :tabs="PANEL_TABS"
+        :body-class="BODY_CLASS"
+        class="shadow-2xl shadow-black/10 dark:shadow-black/60"
+        @replay="replayCount++"
+      >
+        <template #panel>
+          <component
+            :is="EXHIBITION_SCENES[activeProductId]"
+            :key="`${activeProductId}-${replayCount}`"
+          />
+        </template>
+      </ExhibitionWindow>
     </div>
   </div>
 </template>

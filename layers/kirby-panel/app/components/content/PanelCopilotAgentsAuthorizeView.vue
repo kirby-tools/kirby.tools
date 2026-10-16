@@ -4,12 +4,18 @@ import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.c
 import "#kirby-panel/components/Dialogs/Elements/Body.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Footer.vue?vue&type=style&index=0&lang.css";
 
-defineProps<{
+const props = defineProps<{
   site: string;
   account: string;
   client: { host: string };
   redirect: { label: string };
+  defaultPermissions: string[];
+  /** What the agent asked for beyond the defaults. The Plugin hands its view these options already labelled in `permissions`; the Mock keeps the options itself, so it takes the values to label. */
+  requestedPermissions?: string[];
 }>();
+
+// The Plugin posts the answer to its consent route; a Mock hands it to its host.
+const emit = defineEmits<{ connect: [permissions: string[]]; cancel: [] }>();
 
 const PERMISSIONS = [
   {
@@ -35,7 +41,15 @@ const PERMISSIONS = [
   },
 ];
 
-const selectedPermissions = ref(["content:read", "content:prepare"]);
+const options = computed(() =>
+  PERMISSIONS.map((permission) =>
+    props.requestedPermissions?.includes(permission.value)
+      ? { ...permission, text: `${permission.text} (requested by the agent)` }
+      : permission,
+  ),
+);
+
+const selectedPermissions = ref([...props.defaultPermissions]);
 </script>
 
 <template>
@@ -50,7 +64,7 @@ const selectedPermissions = ref(["content:read", "content:prepare"]);
       </k-text>
 
       <k-checkboxes-input
-        :options="PERMISSIONS"
+        :options="options"
         :value="selectedPermissions"
         @input="selectedPermissions = $event"
       />
@@ -63,12 +77,17 @@ const selectedPermissions = ref(["content:read", "content:prepare"]);
 
     <footer class="k-dialog-footer">
       <k-button-group layout="collapsed" class="justify-end">
-        <k-button :text="translate('cancel')" variant="filled" />
+        <k-button
+          :text="translate('cancel')"
+          variant="filled"
+          @click="emit('cancel')"
+        />
         <k-button
           icon="check"
           text="Connect"
           theme="positive"
           variant="filled"
+          @click="emit('connect', selectedPermissions)"
         />
       </k-button-group>
     </footer>

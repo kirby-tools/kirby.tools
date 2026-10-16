@@ -2,18 +2,20 @@
 const props = defineProps<{
   page: ExhibitionPage;
   viewButton?: PanelViewButton;
-  crop?: "hero" | "showcase";
-  cursor?: SceneCursor;
+  crop?: "hero";
+  cursor?: MockCursor;
 }>();
 
-// A phone keeps the height the Content Translator dialog needs for its buttons.
+const emit = defineEmits<{ discard: []; save: [] }>();
+
 const CROP_CLASSES: Record<NonNullable<typeof props.crop>, string> = {
   hero: "[&_.panel-mock-stage]:h-120",
-  showcase: "[&_.panel-mock-stage]:h-120 sm:[&_.panel-mock-stage]:h-112",
 };
 
 const { languageCode, content, hasDiff, update } = props.page;
 const isInert = inject(panelMockInertKey, false);
+// A host that frames the Scene sets its height, which crops the Stage too.
+const isFramed = inject(panelMockFramedKey, false);
 
 const viewButtons = computed<PanelViewButton[]>(() => {
   // The languages button earns its place only where the reader can click it.
@@ -29,12 +31,17 @@ const viewButtons = computed<PanelViewButton[]>(() => {
 
 <template>
   <PanelMock
-    :class="crop && [CROP_CLASSES[crop], '[&_.panel-mock-stage]:overflow-clip']"
+    :class="[
+      crop && CROP_CLASSES[crop],
+      (crop || isFramed) && '[&_.panel-mock-stage]:overflow-clip',
+    ]"
   >
     <PanelViewHeader
       :title="content.title"
       :buttons="viewButtons"
       :has-diff="hasDiff"
+      @discard="emit('discard')"
+      @save="emit('save')"
     />
 
     <PanelColumns>

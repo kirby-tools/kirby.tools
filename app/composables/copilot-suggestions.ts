@@ -1,6 +1,5 @@
 import type { MaybeRefOrGetter } from "vue";
 
-const VISIBLE_RATIO = 0.6;
 const TYPING_DELAY = 800;
 // Copilot's default `completion.debounce`.
 const SUGGESTION_DEBOUNCE = 1000;
@@ -34,17 +33,10 @@ export function useCopilotSuggestionLoop(
   const reducedMotion = usePreferredReducedMotion();
   const isMounted = useMounted();
   const documentVisibility = useDocumentVisibility();
-  const isInView = ref(false);
   const isPaused = ref(false);
   const cycleTime = ref(0);
 
-  useIntersectionObserver(
-    target,
-    ([entry]) => {
-      isInView.value = entry!.intersectionRatio >= VISIBLE_RATIO;
-    },
-    { threshold: VISIBLE_RATIO },
-  );
+  const isInView = useAutoplayVisibility(target);
 
   const { pause, resume } = useRafFn(
     ({ delta }) => {

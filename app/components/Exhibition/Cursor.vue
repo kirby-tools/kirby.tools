@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { SceneCursor } from "~/composables/scene-autoplay";
+import type { MockCursor } from "~/composables/mock-cursor";
 
-defineProps<SceneCursor>();
+defineProps<MockCursor>();
 
 // Kirby opens a dropdown with `showModal()`, into the top layer, above which
 // only another element of the top layer is drawn. So the cursor is a popover,

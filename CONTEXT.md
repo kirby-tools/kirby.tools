@@ -60,8 +60,16 @@ The Interactive Mock of the Exhibition's page, one for each Product in the Exhib
 _Avoid_: Demo, variant
 
 **Showcase**:
-The tabbed arrangement on the home page, showing one Scene at a time. It carries a curated few, not every Scene, so a Product joining the Exhibition does not join the Showcase with it.
+The tabbed arrangement on the home page, showing one Scene at a time, each in a Window. It carries a curated few, not every Scene, so a Product joining the Exhibition does not join the Showcase with it.
 _Avoid_: Carousel, gallery, switcher
+
+**Chat**:
+A rendering of a conversation in claude.ai about the Exhibition, standing where an agent works on the site through Copilot. It is staged like a Mock – close enough to claude.ai to be recognized, never a chat inside the Panel.
+_Avoid_: Chat panel, agent UI, chat Mock
+
+**Window**:
+A browser window around Mocks and Chats, its tabs standing in for a Mock's chrome bar.
+_Avoid_: Browser frame, chrome, tab bar
 
 **Tagline**:
 The one-line pitch of a Product. It is short enough to stand on a single line of the SocialCard's Open Graph format and says what the Plugin does; it does not repeat the Product's name. The short menu line next to a Product's name is its description, not its Tagline.

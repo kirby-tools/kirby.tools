@@ -34,6 +34,9 @@ client:
   host: claude.ai
 redirect:
   label: claude.ai
+defaultPermissions:
+  - content:read
+  - content:prepare
 ---
 ::
 :::

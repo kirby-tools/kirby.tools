@@ -8,16 +8,27 @@ const props = defineProps<{
   hasDiff?: boolean;
 }>();
 
+const emit = defineEmits<(event: "discard" | "save") => void>();
+
 // The buttons `k-form-controls` shows for unsaved changes, drawn here because
-// its script opens Panel dialogs a Mock lacks.
-const FORM_CONTROLS = [
+// its script opens Panel dialogs a Mock lacks. Discard and Save hand their
+// click to the host, which keeps the page.
+const FORM_CONTROLS: {
+  theme: string;
+  text?: string;
+  title?: string;
+  icon: string;
+  responsive?: boolean;
+  event?: "discard" | "save";
+}[] = [
   {
     theme: "notice",
     text: translate("discard"),
     icon: "undo",
     responsive: true,
+    event: "discard",
   },
-  { theme: "notice", text: translate("save"), icon: "check" },
+  { theme: "notice", text: translate("save"), icon: "check", event: "save" },
   { title: translate("options"), theme: "notice", icon: "dots" },
 ];
 
@@ -51,6 +62,7 @@ const buttons = computed(() =>
               size="sm"
               variant="filled"
               class="k-form-controls-button"
+              @click="button.event && emit(button.event)"
             />
           </k-button-group>
         </template>

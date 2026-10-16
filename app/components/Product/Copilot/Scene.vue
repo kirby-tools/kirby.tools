@@ -67,10 +67,7 @@ function submit(value: { selectedFieldNames: string[] }) {
 // Types from where a paused run stopped.
 async function typePrompt(signal: AbortSignal) {
   while (typedLength.value < COPILOT_PROMPT.length) {
-    await new Promise((resolve) =>
-      setTimeout(resolve, keystrokeDuration(typedLength.value)),
-    );
-    if (signal.aborted) return;
+    await sleep(keystrokeDuration(typedLength.value), signal);
     typedLength.value++;
   }
 }

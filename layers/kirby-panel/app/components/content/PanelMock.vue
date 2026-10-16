@@ -24,11 +24,12 @@ withDefaults(
 const emit = defineEmits<{ cancel: [] }>();
 
 const isInert = inject(panelMockInertKey, false);
+const isFramed = inject(panelMockFramedKey, false);
 </script>
 
 <template>
-  <figure class="panel-mock my-6">
-    <figcaption class="panel-mock-chrome">
+  <figure class="panel-mock my-6" :class="isFramed && 'is-framed'">
+    <figcaption v-if="!isFramed" class="panel-mock-chrome">
       <k-icon type="kirby" />
       <span>Kirby Panel</span>
       <span v-if="label" class="panel-mock-chrome-label">{{ label }}</span>
@@ -88,6 +89,18 @@ const isInert = inject(panelMockInertKey, false);
   overflow: clip;
   border-radius: var(--ui-radius);
   border: 1px solid var(--ui-border);
+}
+
+.panel-mock.is-framed {
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.panel-mock.is-framed > .k-panel,
+.panel-mock.is-framed .panel-mock-stage {
+  height: 100%;
 }
 
 /* Kirby only ever declares `color-scheme: dark`, because a Panel sits in a
