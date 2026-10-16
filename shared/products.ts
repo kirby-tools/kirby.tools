@@ -196,7 +196,7 @@ const PRODUCT_REGISTRY = {
     tagline: ["JSON pages and KQL queries,", "served behind one bearer token"],
     icon: "i-ri-code-block",
     license: "free",
-    // Predates the vendor-prefixed convention the commercial plugins follow.
+    // Predates the vendor-prefixed convention the other plugins follow.
     configKey: "headless",
     githubRepo: "johannschopplich/kirby-headless",
     composerPackage: "johannschopplich/kirby-headless",

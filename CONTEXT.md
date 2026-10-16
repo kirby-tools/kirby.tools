@@ -21,7 +21,7 @@ Whether a Product is `commercial` (requires a license key) or `free`. Describes 
 _Avoid_: Paid, pricing, isPaid
 
 **ConfigKey**:
-The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschopplich.copilot`. The commercial Plugins namespace under the Composer vendor; Headless claims the bare `headless` key it has used since before that convention. A Plugin configured through blueprints alone has none.
+The option namespace a Plugin reads from Kirby's `config.php`, e.g. `johannschopplich.copilot`. It sits under the Composer vendor, except for Headless, which claims the bare `headless` key it has used since before that convention. A Plugin configured through blueprints alone has none.
 _Avoid_: Namespace, option prefix
 
 **ThemeColor**:
