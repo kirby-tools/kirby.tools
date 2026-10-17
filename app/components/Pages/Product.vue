@@ -86,7 +86,7 @@ onMounted(() => {
 
       <UPageSection
         :id="section.id"
-        :links="section.links"
+        :links="section.slot === 'mock' ? undefined : section.links"
         :orientation="section.orientation"
         :reverse="section.reverse"
         :features="section.slot === 'features' ? undefined : section.features"
@@ -143,10 +143,20 @@ onMounted(() => {
           </UPageCard>
         </UPageGrid>
 
-        <slot
-          v-else-if="section.slot === 'mock'"
-          :name="`mock-${section.id}`"
-        />
+        <template v-else-if="section.slot === 'mock'">
+          <slot :name="`mock-${section.id}`" />
+          <div
+            v-if="section.links?.length"
+            class="flex flex-wrap justify-center gap-x-6 gap-y-3"
+          >
+            <UButton
+              v-for="(link, linkIndex) in section.links"
+              :key="linkIndex"
+              size="lg"
+              v-bind="link"
+            />
+          </div>
+        </template>
 
         <MediaCode
           v-else-if="section.slot === 'code' && section.code"
