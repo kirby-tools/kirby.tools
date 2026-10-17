@@ -90,7 +90,9 @@ function selectTabByKey(event: KeyboardEvent) {
 </script>
 
 <template>
-  <figure class="border-default bg-default overflow-clip rounded-[12px] border">
+  <figure
+    class="border-default bg-default min-w-0 overflow-clip rounded-[12px] border"
+  >
     <!-- The tabs stand on the page's edge; the address and Replay center in
          the strip, Replay as far from the corner as from the top. -->
     <div class="flex h-11 items-center gap-2 ps-2 pe-1.5">
