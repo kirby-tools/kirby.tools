@@ -57,11 +57,17 @@ On a team site, that decision doesn't have to rest with each editor: a [role blu
 
 The agent works as the user who connected it, on every request. A page your role can't update, the agent can't change, and a page your role can't see, it doesn't find. A connection ends when you revoke it, change your password, or leave it unused for 30 days.
 
+## Smaller Edits, Fewer Searches
+
+Ask for a sharper second paragraph, and the agent replaces just that paragraph. In a blocks or layout field, it changes only the block that holds it, and it adds, moves, or removes single blocks without touching the rest.
+
+It also finds the work for you: the pages not yet translated into German, or the images without alt text. Before it writes an image's alt text, it can look at the image.
+
 ## Review Where You Already Review
 
 Each write hands the agent a link to pass on to you. Where the page has a preview, it opens Kirby's comparison of the unsaved changes and the published page, and you publish or discard them as you would your own edits.
 
-To see what's waiting, ask the agent: it finds the pages with unsaved changes.
+To see what's waiting, ask the agent: it finds the pages with unsaved changes, and tells you what publishing a page would change.
 
 ::product-copilot-agents-chat{chat="waiting"}
 ::
@@ -82,7 +88,7 @@ A page can hold text that reads like an instruction to an AI – a pasted email,
 
 ## From a Chat Window, Not Just a Terminal
 
-An agent in claude.ai or ChatGPT can't hand over a file from your disk the way a terminal can, so it uploads from a public HTTPS URL or sends a small file itself. Before it writes an image's alt text, it can look at the image. [Tools](/docs/copilot/agents/tools) lists everything an agent can do, and which permission each tool takes.
+An agent in claude.ai or ChatGPT can't hand over a file from your disk the way a terminal can, so it uploads from a public HTTPS URL or sends a small file itself. [Tools](/docs/copilot/agents/tools) lists everything an agent can do, and which permission each tool takes.
 
 claude.ai, Claude Desktop, and ChatGPT connect from their own servers, so they need a site that's reachable from the internet.
 
@@ -90,6 +96,6 @@ claude.ai, Claude Desktop, and ChatGPT connect from their own servers, so they n
 
 The agent works on the real page, with its blueprint, its languages, and its blocks, and the Panel stays the place where content goes live. You decide per connection, and per role, whether an agent may take that last step.
 
-Agents come with Copilot v3.14, a free update for every v3 license.
+Agents come with Copilot v3.14, and v3.15 lets them edit inside a field and find what still needs doing – both free updates for every v3 license.
 
 [Connect your first agent](/docs/copilot/agents)
