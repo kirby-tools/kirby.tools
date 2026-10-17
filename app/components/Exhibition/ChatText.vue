@@ -5,13 +5,11 @@ import type { ChatSegment } from "~/composables/exhibition-chat";
 const props = defineProps<{
   segments: ChatSegment[];
   shownLength: number;
-  /** Whether a link hands its click to the host; without it, a link shows but takes no click. */
+  /** Whether a link hands its click to the host; without it, a link reads as text. */
   canFollowLinks?: boolean;
 }>();
 
 const emit = defineEmits<{ link: [href: string] }>();
-
-const LINK_CLASS = "underline decoration-current/40 underline-offset-3";
 
 // Paragraphs, so a blank line in the reply starts a new `<p>`.
 const paragraphs = computed(() => {
@@ -45,15 +43,11 @@ const paragraphs = computed(() => {
           v-else-if="segment.type === 'link' && canFollowLinks"
           role="link"
           tabindex="0"
-          class="cursor-pointer"
-          :class="LINK_CLASS"
+          class="cursor-pointer underline decoration-current/40 underline-offset-3"
           @click="emit('link', segment.href!)"
           @keydown.enter="emit('link', segment.href!)"
           >{{ segment.text }}</a
         >
-        <span v-else-if="segment.type === 'link'" :class="LINK_CLASS">{{
-          segment.text
-        }}</span>
         <template v-else>{{ segment.text }}</template>
       </template>
     </p>
