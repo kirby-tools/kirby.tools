@@ -21,7 +21,16 @@ export type ChatStep =
       paste?: string;
     }
   | { think: number }
-  | { tool: ChatTool; duration?: number }
+  | {
+      tool: ChatTool;
+      duration?: number;
+      /**
+       * Resolves once the user connects again with the permission the call
+       * lacks, which claude.ai asks for when the Plugin answers
+       * `insufficient_scope`; the same call then runs again.
+       */
+      authorize?: (signal: AbortSignal) => Promise<void>;
+    }
   | { say: string }
   | {
       /** Gets a signal that aborts on a Replay, so it can stop what it started. */
@@ -35,7 +44,7 @@ export type ChatEntry =
       id: number;
       kind: "tool";
       tool: ChatTool;
-      status: "running" | "done" | "error";
+      status: "running" | "authorizing" | "done" | "error";
     }
   | {
       id: number;
@@ -146,7 +155,14 @@ export function useExhibitionChat(
         tool: step.tool,
         status: "running",
       });
-      if (!isInstant.value) await sleep(step.duration ?? 900, signal);
+      const duration = step.duration ?? 900;
+      if (!isInstant.value) await sleep(duration, signal);
+      if (step.authorize) {
+        entry.status = "authorizing";
+        await step.authorize(signal);
+        entry.status = "running";
+        if (!isInstant.value) await sleep(duration, signal);
+      }
       entry.status = step.tool.error ? "error" : "done";
     } else if ("say" in step) {
       const segments = parseChatText(step.say);

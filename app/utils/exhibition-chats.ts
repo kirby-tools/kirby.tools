@@ -259,13 +259,6 @@ const TOOL_UPLOAD: ChatTool = {
   },
 };
 
-const TOOL_UPLOAD_REFUSED: ChatTool = {
-  ...TOOL_UPLOAD,
-  response: undefined,
-  error:
-    "This connection lacks the Publish changes permission (content:publish) that upload_file needs. The user can allow it for this connection in the Panel's Agents view.",
-};
-
 const TOOL_VIEW: ChatTool = {
   name: "view_image",
   title: "View image",
@@ -288,33 +281,36 @@ const TOOL_PREPARE_ALT: ChatTool = {
 /** What Hanna allowed when Claude connected; `none` when she cancelled. */
 export type ChatAccess = "publish" | "prepare" | "none";
 
-const UPLOAD_OUTCOMES: Record<ChatAccess, ChatStep[]> = {
-  publish: [
-    { tool: TOOL_UPLOAD, duration: 1000 },
-    { tool: TOOL_VIEW, duration: 1100 },
-    { tool: TOOL_PREPARE_ALT, duration: 900 },
-    {
-      say: `The photo is on the page – a file on a published page is live once it’s uploaded, so this took **Publish changes**. The alt text waits for your review:\n\n“${ALT_TEXT}”\n\n[Review the file in the Panel](${PHOTO_PANEL_URL})`,
-    },
-  ],
-  prepare: [
-    { tool: TOOL_UPLOAD_REFUSED, duration: 1000 },
-    {
-      say: "The upload needs **Publish changes**: the page is published, so a file there is live at once. I didn’t upload anything. You can allow it for this connection in the Panel’s Agents view, or let me put the photo on a draft page – that only takes Prepare changes.",
-    },
-  ],
-  none: [
-    {
-      say: `I can’t reach the ${EXHIBITION_SITE.title} site – its connector isn’t connected. Connect it and choose what I may do, then ask me again.`,
-    },
-  ],
-};
+const AFTER_UPLOAD_STEPS: ChatStep[] = [
+  { tool: TOOL_VIEW, duration: 1100 },
+  { tool: TOOL_PREPARE_ALT, duration: 900 },
+  {
+    say: `The photo is on the page – a file on a published page is live once it’s uploaded, so this took **Publish changes**. The alt text waits for your review:\n\n“${ALT_TEXT}”\n\n[Review the file in the Panel](${PHOTO_PANEL_URL})`,
+  },
+];
 
 /**
  * Hanna asks for a photo on the published page, which is live once uploaded,
- * so the upload takes Publish changes.
+ * so the upload takes Publish changes. Without it, claude.ai asks her to
+ * connect again and runs the same upload once she allows it.
  */
-export function uploadChat(access: ChatAccess) {
+export function uploadChat(
+  access: ChatAccess,
+  authorize: (signal: AbortSignal) => Promise<void>,
+) {
+  const outcomes: Record<ChatAccess, ChatStep[]> = {
+    publish: [{ tool: TOOL_UPLOAD, duration: 1000 }, ...AFTER_UPLOAD_STEPS],
+    prepare: [
+      { tool: TOOL_UPLOAD, duration: 1000, authorize },
+      ...AFTER_UPLOAD_STEPS,
+    ],
+    none: [
+      {
+        say: `I can’t reach the ${EXHIBITION_SITE.title} site – its connector isn’t connected. Connect it and choose what I may do, then ask me again.`,
+      },
+    ],
+  };
+
   return {
     title: "Press photo for Rooms of Silence",
     steps: [
@@ -323,7 +319,7 @@ export function uploadChat(access: ChatAccess) {
         paste: PRESS_PHOTO_URL,
       },
       { think: 1000 },
-      ...UPLOAD_OUTCOMES[access],
+      ...outcomes[access],
     ],
   } satisfies ChatScript;
 }

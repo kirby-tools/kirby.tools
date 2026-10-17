@@ -2,16 +2,17 @@
 // The consent Mock in a Window, as Claude connects to Hanna's site: the Panel
 // names the agent, the site, and her account, and she ticks what it may do.
 // Connecting closes the tab back into Claude, where she asks for a photo on
-// the published page – an upload only Publish changes allows. Until the
-// reader acts, and with motion allowed, the cursor ticks Publish changes and
-// connects.
+// the published page – an upload only Publish changes allows. Without it,
+// Claude's call waits for her to connect again, and the consent asks for
+// Publish changes. Until the reader acts, and with motion allowed, the cursor
+// ticks Publish changes and connects.
 import type { WindowTab } from "~/components/Exhibition/Window.vue";
 import type { ChatAccess } from "~/utils/exhibition-chats";
 
 const DEFAULT_PERMISSIONS = ["content:read", "content:prepare"];
 const PUBLISH_PERMISSION = "content:publish";
-// claude.ai asks for every permission, so the two beyond the defaults read as
-// requested.
+// claude.ai first asks for every permission, so the two beyond the defaults
+// read as requested; asked again, it adds only the one the call lacks.
 const REQUESTED_PERMISSIONS = [PUBLISH_PERMISSION, "content:delete"];
 // How long the consent shows before the cursor heads for the tick, and how
 // long the tick shows before the cursor heads for Connect.
@@ -19,10 +20,13 @@ const TICK_DWELL = 3000;
 const CONNECT_DWELL = 900;
 
 const access = ref<ChatAccess>();
-const conversation = computed(() => uploadChat(access.value ?? "none"));
+const isAskingAgain = ref(false);
+const conversation = computed(() =>
+  uploadChat(access.value ?? "none", waitForPublish),
+);
 
 const activeTab = ref("consent");
-const replayCount = ref(0);
+const consentCount = ref(0);
 const root = useCurrentElement<HTMLElement>();
 const hasReaderActed = useReaderInput(root);
 const chat = useTemplateRef<HTMLElement>("chat");
@@ -35,10 +39,11 @@ const {
   clear: clearCursor,
 } = useMockCursor("copilot", hasReaderActed);
 let controller: AbortController | undefined;
+let allowPublish: (() => void) | undefined;
 
 const tabs = computed<WindowTab[]>(() => [
   claudeTab(conversation.value),
-  ...(access.value ? [] : [CONSENT_TAB]),
+  ...(access.value && !isAskingAgain.value ? [] : [CONSENT_TAB]),
 ]);
 
 // Until Hanna answers the consent, Claude's tab shows an empty chat.
@@ -93,22 +98,59 @@ function answerConsent(value: ChatAccess) {
   play();
 }
 
+// Resolves once Hanna connects again with Publish changes.
+function waitForPublish(signal: AbortSignal) {
+  return new Promise<void>((resolve, reject) => {
+    allowPublish = () => {
+      signal.removeEventListener("abort", abort);
+      allowPublish = undefined;
+      resolve();
+    };
+    signal.addEventListener("abort", abort, { once: true });
+    function abort() {
+      allowPublish = undefined;
+      reject(signal.reason);
+    }
+  });
+}
+
+function askAgain() {
+  if (!allowPublish) return;
+  consentCount.value++;
+  isAskingAgain.value = true;
+  activeTab.value = "consent";
+}
+
 function connect(permissions: string[]) {
-  answerConsent(
-    permissions.includes(PUBLISH_PERMISSION) ? "publish" : "prepare",
-  );
+  const hasPublish = permissions.includes(PUBLISH_PERMISSION);
+  if (!access.value) {
+    answerConsent(hasPublish ? "publish" : "prepare");
+    return;
+  }
+  closeConsent();
+  if (hasPublish) allowPublish?.();
+}
+
+function closeConsent() {
+  if (!access.value) {
+    answerConsent("none");
+    return;
+  }
+  isAskingAgain.value = false;
+  activeTab.value = "claude";
 }
 
 function closeTab(value: string) {
-  if (value === "consent") answerConsent("none");
+  if (value === "consent") closeConsent();
 }
 
 function replay() {
   stopCursor();
   access.value = undefined;
+  isAskingAgain.value = false;
   hasReaderActed.value = false;
   activeTab.value = "consent";
-  replayCount.value++;
+  consentCount.value++;
   reset();
   if (isVisible.value) startCursor();
 }
@@ -128,6 +170,7 @@ function replay() {
           :entries="entries"
           :composer="composer"
           :is-playing="isPlaying"
+          @connect="askAgain"
         />
       </div>
     </template>
@@ -135,7 +178,7 @@ function replay() {
     <template #consent>
       <div ref="consent" class="h-full">
         <PanelMock
-          :key="replayCount"
+          :key="consentCount"
           class="[&_.panel-mock-stage]:overflow-auto"
         >
           <PanelCopilotAgentsAuthorizeView
@@ -144,9 +187,11 @@ function replay() {
             :client="{ host: 'claude.ai' }"
             :redirect="{ label: 'claude.ai' }"
             :default-permissions="DEFAULT_PERMISSIONS"
-            :requested-permissions="REQUESTED_PERMISSIONS"
+            :requested-permissions="
+              isAskingAgain ? [PUBLISH_PERMISSION] : REQUESTED_PERMISSIONS
+            "
             @connect="connect"
-            @cancel="answerConsent('none')"
+            @cancel="closeConsent"
           />
           <ExhibitionCursor v-if="cursor" v-bind="cursor" />
         </PanelMock>
