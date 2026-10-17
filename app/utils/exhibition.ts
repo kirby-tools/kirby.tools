@@ -45,7 +45,8 @@ export const EXHIBITION_LANGUAGES = [
 export type ExhibitionLanguageCode =
   (typeof EXHIBITION_LANGUAGES)[number]["code"];
 
-const [DEFAULT_LANGUAGE, ...SECONDARY_LANGUAGES] = EXHIBITION_LANGUAGES;
+export const EXHIBITION_DEFAULT_LANGUAGE = EXHIBITION_LANGUAGES[0];
+const [, ...SECONDARY_LANGUAGES] = EXHIBITION_LANGUAGES;
 const [, SPANISH, FRENCH] = SECONDARY_LANGUAGES;
 
 // German carries a title of its own; Spanish and French keep the default
@@ -178,7 +179,7 @@ export function kirbyViewButtons(
             props: {
               text: languageCode.toUpperCase(),
               options: [
-                toOption(DEFAULT_LANGUAGE),
+                toOption(EXHIBITION_DEFAULT_LANGUAGE),
                 "-",
                 ...SECONDARY_LANGUAGES.map(toOption),
               ],
@@ -249,7 +250,7 @@ export function translatorDropdownOptions(
     translateContent: () => void;
   },
 ): PanelDropdownOption[] {
-  if (languageCode === DEFAULT_LANGUAGE.code) {
+  if (languageCode === EXHIBITION_DEFAULT_LANGUAGE.code) {
     return [
       {
         icon: "content-translator-global",

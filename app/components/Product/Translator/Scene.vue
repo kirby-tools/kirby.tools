@@ -78,7 +78,7 @@ function submit(value: typeof TRANSLATOR_DIALOG_VALUE) {
 }
 
 function importContent() {
-  page.update(fieldsWithoutTitle("en"));
+  page.update(fieldsWithoutTitle(EXHIBITION_DEFAULT_LANGUAGE.code));
   openNotification({ text: "Content imported" });
 }
 

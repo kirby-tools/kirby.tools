@@ -83,7 +83,7 @@ function reloadPanel() {
     },
     // Claude's `prepare_changes` names no language, so it writes the default
     // one, whichever the Panel tab shows.
-    "en",
+    EXHIBITION_DEFAULT_LANGUAGE.code,
   );
   hasAgentChange.value = true;
   showChange();
@@ -96,7 +96,7 @@ function showChange() {
   if (activeTab.value !== "panel" || !hasAgentChange.value) return;
   if (hasSeenChange.value) return;
   hasSeenChange.value = true;
-  if (page.languageCode.value !== "en") return;
+  if (page.languageCode.value !== EXHIBITION_DEFAULT_LANGUAGE.code) return;
   openNotification({
     icon: "info",
     theme: "info",
@@ -128,8 +128,8 @@ function waitForLink(signal: AbortSignal) {
 }
 
 function openPanel() {
-  // Claude's link carries `?language=en`, so the Panel opens in English.
-  page.languageCode.value = "en";
+  // Claude's link names the default language, so the Panel opens in it.
+  page.languageCode.value = EXHIBITION_DEFAULT_LANGUAGE.code;
   activeTab.value = "panel";
   followLink?.();
 }

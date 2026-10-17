@@ -21,7 +21,7 @@ const PAGE_PANEL_PATH = "/panel/pages/exhibitions+rooms-of-silence";
 const PAGE_PANEL_URL = `${SITE_URL}${PAGE_PANEL_PATH}`;
 // The site is multilingual, so the Panel URL a write or `get_content` returns
 // names the language; a `find_pages` row's doesn't.
-const LANGUAGE_QUERY = "?language=en";
+const LANGUAGE_QUERY = `?language=${EXHIBITION_DEFAULT_LANGUAGE.code}`;
 const COMPARE_URL = `${PAGE_PANEL_URL}/preview/compare${LANGUAGE_QUERY}`;
 const COLLEAGUE_ACCOUNT = "jonas@kunsthalle-leipzig.de";
 

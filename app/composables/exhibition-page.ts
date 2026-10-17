@@ -15,7 +15,9 @@ type ContentByLanguage = Partial<
 export function useExhibitionPage(
   savedFields: Partial<ExhibitionPageContent> = {},
 ) {
-  const languageCode = ref<ExhibitionLanguageCode>("en");
+  const languageCode = ref<ExhibitionLanguageCode>(
+    EXHIBITION_DEFAULT_LANGUAGE.code,
+  );
   const translatedLanguageCodes = ref(TRANSLATED_LANGUAGE_CODES);
   // Shallow, so the blocks field gets back the array it reported rather than a
   // proxy of it, which it would render anew and lose the caret.
@@ -75,7 +77,7 @@ export function useExhibitionPage(
   }
 
   function reset() {
-    languageCode.value = "en";
+    languageCode.value = EXHIBITION_DEFAULT_LANGUAGE.code;
     translatedLanguageCodes.value = TRANSLATED_LANGUAGE_CODES;
     changes.value = {};
     saves.value = {};
