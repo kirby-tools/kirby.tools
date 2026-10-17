@@ -90,8 +90,7 @@ function selectTabByKey(event: KeyboardEvent) {
   <figure
     class="border-default bg-default min-w-0 overflow-clip rounded-[0.75rem] border"
   >
-    <!-- The active tab takes its page's color and covers the strip's bottom
-         line, so tab and page read as one surface. -->
+    <!-- The bottom line is an inset shadow, so the active tab covers it. -->
     <div
       class="flex h-11 items-stretch pe-1.5 shadow-[inset_0_-1px_0_var(--ui-border)]"
     >
