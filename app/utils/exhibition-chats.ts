@@ -19,7 +19,10 @@ const SITE_URL = `https://${SITE_HOST}`;
 const PAGE_ID = "exhibitions/rooms-of-silence";
 const PAGE_PANEL_PATH = "/panel/pages/exhibitions+rooms-of-silence";
 const PAGE_PANEL_URL = `${SITE_URL}${PAGE_PANEL_PATH}`;
-const COMPARE_URL = `${PAGE_PANEL_URL}/preview/compare`;
+// The site is multilingual, so the Panel URL a write or `get_content` returns
+// names the language; a `find_pages` row's doesn't.
+const LANGUAGE_QUERY = "?language=en";
+const COMPARE_URL = `${PAGE_PANEL_URL}/preview/compare${LANGUAGE_QUERY}`;
 const COLLEAGUE_ACCOUNT = "jonas@kunsthalle-leipzig.de";
 
 const ETAG_BEFORE = "9f2c41d0b7e3a58c61f04e2d9a7b3c15";
@@ -223,7 +226,7 @@ export function prepareChat(onPrepared: () => void) {
 const PRESS_PHOTO_URL =
   "https://press.kunsthalle-leipzig.de/frey/ferry-terminal-4am.jpg";
 const PHOTO_ID = `${PAGE_ID}/ferry-terminal-4am.jpg`;
-const PHOTO_PANEL_URL = `${PAGE_PANEL_URL}/files/ferry-terminal-4am.jpg`;
+const PHOTO_PANEL_URL = `${PAGE_PANEL_URL}/files/ferry-terminal-4am.jpg${LANGUAGE_QUERY}`;
 const PHOTO_ETAG = "4e1b7c09a2d8f63b5c0e91a7d4f28b6e";
 const ALT_TEXT =
   "An empty ferry terminal at night: rows of plastic seats under fluorescent light, a closed ticket counter, dark windows.";

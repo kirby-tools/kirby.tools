@@ -40,10 +40,14 @@ export function useExhibitionPage(
     () => JSON.stringify(content.value) !== JSON.stringify(savedContent.value),
   );
 
-  function update(fields: Partial<ExhibitionPageContent>) {
+  /** Writes `fields` into the changes of `code`, the language the view shows unless given. */
+  function update(
+    fields: Partial<ExhibitionPageContent>,
+    code = languageCode.value,
+  ) {
     changes.value = {
       ...changes.value,
-      [languageCode.value]: { ...changes.value[languageCode.value], ...fields },
+      [code]: { ...changes.value[code], ...fields },
     };
   }
 

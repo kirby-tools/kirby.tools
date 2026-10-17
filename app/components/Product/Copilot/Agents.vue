@@ -76,20 +76,27 @@ watch(activeTab, (value) => {
 });
 
 function reloadPanel() {
-  page.update({
-    text: EXHIBITION_PAGE.text,
-    description: EXHIBITION_PAGE.description,
-  });
+  page.update(
+    {
+      text: EXHIBITION_PAGE.text,
+      description: EXHIBITION_PAGE.description,
+    },
+    // Claude's `prepare_changes` names no language, so it writes the default
+    // one, whichever the Panel tab shows.
+    "en",
+  );
   hasAgentChange.value = true;
   showChange();
 }
 
 // Shows why the Panel reloaded once the reader looks at it, so the notice
-// isn't gone by then.
+// isn't gone by then. Copilot reloads a view only in the language the agent
+// wrote, so a look in another language uses the notice up.
 function showChange() {
   if (activeTab.value !== "panel" || !hasAgentChange.value) return;
   if (hasSeenChange.value) return;
   hasSeenChange.value = true;
+  if (page.languageCode.value !== "en") return;
   openNotification({
     icon: "info",
     theme: "info",
@@ -121,6 +128,8 @@ function waitForLink(signal: AbortSignal) {
 }
 
 function openPanel() {
+  // Claude's link carries `?language=en`, so the Panel opens in English.
+  page.languageCode.value = "en";
   activeTab.value = "panel";
   followLink?.();
 }
