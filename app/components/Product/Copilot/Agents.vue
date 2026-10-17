@@ -20,6 +20,12 @@ const props = withDefaults(
 const LINK_DWELL = 2000;
 // How long the reloaded view shows before the cursor moves to Save.
 const REVIEW_DWELL = 1600;
+// Copilot's button, as the site has the plugin; its prompt dialog is the
+// Copilot Scene's to show.
+const VIEW_BUTTON: PanelViewButton = {
+  component: "PanelCopilotButton",
+  props: { ...PLUGIN_VIEW_BUTTONS.copilot, click: () => {}, abort: () => {} },
+};
 
 const activeTab = ref<string>(props.start);
 const hasOpenedClaude = ref(props.start === "claude");
@@ -204,6 +210,7 @@ function replay() {
         <ExhibitionScene
           v-else
           :page="page"
+          :view-button="VIEW_BUTTON"
           :cursor="cursor"
           @save="saveChanges"
           @discard="discardChanges"
