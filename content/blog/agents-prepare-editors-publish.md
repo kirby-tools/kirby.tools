@@ -45,7 +45,7 @@ defaultPermissions:
 ::
 :::
 
-Nobody creates an API token, pastes it into a chat, or shares it across the team. The login is the Panel's own, two-factor codes included, and each editor connects as themselves. The Agents view lists your connections, and an admin sees and can revoke everyone's. Where each agent takes the URL is in [Connect an Agent Over MCP](/docs/copilot/agents).
+Nobody creates an API token, pastes it into a chat, or shares it across the team. The login is the Panel's own, two-factor codes included, and each editor connects as themselves. The Agents view lists your connections, and an admin can revoke the team's. Where each agent takes the URL is in [Connect an Agent Over MCP](/docs/copilot/agents).
 
 ## Going Live Is a Permission of Its Own
 
