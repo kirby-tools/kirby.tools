@@ -6,14 +6,14 @@ const props = defineProps<{
   chat: "waiting" | "publish-guard" | "script" | "lock";
 }>();
 
-const CHATS: Record<typeof props.chat, () => ChatScript> = {
-  waiting: waitingChat,
-  "publish-guard": publishGuardChat,
-  script: scriptChat,
-  lock: lockChat,
+const CHATS: Record<typeof props.chat, ChatScript> = {
+  waiting: WAITING_CHAT,
+  "publish-guard": PUBLISH_GUARD_CHAT,
+  script: SCRIPT_CHAT,
+  lock: LOCK_CHAT,
 };
 
-const conversation = computed(() => CHATS[props.chat]());
+const conversation = computed(() => CHATS[props.chat]);
 const tabs = computed(() => [claudeTab(conversation.value)]);
 
 const activeTab = ref("claude");

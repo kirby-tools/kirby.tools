@@ -225,176 +225,170 @@ export function prepareChat(onPrepared: () => void) {
 const OPENING_HOURS_PANEL_URL = `${SITE_URL}/panel/pages/visit+opening-hours`;
 
 /** Hanna asks what waits for review across the site. */
-export function waitingChat() {
-  return {
-    title: "Pages waiting for review",
-    steps: [
-      { user: "What’s waiting for review on the site?" },
-      { think: 900 },
-      {
-        tool: {
-          name: "find_pages",
-          title: "Find pages",
-          request: { hasChanges: true, sortBy: "modified", direction: "desc" },
-          response: {
-            pages: [
-              {
-                id: PAGE_ID,
-                title: EXHIBITION_PAGE.title,
-                status: "unlisted",
-                panelUrl: PAGE_PANEL_URL,
-                hasChanges: true,
-              },
-              {
-                id: "visit/opening-hours",
-                title: "Opening Hours",
-                status: "listed",
-                panelUrl: OPENING_HOURS_PANEL_URL,
-                hasChanges: true,
-              },
-            ],
-            total: 2,
-          },
+export const WAITING_CHAT: ChatScript = {
+  title: "Pages waiting for review",
+  steps: [
+    { user: "What’s waiting for review on the site?" },
+    { think: 900 },
+    {
+      tool: {
+        name: "find_pages",
+        title: "Find pages",
+        request: { hasChanges: true, sortBy: "modified", direction: "desc" },
+        response: {
+          pages: [
+            {
+              id: PAGE_ID,
+              title: EXHIBITION_PAGE.title,
+              status: "unlisted",
+              panelUrl: PAGE_PANEL_URL,
+              hasChanges: true,
+            },
+            {
+              id: "visit/opening-hours",
+              title: "Opening Hours",
+              status: "listed",
+              panelUrl: OPENING_HOURS_PANEL_URL,
+              hasChanges: true,
+            },
+          ],
+          total: 2,
         },
-        duration: 900,
       },
-      {
-        say: `Two pages have unsaved changes:\n\n**${EXHIBITION_PAGE.title}** – [Open in the Panel](${PAGE_PANEL_URL})\n\n**Opening Hours** – [Open in the Panel](${OPENING_HOURS_PANEL_URL})\n\nNothing is live until you publish it in the Panel.`,
-      },
-    ],
-  } satisfies ChatScript;
-}
+      duration: 900,
+    },
+    {
+      say: `Two pages have unsaved changes:\n\n**${EXHIBITION_PAGE.title}** – [Open in the Panel](${PAGE_PANEL_URL})\n\n**Opening Hours** – [Open in the Panel](${OPENING_HOURS_PANEL_URL})\n\nNothing is live until you publish it in the Panel.`,
+    },
+  ],
+};
 
 const DATES_NOTE =
   "12 September – 30 November – TODO: extension until January?";
 
 /** Hanna asks to publish; a note she left in the dates waits in the same changes. */
-export function publishGuardChat() {
-  return {
-    title: "Publishing the Luise Frey exhibition text",
-    steps: [
-      { user: "Publish the new text on the Luise Frey exhibition page." },
-      { think: 1200 },
-      {
-        tool: {
-          name: "get_content",
-          title: "Get content",
-          request: { model: PAGE_ID },
-          response: {
-            hasChanges: true,
-            etag: "e85a2c07f4b913d6a0c5e8b72f1d49a3",
-            panelUrl: COMPARE_URL,
-            changesBy: null,
-            fields: [
-              { name: "text", value: STORED_TEXT_BLOCKS },
-              { name: "description", value: DESCRIPTION },
-              { name: "dates", value: DATES_NOTE },
-            ],
-            changedFields: ["text", "description", "dates"],
-          },
-          narration: "Checking what else is in the unsaved changes.",
+export const PUBLISH_GUARD_CHAT: ChatScript = {
+  title: "Publishing the Luise Frey exhibition text",
+  steps: [
+    { user: "Publish the new text on the Luise Frey exhibition page." },
+    { think: 1200 },
+    {
+      tool: {
+        name: "get_content",
+        title: "Get content",
+        request: { model: PAGE_ID },
+        response: {
+          hasChanges: true,
+          etag: "e85a2c07f4b913d6a0c5e8b72f1d49a3",
+          panelUrl: COMPARE_URL,
+          changesBy: null,
+          fields: [
+            { name: "text", value: STORED_TEXT_BLOCKS },
+            { name: "description", value: DESCRIPTION },
+            { name: "dates", value: DATES_NOTE },
+          ],
+          changedFields: ["text", "description", "dates"],
         },
-        duration: 900,
+        narration: "Checking what else is in the unsaved changes.",
       },
-      {
-        say: `I haven’t published yet. Publishing takes **all** unsaved changes of the page, and besides the text and description there’s one in \`dates\`:\n\n“${DATES_NOTE}”\n\nThat reads like a note that shouldn’t go live. Should I wait, or will you clear the dates in the Panel first? [Open the comparison](${COMPARE_URL})`,
-      },
-    ],
-  } satisfies ChatScript;
-}
+      duration: 900,
+    },
+    {
+      say: `I haven’t published yet. Publishing takes **all** unsaved changes of the page, and besides the text and description there’s one in \`dates\`:\n\n“${DATES_NOTE}”\n\nThat reads like a note that shouldn’t go live. Should I wait, or will you clear the dates in the Panel first? [Open the comparison](${COMPARE_URL})`,
+    },
+  ],
+};
 
 const ETAG_PUBLISHED = "5d93a0e7c1b84f26e0a7d3c9b1f4e862";
 
+const DESCRIPTION_WITH_SCRIPT = `${DESCRIPTION} <script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>`;
+
 /** Hanna asks for a ticket widget's script tag, which the site refuses from agents. */
-export function scriptChat() {
-  const value = `${DESCRIPTION} <script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>`;
-  return {
-    title: "Ticket widget in the description",
-    steps: [
-      {
-        user: "Add our ticket widget to the end of the Luise Frey exhibition’s description: ",
-        paste:
-          '<script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>',
-      },
-      { think: 900 },
-      {
-        tool: {
-          name: "get_content",
-          title: "Get content",
-          request: { model: PAGE_ID, fields: ["description"] },
-          response: {
-            hasChanges: false,
-            etag: ETAG_PUBLISHED,
-            fields: [{ name: "description", value: DESCRIPTION }],
-          },
+export const SCRIPT_CHAT: ChatScript = {
+  title: "Ticket widget in the description",
+  steps: [
+    {
+      user: "Add our ticket widget to the end of the Luise Frey exhibition’s description: ",
+      paste:
+        '<script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>',
+    },
+    { think: 900 },
+    {
+      tool: {
+        name: "get_content",
+        title: "Get content",
+        request: { model: PAGE_ID, fields: ["description"] },
+        response: {
+          hasChanges: false,
+          etag: ETAG_PUBLISHED,
+          fields: [{ name: "description", value: DESCRIPTION }],
         },
-        duration: 700,
       },
-      {
-        tool: {
-          name: "prepare_changes",
-          title: "Prepare changes",
-          request: {
-            model: PAGE_ID,
-            etag: ETAG_PUBLISHED,
-            fields: { description: value },
-          },
-          error:
-            "`description` contains the element `<script>`, which the site doesn't accept from agents. Write it without. What the field already holds passes when you send it unchanged.",
+      duration: 700,
+    },
+    {
+      tool: {
+        name: "prepare_changes",
+        title: "Prepare changes",
+        request: {
+          model: PAGE_ID,
+          etag: ETAG_PUBLISHED,
+          fields: { description: DESCRIPTION_WITH_SCRIPT },
         },
-        duration: 800,
+        error:
+          "`description` contains the element `<script>`, which the site doesn't accept from agents. Write it without. What the field already holds passes when you send it unchanged.",
       },
-      {
-        say: "The site doesn’t accept a `<script>` element from an agent, so nothing changed. A widget like this belongs in the page’s template – your developer can add it there, once for every exhibition page.",
-      },
-    ],
-  } satisfies ChatScript;
-}
+      duration: 800,
+    },
+    {
+      say: "The site doesn’t accept a `<script>` element from an agent, so nothing changed. A widget like this belongs in the page’s template – your developer can add it there, once for every exhibition page.",
+    },
+  ],
+};
+
+// A colleague's edit makes the unsaved changes, and their etag, the content an
+// agent reads.
+const ETAG_COLLEAGUE = "b26f9d14e0c7a385f1e4d0b9a6c27e58";
 
 /** Hanna asks for a change while a colleague edits the page in the Panel. */
-export function lockChat() {
-  // A colleague's edit makes the unsaved changes, and their etag, the content
-  // an agent reads.
-  const etag = "b26f9d14e0c7a385f1e4d0b9a6c27e58";
-  return {
-    title: "Shortening the exhibition dates",
-    steps: [
-      {
-        user: "Shorten the dates on the Luise Frey exhibition page to “12 Sep – 30 Nov”.",
-      },
-      { think: 800 },
-      {
-        tool: {
-          name: "get_content",
-          title: "Get content",
-          request: { model: PAGE_ID, fields: ["dates"] },
-          response: {
-            hasChanges: true,
-            etag,
-            panelUrl: COMPARE_URL,
-            changesBy: COLLEAGUE_ACCOUNT,
-            fields: [{ name: "dates", value: EXHIBITION_PAGE.dates }],
-            changedFields: ["text"],
-          },
+export const LOCK_CHAT: ChatScript = {
+  title: "Shortening the exhibition dates",
+  steps: [
+    {
+      user: "Shorten the dates on the Luise Frey exhibition page to “12 Sep – 30 Nov”.",
+    },
+    { think: 800 },
+    {
+      tool: {
+        name: "get_content",
+        title: "Get content",
+        request: { model: PAGE_ID, fields: ["dates"] },
+        response: {
+          hasChanges: true,
+          etag: ETAG_COLLEAGUE,
+          panelUrl: COMPARE_URL,
+          changesBy: COLLEAGUE_ACCOUNT,
+          fields: [{ name: "dates", value: EXHIBITION_PAGE.dates }],
+          changedFields: ["text"],
         },
-        duration: 700,
       },
-      {
-        tool: {
-          name: "prepare_changes",
-          title: "Prepare changes",
-          request: {
-            model: PAGE_ID,
-            etag,
-            fields: { dates: "12 Sep – 30 Nov" },
-          },
-          error: `${COLLEAGUE_ACCOUNT} is editing this content in the Panel. Try again once they leave its view, or 10 minutes after their last edit.`,
+      duration: 700,
+    },
+    {
+      tool: {
+        name: "prepare_changes",
+        title: "Prepare changes",
+        request: {
+          model: PAGE_ID,
+          etag: ETAG_COLLEAGUE,
+          fields: { dates: "12 Sep – 30 Nov" },
         },
-        duration: 800,
+        error: `${COLLEAGUE_ACCOUNT} is editing this content in the Panel. Try again once they leave its view, or 10 minutes after their last edit.`,
       },
-      {
-        say: `${COLLEAGUE_ACCOUNT} is editing the page in the Panel, so Kirby keeps me from changing it. Ask me again once they’ve left the page, or 10 minutes after their last edit.`,
-      },
-    ],
-  } satisfies ChatScript;
-}
+      duration: 800,
+    },
+    {
+      say: `${COLLEAGUE_ACCOUNT} is editing the page in the Panel, so Kirby keeps me from changing it. Ask me again once they’ve left the page, or 10 minutes after their last edit.`,
+    },
+  ],
+};

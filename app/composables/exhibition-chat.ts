@@ -104,13 +104,10 @@ export function useExhibitionChat(
   const composer = ref("");
   const isPlaying = ref(false);
   const reducedMotion = usePreferredReducedMotion();
-  const isMounted = useMounted();
   let controller: AbortController | undefined;
   let nextId = 0;
 
-  const isInstant = computed(
-    () => isMounted.value && reducedMotion.value === "reduce",
-  );
+  const isInstant = computed(() => reducedMotion.value === "reduce");
 
   // Returns the entry from the reactive list, so later changes render.
   function push<T extends ChatEntry>(entry: Omit<T, "id">) {
