@@ -8,10 +8,6 @@ const props = defineProps<{
 
 const emit = defineEmits<{ discard: []; save: [] }>();
 
-const CROP_CLASSES: Record<NonNullable<typeof props.crop>, string> = {
-  hero: "[&_.panel-mock-stage]:h-120",
-};
-
 const { languageCode, content, hasDiff, update } = props.page;
 const isInert = inject(panelMockInertKey, false);
 // A host that frames the Scene sets its height, which crops the Stage too.
@@ -32,7 +28,7 @@ const viewButtons = computed<PanelViewButton[]>(() => {
 <template>
   <PanelMock
     :class="[
-      crop && CROP_CLASSES[crop],
+      crop === 'hero' && '[&_.panel-mock-stage]:h-120',
       (crop || isFramed) && '[&_.panel-mock-stage]:overflow-clip',
     ]"
   >

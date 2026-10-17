@@ -28,7 +28,12 @@ const isFramed = inject(panelMockFramedKey, false);
 </script>
 
 <template>
-  <figure class="panel-mock my-6" :class="isFramed && 'is-framed'">
+  <figure
+    class="panel-mock"
+    :class="
+      isFramed ? 'h-full' : 'border-default my-6 rounded-(--ui-radius) border'
+    "
+  >
     <!-- As tall as a Window's tab strip, in its tabs' size. -->
     <figcaption
       v-if="!isFramed"
@@ -40,8 +45,13 @@ const isFramed = inject(panelMockFramedKey, false);
       <slot name="chrome" />
     </figcaption>
 
-    <div class="k-panel" :data-theme="theme" :inert="isInert">
-      <div class="panel-mock-stage">
+    <div
+      class="k-panel"
+      :class="isFramed && 'h-full'"
+      :data-theme="theme"
+      :inert="isInert"
+    >
+      <div class="panel-mock-stage" :class="isFramed && 'h-full'">
         <!-- Kirby's overlay is a `<dialog>` opened with `showModal()`, so the
              platform inerts the view behind it. Nothing here is in the top
              layer. -->
@@ -91,20 +101,6 @@ const isFramed = inject(panelMockFramedKey, false);
      at `z-index: 300`, which outranks the docs navigation. */
   isolation: isolate;
   overflow: clip;
-  border-radius: var(--ui-radius);
-  border: 1px solid var(--ui-border);
-}
-
-.panel-mock.is-framed {
-  height: 100%;
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-}
-
-.panel-mock.is-framed > .k-panel,
-.panel-mock.is-framed .panel-mock-stage {
-  height: 100%;
 }
 
 /* Kirby only ever declares `color-scheme: dark`, because a Panel sits in a
