@@ -56,19 +56,25 @@ const FLARE_CLASSES = [
 
 const id = useId();
 
-// A tab that closes with the focus on it or in its page hands the focus to the
-// active tab, before the platform drops it to the document. Runs ahead of the
-// DOM update, while the closing tab is still there.
+// A closing tab, or a page that stops showing, that holds the focus hands it
+// to the active tab before the platform drops it to the document. Runs ahead
+// of the DOM update, while the tab or page still holds the focus.
 watch(
-  () => props.tabs.map((tab) => tab.value),
-  async (values, oldValues) => {
-    const hasFocus = oldValues
-      .filter((value) => !values.includes(value))
-      .some((value) =>
-        [`${id}-tab-${value}`, `${id}-panel-${value}`].some((elementId) =>
-          document.getElementById(elementId)?.contains(document.activeElement),
-        ),
-      );
+  [() => props.tabs.map((tab) => tab.value), activeTab],
+  async ([tabValues, activeValue], [oldTabValues, oldActiveValue]) => {
+    const closedValues = oldTabValues.filter(
+      (tabValue) => !tabValues.includes(tabValue),
+    );
+    const hiddenValues =
+      oldActiveValue === activeValue
+        ? closedValues
+        : [...closedValues, oldActiveValue];
+    const hasFocus = [
+      ...closedValues.map((tabValue) => `${id}-tab-${tabValue}`),
+      ...hiddenValues.map((tabValue) => `${id}-panel-${tabValue}`),
+    ].some((elementId) =>
+      document.getElementById(elementId)?.contains(document.activeElement),
+    );
     if (!hasFocus) return;
     await nextTick();
     document.getElementById(`${id}-tab-${activeTab.value}`)?.focus();
