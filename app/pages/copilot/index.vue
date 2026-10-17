@@ -14,14 +14,23 @@ const page = await useProductPage();
       </div>
     </template>
 
-    <template #mock-agents>
-      <ProductCopilotAgents
-        class="shadow-2xl shadow-black/10 dark:shadow-black/60"
-      />
+    <template #mock-agents-consent>
+      <!-- claude.ai asks for every permission, so the two beyond the defaults
+           read as requested. -->
+      <PanelMock class="shadow-2xl shadow-black/10 dark:shadow-black/60">
+        <PanelCopilotAgentsAuthorizeView
+          :site="EXHIBITION_SITE.title"
+          :account="CHAT_ACCOUNT"
+          :client="{ host: 'claude.ai' }"
+          :redirect="{ label: 'claude.ai' }"
+          :default-permissions="['content:read', 'content:prepare']"
+          :requested-permissions="['content:publish', 'content:delete']"
+        />
+      </PanelMock>
     </template>
 
-    <template #mock-agents-consent>
-      <ProductCopilotAgentsConsent
+    <template #mock-agents>
+      <ProductCopilotAgents
         class="shadow-2xl shadow-black/10 dark:shadow-black/60"
       />
     </template>

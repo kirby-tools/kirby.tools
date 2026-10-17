@@ -42,10 +42,14 @@ sections:
         description: Select text in a writer or textarea field, press the Copilot button, and say what should change. The result replaces the selection or follows it.
         to: /docs/copilot/usage/toolbar-buttons
         wide: true
+  - title: You Choose What<br> <span class="text-primary">the Agent May Do</span>
+    id: agents-consent
+    slot: mock
+    description: Connect Claude, ChatGPT, Cursor, or any other agent that supports remote MCP servers. It logs in through the Panel, which names the agent, your site, and the account it works as – and you tick what it may do.
   - title: Your Agent Prepares,<br> <span class="text-primary">You Publish</span>
     id: agents
     slot: mock
-    description: Connect Claude, ChatGPT, Cursor, or any other agent that supports remote MCP servers. It logs in through the Panel and works as your Kirby user, within your role.
+    description: The agent works as your Kirby user, within your role. Ask it for a page’s text, and the Panel you have open reloads with what it wrote.
     features:
       - title: Review First
         description: Agents write into unsaved changes, and each write links to the changed content in the Panel. Publishing and deleting are permissions you tick yourself.
@@ -58,10 +62,6 @@ sections:
         to: /docs/copilot/agents
         trailingIcon: i-ri-arrow-right-line
         variant: subtle
-  - title: You Choose What<br> <span class="text-primary">the Agent May Do</span>
-    id: agents-consent
-    slot: mock
-    description: Before an agent connects, the Panel names it, your site, and the account it works as – and you tick what it may do.
   - title: Drive Copilot<br> From <span class="text-primary">PHP</span>
     id: php-api
     slot: code

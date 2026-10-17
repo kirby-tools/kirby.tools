@@ -36,14 +36,6 @@ export const PANEL_TAB: WindowTab = {
   host: `${SITE_HOST}${PAGE_PANEL_PATH}`,
 };
 
-export const CONSENT_TAB: WindowTab = {
-  value: "consent",
-  label: `Connect agent | ${EXHIBITION_SITE.title}`,
-  kind: "panel",
-  host: `${SITE_HOST}/panel/copilot-agents/authorize`,
-  isClosable: true,
-};
-
 export function claudeTab(chat: ChatScript): WindowTab {
   return {
     value: "claude",
@@ -226,100 +218,6 @@ export function prepareChat(onPrepared: () => void) {
       {
         say: `The text and description are prepared as unsaved changes – nothing is live yet. The text draws on the artist page – her rooms, the six winters, her statement as a quote, and the artist talk on 14 November. The description reads:\n\n**${DESCRIPTION}**\n\n[Compare it with the published page in the Panel](${COMPARE_URL}) and publish it from there.`,
       },
-    ],
-  } satisfies ChatScript;
-}
-
-const PRESS_PHOTO_URL =
-  "https://press.kunsthalle-leipzig.de/frey/ferry-terminal-4am.jpg";
-const PHOTO_ID = `${PAGE_ID}/ferry-terminal-4am.jpg`;
-const PHOTO_PANEL_URL = `${PAGE_PANEL_URL}/files/ferry-terminal-4am.jpg${LANGUAGE_QUERY}`;
-const PHOTO_ETAG = "4e1b7c09a2d8f63b5c0e91a7d4f28b6e";
-const ALT_TEXT =
-  "An empty ferry terminal at night: rows of plastic seats under fluorescent light, a closed ticket counter, dark windows.";
-
-const TOOL_UPLOAD: ChatTool = {
-  name: "upload_file",
-  title: "Upload file",
-  request: {
-    parent: PAGE_ID,
-    filename: "ferry-terminal-4am.jpg",
-    url: PRESS_PHOTO_URL,
-    template: "image",
-  },
-  response: {
-    file: {
-      id: PHOTO_ID,
-      filename: "ferry-terminal-4am.jpg",
-      template: "image",
-      alt: null,
-      panelUrl: PHOTO_PANEL_URL,
-    },
-    etag: PHOTO_ETAG,
-  },
-};
-
-const TOOL_VIEW: ChatTool = {
-  name: "view_image",
-  title: "View image",
-  request: { file: PHOTO_ID },
-  response: { filename: "ferry-terminal-4am.jpg", width: 2400, height: 1800 },
-  narration: "Looking at the photo before describing it.",
-};
-
-const TOOL_PREPARE_ALT: ChatTool = {
-  name: "prepare_changes",
-  title: "Prepare changes",
-  request: { model: PHOTO_ID, etag: PHOTO_ETAG, fields: { alt: ALT_TEXT } },
-  response: {
-    changed: [{ name: "alt", before: "", after: ALT_TEXT }],
-    hasChanges: true,
-    panelUrl: PHOTO_PANEL_URL,
-  },
-};
-
-/** What Hanna allowed when Claude connected; `none` when she cancelled. */
-export type ChatAccess = "publish" | "prepare" | "none";
-
-const AFTER_UPLOAD_STEPS: ChatStep[] = [
-  { tool: TOOL_VIEW, duration: 1100 },
-  { tool: TOOL_PREPARE_ALT, duration: 900 },
-  {
-    say: `The photo is on the page – a file on a published page is live once it’s uploaded, so this took **Publish changes**. The alt text waits for your review:\n\n“${ALT_TEXT}”\n\n[Review the file in the Panel](${PHOTO_PANEL_URL})`,
-  },
-];
-
-/**
- * Hanna asks for a photo on the published page, which is live once uploaded,
- * so the upload takes Publish changes. Without it, claude.ai asks her to
- * connect again and runs the same upload once she allows it.
- */
-export function uploadChat(
-  access: ChatAccess,
-  authorize: (signal: AbortSignal) => Promise<void>,
-) {
-  const outcomes: Record<ChatAccess, ChatStep[]> = {
-    publish: [{ tool: TOOL_UPLOAD, duration: 1000 }, ...AFTER_UPLOAD_STEPS],
-    prepare: [
-      { tool: TOOL_UPLOAD, duration: 1000, authorize },
-      ...AFTER_UPLOAD_STEPS,
-    ],
-    none: [
-      {
-        say: `I can’t reach the ${EXHIBITION_SITE.title} site – its connector isn’t connected. Connect it and choose what I may do, then ask me again.`,
-      },
-    ],
-  };
-
-  return {
-    title: "Press photo for Rooms of Silence",
-    steps: [
-      {
-        user: "Add this press photo to Rooms of Silence and write its alt text: ",
-        paste: PRESS_PHOTO_URL,
-      },
-      { think: 1000 },
-      ...outcomes[access],
     ],
   } satisfies ChatScript;
 }

@@ -10,20 +10,16 @@ const props = defineProps<{
   canFollowLinks?: boolean;
 }>();
 
-const emit = defineEmits<{ link: [href: string]; connect: [] }>();
+const emit = defineEmits<{ link: [href: string] }>();
 
 const thread = useTemplateRef<HTMLElement>("thread");
 
 // The working indicator shows while the agent has the turn and hasn't begun
-// its reply, unless a tool waits for the user to connect.
-const isWorking = computed(() => {
-  const entry = props.entries.at(-1);
-  if (!props.isPlaying || props.composer) return false;
-  return (
-    entry?.kind !== "text" &&
-    !(entry?.kind === "tool" && entry.status === "authorizing")
-  );
-});
+// its reply.
+const isWorking = computed(
+  () =>
+    props.isPlaying && !props.composer && props.entries.at(-1)?.kind !== "text",
+);
 
 // Rows of the agent's work sit close together; a message starts a new block.
 function spacingClass(index: number) {
@@ -124,7 +120,7 @@ useResizeObserver(thread, scrollToEnd);
                   <p class="mb-1 text-xs font-medium">Request</p>
                   <ExhibitionChatJson :value="entry.tool.request" />
                 </div>
-                <div v-if="entry.status !== 'authorizing'" class="p-3">
+                <div class="p-3">
                   <p class="mb-1 text-xs font-medium">Response</p>
                   <ExhibitionChatJson
                     v-if="entry.status === 'done'"
@@ -141,19 +137,6 @@ useResizeObserver(thread, scrollToEnd);
                 </div>
               </div>
             </UChatTool>
-            <div
-              v-if="entry.status === 'authorizing'"
-              class="mt-2 flex items-center gap-3 rounded-[8px] border border-(--client-border) p-3 text-sm"
-            >
-              <span>Authentication required to use this tool</span>
-              <button
-                type="button"
-                class="ms-auto rounded-[8px] bg-(--client-text) px-3 py-1.5 text-sm font-medium text-(--client-back)"
-                @click="emit('connect')"
-              >
-                Connect
-              </button>
-            </div>
           </template>
 
           <ExhibitionChatText

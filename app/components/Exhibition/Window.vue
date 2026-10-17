@@ -10,7 +10,6 @@ export interface WindowTab {
   host: string;
   /** Marks a tab whose page changed while it was in the background. */
   hasActivity?: boolean;
-  isClosable?: boolean;
 }
 
 const props = defineProps<{
@@ -18,7 +17,7 @@ const props = defineProps<{
   bodyClass?: string;
 }>();
 
-const emit = defineEmits<{ close: [value: string]; replay: [] }>();
+const emit = defineEmits<{ replay: [] }>();
 const activeTab = defineModel<string>({ required: true });
 provide(panelMockFramedKey, true);
 
@@ -56,30 +55,15 @@ const FLARE_CLASSES = [
 
 const id = useId();
 
-// A closing tab, or a page that stops showing, that holds the focus hands it
-// to the active tab before the platform drops it to the document. Runs ahead
-// of the DOM update, while the tab or page still holds the focus.
-watch(
-  [() => props.tabs.map((tab) => tab.value), activeTab],
-  async ([tabValues, activeValue], [oldTabValues, oldActiveValue]) => {
-    const closedValues = oldTabValues.filter(
-      (tabValue) => !tabValues.includes(tabValue),
-    );
-    const hiddenValues =
-      oldActiveValue === activeValue
-        ? closedValues
-        : [...closedValues, oldActiveValue];
-    const hasFocus = [
-      ...closedValues.map((tabValue) => `${id}-tab-${tabValue}`),
-      ...hiddenValues.map((tabValue) => `${id}-panel-${tabValue}`),
-    ].some((elementId) =>
-      document.getElementById(elementId)?.contains(document.activeElement),
-    );
-    if (!hasFocus) return;
-    await nextTick();
-    document.getElementById(`${id}-tab-${activeTab.value}`)?.focus();
-  },
-);
+// A page that stops showing while it holds the focus hands it to the active
+// tab before the platform drops it to the document. Runs ahead of the DOM
+// update, while the page still holds the focus.
+watch(activeTab, async (_, oldValue) => {
+  const page = document.getElementById(`${id}-panel-${oldValue}`);
+  if (!page?.contains(document.activeElement)) return;
+  await nextTick();
+  document.getElementById(`${id}-tab-${activeTab.value}`)?.focus();
+});
 
 const activeHost = computed(
   () => props.tabs.find((tab) => tab.value === activeTab.value)?.host,
@@ -145,16 +129,6 @@ function selectTabByKey(event: KeyboardEvent) {
             v-if="tab.hasActivity && activeTab !== tab.value"
             class="bg-primary size-1.5 shrink-0 rounded-full"
           />
-          <!-- Pointer-only: a closable tab's page offers its own way out. -->
-          <span
-            v-if="tab.isClosable"
-            aria-hidden="true"
-            title="Close tab"
-            class="text-dimmed hover:text-highlighted hover:bg-accented -me-1 flex size-5 shrink-0 items-center justify-center rounded-[4px]"
-            @click.stop="emit('close', tab.value)"
-          >
-            <UIcon name="i-ri-close-line" class="size-3.5" />
-          </span>
         </button>
       </div>
 
