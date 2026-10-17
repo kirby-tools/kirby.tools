@@ -2,8 +2,8 @@
 // Copilot's agents in a Window: Hanna asks Claude for the exhibition page's
 // text and description, and the Panel tab she has open reloads with them. They
 // wait in the unsaved changes until she saves them in the Panel. Until the
-// reader acts, and with motion allowed, the Window follows Claude's link into
-// the Panel on its own, and the cursor saves there.
+// reader acts, with motion allowed and while in view, the Window follows
+// Claude's link into the Panel on its own, and the cursor saves there.
 import type { WindowTab } from "~/components/Exhibition/Window.vue";
 import type { ChatStep } from "~/composables/exhibition-chat";
 
@@ -36,6 +36,7 @@ const {
 const root = useCurrentElement<HTMLElement>();
 const chat = useTemplateRef<HTMLElement>("chat");
 const panel = useTemplateRef<HTMLElement>("panel");
+const isVisible = useAutoplayVisibility(root);
 const reducedMotion = usePreferredReducedMotion();
 // The reader's input ends what the Window does on its own; the conversation
 // itself plays on.
@@ -104,12 +105,17 @@ function showChange() {
   });
 }
 
-// Resolves once the reader follows Claude's link, or once the Window followed
-// it for a reader who hasn't acted.
+// Resolves once the reader follows Claude's link, or once the Window follows
+// it on its own for a reader who hasn't acted, with motion allowed and the
+// Window in view.
 function waitForLink(signal: AbortSignal) {
   return new Promise<void>((resolve, reject) => {
     const timer = setTimeout(() => {
-      if (!hasReaderActed.value && reducedMotion.value !== "reduce")
+      if (
+        !hasReaderActed.value &&
+        isVisible.value &&
+        reducedMotion.value !== "reduce"
+      )
         openPanel();
     }, LINK_DWELL);
     followLink = () => {
@@ -140,12 +146,13 @@ function followLinkByReader() {
 }
 
 // Moves the cursor onto the Panel's Save button and clicks it, unless the
-// reader has acted by then.
+// reader has acted or scrolled away by then.
 async function save(signal: AbortSignal) {
   await sleep(REVIEW_DWELL, signal);
   const stage = panel.value?.querySelector<HTMLElement>(".panel-mock-stage");
   const button = stage && findStageTarget(stage, "Save");
-  if (activeTab.value !== "panel" || !stage || !button) return;
+  if (activeTab.value !== "panel" || !isVisible.value || !stage || !button)
+    return;
   if (!(await moveTo(stage, button, signal))) return;
   clickStageTarget(button);
   fadeOut(0.8);
