@@ -90,6 +90,13 @@ const TOOL_FIND: ChatTool = {
   response: {
     pages: [
       {
+        id: ARTIST_ID,
+        title: "Luise Frey",
+        template: "artist",
+        status: "listed",
+        hasChanges: false,
+      },
+      {
         id: PAGE_ID,
         title: EXHIBITION_PAGE.title,
         template: "exhibition",
@@ -97,14 +104,14 @@ const TOOL_FIND: ChatTool = {
         hasChanges: false,
       },
       {
-        id: ARTIST_ID,
-        title: "Luise Frey",
-        template: "artist",
+        id: "blog/a-conversation-with-luise-frey",
+        title: "A Conversation With Luise Frey",
+        template: "post",
         status: "listed",
         hasChanges: false,
       },
     ],
-    total: 2,
+    total: 3,
   },
   narration: "Looking for the exhibition and the artist page.",
 };
@@ -138,7 +145,7 @@ const TOOL_GET_ARTIST: ChatTool = {
         label: "Events",
         value: [
           {
-            date: "2026-11-14 19:00",
+            date: "2026-11-14 19:00:00",
             title: "Artist talk",
             venue: EXHIBITION_SITE.title,
             admission: "Free",
@@ -382,14 +389,14 @@ export function publishGuardChat() {
           response: {
             hasChanges: true,
             etag: "e85a2c07f4b913d6a0c5e8b72f1d49a3",
+            panelUrl: COMPARE_URL,
             changesBy: null,
-            changedFields: ["text", "description", "dates"],
             fields: [
               { name: "text", value: STORED_TEXT_BLOCKS },
               { name: "description", value: DESCRIPTION },
               { name: "dates", value: DATES_NOTE },
             ],
-            panelUrl: COMPARE_URL,
+            changedFields: ["text", "description", "dates"],
           },
           narration: "Checking what else is in the unsaved changes.",
         },
@@ -470,10 +477,10 @@ export function lockChat() {
           response: {
             hasChanges: true,
             etag,
-            changesBy: COLLEAGUE_ACCOUNT,
-            changedFields: ["text"],
-            fields: [{ name: "dates", value: EXHIBITION_PAGE.dates }],
             panelUrl: COMPARE_URL,
+            changesBy: COLLEAGUE_ACCOUNT,
+            fields: [{ name: "dates", value: EXHIBITION_PAGE.dates }],
+            changedFields: ["text"],
           },
         },
         duration: 700,
