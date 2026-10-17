@@ -17,7 +17,7 @@ const props = withDefaults(
 );
 
 // How long the Window waits on Claude's link before following it.
-const LINK_DWELL = 3800;
+const LINK_DWELL = 2000;
 // How long the reloaded view shows before the cursor moves to Save.
 const REVIEW_DWELL = 1600;
 

@@ -207,7 +207,7 @@ export function prepareChat(onPrepared: () => void) {
     title: "Luise Frey exhibition text",
     steps: [
       {
-        user: "Write the text and description for the Luise Frey exhibition from her artist page. Don’t publish it.",
+        user: "Write the text and description for the Luise Frey exhibition from her artist page.",
       },
       { think: 1400 },
       { tool: TOOL_FIND, duration: 700 },
@@ -216,7 +216,7 @@ export function prepareChat(onPrepared: () => void) {
       { tool: TOOL_PREPARE, duration: 1300 },
       { run: onPrepared },
       {
-        say: `The text and description are prepared as unsaved changes – nothing is live yet. The text draws on the artist page – her rooms, the six winters, her statement as a quote, and the artist talk on 14 November. The description reads:\n\n**${DESCRIPTION}**\n\n[Compare it with the published page in the Panel](${COMPARE_URL}) and publish it from there.`,
+        say: `The text and description are prepared as unsaved changes – nothing is live yet. The text draws on the artist page – her rooms, the six winters, her statement as a quote, and the artist talk on 14 November.\n\n[Review it in the Panel](${PAGE_PANEL_URL}${LANGUAGE_QUERY}) and publish it from there.`,
       },
     ],
   } satisfies ChatScript;
