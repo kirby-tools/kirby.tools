@@ -59,7 +59,10 @@ const PRODUCT_REGISTRY = {
     name: "Kirby Copilot",
     label: "Copilot",
     description: "AI generation and MCP for agents",
-    tagline: ["Generate with AI in the Panel,", "or connect your agents"],
+    tagline: [
+      "Generate with AI in the Panel,",
+      "or connect your agents over MCP",
+    ],
     icon: "i-ri-sparkling-line",
     license: "commercial",
     configKey: "johannschopplich.copilot",
