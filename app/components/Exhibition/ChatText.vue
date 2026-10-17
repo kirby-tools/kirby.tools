@@ -39,11 +39,16 @@ const paragraphs = computed(() => {
           class="rounded-[6px] border border-(--client-border) bg-(--client-code-back) px-1 py-px font-mono text-[0.875em] text-(--client-code)"
           >{{ segment.text }}</code
         >
+        <!-- Without an `href`: the URL is on the Exhibition's site, which isn't
+             ours, so a middle click or "Open link" mustn't reach it. -->
         <a
           v-else-if="segment.type === 'link' && canFollowLinks"
-          :href="segment.href"
+          role="link"
+          tabindex="0"
+          class="cursor-pointer"
           :class="LINK_CLASS"
-          @click.prevent="emit('link', segment.href!)"
+          @click="emit('link', segment.href!)"
+          @keydown.enter="emit('link', segment.href!)"
           >{{ segment.text }}</a
         >
         <span v-else-if="segment.type === 'link'" :class="LINK_CLASS">{{
