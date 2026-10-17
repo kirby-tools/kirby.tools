@@ -1,10 +1,9 @@
-import type { InjectionKey, MaybeRefOrGetter } from "vue";
+import type { InjectionKey } from "vue";
 import type { ProductIdWithThemeColor } from "#shared/products";
 
 /** A host's claim that the reader scrolls to its Scene, which may then play its way to its Plugin's answer once on its own, from the view button on. */
 export const sceneAutoplayKey: InjectionKey<boolean> = Symbol("scene-autoplay");
 
-const VISIBLE_RATIO = 0.6;
 const DWELL_DURATION = 800;
 // The pause after each step, in which the view answers it.
 const STEP_DWELL = 400;
@@ -139,31 +138,4 @@ export function useSceneAutoplay(
   }
 
   return { cursor, canPlay, isPending, hasReaderActed };
-}
-
-/** Tells whether enough of `target` is in view for an autoplay to start; what the site's sticky header covers is out of view. */
-export function useAutoplayVisibility(
-  target: MaybeRefOrGetter<HTMLElement | null | undefined>,
-) {
-  const isVisible = ref(false);
-  useIntersectionObserver(
-    target,
-    ([entry]) => {
-      isVisible.value = entry!.intersectionRatio >= VISIBLE_RATIO;
-    },
-    {
-      threshold: VISIBLE_RATIO,
-      rootMargin: () => `-${headerHeight()}px 0px 0px 0px`,
-    },
-  );
-  return isVisible;
-}
-
-// Nuxt UI sizes its header in `rem`, which an observer's margin does not take.
-function headerHeight() {
-  const style = getComputedStyle(document.documentElement);
-  return (
-    Number.parseFloat(style.getPropertyValue("--ui-header-height")) *
-    Number.parseFloat(style.fontSize)
-  );
 }
