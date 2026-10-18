@@ -19,10 +19,8 @@ const SITE_URL = `https://${SITE_HOST}`;
 const PAGE_ID = "exhibitions/rooms-of-silence";
 const PAGE_PANEL_PATH = "/panel/pages/exhibitions+rooms-of-silence";
 const PAGE_PANEL_URL = `${SITE_URL}${PAGE_PANEL_PATH}`;
-// The site is multilingual, so the Panel URL a write or `get_content` returns
-// names the language; a `find_pages` row's doesn't.
 const LANGUAGE_QUERY = `?language=${EXHIBITION_DEFAULT_LANGUAGE.code}`;
-const COMPARE_URL = `${PAGE_PANEL_URL}/preview/compare${LANGUAGE_QUERY}`;
+const PAGE_COMPARE_URL = `${PAGE_PANEL_URL}/preview/compare${LANGUAGE_QUERY}`;
 const COLLEAGUE_ACCOUNT = "jonas@kunsthalle-leipzig.de";
 
 const ETAG_BEFORE = "9f2c41d0b7e3a58c61f04e2d9a7b3c15";
@@ -68,12 +66,8 @@ const STORED_TEXT_BLOCKS = TEXT_BLOCKS.map((block, index) => ({
   type: block.type,
 }));
 
-// `prepare_changes` and `find_pages` report a value longer than 300 characters
-// cut short; `get_content` returns it whole.
-function shortValue(value: unknown) {
-  const text = JSON.stringify(value);
-  return text.length > 300 ? `${text.slice(0, 300)}…` : value;
-}
+// `text` was empty before, so `prepare_changes` cuts its excerpt from the start.
+const STORED_TEXT_BLOCKS_EXCERPT = `${JSON.stringify(STORED_TEXT_BLOCKS).slice(0, 300)}…`;
 
 const TOOL_FIND: ChatTool = {
   name: "find_pages",
@@ -183,8 +177,8 @@ const TOOL_PREPARE: ChatTool = {
     changed: [
       {
         name: "text",
-        before: [],
-        after: shortValue(STORED_TEXT_BLOCKS),
+        before: "[]",
+        after: STORED_TEXT_BLOCKS_EXCERPT,
         itemsBefore: 0,
         itemsAfter: TEXT_BLOCKS.length,
       },
@@ -194,7 +188,7 @@ const TOOL_PREPARE: ChatTool = {
     warnings: [],
     hasChanges: true,
     etag: ETAG_AFTER,
-    panelUrl: COMPARE_URL,
+    panelUrl: PAGE_COMPARE_URL,
   },
 };
 
@@ -222,7 +216,7 @@ export function prepareChat(onPrepared: () => void) {
   } satisfies ChatScript;
 }
 
-const OPENING_HOURS_PANEL_URL = `${SITE_URL}/panel/pages/visit+opening-hours`;
+const OPENING_HOURS_COMPARE_URL = `${SITE_URL}/panel/pages/visit+opening-hours/preview/compare${LANGUAGE_QUERY}`;
 
 /** Hanna asks what waits for review across the site. */
 export const WAITING_CHAT: ChatScript = {
@@ -241,14 +235,16 @@ export const WAITING_CHAT: ChatScript = {
               id: PAGE_ID,
               title: EXHIBITION_PAGE.title,
               status: "unlisted",
-              panelUrl: PAGE_PANEL_URL,
+              panelUrl: PAGE_COMPARE_URL,
+              modified: "2026-10-17T16:42:08+02:00",
               hasChanges: true,
             },
             {
               id: "visit/opening-hours",
               title: "Opening Hours",
               status: "listed",
-              panelUrl: OPENING_HOURS_PANEL_URL,
+              panelUrl: OPENING_HOURS_COMPARE_URL,
+              modified: "2026-10-14T09:15:31+02:00",
               hasChanges: true,
             },
           ],
@@ -258,7 +254,7 @@ export const WAITING_CHAT: ChatScript = {
       duration: 900,
     },
     {
-      say: `Two pages have unsaved changes:\n\n**${EXHIBITION_PAGE.title}** – [Open in the Panel](${PAGE_PANEL_URL})\n\n**Opening Hours** – [Open in the Panel](${OPENING_HOURS_PANEL_URL})\n\nNothing is live until you publish it in the Panel.`,
+      say: `Two pages have unsaved changes:\n\n**${EXHIBITION_PAGE.title}** – [Open in the Panel](${PAGE_COMPARE_URL})\n\n**Opening Hours** – [Open in the Panel](${OPENING_HOURS_COMPARE_URL})\n\nNothing is live until you publish it in the Panel.`,
     },
   ],
 };
@@ -280,7 +276,7 @@ export const PUBLISH_GUARD_CHAT: ChatScript = {
         response: {
           hasChanges: true,
           etag: "e85a2c07f4b913d6a0c5e8b72f1d49a3",
-          panelUrl: COMPARE_URL,
+          panelUrl: PAGE_COMPARE_URL,
           changesBy: null,
           fields: [
             { name: "text", value: STORED_TEXT_BLOCKS },
@@ -294,7 +290,7 @@ export const PUBLISH_GUARD_CHAT: ChatScript = {
       duration: 900,
     },
     {
-      say: `I haven’t published yet. Publishing takes **all** unsaved changes of the page, and besides the text and description there’s one in \`dates\`:\n\n“${DATES_NOTE}”\n\nThat reads like a note that shouldn’t go live. Should I wait, or will you clear the dates in the Panel first? [Open the comparison](${COMPARE_URL})`,
+      say: `I haven’t published yet. Publishing takes **all** unsaved changes of the page, and besides the text and description there’s one in \`dates\`:\n\n“${DATES_NOTE}”\n\nThat reads like a note that shouldn’t go live. Should I wait, or will you clear the dates in the Panel first? [Open the comparison](${PAGE_COMPARE_URL})`,
     },
   ],
 };
@@ -366,7 +362,7 @@ export const LOCK_CHAT: ChatScript = {
         response: {
           hasChanges: true,
           etag: ETAG_COLLEAGUE,
-          panelUrl: COMPARE_URL,
+          panelUrl: PAGE_COMPARE_URL,
           changesBy: COLLEAGUE_ACCOUNT,
           fields: [{ name: "dates", value: EXHIBITION_PAGE.dates }],
           changedFields: ["text"],
