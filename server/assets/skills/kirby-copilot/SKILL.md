@@ -129,6 +129,6 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 
 A refused write or delete tells the connected agent why and what to do. One failure doesn't explain itself:
 
-**An agent's write is overwritten** – saving in the Panel before the editor's view reloads overwrites it. Pause while the agent works.
+**An agent's write is overwritten** – typing in an open Panel view before the view reloads saves over it. Pause while the agent works.
 
 <https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
