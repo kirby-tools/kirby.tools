@@ -63,6 +63,9 @@ Ask for a sharper second paragraph, and the agent replaces just that paragraph. 
 
 It also finds the work for you: the pages not yet translated into German, or the images without alt text. Before it writes an image's alt text, it can look at the image.
 
+::product-copilot-agents-chat{chat="alt-text"}
+::
+
 ## Review Where You Already Review
 
 Each write hands the agent a link to pass on to you. Where the page has a preview, it opens Kirby's comparison of the unsaved changes and the published page, and you publish or discard them as you would your own edits.

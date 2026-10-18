@@ -388,3 +388,108 @@ export const LOCK_CHAT: ChatScript = {
     },
   ],
 };
+
+// Two of the exhibition's prints, uploaded without alt text; `alt` is the text
+// Claude writes for each.
+const PRINTS = [
+  {
+    filename: "ferry-terminal.jpg",
+    uuid: "file://p7Lq2xVm9KcT4wRa",
+    mediaHash: "4e1b9c0a72-1792171814",
+    etagBefore: "2a7f05c9e1d84b36f0c2a9e7d1b45f80",
+    etagAfter: "d90e3b6a4c1f7825e0b9a3d6c2f17e44",
+    alt: "An empty ferry terminal at night: rows of plastic seats under fluorescent light, the ticket counter closed",
+  },
+  {
+    filename: "school-gym.jpg",
+    uuid: "file://Wd3nF8sJ1bYh6QzE",
+    mediaHash: "b05d8e2f19-1792171830",
+    etagBefore: "6c19e4a0d7b3f5821e9a0c4d7b26f3e1",
+    etagAfter: "f4a28d0c6e91b3570d2c8f1a9e64b7d3",
+    alt: "A school gym in morning light, its floor freshly polished, the climbing ropes tied up against the wall bars",
+  },
+].map((print) => ({
+  ...print,
+  id: `${PAGE_ID}/${print.filename}`,
+  url: `${SITE_URL}/media/pages/${PAGE_ID}/${print.mediaHash}/${print.filename}`,
+  panelUrl: `${PAGE_PANEL_URL}/files/${print.filename}${LANGUAGE_QUERY}`,
+}));
+
+function fileSummary(print: (typeof PRINTS)[number]) {
+  return {
+    id: print.id,
+    uuid: print.uuid,
+    filename: print.filename,
+    template: "image",
+    alt: null,
+    url: print.url,
+    panelUrl: print.panelUrl,
+  };
+}
+
+/** Hanna asks for the alt text her uploads lack, and Claude looks at each image first. */
+export const ALT_TEXT_CHAT: ChatScript = {
+  title: "Alt text for the exhibition images",
+  steps: [
+    {
+      user: "Some images on the Luise Frey exhibition page have no alt text yet. Can you write it?",
+    },
+    { think: 1000 },
+    {
+      tool: {
+        name: "find_files",
+        title: "Find files",
+        request: { parent: PAGE_ID, missing: "alt" },
+        response: {
+          files: PRINTS.map((print) => ({
+            ...fileSummary(print),
+            hasChanges: false,
+          })),
+          total: PRINTS.length,
+        },
+        narration: "Looking for the exhibition’s images without alt text.",
+      },
+      duration: 800,
+    },
+    ...PRINTS.map((print, index) => ({
+      tool: {
+        name: "view_image",
+        title: "View image",
+        request: { file: print.id },
+        response: {
+          ...fileSummary(print),
+          width: 7200,
+          height: 5760,
+          etag: print.etagBefore,
+        },
+        ...(index === 0 && {
+          narration: "Looking at each image before describing it.",
+        }),
+      },
+      duration: 900,
+    })),
+    ...PRINTS.map((print) => ({
+      tool: {
+        name: "prepare_changes",
+        title: "Prepare changes",
+        request: {
+          model: print.id,
+          etag: print.etagBefore,
+          fields: { alt: print.alt },
+        },
+        response: {
+          changed: [{ name: "alt", before: "", after: print.alt }],
+          ignored: [],
+          warnings: [],
+          hasChanges: true,
+          etag: print.etagAfter,
+          panelUrl: print.panelUrl,
+        },
+      },
+      duration: 800,
+    })),
+    {
+      say: `Both images have alt text now, as unsaved changes:\n\n${PRINTS.map((print) => `**${print.filename}** – “${print.alt}” – [Open in the Panel](${print.panelUrl})`).join("\n\n")}\n\nI wrote them in English. Should I translate them for the other languages too?`,
+    },
+  ],
+};
