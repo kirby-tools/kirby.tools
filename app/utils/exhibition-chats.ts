@@ -342,8 +342,6 @@ export const SCRIPT_CHAT: ChatScript = {
   ],
 };
 
-// A colleague's edit makes the unsaved changes, and their etag, the content an
-// agent reads.
 const ETAG_COLLEAGUE = "b26f9d14e0c7a385f1e4d0b9a6c27e58";
 
 /** Hanna asks for a change while a colleague edits the page in the Panel. */
