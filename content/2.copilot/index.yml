@@ -45,7 +45,7 @@ sections:
   - title: You Choose What<br> <span class="text-primary">the Agent May Do</span>
     id: agents-consent
     slot: mock
-    description: Connect Claude, ChatGPT, Cursor, or any other agent that supports remote MCP servers. It logs in through the Panel, which names the agent, your site, and the account it works as – and you tick what it may do.
+    description: Connect Claude, ChatGPT, or any other agent that supports remote MCP servers. It logs in through the Panel, which names the agent, your site, and the account it works as – and you tick what it may do.
   - title: Your Agent Prepares,<br> <span class="text-primary">You Publish</span>
     id: agents
     slot: mock

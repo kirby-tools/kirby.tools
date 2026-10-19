@@ -1,13 +1,13 @@
 ---
 title: Agents Prepare, Editors Publish
-description: Copilot v3.14 connects Claude, ChatGPT, Cursor, and other agents to your Kirby site. They work as your Kirby user, within your role, and by default their edits wait as unsaved changes until you publish them.
+description: Copilot connects Claude, ChatGPT, and other agents to your Kirby site. They work as your Kirby user, within your role, and by default their edits wait as unsaved changes until you publish them.
 date: "2026-10-10"
 product: copilot
 ---
 
 Copy a page into Claude, ask for a tighter version, paste the result back field by field – until now, that's how a chat with an AI edited a Kirby page. The AI never saw the blueprint, the other languages, or the block next to the one it rewrote, and you were the clipboard in between.
 
-Copilot v3.14 removes the clipboard. Your site now runs an MCP server, and the agent you already use – Claude, ChatGPT, Cursor, or any other with remote MCP support – connects to it through the Panel's login. It reads your pages with their fields and blocks, and it writes where your own edits go: into the page's unsaved changes, or into a new draft.
+Copilot removes the clipboard. Your site now runs an MCP server, and the agent you already use – Claude, ChatGPT, or any other with remote MCP support – connects to it through the Panel's login. It reads your pages with their fields and blocks, and it writes where your own edits go: into the page's unsaved changes, or into a new draft.
 
 What it doesn't do is publish on its own.
 

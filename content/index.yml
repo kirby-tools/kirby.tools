@@ -122,7 +122,7 @@ products:
         description: Tick the fields, write one prompt, and Copilot fills them all in one run – with files and other pages as context.
         icon: i-ri-list-check-2
       - title: Agents
-        description: Claude, ChatGPT, and Cursor work on the site's content as your Kirby user, and by default their edits wait in the Panel until you publish them.
+        description: Claude, ChatGPT, and other agents work on the site's content as your Kirby user, and by default their edits wait in the Panel until you publish them.
         icon: i-ri-plug-line
       - title: Inline Suggestions
         description: Pause while writing and gray ghost text picks up the sentence. Tab keeps it, anything else drops it.
