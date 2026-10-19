@@ -59,7 +59,7 @@ On a team site, every Panel user can connect an agent, but that decision doesn't
 
 The agent works as the user who connected it, on every request. A page your role can't update, the agent can't change, and a page your role can't see, it doesn't find. A connection ends when you revoke it, change your password, or leave it unused for 30 days.
 
-## Down to One Paragraph, Across the Whole Site
+## Smaller Edits, Fewer Searches
 
 Ask for a sharper second paragraph, and the agent replaces just that paragraph. In a blocks or layout field, it changes only the block that holds it, and it adds, moves, or removes single blocks without touching the rest.
 
