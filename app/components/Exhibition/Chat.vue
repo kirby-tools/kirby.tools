@@ -68,7 +68,7 @@ useResizeObserver(thread, scrollToEnd);
   >
     <div
       ref="thread"
-      class="min-h-0 flex-1 [scrollbar-width:thin] overflow-y-auto px-4 py-6 sm:px-6"
+      class="min-h-0 flex-1 scrollbar-thin scrollbar-gutter-stable overflow-y-auto px-4 py-6 sm:px-6"
     >
       <div class="mx-auto max-w-2xl">
         <template v-for="(entry, index) in entries" :key="entry.id">
