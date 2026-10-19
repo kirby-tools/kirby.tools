@@ -77,7 +77,7 @@ To see what's waiting, ask the agent: it finds the pages with unsaved changes, a
 ::product-copilot-agents-chat{chat="waiting"}
 ::
 
-If you have the page open while the agent works, the view reloads and tells you why. An edit you type before the reload saves your form over what the agent wrote. If a colleague is editing the page, Kirby keeps the agent from changing it until they leave, and the agent tells you whom it's waiting for. [Working Alongside an Agent](/docs/copilot/agents/permissions-and-review#working-alongside-an-agent) also covers the unsaved changes a colleague left on the page.
+If you have the page open while the agent works, the view reloads and tells you why. Typing before the reload keeps what the agent wrote; a field you both change keeps the value written last. If a colleague is editing the page, Kirby keeps the agent from changing it until they leave, and the agent tells you whom it's waiting for. [Working Alongside an Agent](/docs/copilot/agents/permissions-and-review#working-alongside-an-agent) also covers the unsaved changes a colleague left on the page.
 
 Give an agent **Publish changes**, and it publishes the way the Panel's **Save** button does: all unsaved changes of the page in that language, whoever made them. In my tests, an agent asked to publish a new intro spotted a half-finished teaser in the same page's changes and asked before publishing both. I still wouldn't leave unfinished edits on a page you hand to an agent.
 
