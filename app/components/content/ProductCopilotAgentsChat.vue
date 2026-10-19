@@ -3,13 +3,12 @@
 import type { ChatScript } from "~/utils/exhibition-chats";
 
 const props = defineProps<{
-  chat: "waiting" | "publish-guard" | "script" | "lock" | "alt-text";
+  chat: "waiting" | "publish-guard" | "lock" | "alt-text";
 }>();
 
 const CHATS: Record<typeof props.chat, ChatScript> = {
   waiting: WAITING_CHAT,
   "publish-guard": PUBLISH_GUARD_CHAT,
-  script: SCRIPT_CHAT,
   lock: LOCK_CHAT,
   "alt-text": ALT_TEXT_CHAT,
 };

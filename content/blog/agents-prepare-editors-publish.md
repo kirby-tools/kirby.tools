@@ -84,13 +84,6 @@ Give an agent **Publish changes**, and it publishes the way the Panel's **Save**
 ::product-copilot-agents-chat{chat="publish-guard"}
 ::
 
-## Content Is Data, Not Instructions
-
-A page can hold text that reads like an instruction to an AI – a pasted email, a form submission. The site tells every agent to treat what it reads as data, never as instructions, and it [checks what the agent writes](/docs/copilot/agents/permissions-and-review#prepare-changes): no `<script>`, `<iframe>`, or similar elements, no event attributes or `javascript:` URLs, whether written out or produced by KirbyText.
-
-::product-copilot-agents-chat{chat="script"}
-::
-
 ## What It Changes
 
 The agent works on the real page, with its blueprint, its languages, and its blocks, and the Panel stays the place where content goes live. You decide per connection, and per role, whether an agent may take that last step.

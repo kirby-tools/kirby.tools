@@ -295,53 +295,6 @@ export const PUBLISH_GUARD_CHAT: ChatScript = {
   ],
 };
 
-const ETAG_PUBLISHED = "5d93a0e7c1b84f26e0a7d3c9b1f4e862";
-
-const DESCRIPTION_WITH_SCRIPT = `${DESCRIPTION} <script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>`;
-
-/** Hanna asks for a ticket widget's script tag, which the site refuses from agents. */
-export const SCRIPT_CHAT: ChatScript = {
-  title: "Ticket widget in the description",
-  steps: [
-    {
-      user: "Add our ticket widget to the end of the Luise Frey exhibition’s description: ",
-      paste:
-        '<script src="https://tickets.kunsthalle-leipzig.de/widget.js"></script>',
-    },
-    { think: 900 },
-    {
-      tool: {
-        name: "get_content",
-        title: "Get content",
-        request: { model: PAGE_ID, fields: ["description"] },
-        response: {
-          hasChanges: false,
-          etag: ETAG_PUBLISHED,
-          fields: [{ name: "description", value: DESCRIPTION }],
-        },
-      },
-      duration: 700,
-    },
-    {
-      tool: {
-        name: "prepare_changes",
-        title: "Prepare changes",
-        request: {
-          model: PAGE_ID,
-          etag: ETAG_PUBLISHED,
-          fields: { description: DESCRIPTION_WITH_SCRIPT },
-        },
-        error:
-          "`description` contains the element `<script>`, which the site doesn't accept from agents. Write it without. What the field already holds passes when you send it unchanged.",
-      },
-      duration: 800,
-    },
-    {
-      say: "The site doesn’t accept a `<script>` element from an agent, so nothing changed. A widget like this belongs in the page’s template – your developer can add it there, once for every exhibition page.",
-    },
-  ],
-};
-
 const ETAG_COLLEAGUE = "b26f9d14e0c7a385f1e4d0b9a6c27e58";
 
 /** Hanna asks for a change while a colleague edits the page in the Panel. */
