@@ -13,6 +13,7 @@ const props = defineProps<{
 const emit = defineEmits<{ link: [href: string] }>();
 
 const thread = useTemplateRef<HTMLElement>("thread");
+const footer = useTemplateRef<HTMLElement>("footer");
 
 // The working indicator shows while the agent has the turn and hasn't begun
 // its reply.
@@ -33,8 +34,7 @@ function spacingClass(index: number) {
 }
 
 // Follows the reply as it grows, as claude.ai does, until the reader scrolls
-// back; scrolling to the end again, or a Replay, resumes it. A thread that
-// grows or shows again while following catches up.
+// back; scrolling to the end again, or a Replay, resumes it.
 let isFollowing = true;
 
 function scrollToEnd() {
@@ -59,7 +59,9 @@ watch(
   },
   { deep: true },
 );
-useResizeObserver(thread, scrollToEnd);
+// Showing the tab again resizes the thread; a wrapping composer only grows
+// its content, so the composer is observed too.
+useResizeObserver([thread, footer], scrollToEnd);
 </script>
 
 <template>
@@ -68,9 +70,9 @@ useResizeObserver(thread, scrollToEnd);
   >
     <div
       ref="thread"
-      class="min-h-0 flex-1 scrollbar-thin scrollbar-gutter-stable overflow-y-auto px-4 py-6 sm:px-6"
+      class="flex min-h-0 flex-1 scrollbar-thin scrollbar-gutter-stable flex-col overflow-y-auto px-4 sm:px-6"
     >
-      <div class="mx-auto max-w-2xl">
+      <div class="mx-auto w-full max-w-2xl flex-1 py-6">
         <template v-for="(entry, index) in entries" :key="entry.id">
           <div
             v-if="entry.kind === 'user'"
@@ -157,10 +159,14 @@ useResizeObserver(thread, scrollToEnd);
           aria-hidden="true"
         />
       </div>
-    </div>
 
-    <div class="px-4 pb-3 sm:px-6">
-      <div class="mx-auto max-w-2xl">
+      <!-- Inside the scroll container, so the scrollbar narrows it like the
+           messages. The fade matches their bottom padding, so it covers none at
+           the end. -->
+      <div
+        ref="footer"
+        class="sticky bottom-0 mx-auto w-full max-w-2xl bg-(--client-back) pb-3 before:pointer-events-none before:absolute before:inset-x-0 before:bottom-full before:h-6 before:bg-linear-to-t before:from-(--client-back)"
+      >
         <div
           class="rounded-[16px] bg-(--client-composer) p-2 shadow-[0_4px_20px_rgb(0_0_0/0.075),inset_0_0_0_1px_var(--client-composer-ring)]"
         >
