@@ -19,7 +19,9 @@ return [
 
 `globalRoutes` is the fork in the road. Left off, Kirby routes as usual and the plugin only adds its endpoints. Turned on, a catch-all serves **every** page as JSON and Kirby stops rendering HTML – which is what a decoupled site wants and what a hybrid site must avoid.
 
-CORS is Kirby's own since 5.2.0, under the top-level `cors` key: <https://kirby.tools/docs/headless/configuration/cors.md>
+CORS is Kirby's own since 5.2.0, under the top-level `cors` key. `'cors' => true` alone sends no `Access-Control-Allow-Headers`, so the browser stops a request carrying `Authorization`, `X-Language`, or `Content-Type: application/json` at preflight; `'allowHeaders' => true` fixes it.
+
+<https://kirby.tools/docs/headless/configuration/cors.md>
 
 ## Token
 
@@ -64,7 +66,7 @@ On a multi-language site it lists only the pages translated into the request's l
 
 ## Building Your Own Endpoint
 
-`Api::createHandler()` runs middlewares in order and returns as soon as one yields anything but `null` or an array. `Middlewares::hasBearerToken()` therefore comes first, or a resolver answers before the token is checked. `hasBearerToken()` is called (it returns the middleware); every other middleware is passed as a callable, `Middlewares::tryResolvePage(...)`.
+`Api::createHandler()` runs middlewares in order and returns as soon as one yields anything but `null` or an array. `Middlewares::hasBearerToken()` therefore comes first, or a resolver answers before the token is checked. `hasBearerToken()` is called (it returns the middleware); every other middleware is passed as a callable, `Middlewares::tryResolvePage(...)`. On a multi-language site, a route using `applyLanguageHeader()`, `tryResolveFiles()`, or `tryResolvePage()` needs `'language' => '*'`, or every path resolves to the home page.
 
 <https://kirby.tools/docs/headless/usage/api-builder.md>
 
