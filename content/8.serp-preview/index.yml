@@ -32,7 +32,7 @@ sections:
         to: /docs/serp-preview/formatters
 cta:
   title: See What Google Sees
-  description: Install the SERP Preview plugin and add the section to any page blueprint.
+  description: Install the SERP Preview plugin and add the section to any page blueprint or the site blueprint.
   orientation: horizontal
   links:
     - label: Get Started
