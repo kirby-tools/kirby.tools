@@ -47,9 +47,10 @@ A link inside the preview opens the matching Panel view. `data-preview-ignore` o
 
 A render that throws replaces the preview with a **Preview failed** button. The button carries no detail. The browser console has the error. These causes come up:
 
-- The page has no template file.
+- Neither the page's template nor `default.php` exists.
+- `pageId` names a page that doesn't exist.
 - The template renders no `<head>` tag.
-- The template raised an error on the unsaved content it was handed.
+- The template or its controller raised an error on the unsaved content it was handed.
 
 Safari refuses to frame the Panel unless the site allows it, and reports a sandbox access violation. Kirby's own `panel.frameAncestors` option opens it:
 
