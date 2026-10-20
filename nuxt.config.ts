@@ -361,6 +361,21 @@ export default defineNuxtConfig({
     "/docs/content-translator/migration": {
       redirect: "/docs/content-translator/getting-started/migration",
     },
+    "/docs/content-translator/php-classes/strategies/deepl-strategy": {
+      redirect: "/docs/content-translator/php-classes/strategies#deeplstrategy",
+    },
+    "/docs/content-translator/php-classes/strategies/copilot-ai-strategy": {
+      redirect:
+        "/docs/content-translator/php-classes/strategies#copilotaistrategy",
+    },
+    "/docs/content-translator/php-classes/strategies/callable-strategy": {
+      redirect:
+        "/docs/content-translator/php-classes/strategies#callablestrategy",
+    },
+    "/docs/content-translator/cli-automation/ai-strategy": {
+      redirect:
+        "/docs/content-translator/cli-automation/single-page#translate-with-ai-for-one-run",
+    },
     // SEO Audit
     "/docs/seo-audit/guide/audit-url": {
       redirect: "/docs/seo-audit/guide/preview-url",
