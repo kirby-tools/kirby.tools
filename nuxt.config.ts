@@ -365,6 +365,13 @@ export default defineNuxtConfig({
     "/docs/seo-audit/guide/audit-url": {
       redirect: "/docs/seo-audit/guide/preview-url",
     },
+    // Headless
+    "/docs/headless/migration": {
+      redirect: "/docs/headless/getting-started/migration",
+    },
+    "/docs/headless/advanced/api-builder": {
+      redirect: "/docs/headless/usage/api-builder",
+    },
     // Other plugins
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
   },

@@ -92,7 +92,7 @@ sections:
         icon: i-ri-code-s-slash-line
     links:
       - label: API Builder Reference
-        to: /docs/headless/advanced/api-builder
+        to: /docs/headless/usage/api-builder
         trailingIcon: i-ri-arrow-right-line
         variant: subtle
     code:

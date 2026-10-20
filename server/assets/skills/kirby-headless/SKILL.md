@@ -66,7 +66,7 @@ On a multi-language site it lists only the pages translated into the request's l
 
 `Api::createHandler()` runs middlewares in order and returns as soon as one yields anything but `null` or an array. `Middlewares::hasBearerToken()` therefore comes first, or a resolver answers before the token is checked. `hasBearerToken()` is called (it returns the middleware); every other middleware is passed as a callable, `Middlewares::tryResolvePage(...)`.
 
-<https://kirby.tools/docs/headless/advanced/api-builder.md>
+<https://kirby.tools/docs/headless/usage/api-builder.md>
 
 ## Panel Preview
 
