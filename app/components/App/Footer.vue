@@ -3,6 +3,14 @@ import type { ThemeColor } from "#shared/theme";
 import { PRODUCT_LIST, productDocsPath, productPath } from "#shared/products";
 import { DEFAULT_THEME_COLOR } from "#shared/theme";
 
+withDefaults(
+  defineProps<{
+    /** Edge the side rules sit on: the container's, or its padded content's. */
+    frame?: "container" | "content";
+  }>(),
+  { frame: "container" },
+);
+
 interface FooterLink {
   label: string;
   to: string;
@@ -64,7 +72,10 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
 
 <template>
   <footer class="border-default border-t">
-    <div class="mx-auto max-w-(--ui-container)">
+    <div
+      class="mx-auto max-w-(--ui-container)"
+      :class="frame === 'content' && 'lg:px-8'"
+    >
       <div class="border-default lg:-mx-px lg:border-x">
         <div
           class="border-default grid grid-cols-2 gap-px border-b bg-(--ui-border) lg:grid-cols-[1.4fr_1fr_1fr_1fr]"

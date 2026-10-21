@@ -71,8 +71,6 @@ useSeoMeta({
       <NuxtPage />
     </NuxtLayout>
 
-    <AppFooter v-if="!route.meta.standalone" />
-
     <ClientOnly>
       <LazyUContentSearch
         :files="files"
