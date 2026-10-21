@@ -303,6 +303,9 @@ export default defineNuxtConfig({
     ...Object.fromEntries(
       UNLISTED_PATHS.map((path) => [path, { prerender: true, robots: false }]),
     ),
+    // @nuxtjs/robots adds `noindex` to `/404.html` on its own, but renders the
+    // server-rendered error page as indexable unless a rule says otherwise.
+    "/404.html": { robots: false },
     // Playgrounds
     ...Object.fromEntries(
       PRODUCT_LIST.filter((product) => product.playground).map(
@@ -391,15 +394,16 @@ export default defineNuxtConfig({
     "/docs/live-preview/changelog": { redirect: "/live-preview/changelog" },
   },
 
-  nitro: {
-    prerender: {
-      failOnError: true,
-      crawlLinks: true,
-      routes: [
-        "/robots.txt",
-        "/sitemap.md",
-        "/.well-known/agent-skills/index.json",
-      ],
-    },
+  prerender: {
+    crawlLinks: true,
+    routes: [
+      "/robots.txt",
+      "/sitemap.md",
+      "/.well-known/agent-skills/index.json",
+    ],
+  },
+
+  experimental: {
+    prerenderErrorPages: true,
   },
 });
