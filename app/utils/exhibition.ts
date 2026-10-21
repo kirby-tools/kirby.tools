@@ -303,7 +303,7 @@ export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   { label: "About", icon: "info", missingLanguages: [SPANISH] },
 ];
 
-// The plugin counts translated fields, which the tree doesn't show.
+// The plugin's percentage counts translated fields, which the tree doesn't show.
 const TRANSLATOR_PERCENTAGES = { de: 100, es: 21, fr: 64 };
 
 export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
