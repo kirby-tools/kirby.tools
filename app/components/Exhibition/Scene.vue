@@ -40,45 +40,55 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       @save="emit('save')"
     />
 
-    <PanelColumns>
+    <PanelModelForm>
       <PanelColumn width="2/3">
-        <slot name="main" />
+        <PanelFieldset>
+          <PanelColumn v-if="$slots.main">
+            <slot name="main" />
+          </PanelColumn>
 
-        <PanelSection :key="languageCode">
-          <PanelFieldset>
-            <PanelBlocksField
-              name="text"
-              label="Text"
-              :value="content.text"
-              @input="update({ text: $event })"
-            />
-          </PanelFieldset>
-        </PanelSection>
+          <PanelBlocksField
+            :key="languageCode"
+            name="text"
+            label="Text"
+            :value="content.text"
+            @input="update({ text: $event })"
+          />
+        </PanelFieldset>
       </PanelColumn>
 
       <PanelColumn width="1/3">
-        <slot name="aside" />
+        <PanelFieldset>
+          <PanelColumn v-if="$slots.aside">
+            <slot name="aside" />
+          </PanelColumn>
 
-        <PanelSection :key="languageCode">
-          <PanelFieldset>
-            <PanelField label="Description" name="description">
-              <PanelInput
-                :value="content.description"
-                :buttons="EXHIBITION_DESCRIPTION_BUTTONS"
-                @input="update({ description: $event })"
-              />
-            </PanelField>
+          <PanelField
+            :key="`description-${languageCode}`"
+            label="Description"
+            name="description"
+          >
+            <PanelInput
+              :value="content.description"
+              :buttons="EXHIBITION_DESCRIPTION_BUTTONS"
+              @input="update({ description: $event })"
+            />
+          </PanelField>
 
-            <PanelField label="Dates" name="dates" type="text">
-              <PanelInput
-                :value="content.dates"
-                @input="update({ dates: $event })"
-              />
-            </PanelField>
-          </PanelFieldset>
-        </PanelSection>
+          <PanelField
+            :key="`dates-${languageCode}`"
+            label="Dates"
+            name="dates"
+            type="text"
+          >
+            <PanelInput
+              :value="content.dates"
+              @input="update({ dates: $event })"
+            />
+          </PanelField>
+        </PanelFieldset>
       </PanelColumn>
-    </PanelColumns>
+    </PanelModelForm>
 
     <slot name="notification" />
 

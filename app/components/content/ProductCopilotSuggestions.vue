@@ -48,25 +48,23 @@ const pauseButton = computed(() =>
       />
     </template>
 
-    <PanelSection>
-      <PanelFieldset>
-        <PanelField label="Text" name="text" type="writer">
-          <!-- The accepted text, laid out unseen beneath, holds the field at
-               its final height through the cycle; `items-start` keeps the
-               typed text at the top, where it sits in Kirby's growing field. -->
-          <div class="grid *:col-start-1 *:row-start-1">
-            <PanelInput :value="acceptedValue" class="invisible" />
-            <PanelInput
-              :value="value"
-              :suggestion="suggestion"
-              has-caret
-              class="items-start transition-opacity duration-400"
-              :class="isFading && 'opacity-0'"
-            />
-          </div>
-        </PanelField>
-      </PanelFieldset>
-    </PanelSection>
+    <PanelFieldset>
+      <PanelField label="Text" name="text" type="writer">
+        <!-- The accepted text, laid out unseen beneath, holds the field at
+             its final height through the cycle; `items-start` keeps the
+             typed text at the top, where it sits in Kirby's growing field. -->
+        <div class="grid *:col-start-1 *:row-start-1">
+          <PanelInput :value="acceptedValue" class="invisible" />
+          <PanelInput
+            :value="value"
+            :suggestion="suggestion"
+            has-caret
+            class="items-start transition-opacity duration-400"
+            :class="isFading && 'opacity-0'"
+          />
+        </div>
+      </PanelField>
+    </PanelFieldset>
   </PanelMock>
 </template>
 

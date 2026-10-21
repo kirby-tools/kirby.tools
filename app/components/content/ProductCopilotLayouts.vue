@@ -92,16 +92,14 @@ function streamLayouts(tokenCount: number) {
       :has-diff="layouts.length > 0"
     />
 
-    <PanelSection>
-      <PanelFieldset>
-        <PanelLayoutField
-          name="layout"
-          label="Layout"
-          help="Describe the page to Copilot, and it builds the rows from our blocks."
-          :value="layouts"
-        />
-      </PanelFieldset>
-    </PanelSection>
+    <PanelFieldset>
+      <PanelLayoutField
+        name="layout"
+        label="Layout"
+        help="Describe the page to Copilot, and it builds the rows from our blocks."
+        :value="layouts"
+      />
+    </PanelFieldset>
 
     <PanelNotification
       v-if="notification"

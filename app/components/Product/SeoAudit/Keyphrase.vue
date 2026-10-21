@@ -16,17 +16,17 @@ const KEYPHRASE_RESULTS: PanelSeoAuditResults = {
 
 <template>
   <PanelMock>
-    <PanelSection>
-      <PanelFieldset>
-        <PanelField label="Focus Keyphrase" name="keyphrase" type="text">
-          <PanelInput value="large-format photography" />
-        </PanelField>
-      </PanelFieldset>
-    </PanelSection>
-    <PanelSection>
-      <PanelBox theme="passive">
-        <PanelSeoAuditResult :results="KEYPHRASE_RESULTS" />
-      </PanelBox>
-    </PanelSection>
+    <PanelFieldset>
+      <PanelField label="Focus Keyphrase" name="keyphrase" type="text">
+        <PanelInput value="large-format photography" />
+      </PanelField>
+      <PanelColumn>
+        <PanelSection>
+          <PanelBox theme="passive">
+            <PanelSeoAuditResult :results="KEYPHRASE_RESULTS" />
+          </PanelBox>
+        </PanelSection>
+      </PanelColumn>
+    </PanelFieldset>
   </PanelMock>
 </template>
