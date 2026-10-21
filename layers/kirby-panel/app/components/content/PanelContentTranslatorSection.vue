@@ -1,26 +1,20 @@
 <script setup lang="ts">
+import type { PanelContentTranslatorOptions } from "../../../shared/types/plugins";
+
 const props = withDefaults(
-  defineProps<{
-    label?: string;
-    language?: string;
-    languages?: string[];
-    import?: boolean;
-    importFrom?: "all";
-    batch?: boolean;
-    /** A run in progress, which the plugin reads from its translation state. */
-    isTranslating?: boolean;
-  }>(),
+  defineProps<
+    PanelContentTranslatorOptions & {
+      label?: string;
+      /** A run in progress, which the plugin reads from its translation state. */
+      isTranslating?: boolean;
+    }
+  >(),
   { label: "Content Translator", import: true, batch: true },
 );
 
 const actions = computed(() => contentTranslatorActions(props).flat());
-
-const isDefaultLanguageInfo = computed(
-  () =>
-    !props.batch &&
-    !(props.import && props.importFrom === "all") &&
-    (props.language ?? props.languages?.[0] ?? "en") ===
-      (props.languages?.[0] ?? "en"),
+const hasDefaultLanguageInfo = computed(() =>
+  hasContentTranslatorDefaultLanguageInfo(props),
 );
 </script>
 
@@ -43,7 +37,7 @@ const isDefaultLanguageInfo = computed(
     </k-box>
 
     <k-box
-      v-if="isDefaultLanguageInfo"
+      v-if="hasDefaultLanguageInfo"
       theme="none"
       text="Content can only be imported and translated for secondary languages."
       class="mt-[var(--spacing-1)]"

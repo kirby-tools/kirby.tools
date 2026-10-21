@@ -1,19 +1,21 @@
-/** A site in English and German, the default of the Translator's section and dropdown Mocks. */
 const DEFAULT_LANGUAGES = ["en", "de"];
 
 /**
  * Derives the plugin's actions the way its section and dropdown do, for a
  * site with a translation strategy set up: the imports, then the translations.
  */
-export function contentTranslatorActions({
-  languages = DEFAULT_LANGUAGES,
-  language = languages[0]!,
-  import: isImportEnabled = true,
-  importFrom,
-  batch: isBatchTranslationEnabled = true,
-}: PanelContentTranslatorOptions): PanelContentTranslatorAction[][] {
-  const defaultLanguage = languages[0]!;
-  const isDefaultLanguage = language === defaultLanguage;
+export function contentTranslatorActions(
+  options: PanelContentTranslatorOptions,
+): PanelContentTranslatorAction[][] {
+  const {
+    languages,
+    language,
+    defaultLanguage,
+    isDefaultLanguage,
+    isImportEnabled,
+    isImportFromAll,
+    isBatchTranslationEnabled,
+  } = resolveOptions(options);
 
   const translateAction = (
     disabled: boolean,
@@ -35,7 +37,7 @@ export function contentTranslatorActions({
         ]
       : [];
 
-  if (isImportEnabled && importFrom === "all") {
+  if (isImportFromAll) {
     return [
       languages
         .filter((code) => code !== language)
@@ -68,4 +70,36 @@ export function contentTranslatorActions({
       ...batchActions,
     ],
   ];
+}
+
+/**
+ * Tells whether the plugin's section explains that only secondary languages
+ * take imports and translations, which it does in the default language once
+ * batch translation is off.
+ */
+export function hasContentTranslatorDefaultLanguageInfo(
+  options: PanelContentTranslatorOptions,
+) {
+  const { isDefaultLanguage, isImportFromAll, isBatchTranslationEnabled } =
+    resolveOptions(options);
+  return !isImportFromAll && !isBatchTranslationEnabled && isDefaultLanguage;
+}
+
+function resolveOptions({
+  languages = DEFAULT_LANGUAGES,
+  language = languages[0]!,
+  import: isImportEnabled = true,
+  importFrom,
+  batch: isBatchTranslationEnabled = true,
+}: PanelContentTranslatorOptions) {
+  const defaultLanguage = languages[0]!;
+  return {
+    languages,
+    language,
+    defaultLanguage,
+    isDefaultLanguage: language === defaultLanguage,
+    isImportEnabled,
+    isImportFromAll: isImportEnabled && importFrom === "all",
+    isBatchTranslationEnabled,
+  };
 }
