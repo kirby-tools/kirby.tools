@@ -33,7 +33,7 @@ A live rendering of a Panel surface, assembled from Kirby's own Panel components
 _Avoid_: Screenshot, demo, replica, figure
 
 **Interactive Mock**:
-A Mock that lets the reader do what Kirby lets an editor do – type, unfold, close, switch language – and plays the Plugin's answer where the Plugin answers the editor; nothing else answers, nothing is kept, and while its dialog is open, only the dialog answers.
+A Mock that lets the reader do some of what Kirby lets an editor do – type, unfold, close, switch language – and plays the Plugin's answer where the Mock stages one; nothing else answers, nothing is kept, and while its dialog is open, only the dialog answers.
 
 **Looping Mock**:
 A Mock that plays its Plugin's answer on its own, over and over, for an answer whose trigger a reader would not find, such as the moment an editor stops typing. The reader can pause it, except inside a FeatureCard, where a click follows the card's link; nothing else reaches it.
