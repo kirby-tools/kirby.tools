@@ -34,11 +34,7 @@ defineProps<{
       </template>
 
       <div v-if="value?.length" class="k-layouts">
-        <section
-          v-for="(layout, index) in value"
-          :key="index"
-          class="k-layout"
-        >
+        <section v-for="(layout, index) in value" :key="index" class="k-layout">
           <k-grid class="k-layout-columns">
             <div
               v-for="(column, columnIndex) in layout.columns"
