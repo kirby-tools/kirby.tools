@@ -1,19 +1,10 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    label?: string;
-    theme?: string;
-    /** The last report's ratings, which the plugin keeps in its storage. */
-    ratings?: PanelSeoAuditRatings;
-    /** Whether the page was published since the last report. */
-    isStale?: boolean;
-    /** An analysis in progress, which the plugin keeps in its own state. */
-    isAnalyzing?: boolean;
-    /** Analyzes the page and opens the report, which the plugin does itself. */
-    click?: () => void;
-  }>(),
-  { label: "SEO Audit", theme: "positive-icon" },
-);
+import type { PanelSeoAuditButtonProps } from "../../../shared/types/plugins";
+
+const props = withDefaults(defineProps<PanelSeoAuditButtonProps>(), {
+  label: "SEO Audit",
+  theme: "positive-icon",
+});
 
 const RATING_ORDER = ["bad", "ok", "good"] as const;
 const BADGE_THEMES: Record<PanelSeoAuditCategoryRating, string> = {

@@ -22,7 +22,7 @@ const buttons = computed(() =>
   (props.buttons ?? []).map((button, index) => {
     if (typeof button === "string") return button;
     if ("component" in button) return { key: index, ...button };
-    if ("plugin" in button) {
+    if (button.plugin) {
       const { plugin, ...pluginProps } = button;
       return {
         key: index,

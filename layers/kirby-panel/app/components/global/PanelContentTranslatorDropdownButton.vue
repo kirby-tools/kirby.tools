@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import type { PanelContentTranslatorOptions } from "../../../shared/types/plugins";
+import type { PanelContentTranslatorDropdownButtonProps } from "../../../shared/types/plugins";
 
 const props = withDefaults(
-  defineProps<
-    PanelContentTranslatorOptions & {
-      label?: string;
-      theme?: string;
-      /** A run in progress, which the plugin reads from its translation state. */
-      isTranslating?: boolean;
-      /** Shows the dropdown open, for a Mock the reader doesn't click. */
-      open?: boolean;
-      /** Runs the picked action, which the plugin runs itself. */
-      run?: (action: PanelContentTranslatorAction) => void;
-    }
-  >(),
-  { label: "Translator", theme: "notice-icon", import: true, batch: true },
+  defineProps<PanelContentTranslatorDropdownButtonProps>(),
+  {
+    label: "Translator",
+    theme: "notice-icon",
+    import: true,
+    batch: true,
+  },
 );
 
 const dropdown = useTemplateRef<{ toggle: () => void }>("dropdown");

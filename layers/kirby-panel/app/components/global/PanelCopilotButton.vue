@@ -1,18 +1,11 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    label?: string;
-    icon?: string;
-    theme?: string;
-    /** A run in progress, which the plugin keeps in its own state. */
-    isGenerating?: boolean;
-    /** Opens the prompt dialog, which the plugin opens itself. */
-    click?: () => void;
-    /** Stops the answer in progress, which the plugin aborts itself. */
-    abort?: () => void;
-  }>(),
-  { label: "Copilot", icon: "sparkling", theme: "notice-icon" },
-);
+import type { PanelCopilotButtonProps } from "../../../shared/types/plugins";
+
+const props = withDefaults(defineProps<PanelCopilotButtonProps>(), {
+  label: "Copilot",
+  icon: "sparkling",
+  theme: "notice-icon",
+});
 
 const isHovering = ref(false);
 

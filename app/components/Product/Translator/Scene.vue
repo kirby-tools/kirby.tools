@@ -43,7 +43,7 @@ const viewButton = computed<PanelViewButton>(() => ({
   language: languageCode.value,
   languages: EXHIBITION_LANGUAGES.map(({ code }) => code),
   isTranslating: isTranslating.value,
-  run: ({ type }: PanelContentTranslatorAction) => {
+  run: ({ type }) => {
     if (type === "batch") openBatchDialog();
     else if (type === "import") importContent();
     else openContentDialog();

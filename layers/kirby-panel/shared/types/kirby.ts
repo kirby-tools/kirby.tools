@@ -1,3 +1,9 @@
+import type {
+  PanelContentTranslatorDropdownButtonProps,
+  PanelCopilotButtonProps,
+  PanelSeoAuditButtonProps,
+} from "./plugins";
+
 export type PanelDropdownOption =
   | {
       text?: string;
@@ -27,14 +33,20 @@ export interface PanelViewButtonProps {
 export type PanelPageStatus = "draft" | "unlisted" | "listed";
 
 /** A plugin's view button, with the props its blueprint or state sets. */
-export type PanelPluginViewButton = {
-  plugin: "copilot" | "content-translator" | "seo-audit";
-} & Record<string, unknown>;
+export type PanelPluginViewButton =
+  | ({ plugin: "copilot" } & PanelCopilotButtonProps)
+  | ({
+      plugin: "content-translator";
+    } & PanelContentTranslatorDropdownButtonProps)
+  | ({ plugin: "seo-audit" } & PanelSeoAuditButtonProps);
 
+// `plugin?: never` keeps Kirby's own button props off a plugin's entry.
 export type PanelViewButton =
-  | PanelViewButtonProps
-  | { component: string; props: object }
-  | { status: PanelPageStatus }
+  | ((
+      | PanelViewButtonProps
+      | { component: string; props: object }
+      | { status: PanelPageStatus }
+    ) & { plugin?: never })
   | PanelPluginViewButton
   | "-";
 
