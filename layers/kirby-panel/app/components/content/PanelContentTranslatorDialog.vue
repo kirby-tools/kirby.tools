@@ -6,10 +6,10 @@ const props = withDefaults(
     /** The site's languages, the default language first. */
     languages?: readonly { code: string; name: string }[];
     /** Whether both DeepL and Copilot are set up, so the editor picks one. */
-    strategies?: boolean;
+    hasStrategyChoice?: boolean;
     strategyName?: "deepl" | "ai";
     /** The models the `cascade` option translates along, e.g. "4 pages". */
-    cascade?: string;
+    cascadeModels?: string;
     autofocus?: boolean;
   }>(),
   {
@@ -19,7 +19,7 @@ const props = withDefaults(
       { code: "es", name: "Español" },
       { code: "fr", name: "Français" },
     ],
-    strategies: true,
+    hasStrategyChoice: true,
     strategyName: "ai",
   },
 );
@@ -46,8 +46,8 @@ const defaultLanguage = computed(() => props.languages[0]!);
 const secondaryLanguages = computed(() => props.languages.slice(1));
 const cascadeHelp = computed(
   () =>
-    props.cascade &&
-    `${props.cascade} will also be translated and saved directly.`,
+    props.cascadeModels &&
+    `${props.cascadeModels} will also be translated and saved directly.`,
 );
 
 const fields = computed(() => ({
@@ -69,14 +69,14 @@ const fields = computed(() => ({
         },
       }
     : cascadeHelp.value && { help: { type: "info", text: cascadeHelp.value } }),
-  ...(props.strategies && { strategyName: STRATEGY_FIELD }),
+  ...(props.hasStrategyChoice && { strategyName: STRATEGY_FIELD }),
 }));
 
 const value = computed(() => ({
   ...(props.batch && {
     languages: secondaryLanguages.value.map(({ code }) => code),
   }),
-  ...(props.strategies && { strategyName: props.strategyName }),
+  ...(props.hasStrategyChoice && { strategyName: props.strategyName }),
 }));
 </script>
 

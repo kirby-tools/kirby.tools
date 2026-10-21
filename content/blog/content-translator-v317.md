@@ -51,8 +51,8 @@ languages:
     name: Deutsch
   - code: fr
     name: Français
-strategies: false
-cascade: 4 pages
+hasStrategyChoice: false
+cascadeModels: 4 pages
 ---
 ::
 :::
