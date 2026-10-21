@@ -45,8 +45,8 @@ export default defineNuxtModule({
     addPlugin(resolve("../../runtime/plugin"));
 
     nuxt.hook("prepare:types", ({ tsConfig }) => {
-      delete tsConfig.compilerOptions?.paths["#kirby-panel"];
-      delete tsConfig.compilerOptions?.paths["#kirby-panel/*"];
+      delete tsConfig.compilerOptions?.paths?.["#kirby-panel"];
+      delete tsConfig.compilerOptions?.paths?.["#kirby-panel/*"];
     });
   },
 });

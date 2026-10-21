@@ -75,6 +75,10 @@ const buttons = computed(() =>
     },
   ].filter(Boolean),
 );
+
+function submit() {
+  if (values.value) emit("submit", values.value);
+}
 </script>
 
 <template>
@@ -83,7 +87,7 @@ const buttons = computed(() =>
     class="panel-dialog k-dialog"
     :data-size="size"
     method="dialog"
-    @submit.prevent="values && emit('submit', values)"
+    @submit.prevent="submit"
   >
     <slot name="header" />
 
