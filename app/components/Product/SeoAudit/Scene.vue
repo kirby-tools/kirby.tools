@@ -4,15 +4,14 @@ const ANALYSIS_DURATION = 800;
 const isOnSocialCard = inject(socialCardKey, false);
 const reducedMotion = usePreferredReducedMotion();
 const page = useExhibitionPage();
-const autoplay = useSceneAutoplay("seo-audit", [{ click: "SEO Audit" }]);
-const { cursor } = autoplay;
 const {
-  isOpen: isDialogOpen,
+  cursor,
+  isDialogOpen,
   openCount,
-  hasReaderOpened: hasReaderOpenedDialog,
-  open: openDialog,
-  close: closeDialog,
-} = useSceneDialog(autoplay);
+  hasReaderOpenedDialog,
+  openDialog,
+  closeDialog,
+} = useScene("seo-audit", page, [{ click: "SEO Audit" }]);
 const { isPending: isAnalyzing, start: startAnalysis } = useTimeoutFn(
   openDialog,
   ANALYSIS_DURATION,

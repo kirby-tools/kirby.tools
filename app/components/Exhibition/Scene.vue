@@ -8,6 +8,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
+  cancel: [];
   discard: [];
   save: [];
   closeNotification: [];
@@ -37,6 +38,7 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       crop === 'hero' && '[&_.panel-mock-stage]:h-120',
       (crop || isFramed) && '[&_.panel-mock-stage]:overflow-clip',
     ]"
+    @cancel="emit('cancel')"
   >
     <PanelViewHeader
       :title="content.title"

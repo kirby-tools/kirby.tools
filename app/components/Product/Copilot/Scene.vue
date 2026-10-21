@@ -5,7 +5,18 @@ const isInert = inject(panelMockInertKey, false);
 // ones. A still Scene generates nothing and keeps both.
 const page = useExhibitionPage(isInert ? {} : { text: [], description: "" });
 const typedLength = ref(0);
-const autoplay = useSceneAutoplay("copilot", [
+const {
+  cursor,
+  isPending,
+  notification,
+  openNotification,
+  closeNotification,
+  isDialogOpen,
+  openCount,
+  hasReaderOpenedDialog,
+  closeDialog,
+  restart,
+} = useScene("copilot", page, [
   { click: "Copilot" },
   { run: typePrompt },
   { click: "Fields" },
@@ -13,19 +24,6 @@ const autoplay = useSceneAutoplay("copilot", [
   { click: "Description" },
   { click: "Generate" },
 ]);
-const { cursor, isPending } = autoplay;
-const {
-  isOpen: isDialogOpen,
-  openCount,
-  hasReaderOpened: hasReaderOpenedDialog,
-  open: openDialog,
-  close: closeDialog,
-} = useSceneDialog(autoplay);
-const {
-  notification,
-  open: openNotification,
-  close: closeNotification,
-} = usePanelNotification();
 const {
   isGenerating,
   generate,
@@ -50,10 +48,8 @@ const viewButton = computed<PanelViewButton>(() => ({
 }));
 
 function openPromptDialog() {
-  closeNotification();
   abortGeneration();
-  page.reset();
-  openDialog();
+  restart();
 }
 
 function submit(value: { selectedFieldNames: string[] }) {

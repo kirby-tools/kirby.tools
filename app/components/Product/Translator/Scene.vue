@@ -2,26 +2,24 @@
 import type { ExhibitionLanguageCode } from "~/utils/exhibition";
 
 const page = useExhibitionPage();
-const autoplay = useSceneAutoplay("content-translator", [
+const {
+  cursor,
+  notification,
+  openNotification,
+  closeNotification,
+  isDialogOpen,
+  openCount,
+  hasReaderOpenedDialog,
+  openDialog,
+  closeDialog,
+  restart,
+} = useScene("content-translator", page, [
   { click: "Translator" },
   { click: "EN → All Languages" },
   { click: "Translate" },
 ]);
-const { cursor } = autoplay;
-const {
-  isOpen: isDialogOpen,
-  openCount,
-  hasReaderOpened: hasReaderOpenedDialog,
-  open: openDialog,
-  close: closeDialog,
-} = useSceneDialog(autoplay);
 const { languageCode } = page;
 const reducedMotion = usePreferredReducedMotion();
-const {
-  notification,
-  open: openNotification,
-  close: closeNotification,
-} = usePanelNotification();
 const {
   isTranslating: isBatchTranslating,
   translate: translateBatch,
@@ -51,11 +49,9 @@ const viewButton = computed<PanelViewButton>(() => ({
 }));
 
 function openBatchDialog() {
-  closeNotification();
   stopBatchTranslation();
-  page.reset();
   isBatchDialog.value = true;
-  openDialog();
+  restart();
 }
 
 function openContentDialog() {

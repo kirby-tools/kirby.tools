@@ -12,8 +12,6 @@ const STEP_DWELL = 400;
 export type SceneStep =
   { click: string } | { run: (signal: AbortSignal) => Promise<void> };
 
-export type SceneAutoplay = ReturnType<typeof useSceneAutoplay>;
-
 // Plays the Scene's steps with a drawn cursor, once the Stage has been in view
 // long enough and the reader has not acted. A Stage that leaves the view
 // pauses the steps, and they resume where they stopped.
