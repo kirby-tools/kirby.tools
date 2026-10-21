@@ -46,7 +46,7 @@ const reducedMotion = usePreferredReducedMotion();
 const hasReaderActed = useReaderInput(root);
 const {
   cursor,
-  moveTo,
+  click,
   fadeOut,
   clear: clearCursor,
 } = useMockCursor("copilot", hasReaderActed);
@@ -152,12 +152,8 @@ function followLinkByReader() {
 // reader has acted or scrolled away by then.
 async function save(signal: AbortSignal) {
   await sleep(REVIEW_DWELL, signal);
-  const stage = panel.value?.querySelector<HTMLElement>(".panel-mock-stage");
-  const button = stage && findStageTarget(stage, "Save");
-  if (activeTab.value !== "panel" || !isVisible.value || !stage || !button)
-    return;
-  if (!(await moveTo(stage, button, signal))) return;
-  clickStageTarget(button);
+  if (activeTab.value !== "panel" || !isVisible.value) return;
+  if (!(await click(panel.value, "Save", signal))) return;
   fadeOut(0.8);
 }
 

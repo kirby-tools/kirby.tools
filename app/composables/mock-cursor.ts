@@ -31,7 +31,20 @@ export function useMockCursor(
     if (value) fadeOut();
   });
 
-  /** Moves the cursor onto `target` and resolves with whether it got there before the reader acted or `signal` aborted. */
+  /** Moves the cursor onto the button or label that reads `text` on the Stage within `container` and clicks it, resolving with whether it got there before the reader acted or `signal` aborted. */
+  async function click(
+    container: HTMLElement | null | undefined,
+    text: string,
+    signal: AbortSignal,
+  ) {
+    const stage = container?.querySelector<HTMLElement>(".panel-mock-stage");
+    const target = stage && findStageTarget(stage, text);
+    if (!stage || !target || !(await moveTo(stage, target, signal)))
+      return false;
+    clickStageTarget(target);
+    return true;
+  }
+
   async function moveTo(
     stage: HTMLElement,
     target: HTMLElement,
@@ -68,11 +81,11 @@ export function useMockCursor(
 
   onScopeDispose(() => animation?.stop());
 
-  return { cursor, moveTo, fadeOut, clear };
+  return { cursor, click, fadeOut, clear };
 }
 
 /** Finds the Stage's button or label that reads `text` and that the reader could click: a dialog inerts the view behind it. */
-export function findStageTarget(stage: HTMLElement, text: string) {
+function findStageTarget(stage: HTMLElement, text: string) {
   return [...stage.querySelectorAll<HTMLElement>("button, label")].find(
     (element) =>
       !element.closest("[inert]") && element.textContent?.trim() === text,
@@ -80,7 +93,7 @@ export function findStageTarget(stage: HTMLElement, text: string) {
 }
 
 /** Clicks a target the cursor has reached; a label's own click would move the focus to its control. */
-export function clickStageTarget(target: HTMLElement) {
+function clickStageTarget(target: HTMLElement) {
   const control = target instanceof HTMLLabelElement ? target.control : null;
   (control ?? target).click();
 }

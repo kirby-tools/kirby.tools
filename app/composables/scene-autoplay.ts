@@ -28,7 +28,7 @@ export function useSceneAutoplay(
   const reducedMotion = usePreferredReducedMotion();
   const documentVisibility = useDocumentVisibility();
   const hasReaderActed = useReaderInput(scene);
-  const { cursor, moveTo, fadeOut } = useMockCursor(productId, hasReaderActed);
+  const { cursor, click, fadeOut } = useMockCursor(productId, hasReaderActed);
   const hasFinished = ref(false);
   const stepIndex = ref(0);
   let controller: AbortController | undefined;
@@ -82,7 +82,11 @@ export function useSceneAutoplay(
       while (stepIndex.value < steps.length) {
         const step = steps[stepIndex.value]!;
         if ("run" in step) await step.run(signal);
-        else if (!(await click(step, signal)) && !signal.aborted) break;
+        else if (
+          !(await click(scene.value, step.click, signal)) &&
+          !signal.aborted
+        )
+          break;
         if (signal.aborted) return;
 
         stepIndex.value++;
@@ -95,15 +99,6 @@ export function useSceneAutoplay(
     }
 
     hasFinished.value = true;
-  }
-
-  async function click(step: { click: string }, signal: AbortSignal) {
-    const stage = scene.value?.querySelector<HTMLElement>(".panel-mock-stage");
-    const target = stage && findStageTarget(stage, step.click);
-    if (!stage || !target || !(await moveTo(stage, target, signal)))
-      return false;
-    clickStageTarget(target);
-    return true;
   }
 
   // Hands the focus back to where the reader left it, or drops it if that
