@@ -14,11 +14,11 @@ import { extensions } from "#panel-mock/extensions";
 
 withDefaults(
   defineProps<{
-    theme?: "light" | "dark" | "auto";
+    theme?: "light" | "dark" | "system";
     label?: string;
-    dialogAlign?: "start" | "end";
+    dialogAlign?: "end";
   }>(),
-  { theme: "auto" },
+  { theme: "system" },
 );
 
 const emit = defineEmits<{ cancel: [] }>();
@@ -106,7 +106,7 @@ const isFramed = inject(panelMockFramedKey, false);
 /* Kirby only ever declares `color-scheme: dark`, because a Panel sits in a
    document that is otherwise light. Here the page around it may be either. */
 .panel-mock:has(.k-panel[data-theme="light"]),
-:root:not(.dark) .panel-mock:has(.k-panel[data-theme="auto"]) {
+:root:not(.dark) .panel-mock:has(.k-panel[data-theme="system"]) {
   color-scheme: light;
 }
 
@@ -134,10 +134,6 @@ const isFramed = inject(panelMockFramedKey, false);
 
 .panel-mock .panel-mock-portal > * {
   margin: auto;
-}
-
-.panel-mock .panel-mock-portal[data-align="start"] > * {
-  margin-top: 0;
 }
 
 .panel-mock .panel-mock-portal[data-align="end"] > * {

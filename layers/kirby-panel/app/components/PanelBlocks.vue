@@ -66,69 +66,62 @@ function update(index: number, fields: Partial<PanelBlock>) {
         v-for="(block, index) in renderedBlocks"
         :key="index"
         class="k-block-container"
-        :class="[
-          `k-block-container-fieldset-${block.type}`,
-          `k-block-container-type-${block.type}`,
-        ]"
+        :class="`k-block-container-type-${block.type}`"
         :data-selected="selectedIndex === index"
         tabindex="0"
         @focusin="selectedIndex = index"
       >
-        <div class="k-block" :class="`k-block-type-${block.type}`">
-          <div
-            v-if="block.type === 'heading'"
-            class="k-block-type-heading-input"
-            :data-level="block.level ?? 'h2'"
-          >
-            <!-- Kirby's heading answers Enter by adding a block or splitting
-                 itself, never with a line break; the list adds no block. -->
-            <PanelWriter
-              :value="block.text"
-              :placeholder="translate('field.blocks.heading.placeholder')"
-              inline
-              @input="update(index, { text: $event })"
-              @keydown.enter.exact.prevent
-            />
-            <k-input
-              :empty="false"
-              :options="HEADING_LEVEL_OPTIONS"
-              :value="block.level ?? 'h2'"
-              type="select"
-              class="k-block-type-heading-level"
-              @input="selectLevel(index, $event)"
-            />
-          </div>
-
-          <div
-            v-else-if="block.type === 'quote'"
-            class="k-block-type-quote-editor"
-          >
-            <PanelWriter
-              :value="block.text"
-              :placeholder="translate('field.blocks.quote.text.placeholder')"
-              inline
-              class="k-block-type-quote-text"
-              @input="update(index, { text: $event })"
-            />
-            <PanelWriter
-              :value="block.citation"
-              :placeholder="
-                translate('field.blocks.quote.citation.placeholder')
-              "
-              inline
-              class="k-block-type-quote-citation"
-              @input="update(index, { citation: $event })"
-            />
-          </div>
-
+        <div
+          v-if="block.type === 'heading'"
+          class="k-block-type-heading-input"
+          :data-level="block.level ?? 'h2'"
+        >
+          <!-- Kirby's heading answers Enter by adding a block or splitting
+               itself, never with a line break; the list adds no block. -->
           <PanelWriter
-            v-else
             :value="block.text"
-            :placeholder="translate('field.blocks.text.placeholder')"
-            class="k-block-type-text-input"
+            :placeholder="translate('field.blocks.heading.placeholder')"
+            inline
             @input="update(index, { text: $event })"
+            @keydown.enter.exact.prevent
+          />
+          <k-input
+            :empty="false"
+            :options="HEADING_LEVEL_OPTIONS"
+            :value="block.level ?? 'h2'"
+            type="select"
+            class="k-block-type-heading-level"
+            @input="selectLevel(index, $event)"
           />
         </div>
+
+        <div
+          v-else-if="block.type === 'quote'"
+          class="k-block-type-quote-editor"
+        >
+          <PanelWriter
+            :value="block.text"
+            :placeholder="translate('field.blocks.quote.text.placeholder')"
+            inline
+            class="k-block-type-quote-text"
+            @input="update(index, { text: $event })"
+          />
+          <PanelWriter
+            :value="block.citation"
+            :placeholder="translate('field.blocks.quote.citation.placeholder')"
+            inline
+            class="k-block-type-quote-citation"
+            @input="update(index, { citation: $event })"
+          />
+        </div>
+
+        <PanelWriter
+          v-else
+          :value="block.text"
+          :placeholder="translate('field.blocks.text.placeholder')"
+          class="k-block-type-text-input"
+          @input="update(index, { text: $event })"
+        />
       </div>
     </div>
 

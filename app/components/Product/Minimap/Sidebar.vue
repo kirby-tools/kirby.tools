@@ -7,7 +7,7 @@
         :value="EXHIBITION_PAGE.text"
       />
 
-      <PanelField label="Description" name="description">
+      <PanelField label="Description" name="description" type="textarea">
         <PanelInput
           :value="EXHIBITION_PAGE.description"
           :buttons="EXHIBITION_DESCRIPTION_BUTTONS"
@@ -20,7 +20,7 @@
     </PanelFieldset>
 
     <template #sidebar>
-      <PanelMinimapSidebar :fields="MINIMAP_FIELDS" />
+      <PanelMinimapSidebar :fields="minimapFields(EXHIBITION_PAGE.text)" />
     </template>
   </PanelMock>
 </template>

@@ -1,18 +1,14 @@
 <script setup lang="ts">
 import { translate } from "#panel-mock/translate";
 
-const props = withDefaults(
-  defineProps<{
-    label?: string;
-    aspectRatio?: string;
-    /**
-     * Device preview selected at first, which the plugin holds in its own
-     * state.
-     */
-    devicePreview?: Device;
-  }>(),
-  { label: "Live Preview" },
-);
+const props = defineProps<{
+  aspectRatio?: string;
+  /**
+   * Device preview selected at first, which the plugin holds in its own
+   * state.
+   */
+  devicePreview?: Device;
+}>();
 
 const DEVICE_VIEWPORT_PRESETS = {
   mobile: { width: 390, icon: "mobile", title: "Mobile" },
@@ -58,7 +54,7 @@ function setDevicePreview(device: Device) {
 </script>
 
 <template>
-  <k-section :label="label" class="panel-live-preview-section">
+  <k-section label="Live Preview" class="panel-live-preview-section">
     <template #options>
       <div class="flex items-center gap-[var(--spacing-2)]">
         <k-button-group layout="collapsed">
@@ -106,3 +102,12 @@ function setDevicePreview(device: Device) {
     </div>
   </k-section>
 </template>
+
+<style>
+/* A section always has a body in the Panel, so Kirby leaves the gap its header
+   reserves for one unconditionally. A Mock that stages the header alone
+   would sit off-center on the stage. */
+.panel-mock .panel-live-preview-section > .k-section-header:last-child {
+  margin-bottom: 0;
+}
+</style>

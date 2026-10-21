@@ -1,21 +1,32 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    label?: string;
-    name?: string;
-    type?: PanelFieldType;
-    width?: string;
-  }>(),
-  { type: "textarea" },
-);
+const props = defineProps<{
+  label?: string;
+  name?: string;
+  type: PanelFieldType;
+  width?: string;
+  hasDiff?: boolean;
+}>();
 
 const id = useId();
+const value = shallowRef<string>();
 
-provide(
-  panelFieldTypeKey,
-  computed(() => props.type),
+provide(panelFieldKey, {
+  id,
+  type: toRef(props, "type"),
+  value,
+});
+
+// Kirby's writer counts the text without its markup, which here is the blank
+// line between paragraphs.
+const counter = computed(
+  () =>
+    !!value.value && {
+      count: (props.type === "writer"
+        ? value.value.replaceAll("\n\n", "")
+        : value.value
+      ).length,
+    },
 );
-provide(panelFieldIdKey, id);
 </script>
 
 <template>
@@ -24,7 +35,8 @@ provide(panelFieldIdKey, id);
       :input="id"
       :label="label"
       :name="name"
-      :type="type"
+      :has-diff="hasDiff"
+      :counter="counter"
       :class="`k-${type}-field`"
     >
       <slot />

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { translate } from "#panel-mock/translate";
 import "#kirby-panel/components/Forms/Input/TextareaInput.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Toolbar/TextareaToolbar.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Forms/Writer/Toolbar.vue?vue&type=style&index=0&lang.css";
@@ -24,23 +25,26 @@ const props = defineProps<{
 const emit = defineEmits<{ input: [value: string] }>();
 
 const TEXTAREA_BUTTONS: (Record<string, unknown> | string)[] = [
-  { icon: "title", title: "Headings" },
+  { icon: "title", label: translate("toolbar.button.headings") },
   "|",
-  { icon: "bold", title: "Bold" },
-  { icon: "italic", title: "Italic" },
-  { icon: "code", title: "Code" },
+  { icon: "bold", label: translate("toolbar.button.bold") },
+  { icon: "italic", label: translate("toolbar.button.italic") },
+  { icon: "code", label: translate("toolbar.button.code") },
   "|",
-  { icon: "url", title: "Link" },
-  { icon: "email", title: "Email" },
-  { icon: "attachment", title: "File" },
+  { icon: "url", label: translate("toolbar.button.link") },
+  { icon: "email", label: translate("toolbar.button.email") },
+  { icon: "attachment", label: translate("toolbar.button.file") },
   "|",
-  { icon: "list-bullet", title: "Bullet list" },
-  { icon: "list-numbers", title: "Ordered list" },
+  { icon: "list-bullet", label: translate("toolbar.button.ul") },
+  { icon: "list-numbers", label: translate("toolbar.button.ol") },
 ];
 
-const fieldType = inject(panelFieldTypeKey);
-const fieldId = inject(panelFieldIdKey, undefined);
-const type = computed(() => props.type ?? fieldType?.value ?? "textarea");
+const field = inject(panelFieldKey, undefined);
+const type = computed(() => props.type ?? field?.type.value ?? "textarea");
+
+watchEffect(() => {
+  if (field) field.value.value = props.value;
+});
 
 /**
  * One entry per ProseMirror node: the writer stores HTML and renders a node per
@@ -101,7 +105,6 @@ function input(event: Event) {
         <k-toolbar
           v-if="toolbarButtons"
           :buttons="toolbarButtons"
-          :data-inline="false"
           class="k-writer-toolbar"
         />
       </template>
@@ -141,7 +144,7 @@ function input(event: Event) {
              so the minimum is two lines plus `--input-padding-multiline`
              above and below. -->
         <textarea
-          :id="fieldId"
+          :id="field?.id"
           ref="textarea"
           class="k-textarea-input-native field-sizing-content min-h-[calc(2lh+0.95rem)] overflow-hidden pointer-coarse:min-h-[calc(2lh+0.75rem)]"
           :placeholder="placeholder"
@@ -154,7 +157,7 @@ function input(event: Event) {
     <component
       :is="`k-${type}-input`"
       v-else
-      :id="fieldId"
+      :id="field?.id"
       :value="value"
       :placeholder="placeholder"
       @input="emit('input', $event)"

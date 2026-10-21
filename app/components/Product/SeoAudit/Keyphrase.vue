@@ -20,13 +20,13 @@ const KEYPHRASE_RESULTS: PanelSeoAuditResults = {
       <PanelField label="Focus Keyphrase" name="keyphrase" type="text">
         <PanelInput value="large-format photography" />
       </PanelField>
-      <PanelColumn>
+      <k-column>
         <PanelSection>
           <PanelBox theme="passive">
             <PanelSeoAuditResult :results="KEYPHRASE_RESULTS" />
           </PanelBox>
         </PanelSection>
-      </PanelColumn>
+      </k-column>
     </PanelFieldset>
   </PanelMock>
 </template>

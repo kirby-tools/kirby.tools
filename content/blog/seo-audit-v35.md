@@ -16,10 +16,8 @@ The analysis now reads what your form shows. Edit the intro, click the button, a
 It also opens with a light for SEO and one for readability, the same way Yoast sums up a post. Each light sums up its half of the results, so you know which half needs work before you read a single one. The list of checks is still there, but the verdict comes first.
 
 :::::panel-mock
-::::panel-dialog{size="large"}
-:::panel-seo-audit-result
+::::panel-seo-audit-report-dialog
 ---
-isDialog: true
 ratings:
   seo:
     rating: ok
@@ -46,7 +44,6 @@ results:
 version: changes
 timestamp: 1789551600000
 ---
-:::
 ::::
 :::::
 
@@ -59,19 +56,12 @@ Every analysis leaves a rating behind, per page and language. The view button sh
 ---
 title: Our Studio
 buttons:
-  - text: SEO Audit
-    icon: seo-audit-analyze
-    theme: positive-icon
-    responsive: true
-    badge:
-      theme: negative
-      text: "!"
-  - icon: window
-  - icon: cog
-    dropdown: true
-  - text: Public
-    icon: status-listed
-    theme: positive-icon
+  - plugin: seo-audit
+    ratings:
+      seo:
+        rating: bad
+    isStale: true
+  - status: listed
 ---
 :::
 ::::

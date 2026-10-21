@@ -33,6 +33,26 @@ export interface PanelContentTranslatorLanguageCoverage {
   incompletePageCount: number;
 }
 
+/** The blueprint options and the view's language the plugin derives its actions from. */
+export interface PanelContentTranslatorOptions {
+  /** The language the view shows. */
+  language?: string;
+  /** The site's language codes, the default language first. */
+  languages?: string[];
+  import?: boolean;
+  importFrom?: "all";
+  batch?: boolean;
+}
+
+export interface PanelContentTranslatorAction {
+  type: "import" | "translate" | "batch";
+  text: string;
+  icon: string;
+  disabled: boolean;
+  /** The language an import copies from, where the editor picks one. */
+  from?: string;
+}
+
 export interface PanelContentTranslatorTreeEntry {
   label: string;
   icon?: string;

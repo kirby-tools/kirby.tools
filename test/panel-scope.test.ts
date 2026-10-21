@@ -38,11 +38,11 @@ describe("scopeStylesheet", () => {
     expect(css).toContain("--spacing-1");
   });
 
-  it("gives the dark rule an `auto` twin that follows the site's color mode", () => {
+  it("gives the dark rule a `system` twin that follows the site's color mode", () => {
     const css = scope("styles/config.css");
 
     expect(css).toContain(`${SCOPE}:has(.k-panel[data-theme="dark"])`);
-    expect(css).toContain(`.dark ${SCOPE}:has(.k-panel[data-theme="auto"])`);
+    expect(css).toContain(`.dark ${SCOPE}:has(.k-panel[data-theme="system"])`);
   });
 
   it("drops the declarations that need a document", () => {

@@ -1,11 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   results: PanelSeoAuditResults;
-  ratings?: PanelSeoAuditRatings;
-  /** A result inside the report dialog, the only place the plugin puts a heading above it. */
   isDialog?: boolean;
-  version?: PanelSeoAuditContentVersion;
-  timestamp?: number;
 }>();
 
 const RATING_LABEL: Record<PanelSeoAuditRating, string> = {
@@ -20,14 +16,6 @@ const RATING_BADGE_COLOR_MAP: Partial<Record<PanelSeoAuditRating, string>> = {
   ok: "orange",
   bad: "red",
 };
-
-const heading = computed(() => {
-  const { seo, readability } = props.results;
-  if (seo.length > 0 && readability.length > 0) {
-    return "SEO & Readability Scores";
-  }
-  return seo.length > 0 ? "SEO Scores" : "Readability Scores";
-});
 
 const replaceTrailingExclamation = (text: string) => text.replace(/!$/, ".");
 
@@ -45,24 +33,7 @@ const groups = computed(() => {
 
 <template>
   <div class="panel-seo-audit-result">
-    <div
-      v-if="isDialog"
-      class="mb-[var(--spacing-6)] flex items-start justify-between"
-    >
-      <k-text>
-        <h2>{{ heading }}</h2>
-        <PanelSeoAuditReportRatings
-          v-if="ratings"
-          :ratings="ratings"
-          class="mt-[var(--spacing-3)]"
-        />
-      </k-text>
-    </div>
-    <PanelSeoAuditReportRatings
-      v-else-if="ratings"
-      :ratings="ratings"
-      class="mb-[var(--spacing-3)]"
-    />
+    <slot name="header" />
 
     <k-text
       class="pb-[var(--spacing-2)] [&>div+div]:mt-[var(--spacing-4)]"
@@ -114,11 +85,6 @@ const groups = computed(() => {
       </div>
     </k-text>
 
-    <p
-      v-if="timestamp"
-      class="mt-[var(--spacing-4)] text-[color:var(--color-text-dimmed)]"
-    >
-      <PanelSeoAuditReportMeta :version="version" :timestamp="timestamp" />
-    </p>
+    <slot name="footer" />
   </div>
 </template>

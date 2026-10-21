@@ -1,4 +1,4 @@
-import type { ProductId } from "#shared/products";
+import { translate } from "#panel-mock/translate";
 
 // #region Exhibition
 export interface ExhibitionPageContent {
@@ -154,10 +154,10 @@ export const EXHIBITION_SITE = {
 
 // A shorter toolbar than Kirby's default, which overflows the sidebar column.
 export const EXHIBITION_DESCRIPTION_BUTTONS = [
-  { icon: "title", title: "Headings" },
-  { icon: "bold", title: "Bold" },
-  { icon: "italic", title: "Italic" },
-  { icon: "url", title: "Link" },
+  { icon: "title", label: translate("toolbar.button.headings") },
+  { icon: "bold", label: translate("toolbar.button.bold") },
+  { icon: "italic", label: translate("toolbar.button.italic") },
+  { icon: "url", label: translate("toolbar.button.link") },
 ];
 
 export function kirbyViewButtons(
@@ -175,8 +175,14 @@ export function kirbyViewButtons(
     ...(languageCode
       ? [
           {
-            component: "PanelLanguagesDropdown",
+            component: "k-languages-dropdown",
+            // What Kirby's `LanguagesButton` passes, with the options its
+            // dropdown route would load.
             props: {
+              icon: "translate",
+              responsive: "text",
+              size: "sm",
+              variant: "filled",
               text: languageCode.toUpperCase(),
               options: [
                 toOption(EXHIBITION_DEFAULT_LANGUAGE),
@@ -187,28 +193,10 @@ export function kirbyViewButtons(
           },
         ]
       : []),
-    {
-      text: "Unlisted",
-      title: "Status: Unlisted",
-      icon: "status-unlisted",
-      theme: "info-icon",
-      responsive: true,
-    },
+    { status: "unlisted" },
   ];
 }
 
-// Each plugin's view button as it renders by default, with its English label.
-export const PLUGIN_VIEW_BUTTONS = {
-  copilot: { label: "Copilot", icon: "sparkling", theme: "notice-icon" },
-  "content-translator": {
-    label: "Translator",
-    icon: "content-translator-global",
-    theme: "notice-icon",
-  },
-  "seo-audit": { label: "SEO Audit", theme: "positive-icon" },
-} satisfies Partial<
-  Record<ProductId, { label: string; icon?: string; theme: string }>
->;
 // #endregion
 
 // #region Copilot
@@ -238,78 +226,6 @@ export const COPILOT_SUGGESTION =
 // #endregion
 
 // #region Content Translator
-export const TRANSLATOR_BATCH_TRANSLATION_TEXT = "EN → All Languages";
-
-// The plugin's items under its default config.
-export function translatorDropdownOptions(
-  languageCode: ExhibitionLanguageCode,
-  actions?: {
-    isDisabled: boolean;
-    translateBatch: () => void;
-    importContent: () => void;
-    translateContent: () => void;
-  },
-): PanelDropdownOption[] {
-  if (languageCode === EXHIBITION_DEFAULT_LANGUAGE.code) {
-    return [
-      {
-        icon: "content-translator-global",
-        text: TRANSLATOR_BATCH_TRANSLATION_TEXT,
-        disabled: actions?.isDisabled,
-        click: actions?.translateBatch,
-      },
-    ];
-  }
-
-  return [
-    {
-      icon: "import",
-      text: "Import",
-      disabled: actions?.isDisabled,
-      click: actions?.importContent,
-    },
-    "-",
-    {
-      icon: "translate",
-      text: `Translate → ${languageCode.toUpperCase()}`,
-      disabled: actions?.isDisabled,
-      click: actions?.translateContent,
-    },
-  ];
-}
-
-export const TRANSLATOR_DIALOG_FIELDS = {
-  languages: {
-    type: "checkboxes",
-    label: "Translate to",
-    options: SECONDARY_LANGUAGES.map(({ code, name }) => ({
-      value: code,
-      text: name,
-    })),
-    help: "Content from English will be translated and saved to all selected languages. This may take a few seconds.",
-  },
-  strategyName: {
-    type: "toggles",
-    label: "Translate with",
-    labels: true,
-    grow: true,
-    options: [
-      { value: "deepl", text: "DeepL", icon: "translate" },
-      { value: "ai", text: "ChatGPT", icon: "content-translator-openai" },
-    ],
-  },
-};
-
-export const TRANSLATOR_DIALOG_VALUE = {
-  languages: SECONDARY_LANGUAGES.map(({ code }) => code),
-  strategyName: "ai",
-};
-
-export const TRANSLATOR_DIALOG_SUBMIT_BUTTON = {
-  icon: "translate",
-  text: "Translate",
-};
-
 const TRANSLATOR_COVERAGE = {
   de: { percentage: 100, incompletePageCount: 0 },
   es: { percentage: 21, incompletePageCount: 15 },
@@ -440,19 +356,27 @@ const MINIMAP_BLOCK_ICONS: Record<PanelBlock["type"], string> = {
   quote: "quote",
 };
 
-export const MINIMAP_FIELDS: PanelMinimapField[] = [
-  {
-    label: "Text",
-    required: true,
-    isActive: true,
-    blocks: EXHIBITION_PAGE.text.map((block, index) => ({
-      icon: MINIMAP_BLOCK_ICONS[block.type],
-      text: block.text.slice(0, 50),
-      // The blocks the Crop leaves in view.
-      isActive: index < 3,
-    })),
-  },
-  { label: "Description", required: true },
-  { label: "Dates" },
-];
+export function minimapFields(blocks: PanelBlock[]): PanelMinimapField[] {
+  return [
+    {
+      label: "Text",
+      required: true,
+      isActive: true,
+      blocks: blocks.map((block, index) => ({
+        icon: MINIMAP_BLOCK_ICONS[block.type],
+        // The plugin reads the plain text of a block, a quote's citation when
+        // it has none, and cuts it at 50 characters.
+        text: stripTags(block.text || block.citation || "").slice(0, 50),
+        // The blocks the Crop leaves in view.
+        isActive: index < 3,
+      })),
+    },
+    { label: "Description", required: true },
+    { label: "Dates" },
+  ];
+}
+
+function stripTags(html: string) {
+  return html.replace(/<[^>]*>/g, "");
+}
 // #endregion

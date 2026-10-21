@@ -9,6 +9,7 @@ defineProps<{
    */
   title?: string;
   description?: string;
+  searchConsoleUrl?: string;
 }>();
 </script>
 
@@ -45,6 +46,15 @@ defineProps<{
       {{ description }}
     </p>
   </div>
+
+  <k-button-group v-if="searchConsoleUrl" class="mt-2 w-full">
+    <k-button
+      :link="searchConsoleUrl"
+      icon="open"
+      target="_blank"
+      text="Google Search Console"
+    />
+  </k-button-group>
 </template>
 
 <style>

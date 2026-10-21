@@ -58,7 +58,7 @@ function isTopLevel(rule: Rule) {
 }
 
 const PANEL_DARK = '.k-panel[data-theme="dark"]';
-const PANEL_AUTO = '.k-panel[data-theme="auto"]';
+const PANEL_SYSTEM = '.k-panel[data-theme="system"]';
 
 /**
  * Inlines Kirby's relative `@import`s. Vite resolves them inside its own CSS
@@ -105,7 +105,7 @@ export function scopeStylesheet(css: string, file: string) {
       const scoped = scopeSelector(selector);
 
       return scoped.includes(PANEL_DARK)
-        ? [scoped, `.dark ${scoped.replace(PANEL_DARK, PANEL_AUTO)}`]
+        ? [scoped, `.dark ${scoped.replace(PANEL_DARK, PANEL_SYSTEM)}`]
         : [scoped];
     });
   });

@@ -6,7 +6,7 @@ const isInert = inject(panelMockInertKey, false);
 const page = useExhibitionPage(isInert ? {} : { text: [], description: "" });
 const typedLength = ref(0);
 const autoplay = useSceneAutoplay("copilot", [
-  { click: PLUGIN_VIEW_BUTTONS.copilot.label },
+  { click: "Copilot" },
   { run: typePrompt },
   { click: "Fields" },
   { click: "Text" },
@@ -43,13 +43,10 @@ const preview = computed(() =>
 watch(page.languageCode, abortGeneration);
 
 const viewButton = computed<PanelViewButton>(() => ({
-  component: "PanelCopilotButton",
-  props: {
-    ...PLUGIN_VIEW_BUTTONS.copilot,
-    isGenerating: isGenerating.value,
-    click: openPromptDialog,
-    abort: abortGeneration,
-  },
+  plugin: "copilot",
+  isGenerating: isGenerating.value,
+  click: openPromptDialog,
+  abort: abortGeneration,
 }));
 
 function openPromptDialog() {
@@ -78,17 +75,11 @@ async function typePrompt(signal: AbortSignal) {
     :key="openCount"
     :page="page"
     :view-button="viewButton"
+    :notification="notification"
     :cursor="cursor"
     @cancel="closeDialog"
+    @close-notification="closeNotification"
   >
-    <template #notification>
-      <PanelNotification
-        v-if="notification"
-        v-bind="notification"
-        @click="closeNotification"
-      />
-    </template>
-
     <template v-if="isDialogOpen" #dialog>
       <!-- The plugin clears the picked fields on every open, so only the dialog
            open on load shows them picked. -->

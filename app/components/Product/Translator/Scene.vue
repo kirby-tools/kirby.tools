@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import type { ExhibitionLanguageCode } from "~/utils/exhibition";
 
-// Translating the current language asks only for the strategy.
-const CONTENT_DIALOG_FIELDS = {
-  strategyName: TRANSLATOR_DIALOG_FIELDS.strategyName,
-};
-
 const page = useExhibitionPage();
 const autoplay = useSceneAutoplay("content-translator", [
-  { click: PLUGIN_VIEW_BUTTONS["content-translator"].label },
-  { click: TRANSLATOR_BATCH_TRANSLATION_TEXT },
-  { click: TRANSLATOR_DIALOG_SUBMIT_BUTTON.text },
+  { click: "Translator" },
+  { click: "EN → All Languages" },
+  { click: "Translate" },
 ]);
 const { cursor } = autoplay;
 const {
@@ -44,17 +39,14 @@ const isTranslating = computed(
 );
 
 const viewButton = computed<PanelViewButton>(() => ({
-  component: "PanelContentTranslatorDropdownButton",
-  props: {
-    label: PLUGIN_VIEW_BUTTONS["content-translator"].label,
-    theme: PLUGIN_VIEW_BUTTONS["content-translator"].theme,
-    isTranslating: isTranslating.value,
-    options: translatorDropdownOptions(languageCode.value, {
-      isDisabled: isTranslating.value,
-      translateBatch: openBatchDialog,
-      importContent,
-      translateContent: openContentDialog,
-    }),
+  plugin: "content-translator",
+  language: languageCode.value,
+  languages: EXHIBITION_LANGUAGES.map(({ code }) => code),
+  isTranslating: isTranslating.value,
+  run: ({ type }: PanelContentTranslatorAction) => {
+    if (type === "batch") openBatchDialog();
+    else if (type === "import") importContent();
+    else openContentDialog();
   },
 }));
 
@@ -71,9 +63,10 @@ function openContentDialog() {
   openDialog();
 }
 
-function submit(value: typeof TRANSLATOR_DIALOG_VALUE) {
+function submit(value: { languages?: string[] }) {
   closeDialog();
-  if (isBatchDialog.value) translateBatch(value.languages);
+  if (isBatchDialog.value)
+    translateBatch(value.languages as ExhibitionLanguageCode[]);
   else translateContent();
 }
 
@@ -101,7 +94,11 @@ function translateContent() {
 function completeContentTranslation() {
   // The plugin writes nothing once the editor has switched the language.
   if (languageCode.value !== targetLanguageCode) {
-    closeNotification();
+    openNotification({
+      text: "You left the view or switched the language before the translation finished. Nothing was changed.",
+      icon: "alert",
+      theme: "negative",
+    });
     return;
   }
 
@@ -121,27 +118,16 @@ function fieldsWithoutTitle(code: ExhibitionLanguageCode) {
     :key="openCount"
     :page="page"
     :view-button="viewButton"
+    :notification="notification"
     :cursor="cursor"
     @cancel="closeDialog"
+    @close-notification="closeNotification"
   >
-    <template #notification>
-      <PanelNotification
-        v-if="notification"
-        v-bind="notification"
-        @click="closeNotification"
-      />
-    </template>
-
     <template v-if="isDialogOpen" #dialog>
-      <PanelDialog
-        size="medium"
+      <PanelContentTranslatorDialog
+        :batch="isBatchDialog"
+        :languages="EXHIBITION_LANGUAGES"
         :autofocus="hasReaderOpenedDialog"
-        :fields="
-          isBatchDialog ? TRANSLATOR_DIALOG_FIELDS : CONTENT_DIALOG_FIELDS
-        "
-        :value="TRANSLATOR_DIALOG_VALUE"
-        cancel-button
-        :submit-button="TRANSLATOR_DIALOG_SUBMIT_BUTTON"
         @cancel="closeDialog"
         @submit="submit"
       />

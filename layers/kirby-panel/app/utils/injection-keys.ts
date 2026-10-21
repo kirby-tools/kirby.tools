@@ -1,11 +1,11 @@
 import type { InjectionKey, Ref } from "vue";
 
-export const panelFieldTypeKey: InjectionKey<Ref<PanelFieldType | undefined>> =
-  Symbol("kirby-panel.field-type");
-
-export const panelFieldIdKey: InjectionKey<string> = Symbol(
-  "kirby-panel.field-id",
-);
+/** The field a `PanelInput` sits in, which reads back the value for its counter. */
+export const panelFieldKey: InjectionKey<{
+  id: string;
+  type: Ref<PanelFieldType>;
+  value: Ref<string | undefined>;
+}> = Symbol("kirby-panel.field");
 
 /** A host's claim that its Mock is there to be read, not used. */
 export const panelMockInertKey: InjectionKey<boolean> = Symbol(

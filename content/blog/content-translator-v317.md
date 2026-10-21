@@ -41,27 +41,18 @@ The map replaces Kirby's default buttons, so it names each one to keep. From the
 Before anything is translated, the dialog counts what comes along:
 
 :::panel-mock
-::panel-dialog
+::panel-content-translator-dialog
 ---
-size: medium
-cancelButton: true
-submitButton:
-  icon: translate
-  text: Translate
-fields:
-  languages:
-    type: checkboxes
-    label: Translate to
-    options:
-      - value: de
-        text: Deutsch
-      - value: fr
-        text: Français
-    help: Content from English will be translated and saved to all selected languages. This may take a few seconds. 4 pages will also be translated and saved directly.
-value:
-  languages:
-    - de
-    - fr
+batch: true
+languages:
+  - code: en
+    name: English
+  - code: de
+    name: Deutsch
+  - code: fr
+    name: Français
+strategies: false
+cascade: 4 pages
 ---
 ::
 :::

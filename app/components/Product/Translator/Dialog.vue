@@ -1,11 +1,5 @@
 <template>
   <PanelMock>
-    <PanelDialog
-      size="medium"
-      :fields="TRANSLATOR_DIALOG_FIELDS"
-      :value="TRANSLATOR_DIALOG_VALUE"
-      cancel-button
-      :submit-button="TRANSLATOR_DIALOG_SUBMIT_BUTTON"
-    />
+    <PanelContentTranslatorDialog batch :languages="EXHIBITION_LANGUAGES" />
   </PanelMock>
 </template>

@@ -38,9 +38,20 @@ export function useExhibitionPage(
     ...changes.value[languageCode.value],
   }));
 
-  const hasDiff = computed(
-    () => JSON.stringify(content.value) !== JSON.stringify(savedContent.value),
+  // Like Kirby's `$panel.content.diff()`: the fields whose changes differ from
+  // the saved content.
+  const diff = computed(() =>
+    Object.fromEntries(
+      Object.entries(content.value).filter(
+        ([name, value]) =>
+          JSON.stringify(value) !==
+          JSON.stringify(
+            savedContent.value[name as keyof ExhibitionPageContent],
+          ),
+      ),
+    ),
   );
+  const hasDiff = computed(() => Object.keys(diff.value).length > 0);
 
   /** Writes `fields` into the changes of `code`, the language the view shows unless given. */
   function update(
@@ -76,8 +87,8 @@ export function useExhibitionPage(
     ];
   }
 
+  /** Restores the Exhibition's content in every language, but stays in the language the view shows. */
   function reset() {
-    languageCode.value = EXHIBITION_DEFAULT_LANGUAGE.code;
     translatedLanguageCodes.value = TRANSLATED_LANGUAGE_CODES;
     changes.value = {};
     saves.value = {};
@@ -86,6 +97,7 @@ export function useExhibitionPage(
   return {
     languageCode,
     content,
+    diff,
     hasDiff,
     update,
     save,

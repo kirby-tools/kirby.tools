@@ -1,25 +1,18 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    value: number;
-    size?: number;
-    strokeWidth?: number;
-  }>(),
-  { size: 64, strokeWidth: 4 },
-);
+const props = defineProps<{ value: number }>();
 
-const radius = computed(() => (props.size - props.strokeWidth) / 2);
-const circumference = computed(() => 2 * Math.PI * radius.value);
-const dashOffset = computed(
-  () => circumference.value * (1 - props.value / 100),
-);
-const center = computed(() => props.size / 2);
+const SIZE = 64;
+const STROKE_WIDTH = 4;
+const RADIUS = (SIZE - STROKE_WIDTH) / 2;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+const dashOffset = computed(() => CIRCUMFERENCE * (1 - props.value / 100));
 </script>
 
 <template>
   <svg
-    :width="size"
-    :height="size"
+    :width="SIZE"
+    :height="SIZE"
     role="progressbar"
     :aria-valuenow="value"
     aria-valuemin="0"
@@ -28,21 +21,21 @@ const center = computed(() => props.size / 2);
   >
     <circle
       class="panel-content-translator-ring-track"
-      :cx="center"
-      :cy="center"
-      :r="radius"
+      :cx="SIZE / 2"
+      :cy="SIZE / 2"
+      :r="RADIUS"
       fill="none"
-      :stroke-width="strokeWidth"
+      :stroke-width="STROKE_WIDTH"
     />
     <circle
       class="panel-content-translator-ring-fill"
-      :cx="center"
-      :cy="center"
-      :r="radius"
+      :cx="SIZE / 2"
+      :cy="SIZE / 2"
+      :r="RADIUS"
       fill="none"
-      :stroke-width="strokeWidth"
+      :stroke-width="STROKE_WIDTH"
       stroke-linecap="round"
-      :stroke-dasharray="circumference"
+      :stroke-dasharray="CIRCUMFERENCE"
       :stroke-dashoffset="dashOffset"
     />
   </svg>

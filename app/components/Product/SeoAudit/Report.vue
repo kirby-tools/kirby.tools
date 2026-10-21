@@ -30,14 +30,11 @@ const RESULTS: PanelSeoAuditResults = {
 
 <template>
   <PanelMock label="SEO Audit">
-    <PanelDialog size="large">
-      <PanelSeoAuditResult
-        is-dialog
-        :ratings="RATINGS"
-        :results="RESULTS"
-        version="changes"
-        :timestamp="SEO_REPORT_TIMESTAMP"
-      />
-    </PanelDialog>
+    <PanelSeoAuditReportDialog
+      :ratings="RATINGS"
+      :results="RESULTS"
+      version="changes"
+      :timestamp="SEO_REPORT_TIMESTAMP"
+    />
   </PanelMock>
 </template>

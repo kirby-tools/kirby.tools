@@ -6,6 +6,7 @@ defineProps<{
   name?: string;
   label?: string;
   value?: PanelBlock[];
+  hasDiff?: boolean;
 }>();
 
 const emit = defineEmits<{ input: [value: PanelBlock[]] }>();
@@ -17,7 +18,7 @@ const emit = defineEmits<{ input: [value: PanelBlock[]] }>();
       :label="label"
       :input="false"
       :name="name"
-      type="blocks"
+      :has-diff="hasDiff"
       class="k-blocks-field"
     >
       <template #options>

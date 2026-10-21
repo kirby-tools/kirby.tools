@@ -19,7 +19,6 @@ defineProps<{
       :help="help"
       :input="false"
       :name="name"
-      type="layout"
       class="k-layout-field"
     >
       <template #options>
@@ -35,11 +34,13 @@ defineProps<{
       </template>
 
       <div v-if="value?.length" class="k-layouts">
+        <!-- Kirby's look for a layout without its toolbar, which no Mock
+             stages. -->
         <section
           v-for="(layout, index) in value"
           :key="index"
+          data-disabled="true"
           class="k-layout"
-          tabindex="0"
         >
           <k-grid class="k-layout-columns">
             <div
@@ -47,15 +48,10 @@ defineProps<{
               :key="columnIndex"
               :style="{ '--width': column.width }"
               class="k-column k-layout-column"
-              tabindex="0"
             >
               <PanelBlocks :value="column.blocks" />
             </div>
           </k-grid>
-          <nav class="k-layout-toolbar">
-            <k-sort-handle />
-            <k-button class="k-layout-toolbar-button" icon="angle-down" />
-          </nav>
         </section>
       </div>
       <k-empty v-else icon="dashboard" class="k-layout-empty">

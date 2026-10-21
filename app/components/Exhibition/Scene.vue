@@ -2,13 +2,19 @@
 const props = defineProps<{
   page: ExhibitionPage;
   viewButton?: PanelViewButton;
+  notification?: PanelNotificationProps;
   crop?: "hero";
   cursor?: MockCursor;
 }>();
 
-const emit = defineEmits<{ discard: []; save: [] }>();
+const emit = defineEmits<{
+  discard: [];
+  save: [];
+  closeNotification: [];
+}>();
 
-const { languageCode, content, hasDiff, update } = props.page;
+const { languageCode, content, diff, hasDiff, update, save, discard } =
+  props.page;
 const isInert = inject(panelMockInertKey, false);
 // A host that frames the Scene sets its height, which crops the Stage too.
 const isFramed = inject(panelMockFramedKey, false);
@@ -36,37 +42,46 @@ const viewButtons = computed<PanelViewButton[]>(() => {
       :title="content.title"
       :buttons="viewButtons"
       :has-diff="hasDiff"
-      @discard="emit('discard')"
-      @save="emit('save')"
+      @discard="
+        discard();
+        emit('discard');
+      "
+      @save="
+        save();
+        emit('save');
+      "
     />
 
     <PanelModelForm>
-      <PanelColumn width="2/3">
+      <k-column width="2/3">
         <PanelFieldset>
-          <PanelColumn v-if="$slots.main">
+          <k-column v-if="$slots.main">
             <slot name="main" />
-          </PanelColumn>
+          </k-column>
 
           <PanelBlocksField
             :key="languageCode"
             name="text"
             label="Text"
+            :has-diff="'text' in diff"
             :value="content.text"
             @input="update({ text: $event })"
           />
         </PanelFieldset>
-      </PanelColumn>
+      </k-column>
 
-      <PanelColumn width="1/3">
+      <k-column width="1/3">
         <PanelFieldset>
-          <PanelColumn v-if="$slots.aside">
+          <k-column v-if="$slots.aside">
             <slot name="aside" />
-          </PanelColumn>
+          </k-column>
 
           <PanelField
             :key="`description-${languageCode}`"
             label="Description"
             name="description"
+            type="textarea"
+            :has-diff="'description' in diff"
           >
             <PanelInput
               :value="content.description"
@@ -80,6 +95,7 @@ const viewButtons = computed<PanelViewButton[]>(() => {
             label="Dates"
             name="dates"
             type="text"
+            :has-diff="'dates' in diff"
           >
             <PanelInput
               :value="content.dates"
@@ -87,10 +103,14 @@ const viewButtons = computed<PanelViewButton[]>(() => {
             />
           </PanelField>
         </PanelFieldset>
-      </PanelColumn>
+      </k-column>
     </PanelModelForm>
 
-    <slot name="notification" />
+    <PanelNotification
+      v-if="notification"
+      v-bind="notification"
+      @click="emit('closeNotification')"
+    />
 
     <ExhibitionCursor v-if="cursor" v-bind="cursor" />
 

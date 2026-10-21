@@ -22,10 +22,7 @@ const LINK_DWELL = 2000;
 const REVIEW_DWELL = 1600;
 // Copilot's button, as the site has the plugin; its prompt dialog is the
 // Copilot Scene's to show.
-const VIEW_BUTTON: PanelViewButton = {
-  component: "PanelCopilotButton",
-  props: { ...PLUGIN_VIEW_BUTTONS.copilot, click: () => {}, abort: () => {} },
-};
+const VIEW_BUTTON: PanelViewButton = { plugin: "copilot" };
 
 const activeTab = ref<string>(props.start);
 const hasOpenedClaude = ref(props.start === "claude");
@@ -164,21 +161,12 @@ async function save(signal: AbortSignal) {
   fadeOut(0.8);
 }
 
-function saveChanges() {
-  page.save();
-  closeNotification();
-}
-
-function discardChanges() {
-  page.discard();
-  closeNotification();
-}
-
 // Returns to the start tab; the conversation plays again once Claude's tab
 // shows.
 function replay() {
   clearCursor();
   page.reset();
+  page.languageCode.value = EXHIBITION_DEFAULT_LANGUAGE.code;
   hasAgentChange.value = false;
   hasSeenChange.value = false;
   hasReaderActed.value = false;
@@ -211,18 +199,12 @@ function replay() {
           v-else
           :page="page"
           :view-button="VIEW_BUTTON"
+          :notification="notification"
           :cursor="cursor"
-          @save="saveChanges"
-          @discard="discardChanges"
-        >
-          <template #notification>
-            <PanelNotification
-              v-if="notification"
-              v-bind="notification"
-              @click="closeNotification"
-            />
-          </template>
-        </ExhibitionScene>
+          @save="closeNotification"
+          @discard="closeNotification"
+          @close-notification="closeNotification"
+        />
       </div>
     </template>
 

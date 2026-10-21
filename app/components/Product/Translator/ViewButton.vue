@@ -1,12 +1,10 @@
 <script setup lang="ts">
 const VIEW_BUTTONS: PanelViewButton[] = [
   {
-    text: PLUGIN_VIEW_BUTTONS["content-translator"].label,
-    icon: PLUGIN_VIEW_BUTTONS["content-translator"].icon,
-    theme: PLUGIN_VIEW_BUTTONS["content-translator"].theme,
-    responsive: true,
-    options: translatorDropdownOptions("de"),
-    alignX: "start",
+    plugin: "content-translator",
+    language: "de",
+    languages: EXHIBITION_LANGUAGES.map(({ code }) => code),
+    open: true,
   },
   ...kirbyViewButtons("de"),
 ];

@@ -1,4 +1,7 @@
 import Empty from "#kirby-panel/components/Collection/Empty.vue";
+import DialogBody from "#kirby-panel/components/Dialogs/Elements/Body.vue";
+import DialogButtons from "#kirby-panel/components/Dialogs/Elements/Buttons.vue";
+import DialogFooter from "#kirby-panel/components/Dialogs/Elements/Footer.vue";
 import Dropdown from "#kirby-panel/components/Dropdowns/Dropdown.vue";
 import DropdownItem from "#kirby-panel/components/Dropdowns/DropdownItem.vue";
 import OptionsDropdown from "#kirby-panel/components/Dropdowns/OptionsDropdown.vue";
@@ -7,9 +10,11 @@ import Field from "#kirby-panel/components/Forms/Field.vue";
 import CheckboxesField from "#kirby-panel/components/Forms/Field/CheckboxesField.vue";
 import EmailField from "#kirby-panel/components/Forms/Field/EmailField.vue";
 import InfoField from "#kirby-panel/components/Forms/Field/InfoField.vue";
+import StructureField from "#kirby-panel/components/Forms/Field/StructureField.vue";
 import TextField from "#kirby-panel/components/Forms/Field/TextField.vue";
 import TogglesField from "#kirby-panel/components/Forms/Field/TogglesField.vue";
 import Fieldset from "#kirby-panel/components/Forms/Fieldset.vue";
+import FormControls from "#kirby-panel/components/Forms/FormControls.vue";
 import Input from "#kirby-panel/components/Forms/Input.vue";
 import CheckboxesInput from "#kirby-panel/components/Forms/Input/CheckboxesInput.vue";
 import ChoiceInput from "#kirby-panel/components/Forms/Input/ChoiceInput.vue";
@@ -31,6 +36,7 @@ import IconFrame from "#kirby-panel/components/Layout/Frame/IconFrame.vue";
 import ImageFrame from "#kirby-panel/components/Layout/Frame/ImageFrame.vue";
 import Grid from "#kirby-panel/components/Layout/Grid.vue";
 import Header from "#kirby-panel/components/Layout/Header.vue";
+import Scrollable from "#kirby-panel/components/Layout/Scrollable.vue";
 import Section from "#kirby-panel/components/Layout/Section.vue";
 import Table from "#kirby-panel/components/Layout/Table.vue";
 import TableCell from "#kirby-panel/components/Layout/TableCell.vue";
@@ -47,8 +53,8 @@ import Label from "#kirby-panel/components/Text/Label.vue";
 import Text from "#kirby-panel/components/Text/Text.vue";
 import ViewButton from "#kirby-panel/components/View/Buttons/Button.vue";
 import ViewButtons from "#kirby-panel/components/View/Buttons/Buttons.vue";
+import LanguagesDropdown from "#kirby-panel/components/View/Buttons/LanguagesDropdown.vue";
 import Draggable from "./Draggable.vue";
-import InputValidator from "./InputValidator.vue";
 import { translate } from "./translate";
 import { withPlaceholder } from "./withPlaceholder";
 
@@ -68,6 +74,9 @@ export const components = {
   "k-column": Column,
   "k-counter": Counter,
   "k-draggable": Draggable,
+  "k-dialog-body": DialogBody,
+  "k-dialog-buttons": DialogButtons,
+  "k-dialog-footer": DialogFooter,
   "k-dropdown": Dropdown,
   "k-dropdown-item": DropdownItem,
   "k-email-field": withPlaceholder(EmailField, translate("email.placeholder")),
@@ -75,6 +84,16 @@ export const components = {
   "k-empty": Empty,
   "k-field": Field,
   "k-fieldset": Fieldset,
+  // Kirby's `discard()` asks first in a dialog, which no Mock stages.
+  "k-form-controls": {
+    ...FormControls,
+    methods: {
+      ...FormControls.methods,
+      discard(this: { $emit: (event: "discard") => void }) {
+        this.$emit("discard");
+      },
+    },
+  },
   "k-frame": Frame,
   "k-grid": Grid,
   "k-header": Header,
@@ -84,18 +103,31 @@ export const components = {
   "k-image-frame": ImageFrame,
   "k-info-field": InfoField,
   "k-input": Input,
-  "k-input-validator": InputValidator,
   "k-label": Label,
+  // Kirby loads the options from a dropdown route and reloads the view in the
+  // picked language; a Mock passes the options, each switching on its `click`.
+  "k-languages-dropdown": {
+    ...LanguagesDropdown,
+    props: { ...LanguagesDropdown.props, options: Array },
+    methods: { ...LanguagesDropdown.methods, change() {} },
+  },
   "k-link": Link,
   "k-navigate": Navigate,
   "k-options-dropdown": OptionsDropdown,
   "k-pagination": Pagination,
   "k-picklist-input": PicklistInput,
+  "k-scrollable": Scrollable,
   "k-search-input": withPlaceholder(SearchInput, `${translate("search")} …`),
   "k-section": Section,
   "k-select-input": SelectInput,
   "k-sort-handle": SortHandle,
   "k-string-input": StringInput,
+  // Kirby's `add()` fills the new row through `window.panel`, then opens a
+  // drawer, which no Mock stages.
+  "k-structure-field": {
+    ...StructureField,
+    methods: { ...StructureField.methods, add() {} },
+  },
   "k-table": Table,
   "k-table-cell": TableCell,
   "k-tag": Tag,

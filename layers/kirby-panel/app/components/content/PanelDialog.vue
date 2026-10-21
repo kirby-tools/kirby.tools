@@ -4,13 +4,11 @@ import { translate } from "#panel-mock/translate";
 // Kirby's `k-dialog` teleports into a portal the Panel owns, which puts its
 // content beside the page rather than in the Mock.
 import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.css";
-import "#kirby-panel/components/Dialogs/Elements/Body.vue?vue&type=style&index=0&lang.css";
-import "#kirby-panel/components/Dialogs/Elements/Buttons.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Fields.vue?vue&type=style&index=0&lang.css";
-import "#kirby-panel/components/Dialogs/Elements/Footer.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Layout/Overlay.vue?vue&type=style&index=0&lang.css";
 
-type DialogButton = boolean | { text?: string; icon?: string; theme?: string };
+type DialogButton =
+  boolean | string | { text?: string; icon?: string; theme?: string };
 
 const props = withDefaults(
   defineProps<{
@@ -26,7 +24,8 @@ const props = withDefaults(
      */
     autofocus?: boolean;
   }>(),
-  { size: "default" },
+  // `k-form-dialog`'s defaults, which every dialog with fields renders.
+  { size: "medium", cancelButton: true, submitButton: translate("save") },
 );
 
 const emit = defineEmits<{ cancel: []; submit: [value: T] }>();
@@ -56,26 +55,6 @@ onMounted(() => {
   target?.focus({ preventScroll: true });
 });
 
-const buttons = computed(() =>
-  [
-    props.cancelButton && {
-      click: () => emit("cancel"),
-      class: "k-dialog-button-cancel",
-      icon: "cancel",
-      text: translate("cancel"),
-      ...(props.cancelButton === true ? {} : props.cancelButton),
-    },
-    props.submitButton && {
-      class: "k-dialog-button-submit",
-      icon: "check",
-      text: translate("confirm"),
-      theme: "positive",
-      type: "submit",
-      ...(props.submitButton === true ? {} : props.submitButton),
-    },
-  ].filter(Boolean),
-);
-
 function submit() {
   if (values.value) emit("submit", values.value);
 }
@@ -91,7 +70,7 @@ function submit() {
   >
     <slot name="header" />
 
-    <div class="k-dialog-body">
+    <k-dialog-body v-if="fields || $slots.default">
       <k-fieldset
         v-if="fields"
         :fields="fields"
@@ -100,21 +79,21 @@ function submit() {
         @input="values = $event"
       />
       <slot />
-    </div>
+    </k-dialog-body>
 
-    <footer v-if="buttons.length" class="k-dialog-footer">
-      <k-button-group
-        :buttons="buttons"
-        variant="filled"
-        class="k-dialog-buttons"
+    <k-dialog-footer v-if="cancelButton || submitButton">
+      <k-dialog-buttons
+        :cancel-button="cancelButton"
+        :submit-button="submitButton"
+        @cancel="emit('cancel')"
       />
-    </footer>
+    </k-dialog-footer>
   </form>
 </template>
 
 <style>
 /* The dim Kirby paints in the portal it opens. Declared here rather than on
-   either box, because `Dialog.vue`'s stylesheet, imported here, is what brings
+   either box, because `Overlay.vue`'s stylesheet, imported here, is what brings
    `--overlay-color-back`. */
 .panel-mock .panel-mock-portal,
 .panel-mock .panel-mock-stage:has(> .panel-dialog) {

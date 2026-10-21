@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { translate } from "#panel-mock/translate";
-import "#kirby-panel/components/Text/Headline.vue?vue&type=style&index=0&lang.css";
 
 const props = defineProps<{
   title?: string;
@@ -10,41 +9,52 @@ const props = defineProps<{
 
 const emit = defineEmits<(event: "discard" | "save") => void>();
 
-// The buttons `k-form-controls` shows for unsaved changes, drawn here because
-// its script opens Panel dialogs a Mock lacks. Discard and Save hand their
-// click to the host, which keeps the page.
-const FORM_CONTROLS: {
-  theme: string;
-  text?: string;
-  title?: string;
-  icon: string;
-  responsive?: boolean;
-  event?: "discard" | "save";
-}[] = [
-  {
-    theme: "notice",
-    text: translate("discard"),
-    icon: "undo",
-    responsive: true,
-    event: "discard",
-  },
-  { theme: "notice", text: translate("save"), icon: "check", event: "save" },
-  { title: translate("options"), theme: "notice", icon: "dots" },
-];
+const PLUGIN_BUTTON_COMPONENTS: Record<
+  PanelPluginViewButton["plugin"],
+  string
+> = {
+  copilot: "PanelCopilotButton",
+  "content-translator": "PanelContentTranslatorDropdownButton",
+  "seo-audit": "PanelSeoAuditButton",
+};
 
 const buttons = computed(() =>
-  (props.buttons ?? []).map((button, index) =>
-    typeof button === "string"
-      ? button
-      : "component" in button
-        ? { key: index, ...button }
-        : {
-            key: index,
-            component: button.options ? "PanelViewButton" : undefined,
-            props: button,
-          },
-  ),
+  (props.buttons ?? []).map((button, index) => {
+    if (typeof button === "string") return button;
+    if ("component" in button) return { key: index, ...button };
+    if ("plugin" in button) {
+      const { plugin, ...pluginProps } = button;
+      return {
+        key: index,
+        component: PLUGIN_BUTTON_COMPONENTS[plugin],
+        props: pluginProps,
+      };
+    }
+    if ("status" in button)
+      return { key: index, props: pageStatusButton(button.status) };
+
+    // Kirby's `ViewButton` defaults `responsive` to `true`.
+    return { key: index, props: { responsive: true, ...button } };
+  }),
 );
+
+// Mirrors Kirby's `PageStatusButton` for a page whose blueprint keeps the
+// default status label.
+function pageStatusButton(status: PanelPageStatus) {
+  const text = translate(`page.status.${status}`);
+  const theme = { draft: "negative", unlisted: "info", listed: "positive" }[
+    status
+  ];
+
+  return {
+    icon: `status-${status}`,
+    style: "--icon-size: 15px",
+    text,
+    title: `${translate("page.status")}: ${text}`,
+    theme: `${theme}-icon`,
+    responsive: true,
+  };
+}
 </script>
 
 <template>
@@ -54,17 +64,11 @@ const buttons = computed(() =>
     <template #buttons>
       <k-view-buttons :buttons="buttons">
         <template v-if="hasDiff" #after>
-          <k-button-group layout="collapsed" class="k-form-controls">
-            <k-button
-              v-for="button in FORM_CONTROLS"
-              :key="button.icon"
-              v-bind="button"
-              size="sm"
-              variant="filled"
-              class="k-form-controls-button"
-              @click="button.event && emit(button.event)"
-            />
-          </k-button-group>
+          <k-form-controls
+            has-diff
+            @discard="emit('discard')"
+            @submit="emit('save')"
+          />
         </template>
       </k-view-buttons>
     </template>

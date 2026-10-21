@@ -22,24 +22,21 @@ export interface PanelViewButtonProps {
   badge?: { theme?: string; text?: string };
   /** Kirby's caret, on a button whose dropdown the Mock leaves closed. */
   dropdown?: boolean;
-  /** The options of the one dropdown a Mock shows open under the button. */
-  options?: PanelDropdownOption[];
-  /**
-   * Kirby's view buttons force `end`; a plugin that ships its own button gets
-   * `k-dropdown`'s `start`.
-   */
-  alignX?: "start" | "end";
 }
 
-export interface PanelLanguagesDropdownOption {
-  text: string;
-  code: string;
-  current?: boolean;
-  click?: () => void;
-}
+export type PanelPageStatus = "draft" | "unlisted" | "listed";
+
+/** A plugin's view button, with the props its blueprint or state sets. */
+export type PanelPluginViewButton = {
+  plugin: "copilot" | "content-translator" | "seo-audit";
+} & Record<string, unknown>;
 
 export type PanelViewButton =
-  PanelViewButtonProps | { component: string; props: object } | "-";
+  | PanelViewButtonProps
+  | { component: string; props: object }
+  | { status: PanelPageStatus }
+  | PanelPluginViewButton
+  | "-";
 
 export type PanelFieldType = "text" | "textarea" | "writer";
 

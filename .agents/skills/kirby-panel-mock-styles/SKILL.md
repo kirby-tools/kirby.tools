@@ -33,7 +33,7 @@ A class mirrored from a plugin has to mean the same on both sides, and the plugi
 
 A rule earns a block when it
 
-- reaches an element the Mock does not render – `.panel-mock .k-section-header:last-child`
+- reaches an element the Mock does not render – `.panel-mock .panel-live-preview-section > .k-section-header:last-child`
 - needs a selector no element can carry – `:has()`, an attribute selector, `@container`, a media query
 - sets a custom property – `--dialog-padding`, `--button-color-back`
 
@@ -41,7 +41,7 @@ Scope it under `.panel-mock`: Kirby's own selectors are rewritten to that prefix
 
 A Mock renders into the Stage, `.panel-mock-stage`. A rule about what the Panel would supply around a component reaches it from the Mock's own block: `.panel-mock .panel-mock-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
 
-A block that departs from Kirby names what Kirby does and why the Mock differs, the way `PanelSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a Mock cropped to the header alone would sit off-center.
+A block that departs from Kirby names what Kirby does and why the Mock differs, the way `PanelLivePreviewSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a Mock cropped to the header alone would sit off-center.
 
 ## Checking a Mock
 

@@ -38,7 +38,12 @@ function input(event: Event) {
     <slot name="toolbar" />
     <!-- Kirby's editor puts `k-text` on the ProseMirror node from
          `Editor.ts`, so it is nowhere in `WriterInput.vue` to copy. -->
-    <div class="ProseMirror k-text" contenteditable="true" @input="input">
+    <div
+      class="ProseMirror k-text"
+      contenteditable="true"
+      translate="no"
+      @input="input"
+    >
       <slot>
         <template v-if="inline">{{ value }}</template>
         <p v-else>{{ value }}</p>

@@ -39,13 +39,10 @@ const {
 
 const viewButtons = computed<PanelViewButton[]>(() => [
   {
-    component: "PanelCopilotButton",
-    props: {
-      ...PLUGIN_VIEW_BUTTONS.copilot,
-      isGenerating: isGenerating.value,
-      click: openDialog,
-      abort: abortGeneration,
-    },
+    plugin: "copilot",
+    isGenerating: isGenerating.value,
+    click: openDialog,
+    abort: abortGeneration,
   },
   ...kirbyViewButtons(),
 ]);

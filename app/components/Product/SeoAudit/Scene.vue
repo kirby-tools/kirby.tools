@@ -4,9 +4,7 @@ const ANALYSIS_DURATION = 800;
 const isOnSocialCard = inject(socialCardKey, false);
 const reducedMotion = usePreferredReducedMotion();
 const page = useExhibitionPage();
-const autoplay = useSceneAutoplay("seo-audit", [
-  { click: PLUGIN_VIEW_BUTTONS["seo-audit"].label },
-]);
+const autoplay = useSceneAutoplay("seo-audit", [{ click: "SEO Audit" }]);
 const { cursor } = autoplay;
 const {
   isOpen: isDialogOpen,
@@ -33,17 +31,25 @@ const results: PanelSeoAuditResults = isOnSocialCard
     }
   : SEO_RESULTS;
 
+// The report open on load reads the published page; a run reads the form, so
+// it reports unsaved changes once there are some.
+const report = shallowRef<{
+  version: PanelSeoAuditContentVersion;
+  timestamp: number;
+}>({ version: "latest", timestamp: SEO_REPORT_TIMESTAMP });
+
 const viewButton = computed<PanelViewButton>(() => ({
-  component: "PanelSeoAuditButton",
-  props: {
-    ...PLUGIN_VIEW_BUTTONS["seo-audit"],
-    ratings,
-    isAnalyzing: isAnalyzing.value,
-    click: analyze,
-  },
+  plugin: "seo-audit",
+  ratings,
+  isAnalyzing: isAnalyzing.value,
+  click: analyze,
 }));
 
 function analyze() {
+  report.value = {
+    version: page.hasDiff.value ? "changes" : "latest",
+    timestamp: Date.now(),
+  };
   if (reducedMotion.value === "reduce") openDialog();
   else startAnalysis();
 }
@@ -58,15 +64,13 @@ function analyze() {
     @cancel="closeDialog"
   >
     <template v-if="isDialogOpen" #dialog>
-      <PanelDialog size="large" :autofocus="hasReaderOpenedDialog">
-        <PanelSeoAuditResult
-          is-dialog
-          :ratings="ratings"
-          :results="results"
-          version="changes"
-          :timestamp="SEO_REPORT_TIMESTAMP"
-        />
-      </PanelDialog>
+      <PanelSeoAuditReportDialog
+        :autofocus="hasReaderOpenedDialog"
+        :ratings="ratings"
+        :results="results"
+        :version="report.version"
+        :timestamp="report.timestamp"
+      />
     </template>
   </ExhibitionScene>
 </template>

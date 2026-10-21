@@ -72,6 +72,17 @@ const tokens = computed(() => {
   return parts;
 });
 
+const placeholder = computed(() =>
+  props.selection
+    ? "What would you like to generate? (Selected text will be used as context.)"
+    : "What would you like to generate?",
+);
+
+// The plugin previews a prompt only once it holds a placeholder to resolve.
+const hasPlaceholders = computed(() =>
+  tokens.value.some((token) => token.type === "placeholder"),
+);
+
 // The plugin hides the history button until a prompt is stored, so it belongs
 // only to a Mock that opens its dropdown.
 const tools = computed(() =>
@@ -134,6 +145,8 @@ function submit() {
 <template>
   <PanelDialog
     size="large"
+    :cancel-button="false"
+    :submit-button="false"
     class="panel-copilot-prompt-dialog"
     :style="dropdownSpace"
   >
@@ -156,6 +169,11 @@ function submit() {
         tabindex="-1"
         class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap outline-none"
       >
+        <span
+          v-if="!userPrompt"
+          class="text-[color:var(--color-text-dimmed)]"
+          >{{ placeholder }}</span
+        >
         <template v-for="(token, index) in tokens" :key="index">
           <!-- Above the toolbar row, which the typeahead hangs over. -->
           <span v-if="token.type === 'skill-trigger'" class="relative z-[1]"
@@ -173,7 +191,7 @@ function submit() {
       </div>
 
       <details
-        v-if="preview"
+        v-if="preview && hasPlaceholders"
         :open="previewOpen"
         class="group mx-[var(--spacing-2)] mb-[var(--spacing-2)] rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
       >
@@ -254,6 +272,7 @@ function submit() {
             icon="sparkling"
             theme="notice-icon"
             variant="filled"
+            :disabled="!userPrompt?.trim()"
             @click="submit"
           />
         </div>
@@ -269,6 +288,13 @@ function submit() {
   --dialog-rounded: var(--rounded);
 
   overflow: visible;
+}
+
+/* Copilot lifts Kirby's scroll and mask off the dialog body, which would clip
+   the licensing buttons above it and the skill suggestions below it. */
+.panel-mock .panel-copilot-prompt-dialog .k-dialog-body.k-scrollable {
+  overflow: visible;
+  mask-image: none;
 }
 
 /* Copilot drops the three tool buttons below Kirby's `sm` rather than let the

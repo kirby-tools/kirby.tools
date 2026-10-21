@@ -93,10 +93,8 @@ It's free, and it never writes to the page: the snippet comes from the form as i
 SERP Preview shows what the fields say. [SEO Audit](/seo-audit) checks what the page says: it fetches the page's preview URL, unsaved changes included, and runs the Yoast analysis and its own checks on the rendered HTML in the editor's browser. It reads the title and meta description your head snippet produced and the content the editor just wrote, so the report flags template mistakes, like a second H1, next to writing problems:
 
 :::::panel-mock
-::::panel-dialog{size="large"}
-:::panel-seo-audit-result
+::::panel-seo-audit-report-dialog
 ---
-isDialog: true
 ratings:
   seo:
     rating: ok
@@ -120,7 +118,6 @@ results:
 version: changes
 timestamp: 1791446400000
 ---
-:::
 ::::
 :::::
 
