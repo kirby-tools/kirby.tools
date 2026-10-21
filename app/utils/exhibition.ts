@@ -226,19 +226,6 @@ export const COPILOT_SUGGESTION =
 // #endregion
 
 // #region Content Translator
-const TRANSLATOR_COVERAGE = {
-  de: { percentage: 100, incompletePageCount: 0 },
-  es: { percentage: 21, incompletePageCount: 15 },
-  fr: { percentage: 64, incompletePageCount: 5 },
-};
-
-export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
-  SECONDARY_LANGUAGES.map(({ code, name }) => ({
-    code,
-    name,
-    ...TRANSLATOR_COVERAGE[code],
-  }));
-
 export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   {
     label: "Exhibitions",
@@ -315,6 +302,32 @@ export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   },
   { label: "About", icon: "info", missingLanguages: [SPANISH] },
 ];
+
+// The plugin counts translated fields, which the tree doesn't show.
+const TRANSLATOR_PERCENTAGES = { de: 100, es: 21, fr: 64 };
+
+export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
+  SECONDARY_LANGUAGES.map(({ code, name }) => ({
+    code,
+    name,
+    percentage: TRANSLATOR_PERCENTAGES[code],
+    incompletePageCount: countIncompletePages(TRANSLATOR_COVERAGE_TREE, code),
+  }));
+
+function countIncompletePages(
+  entries: PanelContentTranslatorTreeEntry[],
+  code: ExhibitionLanguageCode,
+): number {
+  return entries.reduce(
+    (count, entry) =>
+      count +
+      Number(
+        entry.missingLanguages.some((language) => language.code === code),
+      ) +
+      countIncompletePages(entry.children ?? [], code),
+    0,
+  );
+}
 // #endregion
 
 // #region SEO Audit
