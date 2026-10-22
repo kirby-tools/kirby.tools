@@ -36,14 +36,14 @@ Moving to a new major plugin version that adds significant features or Kirby com
 
 ## Current Status
 
-Every commercial Kirby Tools plugin has a version for Kirby 4 and one for Kirby 5:
+The current version of every commercial Kirby Tools plugin runs on Kirby 4 and Kirby 5. The older majors run on Kirby 4 only:
 
 | Plugin                   | Kirby 4 Version | Kirby 5 Version |
 | ------------------------ | --------------- | --------------- |
-| Kirby Copilot            | v1              | v2, v3          |
-| Kirby SEO Audit          | v1, v2          | v2, v3          |
-| Kirby Content Translator | v2              | v3              |
-| Kirby Live Preview       | v1              | v2              |
+| Kirby Copilot            | v1, v2, v3      | v2, v3          |
+| Kirby SEO Audit          | v1, v2, v3      | v2, v3          |
+| Kirby Content Translator | v2, v3          | v3              |
+| Kirby Live Preview       | v1, v2          | v2              |
 
 ::callout{icon="i-ri-information-line" color="info"}
 Gen 2 licenses already include **Copilot v3** and **SEO Audit v3** – no upgrade needed.
