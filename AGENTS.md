@@ -2,7 +2,7 @@
 
 Website, documentation and agent-facing surface for a set of Kirby CMS plugins.
 
-Use the terms from `CONTEXT.md`. Decisions are in `docs/adr/`.
+Use the terms from `GLOSSARY.md`. Decisions are in `docs/adr/`.
 
 ## Commands
 
