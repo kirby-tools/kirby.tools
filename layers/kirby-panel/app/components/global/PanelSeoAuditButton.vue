@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PanelSeoAuditButtonProps } from "../../../shared/types/plugins";
+import type { PanelSeoAuditButtonProps } from "../../types/plugins";
 
 const props = withDefaults(defineProps<PanelSeoAuditButtonProps>(), {
   label: "SEO Audit",

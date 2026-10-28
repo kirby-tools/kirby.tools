@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PanelContentTranslatorOptions } from "../../../shared/types/plugins";
+import type { PanelContentTranslatorOptions } from "../../types/plugins";
 
 const props = withDefaults(
   defineProps<

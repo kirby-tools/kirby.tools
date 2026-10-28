@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PanelContentTranslatorDropdownButtonProps } from "../../../shared/types/plugins";
+import type { PanelContentTranslatorDropdownButtonProps } from "../../types/plugins";
 
 const props = withDefaults(
   defineProps<PanelContentTranslatorDropdownButtonProps>(),

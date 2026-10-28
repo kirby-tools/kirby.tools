@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PanelCopilotButtonProps } from "../../../shared/types/plugins";
+import type { PanelCopilotButtonProps } from "../../types/plugins";
 
 const props = withDefaults(defineProps<PanelCopilotButtonProps>(), {
   label: "Copilot",
