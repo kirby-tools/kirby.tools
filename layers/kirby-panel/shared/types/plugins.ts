@@ -114,19 +114,3 @@ export type PanelCopilotPromptDropdown =
       value?: string[];
     };
 // #endregion
-
-// #region Minimap
-export interface PanelMinimapBlock {
-  icon: string;
-  text: string;
-  /** In view while the editor scrolls. */
-  isActive?: boolean;
-}
-
-export interface PanelMinimapField {
-  label: string;
-  required?: boolean;
-  isActive?: boolean;
-  blocks?: PanelMinimapBlock[];
-}
-// #endregion

@@ -1,3 +1,4 @@
+import type { MinimapField } from "#kirby-plugin/minimap";
 import { translate } from "#panel-mock/translate";
 
 // #region Exhibition
@@ -371,7 +372,7 @@ const MINIMAP_BLOCK_ICONS: Record<PanelBlock["type"], string> = {
   quote: "quote",
 };
 
-export function minimapFields(blocks: PanelBlock[]): PanelMinimapField[] {
+export function minimapFields(blocks: PanelBlock[]): MinimapField[] {
   return [
     {
       label: "Text",
