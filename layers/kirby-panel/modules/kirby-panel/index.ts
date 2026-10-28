@@ -8,7 +8,7 @@ import {
   defineNuxtModule,
   extendViteConfig,
 } from "@nuxt/kit";
-import { kirbyAliasPlugin, kirbyCssPlugin } from "./vite";
+import { kirbyAliasPlugin, kirbyCssPlugin, PLUGIN_CSS_LAYER } from "./vite";
 
 const LOCAL_PLUGINS_ENV = "KIRBY_PANEL_LOCAL_PLUGINS";
 
@@ -43,7 +43,13 @@ export default defineNuxtModule({
     }
 
     addVitePlugin(kirbyAliasPlugin(srcDir));
-    addVitePlugin(kirbyCssPlugin([srcDir, ...plugins.map(({ dir }) => dir)]));
+    addVitePlugin(kirbyCssPlugin([srcDir]));
+    addVitePlugin(
+      kirbyCssPlugin(
+        plugins.map(({ dir }) => dir),
+        PLUGIN_CSS_LAYER,
+      ),
+    );
 
     const localDirs = plugins
       .filter(({ isLocal }) => isLocal)

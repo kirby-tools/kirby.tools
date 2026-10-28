@@ -6,11 +6,12 @@ import postcss from "postcss";
 
 export const SCOPE = ".panel-mock";
 export const CSS_LAYER = "kirby";
+export const PLUGIN_CSS_LAYER = "kirby-plugins";
 
 // The same order `app/assets/css/main.css` declares: a layer takes its place
 // from the first statement that names it, and a Panel style block reaches the
 // document ahead of the site's own stylesheet.
-const CSS_LAYER_ORDER = `@layer theme, base, components, ${CSS_LAYER}, utilities;`;
+const CSS_LAYER_ORDER = `@layer theme, base, components, ${CSS_LAYER}, ${PLUGIN_CSS_LAYER}, utilities;`;
 
 const KIRBY_ALIAS = /(["'])@\//g;
 
@@ -83,7 +84,7 @@ function inlineImports(root: postcss.Root, file: string) {
 /** Declarations that need a document: the container has neither scrollbar nor viewport. */
 const DOCUMENT_ONLY = /^(?:overflow(?:-[xy])?|min-height|height|width)$/;
 
-export function scopeStylesheet(css: string, file: string) {
+export function scopeStylesheet(css: string, file: string, layer = CSS_LAYER) {
   const root = postcss.parse(css, { from: file });
 
   inlineImports(root, file);
@@ -110,7 +111,7 @@ export function scopeStylesheet(css: string, file: string) {
     });
   });
 
-  return `${CSS_LAYER_ORDER}\n@layer ${CSS_LAYER} {\n${root.toString()}\n}\n`;
+  return `${CSS_LAYER_ORDER}\n@layer ${layer} {\n${root.toString()}\n}\n`;
 }
 
 /**
@@ -118,9 +119,14 @@ export function scopeStylesheet(css: string, file: string) {
  * `scopedDirs`. Kirby's are written for a document Kirby owns: a `*` reset,
  * `body` rules, and `:root` blocks whose `--color-*`, `--spacing-*` and
  * `--text-*` names collide with Tailwind's. A plugin's get the same prefix and
- * layer, so they rank against Kirby's rules as in the Panel.
+ * `PLUGIN_CSS_LAYER`: the Panel loads plugin CSS after its own, so a plugin rule
+ * beats a Kirby rule of the same specificity, which source order can't promise
+ * here – Nuxt puts a plugin's `index.css` ahead of Kirby's style blocks.
  */
-export function kirbyCssPlugin(scopedDirs: string[]): Plugin {
+export function kirbyCssPlugin(
+  scopedDirs: string[],
+  layer = CSS_LAYER,
+): Plugin {
   return {
     name: "kirby-panel:css",
     enforce: "pre",
@@ -129,7 +135,7 @@ export function kirbyCssPlugin(scopedDirs: string[]): Plugin {
       if (!scopedDirs.some((dir) => file.startsWith(`${dir}/`))) return;
       if (!/\.css$/.test(file) && !id.includes("type=style")) return;
 
-      return { code: scopeStylesheet(code, file), map: null };
+      return { code: scopeStylesheet(code, file, layer), map: null };
     },
   };
 }

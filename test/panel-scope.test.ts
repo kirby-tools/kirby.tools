@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import {
   CSS_LAYER,
   kirbyCssPlugin,
+  PLUGIN_CSS_LAYER,
   SCOPE,
   scopeStylesheet,
 } from "../layers/kirby-panel/modules/kirby-panel/vite";
@@ -69,6 +70,21 @@ describe("kirbyCssPlugin", () => {
       `${SCOPE} .k-serp-preview-field`,
     );
     expect(transform(code, `${dir}-x/${style}`)).toBeUndefined();
+  });
+
+  it("layers a plugin's sheet above Kirby's, as the Panel loads it after its own", () => {
+    const dir = "/site/layers/kirby-panel/plugins/seo-audit";
+    const transform = kirbyCssPlugin([dir], PLUGIN_CSS_LAYER).transform as (
+      code: string,
+      id: string,
+    ) => { code: string } | undefined;
+    const css = transform(
+      ".ksr-static { position: static; }",
+      `${dir}/index.css`,
+    )?.code;
+
+    expect(css).toContain(`${CSS_LAYER}, ${PLUGIN_CSS_LAYER}, utilities;`);
+    expect(css).toContain(`@layer ${PLUGIN_CSS_LAYER} {`);
   });
 });
 
