@@ -1,36 +1,10 @@
+import type { Rating } from "#kirby-plugin/seo-audit";
 import type { PanelDropdownOption } from "./kirby";
 
 // #region SEO Audit
-export type PanelSeoAuditCategory = "seo" | "readability";
-
-export type PanelSeoAuditRating = "good" | "ok" | "bad" | "feedback";
-
-export type PanelSeoAuditCategoryRating = "good" | "ok" | "bad" | "none";
-
-export type PanelSeoAuditContentVersion = "latest" | "changes";
-
-export interface PanelSeoAuditResultEntry {
-  rating: PanelSeoAuditRating;
-  text: string;
-}
-
-export type PanelSeoAuditResults = Record<
-  PanelSeoAuditCategory,
-  PanelSeoAuditResultEntry[]
->;
-
-/** A category without results has no score. */
-export type PanelSeoAuditRatings = Partial<
-  Record<PanelSeoAuditCategory, { rating: PanelSeoAuditCategoryRating }>
->;
-
 export interface PanelSeoAuditButtonProps {
-  label?: string;
-  theme?: string;
-  /** The last report's ratings, which the plugin keeps in its storage. */
-  ratings?: PanelSeoAuditRatings;
-  /** Whether the page was published since the last report. */
-  isStale?: boolean;
+  /** The page's stored rating, which the plugin reads from its storage. */
+  rating?: Rating;
   /** An analysis in progress, which the plugin keeps in its own state. */
   isAnalyzing?: boolean;
   /** Analyzes the page and opens the report, which the plugin does itself. */

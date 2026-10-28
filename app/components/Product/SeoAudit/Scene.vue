@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ContentVersion, Rating, Report } from "#kirby-plugin/seo-audit";
+
 const ANALYSIS_DURATION = 800;
 
 const isOnSocialCard = inject(socialCardKey, false);
@@ -19,11 +21,15 @@ const { isPending: isAnalyzing, start: startAnalysis } = useTimeoutFn(
 );
 
 // A SocialCard shows the Scene at its best: no bad results, and an ok SEO rating.
-const ratings: PanelSeoAuditRatings = isOnSocialCard
-  ? { ...SEO_RATINGS, seo: { rating: "ok" } }
+const ratings: Report["ratings"] = isOnSocialCard
+  ? { ...SEO_RATINGS, seo: { score: 70, rating: "ok" } }
   : SEO_RATINGS;
 
-const results: PanelSeoAuditResults = isOnSocialCard
+const rating: Rating = isOnSocialCard
+  ? { ...SEO_PAGE_RATING, seo: "ok", counts: { good: 2, ok: 1, bad: 0 } }
+  : SEO_PAGE_RATING;
+
+const results: Report["results"] = isOnSocialCard
   ? {
       ...SEO_RESULTS,
       seo: SEO_RESULTS.seo.filter((result) => result.rating !== "bad"),
@@ -33,13 +39,13 @@ const results: PanelSeoAuditResults = isOnSocialCard
 // The report open on load reads the published page; a run reads the form, so
 // it reports unsaved changes once there are some.
 const report = shallowRef<{
-  version: PanelSeoAuditContentVersion;
+  version: ContentVersion;
   timestamp: number;
 }>({ version: "latest", timestamp: SEO_REPORT_TIMESTAMP });
 
 const viewButton = computed<PanelViewButton>(() => ({
   plugin: "seo-audit",
-  ratings,
+  rating,
   isAnalyzing: isAnalyzing.value,
   click: analyze,
 }));

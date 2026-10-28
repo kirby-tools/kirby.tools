@@ -1,19 +1,19 @@
 <script setup lang="ts">
+import type { ContentVersion, Report } from "#kirby-plugin/seo-audit";
+import { createAuditLabels, ReportBody } from "#kirby-plugin/seo-audit";
+import { translate } from "#panel-mock/translate";
+
 const props = defineProps<{
-  results: PanelSeoAuditResults;
+  results: Report["results"];
   /** Left out with `version` and `timestamp` by a changelog of a release whose report printed none of them. */
-  ratings?: PanelSeoAuditRatings;
-  version?: PanelSeoAuditContentVersion;
+  ratings?: Report["ratings"];
+  version?: ContentVersion;
   timestamp?: number;
   autofocus?: boolean;
 }>();
 
-const heading = computed(() => {
-  const { seo, readability } = props.results;
-  if (seo.length > 0 && readability.length > 0)
-    return "SEO & Readability Scores";
-  return seo.length > 0 ? "SEO Scores" : "Readability Scores";
-});
+const labels = createAuditLabels(translate, "en");
+const timestamp = useSeoAuditTimestamp(() => props.timestamp);
 </script>
 
 <template>
@@ -22,26 +22,14 @@ const heading = computed(() => {
     :cancel-button="false"
     :submit-button="false"
     :autofocus="autofocus"
+    class="k-seo-audit-report-dialog"
   >
-    <PanelSeoAuditResult :results="results" is-dialog>
-      <template #header>
-        <div class="mb-[var(--spacing-6)] flex items-start justify-between">
-          <k-text>
-            <h2>{{ heading }}</h2>
-            <PanelSeoAuditReportRatings
-              v-if="ratings"
-              :ratings="ratings"
-              class="mt-[var(--spacing-3)]"
-            />
-          </k-text>
-        </div>
-      </template>
-
-      <template v-if="timestamp" #footer>
-        <p class="mt-[var(--spacing-4)] text-[color:var(--color-text-dimmed)]">
-          <PanelSeoAuditReportMeta :version="version" :timestamp="timestamp" />
-        </p>
-      </template>
-    </PanelSeoAuditResult>
+    <ReportBody
+      :results="results"
+      :ratings="ratings"
+      :version="version"
+      :timestamp="timestamp"
+      :labels="labels"
+    />
   </PanelDialog>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const VIEW_BUTTONS: PanelViewButton[] = [
-  { plugin: "seo-audit", ratings: SEO_RATINGS },
+  { plugin: "seo-audit", rating: SEO_PAGE_RATING },
   ...kirbyViewButtons(),
 ];
 </script>
@@ -8,6 +8,10 @@ const VIEW_BUTTONS: PanelViewButton[] = [
 <template>
   <PanelMock>
     <PanelViewHeader :title="EXHIBITION_PAGE.title" :buttons="VIEW_BUTTONS" />
-    <PanelSeoAuditSection />
+    <PanelFieldset>
+      <k-column>
+        <PanelSeoAuditField />
+      </k-column>
+    </PanelFieldset>
   </PanelMock>
 </template>

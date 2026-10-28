@@ -57,10 +57,10 @@ Every analysis leaves a rating behind, per page and language. The view button sh
 title: Our Studio
 buttons:
   - plugin: seo-audit
-    ratings:
-      seo:
-        rating: bad
-    isStale: true
+    rating:
+      seo: bad
+      timestamp: 1788252000000
+      isStale: true
   - status: listed
 ---
 :::

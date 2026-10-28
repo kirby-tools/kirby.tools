@@ -78,7 +78,7 @@ export default defineNuxtModule({
       tsConfig.include ??= [];
       for (const { dir } of plugins) {
         tsConfig.include.push(
-          `${relative(nuxt.options.buildDir, dir)}/src/panel/**/*`,
+          `${relative(nuxt.options.buildDir, dir)}/src/panel/site.ts`,
         );
       }
     });

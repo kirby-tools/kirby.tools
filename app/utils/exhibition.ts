@@ -1,4 +1,5 @@
 import type { MinimapField } from "#kirby-plugin/minimap";
+import type { Rating, Report } from "#kirby-plugin/seo-audit";
 import { translate } from "#panel-mock/translate";
 
 // #region Exhibition
@@ -334,35 +335,49 @@ function countIncompletePages(
 // #endregion
 
 // #region SEO Audit
-export const SEO_RATINGS: PanelSeoAuditRatings = {
-  seo: { rating: "bad" },
-  readability: { rating: "good" },
+export const SEO_REPORT_TIMESTAMP = Date.parse("2026-09-01T08:40Z");
+
+export const SEO_RATINGS: Report["ratings"] = {
+  seo: { score: 40, rating: "bad" },
+  readability: { score: 90, rating: "good" },
 };
 
-export const SEO_RESULTS: PanelSeoAuditResults = {
+export const SEO_RESULTS: Report["results"] = {
   seo: [
     {
+      score: 9,
       rating: "good",
       text: '<a href="https://yoa.st/34h">SEO title width</a>: Good job.',
     },
     {
+      score: 6,
       rating: "ok",
       text: '<a href="https://yoa.st/34d">Meta description length</a>: The meta description is too short (under 120 characters). Up to 156 characters are available. <a href="https://yoa.st/34e">Use the space</a>.',
     },
     {
+      score: 3,
       rating: "bad",
       text: '<a href="https://yoa.st/34f">Outbound links</a>: No outbound links appear in this page. <a href="https://yoa.st/34g">Add some</a>!',
     },
   ],
   readability: [
     {
+      score: 9,
       rating: "good",
       text: '<a href="https://yoa.st/35d">Paragraph length</a>: There are no paragraphs that are too long. Great job.',
     },
   ],
 };
 
-export const SEO_REPORT_TIMESTAMP = Date.parse("2026-09-01T08:40Z");
+/** The rating the plugin stores for the page, which the view button shows. */
+export const SEO_PAGE_RATING: Rating = {
+  seo: "bad",
+  readability: "good",
+  counts: { good: 2, ok: 1, bad: 1 },
+  version: "latest",
+  timestamp: SEO_REPORT_TIMESTAMP,
+  isStale: false,
+};
 // #endregion
 
 // #region Minimap

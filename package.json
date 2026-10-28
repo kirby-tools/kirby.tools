@@ -29,6 +29,7 @@
     "@iconify-json/ri": "^1.2.10",
     "@iconify-json/simple-icons": "^1.2.100",
     "@iconify-json/vscode-icons": "^1.2.91",
+    "@kirby-tools/licensing": "^1.0.0",
     "@nuxt/content": "^3.16.2",
     "@nuxt/image": "^2.2.0",
     "@nuxt/kit": "^4.6.2",
