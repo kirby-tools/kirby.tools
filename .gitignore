@@ -9,3 +9,4 @@ node_modules
 .env
 app/data/logo-metrics.json
 layers/kirby-panel/kirby
+layers/kirby-panel/plugins

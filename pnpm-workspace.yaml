@@ -2,6 +2,8 @@ minimumReleaseAgeExcludePrune: true
 
 minimumReleaseAgeExclude:
   - utilful@3.5.1
+  - kirby-types@2.0.0-beta.4
+  - kirbyuse@2.0.0-beta.4
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - semver@6.3.1

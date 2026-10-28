@@ -229,6 +229,12 @@ importers:
       eslint:
         specifier: ^10.13.0
         version: 10.13.0(jiti@2.7.0)(supports-color@10.2.2)
+      kirby-types:
+        specifier: ^2.0.0-beta.4
+        version: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+      kirbyuse:
+        specifier: ^2.0.0-beta.4
+        version: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       logo-soup:
         specifier: ^0.2.3
         version: 0.2.3
@@ -247,6 +253,9 @@ importers:
       nuxt-og-image:
         specifier: ^7.0.7
         version: 7.0.7(b36f637d311fa2442a4aa71e63d0c12c)
+      p-throttle:
+        specifier: ^8.1.1
+        version: 8.1.1
       playwright-core:
         specifier: ^1.64.1
         version: 1.64.1
@@ -292,6 +301,9 @@ importers:
       vitest:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      vue:
+        specifier: ^3.5.44
+        version: 3.5.44(typescript@6.0.3)
       vue-tsc:
         specifier: ^3.3.13
         version: 3.3.13(typescript@6.0.3)
@@ -4760,6 +4772,62 @@ packages:
   keyv@5.6.0:
     resolution: {integrity: sha512-CYDD3SOtsHtyXeEORYRx2qBtpDJFjRTGXUtmNEMGyzYOKj1TE3tycdlho7kA1Ufx9OYWZzg52QFBGALTirzDSw==}
 
+  kirby-types@2.0.0-beta.4:
+    resolution: {integrity: sha512-EpEUR2W7wo9qBrRb1rAUKhRox7IHhzah6y56AlM3GfWIHFsGZbIL3f3ud9Hcf5KHgA1CJy+RVK0XaUNGnfpZTg==}
+    peerDependencies:
+      dayjs: ^1.11.13
+      prosemirror-commands: ^1.7.1
+      prosemirror-inputrules: ^1.5.1
+      prosemirror-model: ^1.25.4
+      prosemirror-schema-list: ^1.5.1
+      prosemirror-state: ^1.4.4
+      prosemirror-view: ^1.41.4
+      vue: ^3.5.0
+    peerDependenciesMeta:
+      dayjs:
+        optional: true
+      prosemirror-commands:
+        optional: true
+      prosemirror-inputrules:
+        optional: true
+      prosemirror-model:
+        optional: true
+      prosemirror-schema-list:
+        optional: true
+      prosemirror-state:
+        optional: true
+      prosemirror-view:
+        optional: true
+      vue:
+        optional: true
+
+  kirbyuse@2.0.0-beta.4:
+    resolution: {integrity: sha512-NUshdJvZ6H+norwd8OPiJxu+4hsmpOq/eERdl7HSiy+zwVoK+5lmkWZv4OO5oVanSRIbeFt03ibIUDPo/nF9fQ==}
+    peerDependencies:
+      dayjs: ^1.0.0
+      prosemirror-commands: ^1.7.1
+      prosemirror-inputrules: ^1.5.1
+      prosemirror-model: ^1.25.4
+      prosemirror-schema-list: ^1.5.1
+      prosemirror-state: ^1.4.4
+      prosemirror-view: ^1.41.4
+      vue: ^3.5.0
+    peerDependenciesMeta:
+      dayjs:
+        optional: true
+      prosemirror-commands:
+        optional: true
+      prosemirror-inputrules:
+        optional: true
+      prosemirror-model:
+        optional: true
+      prosemirror-schema-list:
+        optional: true
+      prosemirror-state:
+        optional: true
+      prosemirror-view:
+        optional: true
+
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
@@ -5531,6 +5599,10 @@ packages:
   p-locate@5.0.0:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
+
+  p-throttle@8.1.1:
+    resolution: {integrity: sha512-xxWFBUyvbrQ10XC3VAr0SoXoOCKXqCX/yvbFIkBE98upphHFwjIKR6AId13ZH3jngFfF6yK43QTOtrngYAmFMA==}
+    engines: {node: '>=20'}
 
   p-timeout@6.1.4:
     resolution: {integrity: sha512-MyIV3ZA/PmyBN/ud8vV9XzwTrNtR4jFrObymZYnZqMmW0zA8Z17vnT0rBgFE/TlohB+YCHqXMgZzb3Csp49vqg==}
@@ -11885,6 +11957,28 @@ snapshots:
     dependencies:
       '@keyv/serialize': 1.1.1
 
+  kirby-types@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
+    optionalDependencies:
+      prosemirror-commands: 1.7.2
+      prosemirror-inputrules: 1.5.1
+      prosemirror-model: 1.25.12
+      prosemirror-schema-list: 1.5.1
+      prosemirror-state: 1.4.4
+      prosemirror-view: 1.42.6
+      vue: 3.5.44(typescript@6.0.3)
+
+  kirbyuse@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
+    dependencies:
+      kirby-types: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+      vue: 3.5.44(typescript@6.0.3)
+    optionalDependencies:
+      prosemirror-commands: 1.7.2
+      prosemirror-inputrules: 1.5.1
+      prosemirror-model: 1.25.12
+      prosemirror-schema-list: 1.5.1
+      prosemirror-state: 1.4.4
+      prosemirror-view: 1.42.6
+
   kleur@4.1.5: {}
 
   klona@2.0.6: {}
@@ -13183,6 +13277,8 @@ snapshots:
   p-locate@5.0.0:
     dependencies:
       p-limit: 3.1.0
+
+  p-throttle@8.1.1: {}
 
   p-timeout@6.1.4: {}
 

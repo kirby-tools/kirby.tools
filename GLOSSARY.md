@@ -29,7 +29,7 @@ One of the named color ramps the site is drawn in: Pumpkin, Orchid, Danube, Lima
 _Avoid_: Color slot, brand color, palette, hex code
 
 **Mock**:
-A live rendering of a Panel surface, assembled from Kirby's own Panel components, that stands on a page of the site where a screenshot or screencast would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts. Depending on where it stands, a Mock is interactive, looping, or still.
+A live rendering of a Panel surface, assembled from Kirby's or the Plugin's Panel components, that stands on a page of the site where a screenshot or screencast would otherwise go. A Mock is staged, not replicated: it must not misrepresent the Plugin it depicts. Depending on where it stands, a Mock is interactive, looping, or still.
 _Avoid_: Screenshot, demo, replica, figure
 
 **Interactive Mock**:

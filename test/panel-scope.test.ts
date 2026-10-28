@@ -1,16 +1,16 @@
-// Runs against the checked-out Panel source, so a Kirby upgrade that moves a
-// file or restructures a rule fails here rather than on the page.
-
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import postcss from "postcss";
 import { describe, expect, it } from "vitest";
 import {
   CSS_LAYER,
+  kirbyCssPlugin,
   SCOPE,
   scopeStylesheet,
 } from "../layers/kirby-panel/modules/kirby-panel/vite";
 
+// Runs against the checked-out Panel source, so a Kirby upgrade that moves a
+// file or restructures a rule fails here rather than on the page.
 describe("scopeStylesheet", () => {
   it.each(["styles/config.css", "styles/reset.css", "styles/utilities.css"])(
     "keeps every selector of %s inside the scope",
@@ -51,6 +51,24 @@ describe("scopeStylesheet", () => {
 
     expect(css).not.toContain("overflow-y");
     expect(css).toContain("--panel-color-back");
+  });
+});
+
+describe("kirbyCssPlugin", () => {
+  it("scopes a style block under a scoped dir but not under its sibling serp-preview-x", () => {
+    const dir = "/site/layers/kirby-panel/plugins/serp-preview";
+    const transform = kirbyCssPlugin([dir]).transform as (
+      code: string,
+      id: string,
+    ) => { code: string } | undefined;
+    const code = ".k-serp-preview-field { color: red; }";
+    const style =
+      "src/panel/components/SerpPreview.vue?vue&type=style&index=0&lang.css";
+
+    expect(transform(code, `${dir}/${style}`)?.code).toContain(
+      `${SCOPE} .k-serp-preview-field`,
+    );
+    expect(transform(code, `${dir}-x/${style}`)).toBeUndefined();
   });
 });
 

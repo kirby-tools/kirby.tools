@@ -114,18 +114,19 @@ export function scopeStylesheet(css: string, file: string) {
 }
 
 /**
- * Prefixes every top-level selector of Kirby's stylesheet with `SCOPE`. The
- * sheet is written for a document Kirby owns: a `*` reset, `body` rules, and
- * `:root` blocks whose `--color-*`, `--spacing-*` and `--text-*` names collide
- * with Tailwind's.
+ * Scopes every stylesheet and style block under `scopedDirs`. Kirby's are
+ * written for a document Kirby owns: a `*` reset, `body` rules, and `:root`
+ * blocks whose `--color-*`, `--spacing-*` and `--text-*` names collide with
+ * Tailwind's. A plugin's share the scope, so they weigh against Kirby's rules as
+ * in the Panel.
  */
-export function kirbyCssPlugin(srcDir: string): Plugin {
+export function kirbyCssPlugin(scopedDirs: string[]): Plugin {
   return {
     name: "kirby-panel:css",
     enforce: "pre",
     transform(code, id) {
       const file = id.split("?")[0]!;
-      if (!file.startsWith(srcDir)) return;
+      if (!scopedDirs.some((dir) => file.startsWith(`${dir}/`))) return;
       if (!/\.css$/.test(file) && !id.includes("type=style")) return;
 
       return { code: scopeStylesheet(code, file), map: null };
