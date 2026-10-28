@@ -3,7 +3,7 @@ import translationsJson from "../kirby/i18n/translations/en.json";
 
 const translations: Record<string, string> = {
   ...translationsJson,
-  // Copied from each plugin's `src/extensions/translations.php`, which the fetch leaves out.
+  // Keep in sync with each plugin's `src/extensions/translations.php`.
   "johannschopplich.serp-preview.label": "SERP Preview",
   "johannschopplich.serp-preview.searchConsole": "Google Search Console",
 };

@@ -1,13 +1,13 @@
 ---
 name: kirby-panel-mock-styles
-description: Building or styling a stand-in for a Kirby Panel component (`Panel*.vue` under `layers/kirby-panel/app/components/`) – what to name it, where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. The docs site's own components under `app/components/` follow Nuxt UI instead.
+description: Building or styling a stand-in for a Kirby Panel component (`Panel*.vue` under `layers/kirby-panel/app/components/`), or binding a plugin's own component in its place – what to name it, where a rule goes, how to spell it so it compiles in the plugin too, and what to check it against. The docs site's own components under `app/components/` follow Nuxt UI instead.
 ---
 
 # Panel Mock Styling
 
-A stand-in for a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes, so a prop named after the blueprint survives the swap to the plugin's own component. A prop that exists only so a Mock can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
+A stand-in for a Kirby component is `Panel<Name>`. One that renders markup a plugin ships carries the ProductId, `PanelCopilotPromptDialog`, `PanelSeoAuditResult`, and so does its hook class. Its props take their names from that same side: the prop a Kirby component declares – the current one, where Kirby has since renamed it – or the property a plugin's blueprint takes. A prop that exists only so a Mock can hold a state neither side names is spelled in prose and says why it exists, the way `PanelCopilotPromptDialog` does with `dropdown`.
 
-Once a plugin is on Vue 3, its stand-in gives way to a binding that imports the plugin's component from `#kirby-plugin/<ProductId>`, named after what the Panel registers: `PanelSerpPreviewField` for `k-serp-preview-field`. The binding hands the component the page it reads through `usePanel()` with `providePanelPage`, and the props the plugin's PHP sends by default; the plugin's strings go into `runtime/translate.ts` under the plugin's own keys. The hook class is the plugin's own – `.k-serp-preview-field` – and the binding adds none.
+Once a plugin is on Vue 3, its stand-in gives way to a binding named after what the Panel registers – `PanelSerpPreviewField` for `k-serp-preview-field` – that imports the plugin's component from `#kirby-plugin/<ProductId>`. The binding passes the page through `providePanelPage` and the props the plugin's PHP sends by default, and adds the plugin's strings to `runtime/translate.ts` under the plugin's keys. Its hook class is the plugin's own, `.k-serp-preview-field`; the binding adds none.
 
 The Mocks render Kirby's Panel from Kirby's own components, so a rule spends Kirby's tokens wherever Kirby has one. Three places it can live, in the order to try them: a class Kirby already ships, a Tailwind utility on the element the Mock renders, a `<style>` block for everything else.
 

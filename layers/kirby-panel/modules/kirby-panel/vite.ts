@@ -114,11 +114,11 @@ export function scopeStylesheet(css: string, file: string) {
 }
 
 /**
- * Scopes every stylesheet and style block under `scopedDirs`. Kirby's are
- * written for a document Kirby owns: a `*` reset, `body` rules, and `:root`
- * blocks whose `--color-*`, `--spacing-*` and `--text-*` names collide with
- * Tailwind's. A plugin's share the scope, so they weigh against Kirby's rules as
- * in the Panel.
+ * Runs `scopeStylesheet` over every stylesheet and style block under
+ * `scopedDirs`. Kirby's are written for a document Kirby owns: a `*` reset,
+ * `body` rules, and `:root` blocks whose `--color-*`, `--spacing-*` and
+ * `--text-*` names collide with Tailwind's. A plugin's get the same prefix and
+ * layer, so they rank against Kirby's rules as in the Panel.
  */
 export function kirbyCssPlugin(scopedDirs: string[]): Plugin {
   return {

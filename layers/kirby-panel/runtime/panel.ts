@@ -3,9 +3,8 @@ import { extensions } from "./extensions";
 import { translate } from "./translate";
 
 /**
- * What Kirby's components read off `$panel` while rendering and the plugins'
- * views read through `usePanel()`, with inert overlays for the clicks no Mock
- * stages.
+ * What Kirby's and the plugins' components read off the Panel while
+ * rendering, with inert overlays for the clicks no Mock stages.
  */
 export const PANEL = {
   urls: { icons: "/_kirby/icons.svg" },
@@ -18,7 +17,6 @@ export const PANEL = {
   content: { version: () => ({}) },
 };
 
-/** The cast holds while no plugin's render path calls a member `PANEL` lacks. */
 export function asPanel(panel: typeof PANEL) {
   return panel as unknown as Panel;
 }

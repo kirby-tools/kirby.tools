@@ -13,13 +13,10 @@ import { asPanel, PANEL } from "./panel";
 import { translate } from "./translate";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  // kirbyuse types these globals as Kirby's whole Panel; only the parts the
-  // components read are set.
   const globalProperties: Record<string, unknown> =
     nuxtApp.vueApp.config.globalProperties;
 
   globalProperties.$panel = PANEL;
-  // kirbyuse falls back to `window.panel`, which only Kirby's Panel sets.
   setActivePanel(asPanel(PANEL));
   globalProperties.$helper = {
     array,

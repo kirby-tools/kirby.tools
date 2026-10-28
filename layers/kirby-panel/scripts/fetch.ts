@@ -1,10 +1,5 @@
 // Kirby's repository carries no root `package.json` and its `panel` package is
-// private, so its Panel source cannot be a pnpm dependency. This script clones
-// it, and each plugin's Panel source, at the commit `kirby.json` or
-// `plugins.json` pins.
-//
-// The Kirby clone stays out of the repository: Kirby's license permits copies
-// for developing and deploying a website, not redistribution of its source.
+// private, so its Panel source cannot be a pnpm dependency.
 
 import { access, mkdir, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
@@ -39,7 +34,6 @@ for (const [id, source] of Object.entries(plugins)) {
     name: id,
     target: resolve(root, "plugins", id),
     source,
-    // `index.css` is the plugin's built UnoCSS output, which no source file holds.
     paths: ["src/panel", "/index.css"],
   });
 }
@@ -77,7 +71,6 @@ async function checkout({
     await git("init", "-q");
     await git("remote", "add", "origin", repository);
   } else {
-    // A changed `repository` in the JSON would otherwise keep fetching from the old URL.
     await git("remote", "set-url", "origin", repository);
   }
 
