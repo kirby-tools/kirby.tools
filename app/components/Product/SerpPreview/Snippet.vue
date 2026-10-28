@@ -4,14 +4,14 @@
       :title="EXHIBITION_PAGE.title"
       :buttons="kirbyViewButtons()"
     />
-    <PanelSection label="SERP Preview">
-      <PanelSerpPreviewSnippet
-        :favicon-url="EXHIBITION_SITE.faviconUrl"
-        :site-title="EXHIBITION_SITE.title"
-        :site-url="EXHIBITION_SITE.url"
-        :title="`${EXHIBITION_PAGE.title} – ${EXHIBITION_SITE.title}`"
-        :description="EXHIBITION_PAGE.description"
-      />
-    </PanelSection>
+    <PanelSerpPreviewField
+      :view-title="EXHIBITION_PAGE.title"
+      :content="EXHIBITION_PAGE"
+      :favicon-url="EXHIBITION_SITE.faviconUrl"
+      :site-title="EXHIBITION_SITE.title"
+      :site-url="EXHIBITION_URL.origin"
+      :preview-path="EXHIBITION_URL.pathname"
+      description-content-key="description"
+    />
   </PanelMock>
 </template>

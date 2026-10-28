@@ -111,24 +111,24 @@ const isWide = computed(() => props.format === "og");
 }
 
 /* Rendered larger without reflowing, so the columns keep their layout. */
-.social-card .panel-mock:has(.panel-serp-preview-snippet) {
+.social-card .panel-mock:has(.k-serp-preview-field) {
   --social-card-zoom: 1.52;
   zoom: var(--social-card-zoom);
   width: calc(100% * var(--social-card-zoom));
 }
 
-.social-card .panel-mock:has(.panel-serp-preview-snippet) .panel-mock-stage {
+.social-card .panel-mock:has(.k-serp-preview-field) .panel-mock-stage {
   overflow: hidden;
   scroll-padding-top: var(--panel-stage-inset);
 }
 
-.social-card .k-section:has(.panel-serp-preview-snippet) {
+.social-card .k-serp-preview-field {
   scroll-initial-target: nearest;
 }
 
 /* Kirby pins the header while the view scrolls; a card does not scroll, and a
    pinned header would cover a quarter of the frame. */
-.social-card .panel-mock:has(.panel-serp-preview-snippet) .k-header {
+.social-card .panel-mock:has(.k-serp-preview-field) .k-header {
   position: static;
 }
 

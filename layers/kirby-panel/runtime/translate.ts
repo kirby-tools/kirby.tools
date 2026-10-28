@@ -1,7 +1,12 @@
 import string from "#kirby-panel/helpers/string";
 import translationsJson from "../kirby/i18n/translations/en.json";
 
-const translations: Record<string, string> = translationsJson;
+const translations: Record<string, string> = {
+  ...translationsJson,
+  // Copied from each plugin's `src/extensions/translations.php`, which the fetch leaves out.
+  "johannschopplich.serp-preview.label": "SERP Preview",
+  "johannschopplich.serp-preview.searchConsole": "Google Search Console",
+};
 
 /**
  * Resolves a Panel translation key through Kirby's own `template()`, so

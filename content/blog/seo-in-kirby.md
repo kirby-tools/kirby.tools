@@ -72,19 +72,21 @@ Content Translator can translate slugs too: with [`slug: true`](/docs/content-tr
 
 The meta fields get filled in on every page, by editors who never see the `<head>`. [SERP Preview](/serp-preview) is a Panel section, and its `titleContentKey` and `descriptionContentKey` options point it at the same `metaTitle` and `metaDescription` fields. It draws the page as a Google result while the editor types, and clamps the title to one line and the description to two, as Google does:
 
-:::::panel-mock
-::::panel-section{label="SERP Preview"}
-:::panel-serp-preview-snippet
+:::panel-mock
+::panel-serp-preview-field
 ---
+viewTitle: "SEO in Kirby CMS: A Practical Guide"
+content:
+  metadescription: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need to output, and where the Panel helps editors.
 faviconUrl: /favicon.ico
 siteTitle: Kirby Tools
-siteUrl: https://kirby.tools/blog/seo-in-kirby
-title: "SEO in Kirby CMS: A Practical Guide – Kirby Tools"
-description: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need to output, and where the Panel helps editors.
+siteUrl: https://kirby.tools
+previewPath: /blog/seo-in-kirby
+titleContentKey: metatitle
+descriptionContentKey: metadescription
 ---
+::
 :::
-::::
-:::::
 
 It's free, and it never writes to the page: the snippet comes from the form as it stands, unsaved changes included.
 

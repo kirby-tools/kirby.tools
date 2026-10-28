@@ -152,6 +152,8 @@ export const EXHIBITION_SITE = {
   faviconUrl: "/img/exhibition-favicon.svg",
 };
 
+export const EXHIBITION_URL = new URL(EXHIBITION_SITE.url);
+
 // A shorter toolbar than Kirby's default, which overflows the sidebar column.
 export const EXHIBITION_DESCRIPTION_BUTTONS = [
   { icon: "title", label: translate("toolbar.button.headings") },

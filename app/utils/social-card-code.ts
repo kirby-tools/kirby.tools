@@ -1,8 +1,7 @@
 import type { ExhibitionProductId } from "#shared/exhibition";
 import type { ProductId } from "#shared/products";
 
-const exhibitionUrl = new URL(EXHIBITION_SITE.url);
-const exhibitionRequest = `GET ${exhibitionUrl.pathname}`;
+const exhibitionRequest = `GET ${EXHIBITION_URL.pathname}`;
 
 export interface SocialCardSnippet {
   label: string;
@@ -65,7 +64,7 @@ echo \\Kirby\\Data\\Json::encode([
 <meta content="summary" name="twitter:card">
 <meta content="${EXHIBITION_PAGE.title}" name="twitter:title">
 <meta content="${EXHIBITION_PAGE.description}" name="twitter:description">
-<link href="${exhibitionUrl.origin}/dist/assets/main-DiwrgTda.css" rel="stylesheet"><script src="${exhibitionUrl.origin}/dist/assets/main-BmA3xV9q.js" type="module"></script>`,
+<link href="${EXHIBITION_URL.origin}/dist/assets/main-DiwrgTda.css" rel="stylesheet"><script src="${EXHIBITION_URL.origin}/dist/assets/main-BmA3xV9q.js" type="module"></script>`,
     },
   },
 };

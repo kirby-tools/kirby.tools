@@ -6,15 +6,15 @@ const { content } = page;
 <template>
   <ExhibitionScene :page="page">
     <template #main>
-      <PanelSection label="SERP Preview">
-        <PanelSerpPreviewSnippet
-          :favicon-url="EXHIBITION_SITE.faviconUrl"
-          :site-title="EXHIBITION_SITE.title"
-          :site-url="EXHIBITION_SITE.url"
-          :title="`${content.title} – ${EXHIBITION_SITE.title}`"
-          :description="content.description"
-        />
-      </PanelSection>
+      <PanelSerpPreviewField
+        :view-title="content.title"
+        :content="content"
+        :favicon-url="EXHIBITION_SITE.faviconUrl"
+        :site-title="EXHIBITION_SITE.title"
+        :site-url="EXHIBITION_URL.origin"
+        :preview-path="EXHIBITION_URL.pathname"
+        description-content-key="description"
+      />
     </template>
   </ExhibitionScene>
 </template>
