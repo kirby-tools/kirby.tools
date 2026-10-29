@@ -16,7 +16,6 @@ export interface PanelSeoAuditButtonProps {
 // #region Content Translator
 /** The blueprint options and the view's language the plugin derives its actions from. */
 export interface PanelContentTranslatorOptions {
-  /** The language the view shows. */
   language?: string;
   /** The site's language codes, the default language first. */
   languages?: string[];

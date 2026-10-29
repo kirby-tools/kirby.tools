@@ -416,7 +416,6 @@ export const SEO_RESULTS: Report["results"] = {
   ],
 };
 
-/** The rating the plugin stores for the page, which the view button shows. */
 export const SEO_PAGE_RATING: Rating = {
   seo: "bad",
   readability: "good",
