@@ -9,7 +9,7 @@
   },
   "seo-audit": {
     "repository": "https://github.com/kirby-tools/kirby-seo-audit.git",
-    "ref": "e2245c0d6fae342547895da5bf3d2c8075baf884"
+    "ref": "4d13f5fec6fde92ff6d65487772c8bcb5fc1ece5"
   },
   "serp-preview": {
     "repository": "https://github.com/johannschopplich/kirby-serp-preview.git",
