@@ -12,6 +12,10 @@ export const PANEL = {
   direction: "ltr",
   dialog: { isLoading: false, open() {}, close() {} },
   drawer: { open() {}, close() {} },
+  api: {
+    post: () => Promise.reject(new Error("The docs have no Panel backend.")),
+  },
+  notification: { error() {} },
   t: translate,
   view: { title: "" },
   content: { version: () => ({}) },

@@ -1,3 +1,5 @@
+import type { SetupContext } from "vue";
+import { h } from "vue";
 import Empty from "#kirby-panel/components/Collection/Empty.vue";
 import DialogBody from "#kirby-panel/components/Dialogs/Elements/Body.vue";
 import DialogButtons from "#kirby-panel/components/Dialogs/Elements/Buttons.vue";
@@ -23,6 +25,7 @@ import PicklistInput from "#kirby-panel/components/Forms/Input/PicklistInput.vue
 import SearchInput from "#kirby-panel/components/Forms/Input/SearchInput.vue";
 import SelectInput from "#kirby-panel/components/Forms/Input/SelectInput.vue";
 import StringInput from "#kirby-panel/components/Forms/Input/StringInput.vue";
+import TextareaInput from "#kirby-panel/components/Forms/Input/TextareaInput.vue";
 import TextInput from "#kirby-panel/components/Forms/Input/TextInput.vue";
 import ToggleInput from "#kirby-panel/components/Forms/Input/ToggleInput.vue";
 import TogglesInput from "#kirby-panel/components/Forms/Input/TogglesInput.vue";
@@ -55,6 +58,7 @@ import ViewButton from "#kirby-panel/components/View/Buttons/Button.vue";
 import ViewButtons from "#kirby-panel/components/View/Buttons/Buttons.vue";
 import LanguagesDropdown from "#kirby-panel/components/View/Buttons/LanguagesDropdown.vue";
 import Draggable from "./Draggable.vue";
+import PicklistDropdown from "./PicklistDropdown.vue";
 import { translate } from "./translate";
 import { withPlaceholder } from "./withPlaceholder";
 
@@ -115,6 +119,13 @@ export const components = {
   "k-navigate": Navigate,
   "k-options-dropdown": OptionsDropdown,
   "k-pagination": Pagination,
+  // Kirby's `k-panel` is the whole Panel app; a Mock's stage stands in for it.
+  "k-panel-outside": {
+    setup(_props: unknown, { slots }: SetupContext) {
+      return () => h("div", { class: "k-panel-outside" }, slots.default?.());
+    },
+  },
+  "k-picklist-dropdown": PicklistDropdown,
   "k-picklist-input": PicklistInput,
   "k-scrollable": Scrollable,
   "k-search-input": withPlaceholder(SearchInput, `${translate("search")} …`),
@@ -134,6 +145,16 @@ export const components = {
   "k-text": Text,
   "k-text-field": TextField,
   "k-text-field-preview": TextFieldPreview,
+  // Kirby's `mounted` and `value` watcher run `$library.autosize`, which no
+  // Mock carries; autofocus and preselect go with them.
+  "k-textarea-input": {
+    ...TextareaInput,
+    mounted() {},
+    watch: {},
+  },
+  // Kirby resolves the toolbar even where `buttons: false` hides it, and no
+  // Mock shows one.
+  "k-textarea-toolbar": { render: () => null },
   "k-text-input": TextInput,
   "k-toggle-field-preview": ToggleFieldPreview,
   "k-toggle-input": ToggleInput,

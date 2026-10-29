@@ -1,8 +1,10 @@
 import string from "#kirby-panel/helpers/string";
+import { translations as copilotTranslations } from "#kirby-plugin/copilot";
 import translationsJson from "../kirby/i18n/translations/en.json";
 
 const translations: Record<string, string> = {
   ...translationsJson,
+  ...copilotTranslations,
   // Keep in sync with each plugin's `src/extensions/translations.php`.
   "johannschopplich.content-translator.label": "Content Translator",
   "johannschopplich.content-translator.import": "Import",

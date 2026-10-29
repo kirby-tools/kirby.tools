@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { AgentsAuthorize } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.css";
 
@@ -8,85 +9,57 @@ const props = defineProps<{
   client: { host: string };
   redirect: { label: string };
   defaultPermissions: string[];
-  /** What the agent asked for beyond the defaults. The Plugin hands its view these options already labelled in `permissions`; the Mock keeps the options itself, so it takes the values to label. */
+  /** What the agent asked for beyond the defaults, which the plugin's PHP marks in the labels it sends. */
   requestedPermissions?: string[];
 }>();
 
+// The options `ConnectionPermission::options()` sends for a role that may grant
+// every permission.
 const PERMISSIONS = [
-  {
-    value: "content:read",
-    text: "Read content",
-    info: "Pages, files, and fields you can access",
-    disabled: true,
-  },
-  {
-    value: "content:prepare",
-    text: "Prepare changes",
-    info: "New drafts and unsaved changes you review and publish",
-  },
-  {
-    value: "content:publish",
-    text: "Publish changes",
-    info: "Publish or discard unsaved changes, change a page’s status, slug, or parent, and upload files to published pages (live at once)",
-  },
-  {
-    value: "content:delete",
-    text: "Delete content",
-    info: "Delete pages and files",
-  },
+  { value: "content:read", key: "read" },
+  { value: "content:prepare", key: "prepare" },
+  { value: "content:publish", key: "publish" },
+  { value: "content:delete", key: "delete" },
 ];
 
-const options = computed(() =>
-  PERMISSIONS.map((permission) =>
-    props.requestedPermissions?.includes(permission.value)
-      ? { ...permission, text: `${permission.text} (requested by the agent)` }
-      : permission,
-  ),
-);
+const permissions = computed(() =>
+  PERMISSIONS.map(({ value, key }) => {
+    const text = translate(`johannschopplich.copilot.agents.permission.${key}`);
 
-const selectedPermissions = ref([...props.defaultPermissions]);
+    return {
+      value,
+      text: props.requestedPermissions?.includes(value)
+        ? translate("johannschopplich.copilot.agents.authorize.requested", {
+            permission: text,
+          })
+        : text,
+      info: translate(`johannschopplich.copilot.agents.permission.${key}.info`),
+      disabled: value === "content:read",
+    };
+  }),
+);
 </script>
 
 <template>
-  <div class="panel-copilot-agents-authorize-view k-dialog">
-    <k-dialog-body class="[&>*+*]:mt-[var(--spacing-6)]">
-      <k-headline tag="h1">Connect {{ client.host }} to {{ site }}?</k-headline>
-
-      <k-text>
-        <p>
-          The agent works as {{ account }}, within the permissions of your role.
-        </p>
-      </k-text>
-
-      <k-checkboxes-input
-        :options="options"
-        :value="selectedPermissions"
-        @input="selectedPermissions = $event"
-      />
-
-      <k-box
-        theme="info"
-        :text="`Afterwards, you return to ${redirect.label}.`"
-      />
-    </k-dialog-body>
-
-    <k-dialog-footer>
-      <k-button-group layout="collapsed" class="justify-end">
-        <k-button :text="translate('cancel')" variant="filled" />
-        <k-button
-          icon="check"
-          text="Connect"
-          theme="positive"
-          variant="filled"
-        />
-      </k-button-group>
-    </k-dialog-footer>
-  </div>
+  <AgentsAuthorize
+    :site="site"
+    :account="account"
+    :client="{
+      id: client.host,
+      name: client.host,
+      host: client.host,
+      isVerified: true,
+    }"
+    :redirect="{ type: 'web', label: redirect.label }"
+    :permissions="permissions"
+    :default-permissions="defaultPermissions"
+  />
 </template>
 
 <style>
-/* The stage stands in for `k-panel-outside`. */
-.panel-mock .panel-mock-stage:has(> .panel-copilot-agents-authorize-view) {
+/* Kirby centers the dialog through `.k-panel.k-panel-outside`, whose full-height
+   `k-panel` no Mock carries. */
+.panel-mock .k-copilot-agents-authorize-view {
   display: grid;
   place-items: center;
 }

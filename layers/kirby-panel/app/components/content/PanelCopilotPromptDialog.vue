@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { PromptContext } from "#kirby-plugin/copilot";
+import { PromptDialogBody } from "#kirby-plugin/copilot";
+import { translate } from "#panel-mock/translate";
 import "#kirby-panel/components/Misc/Notification.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Notification.vue?vue&type=style&index=0&lang.css";
 
@@ -23,24 +26,46 @@ const emit = defineEmits<{
   submit: [value: { selectedFieldNames: string[] }];
 }>();
 
+const LABELS = {
+  preview: translate("johannschopplich.copilot.preview"),
+  selectFiles: translate("johannschopplich.copilot.files.select"),
+  clearFiles: translate("johannschopplich.copilot.delete"),
+  insert: translate("johannschopplich.copilot.fieldPicker.insert"),
+  search: translate("johannschopplich.copilot.fieldPicker.search"),
+  selectPages: translate("johannschopplich.copilot.pages.select"),
+  notFound: translate("johannschopplich.copilot.fieldPicker.notFound"),
+  templates: translate("johannschopplich.copilot.templates"),
+  saveTemplate: translate("johannschopplich.copilot.template.saveAs"),
+  editTemplates: translate("johannschopplich.copilot.template.edit"),
+  noTemplates: translate("johannschopplich.copilot.template.empty"),
+  history: translate("johannschopplich.copilot.history"),
+  fields: translate("johannschopplich.copilot.fields"),
+  generate: translate("johannschopplich.copilot.generate"),
+};
+
+type InsertMode = NonNullable<PromptContext["insertMode"]>;
+
+const INSERT_OPTIONS: { value: InsertMode; text: string }[] = [
+  { value: "replace", text: translate("johannschopplich.copilot.replace") },
+  { value: "append", text: translate("johannschopplich.copilot.append") },
+];
+
+// The plugin's toolbar buttons in their order, each with the icon it shows.
 const TOOLS = [
   { under: "placeholders", icon: "copilot-text-snippet" },
   { under: "templates", icon: "bookmark" },
   { under: "history", icon: "clock" },
 ] as const;
 
-const INSERT_OPTIONS = [
-  { value: "replace", text: "Replace" },
-  { value: "append", text: "Append" },
-];
-
 // The bare trigger comes last, so a complete reference wins the alternation.
 const TOKEN = /(\{[\w.]+\})|(@page:\/\/\S+)|(@skill:\/\/[\w-]+)|(@skill:\/\/)/g;
 
-const isFieldsDropdownOpen = ref(props.dropdown?.under === "fields");
+provide(panelPicklistDropdownOpenKey, props.dropdown?.under === "fields");
+
 const selectedFieldNames = ref(
   props.dropdown?.under === "fields" ? [...(props.dropdown.value ?? [])] : [],
 );
+const insertOption = ref<InsertMode>("replace");
 const {
   notification,
   open: openNotification,
@@ -74,8 +99,8 @@ const tokens = computed(() => {
 
 const placeholder = computed(() =>
   props.selection
-    ? "What would you like to generate? (Selected text will be used as context.)"
-    : "What would you like to generate?",
+    ? `${translate("johannschopplich.copilot.prompt.placeholder")} (${translate("johannschopplich.copilot.prompt.selectionContext")})`
+    : translate("johannschopplich.copilot.prompt.placeholder"),
 );
 
 // The plugin previews a prompt only once it holds a placeholder to resolve.
@@ -83,13 +108,24 @@ const hasPlaceholders = computed(() =>
   tokens.value.some((token) => token.type === "placeholder"),
 );
 
-// The plugin hides the history button until a prompt is stored, so it belongs
-// only to a Mock that opens its dropdown.
-const tools = computed(() =>
-  TOOLS.filter(
-    (tool) => tool.under !== "history" || props.dropdown?.under === "history",
-  ),
+// The plugin shows the history button once a prompt is stored.
+const recentPrompts = computed(() =>
+  props.dropdown?.under === "history"
+    ? (props.dropdown.options ?? []).flatMap((option) =>
+        option !== "-" && option.text ? [option.text] : [],
+      )
+    : [],
 );
+
+// Kirby's dropdown keeps its open state internal and places itself by
+// measuring its opener, so a Mock that shows a toolbar dropdown open repeats
+// the buttons up to its opener as invisible placeholders and hangs the items
+// below them.
+const toolsThroughOpener = computed(() => {
+  const under = props.dropdown?.under;
+  const openIndex = TOOLS.findIndex((tool) => tool.under === under);
+  return openIndex === -1 ? [] : TOOLS.slice(0, openIndex + 1);
+});
 
 const dropdownProps = computed(() => {
   if (!props.dropdown || props.dropdown.under === "fields") return;
@@ -132,7 +168,7 @@ const dropdownSpace = computed(() => {
 function submit() {
   if (props.fields?.length && selectedFieldNames.value.length === 0) {
     openNotification({
-      text: "Pick one or more fields to generate content for.",
+      text: translate("johannschopplich.copilot.selectFields"),
       theme: "info",
     });
     return;
@@ -147,8 +183,9 @@ function submit() {
     size="large"
     :cancel-button="false"
     :submit-button="false"
-    class="panel-copilot-prompt-dialog"
+    class="k-copilot-prompt-dialog"
     :style="dropdownSpace"
+    :data-open-tool="toolsThroughOpener.length ? dropdown?.under : undefined"
   >
     <template #header>
       <div
@@ -161,168 +198,116 @@ function submit() {
       </div>
     </template>
 
-    <div
-      class="relative rounded-[var(--rounded)] has-[[data-autofocus]:focus]:[outline:var(--outline)]"
+    <!-- Inert while the Mock holds a dropdown open, which would otherwise sit
+         under the plugin's own that a click opens as a modal. -->
+    <PromptDialogBody
+      v-model:selected-field-names="selectedFieldNames"
+      v-model:insert-option="insertOption"
+      :labels="LABELS"
+      :prompt="userPrompt"
+      :preview="hasPlaceholders ? preview : undefined"
+      :preview-open="previewOpen"
+      :file-count="fileCount"
+      :fields="fields"
+      :selection="selection"
+      :insert-options="INSERT_OPTIONS"
+      :recent-prompts="recentPrompts"
+      :inert="dropdownProps !== undefined"
+      @submit="submit"
     >
-      <div
-        data-autofocus
-        tabindex="-1"
-        class="min-h-[calc(1.5em*3+1rem)] p-(--spacing-2) leading-[1.5] break-words whitespace-pre-wrap outline-none"
-      >
-        <span
-          v-if="!userPrompt"
-          class="text-[color:var(--color-text-dimmed)]"
-          >{{ placeholder }}</span
-        >
-        <template v-for="(token, index) in tokens" :key="index">
-          <!-- Above the toolbar row, which the typeahead hangs over. -->
-          <span v-if="token.type === 'skill-trigger'" class="relative z-[1]"
-            >{{ token.text
-            }}<PanelDropdown
-              v-if="dropdown?.under === 'skills'"
-              v-bind="dropdownProps"
-              class="mt-[var(--spacing-1)] max-h-[16rem] max-w-[24rem] min-w-[14rem] overflow-y-auto" /></span
-          ><span
-            v-else
-            :class="token.type && `k-copilot-token-${token.type}`"
-            >{{ token.text }}</span
-          >
-        </template>
-      </div>
-
-      <details
-        v-if="preview && hasPlaceholders"
-        :open="previewOpen"
-        class="group mx-[var(--spacing-2)] mb-[var(--spacing-2)] rounded-[var(--rounded)] bg-[var(--panel-color-back)]"
-      >
-        <summary
-          class="flex cursor-pointer list-none items-center gap-0.5 rounded-[var(--rounded)] p-1.5 [&::-webkit-details-marker]:hidden"
-        >
-          <k-icon
-            type="angle-dropdown"
-            class="size-[var(--icon-size)] [transform:rotate(-90deg)] transition-transform group-open:[transform:rotate(0deg)]"
-          />
-          <span>Preview</span>
-        </summary>
-        <div class="px-1.5 py-[var(--spacing-2)]">
-          <p class="leading-[1.375] whitespace-pre-wrap">{{ preview }}</p>
-        </div>
-      </details>
-
-      <div
-        class="flex items-center justify-between px-[var(--spacing-2)] pb-[var(--spacing-2)]"
-      >
-        <div class="flex flex-wrap items-center gap-[var(--spacing-1)]">
-          <k-button
-            icon="attachment"
-            :badge="
-              fileCount ? { theme: 'notice', text: fileCount } : undefined
-            "
-          />
-          <k-button v-if="fileCount" text="Clear" variant="dimmed" size="sm" />
-
+      <!-- Stands in for the plugin's prompt editor, which needs ProseMirror and a live view. -->
+      <div class="k-copilot-prompt-editor">
+        <div data-autofocus tabindex="-1" class="ProseMirror">
           <span
-            v-for="tool in tools"
-            :key="tool.under"
-            class="panel-copilot-prompt-tool relative flex"
+            v-if="!userPrompt"
+            class="text-[color:var(--color-text-dimmed)]"
+            >{{ placeholder }}</span
           >
-            <k-button :icon="tool.icon" dropdown />
-            <PanelDropdown
-              v-if="dropdown?.under === tool.under"
-              v-bind="dropdownProps"
-              class="max-h-[var(--panel-dropdown-cap)] max-w-[30rem] min-w-[8rem] overflow-y-auto"
-            />
-          </span>
-        </div>
-
-        <div class="flex gap-[var(--spacing-2)]">
-          <span v-if="fields?.length" class="relative flex">
-            <k-button
-              text="Fields"
-              variant="filled"
-              dropdown
-              :badge="
-                selectedFieldNames.length
-                  ? { theme: 'info', text: selectedFieldNames.length }
-                  : undefined
-              "
-              @click="isFieldsDropdownOpen = !isFieldsDropdownOpen"
-            />
-            <PanelPicklistDropdown
-              v-if="isFieldsDropdownOpen"
-              :options="
-                fields.map((field) => ({
-                  value: field.name,
-                  text: field.label,
-                }))
-              "
-              :value="selectedFieldNames"
-              align-x="end"
-              @input="selectedFieldNames = $event"
-            />
-          </span>
-          <k-select-input
-            v-else-if="selection"
-            :options="INSERT_OPTIONS"
-            value="replace"
-            class="underline underline-offset-[var(--link-underline-offset)]"
-          />
-          <k-button
-            text="Generate"
-            icon="sparkling"
-            theme="notice-icon"
-            variant="filled"
-            :disabled="!userPrompt?.trim()"
-            @click="submit"
-          />
+          <template v-for="(token, index) in tokens" :key="index">
+            <!-- Above the toolbar row, which the typeahead hangs over. -->
+            <span v-if="token.type === 'skill-trigger'" class="relative z-[1]"
+              >{{ token.text
+              }}<PanelDropdown
+                v-if="dropdown?.under === 'skills'"
+                v-bind="dropdownProps"
+                class="mt-[var(--spacing-1)] max-h-[16rem] max-w-[24rem] min-w-[14rem] overflow-y-auto" /></span
+            ><span
+              v-else
+              :class="token.type && `k-copilot-token-${token.type}`"
+              >{{ token.text }}</span
+            >
+          </template>
         </div>
       </div>
-    </div>
+
+      <div
+        v-if="toolsThroughOpener.length"
+        class="pointer-events-none absolute inset-x-0 bottom-(--spacing-2) flex items-center gap-(--spacing-1) px-(--spacing-2)"
+      >
+        <k-button
+          icon="attachment"
+          :badge="fileCount ? { theme: 'notice', text: fileCount } : undefined"
+          class="invisible"
+        />
+        <k-button
+          v-if="fileCount"
+          text="Clear"
+          variant="dimmed"
+          size="sm"
+          class="invisible"
+        />
+        <span
+          v-for="tool in toolsThroughOpener"
+          :key="tool.under"
+          class="relative flex"
+          :class="
+            tool.under !== dropdown?.under && '@max-[40rem]/panel-stage:hidden'
+          "
+        >
+          <k-button :icon="tool.icon" dropdown class="invisible" />
+          <PanelDropdown
+            v-if="tool.under === dropdown?.under"
+            v-bind="dropdownProps"
+            class="pointer-events-auto max-h-[var(--panel-dropdown-cap)] max-w-[30rem] min-w-[8rem] overflow-y-auto"
+          />
+        </span>
+      </div>
+    </PromptDialogBody>
   </PanelDialog>
 </template>
 
 <style>
-.panel-mock .panel-copilot-prompt-dialog {
-  --dialog-color-back: var(--input-color-back);
-  --dialog-padding: 0;
-  --dialog-rounded: var(--rounded);
-
-  overflow: visible;
-}
-
-/* Copilot lifts Kirby's scroll and mask off the dialog body, which would clip
-   the licensing buttons above it and the skill suggestions below it. */
-.panel-mock .panel-copilot-prompt-dialog .k-dialog-body.k-scrollable {
-  overflow: visible;
-  mask-image: none;
-}
-
-/* Copilot drops the three tool buttons below Kirby's `sm` rather than let the
-   toolbar wrap. The one whose dropdown a Mock opens stays. */
-@container panel-stage (max-width: 40rem) {
-  .panel-copilot-prompt-dialog
-    .panel-copilot-prompt-tool:not(:has(.panel-dropdown)) {
+/* The plugin drops its tool buttons below Kirby's `sm` viewport, for which a
+   Mock's stage stands in. The one whose dropdown a Mock opens stays. */
+@container panel-stage (width < 40rem) {
+  .panel-mock
+    .k-copilot-prompt-dialog:not([data-open-tool="placeholders"])
+    .k-button:has([data-type="copilot-text-snippet"]),
+  .panel-mock
+    .k-copilot-prompt-dialog:not([data-open-tool="templates"])
+    .k-button:has([data-type="bookmark"]),
+  .panel-mock
+    .k-copilot-prompt-dialog:not([data-open-tool="history"])
+    .k-button:has([data-type="clock"]) {
     display: none;
+  }
+
+  .panel-mock
+    .k-copilot-prompt-dialog[data-open-tool="placeholders"]
+    .k-button:has([data-type="copilot-text-snippet"]),
+  .panel-mock
+    .k-copilot-prompt-dialog[data-open-tool="templates"]
+    .k-button:has([data-type="bookmark"]),
+  .panel-mock
+    .k-copilot-prompt-dialog[data-open-tool="history"]
+    .k-button:has([data-type="clock"]) {
+    display: inline-flex;
   }
 }
 
-.panel-copilot-prompt-dialog [class*="k-copilot-token-"] {
-  border-radius: var(--rounded-xs);
-  padding-inline: var(--spacing-1);
-}
-
-.panel-copilot-prompt-dialog .k-copilot-token-placeholder {
-  color: light-dark(var(--color-purple-800), var(--color-purple-900));
-  background: var(--color-purple-300);
-}
-
-.panel-copilot-prompt-dialog .k-copilot-token-page-ref {
-  color: light-dark(var(--color-blue-800), var(--color-blue-900));
-  background: var(--color-blue-300);
-}
-
-.panel-copilot-prompt-dialog .k-copilot-token-skill-ref {
-  color: light-dark(var(--color-green-800), var(--color-green-900));
-  background: var(--color-green-300);
+/* Kirby 6 places the field picker at the start of its opener, the first of the
+   dialog's action buttons. */
+.panel-mock .k-copilot-prompt-dialog :has(> .k-picklist-dropdown) {
+  position: relative;
 }
 </style>

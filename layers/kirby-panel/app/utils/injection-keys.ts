@@ -16,3 +16,8 @@ export const panelMockInertKey: InjectionKey<boolean> = Symbol(
 export const panelMockFramedKey: InjectionKey<boolean> = Symbol(
   "kirby-panel.mock-framed",
 );
+
+/** A host's claim that a picklist dropdown inside it starts open, so its Mock shows the list without a click. */
+export const panelPicklistDropdownOpenKey: InjectionKey<boolean> = Symbol(
+  "kirby-panel.picklist-dropdown-open",
+);

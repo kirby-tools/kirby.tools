@@ -3,6 +3,10 @@
     "repository": "https://github.com/kirby-tools/kirby-content-translator.git",
     "ref": "8a3dc6cd3e188b8de9cef2712aeeda91e3bcd83a"
   },
+  "copilot": {
+    "repository": "https://github.com/kirby-tools/kirby-copilot.git",
+    "ref": "b3ec41b12bdbe9a7fc11f0abe5c46f98206f2d99"
+  },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",
     "ref": "db0f274c14c5d1133776823f35f70a550ddbeb0a"
