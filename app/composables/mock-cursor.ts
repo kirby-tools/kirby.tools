@@ -38,9 +38,9 @@ export function useMockCursor(
     signal: AbortSignal,
   ) {
     const stage = container?.querySelector<HTMLElement>(".panel-mock-stage");
-    const target = stage && findStageTarget(stage, text);
-    if (!stage || !target || !(await moveTo(stage, target, signal)))
-      return false;
+    if (!stage) return false;
+    const target = findStageTarget(stage, text);
+    if (!target || !(await moveTo(stage, target, signal))) return false;
     clickStageTarget(target);
     return true;
   }

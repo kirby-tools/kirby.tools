@@ -177,7 +177,7 @@ export function kirbyViewButtons(
     text: name,
     code,
     current: code === languageCode,
-    click: switchLanguage && (() => switchLanguage(code)),
+    click: switchLanguage ? () => switchLanguage(code) : undefined,
   });
 
   return [
