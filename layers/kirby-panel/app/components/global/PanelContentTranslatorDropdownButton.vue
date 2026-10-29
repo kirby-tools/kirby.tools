@@ -1,47 +1,42 @@
 <script setup lang="ts">
 import type { PanelContentTranslatorDropdownButtonProps } from "../../types/plugins";
+import {
+  TranslatorDropdownButton,
+  TranslatorDropdownItems,
+} from "#kirby-plugin/content-translator";
+import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
   defineProps<PanelContentTranslatorDropdownButtonProps>(),
-  {
-    label: "Translator",
-    theme: "notice-icon",
-    import: true,
-    batch: true,
-  },
+  { import: true, batch: true },
 );
 
-const dropdown = useTemplateRef<{ toggle: () => void }>("dropdown");
-
-const options = computed<PanelDropdownOption[]>(() =>
-  contentTranslatorActions(props)
-    .filter((group) => group.length > 0)
-    .flatMap((group, index) => [
-      ...(index > 0 ? (["-"] as const) : []),
-      ...group.map((action) => ({
-        text: action.text,
-        icon: action.icon,
-        disabled: action.disabled || props.isTranslating,
-        click: props.run && (() => props.run!(action)),
-      })),
-    ]),
-);
+const resolution = useTranslatorActions(props);
 </script>
 
 <template>
   <div class="panel-content-translator-dropdown-button relative">
-    <k-button
-      :text="label"
-      :icon="isTranslating ? 'loader' : 'content-translator-global'"
+    <TranslatorDropdownButton
+      :actions="resolution.groups"
+      :label="
+        label ||
+        translate('johannschopplich.content-translator.viewButton.label')
+      "
       :theme="theme"
-      size="sm"
-      variant="filled"
-      responsive
-      dropdown
-      @click="dropdown?.toggle()"
+      :is-translating="isTranslating"
+      :inert="open"
+      @run="run?.($event)"
     />
-    <PanelDropdown v-if="open" :options="options" align-x="start" />
-    <k-dropdown v-else ref="dropdown" :options="options" />
+    <!-- Kirby's dropdown keeps its open state internal and places itself by
+         measuring its opener, so a Mock that shows it open renders the items
+         below the button. The button is inert meanwhile, since a click would
+         open the plugin's own dropdown as a modal over them. -->
+    <PanelDropdown v-if="open" align-x="start">
+      <TranslatorDropdownItems
+        :actions="resolution.groups"
+        @run="run?.($event)"
+      />
+    </PanelDropdown>
   </div>
 </template>
 

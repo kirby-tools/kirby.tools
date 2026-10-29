@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import {
+  createBatchTranslationDialogFields,
+  createBatchTranslationHelp,
+  createStrategyField,
+  createTranslationDialogFields,
+  createTranslationSubmitButton,
+} from "#kirby-plugin/content-translator";
+import { translate } from "#panel-mock/translate";
+
 const props = withDefaults(
   defineProps<{
     /** The batch dialog, which asks for the languages too. */
@@ -29,48 +38,45 @@ const emit = defineEmits<{
   submit: [value: { languages?: string[]; strategyName?: string }];
 }>();
 
-const SUBMIT_BUTTON = { icon: "translate", text: "Translate" };
-
-const STRATEGY_FIELD = {
-  type: "toggles",
-  label: "Translate with",
-  labels: true,
-  grow: true,
-  options: [
-    { value: "deepl", text: "DeepL", icon: "translate" },
-    { value: "ai", text: "ChatGPT", icon: "content-translator-openai" },
-  ],
-};
+const SUBMIT_BUTTON = createTranslationSubmitButton({ t: translate });
 
 const defaultLanguage = computed(() => props.languages[0]!);
 const secondaryLanguages = computed(() => props.languages.slice(1));
-const cascadeHelp = computed(
-  () =>
-    props.cascadeModels &&
-    `${props.cascadeModels} will also be translated and saved directly.`,
+// ChatGPT, for a site whose Copilot is set up with OpenAI.
+const strategyField = computed(() =>
+  props.hasStrategyChoice
+    ? createStrategyField({
+        isCustomStrategy: false,
+        aiProvider: "openai",
+        t: translate,
+      })
+    : undefined,
+);
+const cascadeHelp = computed(() =>
+  props.cascadeModels
+    ? translate("johannschopplich.content-translator.dialog.cascadeHelp", {
+        models: props.cascadeModels,
+      })
+    : undefined,
 );
 
-const fields = computed(() => ({
-  ...(props.batch
-    ? {
-        languages: {
-          type: "checkboxes",
-          label: "Translate to",
-          options: secondaryLanguages.value.map(({ code, name }) => ({
-            value: code,
-            text: name,
-          })),
-          help: [
-            `Content from ${defaultLanguage.value.name} will be translated and saved to all selected languages. This may take a few seconds.`,
-            cascadeHelp.value,
-          ]
-            .filter(Boolean)
-            .join(" "),
-        },
-      }
-    : cascadeHelp.value && { help: { type: "info", text: cascadeHelp.value } }),
-  ...(props.hasStrategyChoice && { strategyName: STRATEGY_FIELD }),
-}));
+const fields = computed(() =>
+  props.batch
+    ? createBatchTranslationDialogFields({
+        help: createBatchTranslationHelp({
+          defaultLanguage: defaultLanguage.value,
+          cascadeHelp: cascadeHelp.value,
+          t: translate,
+        }),
+        strategyField: strategyField.value,
+        translationLanguages: secondaryLanguages.value,
+        t: translate,
+      })
+    : createTranslationDialogFields({
+        help: cascadeHelp.value,
+        strategyField: strategyField.value,
+      }),
+);
 
 const value = computed(() => ({
   ...(props.batch && {

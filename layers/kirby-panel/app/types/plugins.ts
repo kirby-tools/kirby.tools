@@ -1,3 +1,4 @@
+import type { TranslatorAction } from "#kirby-plugin/content-translator";
 import type { Rating } from "#kirby-plugin/seo-audit";
 import type { PanelDropdownOption } from "./kirby";
 
@@ -13,13 +14,6 @@ export interface PanelSeoAuditButtonProps {
 // #endregion
 
 // #region Content Translator
-export interface PanelContentTranslatorLanguageCoverage {
-  code: string;
-  name: string;
-  percentage: number;
-  incompletePageCount: number;
-}
-
 /** The blueprint options and the view's language the plugin derives its actions from. */
 export interface PanelContentTranslatorOptions {
   /** The language the view shows. */
@@ -31,32 +25,14 @@ export interface PanelContentTranslatorOptions {
   batch?: boolean;
 }
 
-export interface PanelContentTranslatorAction {
-  type: "import" | "translate" | "batch";
-  text: string;
-  icon: string;
-  disabled: boolean;
-  /** The language an import copies from, where the editor picks one. */
-  from?: string;
-}
-
 export interface PanelContentTranslatorDropdownButtonProps extends PanelContentTranslatorOptions {
   label?: string;
   theme?: string;
-  /** A run in progress, which the plugin reads from its translation state. */
   isTranslating?: boolean;
   /** The dropdown held open, for a Mock the reader doesn't click. */
   open?: boolean;
   /** Runs the picked action, which the plugin runs itself. */
-  run?: (action: PanelContentTranslatorAction) => void;
-}
-
-export interface PanelContentTranslatorTreeEntry {
-  label: string;
-  icon?: string;
-  isOpen?: boolean;
-  missingLanguages: { code: string; name: string }[];
-  children?: PanelContentTranslatorTreeEntry[];
+  run?: (action: TranslatorAction) => void;
 }
 // #endregion
 

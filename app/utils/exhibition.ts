@@ -1,5 +1,10 @@
+import type {
+  TranslationLanguageCoverage,
+  TranslationTreeEntry,
+} from "#kirby-plugin/content-translator";
 import type { MinimapField } from "#kirby-plugin/minimap";
 import type { Rating, Report } from "#kirby-plugin/seo-audit";
+import { slug } from "#kirby-panel/helpers/string";
 import { translate } from "#panel-mock/translate";
 
 // #region Exhibition
@@ -230,7 +235,17 @@ export const COPILOT_SUGGESTION =
 // #endregion
 
 // #region Content Translator
-export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
+/** A page of the coverage tree, before the plugin's server links and counts it. */
+interface TranslatorCoveragePage extends Pick<
+  TranslationTreeEntry,
+  "label" | "missingLanguages"
+> {
+  icon: string;
+  isOpen?: boolean;
+  children?: TranslatorCoveragePage[];
+}
+
+const TRANSLATOR_COVERAGE_PAGES: TranslatorCoveragePage[] = [
   {
     label: "Exhibitions",
     icon: "image",
@@ -307,28 +322,60 @@ export const TRANSLATOR_COVERAGE_TREE: PanelContentTranslatorTreeEntry[] = [
   { label: "About", icon: "info", missingLanguages: [SPANISH] },
 ];
 
+export const TRANSLATOR_COVERAGE_TREE = toTreeEntries(
+  TRANSLATOR_COVERAGE_PAGES,
+);
+
 // The plugin's percentage counts translated fields, which the tree doesn't show.
 const TRANSLATOR_PERCENTAGES = { de: 100, es: 21, fr: 64 };
 
-export const TRANSLATOR_COVERAGE_LANGUAGES: PanelContentTranslatorLanguageCoverage[] =
+export const TRANSLATOR_COVERAGE_LANGUAGES: TranslationLanguageCoverage[] =
   SECONDARY_LANGUAGES.map(({ code, name }) => ({
     code,
     name,
     percentage: TRANSLATOR_PERCENTAGES[code],
-    incompletePageCount: countIncompletePages(TRANSLATOR_COVERAGE_TREE, code),
+    incompletePageCount: countIncompletePages(
+      TRANSLATOR_COVERAGE_PAGES,
+      (page) =>
+        page.missingLanguages.some((language) => language.code === code),
+    ),
   }));
 
+function toTreeEntries(
+  pages: TranslatorCoveragePage[],
+  parentId?: string,
+): TranslationTreeEntry[] {
+  return pages.map((page) => {
+    const id = parentId ? `${parentId}/${slug(page.label)}` : slug(page.label);
+    const children = page.children ?? [];
+
+    return {
+      id,
+      label: page.label,
+      icon: page.icon,
+      link: `/pages/${id.replaceAll("/", "+")}`,
+      hasChildren: children.length > 0,
+      incompleteDescendantCount: countIncompletePages(
+        children,
+        (child) => child.missingLanguages.length > 0,
+      ),
+      missingLanguages: page.missingLanguages,
+      isOpen: page.isOpen ?? false,
+      isLoading: false,
+      children: children.length > 0 ? toTreeEntries(children, id) : null,
+    };
+  });
+}
+
 function countIncompletePages(
-  entries: PanelContentTranslatorTreeEntry[],
-  code: ExhibitionLanguageCode,
+  pages: TranslatorCoveragePage[],
+  isIncomplete: (page: TranslatorCoveragePage) => boolean,
 ): number {
-  return entries.reduce(
-    (count, entry) =>
+  return pages.reduce(
+    (count, page) =>
       count +
-      Number(
-        entry.missingLanguages.some((language) => language.code === code),
-      ) +
-      countIncompletePages(entry.children ?? [], code),
+      Number(isIncomplete(page)) +
+      countIncompletePages(page.children ?? [], isIncomplete),
     0,
   );
 }

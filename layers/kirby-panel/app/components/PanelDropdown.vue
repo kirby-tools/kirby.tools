@@ -11,23 +11,25 @@ defineProps<{
        inline `top` and `left`. A Mock runs no script, so the class goes on a
        plain element and the style block below places it. -->
   <div class="panel-dropdown k-dropdown top-full" :data-align-x="alignX">
-    <template v-for="(item, index) in options" :key="index">
-      <hr v-if="item === '-'" />
-      <k-dropdown-item
-        v-else
-        v-bind="item"
-        :class="index === selected && 'panel-dropdown-item-selected'"
-      >
-        <span class="inline-flex w-full items-center gap-[var(--spacing-3)]">
-          <span class="truncate leading-[1.5]">{{ item.text }}</span>
-          <span
-            v-if="item.info"
-            class="truncate text-[length:var(--text-xs)]/[1.5] text-[color:var(--color-text-dimmed)]"
-            >{{ item.info }}</span
-          >
-        </span>
-      </k-dropdown-item>
-    </template>
+    <slot>
+      <template v-for="(item, index) in options" :key="index">
+        <hr v-if="item === '-'" />
+        <k-dropdown-item
+          v-else
+          v-bind="item"
+          :class="index === selected && 'panel-dropdown-item-selected'"
+        >
+          <span class="inline-flex w-full items-center gap-[var(--spacing-3)]">
+            <span class="truncate leading-[1.5]">{{ item.text }}</span>
+            <span
+              v-if="item.info"
+              class="truncate text-[length:var(--text-xs)]/[1.5] text-[color:var(--color-text-dimmed)]"
+              >{{ item.info }}</span
+            >
+          </span>
+        </k-dropdown-item>
+      </template>
+    </slot>
   </div>
 </template>
 
