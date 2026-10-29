@@ -34,7 +34,7 @@ for (const [id, source] of Object.entries(plugins)) {
     name: id,
     target: resolve(root, "plugins", id),
     source,
-    paths: ["src/panel", "/index.css"],
+    paths: ["src/panel", "/index.css", "/translations/en.json"],
   });
 }
 
