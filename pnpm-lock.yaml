@@ -191,8 +191,8 @@ importers:
         specifier: ^1.2.91
         version: 1.2.91
       '@kirby-tools/licensing':
-        specifier: ^1.0.0
-        version: 1.0.0(kirbyuse@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)))(vue@3.5.44(typescript@6.0.3))
+        specifier: ^1.1.0
+        version: 1.1.0(kirbyuse@2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)))(vue@3.5.44(typescript@6.0.3))
       '@nuxt/content':
         specifier: ^3.16.2
         version: 3.16.2(@nuxt/schema@4.6.2)(@oxc-project/types@0.154.0)(confbox@0.3.1)(dotenv@17.4.2)(esbuild@0.28.2)(giget@3.3.1)(magic-string@1.4.3)(magicast@0.5.5)(mlly@1.8.2)(oxc-parser@0.153.0)(rolldown@1.2.14)(rollup@4.64.10)(supports-color@10.2.2)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
@@ -236,8 +236,8 @@ importers:
         specifier: ^2.0.0-beta.4
         version: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       kirbyuse:
-        specifier: ^2.0.0-beta.4
-        version: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+        specifier: ^2.0.0-beta.5
+        version: 2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       logo-soup:
         specifier: ^0.2.3
         version: 0.2.3
@@ -1444,10 +1444,10 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@kirby-tools/licensing@1.0.0':
-    resolution: {integrity: sha512-psEA0WKjnefnaE5W01WlfX+VsLSJOzWfutsNaCBeFKXTmJstWWCqclCkxP8HMxH56OyajT8NzOt63DlJFzrQtQ==}
+  '@kirby-tools/licensing@1.1.0':
+    resolution: {integrity: sha512-lFEJVQ/h5qK4WOPPr4cU8y4AKwAkHJnhN07Vzq+jbmQfIj4ikeR41ZKPL2/+OyJIaF+ug1elHUkmC10x/++r+A==}
     peerDependencies:
-      kirbyuse: ^2.0.0-beta.3
+      kirbyuse: ^2.0.0-beta.5
       vue: ^3
 
   '@mapbox/node-pre-gyp@2.0.3':
@@ -4810,8 +4810,8 @@ packages:
       vue:
         optional: true
 
-  kirbyuse@2.0.0-beta.4:
-    resolution: {integrity: sha512-NUshdJvZ6H+norwd8OPiJxu+4hsmpOq/eERdl7HSiy+zwVoK+5lmkWZv4OO5oVanSRIbeFt03ibIUDPo/nF9fQ==}
+  kirbyuse@2.0.0-beta.5:
+    resolution: {integrity: sha512-zzEGQBONu/p5SoNrFxjrmqXNEKpUcDwjOWnLNzIF5y+y0XQMvQKbrP9yzc/yMIGpOcdd4qfMbuC6nWHZgfb6Ew==}
     peerDependencies:
       dayjs: ^1.0.0
       prosemirror-commands: ^1.7.1
@@ -8136,9 +8136,9 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@kirby-tools/licensing@1.0.0(kirbyuse@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)))(vue@3.5.44(typescript@6.0.3))':
+  '@kirby-tools/licensing@1.1.0(kirbyuse@2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)))(vue@3.5.44(typescript@6.0.3))':
     dependencies:
-      kirbyuse: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+      kirbyuse: 2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       vue: 3.5.44(typescript@6.0.3)
 
   '@mapbox/node-pre-gyp@2.0.3(supports-color@10.2.2)':
@@ -11981,7 +11981,7 @@ snapshots:
       prosemirror-view: 1.42.6
       vue: 3.5.44(typescript@6.0.3)
 
-  kirbyuse@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
+  kirbyuse@2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
     dependencies:
       kirby-types: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       vue: 3.5.44(typescript@6.0.3)
