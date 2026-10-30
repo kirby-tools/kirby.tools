@@ -43,7 +43,7 @@ Scope it under `.panel-mock`: Kirby's own selectors are rewritten to that prefix
 
 A Mock renders into the Stage, `.panel-mock-stage`. A rule about what the Panel would supply around a component reaches it from the Mock's own block: `.panel-mock .panel-mock-stage:has(> .panel-dialog)`. A container query names `panel-stage`: Kirby's dialogs are containers too, and an unnamed query measures whichever is nearest.
 
-A block that departs from Kirby names what Kirby does and why the Mock differs, the way `PanelLivePreviewSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a Mock cropped to the header alone would sit off-center.
+A block that departs from Kirby or the plugin names what that side does and why the Mock differs, the way `PanelLivePreviewSection.vue` does: the Panel always has a section body, so Kirby reserves the gap below a header unconditionally, and a Mock cropped to the header alone would sit off-center.
 
 ## Checking a Mock
 
