@@ -11,7 +11,12 @@ export type Alternate =
 const SUFFIX = ".md";
 
 /** Prose outside the docs and blog trees that agents get asked about, minus the legal boilerplate. */
-const PROSE_PATHS = new Set(["/ai", "/license", "/license-compatibility"]);
+const PROSE_PATHS = new Set([
+  "/ai",
+  "/license",
+  "/license-compatibility",
+  "/upgrading-to-kirby-6",
+]);
 
 /** Resolves what a page's alternate renders from, or `undefined` for a page without one. */
 export function resolveAlternate(path: string): Alternate | undefined {

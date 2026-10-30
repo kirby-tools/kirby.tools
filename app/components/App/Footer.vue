@@ -50,6 +50,7 @@ const cells: FooterGroup[][] = [
       links: [
         { label: "Blog", to: "/blog" },
         { label: "License & Compatibility", to: "/license-compatibility" },
+        { label: "Upgrading to Kirby 6", to: "/upgrading-to-kirby-6" },
         { label: "For AI Agents", to: "/ai" },
         { label: "Contact", to: "/contact" },
       ],
