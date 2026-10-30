@@ -13,7 +13,7 @@
   },
   "live-preview": {
     "repository": "https://github.com/kirby-tools/kirby-live-preview.git",
-    "ref": "b8071aab52e063810ccf25cbf373cf3061249374"
+    "ref": "8f7fc8a92bfdff860dd17089d5247b860d9d1bb2"
   },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",

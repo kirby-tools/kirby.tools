@@ -11,6 +11,7 @@ defineProps<{
 const labels = {
   open: translate("open"),
   renderError: translate("johannschopplich.preview.error.render"),
+  restart: translate("johannschopplich.preview.restart"),
 };
 </script>
 
