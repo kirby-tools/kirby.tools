@@ -9,12 +9,12 @@ const preview = refThrottled(page.content, UPDATE_INTERVAL);
 <template>
   <ExhibitionScene :page="page">
     <template #aside>
-      <PanelLivePreviewSection aspect-ratio="3/4">
+      <PanelLivePreviewField aspect-ratio="3/4">
         <ProductLivePreviewPage
           v-bind="preview"
           :lang="page.languageCode.value"
         />
-      </PanelLivePreviewSection>
+      </PanelLivePreviewField>
     </template>
   </ExhibitionScene>
 </template>

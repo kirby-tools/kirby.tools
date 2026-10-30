@@ -2,6 +2,7 @@ import string from "#kirby-panel/helpers/string";
 import { translations as contentTranslatorTranslations } from "#kirby-plugin/content-translator";
 import { translations as copilotTranslations } from "#kirby-plugin/copilot";
 import { translations as deployTriggerTranslations } from "#kirby-plugin/deploy-trigger";
+import { translations as livePreviewTranslations } from "#kirby-plugin/live-preview";
 import { translations as seoAuditTranslations } from "#kirby-plugin/seo-audit";
 import { translations as serpPreviewTranslations } from "#kirby-plugin/serp-preview";
 import kirbyTranslations from "../kirby/i18n/translations/en.json";
@@ -11,6 +12,7 @@ const translations: Record<string, string> = {
   ...contentTranslatorTranslations,
   ...copilotTranslations,
   ...deployTriggerTranslations,
+  ...livePreviewTranslations,
   ...seoAuditTranslations,
   ...serpPreviewTranslations,
 };

@@ -11,6 +11,10 @@
     "repository": "https://github.com/johannschopplich/kirby-deploy-trigger.git",
     "ref": "c38fee17a49541ecd35b00d07fde0a373d20a7d3"
   },
+  "live-preview": {
+    "repository": "https://github.com/kirby-tools/kirby-live-preview.git",
+    "ref": "b8071aab52e063810ccf25cbf373cf3061249374"
+  },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",
     "ref": "62f7acfd8f2b5022656bc89c09b5bffe2acb9f36"
