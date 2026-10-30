@@ -1,7 +1,7 @@
 import type { InjectionKey } from "vue";
 import type { ProductIdWithThemeColor } from "#shared/products";
 
-/** A host's claim that the reader scrolls to its Scene, which may then play its way to its Plugin's answer once on its own, from the view button on. */
+/** A host's claim that the reader scrolls to its Scene, so it may autoplay from the view button on. */
 export const sceneAutoplayKey: InjectionKey<boolean> = Symbol("scene-autoplay");
 
 const DWELL_DURATION = 800;

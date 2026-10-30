@@ -100,7 +100,6 @@ onMounted(() => {
         :ui="{
           container:
             SECTION_SLOT_WIDTHS[section.slot!] ?? 'max-w-(--ui-container)',
-          // Above a Mock, the features span its width in two columns.
           features: section.slot === 'mock' ? 'lg:grid-cols-2' : undefined,
         }"
       >

@@ -20,8 +20,7 @@ const props = withDefaults(
 const LINK_DWELL = 2000;
 // How long the reloaded view shows before the cursor moves to Save.
 const REVIEW_DWELL = 1600;
-// Copilot's button, as the site has the plugin; its prompt dialog is the
-// Copilot Scene's to show.
+// Copilot's button; its prompt dialog is the Copilot Scene's to show.
 const VIEW_BUTTON: PanelViewButton = { plugin: "copilot" };
 
 const activeTab = ref<string>(props.start);

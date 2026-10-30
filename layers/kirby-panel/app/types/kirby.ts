@@ -33,7 +33,6 @@ export interface PanelViewButtonProps {
 
 export type PanelPageStatus = "draft" | "unlisted" | "listed";
 
-/** A plugin's view button, with the props its blueprint or state sets. */
 export type PanelPluginViewButton =
   | ({ plugin: "copilot" } & PanelCopilotButtonProps)
   | ({

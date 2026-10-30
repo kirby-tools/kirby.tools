@@ -3,10 +3,7 @@ import { translate } from "#panel-mock/translate";
 
 const props = defineProps<{
   aspectRatio?: string;
-  /**
-   * Device preview selected at first, which the plugin holds in its own
-   * state.
-   */
+  /** Device preview selected at first. */
   devicePreview?: Device;
 }>();
 

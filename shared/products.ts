@@ -7,21 +7,16 @@ export interface Product {
   name: string;
   /** Short form for navigation, where repeating "Kirby" adds nothing. */
   label: string;
-  /** The line under the name in menus. */
   description: string;
   /**
-   * The pitch, short enough for one line of the SocialCard's Open Graph format.
-   * Each entry is one line of its 4:3 format. The Plugin's `composer.json`
-   * description, its subtitle on plugins.getkirby.com and, after an emoji, its
-   * GitHub About repeat it verbatim, the entries joined by a space.
+   * Each entry is one line of the SocialCard's 4:3 format. The Plugin's
+   * `composer.json` description, its subtitle on plugins.getkirby.com and,
+   * after an emoji, its GitHub About repeat it verbatim, the entries joined by
+   * a space.
    */
   tagline: readonly string[];
   icon: string;
   license: ProductLicense;
-  /**
-   * Option namespace the plugin reads from Kirby's `config.php`. Products
-   * configured through blueprints alone leave this unset.
-   */
   configKey?: string;
   githubRepo: string;
   composerPackage: string;
@@ -35,15 +30,10 @@ export interface Product {
    * without one leave releases to their GitHub repository.
    */
   hasChangelog?: boolean;
-  /**
-   * Theme color the product is drawn in. Products without one are themed in
-   * the site's color.
-   */
   color?: ThemeColor;
   playground?: string;
   /** Retrieval terms, surfaced to agents through `llms.txt`. */
   keywords: readonly string[];
-  /** The case this product does not cover. */
   notFor: string;
   /**
    * The pointer an agent reads before deciding to load the skill. It states
@@ -222,7 +212,6 @@ const PRODUCT_REGISTRY = {
     tagline: ["JSON pages and KQL queries,", "served behind one bearer token"],
     icon: "i-ri-code-block",
     license: "free",
-    // Predates the vendor-prefixed convention the other plugins follow.
     configKey: "headless",
     githubRepo: "johannschopplich/kirby-headless",
     composerPackage: "johannschopplich/kirby-headless",
@@ -296,7 +285,6 @@ export function hasThemeColor(
   return productId in PRODUCT_THEME_COLORS;
 }
 
-/** Resolves the product a path belongs to, or `undefined` off a product route. */
 export function resolveProductId(path: string): ProductId | undefined {
   const segments = path.split("/").filter(Boolean);
   const candidateId = segments[0] === "docs" ? segments[1] : segments[0];

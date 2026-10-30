@@ -4,11 +4,8 @@ import type { PanelDropdownOption } from "./kirby";
 
 // #region SEO Audit
 export interface PanelSeoAuditButtonProps {
-  /** The page's stored rating, which the plugin reads from its storage. */
   rating?: Rating;
-  /** An analysis in progress, which the plugin keeps in its own state. */
   isAnalyzing?: boolean;
-  /** Analyzes the page and opens the report, which the plugin does itself. */
   click?: () => void;
 }
 // #endregion
@@ -30,7 +27,6 @@ export interface PanelContentTranslatorDropdownButtonProps extends PanelContentT
   isTranslating?: boolean;
   /** The dropdown held open, for a Mock the reader doesn't click. */
   open?: boolean;
-  /** Runs the picked action, which the plugin runs itself. */
   run?: (action: TranslatorAction) => void;
 }
 // #endregion
@@ -40,11 +36,8 @@ export interface PanelCopilotButtonProps {
   label?: string;
   icon?: string;
   theme?: string;
-  /** A run in progress, which the plugin keeps in its own state. */
   isGenerating?: boolean;
-  /** Opens the prompt dialog, which the plugin opens itself. */
   click?: () => void;
-  /** Stops the answer in progress, which the plugin aborts itself. */
   abort?: () => void;
 }
 

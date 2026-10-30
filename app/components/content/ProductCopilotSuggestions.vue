@@ -12,7 +12,6 @@ const {
   togglePause,
 } = useCopilotSuggestionLoop(() => mock.value?.$el);
 
-// The loop takes no input, so the Panel it plays in answers nothing.
 provide(panelMockInertKey, true);
 
 // The Mock's `<figure>` is the toggle, since the Panel inside it is inert.

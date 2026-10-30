@@ -7,7 +7,6 @@ export interface ChatTool {
   title: string;
   request: Record<string, unknown>;
   response?: Record<string, unknown>;
-  /** A tool error's text, as the Plugin returns it. */
   error?: string;
   /** The line claude.ai writes before the call, saying what it is for. */
   narration?: string;

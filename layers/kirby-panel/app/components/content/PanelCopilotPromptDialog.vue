@@ -14,7 +14,6 @@ const props = defineProps<{
   /** The resolved prompt, which the plugin fills in from the page. */
   preview?: string;
   previewOpen?: boolean;
-  /** Number of attached files, which the plugin holds in its own state. */
   fileCount?: number;
   fields?: PanelFieldProps[];
   selection?: string;
@@ -33,7 +32,7 @@ const emit = defineEmits<{
 const LABELS = createPromptDialogLabels(translate);
 const INSERT_OPTIONS = createInsertOptions(translate);
 
-// The plugin's toolbar buttons in their order, each with the icon it shows.
+// In the plugin's toolbar order.
 const TOOLS = [
   { under: "placeholders", icon: "copilot-text-snippet" },
   { under: "templates", icon: "bookmark" },

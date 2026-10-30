@@ -8,7 +8,6 @@ export function keystrokeDuration(index: number) {
   return KEYSTROKE_DURATIONS[index % KEYSTROKE_DURATIONS.length]!;
 }
 
-/** Sums the milliseconds the first `keystrokeCount` keystrokes take. */
 export function sumKeystrokeDurations(keystrokeCount: number) {
   let duration = 0;
   for (let index = 0; index < keystrokeCount; index++)

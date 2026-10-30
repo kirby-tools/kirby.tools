@@ -11,7 +11,6 @@ const props = defineProps<{
 
 const emit = defineEmits<{ link: [href: string] }>();
 
-// Paragraphs, so a blank line in the reply starts a new `<p>`.
 const paragraphs = computed(() => {
   const result: ChatSegment[][] = [[]];
   for (const segment of sliceChatSegments(props.segments, props.shownLength)) {

@@ -1,5 +1,4 @@
-// The conversations a Chat plays: Hanna, an editor at the Exhibition's venue,
-// asks Claude to work on the exhibition page. Tool names, arguments, result
+// Hanna is an editor at the Exhibition's venue. Tool names, arguments, result
 // fields and error texts follow the Plugin's agent tools; the values are the
 // Exhibition's.
 

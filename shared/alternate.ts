@@ -42,7 +42,6 @@ export function resolveAlternate(path: string): Alternate | undefined {
   }
 }
 
-/** Builds the path of the alternate published beside `path`. */
 export function alternatePath(path: string): string {
   return `${withoutTrailingSlash(path)}${SUFFIX}`;
 }

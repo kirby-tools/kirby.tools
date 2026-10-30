@@ -40,7 +40,7 @@ export function useScene(
     isDialogOpen.value = false;
   }
 
-  /** Opens the dialog on the page as it loaded and without the last run's notification, the way a plugin's fresh run starts. */
+  /** Opens the dialog on the page as it loaded and without the last run's notification. */
   function restart() {
     closeNotification();
     page.reset();

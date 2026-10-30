@@ -64,7 +64,7 @@ export function useExhibitionPage(
     };
   }
 
-  /** Saves the current language's changes, as the view's Save does. */
+  /** Saves the current language's changes. */
   function save() {
     const code = languageCode.value;
     saves.value = {
@@ -74,7 +74,7 @@ export function useExhibitionPage(
     discard();
   }
 
-  /** Drops the current language's changes, as the view's Discard does. */
+  /** Drops the current language's changes. */
   function discard() {
     const rest = { ...changes.value };
     delete rest[languageCode.value];

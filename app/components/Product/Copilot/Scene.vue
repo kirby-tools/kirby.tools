@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const isInert = inject(panelMockInertKey, false);
-// The page starts without the text and description the prompt asks for:
 // Copilot appends to the `text` blocks, which a Crop would hide below saved
-// ones. A still Scene generates nothing and keeps both.
+// ones.
 const page = useExhibitionPage(isInert ? {} : { text: [], description: "" });
 const typedLength = ref(0);
 const {

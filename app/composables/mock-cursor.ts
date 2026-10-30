@@ -98,7 +98,6 @@ function clickStageTarget(target: HTMLElement) {
   (control ?? target).click();
 }
 
-/** Fades the cursor out and removes it from the Stage. */
 function fadeOutCursor(cursor: ShallowRef<MockCursor | undefined>, delay = 0) {
   if (!cursor.value) return;
   const animation = animate(cursor.value.opacity, 0, { duration: 0.2, delay });
