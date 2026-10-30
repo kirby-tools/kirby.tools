@@ -225,11 +225,35 @@ products:
       - title: Marks Where You Are
         description: Fields and blocks in view are marked in the sidebar as you scroll.
         icon: i-ri-focus-3-line
+  - title: Kirby Deploy Trigger
+    license: free
+    id: deploy-trigger
+    description: A Panel button starts a deployment on Vercel, Netlify, GitHub Actions, or any service with a deploy hook.
+    reverse: true
+    links:
+      - label: Learn More
+        to: /deploy-trigger
+        color: neutral
+        variant: outline
+        trailingIcon: i-lucide-arrow-right
+      - label: Install Now
+        icon: i-ri-download-line
+        to: /docs/deploy-trigger
+        variant: subtle
+    features:
+      - title: In the Site View or Any Page
+        description: Add the button to a blueprint, or show it in every page view from config.php.
+        icon: i-ri-cursor-line
+      - title: The Hook URL Stays on the Server
+        description: Neither the URL nor a token reaches the browser.
+        icon: i-ri-lock-line
+      - title: Roles That May Not Deploy
+        description: Turn the deploy permission off, and the role neither sees the button nor gets a request through.
+        icon: i-ri-shield-user-line
   - title: Kirby Headless
     license: free
     id: headless
     description: Keep editing in Kirby and serve the content as JSON. A bearer token guards the API, KQL answers from one endpoint, and templates can return JSON instead of HTML.
-    reverse: true
     code:
       minHeight: 360px
       files:

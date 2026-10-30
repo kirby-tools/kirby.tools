@@ -24,6 +24,7 @@ const PRODUCT_MOCKS: Partial<
   "seo-audit": resolveComponent("ProductSeoAuditReport"),
   "serp-preview": resolveComponent("ProductSerpPreviewSnippet"),
   minimap: resolveComponent("ProductMinimapSidebar"),
+  "deploy-trigger": resolveComponent("ProductDeployTriggerScene"),
 };
 
 const { isLoading } = useLoadingIndicator();
