@@ -7,7 +7,7 @@ hero:
     label: Free Plugin
     icon: i-ri-open-source-line
   title: '<span class="text-primary">Google Snippet,</span><br> as You Type'
-  description: A Panel section shows the page you are editing as a Google result, before anything is saved.
+  description: A Panel field shows the page you are editing as a Google result, before anything is saved.
   links:
     - label: Install in Your Project
       trailingIcon: i-ri-arrow-right-line
@@ -19,11 +19,11 @@ sections:
     slot: features
     features:
       - title: Live, and before anything is saved
-        description: Typing in the title or description field redraws the snippet. The section only reads and never saves.
+        description: Typing in the title or description field redraws the snippet. The field only reads and never saves.
         icon: i-ri-refresh-line
         to: /docs/serp-preview
       - title: Reads the meta fields you already have
-        description: Point the section at your title and description fields, with a default for when they are empty.
+        description: Point the field at your title and description fields, with a default for when they are empty.
         icon: i-ri-input-field
         to: /docs/serp-preview/configuration
       - title: Shortened your way
@@ -32,7 +32,7 @@ sections:
         to: /docs/serp-preview/formatters
 cta:
   title: See What Google Sees
-  description: Install the SERP Preview plugin and add the section to any page blueprint or the site blueprint.
+  description: Install the SERP Preview plugin and add the field to any page blueprint or the site blueprint.
   orientation: horizontal
   links:
     - label: Get Started

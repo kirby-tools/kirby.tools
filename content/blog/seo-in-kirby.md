@@ -70,7 +70,7 @@ Content Translator can translate slugs too: with [`slug: true`](/docs/content-tr
 
 ## Preview the Google Result in the Panel
 
-The meta fields get filled in on every page, by editors who never see the `<head>`. [SERP Preview](/serp-preview) is a Panel section, and its `titleContentKey` and `descriptionContentKey` options point it at the same `metaTitle` and `metaDescription` fields. It draws the page as a Google result while the editor types, and clamps the title to one line and the description to two, as Google does:
+The meta fields get filled in on every page, by editors who never see the `<head>`. [SERP Preview](/serp-preview) is a Panel field, and its `titleContentKey` and `descriptionContentKey` options point it at the same `metaTitle` and `metaDescription` fields. It draws the page as a Google result while the editor types, and clamps the title to one line and the description to two, as Google does:
 
 :::panel-mock
 ::panel-serp-preview-field

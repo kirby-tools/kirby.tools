@@ -6,10 +6,10 @@ composer require johannschopplich/kirby-serp-preview
 
 Or extract the ZIP from the releases page into `site/plugins/`.
 
-Then add the section to a blueprint:
+Then add the field to a blueprint:
 
 ```yaml
-sections:
+fields:
   serpPreview:
     type: serp-preview
 ```
@@ -21,7 +21,7 @@ sections:
 `titleContentKey` and `descriptionContentKey` name the fields the snippet reads.
 
 ```yaml
-sections:
+fields:
   serpPreview:
     type: serp-preview
     titleContentKey: metaTitle
@@ -38,7 +38,7 @@ A content key takes a field name, not a query – a `{{ ... }}` there is read li
 `faviconUrl`, `siteTitle`, and `siteUrl` accept Kirby queries. `siteUrl` defaults to the URL Kirby runs under, so a staging install sets the production host. The path after it is the page's preview URL path, language prefix included. A blueprint whose `options.preview` is `false` leaves the line at the site URL.
 
 ```yaml
-sections:
+fields:
   serpPreview:
     type: serp-preview
     faviconUrl: "{{ site.favicon.toFile.url }}"
@@ -49,7 +49,7 @@ sections:
 
 ## Shortening the Text Rather Than Clipping It
 
-The section clamps the title to one line and the description to two. A formatter closure shortens the text before the clamp:
+The field clamps the title to one line and the description to two. A formatter closure shortens the text before the clamp:
 
 ```php [site/config/config.php]
 use Kirby\Toolkit\Str;
