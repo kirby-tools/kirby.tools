@@ -2,6 +2,7 @@ import type { Component } from "vue";
 import type { ExhibitionProductId } from "#shared/exhibition";
 import {
   ProductCopilotScene,
+  ProductDeployTriggerScene,
   ProductLivePreviewScene,
   ProductMinimapScene,
   ProductSeoAuditScene,
@@ -16,4 +17,5 @@ export const EXHIBITION_SCENES: Record<ExhibitionProductId, Component> = {
   "serp-preview": ProductSerpPreviewScene,
   minimap: ProductMinimapScene,
   "live-preview": ProductLivePreviewScene,
+  "deploy-trigger": ProductDeployTriggerScene,
 };

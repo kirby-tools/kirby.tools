@@ -7,6 +7,10 @@
     "repository": "https://github.com/kirby-tools/kirby-copilot.git",
     "ref": "d9cc6d27396a231bfb0079ed7ec72f3f129aef24"
   },
+  "deploy-trigger": {
+    "repository": "https://github.com/johannschopplich/kirby-deploy-trigger.git",
+    "ref": "272e6e22b170670fec291271069d541a152f883e"
+  },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",
     "ref": "23c7f5cedec4b480b683b44f79abbf412e4d6971"

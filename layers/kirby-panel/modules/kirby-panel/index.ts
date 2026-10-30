@@ -36,10 +36,10 @@ export default defineNuxtModule({
 
     nuxt.options.alias["#kirby-panel"] = srcDir;
     nuxt.options.alias["#panel-mock"] = resolve("../../runtime");
-    for (const { id, dir, barrel } of plugins) {
+    for (const { id, barrel, css } of plugins) {
       nuxt.options.alias[`#kirby-plugin/${id}`] = barrel;
       // The prerender inlines only CSS a `.vue` file or the entry imports.
-      nuxt.options.css.push(`${dir}/index.css`);
+      if (css) nuxt.options.css.push(css);
     }
 
     addVitePlugin(kirbyAliasPlugin(srcDir));
@@ -113,19 +113,23 @@ async function resolvePlugins(
         : resolve(`../../plugins/${id}`);
       const barrel = `${dir}/src/panel/site.ts`;
 
-      for (const file of [barrel, `${dir}/index.css`]) {
-        try {
-          await access(file);
-        } catch {
-          throw new Error(
-            isLocal
-              ? `\`${file}\` is missing. Check out a branch of kirby-${id} that has it, or drop "${id}" from \`${LOCAL_PLUGINS_ENV}\`.`
-              : `\`${file}\` is missing. Run \`pnpm kirby-panel:fetch\`, or pin a commit of kirby-${id} in \`plugins.json\` that has it.`,
-          );
-        }
+      try {
+        await access(barrel);
+      } catch {
+        throw new Error(
+          isLocal
+            ? `\`${barrel}\` is missing. Check out a branch of kirby-${id} that has it, or drop "${id}" from \`${LOCAL_PLUGINS_ENV}\`.`
+            : `\`${barrel}\` is missing. Run \`pnpm kirby-panel:fetch\`, or pin a commit of kirby-${id} in \`plugins.json\` that has it.`,
+        );
       }
 
-      return { id, dir, barrel, isLocal };
+      // A plugin without styles builds no `index.css`.
+      const css = await access(`${dir}/index.css`).then(
+        () => `${dir}/index.css`,
+        () => undefined,
+      );
+
+      return { id, dir, barrel, css, isLocal };
     }),
   );
 }

@@ -1,6 +1,7 @@
 import type {
   PanelContentTranslatorDropdownButtonProps,
   PanelCopilotButtonProps,
+  PanelDeployTriggerButtonProps,
   PanelSeoAuditButtonProps,
 } from "./plugins";
 
@@ -38,7 +39,8 @@ export type PanelPluginViewButton =
   | ({
       plugin: "content-translator";
     } & PanelContentTranslatorDropdownButtonProps)
-  | ({ plugin: "seo-audit" } & PanelSeoAuditButtonProps);
+  | ({ plugin: "seo-audit" } & PanelSeoAuditButtonProps)
+  | ({ plugin: "deploy-trigger" } & PanelDeployTriggerButtonProps);
 
 // `plugin?: never` keeps Kirby's own button props off a plugin's entry.
 export type PanelViewButton =

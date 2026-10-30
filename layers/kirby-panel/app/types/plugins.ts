@@ -63,3 +63,10 @@ export type PanelCopilotPromptDropdown =
       value?: string[];
     };
 // #endregion
+
+// #region Deploy Trigger
+export interface PanelDeployTriggerButtonProps {
+  isDeploying?: boolean;
+  click?: () => void;
+}
+// #endregion

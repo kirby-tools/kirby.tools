@@ -132,6 +132,14 @@ const isWide = computed(() => props.format === "og");
   position: static;
 }
 
+/* Anchored right, so the header's view buttons stay in the frame. */
+.social-card .panel-mock:has(.panel-deploy-trigger-button) {
+  --social-card-zoom: 1.35;
+  zoom: var(--social-card-zoom);
+  width: calc(100% * var(--social-card-zoom));
+  margin-inline-start: calc(100% - 100% * var(--social-card-zoom));
+}
+
 .social-card .k-panel:has(> .k-panel-minimap) > .panel-mock-stage {
   filter: blur(3px);
   opacity: 0.85;

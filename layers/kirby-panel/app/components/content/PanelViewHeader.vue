@@ -16,6 +16,7 @@ const PLUGIN_BUTTON_COMPONENTS: Record<
   copilot: "PanelCopilotButton",
   "content-translator": "PanelContentTranslatorDropdownButton",
   "seo-audit": "PanelSeoAuditButton",
+  "deploy-trigger": "PanelDeployTriggerButton",
 };
 
 const buttons = computed(() =>
