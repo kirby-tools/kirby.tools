@@ -20,7 +20,7 @@ The plugin has no `config.php` namespace – every option is a field property.
 
 ## When It Rerenders
 
-The preview rerenders once the editor pauses typing for `updateInterval` milliseconds, 500 by default. `updateInterval: false` stops only the rerenders typing triggers, not the ones on load or from the toolbar button. `updateInterval` takes `false` or an integer and lifts anything under 250 to 250; a negative integer or any other type shows an error in place of the field. Kirby ignores a leftover `updateStrategy`.
+The preview rerenders once the editor pauses typing for `updateInterval` milliseconds. `updateInterval: false` stops only those rerenders; the preview still renders on load and from the **Refresh preview** button.
 
 <https://kirby.tools/docs/live-preview/configuration.md>
 
