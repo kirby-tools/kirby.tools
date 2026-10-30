@@ -1,4 +1,4 @@
-import type { SetupContext } from "vue";
+import type { ComponentPublicInstance, SetupContext } from "vue";
 import { h } from "vue";
 import Empty from "#kirby-panel/components/Collection/Empty.vue";
 import DialogBody from "#kirby-panel/components/Dialogs/Elements/Body.vue";
@@ -57,6 +57,7 @@ import Text from "#kirby-panel/components/Text/Text.vue";
 import ViewButton from "#kirby-panel/components/View/Buttons/Button.vue";
 import ViewButtons from "#kirby-panel/components/View/Buttons/Buttons.vue";
 import LanguagesDropdown from "#kirby-panel/components/View/Buttons/LanguagesDropdown.vue";
+import { sizeTextareaToContent } from "../app/utils/textarea";
 import Draggable from "./Draggable.vue";
 import PicklistDropdown from "./PicklistDropdown.vue";
 import { translate } from "./translate";
@@ -146,11 +147,19 @@ export const components = {
   "k-text-field": TextField,
   "k-text-field-preview": TextFieldPreview,
   // Kirby's `mounted` and `value` watcher run `$library.autosize`, which no
-  // Mock carries; autofocus and preselect go with them.
+  // Mock carries: they size from script where `field-sizing` is missing, and
+  // autofocus and preselect go.
   "k-textarea-input": {
     ...TextareaInput,
-    mounted() {},
-    watch: {},
+    mounted(this: ComponentPublicInstance) {
+      sizeTextareaToContent(this.$refs.input as HTMLTextAreaElement);
+    },
+    watch: {
+      async value(this: ComponentPublicInstance) {
+        await this.$nextTick();
+        sizeTextareaToContent(this.$refs.input as HTMLTextAreaElement);
+      },
+    },
   },
   // Kirby resolves the toolbar even where `buttons: false` hides it, and no
   // Mock shows one.

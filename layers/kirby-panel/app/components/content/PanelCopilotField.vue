@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CopilotFieldBody } from "#kirby-plugin/copilot";
+import { CopilotFieldBody, createFieldLabels } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
@@ -19,17 +19,7 @@ const props = withDefaults(
   { editable: true, files: true },
 );
 
-const LABELS = {
-  generate: translate("johannschopplich.copilot.generate"),
-  stop: translate("johannschopplich.copilot.stop"),
-  undo: translate("johannschopplich.copilot.undo"),
-  prompt: translate("johannschopplich.copilot.prompt.label"),
-  context: translate("johannschopplich.copilot.context"),
-  placeholder: translate("johannschopplich.copilot.prompt.placeholder"),
-  reset: translate("johannschopplich.copilot.context.reset"),
-  selectFiles: translate("johannschopplich.copilot.files.select"),
-  clearFiles: translate("johannschopplich.copilot.delete"),
-};
+const LABELS = createFieldLabels(translate);
 
 const prompt = ref(props.userPrompt ?? "");
 const isOpen = ref(props.open);
@@ -56,10 +46,10 @@ const isOpen = ref(props.open);
 </template>
 
 <style>
-/* What Kirby's `$library.autosize` sets inline on mount, a script no Mock runs.
-   It measures an empty textarea at its default two rows, which `field-sizing`
-   ignores, so the minimum is two lines plus `--input-padding-multiline` above
-   and below. */
+/* `field-sizing` stands in for Kirby's `$library.autosize` where the browser
+   has it. Autosize measures an empty textarea at its default two rows, which
+   `field-sizing` ignores, so the minimum is two lines plus
+   `--input-padding-multiline` above and below. */
 .panel-mock .k-copilot-field .k-textarea-input-native {
   field-sizing: content;
   min-height: calc(2lh + 0.95rem);

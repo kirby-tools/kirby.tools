@@ -70,23 +70,11 @@ const toolbarButtons = computed(() =>
 );
 
 const textarea = useTemplateRef<HTMLTextAreaElement>("textarea");
-const isTextareaSizedByScript = ref(false);
 
-// Sizes the textarea to its content where the browser lacks `field-sizing`, as
-// Kirby's autosize does on mount and on every input.
-const sizeTextareaToContent = () => {
-  if (!textarea.value) return;
-  textarea.value.style.height = "auto";
-  textarea.value.style.height = `${textarea.value.scrollHeight}px`;
-};
-
-onMounted(() => {
-  isTextareaSizedByScript.value = !CSS.supports("field-sizing", "content");
-  if (isTextareaSizedByScript.value) sizeTextareaToContent();
-});
+onMounted(() => sizeTextareaToContent(textarea.value));
 
 function input(event: Event) {
-  if (isTextareaSizedByScript.value) sizeTextareaToContent();
+  sizeTextareaToContent(textarea.value);
   emit("input", (event.target as HTMLTextAreaElement).value);
 }
 </script>

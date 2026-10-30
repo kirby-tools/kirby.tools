@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import type { PromptContext } from "#kirby-plugin/copilot";
-import { PromptDialogBody } from "#kirby-plugin/copilot";
+import type { InsertOption } from "#kirby-plugin/copilot";
+import {
+  createInsertOptions,
+  createPromptDialogLabels,
+  PromptDialogBody,
+} from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 import "#kirby-panel/components/Misc/Notification.vue?vue&type=style&index=0&lang.css";
 import "#kirby-panel/components/Dialogs/Elements/Notification.vue?vue&type=style&index=0&lang.css";
@@ -26,29 +30,8 @@ const emit = defineEmits<{
   submit: [value: { selectedFieldNames: string[] }];
 }>();
 
-const LABELS = {
-  preview: translate("johannschopplich.copilot.preview"),
-  selectFiles: translate("johannschopplich.copilot.files.select"),
-  clearFiles: translate("johannschopplich.copilot.delete"),
-  insert: translate("johannschopplich.copilot.fieldPicker.insert"),
-  search: translate("johannschopplich.copilot.fieldPicker.search"),
-  selectPages: translate("johannschopplich.copilot.pages.select"),
-  notFound: translate("johannschopplich.copilot.fieldPicker.notFound"),
-  templates: translate("johannschopplich.copilot.templates"),
-  saveTemplate: translate("johannschopplich.copilot.template.saveAs"),
-  editTemplates: translate("johannschopplich.copilot.template.edit"),
-  noTemplates: translate("johannschopplich.copilot.template.empty"),
-  history: translate("johannschopplich.copilot.history"),
-  fields: translate("johannschopplich.copilot.fields"),
-  generate: translate("johannschopplich.copilot.generate"),
-};
-
-type InsertMode = NonNullable<PromptContext["insertMode"]>;
-
-const INSERT_OPTIONS: { value: InsertMode; text: string }[] = [
-  { value: "replace", text: translate("johannschopplich.copilot.replace") },
-  { value: "append", text: translate("johannschopplich.copilot.append") },
-];
+const LABELS = createPromptDialogLabels(translate);
+const INSERT_OPTIONS = createInsertOptions(translate);
 
 // The plugin's toolbar buttons in their order, each with the icon it shows.
 const TOOLS = [
@@ -65,7 +48,7 @@ provide(panelPicklistDropdownOpenKey, props.dropdown?.under === "fields");
 const selectedFieldNames = ref(
   props.dropdown?.under === "fields" ? [...(props.dropdown.value ?? [])] : [],
 );
-const insertOption = ref<InsertMode>("replace");
+const insertOption = ref<InsertOption["value"]>("replace");
 const {
   notification,
   open: openNotification,
