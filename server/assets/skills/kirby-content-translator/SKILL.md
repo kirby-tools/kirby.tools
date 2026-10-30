@@ -10,7 +10,7 @@ The site must be multi-language. The plugin translates between Kirby's configure
 
 ## Which Strategy Translates
 
-Set `strategy` explicitly. Without it the plugin uses a configured `translateFn` if one exists and DeepL otherwise. `translateFn` is deprecated and goes away in v4.
+Set `strategy` explicitly. Without it the plugin uses DeepL. A leftover `translateFn` key throws: rename it to `strategy`.
 
 | `strategy` | Resolves to                   | Needs                                                                          |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------ |
@@ -19,14 +19,14 @@ Set `strategy` explicitly. Without it the plugin uses a configured `translateFn`
 | `Closure`  | wrapped in `CallableStrategy` | signature `fn (string $text, string $target, ?string $source): string`         |
 | `Strategy` | used as-is                    | an implementation of `JohannSchopplich\ContentTranslator\Translation\Strategy` |
 
-A closure or `Strategy` instance enables the translation buttons without a `DeepL.apiKey`. `'ai'` runs through Copilot's provider configuration. Shape its output with the global `ai.systemPrompt`, or per section with `systemPrompt`. A closure that cannot translate a text returns an empty string, and the field keeps its source text.
+A closure or `Strategy` instance enables the translation buttons without a `DeepL.apiKey`. `'ai'` runs through Copilot's provider configuration. Shape its output with the global `ai.systemPrompt`, or per field with `systemPrompt`. A closure that cannot translate a text returns an empty string, and the field keeps its source text.
 
 <https://kirby.tools/docs/content-translator/configuration/global.md>
 <https://kirby.tools/docs/content-translator/providers/custom-translator.md>
 
 ## Adding It to the Panel
 
-A view button, a section, or both:
+A view button, a field, or both:
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -37,12 +37,12 @@ buttons:
   languages: true
   status: true
 
-sections:
+fields:
   contentTranslator:
     type: content-translator
 ```
 
-`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props then come from the global config. A blueprint's `buttons` wins over the option. `systemPrompt` is a section property. The view button ignores it and reads the global `ai.systemPrompt`.
+`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props then come from the global config. A blueprint's `buttons` wins over the option. `systemPrompt` is a field property. The view button ignores it and reads the global `ai.systemPrompt`.
 
 Kirby's language view, where the button translates language variables, has no blueprint: only `panel.viewButtons.language` puts the button there, listed alongside Kirby's `open`, `settings`, and `delete`. The button saves directly, and Kirby rewrites the language definition file as a plain array: a file that builds its variables in PHP, such as from a YAML file, loses that code.
 
