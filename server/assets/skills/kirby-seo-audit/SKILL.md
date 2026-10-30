@@ -6,7 +6,7 @@ composer require johannschopplich/kirby-seo-audit
 
 ## Add It to a Blueprint
 
-The view button and the section can coexist. The view button is the recommended one:
+The view button and the field can coexist. The view button is the recommended one:
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -21,10 +21,10 @@ buttons:
 
 `buttons` is an allow-list, so Kirby's defaults for the view have to be named alongside `seo-audit` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `keyphraseField` stay in the blueprint. A blueprint's `buttons` wins over the option.
 
-`theme` belongs to the button alone. The section renders results inline instead of in a dialog and adds `persisted`:
+`theme` belongs to the button alone. The field renders results inline instead of in a dialog and adds `persisted`:
 
 ```yaml [site/blueprints/pages/default.yml]
-sections:
+fields:
   seoAudit:
     type: seo-audit
 ```
@@ -38,7 +38,7 @@ Keyphrase assessments are skipped until the page supplies a keyphrase, unless `a
 - `keyphraseField` names a blueprint field the editor fills in. Reach for this when each page has its own target term.
 - `keyphrase` sets it from the blueprint or a Kirby query. Reach for this when the term is derived, e.g. from the page title.
 
-`synonymsField` and `synonyms` mirror the pair. A Kirby query resolves only in a string; a `{{ }}` inside a `synonyms` list stays unresolved, so a query goes in `synonyms: "{{ page.metaSynonyms }}"`.
+`synonymsField` and `synonyms` mirror the pair. A Kirby query resolves only in a string; a `{{ }}` inside a `synonyms` list stays unresolved, so a query goes in `synonyms: "{{ page.metaSynonyms }}"`. Single braces are a query too: a literal `{…}` in `keyphrase` is replaced, by nothing when the query finds nothing.
 
 `assessments` narrows the report to the checks that matter for the template. `contentSelector` scopes the analysis to the markup that is content, e.g. `#main`.
 
@@ -52,7 +52,7 @@ Each analysis leaves a rating per page and language:
 - `{{ page.seoAuditRating }}` in blueprints
 - `sortBy: seoAuditScore asc` to list unrated pages first, then the ones that need work
 
-Publishing the page again marks the rating stale until the next analysis. `analyzeOn: publish` runs that analysis after every publish, silently. Set it once under `johannschopplich.seo-audit.analyzeOn` or per button and section, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
+Publishing the page again marks the rating stale until the next analysis. `analyzeOn: publish` runs that analysis after every publish, silently. Set it once under `johannschopplich.seo-audit.analyzeOn` or per button and field, where `false` switches it off. Ratings live in the plugin cache, so clearing the cache unrates every page.
 
 <https://kirby.tools/docs/seo-audit/guide/ratings.md>
 
