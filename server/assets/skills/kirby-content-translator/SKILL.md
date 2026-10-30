@@ -10,7 +10,7 @@ The site must be multi-language. The plugin translates between Kirby's configure
 
 ## Which Strategy Translates
 
-Set `strategy` explicitly. Without it the plugin uses DeepL. A leftover `translateFn` key throws: rename it to `strategy`.
+Set `strategy` explicitly. Without it the plugin uses DeepL.
 
 | `strategy` | Resolves to                   | Needs                                                                          |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------ |
