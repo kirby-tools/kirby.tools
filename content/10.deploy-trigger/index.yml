@@ -1,0 +1,40 @@
+title: Kirby Deploy Trigger – Deploy Button for the Kirby Panel
+description: Kirby CMS plugin that adds a Panel button to start a deployment through a deploy hook – Vercel, Netlify, GitHub Actions, or any other service.
+navigation.icon: i-ri-rocket-2-line
+hero:
+  headline:
+    label: Free Plugin
+    icon: i-ri-open-source-line
+  title: 'Your Static Site,<br> <span class="text-primary">Rebuilt From the Panel</span>'
+  description: Editors click a button in the site view, and your server calls the deploy hook of Vercel, Netlify, or GitHub Actions.
+  links:
+    - label: Get Started
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/deploy-trigger
+      size: xl
+sections:
+  - title: One Button,<br> <span class="text-primary">One Deploy Hook</span>
+    id: features
+    slot: features
+    features:
+      - title: In the site view or any page
+        description: Add the button to the site blueprint or a page blueprint, or show it in every page view from config.php.
+        icon: i-ri-cursor-line
+        to: /docs/deploy-trigger
+      - title: The hook URL stays on the server
+        description: Your server sends the request, with any token or JSON body you configure. Neither the URL nor the token reaches the browser.
+        icon: i-ri-lock-line
+        to: /docs/deploy-trigger/configuration
+      - title: Roles that may not deploy
+        description: Turn the deploy permission off in a role blueprint, and its users neither see the button nor get a request through.
+        icon: i-ri-shield-user-line
+        to: /docs/deploy-trigger/permissions
+cta:
+  title: Rebuild When the Content Is Ready
+  description: Install the plugin, set the deploy hook URL, and add the button to the site blueprint.
+  orientation: horizontal
+  links:
+    - label: Read the Documentation
+      trailingIcon: i-ri-arrow-right-line
+      to: /docs/deploy-trigger
+      size: xl

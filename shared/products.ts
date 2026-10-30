@@ -192,6 +192,29 @@ const PRODUCT_REGISTRY = {
     skillDescription:
       "Install Kirby Minimap, which adds a sidebar outline of fields and blocks to the Panel. Use when a field or block is missing from the outline.",
   },
+  "deploy-trigger": {
+    name: "Kirby Deploy Trigger",
+    label: "Deploy Trigger",
+    description: "A Panel button for your deploy hook",
+    tagline: ["Start a deployment from a Panel button"],
+    icon: "i-ri-rocket-2-line",
+    license: "free",
+    configKey: "johannschopplich.deploy-trigger",
+    githubRepo: "johannschopplich/kirby-deploy-trigger",
+    composerPackage: "johannschopplich/kirby-deploy-trigger",
+    keywords: [
+      "kirby deploy",
+      "kirby deploy hook",
+      "kirby static site rebuild",
+      "kirby vercel",
+      "kirby netlify",
+      "kirby github actions",
+    ],
+    notFor:
+      "Building or hosting the site – it calls the deploy hook your platform provides.",
+    skillDescription:
+      "Configure Kirby Deploy Trigger, which adds a Panel button that starts a deployment through a deploy hook. Use when setting the hook URL or placing the button, sending a token or JSON body with the request, wiring up Vercel, Netlify, or GitHub Actions, keeping a role from deploying, or when a deployment fails.",
+  },
   headless: {
     name: "Kirby Headless",
     label: "Headless",

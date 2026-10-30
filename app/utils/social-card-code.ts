@@ -2,6 +2,7 @@ import type { ExhibitionProductId } from "#shared/exhibition";
 import type { ProductId } from "#shared/products";
 
 const exhibitionRequest = `GET ${EXHIBITION_URL.pathname}`;
+const exhibitionDispatchPath = "/repos/kunsthalle-leipzig/website/dispatches";
 
 export interface SocialCardSnippet {
   label: string;
@@ -65,6 +66,33 @@ echo \\Kirby\\Data\\Json::encode([
 <meta content="${EXHIBITION_PAGE.title}" name="twitter:title">
 <meta content="${EXHIBITION_PAGE.description}" name="twitter:description">
 <link href="${EXHIBITION_URL.origin}/dist/assets/main-DiwrgTda.css" rel="stylesheet"><script src="${EXHIBITION_URL.origin}/dist/assets/main-BmA3xV9q.js" type="module"></script>`,
+    },
+  },
+  "deploy-trigger": {
+    source: {
+      label: "site/config/config.php",
+      language: "php",
+      code: `<?php
+
+return [
+    'johannschopplich.deploy-trigger' => [
+        'deployUrl' => 'https://api.github.com${exhibitionDispatchPath}',
+        'requestOptions' => [
+            'agent' => 'kirby-deploy-trigger',
+            'headers' => [
+                'Accept' => 'application/vnd.github+json',
+                'Authorization' => 'Bearer <token>',
+                'Content-Type' => 'application/json'
+            ],
+            'data' => json_encode(['event_type' => 'deploy'])
+        ]
+    ]
+];`,
+    },
+    result: {
+      label: `POST ${exhibitionDispatchPath}\nAuthorization: Bearer <token>`,
+      language: "json",
+      code: JSON.stringify({ event_type: "deploy" }, undefined, 2),
     },
   },
 };
