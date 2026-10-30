@@ -1,7 +1,7 @@
 {
   "content-translator": {
     "repository": "https://github.com/kirby-tools/kirby-content-translator.git",
-    "ref": "f9e2888378c87ca73a9f779ed22c8dd654dece8f"
+    "ref": "4e563768075e9be07275b11024c32f0b5c7f69b1"
   },
   "copilot": {
     "repository": "https://github.com/kirby-tools/kirby-copilot.git",
@@ -13,10 +13,10 @@
   },
   "seo-audit": {
     "repository": "https://github.com/kirby-tools/kirby-seo-audit.git",
-    "ref": "934ca6c790c1963f74cb7bd386e35f1dcd10d784"
+    "ref": "f55a76809a06493d1e4345a11d3b9938583a1315"
   },
   "serp-preview": {
     "repository": "https://github.com/johannschopplich/kirby-serp-preview.git",
-    "ref": "913be180797f13357dff08f1a5de4d7684f8aa14"
+    "ref": "472aaf87dd6965a7373abe2185976ad6e007406e"
   }
 }
