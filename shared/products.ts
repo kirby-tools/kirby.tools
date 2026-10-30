@@ -141,7 +141,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Previewing a decoupled frontend that renders outside Kirby – it previews Kirby-rendered pages.",
     skillDescription:
-      "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview section to a blueprint, choosing when it rerenders or which page it shows, keeping editors from clicking through, hiding parts of the page in preview mode, or when the preview stays blank.",
+      "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview field to a blueprint, choosing when it rerenders or which page it shows, keeping editors from clicking through, hiding parts of the page in preview mode, or when the preview stays blank.",
   },
   "serp-preview": {
     name: "Kirby SERP Preview",
