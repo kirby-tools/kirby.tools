@@ -35,8 +35,6 @@ fields:
 
 The same move, per plugin:
 
-<!-- unverified: Live Preview v3 is not ported yet – the `preview` field type, its properties keeping their names (`interactable: 0` already means `false` on Kirby 6), and "Compatibility release, no new options" in the table below rest on the plan -->
-
 ::tabs
 
 :::tabs-item{label="Copilot"}
@@ -109,7 +107,7 @@ Your current license stays valid for the versions it covers, so a site that stay
 | Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options                                                                                                                                  |
 | Kirby Content Translator | v3                 | v4      | `confirm` is removed, Translation Coverage stays in the **Languages** view – [migration guide](/docs/content-translator/getting-started/migration#migrating-from-v3-to-v4) |
 | Kirby SEO Audit          | v3                 | v4      | Same assessments and ratings, reports kept in the browser start over once – [changelog](/seo-audit/changelog)                                                              |
-| Kirby Live Preview       | v2                 | v3      | Compatibility release, no new options                                                                                                                                      |
+| Kirby Live Preview       | v2                 | v3      | Compatibility release, no new options – [changelog](/live-preview/changelog)                                                                                               |
 | Kirby SERP Preview       | v1                 | v2      | Free                                                                                                                                                                       |
 | Kirby Minimap            | v1                 | v2      | Free, nothing to configure                                                                                                                                                 |
 | Kirby Headless           | v8                 | v9      | No Panel part, requires KQL 4                                                                                                                                              |
