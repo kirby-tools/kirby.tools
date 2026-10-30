@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { PanelContentTranslatorOptions } from "../../types/plugins";
-import {
-  TranslatorButtons,
-  TranslatorField,
-} from "#kirby-plugin/content-translator";
+import { ActionButtons, FieldBody } from "#kirby-plugin/content-translator";
 import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
@@ -21,11 +18,11 @@ const resolution = useTranslatorActions(props);
 
 <template>
   <!-- The PHP field's defaults for a field keyed `contentTranslator`. -->
-  <TranslatorField
+  <FieldBody
     :label="label || translate('johannschopplich.content-translator.label')"
     name="contenttranslator"
   >
-    <TranslatorButtons
+    <ActionButtons
       :actions="resolution.groups"
       :is-translating="isTranslating"
       :info="
@@ -36,5 +33,5 @@ const resolution = useTranslatorActions(props);
           : undefined
       "
     />
-  </TranslatorField>
+  </FieldBody>
 </template>

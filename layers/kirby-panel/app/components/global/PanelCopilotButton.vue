@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { PanelCopilotButtonProps } from "../../types/plugins";
-import { CopilotButtonBody } from "#kirby-plugin/copilot";
+import { ViewButtonBody } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 
 defineProps<PanelCopilotButtonProps>();
 </script>
 
 <template>
-  <CopilotButtonBody
+  <ViewButtonBody
     :label="label || translate('johannschopplich.copilot.label')"
     :icon="icon"
     :theme="theme"

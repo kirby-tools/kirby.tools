@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentVersion, Report } from "#kirby-plugin/seo-audit";
-import { AuditField, createAuditLabels } from "#kirby-plugin/seo-audit";
+import { createReportLabels, FieldBody } from "#kirby-plugin/seo-audit";
 import { translate } from "#panel-mock/translate";
 
 const props = defineProps<{
@@ -13,13 +13,13 @@ const props = defineProps<{
   isStale?: boolean;
 }>();
 
-const labels = createAuditLabels(translate, "en");
+const labels = createReportLabels(translate, "en");
 const timestamp = useSeoAuditTimestamp(() => props.timestamp);
 </script>
 
 <template>
   <!-- The PHP field's defaults for a field keyed `seoAudit`. -->
-  <AuditField
+  <FieldBody
     :label="translate('johannschopplich.seo-audit.label')"
     name="seoaudit"
     :labels="labels"

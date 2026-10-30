@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { PanelDeployTriggerButtonProps } from "../../types/plugins";
-import { DeployTriggerButtonBody } from "#kirby-plugin/deploy-trigger";
+import { ViewButtonBody } from "#kirby-plugin/deploy-trigger";
 import { translate } from "#panel-mock/translate";
 
 defineProps<PanelDeployTriggerButtonProps>();
 </script>
 
 <template>
-  <DeployTriggerButtonBody
+  <ViewButtonBody
     :label="translate('johannschopplich.deploy-trigger.label')"
     :is-deploying="isDeploying"
     class="panel-deploy-trigger-button"

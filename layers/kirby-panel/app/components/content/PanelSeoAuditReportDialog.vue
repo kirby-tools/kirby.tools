@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentVersion, Report } from "#kirby-plugin/seo-audit";
-import { createAuditLabels, ReportBody } from "#kirby-plugin/seo-audit";
+import { createReportLabels, ReportDialogBody } from "#kirby-plugin/seo-audit";
 import { translate } from "#panel-mock/translate";
 
 const props = defineProps<{
@@ -12,7 +12,7 @@ const props = defineProps<{
   autofocus?: boolean;
 }>();
 
-const labels = createAuditLabels(translate, "en");
+const labels = createReportLabels(translate, "en");
 const timestamp = useSeoAuditTimestamp(() => props.timestamp);
 </script>
 
@@ -24,7 +24,7 @@ const timestamp = useSeoAuditTimestamp(() => props.timestamp);
     :autofocus="autofocus"
     class="k-seo-audit-report-dialog"
   >
-    <ReportBody
+    <ReportDialogBody
       :results="results"
       :ratings="ratings"
       :version="version"

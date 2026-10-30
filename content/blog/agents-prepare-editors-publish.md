@@ -30,7 +30,7 @@ return [
 The Panel's new **Agents** view shows the MCP URL. Add it to your agent, and it sends you to the Panel. You log in as yourself and decide what the connection may do:
 
 :::panel-mock
-::panel-copilot-agents-authorize-view
+::panel-copilot-consent-view
 ---
 site: Kunsthalle Leipzig
 account: hanna@kunsthalle-leipzig.de

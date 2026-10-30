@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { MinimapField } from "#kirby-plugin/minimap";
-import { MinimapSidebarView } from "#kirby-plugin/minimap";
+import { SidebarBody } from "#kirby-plugin/minimap";
 import { translate } from "#panel-mock/translate";
 // The minimap borrows the `--menu-*` tokens from Kirby's own menu, which no
 // other Mock renders and whose stylesheet is therefore not in the bundle.
@@ -14,7 +14,7 @@ const isOpen = ref(true);
 </script>
 
 <template>
-  <MinimapSidebarView
+  <SidebarBody
     :fields="fields"
     :is-open="isOpen"
     :collapse-label="translate('collapse')"

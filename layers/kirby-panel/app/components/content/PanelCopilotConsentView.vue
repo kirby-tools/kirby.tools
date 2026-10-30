@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AgentsAuthorize } from "#kirby-plugin/copilot";
+import { ConsentView } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 import "#kirby-panel/components/Dialogs/Dialog.vue?vue&type=style&index=0&lang.css";
 
@@ -41,7 +41,7 @@ const permissions = computed(() =>
 </script>
 
 <template>
-  <AgentsAuthorize
+  <ConsentView
     :site="site"
     :account="account"
     :client="{
@@ -59,7 +59,7 @@ const permissions = computed(() =>
 <style>
 /* Kirby centers the dialog through `.k-panel.k-panel-outside`, whose full-height
    `k-panel` no Mock carries. */
-.panel-mock .k-copilot-agents-authorize-view {
+.panel-mock .k-copilot-consent-view {
   display: grid;
   place-items: center;
 }

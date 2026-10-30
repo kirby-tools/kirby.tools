@@ -4,8 +4,8 @@ import type {
   TranslationTreeEntry,
 } from "#kirby-plugin/content-translator";
 import {
+  CoverageBody,
   createCoverageLabels,
-  TranslationCoverage,
 } from "#kirby-plugin/content-translator";
 import { translate } from "#panel-mock/translate";
 // The plugin borrows the markup of Kirby's `k-stats` and `k-tree` without
@@ -30,7 +30,7 @@ function toggle(item: TranslationTreeEntry) {
 </script>
 
 <template>
-  <TranslationCoverage
+  <CoverageBody
     :languages="languages"
     :tree="stagedTree"
     :labels="labels"

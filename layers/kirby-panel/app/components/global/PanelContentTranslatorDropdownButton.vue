@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { PanelContentTranslatorDropdownButtonProps } from "../../types/plugins";
 import {
-  TranslatorDropdownButton,
-  TranslatorDropdownItems,
+  ActionDropdownItems,
+  ViewButtonBody,
 } from "#kirby-plugin/content-translator";
 import { translate } from "#panel-mock/translate";
 
@@ -16,7 +16,7 @@ const resolution = useTranslatorActions(props);
 
 <template>
   <div class="panel-content-translator-dropdown-button relative">
-    <TranslatorDropdownButton
+    <ViewButtonBody
       :actions="resolution.groups"
       :label="
         label ||
@@ -32,10 +32,7 @@ const resolution = useTranslatorActions(props);
          below the button. The button is inert meanwhile, since a click would
          open the plugin's own dropdown as a modal over them. -->
     <PanelDropdown v-if="open" align-x="start">
-      <TranslatorDropdownItems
-        :actions="resolution.groups"
-        @run="run?.($event)"
-      />
+      <ActionDropdownItems :actions="resolution.groups" @run="run?.($event)" />
     </PanelDropdown>
   </div>
 </template>

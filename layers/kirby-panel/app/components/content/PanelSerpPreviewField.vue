@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SerpPreview } from "#kirby-plugin/serp-preview";
+import { Field } from "#kirby-plugin/serp-preview";
 import { translate } from "#panel-mock/translate";
 
 const props = defineProps<{
@@ -17,7 +17,7 @@ providePanelPage({
 
 <template>
   <!-- The PHP field's defaults for a field keyed `serpPreview`. -->
-  <SerpPreview
+  <Field
     :label="translate('johannschopplich.serp-preview.label')"
     name="serppreview"
     title-separator="–"

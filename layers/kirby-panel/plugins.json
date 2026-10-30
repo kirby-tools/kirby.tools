@@ -1,26 +1,26 @@
 {
   "content-translator": {
     "repository": "https://github.com/kirby-tools/kirby-content-translator.git",
-    "ref": "4e563768075e9be07275b11024c32f0b5c7f69b1"
+    "ref": "48f13f042a1c990a9facfa9cd963ac0e5add637f"
   },
   "copilot": {
     "repository": "https://github.com/kirby-tools/kirby-copilot.git",
-    "ref": "d9cc6d27396a231bfb0079ed7ec72f3f129aef24"
+    "ref": "b9b5ad2deb0a37d49d7efadd5d6f00869a59de72"
   },
   "deploy-trigger": {
     "repository": "https://github.com/johannschopplich/kirby-deploy-trigger.git",
-    "ref": "272e6e22b170670fec291271069d541a152f883e"
+    "ref": "c38fee17a49541ecd35b00d07fde0a373d20a7d3"
   },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",
-    "ref": "23c7f5cedec4b480b683b44f79abbf412e4d6971"
+    "ref": "62f7acfd8f2b5022656bc89c09b5bffe2acb9f36"
   },
   "seo-audit": {
     "repository": "https://github.com/kirby-tools/kirby-seo-audit.git",
-    "ref": "f55a76809a06493d1e4345a11d3b9938583a1315"
+    "ref": "a0daad2c120096d6b1ee4ab7ad47c2831c22ee3b"
   },
   "serp-preview": {
     "repository": "https://github.com/johannschopplich/kirby-serp-preview.git",
-    "ref": "472aaf87dd6965a7373abe2185976ad6e007406e"
+    "ref": "83d58778226459c5b25c80904a30598e8e62e7fe"
   }
 }

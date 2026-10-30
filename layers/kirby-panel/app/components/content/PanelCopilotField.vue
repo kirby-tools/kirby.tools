@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CopilotFieldBody, createFieldLabels } from "#kirby-plugin/copilot";
+import { createFieldLabels, FieldBody } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
@@ -27,7 +27,7 @@ const isOpen = ref(props.open);
 
 <template>
   <!-- The PHP field's defaults for a field keyed `copilot`. -->
-  <CopilotFieldBody
+  <FieldBody
     v-model:prompt="prompt"
     v-model:open="isOpen"
     :label="label || translate('johannschopplich.copilot.label')"

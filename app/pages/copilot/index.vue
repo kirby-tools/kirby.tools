@@ -18,7 +18,7 @@ const page = await useProductPage();
       <!-- claude.ai asks for every permission, so the two beyond the defaults
            read as requested. -->
       <PanelMock class="shadow-2xl shadow-black/10 dark:shadow-black/60">
-        <PanelCopilotAgentsAuthorizeView
+        <PanelCopilotConsentView
           :site="EXHIBITION_SITE.title"
           :account="CHAT_ACCOUNT"
           :client="{ host: 'claude.ai' }"
