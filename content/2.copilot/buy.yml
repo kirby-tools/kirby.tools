@@ -5,7 +5,7 @@ hero:
   title: Buy Once, Use Forever
   description: AI generation in every Panel you build, at a one-time price.
 plan:
-  title: Copilot v3
+  title: Copilot v4
   description: For solo developers and agencies
   price: €99
   paddlePriceId: pri_01kk9q21gp30vzvj0gdesdpvnd
@@ -15,8 +15,7 @@ plan:
     color: primary
     to: "#"
   features:
-    - For Kirby 4 & Kirby 5
-    - Includes Kirby 6 when released
+    - For Kirby 4, 5 & 6
     - Unlimited owned sites
     - Unlimited minor & patch updates
 faq:
@@ -28,7 +27,7 @@ faq:
     - label: Do I need an AI provider API key?
       content: To generate in the Panel or from PHP, yes – an API key from at least one supported provider. Agents need none, since the agent brings its own model. Kirby Copilot supports [OpenAI](https://platform.openai.com), [Google Gemini](https://ai.google.dev/gemini-api/docs/models) (free tier available), [Anthropic Claude](https://console.anthropic.com), and [Mistral](https://console.mistral.ai). I recommend Google Gemini – its free tier is enough to try the plugin, and its models handle the structured output that blocks and layouts need.
     - label: Which Kirby versions are supported?
-      content: Kirby Copilot is compatible with Kirby 4 and Kirby 5. When Kirby 6 is released, support is included with your license at no additional cost.
+      content: Kirby Copilot v4 runs on Kirby 6. Which version runs on Kirby 4 and 5 is on the [license compatibility page](/license-compatibility). Your Gen 3 license covers all of them.
     - label: What does “Unlimited minor & patch updates” include?
       content: Every minor and patch release of the major version you bought, at no extra cost. Which major versions your license covers is on the [license compatibility page](/license-compatibility).
     - label: How do I receive updates for the plugin?

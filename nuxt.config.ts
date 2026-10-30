@@ -209,6 +209,18 @@ export default defineNuxtConfig({
           })),
         ],
       },
+      {
+        title: "Upgrading",
+        description: "Moving a Kirby Tools site to Kirby 6.",
+        contentCollection: "pages",
+        contentFilters: [
+          {
+            field: "path",
+            operator: "=" as const,
+            value: "/upgrading-to-kirby-6",
+          },
+        ],
+      },
     ],
     notes: [
       "These plugins install via Composer or as a ZIP into `site/plugins/`.",
