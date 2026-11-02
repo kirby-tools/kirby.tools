@@ -6,7 +6,7 @@ composer require johannschopplich/kirby-minimap
 
 Or extract the ZIP from the releases page into `site/plugins/`.
 
-The minimap appears next to the site view and every page view. Below Kirby's 960-pixel menu breakpoint it becomes an overlay that starts closed. There is no `config.php` namespace and no blueprint section to add.
+The minimap appears next to the site view and every page view. Below Kirby's 960-pixel menu breakpoint it becomes an overlay that starts closed. There is no `config.php` namespace and nothing to add to a blueprint.
 
 <https://kirby.tools/docs/minimap.md>
 
