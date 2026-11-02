@@ -49,7 +49,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Resolving UUIDs
 
-`toResolvedBlocks()`, `toResolvedLayouts()`, and `resolvePermalinks()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves. A `blocksResolver.files` list replaces that default rather than extending it. Without `'image' => 'image'` in the list, the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
+`toResolvedBlocks()` and `toResolvedLayouts()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects, and `resolvePermalinks()` turns a writer field's `/@/page/…` and `/@/file/…` permalinks into URLs. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves. A `blocksResolver.files` list replaces that default rather than extending it. Without `'image' => 'image'` in the list, the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
 
 `frontendUrl()`, `breadcrumbMeta()`, and `i18nMeta()` build the navigation data a frontend needs.
 
