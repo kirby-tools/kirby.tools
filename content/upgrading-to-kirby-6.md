@@ -100,8 +100,6 @@ Your current license stays valid for the versions it covers, so a site that stay
 
 ## Per Plugin
 
-<!-- unverified: the Headless row – Kirby Headless has no Kirby 6 branch yet, so v9 and KQL 4 rest on the plan -->
-
 | Plugin                   | Latest for Kirby 5 | Kirby 6 | Notes                                                                                                                                                                      |
 | ------------------------ | ------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options                                                                                                                                  |
@@ -110,4 +108,4 @@ Your current license stays valid for the versions it covers, so a site that stay
 | Kirby Live Preview       | v2                 | v3      | Rerenders after a typing pause, `updateStrategy` is removed – [changelog](/live-preview/changelog)                                                                         |
 | Kirby SERP Preview       | v1                 | v2      | Free                                                                                                                                                                       |
 | Kirby Minimap            | v1                 | v2      | Free, nothing to configure                                                                                                                                                 |
-| Kirby Headless           | v8                 | v9      | No Panel part, requires KQL 4                                                                                                                                              |
+| Kirby Headless           | v8                 | v9      | No Panel part, requires KQL 4 – [migration guide](/docs/headless/getting-started/migration#migrating-from-v8-to-v9)                                                        |
