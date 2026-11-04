@@ -36,6 +36,8 @@ return [
 
 `thumbnail` takes a file ID, a UUID, or a files field returned from a closure: `'thumbnail' => fn (Page $page) => $page->cover()`. A `File` or `Field` object set directly throws once `social()` runs. An `opengraph.image` of your own drops the derived width, height, and alt text.
 
+Shorten a blocks, layout, or writer field to a description with `$field->toExcerpt(160)`; render a Markdown textarea with `->kt()` first. Core's `excerpt()` returns a blocks field's JSON, and `toBlocks()->excerpt()` glues paragraphs and leaves `&amp;` for `social()` to escape again.
+
 <https://kirby.tools/docs/helpers/meta-tags.md>
 
 ## Sitemap and `robots.txt`
