@@ -6,12 +6,10 @@ const props = defineProps<{
 }>();
 
 const licenseHolder = ref("");
+const { openCheckout: openPaddleCheckout } = usePaddleCheckout();
 
 function openCheckout() {
-  const { $paddle } = useNuxtApp();
-  if (!$paddle) return;
-
-  $paddle.Checkout.open({
+  void openPaddleCheckout({
     items: [{ priceId: props.page.plan.paddlePriceId, quantity: 1 }],
     customData: {
       licenseHolder: licenseHolder.value || undefined,
