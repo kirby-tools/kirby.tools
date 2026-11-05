@@ -34,7 +34,7 @@ To see how often our pages are visited and how fast they load, we use Cloudflare
 
 When you visit the website, we set no cookies and store nothing on your device. We serve fonts and scripts ourselves, not through third-party providers – except Cloudflare's measurement script (see above).
 
-When you switch between the light and dark design, your browser stores your choice locally (local storage) so that it persists on your next visit. This setting never leaves your device. This storage is strictly necessary for the function you requested (Section 25(2) No. 2 TDDDG, the German Telecommunications Digital Services Data Protection Act).
+Your browser stores locally (local storage) whether you see the light or dark design, so that your choice persists on your next visit. This setting never leaves your device. This storage is strictly necessary for the function you requested (Section 25(2) No. 2 TDDDG, the German Telecommunications Digital Services Data Protection Act).
 
 Cookies or similar technologies only come into play when you click the buy button or sign in to the customer portal. The details are in the following sections.
 
@@ -42,7 +42,7 @@ Links to other websites are ordinary links. Only when you click one does your br
 
 ## Buying Licenses
 
-We sell our licenses through Paddle. Your contractual partner for the purchase is Paddle.com Market Limited, Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom, which acts as the merchant of record. Paddle processes your payment, billing and contact data as an independent controller; [Paddle's privacy policy](https://www.paddle.com/legal/privacy) applies to this. Paddle's checkout loads only when you click the buy button; Paddle may use cookies or similar technologies needed for the payment. For the United Kingdom, an adequacy decision of the European Commission exists (Art. 45 GDPR).
+We sell our licenses through Paddle. Your contractual partner for the purchase is Paddle.com Market Limited, Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom, which acts as the merchant of record. Paddle processes your payment, billing and contact data as an independent controller; [Paddle's privacy policy](https://www.paddle.com/legal/privacy) applies to this. Paddle's checkout loads only when you click the buy button, together with a script of Paddle's ProfitWell service; Paddle may use cookies or similar technologies needed for the payment. For the United Kingdom, an adequacy decision of the European Commission exists (Art. 45 GDPR).
 
 After your purchase, we receive from Paddle the details we need for your license: your email address, the order number, the purchased product and the license holder you entered. We use them to create, verify and manage your license (Art. 6(1)(b) GDPR). The license data is stored in a database at Cloudflare (see above); we send emails about your license, such as sign-in links, through Resend from Plus Five Five, Inc., San Francisco, USA, which is certified under the EU-US Data Privacy Framework (Art. 45 GDPR). Both act on our behalf (Art. 28 GDPR). We keep the license data for as long as your license exists, and beyond that as far as tax retention obligations require (§ 147 AO, German Fiscal Code).
 
