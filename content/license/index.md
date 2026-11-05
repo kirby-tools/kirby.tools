@@ -9,7 +9,7 @@ Last updated: 2026-11-05
 
 ## 1. Scope
 
-This License Agreement ("Agreement") governs the use of the commercial Kirby Tools plugins. It applies to purchases made on or after its last update. Earlier purchases stay under the version of this Agreement in effect when they were made, even after later plugin updates are installed. A separate written agreement with the Licensor takes precedence over this Agreement. Nothing in this Agreement limits the mandatory rights of consumers.
+This License Agreement ("Agreement") governs the use of the commercial Kirby Tools plugins. It applies to purchases made on or after its last update. Earlier purchases stay under the version of this Agreement in effect when they were made, even after later plugin updates are installed. The [previous version](https://kirby.tools/license/2026-03-11) stays published. A separate written agreement with the Licensor takes precedence over this Agreement. Nothing in this Agreement limits the mandatory rights of consumers.
 
 ## 2. Definitions
 

@@ -7,7 +7,7 @@ navigation.icon: i-ri-file-paper-line
 Published: 2025-12-21\
 Last updated: 2026-11-05
 
-The [Kirby Tools Plugin License Agreement](https://kirby.tools/license) ("main agreement") applies to the Kirby Tools plugins distributed in the Zero One Theme package ("Plugins"), with the following changes. This addendum covers Theme Licenses bought on or after its last update, together with the main agreement as in effect when the Theme License was bought. Earlier Theme Licenses stay under the Zero One Edition terms in effect when they were bought.
+The [Kirby Tools Plugin License Agreement](https://kirby.tools/license) ("main agreement") applies to the Kirby Tools plugins distributed in the Zero One Theme package ("Plugins"), with the following changes. This addendum covers Theme Licenses bought on or after its last update, together with the main agreement as in effect when the Theme License was bought. Earlier Theme Licenses stay under the Zero One Edition terms in effect when they were bought. The [previous version](https://kirby.tools/license/zero-one-edition-2025-12-21) stays published.
 
 ## 1. Definitions
 
