@@ -47,6 +47,13 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
           @click.prevent="openCheckout"
         />
       </template>
+
+      <template #terms>
+        By buying, you accept the
+        <NuxtLink to="/license" class="text-highlighted underline"
+          >license agreement</NuxtLink
+        >.
+      </template>
     </UPricingPlan>
   </DefinePricingPlanTemplate>
 
