@@ -23,7 +23,6 @@ export function usePaddleCheckout() {
       if (!paddleInstance) throw new Error("Paddle.js not available");
       paddleInstance.Checkout.open(options);
     } catch (error) {
-      paddlePromise = undefined;
       console.warn(error);
     }
   }
