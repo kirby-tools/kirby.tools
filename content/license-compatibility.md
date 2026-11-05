@@ -1,10 +1,10 @@
 ---
 title: License & Plugin Compatibility
-description: Which Kirby versions each license generation covers, the plugin versions per Kirby version, the upgrade discount, and the Composer constraints behind a license key.
+description: Which plugin versions each license generation covers, which Kirby versions they run on, the upgrade discount, and the Composer constraints behind a license key.
 navigation.icon: i-ri-key-2-line
 ---
 
-Every Kirby Tools license belongs to a generation, set by the date you bought it. The generation decides which Kirby versions you can run the plugin on:
+Every Kirby Tools license belongs to a generation, set by the date you bought it. The generation decides which plugin versions the license covers, and with them the Kirby versions you can run:
 
 | Generation | Purchased                        | Kirby Versions |
 | ---------- | -------------------------------- | -------------- |
