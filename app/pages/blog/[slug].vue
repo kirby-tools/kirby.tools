@@ -77,7 +77,7 @@ if (!post.value.image?.src) {
           class="group flex items-center gap-3"
         >
           <UAvatar
-            src="https://github.com/johannschopplich.png"
+            src="/img/johann-schopplich.png"
             alt="Johann Schopplich"
             size="lg"
           />
