@@ -31,7 +31,7 @@ For each Plugin you hold a license for, the Licensor grants you a non-exclusive,
 
 Your employees, individual contractors, and service providers, such as hosting providers, may use the Plugin on your behalf for these Projects. You remain responsible for their compliance with this Agreement.
 
-Anyone may evaluate a Plugin in a local development environment without a license. Any other use needs one.
+Anyone may evaluate a Plugin without a license in a local development environment or on a password-protected staging site. Any other use needs one.
 
 ## 5. Versions and Updates
 
