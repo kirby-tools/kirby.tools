@@ -9,7 +9,7 @@ const licenseHolder = ref("");
 const { openCheckout: openPaddleCheckout } = usePaddleCheckout();
 
 function openCheckout() {
-  void openPaddleCheckout({
+  return openPaddleCheckout({
     items: [{ priceId: props.page.plan.paddlePriceId, quantity: 1 }],
     customData: {
       licenseHolder: licenseHolder.value || undefined,
@@ -43,6 +43,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
           v-bind="page.plan.button"
           size="lg"
           block
+          loading-auto
           @click.prevent="openCheckout"
         />
       </template>
