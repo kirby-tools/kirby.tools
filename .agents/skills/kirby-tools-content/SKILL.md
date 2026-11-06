@@ -33,14 +33,14 @@ A documentation page is built from Nuxt UI Prose components: https://ui.nuxt.com
 
 Plain prose is the default. A component earns its place by doing a job no other component on the page is already doing. A configuration guide has one `###` heading per option, then prose, default, and example. A reference page – PHP classes, exceptions – is tables and `::field-group`, one sentence per entry.
 
-The documentation states the contract, not the mechanism: what the reader calls – classes, signatures, config keys and defaults, the Plugin's own exceptions – what they observe, and what costs them money or data. Mechanism – the path a value takes, the internal classes, enums, and SDK exceptions along it, the arithmetic behind a number – stays in the source. After a cut, `pnpm docs:vanished-facts <base>..<head>` lists every number and identifier the cut removed from a Product's documentation entirely; each one is mechanism, or a fact that goes back.
+Invoke `writing-docs` before writing or cutting a documentation page. Kirby editors and developers read it. What costs them money is provider usage: the translations or generations an action triggers – per model, per language, per retry – are stated, while how the Plugin batches them and the SDK exceptions its own exceptions wrap are mechanism. What costs them data is content an action overwrites or deletes, which is always stated. The skill's vanished-facts script runs from the repo root with `--per-dir <base> content/1.docs`, each Product's documentation its own corpus.
 
 - `::callout` is link-out only and always carries `to=`; advice without a link is `::tip`, `::note`, or `::warning`.
 - `::code-group` holds alternatives for one task; `::tabs` holds axes that are not substitutes.
 - `::steps` numbers an ordered set of three or more. Documentation pages leave `::accordion` out, since folding hides content from search.
 - Code blocks of 30 or more lines go in `::code-collapse`.
 
-Headings in APA title case; a property heading carries the identifier in backticks; a feature name is a noun phrase. The frontmatter description summarises rather than echoes the first sentence, and keeps backticked identifiers only where an editor types them.
+A feature heading is a noun phrase. The frontmatter description summarises rather than echoes the first sentence, and keeps backticked identifiers only where an editor types them.
 
 A blueprint key that takes a list of names – `marks`, `buttons`, `fields` – is an allow-list: the snippet's entries replace Kirby's defaults. An example that lists a plugin's own entry says so at the snippet.
 
