@@ -20,8 +20,8 @@ const props = withDefaults(
 const LABELS = createFieldLabels(translate);
 
 const prompt = ref(props.userPrompt ?? "");
-// With `files: auto`, the PHP field sends the model file of an image's view,
-// which the plugin announces with this note.
+// A Mock stands on an image's view, where `files: auto` gets the plugin's note
+// for the viewed file.
 const modelFileText = computed(() =>
   props.files === "auto"
     ? translate("johannschopplich.copilot.context.file.model")
