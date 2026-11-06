@@ -5,7 +5,7 @@
   },
   "copilot": {
     "repository": "https://github.com/kirby-tools/kirby-copilot.git",
-    "ref": "d323d2e5e78dd3cc2198ee598b21e308727a9f96"
+    "ref": "665dee8af584dc643961cbc1b75deb44b3c7ced3"
   },
   "deploy-trigger": {
     "repository": "https://github.com/johannschopplich/kirby-deploy-trigger.git",
