@@ -36,7 +36,8 @@ export function kirbyAliasPlugin(srcDir: string): Plugin {
 
 /**
  * Drops the `<docs>` blocks Kirby writes for its Lab, as the Panel's own
- * `kirby-remove-docs-block` plugin does; Vite would otherwise parse them as JavaScript.
+ * `kirby-remove-docs-block` plugin does; Vite would otherwise parse them as
+ * JavaScript.
  */
 export function kirbyDocsBlockPlugin(): Plugin {
   return {
