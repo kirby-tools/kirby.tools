@@ -4,14 +4,10 @@ import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
   defineProps<{
-    label?: string;
-    icon?: string;
-    theme?: string;
     editable?: boolean;
     files?: boolean | "auto";
     userPrompt?: string;
     isGenerating?: boolean;
-    canUndo?: boolean;
     fileNames?: string[];
   }>(),
   { editable: true, files: true },
@@ -32,16 +28,13 @@ const modelFileText = computed(() =>
   <!-- The PHP field's defaults for a field keyed `copilot`. -->
   <FieldBody
     v-model:prompt="prompt"
-    :label="label || translate('johannschopplich.copilot.label')"
+    :label="translate('johannschopplich.copilot.label')"
     name="copilot"
     :labels="LABELS"
-    :icon="icon"
-    :theme="theme"
     :editable="editable"
     :files="files"
     :user-prompt="userPrompt"
     :is-generating="isGenerating"
-    :can-undo="canUndo"
     :file-names="fileNames"
     :model-file-text="modelFileText"
   />
