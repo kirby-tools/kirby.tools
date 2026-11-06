@@ -20,8 +20,7 @@ const props = withDefaults(
 const LABELS = createFieldLabels(translate);
 
 const prompt = ref(props.userPrompt ?? "");
-// A Mock stands on an image's view, where `files: auto` gets the plugin's note
-// for the viewed file.
+// The plugin's note for `files: auto` on an image's view.
 const modelFileText = computed(() =>
   props.files === "auto"
     ? translate("johannschopplich.copilot.context.file.model")
