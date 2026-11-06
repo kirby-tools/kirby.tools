@@ -32,6 +32,7 @@ import TogglesInput from "#kirby-panel/components/Forms/Input/TogglesInput.vue";
 import TextFieldPreview from "#kirby-panel/components/Forms/Previews/TextFieldPreview.vue";
 import ToggleFieldPreview from "#kirby-panel/components/Forms/Previews/ToggleFieldPreview.vue";
 import Toolbar from "#kirby-panel/components/Forms/Toolbar/Toolbar.vue";
+import Bar from "#kirby-panel/components/Layout/Bar.vue";
 import Box from "#kirby-panel/components/Layout/Box.vue";
 import Column from "#kirby-panel/components/Layout/Column.vue";
 import Frame from "#kirby-panel/components/Layout/Frame/Frame.vue";
@@ -51,6 +52,7 @@ import Link from "#kirby-panel/components/Navigation/Link.vue";
 import Navigate from "#kirby-panel/components/Navigation/Navigate.vue";
 import Pagination from "#kirby-panel/components/Navigation/Pagination.vue";
 import Tag from "#kirby-panel/components/Navigation/Tag.vue";
+import Tags from "#kirby-panel/components/Navigation/Tags.vue";
 import Headline from "#kirby-panel/components/Text/Headline.vue";
 import Label from "#kirby-panel/components/Text/Label.vue";
 import Text from "#kirby-panel/components/Text/Text.vue";
@@ -70,6 +72,7 @@ import { withPlaceholder } from "./withPlaceholder";
  * HTML.
  */
 export const components = {
+  "k-bar": Bar,
   "k-box": Box,
   "k-button": Button,
   "k-button-group": ButtonGroup,
@@ -143,6 +146,7 @@ export const components = {
   "k-table": Table,
   "k-table-cell": TableCell,
   "k-tag": Tag,
+  "k-tags": Tags,
   "k-text": Text,
   "k-text-field": TextField,
   "k-text-field-preview": TextFieldPreview,

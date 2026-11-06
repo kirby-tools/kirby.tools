@@ -34,6 +34,21 @@ export function kirbyAliasPlugin(srcDir: string): Plugin {
   };
 }
 
+/**
+ * Drops the `<docs>` blocks Kirby writes for its Lab, as the Panel's own
+ * `kirby-remove-docs-block` plugin does; Vite would otherwise parse them as JavaScript.
+ */
+export function kirbyDocsBlockPlugin(): Plugin {
+  return {
+    name: "kirby-panel:docs-block",
+    enforce: "pre",
+    transform(_code, id) {
+      if (!id.includes("?vue&type=docs")) return;
+      return { code: "export default {};", map: null };
+    },
+  };
+}
+
 function scopeSelector(selector: string) {
   // `:root:has(.k-panel[data-theme="dark"])` carries the dark mode switch, so
   // whatever follows `:root` has to survive.
