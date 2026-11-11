@@ -246,7 +246,11 @@ export default defineNuxtConfig({
   typescript: {
     nodeTsConfig: {
       compilerOptions: { types: ["node"] },
-      include: ["../scripts/**/*", "../layers/*/scripts/**/*"],
+      include: [
+        "../prettier.config.ts",
+        "../scripts/**/*",
+        "../layers/*/scripts/**/*",
+      ],
     },
   },
 
