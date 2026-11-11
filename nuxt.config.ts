@@ -247,7 +247,10 @@ export default defineNuxtConfig({
     nodeTsConfig: {
       compilerOptions: { types: ["node"] },
       include: [
+        "../content.config.ts",
+        "../eslint.config.ts",
         "../prettier.config.ts",
+        "../vitest.config.ts",
         "../scripts/**/*",
         "../layers/*/scripts/**/*",
       ],
