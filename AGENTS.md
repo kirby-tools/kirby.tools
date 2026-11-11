@@ -8,12 +8,11 @@ Use the terms from `GLOSSARY.md`. Decisions are in `docs/adr/`.
 
 ```bash
 pnpm install             # prepare: fetches the Panel sources, nuxt prepare, logo metrics
-pnpm dev                 # localhost:3000
 pnpm generate            # full prerender, failOnError – this is what CI deploys
-pnpm test                # Vitest, limited to test/**/*.test.ts
-pnpm run test:types      # vue-tsc
+pnpm test                # runs test/**/*.test.ts only
+pnpm run test:types
 pnpm run format          # Prettier, runs separately from ESLint and before it in CI
-pnpm run lint            # ESLint
+pnpm run lint
 pnpm kirby-panel:fetch   # after changing kirby.json or plugins.json
 ```
 
@@ -22,10 +21,3 @@ pnpm kirby-panel:fetch   # after changing kirby.json or plugins.json
 - `layers/kirby-panel/kirby` is a checkout of Kirby's source, pinned by `kirby.json`, and Kirby's license forbids redistributing it.
 - The plugin repositories sit next to this one as `../kirby-<ProductId>`.
 - `KIRBY_PANEL_LOCAL_PLUGINS=<ProductId>,…` compiles the sibling checkout instead of the `plugins.json` pin; its `index.css` is only as current as its last build.
-
-## Search Hints
-
-- `PRODUCT_REGISTRY` – the products and their metadata
-- `#kirby-panel` – alias to Kirby's Panel source, set by `modules/kirby-panel`
-- `PRODUCT_THEME_COLORS` – per-product theming
-- `EXHIBITION_PRODUCT_IDS` / `SHOWCASE_PRODUCT_IDS` – which products appear where
