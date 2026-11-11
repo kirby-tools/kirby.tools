@@ -82,11 +82,11 @@ if (!post.value.image?.src) {
             size="lg"
           />
           <div class="flex flex-col">
-            <span class="text-highlighted text-sm font-medium"
+            <span class="text-sm font-medium text-highlighted"
               >Johann Schopplich</span
             >
             <span
-              class="text-muted group-hover:text-primary text-xs transition-colors"
+              class="text-xs text-muted transition-colors group-hover:text-primary"
               >@johannschopplich</span
             >
           </div>
@@ -104,11 +104,11 @@ if (!post.value.image?.src) {
             <UIcon :name="productTile.icon" class="size-5" />
           </span>
           <div class="flex flex-col">
-            <span class="text-highlighted text-sm font-medium">{{
+            <span class="text-sm font-medium text-highlighted">{{
               PRODUCTS[productId].name
             }}</span>
             <span
-              class="text-muted group-hover:text-primary text-xs transition-colors"
+              class="text-xs text-muted transition-colors group-hover:text-primary"
               >{{ PRODUCTS[productId].description }}</span
             >
           </div>

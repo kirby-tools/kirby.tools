@@ -22,13 +22,13 @@ provide(panelMockInertKey, true);
     class="product-feature-card"
     :class="wide && 'sm:col-span-2'"
     :ui="{
-      root: 'bg-muted overflow-hidden',
+      root: 'overflow-hidden bg-muted',
       container: 'gap-0 p-0 sm:p-0',
-      wrapper: 'border-accented border-t p-4 sm:p-6',
+      wrapper: 'border-t border-accented p-4 sm:p-6',
     }"
   >
     <template #leading>
-      <p class="text-muted text-sm">{{ name }}</p>
+      <p class="text-sm text-muted">{{ name }}</p>
     </template>
 
     <div class="relative overflow-clip" :class="wide ? 'min-h-96' : 'min-h-72'">

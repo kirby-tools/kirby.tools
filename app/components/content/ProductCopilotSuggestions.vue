@@ -39,7 +39,7 @@ const pauseButton = computed(() =>
     <template v-if="canPause" #chrome>
       <UIcon
         :name="isPaused ? 'i-ri-play-fill' : 'i-ri-pause-fill'"
-        class="text-dimmed ms-auto size-4 transition-opacity"
+        class="ms-auto size-4 text-dimmed transition-opacity"
         :class="
           !isPaused &&
           'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'

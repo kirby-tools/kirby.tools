@@ -88,7 +88,7 @@ function selectTabByKey(event: KeyboardEvent) {
        `xl` and `md` radii, spelled out, since Nuxt UI derives the named steps
        from `--ui-radius`. -->
   <figure
-    class="border-default bg-default min-w-0 overflow-clip rounded-[0.75rem] border"
+    class="min-w-0 overflow-clip rounded-[0.75rem] border border-default bg-default"
   >
     <!-- The bottom line is an inset shadow, so the active tab covers it. -->
     <div
@@ -110,12 +110,12 @@ function selectTabByKey(event: KeyboardEvent) {
           :aria-selected="activeTab === tab.value"
           :tabindex="activeTab === tab.value ? 0 : -1"
           :data-kind="tab.kind"
-          class="exhibition-window-tab outline-primary border-default flex max-w-60 min-w-0 items-center gap-1.5 border-e px-3 text-sm font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 max-sm:flex-1 max-sm:basis-0"
+          class="exhibition-window-tab flex max-w-60 min-w-0 items-center gap-1.5 border-e border-default px-3 text-sm font-medium outline-primary focus-visible:outline-2 focus-visible:-outline-offset-2 max-sm:flex-1 max-sm:basis-0"
           :class="[
             TAB_KINDS[tab.kind].backClass,
             activeTab === tab.value
-              ? 'text-highlighted bg-(--tab-back)'
-              : 'text-muted hover:text-highlighted hover:bg-elevated/50',
+              ? 'bg-(--tab-back) text-highlighted'
+              : 'text-muted hover:bg-elevated/50 hover:text-highlighted',
           ]"
           @click="activeTab = tab.value"
         >
@@ -127,13 +127,13 @@ function selectTabByKey(event: KeyboardEvent) {
           <span class="truncate">{{ tab.label }}</span>
           <span
             v-if="tab.hasActivity && activeTab !== tab.value"
-            class="bg-primary size-1.5 shrink-0 rounded-full"
+            class="size-1.5 shrink-0 rounded-full bg-primary"
           />
         </button>
       </div>
 
       <span
-        class="text-dimmed/70 hidden min-w-0 flex-1 self-center truncate px-3 text-end text-sm sm:block"
+        class="hidden min-w-0 flex-1 self-center truncate px-3 text-end text-sm text-dimmed/70 sm:block"
       >
         {{ activeHost }}
       </span>

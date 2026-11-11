@@ -33,7 +33,7 @@ const ANALYSIS_LANGUAGES = [
         color="neutral"
         variant="outline"
         size="xl"
-        class="font-display rounded-full"
+        class="rounded-full font-display"
       />
     </li>
   </ul>

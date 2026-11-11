@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
   <div v-if="page" class="relative">
     <AppHeaderBackground
-      class="text-primary pointer-events-none absolute -top-px z-10 w-full shrink-0 transition-opacity"
+      class="pointer-events-none absolute -top-px z-10 w-full shrink-0 text-primary transition-opacity"
       :class="[
         isLoading ? 'animate-pulse' : isEntering ? '' : 'opacity-0',
         hasEntered ? 'duration-400' : 'duration-1000',

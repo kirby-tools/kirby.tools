@@ -31,7 +31,7 @@ const { data: highlightedLines } = await useAsyncData(
       <div
         class="social-card-code-mono pt-5 pb-3 text-[14px]"
         :class="
-          index === 0 ? 'text-neutral-500' : 'text-primary-700 font-semibold'
+          index === 0 ? 'text-neutral-500' : 'font-semibold text-primary-700'
         "
       >
         {{ snippet.label }}
@@ -49,7 +49,7 @@ const { data: highlightedLines } = await useAsyncData(
     </div>
 
     <div
-      class="bg-primary-500 absolute top-1/2 left-1/2 flex size-9 -translate-1/2 items-center justify-center rounded-full text-white shadow-md ring-4 ring-white"
+      class="absolute top-1/2 left-1/2 flex size-9 -translate-1/2 items-center justify-center rounded-full bg-primary-500 text-white shadow-md ring-4 ring-white"
     >
       <UIcon name="i-ri-arrow-right-line" class="size-5" />
     </div>

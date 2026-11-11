@@ -145,9 +145,9 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
   <UHeader>
     <template #left>
       <NuxtLink to="/" class="flex items-center gap-2">
-        <UIcon name="i-tools-favicon" class="text-primary size-6" />
+        <UIcon name="i-tools-favicon" class="size-6 text-primary" />
         <span
-          class="text-default text-lg font-bold whitespace-nowrap"
+          class="text-lg font-bold whitespace-nowrap text-default"
           :class="product && 'max-sm:sr-only'"
           >Kirby Tools</span
         >
@@ -169,11 +169,11 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
             color="neutral"
             variant="ghost"
             trailing-icon="i-ri-expand-up-down-line"
-            class="text-highlighted text-base/5 font-semibold"
+            class="text-base/5 font-semibold text-highlighted"
             :class="isProductSwitcherOpen && 'bg-elevated'"
             :ui="{
               leadingIcon: 'text-primary',
-              trailingIcon: 'text-dimmed size-4',
+              trailingIcon: 'size-4 text-dimmed',
             }"
           />
 

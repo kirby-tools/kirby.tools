@@ -31,17 +31,17 @@ const isFramed = inject(panelMockFramedKey, false);
   <figure
     class="panel-mock"
     :class="
-      isFramed ? 'h-full' : 'border-default my-6 rounded-(--ui-radius) border'
+      isFramed ? 'h-full' : 'my-6 rounded-(--ui-radius) border border-default'
     "
   >
     <!-- As tall as a Window's tab strip, in its tabs' size. -->
     <figcaption
       v-if="!isFramed"
-      class="panel-mock-chrome border-default bg-default text-highlighted flex h-11 items-center gap-1.5 border-b px-3 font-(family-name:--panel-mock-chrome-font) text-sm font-medium"
+      class="panel-mock-chrome flex h-11 items-center gap-1.5 border-b border-default bg-default px-3 font-(family-name:--panel-mock-chrome-font) text-sm font-medium text-highlighted"
     >
       <k-icon type="kirby" class="size-4" />
       <span>Kirby Panel</span>
-      <span v-if="label" class="text-dimmed ms-auto">{{ label }}</span>
+      <span v-if="label" class="ms-auto text-dimmed">{{ label }}</span>
       <slot name="chrome" />
     </figcaption>
 

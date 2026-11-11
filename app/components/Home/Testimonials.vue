@@ -60,7 +60,7 @@ function alignAfterFade(viewSize: number) {
       aria-label="Customer logos"
       :ui="{
         viewport: 'mask-x-from-85%',
-        container: 'items-center -ms-16 sm:-ms-20',
+        container: '-ms-16 items-center sm:-ms-20',
         item: 'basis-auto ps-16 sm:ps-20',
       }"
     >

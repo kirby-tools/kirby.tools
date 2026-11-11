@@ -29,7 +29,7 @@ const isWide = computed(() => props.format === "og");
   >
     <!-- On 4:3 the two `1fr` rows keep the gap between logo and title equal to the one between Tagline and frame. -->
     <div
-      class="via-primary-500/50 grid min-h-0 flex-1 bg-linear-to-r from-transparent to-transparent bg-size-[100%_1px] bg-top bg-no-repeat"
+      class="grid min-h-0 flex-1 bg-linear-to-r from-transparent via-primary-500/50 to-transparent bg-size-[100%_1px] bg-top bg-no-repeat"
       :class="
         isWide
           ? 'grid-cols-[1fr_auto] content-end items-center gap-12 px-[75px] pb-16'
@@ -67,7 +67,7 @@ const isWide = computed(() => props.format === "og");
 
     <!-- The frame keeps its height, so a Tagline that wraps takes its room from the header and lifts the title. -->
     <div
-      class="shadow-primary-500/30 flex-none rounded-t-[12px] border-b-0 border-black/5 shadow-[0_0_100px]"
+      class="flex-none rounded-t-[12px] border-b-0 border-black/5 shadow-[0_0_100px] shadow-primary-500/30"
       :class="
         isWide
           ? 'mx-[75px] h-[400px] border-4'

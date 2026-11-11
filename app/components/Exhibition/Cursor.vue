@@ -44,7 +44,7 @@ function raise() {
       class="size-6 overflow-visible stroke-white stroke-2 drop-shadow-sm [paint-order:stroke]"
     />
     <span class="mt-5 -ml-2 rounded-sm bg-current px-1.5 py-0.5">
-      <span class="text-inverted block text-xs/4 font-medium">Hanna</span>
+      <span class="block text-xs/4 font-medium text-inverted">Hanna</span>
     </span>
   </Motion>
 </template>

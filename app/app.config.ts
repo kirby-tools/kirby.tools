@@ -48,7 +48,7 @@ export default defineAppConfig({
     },
     button: {
       slots: {
-        base: "active:hover:scale-[97%] transition-all ease-linear duration-100",
+        base: "transition-all duration-100 ease-linear active:hover:scale-[97%]",
       },
     },
     pageCTA: {

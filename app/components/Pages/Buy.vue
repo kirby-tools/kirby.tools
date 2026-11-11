@@ -66,7 +66,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
     >
       <div
         v-if="page.illustration"
-        class="lg:bg-primary-500 dark:lg:bg-primary-600 flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:p-12"
+        class="flex justify-center lg:grid lg:grid-cols-2 lg:items-end lg:gap-16 lg:rounded-xl lg:bg-primary-500 lg:p-12 dark:lg:bg-primary-600"
       >
         <div
           class="[--illustration-ink:var(--ui-color-neutral-900)] max-lg:hidden"
@@ -99,7 +99,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
         <template #content="{ item }">
           <MDC
             :value="item.content"
-            class="text-muted prose dark:prose-invert max-w-none pb-3.5 text-base [&_p.my-5]:my-0!"
+            class="prose dark:prose-invert max-w-none pb-3.5 text-base text-muted [&_p.my-5]:my-0!"
           />
         </template>
       </UAccordion>

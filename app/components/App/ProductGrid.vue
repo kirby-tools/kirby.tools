@@ -28,11 +28,11 @@ function productColor(item: Product) {
 </script>
 
 <template>
-  <div class="divide-default w-[min(34rem,calc(100vw-2rem))] divide-y">
+  <div class="w-[min(34rem,calc(100vw-2rem))] divide-y divide-default">
     <div v-for="group in groups" :key="group.id" class="p-2">
       <p
         :id="group.id"
-        class="text-highlighted px-3 py-1.5 text-xs font-semibold"
+        class="px-3 py-1.5 text-xs font-semibold text-highlighted"
       >
         {{ group.label }}
       </p>
@@ -64,7 +64,7 @@ function productColor(item: Product) {
                 "
                 >{{ listed.label }}</span
               >
-              <span class="text-muted block">{{ listed.description }}</span>
+              <span class="block text-muted">{{ listed.description }}</span>
             </span>
           </NuxtLink>
         </li>

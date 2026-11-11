@@ -46,9 +46,9 @@ onBeforeRouteLeave((to) => {
           v-for="[packName, illustrationNames] in illustrationPacks"
           :key="packName"
         >
-          <h2 class="text-highlighted mb-6 text-lg font-semibold">
+          <h2 class="mb-6 text-lg font-semibold text-highlighted">
             {{ packName }}
-            <span class="text-dimmed font-normal">{{
+            <span class="font-normal text-dimmed">{{
               illustrationNames!.length
             }}</span>
           </h2>
@@ -62,7 +62,7 @@ onBeforeRouteLeave((to) => {
               reverse
               :ui="{
                 container: 'sm:p-4',
-                title: 'text-muted font-mono text-xs font-normal',
+                title: 'font-mono text-xs font-normal text-muted',
               }"
             >
               <Illustration

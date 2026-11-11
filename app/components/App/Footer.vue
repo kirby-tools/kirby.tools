@@ -71,30 +71,30 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
 </script>
 
 <template>
-  <footer class="border-default border-t">
+  <footer class="border-t border-default">
     <div
       class="mx-auto max-w-(--ui-container)"
       :class="frame === 'content' && 'lg:px-8'"
     >
       <div class="border-default lg:-mx-px lg:border-x">
         <div
-          class="border-default grid grid-cols-2 gap-px border-b bg-(--ui-border) lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
+          class="grid grid-cols-2 gap-px border-b border-default bg-(--ui-border) lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
         >
           <div
-            class="bg-default relative col-span-2 px-4 py-8 sm:px-6 lg:col-span-1 lg:px-8 lg:py-12"
+            class="relative col-span-2 bg-default px-4 py-8 sm:px-6 lg:col-span-1 lg:px-8 lg:py-12"
           >
             <BackgroundRuleCross class="top-0 left-0 max-lg:hidden" />
-            <UIcon name="i-tools-favicon" class="text-primary size-10" />
+            <UIcon name="i-tools-favicon" class="size-10 text-primary" />
             <MDC
               :value="aboutText"
-              class="prose dark:prose-invert text-muted mt-6 max-w-sm text-sm [&_p]:leading-relaxed!"
+              class="prose dark:prose-invert mt-6 max-w-sm text-sm text-muted [&_p]:leading-relaxed!"
             />
           </div>
 
           <div
             v-for="(groups, index) in cells"
             :key="index"
-            class="bg-default relative space-y-10 px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
+            class="relative space-y-10 bg-default px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
             :class="index === cells.length - 1 && 'col-span-2 lg:col-span-1'"
           >
             <!-- Below `lg`, only a right-column cell's corner sits on an inner rule. -->
@@ -111,7 +111,7 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
             />
             <div v-for="group in groups" :key="group.label">
               <h3
-                class="text-dimmed font-mono text-xs tracking-widest uppercase"
+                class="font-mono text-xs tracking-widest text-dimmed uppercase"
               >
                 {{ group.label }}
               </h3>
@@ -142,7 +142,7 @@ Kirby Tools is built on [Kirby](https://getkirby.com) – with gratitude to the 
         <div
           class="flex items-center justify-between gap-x-3 px-4 sm:px-6 lg:px-8"
         >
-          <p class="text-muted py-4 font-mono text-xs">
+          <p class="py-4 font-mono text-xs text-muted">
             © {{ new Date().getFullYear() }}
             <NuxtLink
               to="https://byjohann.link"

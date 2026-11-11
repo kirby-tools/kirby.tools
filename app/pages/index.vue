@@ -58,7 +58,7 @@ defineOgImage("Default", {
 <template>
   <div v-if="page" class="relative">
     <AppHeaderBackground
-      class="text-primary pointer-events-none absolute top-[-1px] w-full shrink-0 transition-opacity"
+      class="pointer-events-none absolute top-[-1px] w-full shrink-0 text-primary transition-opacity"
       :class="[
         isLoading ? 'animate-pulse' : isEntering ? '' : 'opacity-0',
         hasEntered ? 'duration-400' : 'duration-1000',
@@ -68,7 +68,7 @@ defineOgImage("Default", {
     <UPageHero
       :description="page.description"
       :links="page.hero.links"
-      class="from-default bg-radial from-30%"
+      class="bg-radial from-default from-30%"
       :ui="{
         container: 'py-24 sm:py-24 lg:py-24',
       }"
@@ -135,7 +135,7 @@ defineOgImage("Default", {
         class="border-default lg:border-t"
         :ui="{
           container: 'pb-16 sm:pb-16 lg:pb-16',
-          description: 'max-w-2xl mx-auto',
+          description: 'mx-auto max-w-2xl',
         }"
       />
 
@@ -151,7 +151,7 @@ defineOgImage("Default", {
         :links="product.links"
         :orientation="product.orientation ?? 'horizontal'"
         :reverse="product.reverse"
-        class="border-default relative overflow-hidden"
+        class="relative overflow-hidden border-default"
         :class="index === 0 && license === 'commercial' ? '' : 'lg:border-t'"
       >
         <template #top>

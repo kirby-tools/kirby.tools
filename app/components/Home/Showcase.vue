@@ -54,8 +54,8 @@ const accentClass = computed(
         :content="false"
         variant="link"
         :ui="{
-          list: 'gap-2 mb-0 -mt-px border-t border-b-0',
-          indicator: `bottom-auto -top-px h-px w-8 translate-x-[calc(var(--reka-tabs-indicator-position)+var(--reka-tabs-indicator-size)/2-calc(var(--spacing)*4))] ${accentClass}`,
+          list: '-mt-px mb-0 gap-2 border-t border-b-0',
+          indicator: `-top-px bottom-auto h-px w-8 translate-x-[calc(var(--reka-tabs-indicator-position)+var(--reka-tabs-indicator-size)/2-calc(var(--spacing)*4))] ${accentClass}`,
           trigger:
             'flex-1 cursor-pointer flex-col justify-start gap-2 px-4 py-6 after:hidden',
           label: 'block w-full whitespace-normal',
@@ -84,11 +84,11 @@ const accentClass = computed(
 
         <template #default="{ item }">
           <span
-            class="text-highlighted block text-sm font-semibold text-pretty"
+            class="block text-sm font-semibold text-pretty text-highlighted"
           >
             {{ item.label }}
           </span>
-          <span class="text-muted mt-1 hidden text-sm text-pretty sm:block">
+          <span class="mt-1 hidden text-sm text-pretty text-muted sm:block">
             {{ item.description }}
           </span>
         </template>

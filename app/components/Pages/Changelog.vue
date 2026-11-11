@@ -35,18 +35,18 @@ const latestReleaseUrl = computed(() =>
       :description="page.description"
       orientation="vertical"
       :ui="{
-        root: 'border-b border-default xl:border-b-0 xl:sticky xl:inset-y-0 xl:h-screen overflow-hidden',
+        root: 'overflow-hidden border-b border-default xl:sticky xl:inset-y-0 xl:h-screen xl:border-b-0',
         container: 'h-full items-center justify-center',
         title: 'text-left text-4xl',
-        description: 'text-left max-w-lg',
-        links: 'justify-start flex-col items-start sm:-ms-2.5',
+        description: 'max-w-lg text-left',
+        links: 'flex-col items-start justify-start sm:-ms-2.5',
       }"
     >
       <template #top>
         <BackgroundSky :star-count="30" speed="slow" />
 
         <div
-          class="bg-primary/25 pointer-events-none absolute top-1/2 left-full z-[-1] size-60 -translate-x-30 -translate-y-1/2 transform rounded-full blur-[300px] sm:size-100"
+          class="pointer-events-none absolute top-1/2 left-full z-[-1] size-60 -translate-x-30 -translate-y-1/2 transform rounded-full bg-primary/25 blur-[300px] sm:size-100"
         />
       </template>
 
@@ -92,11 +92,11 @@ const latestReleaseUrl = computed(() =>
           :ui="{
             root: 'flex items-start',
             container: 'max-w-xl',
-            header: 'border-default border-b pb-4',
+            header: 'border-b border-default pb-4',
             title: '-mt-1 text-3xl',
-            date: 'text-highlighted font-mono text-xs/9',
+            date: 'font-mono text-xs/9 text-highlighted',
             indicator:
-              'sticky top-0 pt-16 -mt-16 sm:pt-24 sm:-mt-24 lg:pt-32 lg:-mt-32',
+              'sticky top-0 -mt-16 pt-16 sm:-mt-24 sm:pt-24 lg:-mt-32 lg:pt-32',
           }"
         >
           <template #body>

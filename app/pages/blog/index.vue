@@ -79,7 +79,7 @@ function productTileClass(tile?: ProductTile) {
       </template>
     </UPageHero>
 
-    <UPageBody class="border-default my-0! border-y py-0!">
+    <UPageBody class="my-0! border-y border-default py-0!">
       <div class="mx-auto max-w-(--ui-container)">
         <div class="border-default lg:-mx-px lg:border-x">
           <Motion
@@ -87,26 +87,26 @@ function productTileClass(tile?: ProductTile) {
             :initial="{ opacity: 0, y: 12 }"
             :animate="{ opacity: 1, y: 0 }"
             :transition="SPRING_TRANSITION"
-            class="border-default border-b"
+            class="border-b border-default"
           >
             <NuxtLink
               :to="latestPost.path"
-              class="group hover:bg-muted/30 grid gap-6 px-4 py-6 transition-colors sm:px-6 sm:py-10 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8"
+              class="group grid gap-6 px-4 py-6 transition-colors hover:bg-muted/30 sm:px-6 sm:py-10 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8"
               :style="productColorStyle(latestPost.productTile)"
             >
               <div>
-                <p class="text-muted mb-4 font-mono text-xs">
+                <p class="mb-4 font-mono text-xs text-muted">
                   Latest &middot;
                   <time :datetime="latestPost.date">{{
                     formatDate(latestPost.date)
                   }}</time>
                 </p>
                 <h2
-                  class="font-display text-highlighted text-4xl/tight text-balance sm:text-5xl/tight"
+                  class="font-display text-4xl/tight text-balance text-highlighted sm:text-5xl/tight"
                 >
                   {{ latestPost.title }}
                 </h2>
-                <p class="text-muted mt-4 max-w-2xl text-base/7 text-pretty">
+                <p class="mt-4 max-w-2xl text-base/7 text-pretty text-muted">
                   {{ latestPost.description }}
                 </p>
               </div>
@@ -125,7 +125,7 @@ function productTileClass(tile?: ProductTile) {
                   }}</span>
                 </span>
                 <span
-                  class="text-highlighted group-hover:text-primary inline-flex items-center gap-1 text-sm font-medium transition-colors"
+                  class="inline-flex items-center gap-1 text-sm font-medium text-highlighted transition-colors group-hover:text-primary"
                 >
                   Read the post
                   <UIcon name="i-ri-arrow-right-line" class="size-4" />
@@ -141,11 +141,11 @@ function productTileClass(tile?: ProductTile) {
               :initial="{ opacity: 0, y: 12 }"
               :animate="{ opacity: 1, y: 0 }"
               :transition="{ ...SPRING_TRANSITION, delay: (index + 1) * 0.05 }"
-              class="border-default -mb-px border-b sm:border-r sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0"
+              class="-mb-px border-b border-default sm:border-r sm:nth-[2n]:border-r-0 lg:nth-[2n]:border-r lg:nth-[3n]:border-r-0"
             >
               <NuxtLink
                 :to="post.path"
-                class="group hover:bg-muted/30 flex h-full flex-col px-4 py-6 transition-colors sm:px-6 lg:px-8"
+                class="group flex h-full flex-col px-4 py-6 transition-colors hover:bg-muted/30 sm:px-6 lg:px-8"
                 :style="productColorStyle(post.productTile)"
               >
                 <div class="mb-4 flex items-center gap-2">
@@ -163,17 +163,17 @@ function productTileClass(tile?: ProductTile) {
                   </span>
                   <time
                     :datetime="post.date"
-                    class="text-muted font-mono text-xs"
+                    class="font-mono text-xs text-muted"
                   >
                     {{ formatDate(post.date) }}
                   </time>
                 </div>
                 <h2
-                  class="font-display text-highlighted text-2xl/tight text-balance"
+                  class="font-display text-2xl/tight text-balance text-highlighted"
                 >
                   {{ post.title }}
                 </h2>
-                <p class="text-muted mt-2 line-clamp-3 text-sm/6 text-pretty">
+                <p class="mt-2 line-clamp-3 text-sm/6 text-pretty text-muted">
                   {{ post.description }}
                 </p>
               </NuxtLink>

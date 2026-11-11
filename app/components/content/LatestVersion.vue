@@ -16,10 +16,10 @@ const download = computed(() =>
   <a v-if="download" :href="download.url" class="font-medium">
     <Icon
       name="i-ri-download-line"
-      class="group-hover:text-primary mr-1 size-[1.25em] align-text-bottom transition-colors"
+      class="mr-1 size-[1.25em] align-text-bottom transition-colors group-hover:text-primary"
     />
     <span
-      class="text-primary group-hover:bg-primary-50 dark:group-hover:bg-primary-900 hover:border-primary focus-visible:outline-primary border-b border-transparent transition-colors"
+      class="border-b border-transparent text-primary transition-colors group-hover:bg-primary-50 hover:border-primary focus-visible:outline-primary dark:group-hover:bg-primary-900"
       >{{ download.label }}</span
     >
   </a>
