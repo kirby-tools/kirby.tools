@@ -8,7 +8,7 @@ Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major fo
 
 ## Before You Upgrade
 
-- **PHP 8.3, 8.4, or 8.5** – the versions Kirby 6 runs on
+- **PHP 8.3+**
 - **A Generation 3 license** for each paid plugin – see [Which License Covers It](#which-license-covers-it)
 
 Update Kirby and the plugins in the same deployment. Composer won't install a Kirby 6 major on a Kirby 4 or 5 site, and a plugin version for Kirby 5 leaves an **Invalid section type** box on Kirby 6 where the plugin used to be.
