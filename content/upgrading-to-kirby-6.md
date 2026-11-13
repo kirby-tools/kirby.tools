@@ -4,7 +4,7 @@ description: Moving a Kirby Tools site to Kirby 6 – the PHP and license you ne
 navigation.icon: i-ri-arrow-up-circle-line
 ---
 
-Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3. Kirby SERP Preview v2 and Kirby Minimap v2 are free and follow the same rules. Each major runs on Kirby 6 only. Your current versions keep working on the Kirby 4 or 5 site they run on.
+Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3. Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2 are free and follow the same rules. Each major runs on Kirby 6 only. Your current versions keep working on the Kirby 4 or 5 site they run on.
 
 ## Before You Upgrade
 
@@ -15,11 +15,11 @@ Update Kirby and the plugins in the same deployment. Composer won't install a Ki
 
 ## Sections Become Fields
 
-Kirby 6 keeps `sections:` for its own section types – `fields`, `files`, `info`, `pages`, and `stats`. Every plugin that was a section is now a field with the same type name: move the entry from `sections:` to `fields:` and keep its name. The type and every property keep their names. A plugin entry left under `sections:` renders a red **Invalid section type** box in its place and has no other effect – your content is untouched.
+Kirby 6 keeps `sections:` for its own section types – `fields`, `files`, `info`, `pages`, and `stats`. Every plugin that was a section is now a field with the same type name: move the entry from `sections:` to `fields:` and keep its name. The type and every remaining property keep their names – the [table below](#per-plugin) names the few that are removed. A plugin entry left under `sections:` renders a red **Invalid section type** box in its place and has no other effect – your content is untouched.
 
 Sections and fields share one namespace on Kirby 6, and upper and lower case count as the same name. If a field already has the entry's name, Kirby shows a box saying the field already exists – rename one of them.
 
-A `fields` section wrapper can stay, since Kirby 6 unwraps it into its fields. A tab or column takes `fields:` directly, though, so SERP Preview and the meta fields it reads become one map:
+A `fields` section wrapper can stay, since Kirby 6 unwraps it into its fields. At the top of a blueprint, though, `fields:` next to `sections:` only defines fields and renders none of them, without an error box – while a `pages` or `files` section stays, put the moved entry in a tab or column, where fields and sections mix. SERP Preview and the meta fields it reads become one map:
 
 ```yaml [site/blueprints/pages/default.yml]
 fields:
@@ -102,10 +102,11 @@ Your current license stays valid for the versions it covers, so a site that stay
 
 | Plugin                   | Latest for Kirby 5 | Kirby 6 | Notes                                                                                                                                                                      |
 | ------------------------ | ------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options                                                                                                                                  |
+| Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options, `open` and `size` are removed – [changelog](/copilot/changelog)                                                                 |
 | Kirby Content Translator | v3                 | v4      | `confirm` is removed, Translation Coverage stays in the **Languages** view – [migration guide](/docs/content-translator/getting-started/migration#migrating-from-v3-to-v4) |
-| Kirby SEO Audit          | v3                 | v4      | Same assessments and ratings, reports kept in the browser start over once – [changelog](/seo-audit/changelog)                                                              |
+| Kirby SEO Audit          | v3                 | v4      | Same assessments and ratings, reports kept in the browser start over once for a field name with capitals – [changelog](/seo-audit/changelog)                               |
 | Kirby Live Preview       | v2                 | v3      | Rerenders after a typing pause, `updateStrategy` is removed – [changelog](/live-preview/changelog)                                                                         |
 | Kirby SERP Preview       | v1                 | v2      | Free                                                                                                                                                                       |
 | Kirby Minimap            | v1                 | v2      | Free, nothing to configure                                                                                                                                                 |
-| Kirby Headless           | v8                 | v9      | No Panel part, requires KQL 4 – [migration guide](/docs/headless/getting-started/migration#migrating-from-v8-to-v9)                                                        |
+| Kirby Deploy Trigger     | v1                 | v2      | Free                                                                                                                                                                       |
+| Kirby Headless           | v8                 | v9      | No Panel part, `/api/kql` needs KQL 4 – [migration guide](/docs/headless/getting-started/migration#migrating-from-v8-to-v9)                                                |
