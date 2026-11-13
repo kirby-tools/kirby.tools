@@ -29,7 +29,7 @@ fields:
     defaultDescription: "{{ site.metaDescription }}"
 ```
 
-A content key takes a field name, not a query – a `{{ ... }}` there is read literally and finds nothing. Without a `titleContentKey` the title line is the page title as last saved, so it does not follow the title field while typing; `titleContentKey: title` makes it follow.
+A content key takes a field name, not a query – a `{{ ... }}` there is read literally and finds nothing. Without a `titleContentKey` the title line is the page title as last saved.
 
 <https://kirby.tools/docs/serp-preview/configuration.md>
 
@@ -63,6 +63,6 @@ return [
 ];
 ```
 
-A formatter that throws shows no error in the Panel: the snippet keeps the last drawn text, and the failed request is in the browser's network tab. On the site view the page is the home page.
+A formatter that throws shows no error in the Panel: the snippet keeps the last text a formatter returned, and the failed request is in the browser's network tab. On the site view the page is the home page.
 
 <https://kirby.tools/docs/serp-preview/formatters.md>
