@@ -65,7 +65,7 @@ buttons:
   status: true
 ```
 
-`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. A Kirby query in `userPrompt` or `systemPrompt` resolves only in the blueprint. A blueprint's `buttons` wins over the option.
+`buttons` and a writer's `toolbar.marks` are allow-lists: Kirby's default buttons have to be named alongside `copilot`, or they disappear. The writer button goes in `toolbar.marks`, never the field's `marks`, which strips every mark it leaves out from stored content on the next save. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. A Kirby query in `userPrompt` or `systemPrompt` resolves only in the blueprint. A blueprint's `buttons` wins over the option.
 
 `completion: false` stops ghost text appearing on its own while the shortcut still requests one.
 
@@ -121,7 +121,7 @@ With `debug` on, the exception names the option. The PHP `Client` always fails o
 
 **Blocks come back malformed** – generate fewer blocks per prompt and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
 
-**Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set.
+**Inline suggestions never appear** – in order: a writer field with its own `marks` lists `copilot-suggestions`, `completion` is not `false`, and behind a gateway `completionModel` is set.
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
 
