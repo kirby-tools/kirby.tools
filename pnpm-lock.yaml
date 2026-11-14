@@ -233,8 +233,8 @@ importers:
         specifier: ^10.13.0
         version: 10.13.0(jiti@2.7.0)(supports-color@10.2.2)
       kirby-types:
-        specifier: ^2.0.0-beta.4
-        version: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+        specifier: ^2.0.0-beta.7
+        version: 2.0.0-beta.7(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       kirbyuse:
         specifier: ^2.0.0-beta.5
         version: 2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
@@ -4781,8 +4781,8 @@ packages:
   keyv@5.6.0:
     resolution: {integrity: sha512-CYDD3SOtsHtyXeEORYRx2qBtpDJFjRTGXUtmNEMGyzYOKj1TE3tycdlho7kA1Ufx9OYWZzg52QFBGALTirzDSw==}
 
-  kirby-types@2.0.0-beta.4:
-    resolution: {integrity: sha512-EpEUR2W7wo9qBrRb1rAUKhRox7IHhzah6y56AlM3GfWIHFsGZbIL3f3ud9Hcf5KHgA1CJy+RVK0XaUNGnfpZTg==}
+  kirby-types@2.0.0-beta.7:
+    resolution: {integrity: sha512-b9W+gfHuDDb7Dzq48o+WjHp71l0mDaYwYb/zPDSIyPzlsyzlSZiqnVmahoRchx087Mc1DG1LH0clpPUaxhBhMg==}
     peerDependencies:
       dayjs: ^1.11.13
       prosemirror-commands: ^1.7.1
@@ -11971,7 +11971,7 @@ snapshots:
     dependencies:
       '@keyv/serialize': 1.1.1
 
-  kirby-types@2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
+  kirby-types@2.0.0-beta.7(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
     optionalDependencies:
       prosemirror-commands: 1.7.2
       prosemirror-inputrules: 1.5.1
@@ -11983,7 +11983,7 @@ snapshots:
 
   kirbyuse@2.0.0-beta.5(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3)):
     dependencies:
-      kirby-types: 2.0.0-beta.4(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
+      kirby-types: 2.0.0-beta.7(prosemirror-commands@1.7.2)(prosemirror-inputrules@1.5.1)(prosemirror-model@1.25.12)(prosemirror-schema-list@1.5.1)(prosemirror-state@1.4.4)(prosemirror-view@1.42.6)(vue@3.5.44(typescript@6.0.3))
       vue: 3.5.44(typescript@6.0.3)
     optionalDependencies:
       prosemirror-commands: 1.7.2
