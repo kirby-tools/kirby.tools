@@ -25,11 +25,11 @@ CORS is Kirby's own since 5.2.0, under the top-level `cors` key. `'cors' => true
 
 ## Token
 
-A token that is set but blank – typically an env var that failed to resolve – answers every guarded request with `401`. An unresolved variable never opens a site by accident, so check the env before the code.
+Without a `headless.token`, every route the token guards is open: under `globalRoutes`, the whole site. A token that is set but blank – typically an env var that failed to resolve – answers every guarded request with `401`. An unresolved variable never opens a site by accident, so check the env before the code.
 
 Under `globalRoutes`, clean file URLs like `/about/hero.jpg` need the token and additionally Kirby's `content.fileRedirects`, which is off by default.
 
-`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off. This also means they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
+`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
 
 <https://kirby.tools/docs/headless/configuration/authentication.md>
 
