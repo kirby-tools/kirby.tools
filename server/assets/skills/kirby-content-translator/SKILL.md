@@ -42,7 +42,7 @@ fields:
     type: content-translator
 ```
 
-`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props then come from the global config. A blueprint's `buttons` wins over the option. `systemPrompt` is a field property. The view button ignores it and reads the global `ai.systemPrompt`.
+`buttons` is an allow-list, so Kirby's defaults have to be named alongside `content-translator` or they disappear. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. A blueprint's `buttons` wins over the option. `systemPrompt` is a field property. The view button ignores it and reads the global `ai.systemPrompt`.
 
 Kirby's language view, where the button translates language variables, has no blueprint: only `panel.viewButtons.language` puts the button there, listed alongside Kirby's `open`, `settings`, and `delete`. The button saves directly, and Kirby rewrites the language definition file as a plain array: a file that builds its variables in PHP, such as from a YAML file, loses that code.
 
@@ -51,7 +51,7 @@ Kirby's language view, where the button translates language variables, has no bl
 
 ## What Gets Translated
 
-The defaults translate every text-like field. These settings narrow the set, globally in `config.php` and per blueprint, and they compose rather than override:
+The defaults translate every text-like field. These settings narrow the set and compose with each other. A blueprint value replaces the global one:
 
 - `fieldTypes` – which field **types** participate. A container type opens its contents but does not translate them: a text field inside a blocks field needs both `blocks` and `text` in the list. Kirby's `code` block is never translated.
 - `includeFields` and `excludeFields` – which **top-level** field names participate. A field nested in a block, structure, layout, or object is reached through its parent, never by its own name. Both still respect `fieldTypes`.
