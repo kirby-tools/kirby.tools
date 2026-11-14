@@ -65,7 +65,7 @@ buttons:
   status: true
 ```
 
-`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `userPrompt` stay in the blueprint. A blueprint's `buttons` wins over the option.
+`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. A Kirby query in `userPrompt` or `systemPrompt` resolves only in the blueprint. A blueprint's `buttons` wins over the option.
 
 `completion: false` stops ghost text appearing on its own while the shortcut still requests one.
 
@@ -85,7 +85,7 @@ A view button or Copilot field writing to a `blocks` or `layout` field generates
 
 ## Prompt Templates and Skills
 
-Templates are reusable user prompts in the dialog, some built in. Skills are house rules an editor layers onto a prompt with `@skill://<id>`. Both live in `config.php`.
+Templates are reusable user prompts in the dialog. Editors save their own in the browser; `promptTemplates` in `config.php` replaces the built-in ones. Skills are house rules from `config.php` that an editor layers onto a prompt with `@skill://<id>`.
 
 <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
 
@@ -117,7 +117,7 @@ The hosting has to pass the `/.well-known/` discovery paths and the `Authorizati
 - It drops a `promptTemplates` or `skills` entry it cannot read.
 - It turns an unknown `provider` into Google.
 
-With `debug` on, the exception names the option. The PHP `Client` always fails: `Unknown provider "<name>"` or `Missing required option "johannschopplich.copilot.provider"`.
+With `debug` on, the exception names the option. The PHP `Client` always fails on an unknown provider: `Unknown provider "<name>"`.
 
 **Blocks come back malformed** – generate fewer blocks per prompt and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
 
@@ -129,6 +129,6 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 
 A refused write or delete tells the connected agent why and what to do. One failure doesn't explain itself:
 
-**An agent's write is overwritten** – a field the editor also changed in an open Panel view keeps the value saved last.
+**An agent's write is overwritten** – a field the editor also changed in an open Panel view keeps the value saved last. With `cache.agents: false`, or behind several servers without a shared cache, the open view never reloads, and **Save** or **Discard** there drops the agent's write.
 
 <https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>
