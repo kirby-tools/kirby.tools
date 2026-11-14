@@ -102,7 +102,7 @@ Your current license stays valid for the versions it covers, so a site that stay
 
 | Plugin                   | Latest for Kirby 5 | Kirby 6 | Notes                                                                                                                                                                      |
 | ------------------------ | ------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options, `open` and `size` are removed – [changelog](/copilot/changelog)                                                                 |
+| Kirby Copilot            | v3                 | v4      | Same providers, same `config.php` options, `open` and `size` are removed, no built-in prompt templates – [changelog](/copilot/changelog)                                   |
 | Kirby Content Translator | v3                 | v4      | `confirm` is removed, Translation Coverage stays in the **Languages** view – [migration guide](/docs/content-translator/getting-started/migration#migrating-from-v3-to-v4) |
 | Kirby SEO Audit          | v3                 | v4      | Same assessments and ratings, reports kept in the browser start over once for a field name with capitals – [changelog](/seo-audit/changelog)                               |
 | Kirby Live Preview       | v2                 | v3      | Rerenders after a typing pause, `updateStrategy` is removed – [changelog](/live-preview/changelog)                                                                         |

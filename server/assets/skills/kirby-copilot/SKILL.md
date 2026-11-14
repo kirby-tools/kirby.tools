@@ -85,7 +85,7 @@ A view button or Copilot field writing to a `blocks` or `layout` field generates
 
 ## Prompt Templates and Skills
 
-Templates are reusable user prompts in the dialog. Editors save their own in the browser; `promptTemplates` in `config.php` replaces the built-in ones. Skills are house rules from `config.php` that an editor layers onto a prompt with `@skill://<id>`.
+`promptTemplates` and `skills` in `config.php` give every editor the same prompts: a template is a whole prompt, a skill a house rule layered onto any prompt with `@skill://<id>`.
 
 <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
 
