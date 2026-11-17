@@ -2,6 +2,7 @@ import { setActivePanel } from "kirbyuse";
 import { defineNuxtPlugin } from "#app";
 import array from "#kirby-panel/helpers/array";
 import color from "#kirby-panel/helpers/color";
+import debounce from "#kirby-panel/helpers/debounce";
 import field from "#kirby-panel/helpers/field";
 import isComponent from "#kirby-panel/helpers/isComponent";
 import object from "#kirby-panel/helpers/object";
@@ -9,18 +10,20 @@ import ratio from "#kirby-panel/helpers/ratio";
 import string, { escapeHTML } from "#kirby-panel/helpers/string";
 import { HtmlString } from "#kirby-panel/panel/html";
 import { components } from "./components";
-import { asPanel, PANEL } from "./panel";
+import { createPanel } from "./panel";
 import { translate } from "./translate";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const globalProperties: Record<string, unknown> =
     nuxtApp.vueApp.config.globalProperties;
 
-  globalProperties.$panel = PANEL;
-  setActivePanel(asPanel(PANEL));
+  const panel = createPanel(nuxtApp.vueApp);
+  globalProperties.$panel = panel;
+  setActivePanel(panel);
   globalProperties.$helper = {
     array,
     color,
+    debounce,
     field,
     object,
     ratio,
@@ -56,9 +59,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // Kirby's own `v-direction` reads `window.panel` and brings no SSR props.
   nuxtApp.vueApp.directive("direction", {
-    getSSRProps: () => ({ dir: PANEL.direction }),
+    getSSRProps: () => ({ dir: panel.direction }),
     beforeMount: (el: HTMLElement) => {
-      el.dir = PANEL.direction;
+      el.dir = panel.direction;
     },
   });
 
