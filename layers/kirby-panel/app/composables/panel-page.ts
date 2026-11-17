@@ -1,14 +1,13 @@
 import type { MaybeRefOrGetter } from "vue";
 import { providePanel } from "kirbyuse";
-import { asPanel, PANEL } from "#panel-mock/panel";
+import { createPanel } from "#panel-mock/panel";
 
 export function providePanelPage(page: {
   title: MaybeRefOrGetter<string>;
   content: MaybeRefOrGetter<object>;
 }) {
   providePanel(
-    asPanel({
-      ...PANEL,
+    createPanel(useNuxtApp().vueApp, {
       view: {
         get title() {
           return toValue(page.title);
