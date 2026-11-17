@@ -136,7 +136,6 @@ const PRODUCT_REGISTRY = {
     githubRepo: "kirby-tools/kirby-live-preview",
     composerPackage: "johannschopplich/kirby-live-preview",
     hasChangelog: true,
-    playground: "https://play.kirby.tools",
     keywords: ["kirby panel preview", "kirby instant preview"],
     notFor:
       "Previewing a decoupled frontend that renders outside Kirby – it previews Kirby-rendered pages.",
