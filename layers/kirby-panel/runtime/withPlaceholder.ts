@@ -2,7 +2,7 @@ import type { ComponentOptions } from "vue";
 
 /**
  * Copies a Kirby input with its placeholder resolved up front, since Kirby's
- * own default reads it off `window.panel` – undefined on a server.
+ * own default reads it off `window.panel`, which the site never sets.
  *
  * Spread rather than `extends`, which renders nothing on a server: Vue takes
  * `ssrRender` off the component itself.
