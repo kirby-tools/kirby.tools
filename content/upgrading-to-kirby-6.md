@@ -4,7 +4,7 @@ description: Moving a Kirby Tools site to Kirby 6 – the PHP and license you ne
 navigation.icon: i-ri-arrow-up-circle-line
 ---
 
-Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3. Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2 are free and follow the same rules. Each major runs on Kirby 6 only. Your current versions keep working on the Kirby 4 or 5 site they run on.
+Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3. Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2 are free and follow the same rules. Each major runs on Kirby 6 only. Your current versions keep working on the Kirby 4 or 5 site they run on. The last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
 
 ## Before You Upgrade
 
