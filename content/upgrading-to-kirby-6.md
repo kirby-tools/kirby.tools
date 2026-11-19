@@ -9,7 +9,7 @@ Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major fo
 ## Before You Upgrade
 
 - **PHP 8.3+**
-- **A Generation 3 license** for each paid plugin – see [Which License Covers It](#which-license-covers-it)
+- **A Generation 3 license** for each commercial plugin – see [Which License Covers It](#which-license-covers-it)
 
 Update Kirby and the plugins in the same deployment. Composer won't install a Kirby 6 major on a Kirby 4 or 5 site, and a plugin version for Kirby 5 leaves an **Invalid section type** box on Kirby 6 where the plugin used to be.
 
@@ -19,7 +19,7 @@ Kirby 6 keeps `sections:` for its own section types – `fields`, `files`, `info
 
 Sections and fields share one namespace on Kirby 6, and upper and lower case count as the same name. If a field already has the entry's name, Kirby shows a box saying the field already exists – rename one of them.
 
-A `fields` section wrapper can stay, since Kirby 6 unwraps it into its fields. At the top of a blueprint, though, `fields:` next to `sections:` only defines fields and renders none of them, without an error box – while a `pages` or `files` section stays, put the moved entry in a tab or column, where fields and sections mix. SERP Preview and the meta fields it reads become one map:
+A `fields` section wrapper can stay, since Kirby 6 unwraps it into its fields. At the top of a blueprint, though, `fields:` next to `sections:` only defines fields and renders none of them, without an error box – while a `pages`, `files`, `info`, or `stats` section stays, put the moved entry in a tab or column, where fields and sections mix. SERP Preview and the meta fields it reads become one map:
 
 ```yaml [site/blueprints/pages/default.yml]
 fields:
