@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends Record<string, unknown>">
+import { focusTarget } from "#kirby-panel/helpers/focus";
 import { HtmlString } from "#kirby-panel/panel/html";
 import { translate } from "#panel-mock/translate";
 // Kirby's `k-dialog` teleports into a portal the Panel owns, which puts its
@@ -30,10 +31,13 @@ const props = withDefaults(
 
 const emit = defineEmits<{ cancel: []; submit: [value: T] }>();
 
-// What `showModal()` focuses in Kirby's `<dialog>` when nothing in it asks for
-// focus, and where Kirby's `focus` helper then leaves it.
-const FOCUSABLE_SELECTOR =
-  ":is(a[href], button, input, select, textarea, [contenteditable=true], [tabindex]):not([disabled], [type=hidden], [tabindex='-1'])";
+// The order Kirby's `focus` helper picks a target in once the overlay opens.
+const FOCUS_SELECTORS = [
+  ":where([autofocus], [data-autofocus])",
+  ":where(input, textarea, select, [contenteditable=true], .input-focus)",
+  "[type=submit]",
+  "button",
+];
 
 // Kirby escapes field text unless the key marks it trusted, so `<help>` is what
 // lets a Mock's help text carry a link.
@@ -47,12 +51,7 @@ const dialog = useTemplateRef<HTMLFormElement>("dialog");
 
 onMounted(() => {
   if (!props.autofocus) return;
-  // An element that asks for focus comes first; `[data-autofocus]` marks the
-  // Mock's stand-in for a plugin editor that focuses itself.
-  const target =
-    dialog.value!.querySelector<HTMLElement>("[autofocus], [data-autofocus]") ??
-    dialog.value!.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
-  target?.focus({ preventScroll: true });
+  focusTarget(dialog.value!, FOCUS_SELECTORS)?.focus({ preventScroll: true });
 });
 
 function submit() {
