@@ -11,7 +11,13 @@ Kirby 6 ships a new Panel, and every plugin with a Panel part has a new major fo
 - **PHP 8.3+**
 - **A Generation 3 license** for each commercial plugin – see [Which License Covers It](#which-license-covers-it)
 
-Update Kirby and the plugins in the same deployment. Composer won't install a Kirby 6 major on a Kirby 4 or 5 site, and a plugin version for Kirby 5 leaves an **Invalid section type** box on Kirby 6 where the plugin used to be.
+Update Kirby and the plugins in one Composer call, each plugin at its Kirby 6 major from the [table below](#per-plugin):
+
+```bash
+composer require getkirby/cms:^6 johannschopplich/kirby-copilot:^4 --with-all-dependencies
+```
+
+Composer won't install a Kirby 6 major on a Kirby 4 or 5 site, and a plugin version for Kirby 5 leaves an **Invalid section type** box on Kirby 6 where the plugin used to be.
 
 ## Sections Become Fields
 
