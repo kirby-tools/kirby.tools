@@ -53,7 +53,7 @@ License keys follow the format `KT{generation}-{hash}-{hash}`: the digit after `
 
 ### Version Constraints
 
-A license key activates a plugin version only if the version matches its generation's constraint. For any other version, the Panel shows **License does not cover this plugin version**.
+A license key activates a plugin version only if the version matches its generation's constraint. On a major newer than the constraint, the Panel shows **License upgrade available**, on any other version **License does not cover this plugin version**.
 
 | Plugin                   | Gen 1 Constraint | Gen 2 Constraint     | Gen 3 Constraint             |
 | ------------------------ | ---------------- | -------------------- | ---------------------------- |
