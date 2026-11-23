@@ -4,7 +4,7 @@ description: Each Kirby Tools plugin with a Panel part has a Kirby 6 major. What
 date: "2026-11-18"
 ---
 
-Kirby 6 is out, and every Kirby Tools plugin with a Panel part runs on it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, Kirby Live Preview v3, and the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless v9 follows once Kirby's KQL plugin is released for Kirby 6. Kirby Helpers needs no new major – its current version runs on Kirby 5 and 6.
+Kirby 6 is out, and every Kirby Tools plugin with a Panel part runs on it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, Kirby Live Preview v3, and the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless and Kirby Helpers need no new major – their current versions run on Kirby 5 and 6.
 
 Kirby 6 rebuilds the Panel on Vue 3 and removes the section type plugins used to register. Each major is a port to that Panel, and each runs on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions, and they keep working. The last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
 
