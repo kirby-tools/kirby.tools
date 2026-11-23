@@ -38,7 +38,7 @@ defineProps<{
             </h2>
             <blockquote v-else-if="block.type === 'quote'">
               <p
-                class="text-[length:calc(1em*pow(var(--ratio),2))]/[1.3] whitespace-pre-line before:absolute before:-translate-x-full before:content-[open-quote] after:content-[close-quote]"
+                class="relative text-[length:calc(1em*pow(var(--ratio),2))]/[1.3] whitespace-pre-line before:absolute before:-translate-x-full before:content-[open-quote] after:content-[close-quote]"
               >
                 {{ block.text }}
               </p>

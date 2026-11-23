@@ -3,7 +3,7 @@ import type { ContentVersion, Rating, Report } from "#kirby-plugin/seo-audit";
 
 const ANALYSIS_DURATION = 800;
 
-const isOnSocialCard = inject(socialCardKey, false);
+const isInPng = inject(sceneInPngKey, false);
 const reducedMotion = usePreferredReducedMotion();
 const page = useExhibitionPage();
 const {
@@ -20,16 +20,15 @@ const { isPending: isAnalyzing, start: startAnalysis } = useTimeoutFn(
   { immediate: false },
 );
 
-// A SocialCard shows the Scene at its best: no bad results, and an ok SEO rating.
-const ratings: Report["ratings"] = isOnSocialCard
+const ratings: Report["ratings"] = isInPng
   ? { ...SEO_RATINGS, seo: { score: 70, rating: "ok" } }
   : SEO_RATINGS;
 
-const rating: Rating = isOnSocialCard
+const rating: Rating = isInPng
   ? { ...SEO_PAGE_RATING, seo: "ok", counts: { good: 2, ok: 1, bad: 0 } }
   : SEO_PAGE_RATING;
 
-const results: Report["results"] = isOnSocialCard
+const results: Report["results"] = isInPng
   ? {
       ...SEO_RESULTS,
       seo: SEO_RESULTS.seo.filter((result) => result.rating !== "bad"),

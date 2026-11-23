@@ -40,7 +40,7 @@ A Mock that plays its Plugin's answer on its own, over and over, for an answer w
 _Avoid_: Animated
 
 **Still Mock**:
-A Mock that answers nothing at all. An Interactive Mock is still inside a FeatureCard, and a SocialCard's Scene is still.
+A Mock that answers nothing at all. An Interactive Mock is still inside a FeatureCard, and the Scene in a SocialCard or a Scene Still is still.
 _Avoid_: Static
 
 **Stage**:
@@ -86,3 +86,7 @@ _Avoid_: Feature bullets, highlights, key features
 **SocialCard**:
 A PNG rendered from the site's own components for sharing off-site. Every Product has one, in two formats: the Open Graph format, linked from the landing page's meta tags, and the 4:3 format, posted by hand. The SocialCard of a Product in the Exhibition shows its Scene; any other Product's shows a file the developer writes beside what its Plugin renders from it for the Exhibition's page. Every other page shares the site's generated share image unless it brings its own; neither is a SocialCard.
 _Avoid_: OG image, social image, header image
+
+**Scene Still**:
+A PNG of a Product's still Scene, without the SocialCard around it, for articles and READMEs off-site. Every Product in the Exhibition has one.
+_Avoid_: Screenshot

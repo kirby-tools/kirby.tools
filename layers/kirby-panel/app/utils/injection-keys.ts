@@ -12,7 +12,7 @@ export const panelMockInertKey: InjectionKey<boolean> = Symbol(
   "kirby-panel.mock-inert",
 );
 
-/** A host's claim that it draws the Mock's edge and names it, so the Mock drops its frame and chrome bar and fills the host. */
+/** A host's claim that the Mock needs no frame of its own, so the Mock drops its frame and chrome bar and fills the host. */
 export const panelMockFramedKey: InjectionKey<boolean> = Symbol(
   "kirby-panel.mock-framed",
 );

@@ -17,7 +17,7 @@
     "test:types": "vue-tsc -b --noEmit",
     "kirby-panel:fetch": "node layers/kirby-panel/scripts/fetch.ts",
     "docs:logo-metrics": "logo-soup --output=\"app/data/logo-metrics.json\" public/img/brands",
-    "docs:social-cards": "node scripts/social-cards.ts",
+    "docs:pngs": "node scripts/pngs.ts",
     "prepare": "pnpm run kirby-panel:fetch && nuxt prepare && pnpm run docs:logo-metrics"
   },
   "devDependencies": {
