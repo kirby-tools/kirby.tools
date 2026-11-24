@@ -352,6 +352,9 @@ export default defineNuxtConfig({
     "/docs/copilot/usage/reference": {
       redirect: "/docs/copilot/advanced/reference",
     },
+    "/docs/copilot/usage/section": {
+      redirect: "/docs/copilot/usage/field",
+    },
     // Content Translator
     "/docs/content-translator/changelog": {
       redirect: "/content-translator/changelog",
