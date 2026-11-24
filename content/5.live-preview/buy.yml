@@ -29,6 +29,8 @@ faq:
       content: The license allows you to use the plugin on unlimited projects as long as you are the code owner. If you develop websites for clients and retain the code, one license covers all your projects. If your client gets the exclusive rights to the code, the client needs their own license – just like with Kirby itself. The full terms are in the [license agreement](/license).
     - label: Which Kirby versions are supported?
       content: Kirby Live Preview v3 runs on Kirby 6. Which version runs on Kirby 4 and 5 is on the [license compatibility page](/license-compatibility). Your Gen 3 license covers all of them.
+    - label: Can I upgrade an older license?
+      content: Yes – a Generation 1 or Generation 2 license upgrades to Generation 3 at 50% off. Sign in at [hub.kirby.tools](https://hub.kirby.tools) with the email address from your purchase and click **50% Upgrade Discount → Upgrade Now** on your license card. The details are under [Upgrade Discount](/license-compatibility#upgrade-discount).
     - label: What does “Unlimited minor & patch updates” include?
       content: Every minor and patch release of the major version you bought, at no extra cost. Which major versions your license covers is on the [license compatibility page](/license-compatibility).
     - label: How do I receive updates for the plugin?

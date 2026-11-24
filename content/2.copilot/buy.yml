@@ -28,6 +28,8 @@ faq:
       content: To generate in the Panel or from PHP, yes – an API key from at least one supported provider. Agents need none, since the agent brings its own model. Kirby Copilot supports [OpenAI](https://platform.openai.com), [Google Gemini](https://ai.google.dev/gemini-api/docs/models) (free tier available), [Anthropic Claude](https://console.anthropic.com), and [Mistral](https://console.mistral.ai). I recommend Google Gemini – its free tier is enough to try the plugin, and its models handle the structured output that blocks and layouts need.
     - label: Which Kirby versions are supported?
       content: Kirby Copilot v4 runs on Kirby 6. Which version runs on Kirby 4 and 5 is on the [license compatibility page](/license-compatibility). Your Gen 3 license covers all of them.
+    - label: Can I upgrade an older license?
+      content: Yes – a Generation 1 or Generation 2 license upgrades to Generation 3 at 50% off. Sign in at [hub.kirby.tools](https://hub.kirby.tools) with the email address from your purchase and click **50% Upgrade Discount → Upgrade Now** on your license card. The details are under [Upgrade Discount](/license-compatibility#upgrade-discount).
     - label: What does “Unlimited minor & patch updates” include?
       content: Every minor and patch release of the major version you bought, at no extra cost. Which major versions your license covers is on the [license compatibility page](/license-compatibility).
     - label: How do I receive updates for the plugin?

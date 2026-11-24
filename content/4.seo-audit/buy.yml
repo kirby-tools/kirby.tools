@@ -32,6 +32,8 @@ faq:
       content: The assessments come without a guarantee of accuracy. Most of them come from the [Yoast SEO engine](/docs/seo-audit/guide/assessments), and a wrong verdict there is not something the license covers. I add my own assessments over time to fill the gaps. Test the plugin in the [playground](https://try.kirbyseo.com) before you buy.
     - label: Which Kirby versions are supported?
       content: Kirby SEO Audit v4 runs on Kirby 6. Which version runs on Kirby 4 and 5 is on the [license compatibility page](/license-compatibility). Your Gen 3 license covers all of them.
+    - label: Can I upgrade an older license?
+      content: Yes – a Generation 1 or Generation 2 license upgrades to Generation 3 at 50% off. Sign in at [hub.kirby.tools](https://hub.kirby.tools) with the email address from your purchase and click **50% Upgrade Discount → Upgrade Now** on your license card. The details are under [Upgrade Discount](/license-compatibility#upgrade-discount).
     - label: What does “Unlimited minor & patch updates” include?
       content: Every minor and patch release of the major version you bought, at no extra cost. Which major versions your license covers is on the [license compatibility page](/license-compatibility).
     - label: How do I receive updates for the plugin?
