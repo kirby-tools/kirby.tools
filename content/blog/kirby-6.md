@@ -1,7 +1,7 @@
 ---
 title: Ready for Kirby 6
 description: Each Kirby Tools plugin with a Panel part has a Kirby 6 major. What you move in your blueprints, which license covers it, and what changed on the way.
-date: "2026-11-18"
+date: "2026-11-24"
 ---
 
 Kirby 6 is out, and every Kirby Tools plugin with a Panel part runs on it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, Kirby Live Preview v3, and the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless and Kirby Helpers need no new major – their current versions run on Kirby 5 and 6.
