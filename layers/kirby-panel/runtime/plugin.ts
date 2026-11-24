@@ -24,13 +24,19 @@ export default defineNuxtPlugin((nuxtApp) => {
     array,
     color,
     debounce,
-    field,
+    field: {
+      ...field,
+      // Kirby's own implementation reads `window.panel`, which the site never
+      // sets, on every call, for its `[unknown]` label. A Mock's values are
+      // among its options.
+      options: (options: unknown[]) => options,
+    },
     object,
     ratio,
     string,
     uuid: string.uuid,
     // Kirby's own implementation, which otherwise reaches for the app through
-    // `window.panel` – undefined on a server.
+    // `window.panel`, which the site never sets.
     isComponent: (name: string) => isComponent(name, nuxtApp.vueApp),
   };
   globalProperties.$events = { on() {}, off() {}, emit() {} };

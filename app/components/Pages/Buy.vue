@@ -27,7 +27,7 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
       <template #button>
         <UFormField
           label="License holder"
-          help="Your name, your organization, or a client. Defaults to you."
+          help="Your name, your organization, or a client who gets the exclusive rights to the code. Defaults to you."
           :ui="{
             container: 'mt-2',
           }"
@@ -46,6 +46,13 @@ const [DefinePricingPlanTemplate, ReusePricingPlanTemplate] =
           loading-auto
           @click.prevent="openCheckout"
         />
+      </template>
+
+      <template #terms>
+        By buying, you accept the
+        <NuxtLink to="/license" class="text-highlighted underline"
+          >license agreement</NuxtLink
+        >.
       </template>
     </UPricingPlan>
   </DefinePricingPlanTemplate>

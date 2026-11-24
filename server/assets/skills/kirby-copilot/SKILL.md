@@ -53,7 +53,7 @@ The surfaces are independent. Pick what the blueprint needs rather than adding a
 | View button        | generating several fields at once from a prompt dialog                                         |
 | Toolbar buttons    | rewriting a selection inside a writer or textarea field                                        |
 | Inline suggestions | ghost text while typing, on in every writer field                                              |
-| Section            | one field; can lock the prompt (`editable: false`) and attach the current file (`files: auto`) |
+| Copilot field      | one field; can lock the prompt (`editable: false`) and attach the current file (`files: auto`) |
 
 ```yaml [site/blueprints/pages/default.yml]
 buttons:
@@ -65,7 +65,7 @@ buttons:
   status: true
 ```
 
-`buttons` and a writer field's `marks` are allow-lists: Kirby's defaults have to be named alongside `copilot` or `copilot-suggestions`, or they disappear – for `marks`, from stored content on the next save, links included. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. Props like `userPrompt` stay in the blueprint. A blueprint's `buttons` wins over the option.
+`buttons` and a writer's `toolbar.marks` are allow-lists: Kirby's default buttons have to be named alongside `copilot`, or they disappear. The writer button goes in `toolbar.marks`, never the field's `marks`, which strips every mark it leaves out from stored content on the next save. To reach every view without editing blueprints, list the button names in Kirby's `panel.viewButtons.<view>` option. A Kirby query in `userPrompt` or `systemPrompt` resolves only in the blueprint. A blueprint's `buttons` wins over the option.
 
 `completion: false` stops ghost text appearing on its own while the shortcut still requests one.
 
@@ -73,7 +73,7 @@ buttons:
 
 ## Generating Blocks and Layouts
 
-A view button or section on a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the AI model learns about the block beyond its name. Generated content is appended to the field, never replacing it. Blocks nest one level, so a block inside a nested block is never generated.
+A view button or Copilot field writing to a `blocks` or `layout` field generates whole blocks from the site's own block blueprints. `excludedBlocks` in `config.php` keeps content-less custom blocks out everywhere. A `description` key on a custom block blueprint is all the AI model learns about the block beyond its name. Generated content is appended to the field, never replacing it. Blocks nest one level, so a block inside a nested block is never generated.
 
 <https://kirby.tools/docs/copilot/advanced/blocks-and-layouts.md>
 
@@ -85,7 +85,7 @@ A view button or section on a `blocks` or `layout` field generates whole blocks 
 
 ## Prompt Templates and Skills
 
-Templates are reusable user prompts in the dialog, some built in. Skills are house rules an editor layers onto a prompt with `@skill://<id>`. Both live in `config.php`.
+`promptTemplates` and `skills` in `config.php` give every editor the same prompts: a template is a whole prompt, a skill a house rule layered onto any prompt with `@skill://<id>`.
 
 <https://kirby.tools/docs/copilot/prompt-dialog/templates.md> and <https://kirby.tools/docs/copilot/prompt-dialog/skills.md>
 
@@ -99,7 +99,7 @@ claude mcp add --transport http kirby https://example.com/api/copilot/mcp
 
 Then `/mcp` in Claude Code or `claude mcp login kirby` opens the Panel's login.
 
-The user picks the connection permissions in the Panel's consent view, capped by their role, and changes them later in the **Agents** view. House rules for agents go where editors read them: a field's `help` or `placeholder`, or an info field or section. A plugin field type that extends no core field is writable once a plugin maps it to a core type with `'johannschopplich.copilot' => ['fieldTypes' => ['rating' => 'number']]`. A role blueprint withholds publishing or deleting from agents with `agentsPublish: false` or `agentsDelete: false` under `permissions.johannschopplich.copilot`.
+The user picks the connection permissions in the Panel's consent view, capped by their role, and changes them later in the **Agents** view. House rules for agents go where editors read them: a field's `help` or `placeholder`, or an info field. A plugin field type that extends no core field is writable once a plugin maps it to a core type with `'johannschopplich.copilot' => ['fieldTypes' => ['rating' => 'number']]`. A role blueprint withholds publishing or deleting from agents with `agentsPublish: false` or `agentsDelete: false` under `permissions.johannschopplich.copilot`.
 
 The hosting has to pass the `/.well-known/` discovery paths and the `Authorization` header to Kirby. The Panel's **Agents** view checks this from the browser and names the fix. HTTP basic auth has to exempt the paths agents use. An agent connected through its provider reaches the MCP URL from the provider's servers, so it needs a site reachable from the internet, which the browser check doesn't test. An agent may remember the login server of an earlier connection: after a server fix, remove the MCP URL from the agent and add it again.
 
@@ -117,11 +117,11 @@ The hosting has to pass the `/.well-known/` discovery paths and the `Authorizati
 - It drops a `promptTemplates` or `skills` entry it cannot read.
 - It turns an unknown `provider` into Google.
 
-With `debug` on, the exception names the option. The PHP `Client` always fails: `Unknown provider "<name>"` or `Missing required option "johannschopplich.copilot.provider"`.
+With `debug` on, the exception names the option. The PHP `Client` always fails on an unknown provider: `Unknown provider "<name>"`.
 
 **Blocks come back malformed** – generate fewer blocks per prompt and set `logLevel: 'debug'` to see the prompts that were sent in the browser console. Through a gateway, confirm it translates `json_schema` at all.
 
-**Inline suggestions never appear** – in order: `copilot-suggestions` is in the writer field's `marks`, `completion` is not `false`, and behind a gateway `completionModel` is set.
+**Inline suggestions never appear** – in order: a writer field with its own `marks` lists `copilot-suggestions`, `completion` is not `false`, and behind a gateway `completionModel` is set.
 
 <https://kirby.tools/docs/copilot/advanced/troubleshooting.md>
 
@@ -129,6 +129,6 @@ With `debug` on, the exception names the option. The PHP `Client` always fails: 
 
 A refused write or delete tells the connected agent why and what to do. One failure doesn't explain itself:
 
-**An agent's write is overwritten** – a field the editor also changed in an open Panel view keeps the value saved last.
+**An agent's write is overwritten** – a field the editor also changed in an open Panel view keeps the value saved last. With `cache.agents: false`, or behind several servers without a shared cache, the open view never reloads, and **Save** or **Discard** there drops the agent's write.
 
 <https://kirby.tools/docs/copilot/agents/permissions-and-review.md> and <https://kirby.tools/docs/copilot/agents/hosting.md>

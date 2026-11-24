@@ -98,7 +98,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Generating new content from a prompt – use Kirby Copilot for that.",
     skillDescription:
-      "Configure Kirby Content Translator, which translates Kirby content between the site's languages in the Panel, from the CLI, or from PHP. Use when choosing DeepL, Copilot AI, or a custom strategy, adding the button or section to a blueprint, translating language variables, restricting which fields or KirbyTag attributes translate, scripting translation from PHP, or when a field keeps its source text or a hook never fires.",
+      "Configure Kirby Content Translator, which translates Kirby content between the site's languages in the Panel, from the CLI, or from PHP. Use when choosing DeepL, Copilot AI, or a custom strategy, adding the button or field to a blueprint, translating language variables, restricting which fields or KirbyTag attributes translate, scripting translation from PHP, or when a field keeps its source text or a hook never fires.",
   },
   "seo-audit": {
     name: "Kirby SEO Audit",
@@ -124,7 +124,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Rendering meta tags in the frontend – it analyzes the output, it does not produce it.",
     skillDescription:
-      "Configure Kirby SEO Audit, which analyzes the rendered page inside the Panel and rates it. Use when adding the view button or section to a blueprint, wiring the keyphrase and synonyms, keeping the rating current after publishing, or when the analysis cannot fetch the page or aborts on an assessment.",
+      "Configure Kirby SEO Audit, which analyzes the rendered page inside the Panel and rates it. Use when adding the view button or field to a blueprint, wiring the keyphrase and synonyms, keeping the rating current after publishing, or when the analysis cannot fetch the page or aborts on an assessment.",
   },
   "live-preview": {
     name: "Kirby Live Preview",
@@ -140,7 +140,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Previewing a decoupled frontend that renders outside Kirby – it previews Kirby-rendered pages.",
     skillDescription:
-      "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview section to a blueprint, choosing when it rerenders or which page it shows, keeping editors from clicking through, hiding parts of the page in preview mode, or when the preview stays blank.",
+      "Configure Kirby Live Preview, which renders a page beside its Panel form. Use when adding the preview field to a blueprint, choosing when it rerenders or which page it shows, keeping editors from clicking through, hiding parts of the page in preview mode, or when the preview stays blank.",
   },
   "serp-preview": {
     name: "Kirby SERP Preview",
@@ -161,7 +161,7 @@ const PRODUCT_REGISTRY = {
     notFor:
       "Judging what it shows – it draws the snippet, Kirby SEO Audit scores it.",
     skillDescription:
-      "Configure Kirby SERP Preview, which draws the Google result snippet for a page inside the Panel. Use when adding the section to a blueprint, pointing it at a meta title or description field, setting the favicon, site name, or URL line, or shortening the text through a formatter.",
+      "Configure Kirby SERP Preview, which draws the Google result snippet for a page inside the Panel. Use when adding the field to a blueprint, pointing it at a meta title or description field, setting the favicon, site name, or URL line, or shortening the text through a formatter.",
   },
   minimap: {
     name: "Kirby Minimap",

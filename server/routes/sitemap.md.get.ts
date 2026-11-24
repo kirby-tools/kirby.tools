@@ -26,7 +26,11 @@ export default defineEventHandler(async (event) => {
       .all(),
     queryCollection(event, "pages")
       .select("path", "title")
-      .where("path", "LIKE", "/license%")
+      .orWhere((query) =>
+        query
+          .where("path", "LIKE", "/license%")
+          .where("path", "=", "/upgrading-to-kirby-6"),
+      )
       .where("path", "NOT IN", UNLISTED_PATHS)
       .order("path", "ASC")
       .all(),

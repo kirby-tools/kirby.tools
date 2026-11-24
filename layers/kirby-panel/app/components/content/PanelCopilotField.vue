@@ -4,17 +4,11 @@ import { translate } from "#panel-mock/translate";
 
 const props = withDefaults(
   defineProps<{
-    label?: string;
-    icon?: string;
-    theme?: string;
-    size?: string;
     editable?: boolean;
     files?: boolean | "auto";
     userPrompt?: string;
-    open?: boolean;
     isGenerating?: boolean;
-    canUndo?: boolean;
-    fileCount?: number;
+    fileNames?: string[];
   }>(),
   { editable: true, files: true },
 );
@@ -22,26 +16,27 @@ const props = withDefaults(
 const LABELS = createFieldLabels(translate);
 
 const prompt = ref(props.userPrompt ?? "");
-const isOpen = ref(props.open);
+// The plugin's note for `files: auto` on an image's view.
+const modelFileText = computed(() =>
+  props.files === "auto"
+    ? translate("johannschopplich.copilot.context.file.model")
+    : undefined,
+);
 </script>
 
 <template>
   <!-- The PHP field's defaults for a field keyed `copilot`. -->
   <FieldBody
     v-model:prompt="prompt"
-    v-model:open="isOpen"
-    :label="label || translate('johannschopplich.copilot.label')"
+    :label="translate('johannschopplich.copilot.label')"
     name="copilot"
     :labels="LABELS"
-    :icon="icon"
-    :theme="theme"
-    :size="size"
     :editable="editable"
     :files="files"
     :user-prompt="userPrompt"
     :is-generating="isGenerating"
-    :can-undo="canUndo"
-    :file-count="fileCount"
+    :file-names="fileNames"
+    :model-file-text="modelFileText"
   />
 </template>
 

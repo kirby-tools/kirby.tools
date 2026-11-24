@@ -25,11 +25,11 @@ CORS is Kirby's own since 5.2.0, under the top-level `cors` key. `'cors' => true
 
 ## Token
 
-A token that is set but blank – typically an env var that failed to resolve – answers every guarded request with `401`. An unresolved variable never opens a site by accident, so check the env before the code.
+Without a `headless.token`, every route the token guards is open: under `globalRoutes`, the whole site. A token that is set but blank – typically an env var that failed to resolve – answers every guarded request with `401`. An unresolved variable never opens a site by accident, so check the env before the code.
 
 Under `globalRoutes`, clean file URLs like `/about/hero.jpg` need the token and additionally Kirby's `content.fileRedirects`, which is off by default.
 
-`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off. This also means they are public whenever no token is set. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
+`/api/__sitemap__` and `/api/__template__` require the token too. They sit outside the catch-all and stay available with `globalRoutes` off. Setting `kql.auth` to `'bearer'` without a `headless.token` authenticates nobody, so `/api/kql` silently falls back to Kirby's native API auth.
 
 <https://kirby.tools/docs/headless/configuration/authentication.md>
 
@@ -49,7 +49,7 @@ A request names its language through the `X-Language` header or a `?language=` q
 
 ## Resolving UUIDs
 
-`toResolvedBlocks()`, `toResolvedLayouts()`, and `resolvePermalinks()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves. A `blocksResolver.files` list replaces that default rather than extending it. Without `'image' => 'image'` in the list, the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
+`toResolvedBlocks()` and `toResolvedLayouts()` turn the `page://` and `file://` UUIDs inside a field into URLs and objects. `resolvePermalinks()` turns the `/@/page/…` and `/@/file/…` permalinks and the `page://`, `file://`, and `site://` UUIDs in `href` and `src` attributes into URLs. Their options live under the top-level `blocksResolver` and `permalinksResolver` keys, not under `headless`. Out of the box only the `image` field of Kirby's `image` block resolves. A `blocksResolver.files` list replaces that default rather than extending it. Without `'image' => 'image'` in the list, the image block hands out UUIDs again. `blocksResolver.pages` starts empty.
 
 `frontendUrl()`, `breadcrumbMeta()`, and `i18nMeta()` build the navigation data a frontend needs.
 

@@ -30,7 +30,7 @@ buttons:
 
 ## Sending a Token or a Body
 
-`requestOptions` takes the options of Kirby's `Remote` class: a token goes in `headers`, a body in `data`. An array in `data` is sent as form fields, so a JSON hook takes `json_encode()` and a `Content-Type: application/json` header. The server sends the request, so the URL and the token never reach the browser.
+`requestOptions` takes the options of Kirby's `Remote` class: a token goes in `headers`, a body in `data`, and a hook slower than the 10-second default needs `timeout`. An array in `data` is sent as form fields, so a JSON hook takes `json_encode()` and a `Content-Type: application/json` header. The server sends the request, so the URL and the token never reach the browser.
 
 <https://kirby.tools/docs/deploy-trigger/configuration.md>
 
@@ -48,6 +48,6 @@ Vercel and Netlify hand out a URL that needs no token. GitHub Actions takes `htt
 
 ## When a Deployment Fails
 
-The Panel error names the hook's status code and its response body, or the connection error for an unknown host or a timeout. `Missing "johannschopplich.deploy-trigger.deployUrl" plugin option` means the config the Panel runs with has no `deployUrl`.
+The Panel error names the hook's status code and its response body unless that is an HTML page, or the connection error for an unknown host or a timeout. `Missing "johannschopplich.deploy-trigger.deployUrl" plugin option` means the config the Panel runs with has no `deployUrl`.
 
 <https://kirby.tools/docs/deploy-trigger.md>

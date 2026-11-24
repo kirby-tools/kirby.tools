@@ -1,11 +1,22 @@
 <script setup lang="ts">
-defineOptions({ inheritAttrs: false });
-
-withDefaults(defineProps<{ element?: string }>(), { element: "div" });
+withDefaults(
+  defineProps<{
+    data?: Record<string, unknown>;
+    disabled?: boolean;
+    element?: string;
+    group?: string;
+    handle?: string | boolean;
+    list?: unknown[];
+    move?: (...args: unknown[]) => unknown;
+    options?: Record<string, unknown>;
+  }>(),
+  { element: "div" },
+);
 </script>
 
 <template>
   <component :is="element">
     <slot />
+    <slot v-if="$slots.footer" name="footer" />
   </component>
 </template>

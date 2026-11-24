@@ -6,7 +6,7 @@
 
 ### 🪁 [Kirby Copilot](https://kirby.tools/copilot)
 
-Generate with AI, from one field to entire layouts. Pick the surfaces that fit your blueprints – view button, toolbar, inline suggestions, section – or call the same provider stack from PHP.
+Generate with AI, from one field to entire layouts. Pick the surfaces that fit your blueprints – view button, toolbar, inline suggestions, field – or call the same provider stack from PHP.
 
 ### 🌐 [Kirby Content Translator](https://kirby.tools/content-translator)
 
@@ -18,7 +18,7 @@ Yoast SEO and readability analysis, rated in the Panel. The Yoast SEO engine run
 
 ### 🔍 [Kirby SERP Preview](https://kirby.tools/serp-preview)
 
-See the Google snippet as you type. Free, and a Panel section draws the result for the page you are editing – favicon, site name, URL, title, and description – and redraws it on every keystroke.
+See the Google snippet as you type. Free, and a Panel field draws the result for the page you are editing – favicon, site name, URL, title, and description – and redraws it on every keystroke.
 
 ### 🧭 [Kirby Minimap](https://kirby.tools/minimap)
 
