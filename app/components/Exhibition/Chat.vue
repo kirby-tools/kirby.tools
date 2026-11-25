@@ -171,7 +171,7 @@ useResizeObserver([thread, footer], scrollToEnd);
           class="rounded-[16px] bg-(--client-composer) p-2 shadow-[0_4px_20px_rgb(0_0_0/0.075),inset_0_0_0_1px_var(--client-composer-ring)]"
         >
           <p
-            class="min-h-10 px-2 pt-1 text-sm/6"
+            class="min-h-10 px-2 pt-1 text-sm/6 whitespace-pre-wrap"
             :class="
               composer ? 'after:-me-px after:border-e' : 'text-(--client-dim)'
             "
