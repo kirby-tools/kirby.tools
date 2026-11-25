@@ -1,6 +1,6 @@
 ---
 title: Know What's Left to Translate
-description: Translation Coverage shows which languages and pages still need attention across your multilingual Kirby site.
+description: Is the German version ready yet? Translation Coverage answers in the Panel, with a ring per language and a list of the pages still missing content.
 date: "2026-07-03"
 product: content-translator
 ---

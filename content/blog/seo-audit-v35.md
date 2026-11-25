@@ -1,6 +1,6 @@
 ---
 title: The Verdict Before the Report
-description: The analysis reads your unsaved changes, sums them up in two lights, and leaves a rating on every page it has seen.
+description: SEO Audit now checks what you're still editing, opens with one verdict for SEO and one for readability, and leaves a rating on every page.
 date: "2026-09-16"
 product: seo-audit
 ---

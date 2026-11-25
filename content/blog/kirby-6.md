@@ -1,6 +1,6 @@
 ---
 title: Ready for Kirby 6
-description: Every Kirby Tools plugin with a Panel part has a Kirby 6 major – a move from sections to fields, included in a Generation 3 license.
+description: Hello, Kirby 6! Every Kirby Tools plugin is ready for it, and a Generation 3 license already covers the upgrade.
 date: "2026-11-24"
 ---
 

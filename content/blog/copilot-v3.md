@@ -1,6 +1,6 @@
 ---
 title: Your Quiet Co-Writer
-description: A major update with server-side API proxy, inline suggestions, prompt templates, and more. Free upgrade for all users.
+description: Inline suggestions, prompt templates, and API keys that never leave your server – Copilot v3 is a free upgrade for every license.
 date: "2026-01-01"
 product: copilot
 ---

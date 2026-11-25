@@ -1,6 +1,6 @@
 ---
 title: Going Open Source With Commercial Plugins
-description: How and why Kirby Tools plugins moved from a private Composer repo to Packagist and open source.
+description: "No more auth.json: every Kirby Tools plugin installs from Packagist with a plain composer require, and its source is on GitHub."
 date: "2024-06-18"
 ---
 

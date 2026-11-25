@@ -1,6 +1,6 @@
 ---
 title: Agents Prepare, Editors Publish
-description: Copilot connects Claude, ChatGPT, and other agents to your Kirby site. They work as your Kirby user, within your role, and by default their edits wait as unsaved changes until you publish them.
+description: "No more copy and paste: Claude or ChatGPT edits your Kirby site through Copilot, and by default its edits wait for you to publish."
 date: "2026-10-10"
 product: copilot
 ---

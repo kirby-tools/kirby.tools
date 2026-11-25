@@ -1,6 +1,6 @@
 ---
 title: Beyond Single Fields
-description: Multi-field generation fills several fields from one prompt, and custom blocks generate from your own blueprints.
+description: One prompt, several fields – and Copilot now generates your custom blocks from their blueprints too.
 date: "2025-09-05"
 product: copilot
 ---
