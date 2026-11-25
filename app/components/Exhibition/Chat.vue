@@ -172,7 +172,9 @@ useResizeObserver([thread, footer], scrollToEnd);
         >
           <p
             class="min-h-10 px-2 pt-1 text-sm/6"
-            :class="!composer && 'text-(--client-dim)'"
+            :class="
+              composer ? 'after:-me-px after:border-e' : 'text-(--client-dim)'
+            "
           >
             {{ composer || "Reply to Claude…" }}
           </p>
