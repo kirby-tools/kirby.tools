@@ -6,15 +6,13 @@ date: "2026-11-24"
 
 Kirby 6 is out, and the Panel [runs on Vue 3](https://getkirby.com/releases/6/foundation#vue-3). As a Vue lover, I've waited a long time for this one.
 
-Every Kirby Tools plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3, as well as the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless and Kirby Helpers run on Kirby 5 and 6 as they are.
-
-The new majors run on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions and its license, and the last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
+Every Kirby Tools plugin with a Panel part has a new major for it. These run on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions and its license, and the last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
 
 ## Too Good Not to Get Sherlocked
 
 Kirby 6 turns the preview view into a [live editor](https://getkirby.com/releases/6/live-editor): your site next to the form, updated as you edit. When I built Live Preview, a preview of unsaved changes was one of the most requested features for the Panel.
 
-Seeing my plugin's idea move into core is a little sad. It's also the nicest compliment a plugin can get, or as Nico Hoffmann of the Kirby core team said on Discord:
+That's bittersweet, and mostly sweet: Kirby building it in is the nicest compliment a plugin can get. Or, as Nico of the Kirby core team said on Discord:
 
 > It was too good to not get sherlocked eventually.
 
@@ -34,7 +32,7 @@ One trap: at the top of a blueprint, `fields:` next to `sections:` renders none 
 
 ## What Editors Notice
 
-Most of each port is invisible: the same assessments, the same translations, the same providers. Editors notice two changes. The Copilot field shows its prompt right away, with attached files as tags and its buttons in a bar below:
+Most of each port is invisible: the same assessments, the same translations, the same providers. The change editors notice most is the Copilot field. It shows its prompt right away, with attached files as tags and its buttons in a bar below:
 
 :::panel-mock
 ::panel-copilot-field
@@ -46,8 +44,6 @@ fileNames: [brief.pdf]
 :::
 
 :kbd{value="meta"} :kbd{value="enter"} starts a generation. Copilot no longer ships built-in prompt templates; for prompts every editor shares, set `promptTemplates` in the config.
-
-In Content Translator, **Import** no longer asks for confirmation, even where a site set `confirm: true`. The imported fields arrive as unsaved changes, and **Discard** reverts them.
 
 ## Generation 3 Includes It
 
