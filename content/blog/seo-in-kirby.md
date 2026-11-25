@@ -1,6 +1,6 @@
 ---
 title: "SEO in Kirby CMS: A Practical Guide"
-description: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need to output, and where the Panel helps editors.
+description: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need, and where the Panel helps editors.
 date: "2026-10-08"
 ---
 
@@ -77,7 +77,7 @@ The meta fields get filled in on every page, by editors who never see the `<head
 ---
 viewTitle: "SEO in Kirby CMS: A Practical Guide"
 content:
-  metadescription: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need to output, and where the Panel helps editors.
+  metadescription: Kirby leaves meta tags, canonical URLs, hreflang, and the sitemap to you. Here's what your templates need, and where the Panel helps editors.
 faviconUrl: /favicon.ico
 siteTitle: Kirby Tools
 siteUrl: https://kirby.tools
