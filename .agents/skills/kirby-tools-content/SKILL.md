@@ -7,13 +7,13 @@ description: Writing or editing anything a visitor or an agent reads on kirby.to
 
 ## Register
 
-A sentence's register follows its place. Titles and CTA labels may claim or joke. Everything else, down to a CTA's description and every meta description outside the blog, says what the editor or developer does, what happens, and where it stops, taken from the Plugin source rather than from adjectives. A price is stated, never graded. Headless, Helpers, and Live Preview carry code identifiers in their FeatureCards, and the Yoast assessments are described, never counted.
+A sentence's register follows its place. Titles and CTA labels may claim or joke. Everything else, down to a CTA's description and every meta description but a post's, says what the editor or developer does, what happens, and where it stops, taken from the Plugin source rather than from adjectives. A price is stated, never graded. Headless, Helpers, and Live Preview carry code identifiers in their FeatureCards, and the Yoast assessments are described, never counted.
 
 ## Blog
 
 Every sentence carries a fact of its own, said literally. Headings carry the point – "One Line in the Blueprint", "The Verdict First" – and the post closes on a link to the documentation page it summarises. A cost in money or data is stated plainly, and a Panel action is its full click path as the Panel labels it: **Translate → Deutsch**.
 
-A post's description is its share text: two lines on the share card, about 145 characters, the reader's gain in plain words, and it may open warm, as in "Hello, Kirby 6!".
+A post's description is its standfirst – under the title, on the blog index, and on the share card, which clamps it to two lines of about 145 characters. It says the reader's gain in plain words and may open warm, as in "Hello, Kirby 6!".
 
 The blog may judge, once per point; an adjective still does not replace behavior, and a pet phrase belongs to one post – the post that already has it keeps it.
 
