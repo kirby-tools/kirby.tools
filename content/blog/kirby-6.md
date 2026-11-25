@@ -1,16 +1,26 @@
 ---
 title: Ready for Kirby 6
-description: Each Kirby Tools plugin with a Panel part has a Kirby 6 major. What you move in your blueprints, which license covers it, and what changed on the way.
+description: Every Kirby Tools plugin with a Panel part has a Kirby 6 major – a move from sections to fields, included in a Generation 3 license.
 date: "2026-11-24"
 ---
 
-Kirby 6 is out, and every Kirby Tools plugin with a Panel part runs on it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, Kirby Live Preview v3, and the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless and Kirby Helpers need no new major – their current versions run on Kirby 5 and 6.
+Kirby 6 is out, and the Panel [runs on Vue 3](https://getkirby.com/releases/6/foundation#vue-3). As a Vue lover, I've waited a long time for this one.
 
-Kirby 6 rebuilds the Panel on Vue 3 and removes the section type plugins used to register. Each major is a port to that Panel, and each runs on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions, and they keep working. The last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
+Every Kirby Tools plugin with a Panel part has a new major for it: Kirby Copilot v4, Kirby Content Translator v4, Kirby SEO Audit v4, and Kirby Live Preview v3, as well as the free Kirby SERP Preview v2, Kirby Minimap v2, and Kirby Deploy Trigger v2. Kirby Headless and Kirby Helpers run on Kirby 5 and 6 as they are.
 
-## From `sections:` to `fields:`
+The new majors run on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions and its license, and the last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
 
-Every plugin that was a section is a field on Kirby 6, with the same type name, so the upgrade moves its entry from `sections:` to `fields:`:
+## Too Good Not to Get Sherlocked
+
+Kirby 6 turns the preview view into a [live editor](https://getkirby.com/releases/6/live-editor): your site next to the form, updated as you edit. When I built Live Preview, a preview of unsaved changes was one of the most requested features for the Panel.
+
+Seeing my plugin's idea move into core is a little sad. It's also the nicest compliment a plugin can get, or as Nico Hoffmann of the Kirby core team said on Discord:
+
+> It was too good to not get sherlocked eventually.
+
+## Sections Become Fields
+
+Every plugin that was a section is now a field with the same type name, so its entry moves from `sections:` to `fields:`:
 
 ```diff [site/blueprints/pages/default.yml]
 -sections:
@@ -20,28 +30,29 @@ Every plugin that was a section is a field on Kirby 6, with the same type name, 
      keyphraseField: metaKeyphrase
 ```
 
-Every property that remains keeps its name, and so do the view buttons: `copilot`, `content-translator`, and `seo-audit` under `buttons:` work as before. An entry you forget renders a red **Invalid section type** box in its place and touches no content, so you find it on the first visit to that page.
+One trap: at the top of a blueprint, `fields:` next to `sections:` renders none of its fields and shows no error. Where a blueprint keeps a `pages`, `files`, `info`, or `stats` section, the moved entry goes into a tab or column.
 
-A blueprint that keeps other sections under `sections:` – `pages`, `files`, `info`, or `stats` – is the exception: `fields:` beside `sections:` renders none of its fields and shows no error, so the moved entry goes into a tab or column.
+## What Editors Notice
 
-Update Kirby and the plugins in the same deployment – Composer won't install a Kirby 6 major on a Kirby 4 or 5 site.
+Most of each port is invisible: the same assessments, the same translations, the same providers. Editors notice two changes. The Copilot field shows its prompt right away, with attached files as tags and its buttons in a bar below:
 
-## Which License Covers It
+:::panel-mock
+::panel-copilot-field
+---
+userPrompt: Summarize the attached brief in five points.
+fileNames: [brief.pdf]
+---
+::
+:::
 
-A Generation 3 license includes the Kirby 6 majors – install them and you're done. A Generation 1 or 2 license stops at the earlier majors and upgrades to Generation 3 at 50% off in the [Hub](https://hub.kirby.tools). The upgrade issues a new license key, which you activate in the Panel like the old one.
+:kbd{value="meta"} :kbd{value="enter"} starts a generation. Copilot no longer ships built-in prompt templates; for prompts every editor shares, set `promptTemplates` in the config.
 
-Your current license stays valid for the versions it covers, so a site that stays on Kirby 4 or 5 needs no new license.
+In Content Translator, **Import** no longer asks for confirmation, even where a site set `confirm: true`. The imported fields arrive as unsaved changes, and **Discard** reverts them.
 
-## What Changed on the Way
+## Generation 3 Includes It
 
-Most of each port is invisible: the same assessments, the same translations, the same providers.
+A Generation 3 license includes the Kirby 6 majors. A Generation 1 or 2 license stops at the earlier majors and upgrades to Generation 3 at 50% off in the [Hub](https://hub.kirby.tools).
 
-- **Copilot's prompt composer** – the Copilot field shows its prompt right away, with attached files as tags and its buttons in a bar below. :kbd{value="meta"} :kbd{value="enter"} starts a generation. Copilot no longer ships built-in prompt templates; for prompts every editor shares, set `promptTemplates` in the config.
-- **Content Translator drops `confirm`** – **Import** no longer asks for confirmation, even where a site set `confirm: true`. The imported fields arrive as unsaved changes, and **Discard** reverts them.
-- **SEO Audit starts some stored reports over** – a field named with capitals, like `seoAudit`, shows no report until its next analysis. Ratings carry over.
+The upgrade guide has the Composer command, the move for every plugin, and what each one removes.
 
-## Before You Upgrade
-
-You need PHP 8.3 or newer and a Generation 3 license for each commercial plugin. Then move the entries, deploy, and open a page of each blueprint once.
-
-The [Kirby 6 upgrade guide](/upgrading-to-kirby-6) has the move for every plugin, the blueprint layouts where `fields:` needs a tab or column, and the removed properties per plugin.
+[Read the Kirby 6 upgrade guide](/upgrading-to-kirby-6)
