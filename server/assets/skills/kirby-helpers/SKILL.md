@@ -44,7 +44,7 @@ Shorten a blocks, layout, or writer field to a description with `$field->toExcer
 
 `sitemap.enabled` and `robots.enabled` turn on `/sitemap.xml` and `/robots.txt`. The sitemap includes the `error` page and unlisted pages. Exclude them with `exclude.templates`, `exclude.pages`, or `options.sitemap: false` in the blueprint. `exclude.pages` entries are regular expressions matched against the whole page ID: `blog` keeps `blog/post`, `blog(/.*)?` drops both.
 
-On a multi-language site, a page lists an `hreflang` alternate only for the languages it has a content file in. With Kirby's pages cache on, the sitemap is cached with it. A changed option shows after the cache is emptied. A static `robots.txt` in the web root wins over the route.
+On a multi-language site, a page lists an `hreflang` alternate only for the languages it has a content file in. `exclude.languages` takes language codes – `de`, not `de-de` – and drops their alternates from the sitemap. With Kirby's pages cache on, the sitemap is cached with it. A changed option shows after the cache is emptied. A static `robots.txt` in the web root wins over the route.
 
 <https://kirby.tools/docs/helpers/sitemap.md>
 
