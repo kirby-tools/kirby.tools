@@ -1,7 +1,6 @@
 import { setActivePanel } from "kirbyuse";
 import { defineNuxtPlugin } from "#app";
 import array from "#kirby-panel/helpers/array";
-import color from "#kirby-panel/helpers/color";
 import debounce from "#kirby-panel/helpers/debounce";
 import field from "#kirby-panel/helpers/field";
 import isComponent from "#kirby-panel/helpers/isComponent";
@@ -13,6 +12,10 @@ import { components } from "./components";
 import { createPanel } from "./panel";
 import { translate } from "./translate";
 
+// The names of Kirby's `--color-*` tokens that hold a color.
+const COLOR_TOKEN =
+  /^(?:black|white|dark|light|text|border|focus|(?:text|border)-dimmed|(?:aqua|blue|gray|green|orange|pink|purple|red|yellow)-[1-9][05]0)$/;
+
 export default defineNuxtPlugin((nuxtApp) => {
   const globalProperties: Record<string, unknown> =
     nuxtApp.vueApp.config.globalProperties;
@@ -22,7 +25,17 @@ export default defineNuxtPlugin((nuxtApp) => {
   setActivePanel(panel);
   globalProperties.$helper = {
     array,
-    color,
+    // Kirby's own implementation asks the document root whether a name is one
+    // of its `--color-*` tokens. The server has no document, and the site
+    // defines the tokens on `.panel-mock`.
+    color: (input: unknown) => {
+      if (typeof input !== "string") return;
+
+      const value = input.toLowerCase();
+      if (value === "pattern") return "var(--pattern)";
+
+      return COLOR_TOKEN.test(value) ? `var(--color-${value})` : value;
+    },
     debounce,
     field: {
       ...field,
