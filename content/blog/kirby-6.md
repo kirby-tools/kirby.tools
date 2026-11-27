@@ -4,7 +4,7 @@ description: Hello, Kirby 6! Every Kirby Tools plugin is ready for it, and a Gen
 date: "2026-11-24"
 ---
 
-Kirby 6 is out, and the Panel [runs on Vue 3](https://getkirby.com/releases/6/foundation#vue-3). As a Vue lover, I've waited a long time for this one.
+Kirby 6 is out, and the Panel [runs on Vue 3](https://getkirby.com/releases/6/foundation#vue-3). As a Vue enthusiast, I've waited a long time for this one.
 
 Every Kirby Tools plugin with a Panel part has a new major for it. These run on Kirby 6 only. A site that stays on Kirby 4 or 5 keeps its current versions and its license, and the last major before Kirby 6 of each plugin gets security and critical fixes for six months after Kirby 6's release.
 
