@@ -22,4 +22,25 @@ describe("stringifyPageBody", () => {
       "Download the [latest release](https://github.com/johannschopplich/kirby-helpers/releases/latest) or head over.",
     );
   });
+
+  it("writes an external link without its rel", () => {
+    const page = {
+      body: {
+        type: "minimark",
+        value: [
+          [
+            "p",
+            {},
+            "See the ",
+            ["a", { href: "https://getkirby.com", rel: ["nofollow"] }, "docs"],
+            ".",
+          ],
+        ],
+      },
+    } as unknown as PageCollectionItemBase;
+
+    expect(stringifyPageBody(page)).toBe(
+      "See the [docs](https://getkirby.com).\n",
+    );
+  });
 });

@@ -23,13 +23,16 @@ export function stringifyPageBody(
   page: PageCollectionItemBase,
   latestDownload?: ProductDownload,
 ): string {
+  const nodes = dropLinkRel(page.body.value);
   const value = latestDownload
-    ? linkLatestVersion(page.body.value, latestDownload)
-    : page.body.value;
+    ? linkLatestVersion(nodes, latestDownload)
+    : nodes;
 
-  return stringify(
-    { ...page.body, type: "minimark", value },
-    { format: "markdown/html" },
+  return collapseBlankLines(
+    stringify(
+      { ...page.body, type: "minimark", value },
+      { format: "markdown/html" },
+    ),
   );
 }
 
@@ -79,13 +82,23 @@ export function linkLatestVersion(
   );
 }
 
-/** Drops every link's `rel`, which Nuxt Content adds to external links and the MDC stringifier writes as a broken attribute. */
+/** Drops every link's `rel`, which Nuxt Content adds to external links and minimark writes as a broken attribute. */
 export function dropLinkRel(nodes: MinimarkNode[]): MinimarkNode[] {
   return mapElements(nodes, (element) => {
     if (element[0] !== "a") return element;
     const [tag, { rel: _rel, ...linkProps }, ...children] = element;
     return [tag, linkProps, ...children];
   });
+}
+
+/** Collapses the runs of blank lines that minimark leaves around the blocks inside an HTML tag, code blocks excepted. */
+function collapseBlankLines(markdown: string): string {
+  return markdown
+    .split(/(^ *```.+?^ *```$)/ms)
+    .map((part, index) =>
+      index % 2 === 1 ? part : part.replace(/\n{3,}/g, "\n\n"),
+    )
+    .join("");
 }
 
 /** Rewrites every element of a stored body, its children first. */
