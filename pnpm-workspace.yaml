@@ -3,7 +3,6 @@ minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
   - kirby-types@2.0.0
   - kirbyuse@2.0.0
-  - utilful@3.5.1
   - '@kirby-tools/licensing@1.1.0'
 trustPolicy: no-downgrade
 trustPolicyExclude:
@@ -13,9 +12,18 @@ shellEmulator: true
 overrides:
   # TODO: Drop once remark-mdc's `strong` and `emphasis` handlers work with mdast-util-to-markdown 2.1.3+.
   mdast-util-to-markdown: 2.1.2
+  # TODO: Drop once vue-tsc ships the fix for `//` in a static template attribute (vuejs/language-tools#6322).
+  vue-tsc: 3.3.13
 
 allowBuilds:
   esbuild: true
   sharp: true
   vue-demi: true
   workerd: false
+permissions:
+  '@nuxtjs/robots':
+    skills: false
+  '@nuxtjs/sitemap':
+    skills: false
+  nuxt-og-image:
+    skills: false
