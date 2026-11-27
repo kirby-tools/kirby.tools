@@ -80,7 +80,6 @@ async function typePrompt(signal: AbortSignal) {
            open on load shows them picked. -->
       <PanelCopilotPromptDialog
         :autofocus="hasReaderOpenedDialog"
-        :file-previews="COPILOT_FILE_PREVIEWS"
         :fields="COPILOT_FIELDS"
         :user-prompt="userPrompt"
         :preview="preview"

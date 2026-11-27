@@ -1,7 +1,12 @@
 <template>
   <PanelMock>
     <PanelCopilotPromptDialog
-      :file-previews="COPILOT_FILE_PREVIEWS"
+      :file-previews="[
+        {
+          name: 'press-release.pdf',
+          image: { icon: 'document', color: 'red-500', back: 'pattern' },
+        },
+      ]"
       :fields="[
         { name: 'text', label: 'Text' },
         { name: 'description', label: 'Description' },
