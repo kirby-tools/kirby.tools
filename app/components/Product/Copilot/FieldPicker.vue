@@ -1,7 +1,7 @@
 <template>
   <PanelMock>
     <PanelCopilotPromptDialog
-      :file-count="1"
+      :file-previews="COPILOT_FILE_PREVIEWS"
       :fields="[
         { name: 'text', label: 'Text' },
         { name: 'description', label: 'Description' },

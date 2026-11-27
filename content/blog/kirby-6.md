@@ -38,7 +38,9 @@ Most of each port is invisible: the same assessments, the same translations, the
 ::panel-copilot-field
 ---
 userPrompt: Summarize the attached brief in five points.
-fileNames: [brief.pdf]
+filePreviews:
+  - name: brief.pdf
+    image: { icon: document, color: red-500, back: pattern }
 ---
 ::
 :::

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { InsertOption } from "#kirby-plugin/copilot";
+import type { FilePreview, InsertOption } from "#kirby-plugin/copilot";
 import {
   createInsertOptions,
   createPromptDialogLabels,
@@ -14,7 +14,7 @@ const props = defineProps<{
   /** The resolved prompt, which the plugin fills in from the page. */
   preview?: string;
   previewOpen?: boolean;
-  fileCount?: number;
+  filePreviews?: FilePreview[];
   fields?: PanelFieldProps[];
   selection?: string;
   /**
@@ -189,7 +189,7 @@ function submit() {
       :prompt="userPrompt"
       :preview="hasPlaceholders ? preview : undefined"
       :preview-open="previewOpen"
-      :file-count="fileCount"
+      :file-previews="filePreviews"
       :fields="fields"
       :selection="selection"
       :insert-options="INSERT_OPTIONS"
@@ -226,18 +226,7 @@ function submit() {
         v-if="toolsThroughOpener.length"
         class="pointer-events-none absolute inset-x-0 bottom-(--spacing-2) flex items-center gap-(--spacing-1) px-(--spacing-2)"
       >
-        <k-button
-          icon="attachment"
-          :badge="fileCount ? { theme: 'notice', text: fileCount } : undefined"
-          class="invisible"
-        />
-        <k-button
-          v-if="fileCount"
-          text="Clear"
-          variant="dimmed"
-          size="sm"
-          class="invisible"
-        />
+        <k-button icon="attachment" class="invisible" />
         <span
           v-for="tool in toolsThroughOpener"
           :key="tool.under"

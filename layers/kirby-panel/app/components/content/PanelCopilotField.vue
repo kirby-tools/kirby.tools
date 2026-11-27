@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { FilePreview } from "#kirby-plugin/copilot";
 import { createFieldLabels, FieldBody } from "#kirby-plugin/copilot";
 import { translate } from "#panel-mock/translate";
 
@@ -8,7 +9,7 @@ const props = withDefaults(
     files?: boolean | "auto";
     userPrompt?: string;
     isGenerating?: boolean;
-    fileNames?: string[];
+    filePreviews?: FilePreview[];
   }>(),
   { editable: true, files: true },
 );
@@ -35,7 +36,7 @@ const modelFileText = computed(() =>
     :files="files"
     :user-prompt="userPrompt"
     :is-generating="isGenerating"
-    :file-names="fileNames"
+    :file-previews="filePreviews"
     :model-file-text="modelFileText"
   />
 </template>

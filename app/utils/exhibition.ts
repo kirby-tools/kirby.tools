@@ -2,6 +2,7 @@ import type {
   TranslationLanguageCoverage,
   TranslationTreeEntry,
 } from "#kirby-plugin/content-translator";
+import type { FilePreview } from "#kirby-plugin/copilot";
 import type { MinimapField } from "#kirby-plugin/minimap";
 import type { Rating, Report } from "#kirby-plugin/seo-audit";
 import { slug } from "#kirby-panel/helpers/string";
@@ -225,6 +226,14 @@ export const COPILOT_FIELDS_DROPDOWN = {
   under: "fields",
   value: ["text", "description"],
 } as const satisfies PanelCopilotPromptDropdown;
+
+// The plugin's preview of an attached PDF.
+export const COPILOT_FILE_PREVIEWS: FilePreview[] = [
+  {
+    name: "press-release.pdf",
+    image: { icon: "document", color: "red-500", back: "pattern" },
+  },
+];
 
 export const COPILOT_SUGGESTION_PREFIX = "Luise Frey photographs rooms";
 
