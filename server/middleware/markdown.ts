@@ -73,6 +73,6 @@ async function sendChangelog(
         (version) =>
           `## ${version.title}\n\nReleased ${version.date}\n\n${stringifyPageBody(version)}`,
       )
-      .join("\n\n"),
+      .join("\n"),
   });
 }

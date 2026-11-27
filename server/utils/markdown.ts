@@ -13,26 +13,32 @@ export interface MarkdownDocument {
   body: string;
 }
 
-/**
- * Renders a stored page body back to Markdown, with MDC components as HTML
- * tags and a `latest-version` component as the download link passed in. The
- * `markdown/mdc` format emits every component at `::` regardless of nesting,
- * which makes `:::card` and `:::tabs-item` ambiguous.
- */
+const BLANK_LINE_MARK = "\0";
+const BLANK_LINE_MARK_PATTERN = /^ *\0$/gm;
+
 export function stringifyPageBody(
   page: PageCollectionItemBase,
   latestDownload?: ProductDownload,
 ): string {
-  const nodes = dropLinkRel(page.body.value);
-  const value = latestDownload
-    ? linkLatestVersion(nodes, latestDownload)
-    : nodes;
+  const nodes = markCodeBlankLines(
+    separateListItemCode(writeClassAttribute(dropLinkRel(page.body.value))),
+  );
+  const markdown = stringify(
+    {
+      ...page.body,
+      type: "minimark",
+      value: latestDownload ? linkLatestVersion(nodes, latestDownload) : nodes,
+    },
+    { format: "markdown/html" },
+  );
 
-  return collapseBlankLines(
-    stringify(
-      { ...page.body, type: "minimark", value },
-      { format: "markdown/html" },
-    ),
+  return (
+    markdown
+      // minimark separates the blocks inside an HTML tag twice.
+      .replace(/\n{3,}/g, "\n\n")
+      // minimark leaves a blank line in indented code without its indent.
+      .replace(BLANK_LINE_MARK_PATTERN, "")
+      .replaceAll(BLANK_LINE_MARK, "")
   );
 }
 
@@ -82,7 +88,7 @@ export function linkLatestVersion(
   );
 }
 
-/** Drops every link's `rel`, which Nuxt Content adds to external links and minimark writes as a broken attribute. */
+/** Drops every link's `rel`, which Nuxt Content adds to external links and both minimark and `@nuxtjs/mdc` write as a broken attribute. */
 export function dropLinkRel(nodes: MinimarkNode[]): MinimarkNode[] {
   return mapElements(nodes, (element) => {
     if (element[0] !== "a") return element;
@@ -91,14 +97,44 @@ export function dropLinkRel(nodes: MinimarkNode[]): MinimarkNode[] {
   });
 }
 
-/** Collapses the runs of blank lines that minimark leaves around the blocks inside an HTML tag, code blocks excepted. */
-function collapseBlankLines(markdown: string): string {
-  return markdown
-    .split(/(^ *```.+?^ *```$)/ms)
-    .map((part, index) =>
-      index % 2 === 1 ? part : part.replace(/\n{3,}/g, "\n\n"),
-    )
-    .join("");
+/** Writes every `className` array as a `class` attribute, since minimark writes an array as escaped JSON. */
+function writeClassAttribute(nodes: MinimarkNode[]): MinimarkNode[] {
+  return mapElements(nodes, (element) => {
+    const [tag, { className, ...props }, ...children] = element;
+    if (!Array.isArray(className)) return element;
+    return [tag, { ...props, class: className.join(" ") }, ...children];
+  });
+}
+
+/** Wraps the text before a list item's code block in a paragraph, since minimark writes the fence onto the text's line otherwise. */
+function separateListItemCode(nodes: MinimarkNode[]): MinimarkNode[] {
+  return mapElements(nodes, (element) => {
+    const [tag, props, ...children] = element;
+    if (tag !== "li") return element;
+
+    const codeIndex = children.findIndex(
+      (child) => typeof child !== "string" && child[0] === "pre",
+    );
+    if (codeIndex < 1) return element;
+
+    return [
+      tag,
+      props,
+      ["p", {}, ...children.slice(0, codeIndex)],
+      ...children.slice(codeIndex),
+    ];
+  });
+}
+
+/** Marks the blank lines in every code block, so that collapsing the blank lines of the Markdown leaves the code alone. */
+function markCodeBlankLines(nodes: MinimarkNode[]): MinimarkNode[] {
+  return mapElements(nodes, (element) => {
+    const [tag, props, ...children] = element;
+    if (tag !== "pre" || typeof props.code !== "string") return element;
+
+    const code = props.code.trim().replace(/^$/gm, BLANK_LINE_MARK);
+    return [tag, { ...props, code }, ...children];
+  });
 }
 
 /** Rewrites every element of a stored body, its children first. */
