@@ -17,7 +17,7 @@
   },
   "minimap": {
     "repository": "https://github.com/johannschopplich/kirby-minimap.git",
-    "ref": "b384cdec3b8693cd7dc186970c04ce2970f48dd6"
+    "ref": "a47dd97747c4700663bb7cb4a99de455f7681c94"
   },
   "seo-audit": {
     "repository": "https://github.com/kirby-tools/kirby-seo-audit.git",
