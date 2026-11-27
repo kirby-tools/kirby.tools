@@ -1,6 +1,6 @@
 ---
 name: kirby-tools-content
-description: Writing or editing anything a visitor or an agent reads on kirby.tools – documentation under `content/1.docs/`, landing and home YAML, blog, buy pages, the plugin READMEs, the agent skills under `server/assets/skills/`. Which register and voice a sentence takes by where it sits, and how a documentation page is built from Nuxt UI Prose components.
+description: Writing or editing anything a visitor or an agent reads on kirby.tools – documentation under `content/1.docs/`, the changelogs, landing and home YAML, blog, buy pages, the plugin READMEs, the agent skills under `server/assets/skills/`. Which register and voice a sentence takes by where it sits, and how a documentation page is built from Nuxt UI Prose components.
 ---
 
 # kirby.tools Content
@@ -45,6 +45,14 @@ Call the Skill tool with "writing-docs" before writing or cutting a documentatio
 A feature heading is a noun phrase. The frontmatter description summarises rather than echoes the first sentence, and keeps backticked identifiers only where an editor types them.
 
 A blueprint key that takes a list of names – `marks`, `buttons`, `fields` – is an allow-list: the snippet's entries replace Kirby's defaults. An example that lists a plugin's own entry says so at the snippet.
+
+## Changelog
+
+A website changelog entry is for the editor or developer who upgrades, and it earns its place through value to them: a feature they can use, a fix for something that failed or went wrong, or a change they have to act on. Polish – an autofocused input, a reworded label, a click saved – stays in the GitHub release notes, which changelogithub writes from the commits.
+
+An entry is a short bold label to scan by ("Hosting compatibility", "A translation stays on its page"), then as few sentences as say it, four at most. A feature entry names the capability and assumes the Kirby concept behind it. A release may open with a headline `::tip`, which stays even where it overlaps the first feature.
+
+Call the Skill tool with "writing-docs" before writing or trimming an entry.
 
 ## READMEs
 
